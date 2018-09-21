@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Визуальный сайт в CSS3 | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../howtocodeinhtml.html" />
+<link rel="next" href="chapter6.html" />
+<link rel="prev" href="chapter4.html" />
+<meta name="description" content="Вы, возможно, уже заметили, что за исключением наших изображений сайт выглядит не очень интересно. Чёрный текст на белом фоне не очень приветлив к нашим посетителям. Давайте поработаем над внешним видом нашего сайта с помощью CSS (Cascading Style Sheets, каскадные таблицы стилей). Используя этот язык мы можем манипулировать такими признаками сайта как цвет, размер шрифта и многими другими качествами. Существует огромный список возможностей доступных с помощью CSS." />
+<link rel="canonical" href="chapter5.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Визуальный сайт в CSS3</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../howtocodeinhtml.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Как верстать на HTML5 и CSS3</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Визуальный сайт в CSS3</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Вы, возможно, уже заметили, что за исключением наших изображений сайт выглядит не очень интересно. Чёрный текст на белом фоне не очень приветлив к нашим посетителям. Давайте поработаем над внешним видом нашего сайта с помощью CSS (Cascading Style Sheets, каскадные таблицы стилей). Используя этот язык мы можем манипулировать такими признаками сайта как цвет, размер шрифта и многими другими качествами. Существует огромный список возможностей доступных с помощью CSS.</p><p>В предыдущих разделах мы использовали HTML для описания содержимого сайта и делили его на фрагменты в соответствии с их важностью. CSS будет отвечать за внешний вид наших сайтов. Код CSS может быть помещён в отдельный файл с расширением .css и вставлен с помощью специального тега. Вы также можете поместить его непосредственно в HTML-документ.</p><p>Представьте себе на мгновение на абстрактном примере, что мы хотим построить дом с кодом CSS, где выбираем такие элементы, как окна, двери, крыша, стены, желоба и т.&nbsp;д. Мы хотели бы купить окна конкретных размеров и краски для каждой необходимой детали. Если мы построили этот дом на CSS, то один из многих вариантов решения этой задачи может выглядеть так.</p>
+<pre><code data-language="css">крыша {
+  background-color: green;
+}
+
+двери {
+  background-color: yellow;
+  width: 100px;
+  height: 300px;
+}
+
+окна {
+  border: 5px solid brown;
+  width: 150px;
+}</code></pre>
+<p>Проанализируем блок «крыша» этого кода сверху вниз (заметьте, что чтение сверху вниз&nbsp;— это правило при чтении любого типа кода, а не только HTML и CSS).</p>
+<pre><code data-language="css">крыша {
+  background-color: green;
+}</code></pre>
+<p>Если перевести указанный выше код на простой язык, то мы выбрали элемент с именем «крыша» и установили зелёный цвет фона.</p>
+<pre><code data-language="css">окна {
+  border: 5px solid brown;
+  width: 150px;
+}</code></pre>
+<p>Код выше говорит «для всех окон установить следующее: рамка (border) толщиной 5&nbsp;пикселей (5px), отмеченная непрерывной линией (solid), коричневая (brown) Кроме того, само окно должно иметь ширину (width) 150&nbsp;пикселей (150px)».</p><p>Вы, возможно, заметили повторяющийся характер кода. В первой строке мы пишем имя элемента (называется «селектор»), затем определяем вид этого элемента между фигурных скобок.</p><p>Шаблон имеет базовую структуру, показанную ниже.</p>
+<pre><code>Селектор {
+  имя_свойства: значение_свойства;
+}</code></pre>
+<p>Такой тип конструкции является типичным правилом CSS. Правило состоит из селектора (всё что идёт до открывающей фигурной скобки), далее следует список свойств, которые вы пишете в скобках.</p><p>Есть разные пути для точного указания, что мы хотим спроектировать. Скажем, мы только хотим определить дизайн для окон на первом этаже. Что тогда? Мы могли бы написать нечто подобное.</p>
+<pre><code data-language="css">первый этаж окно {
+  border: 5px solid brown;
+  width: 150px;
+}</code></pre>
+<p>Результатом является только то, что селектор изменился. Вместо «окна {» мы написали «первый этаж окно {».</p><p>Этот код читается слева направо так: «найти первый этаж, затем найти на нём окно и установить следующие значения». Если мы поместим в «первый этаж окно» такой подселектор:</p>
+<pre><code data-language="css">соседняя стена окна {</code></pre>
+<p>Тогда мы говорим браузеру: «найти окно на первом этаже, окна рядом с ним и заполнить их следующими значениями» и т.&nbsp;д. Если вы помните про уже упомянутую аналогию в которой мы говорили о вложенных тегах как о детях и родителях, то это та же самая идея&nbsp;— элементы, вложенные в другие элементы.</p><p>К сожалению, браузер не может построить дом, но наш пример говорит нам как работает CSS. Эта аналогия полезна, потому что при вёрстке мы не всегда в состоянии увидеть изменения. Но мы можем думать об абзацах (<span class="tag">&lt;p&gt;</span>) как об окнах, дверях как о заголовках (<span class="tag">&lt;h1&gt;</span>) и т.&nbsp;д.</p><p>Это будет выглядеть так.</p>
+<pre><code data-language="css">p {
+}
+
+h1 {
+}</code></pre>
+<p>Давайте применим то, что мы узнали в этой аналогии к нашему примеру и используем подобные идеи, чтобы добавить немного цвета и жизнь в статью о Джастине Бивере.</p><p>Напомним, что наш код выглядит так.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+  &lt;html lang=&quot;ru&quot;&gt;
+  &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt; 
+  &lt;title&gt;Джастин Бивер увлечён HTML&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h1&gt;Джастин Бивер: С тех пор, как я узнал HTML, моя жизнь повернулась на 180 градусов&lt;/h1&gt;
+        &lt;p&gt;Написал: Дамиан Вельгошик&lt;/p&gt;
+      &lt;/header&gt;
+      &lt;p&gt;Джастин Бивер сделал признание, которого никак не ожидали даже самые 
+      большие поклонники талантливого музыканта и поэта. Молодой певец признался, 
+      что когда он набрал свой первый тег, его жизнь стала легче. Из окружения 
+      канадца сообщают, что частные наставники Бивера, Райан Лослинг и 
+      Николас Крейт, часто гуляют по Лос-Анджелесу, споря об инструменте 
+      HTML-валидатор.&lt;/p&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;cat.jpg&quot; alt=&quot;Кот Джастина Бивера доволен&quot;&gt;
+        &lt;figcaption&gt;Счастливый кот Джастина Бивера&lt;/figcaption&gt;
+      &lt;/figure&gt;
+     &lt;p&gt;Бивер уже создал несколько сайтов и не намерен останавливаться на достигнутом.
+     &lt;q&gt;Я, вероятно, спою об HTML в своём следующем альбоме&lt;/q&gt;, - добавил певец.&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Вспомним аналогию строительства дома. Вместо строительства дверей, окон и прочего мы имеем дело с элементами, вроде <span class="tag">&lt;article&gt;</span>, <span class="tag">&lt;p&gt;</span>, <span class="tag">&lt;header&gt;</span>, <span class="tag">&lt;body&gt;</span>, <span class="tag">&lt;figcaption&gt;</span> и&nbsp;др. Эти теги создают страницу и теперь CSS поможет дать им стиль.</p><p>Я подготовил скриншот, так что вы можете видеть, как наши модификации в итоге изменят сайт.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-final-proposition.jpg" width="694" height="733" alt="" style="border:1px solid #f5f5f5"></p><p>Как видите, многое изменилось. Мы добавили простые цвета, фон, изменили стиль шрифта и др. Давайте продвигаться шаг за шагом чтобы получить эффекты, как на рисунке выше.</p><p>Первый шаг состоит в сохранении всего HTML-кода в отдельный файл. У меня он называется <span class="var">article.html</span>. Затем создайте отдельный файл, в котором мы будем хранить наши правила CSS. Пусть будет <span class="var">main.css</span>.</p><p>На моём компьютере файлы выглядят так.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-file-system.png" width="1000" height="153" alt=""></p><p>Теперь мы можем попытаться открыть article.html в браузере, а файл main.css в текстовом редакторе. Я рекомендую <a href="http://sublimetext.com">Sublime Text</a> или <a href="http://macromates.com">TextMate</a>. После каждого сделанного изменения в main.css мы можем перезагрузить страницу браузера чтобы обновить её внешний вид.</p><p>Теперь нам нужно открыть в браузере article.html и загрузить файл main.css. Это делается с помощью тега <span class="tag">&lt;link&gt;</span> внутри <span class="tag">&lt;head&gt;</span> в коде HTML. Просто добавьте этот тег в <span class="tag">&lt;head&gt;</span>.</p>
+<pre><code data-language="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;main.css&quot;&gt;</code></pre>
+<p>Атрибут <span class="attribute">href</span> указывает где находится файл. <span class="value">stylesheet</span> говорит нам, что это таблица стилей.</p><p>Чтобы начать вносить изменения во внешний вид через CSS, попробуем найти правильный селектор для заголовка, похожего на код для окон и стен.</p>
+<pre><code data-language="css">h1 { 
+}</code></pre>
+<p>Мы здесь! Именно здесь мы можем сказать браузеру «для всех элементов в &lt;h1&gt; применить следующее оформление». Обратите внимание, что фигурные скобки пустые. Давайте попробуем сказать, что мы хотим зелёный текст заголовка. Добавим свойство <span class="attribute">color</span> и установим его как <span class="value">green</span>.</p>
+<pre><code data-language="css">h1 {
+  color: green; 
+}</code></pre>
+<p>Операции для этого правила объясняются на рисунке ниже.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/selector-explanation.png" width="508" height="446"></p><p>Посмотрим, как наша страница выглядит после изменений!</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-green-header.png" width="645" height="108" alt="" style="border:1px solid #f5f5f5"></p><p>Да! Заголовок теперь зелёный.</p><p>Теперь мы хотим обратиться к разделу с информацией об авторе. Скажем, мы желаем, чтобы текст был белым на красном фоне, как показано ранее. Вот текущий код HTML:</p>
+<pre><code data-language="html">&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Джастин Бивер: С тех пор, как я узнал HTML, моя жизнь повернулась на 180 градусов&lt;/h1&gt;
+    &lt;p&gt;Написал: Дамиан Вельгошик&lt;/p&gt;
+  &lt;/header&gt;</code></pre>
+<p>Используем CSS, находим подходящий селектор («р {») и пробуем дать ему красный фон и белый цвет текста.</p>
+<pre><code data-language="css">p {
+  background-color: red;
+  color: white;
+}</code></pre>
+<p>Наш код main.css теперь должен выглядеть следующим образом:</p>
+<pre><code data-language="css">h1 {
+  color: green; 
+}
+
+p {
+  background-color: red;
+  color: white;
+}</code></pre>
+<p>Как видите мы добавили одно правило под другим. Пришло время смотреть, как теперь выглядит сайт...</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-red-paras.png" width="689" height="177" alt=""></p><p>Ой, как-то это не совсем правильно. Кажется, все остальные абзацы тоже изменились и получили новый фон и цвет текста. Это проблема с нашим кодом, потому что мы использовали следующее.</p>
+<pre><code data-language="css">p {
+  background-color: red;
+  color: white;
+}</code></pre>
+<p>На самом деле мы сказали браузеру «найти все элементы &lt;р&gt; и применить к ним изменения». Однако мы хотели поменять только абзац в заголовке статьи.</p><p>Теперь нам нужно изменить код так, чтобы селектор выше применялся только к <span class="tag">&lt;р&gt;</span> в <span class="tag">&lt;header&gt;</span>, который является «ребенком» <span class="tag">&lt;article&gt;</span>. Код должен отражать эту иерархию.</p>
+<pre><code data-language="css">article header p {
+  background-color: red;
+  color: white;
+}</code></pre>
+<p>Смотрим на эффект этих изменений.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-better-selector.png" width="689" height="177" alt=""></p><p>Намного лучше! Кажется, мы точно попали в нужный абзац. Но как это случилось? Ну, мы использовали код выше и сообщили браузеру на какие теги в селекторе CSS нацелиться. Мы делаем это путем изучения кода HTML и находим все теги, которые должны соответствовать селектору. В нашем случае, у нас есть вложенные теги <span class="tag">&lt;article&gt;</span>, <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;p&gt;</span>, поэтому селектор <span class="tag">article&nbsp;header&nbsp;p</span> позволяет нам точно указать, к чему эти изменения будут применены.</p><p>Перейдём к изображению в статье.</p><p>Размер этой статьи, скажем, должен быть 600 пикселей в ширину. И помните что для изображений у нас есть соответствующий тег <span class="tag">&lt;figure&gt;</span>. Уточним наш код CSS, чтобы отразить это.</p>
+<pre><code data-language="css">article figure  {
+  width: 600px;
+}</code></pre>
+<p>С помощью этого кода каждый тег <span class="tag">&lt;figure&gt;</span> в <span class="tag">&lt;article&gt;</span> будет иметь ширину 600 пикселей. Заметьте, что <span class="tag">article</span> отлично помогает, если бы у нас было несколько изображений во всём блоге и мы хотели задать каждому различные критерии. Но так как у нас только одно изображение, давайте двигаться дальше к <span class="attribute">border</span>.</p>
+<pre><code data-language="css">article figure  {
+  width: 600px;
+  border: 3px solid black;
+}</code></pre>
+<p>Здесь мы добавили свойство <span class="attribute">border</span>. После двоеточия мы указываем ширину границы (3&nbsp;пикселя), стиль границы solid с цветом black.</p><p>Посмотрим, как это выглядит.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-border-overflow.jpg" width="682" height="557" alt=""></p><p>Похоже, у нас проблема. Хотя граница отображается правильно, но изображение выводится за пределами наших 600&nbsp;пикселей. Это потому, что мы установили ширину элемента <span class="tag">&lt;figure&gt;</span>, но тег <span class="tag">&lt;img&gt;</span> не имеет никакой фиксированной ширины и, таким образом, сохраняет свой исходный размер. Было бы неплохо, если бы изображение стало 100% от ширины родителя <span class="tag">&lt;figure&gt;</span>. Это пишется очень просто.</p>
+<pre><code data-language="css">article figure img {
+  width: 100%;
+}</code></pre>
+<p>И выглядит так.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-good-border.jpg" width="515" height="424" alt=""></p><p>Было бы неплохо задать некоторый отступ или пространство между границей и изображением. Сделаем это, добавив свойство <span class="attribute">padding</span>. Мы можем изменить код следующим образом.</p>
+<pre><code data-language="css">article figure  {
+  width: 600px;
+  border: 3px solid black;
+  padding: 5px;
+}</code></pre>
+<p>Результат.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/article-border-padding.jpg" width="523" height="432" alt=""></p><p>Вы можете попробовать модифицировать значение <span class="attribute">padding</span> и увидеть как изменяется белый промежуток между изображением и рамкой.</p><p>Теперь наша страница выглядит хорошо, но мы ещё не закончили. Текущий абзац распространяется почти на всю ширину окна браузера и поэтому не очень хорошо читаются. Возможно, было бы уместно каким-то образом уменьшить ширину текста? Может ограничить его до 800&nbsp;пикселей?</p><p>Давайте выберем для этого специальный селектор.</p>
+<pre><code data-language="css">article {
+  width: 800px;
+}</code></pre>
+<p>Так-то лучше.</p><p>Теперь что насчёт шрифта? Если вы посмотрите на исходное изображение нашего сайта, у нас немного другой шрифт. Так же, как вы можете редактировать стили шрифтов в Microsoft Word, вы можете редактировать их и в CSS. Чтобы указать желаемый шрифт добавим свойство в самый верхний тег, так что это коснётся всего текста внутри этого тега. К примеру, мы установим шрифт для <span class="tag">&lt;body&gt;</span>, так что каждый элемент внутри <span class="tag">&lt;body&gt;</span> будет иметь такое же оформление. На рисунке я использовал шрифт с именем Verdana.</p><p>Давайте попробуем применить его.</p>
+<pre><code data-language="css">body {
+  font-family: Verdana;
+}</code></pre>
+<p>Вы можете увидеть различия при удалении этой строки или при изменении <span class="attribute">font-family</span> на другое значение. Заголовок, абзацы и другие элементы браузер отобразит всё шрифтом Verdana.</p><p>Окончательно, наш код в файле main.css должен выглядеть следующим образом.</p>
+<pre><code data-language="css">body {
+  font-family: Verdana;
+}
+
+article {
+  width: 800px;
+}
+
+article header h1 {
+  color: green;
+}
+
+article header p {
+  background-color: red;
+  color: white;
+}
+
+article figure {
+  width: 600px;
+  border: 3px solid black;
+  padding: 5px;
+}
+
+article figure img {
+  width: 100%;
+}</code></pre>
+<p>В целом, это хорошая практика — начинать свой код с самых общих селекторов и переходить к комплексным. Я начал с <span class="tag">body</span>, затем <span class="tag">article</span>, и так далее, всё идёт сверху вниз.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/css3">CSS3</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дамиан Вельгошик</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 26.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/howtocodeinhtml/chapter4'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/howtocodeinhtml/chapter6'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter4.html" title="На предыдущую страницу">Упражнение: верстаем пост блога</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter6.html" title="На следующую страницу">Меню, пожалуйста</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter1.html">Сайты и Lego</a></li><li class="leaf"><a href="chapter2.html">Делаем наш первый сайт</a></li><li class="leaf"><a href="chapter3.html">Особенности идеального HTML-кода</a></li><li class="leaf"><a href="chapter4.html">Упражнение: верстаем пост блога</a></li><li class="leaf active-trail"><a href="chapter5.html" class="active-trail active">Визуальный сайт в CSS3</a></li><li class="leaf"><a href="chapter6.html">Меню, пожалуйста</a></li><li class="leaf"><a href="chapter7.html">Понимание селекторов CSS</a></li><li class="leaf"><a href="chapter8.html">Время для итогов</a></li><li class="leaf"><a href="chapter9.html">Формы в HTML5</a></li><li class="leaf"><a href="chapter10.html">Разница между &lt;div&gt; и &lt;span&gt;</a></li><li class="leaf"><a href="chapter11.html">Дополнения форм</a></li><li class="leaf"><a href="chapter12.html">Многоколоночный макет</a></li><li class="last leaf"><a href="chapter13.html">Что дальше?</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-a448bca2b449634d2e3debd8a929a9dc"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter5.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подробнее о позиционировании | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="complex-selectors.html" />
+<link rel="prev" href="performance-organization.html" />
+<meta name="description" content="Когда дело доходит до построения макетов и позиционирования содержимого на странице имеется несколько разных применяемых методов. Какой метод задействовать во многом зависит от содержимого и целей страницы, так как некоторые методы могут быть лучше других." />
+<link rel="canonical" href="detailed-css-positioning.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Подробнее о позиционировании</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Подробнее о позиционировании</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Когда дело доходит до построения макетов и позиционирования содержимого на странице имеется несколько разных применяемых методов. Какой метод задействовать во многом зависит от содержимого и целей страницы, так как некоторые методы могут быть лучше других.</p><p>Например, способность элементов с <span class="attribute">float</span> располагаться бок о бок обеспечивает хороший, чистый макет, который восприимчив к разным элементам на странице. Однако, когда требуется более строгий контроль, элементы могут быть расположены с помощью других методов, включая относительное или абсолютное позиционирование.</p><p>В этом уроке мы начнём с краткого обзора того, как обуздать <span class="attribute">float</span>. После этого мы рассмотрим более детальные методы позиционирования, в том числе точное позиционирование элементов по осям х и у, а также оси z.</p><h2>Обуздание float</h2><p>Обтекаемые элементы являются естественным процессом при строительстве макета веб-сайта и инстинктивным способом позиционирования элементов на странице. <span class="attribute">float</span> позволяет элементам появляться рядом или по отдельности друг от друга. Они обеспечивают возможность сборки естественного потока внутри макета и позволяют элементам взаимодействовать друг с другом на основе их размера и размера их родителя.</p><p>При обтекании позиционирование элемента зависит от расположения других элементов вокруг него. Будет ли элемент находиться на одной строке? Появится ли он на новой строке? Всё это зависит от DOM (Document Object Model, объектная модель документа) и того, что окружает элемент.</p><div class="notePad"><h3>Что такое DOM?</h3><p>DOM или Document Object Model — это API для HTML и XML-документов, который обеспечивает их структурное представление. В нашем случае мы говорим конкретно об HTML-документах, таким образом, DOM представляет все различные элементы и их взаимосвязи друг с другом.</p><p>Представление можно считать деревом рода, причём каждый элемент имеет разное отношения с тем, что вокруг него. Элементы, вложенные в другие — это отношение родителя и ребёнка, в то время как элементы, которые имеют одного общего предка — это братья.</p></div><p>Хотя <a href="http://css-tricks.com/all-about-floats/">float</a> предлагает совсем немного огневой мощи, он приходят с некоторыми своими собственными проблемами. Самая популярная проблема включает в себя родительский элемент, содержащий многочисленные обтекаемые элементы. Содержимое на странице будет соблюдать размер и размещение обтекаемого дочернего элемента, но эти обтекаемые элементы больше не влияют на внешние края родительского контейнера. В этом случае родительский элемент теряет контекст именно тем, что его содержимое схлопывается, тем самым устанавливая <span class="attribute">height</span> у родительского элемента как 0 и игнорируя другие разные свойства. Много раз это может остаться незамеченным, особенно когда родительский элемент не содержит каких-либо привязанных к нему стилей и вложенные элементы выглядят выровненными правильно.</p><p>Если вложенные элементы не выстраиваются правильно, могут появиться ошибки стилизации. Взгляните ниже на демонстрацию, раздел <span class="class">box-set</span> должен содержать светло-серый фон, однако фон не виден, пока все вложенные в него элементы обтекаемые. При инспектировании раздела <span class="class">box-set</span> вы увидите, что <span class="attribute">height</span> у него равен 0.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;box-set&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 3&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-set {
+  background: #eaeaed;
+}
+.box {
+  background: #2db34a;
+  float: left;
+  margin: 1.858736059%;
+  width: 29.615861214%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация обуздания float</h3><iframe width="100%" height="180" src="https://jsfiddle.net/webref/ye76rsjh/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Один из способов обуздания этих <span class="attribute">float</span> — это поместить пустой элемент непосредственно перед закрывающим тегом родительского элемента и для этого пустого элемента нужно включить объявление стиля <span class="var">clear:&nbsp;both;</span>. Очистка <span class="attribute">float</span> таким методом работает и действует в большинстве случаев, но это не совсем семантично. В зависимости от того, сколько разных <span class="attribute">float</span> нужно очистить на странице, количество пустых элементов может быстро начать увеличиваться, при этом не обеспечивая никакого реального контекстного значения на странице.</p><p>К счастью, есть несколько <a href="http://www.ejeliot.com/blog/59">разных методов</a>, которые мы можем использовать для обуздания <span class="attribute">float</span>, наиболее популярные включают технику overflow и технику clearfix.</p><h3>Техника overflow</h3><p>Одним из способов обуздания <span class="attribute">float</span> в родительском элементе является использование стилевого свойства <span class="attribute">overflow</span>. Установка у свойства <span class="attribute">overflow</span> значения <span class="value">auto</span> внутри родительского элемента обуздает <span class="attribute">float</span>, в результате чего у родителя появится реальная высота, в том числе серый фон в нашем примере.</p><p>Чтобы это работало в Internet Explorer 6 для родителя требуется добавить <span class="attribute">height</span> или <span class="attribute">width</span>. Поскольку <span class="attribute">height</span>, вероятно, будет переменной, то ширина 100% обеспечит этот трюк. С помощью <span class="var">overflow: auto;</span> в Internet Explorer на компьютере Apple к родительскому элементу также добавятся полосы прокрутки, поэтому лучше использовать запись <span class="var">overflow: hidden;</span>.</p>
+<pre><code data-language="css">.box-set {
+  overflow: auto;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация техники overflow</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/jsxjpxj9/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>У этой технике есть несколько недостатков. Например, при добавлении стилей или перемещении вложенных элементов за пределы родителя, вроде попытки реализовать тени окна и выпадающие меню. В демонстрации ниже вы можете увидеть как тень будет отрезана там, где она выходит за края родительского элемента. Кроме того, второй блок срезается краями родительского элемента.</p><p>Разные браузеры трактуют свойство <span class="attribute">overflow</span> по-своему и таким образом могут также реализовать полосы прокрутки разным образом. Посмотрите на пример ниже в различных браузерах и заметите, как столбцы отображаются по разному в каждом браузере.</p><div class="notePad"><h3>Демонстрация ошибок overflow</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/3fqc7psh/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Техника clearfix</h3><p>В зависимости от контекста размещённых элементов лучшей техникой для обуздания <span class="attribute">float</span> может быть метод clearfix. Этот метод является несколько более сложным, но у него лучше поддержка по сравнению с техникой overflow.</p><p>Метод clearfix базируется на использовании псевдоэлементов <span class="attribute">:before</span> и <span class="attribute">:after</span> для родительского элемента. С помощью этих псевдоэлементов вы можете создать скрытые элементы выше и ниже родителя, содержащего <span class="attribute">float</span>. Псевдоэлемент <span class="attribute">:before</span> используется для предотвращения схлопывания верхнего <span class="attribute">margin</span> у дочерних элементов путём создания анонимного табличного элемента с помощью записи <span class="var">display:&nbsp;table;</span>. Это также помогает обеспечить стойкость в Internet Explorer&nbsp;6 и&nbsp;7. Псевдоэлемент <span class="attribute">:after</span> используется для предотвращения схлопывания нижнего <span class="attribute">margin</span> у дочерних элементов, а также для очистки вложенных <span class="attribute">float</span>.</p><p>Добавление свойства <span class="attribute">*zoom</span> к родительскому элементу запускает механизм hasLayout специально для Internet Explorer&nbsp;6 и&nbsp;7, который определяет, как элементы должны рисоваться и связаны с их содержимым, а также как элементы должны взаимодействовать и относятся к другим элементам.</p><p>Взяв тот же верхний пример можно увидеть, как обуздать <span class="attribute">float</span> и что элементы способны жить вне родительского элемента.</p>
+<pre><code data-language="css">.box-set:before,
+.box-set:after {
+  content: &quot;&quot;;
+  display: table;
+}
+.box-set:after {
+  clear: both;
+}
+.box-set {
+  *zoom: 1;
+}</code></pre>
+
+<div class="notePad"><h3>Демонстрация техники clearfix</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/runhxw4s/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Эффективное обуздание float</h3><p>Какие методы использовать зависит от содержимого под рукой и ваших личных предпочтений. Некоторые люди стараются строго придерживаться техники clearfix, которая работает повсеместно. Другие считают, что техника clearfix содержит слишком много кода в некоторых случаях и предпочитают сочетание методов, основанных на содержимом. Решение, что использовать, остаётся за вами, просто убедитесь, что метод хорошо документирован и легко понимается в любом случае.</p><p>Одной распространённой практикой является присвоение класса родительскому элементу, который включает в себя <span class="attribute">float</span>, нуждающиеся в обуздании. Техника clearfix, к примеру, помогла Дэну Седерхольму в виде шаблона класса с именем <span class="class">group</span>. Название класса <span class="class">group</span> затем может быть применено к любому родительскому элементу нуждающемуся в обуздании <span class="attribute">float</span>.</p>
+<pre><code data-language="css">.group:before,
+.group:after {
+  content: &quot;&quot;;
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  *zoom: 1;
+}</code></pre>
+<div class="notePad"><h3>Одиночные псевдоэлементы</h3><p>Стоит отметить, что для каждого элемента допускается только один псевдоэлемент <span class="attribute">:before</span> и один <span class="attribute">:after</span> за раз. При попытке использовать технику clearfix с другим <span class="attribute">:before</span> и <span class="attribute">:after</span> можно не получить желаемого результата.</p></div><p>В приведённых выше примерах стили clearfix не будут жить под классом <span class="class">box-set</span>. Вместо этого должен быть добавлен класс <span class="class">group</span> к родителю, содержащему обтекаемые элементы.</p><h2>Свойство position</h2><p>Иногда вам нужно больше контроля над положением элемента, больше, чем может обеспечить <span class="attribute">float</span>, в этом случае в игру вступает свойство <span class="attribute">position</span>. Это свойство принимает несколько различных значений, каждое из которых обеспечивает разные способы, чтобы <a href="http://www.alistapart.com/articles/css-positioning-101/">однозначно позиционировать</a> элемент.</p><h3>Статичное позиционирование</h3><p>По умолчанию у элементов значение <span class="attribute">position</span> установлено как <span class="value">static</span>, то есть у них нет и они не принимают никаких конкретных<a href="../learn-html-css/box-model.html"> свойств смещения блока</a>. Кроме того, элементы расположатся как и полагалось, с их поведением по умолчанию.</p><p>В демонстрации ниже все блоки располагаются один поверх другого, так как они блочные элементы и не обтекаются в каком-либо заданном направлении.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;box-set&quot;&gt;
+  &lt;figure class=&quot;box box-1&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box box-2&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box box-3&quot;&gt;Блок 3&lt;/figure&gt;
+  &lt;figure class=&quot;box box-4&quot;&gt;Блок 4&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-set {
+  background: #eaeaed;
+}
+.box {
+  background: #2db34a;
+  height: 80px;
+  width: 80px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация статичного позиционирования</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/fnpma98r/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Относительное позиционирование</h3><p>Значение <span class="value">relative</span> для свойства <span class="attribute">position</span> очень похоже на значение <span class="value">static</span>. Основное отличие заключается в том, что <span class="value">relative</span> принимает свойства смещения блока <span class="attribute">top</span>, <span class="attribute">right</span>, <span class="attribute">bottom</span> и <span class="attribute">left</span>. Эти свойства позволяют точно позиционировать элемент, сдвигая его из положения по умолчанию в любом направлении.</p><div class="notePad"><h3>Как работают свойства смещения блока</h3><p>Свойства смещения блока <span class="attribute">top</span>, <span class="attribute">right</span>, <span class="attribute">bottom</span> и <span class="attribute">left</span> указывают, как элементы могут быть позиционированы и в каком направлении. Эти свойства работают только для элементов со значениями relative, absolute или fixed у свойства <span class="attribute">position</span>.</p><p>Для относительно позиционируемых элементов эти свойства определяют, как элемент должен быть перемещён из позиции по умолчанию. К примеру, использование значения 20px у свойства <span class="attribute">top</span> будет толкать элемент на 20 пикселей вниз от исходного положения. Переключение значения <span class="attribute">top</span> на -20px вместо этого потянет элемент на 20 пикселей вверх от исходного положения.</p><p>Для абсолютного или фиксированного позиционирования эти свойства определяют расстояние между элементом и краями родительского элемента. Например, использование значения 20px у <span class="attribute">top</span> для абсолютно позиционируемого элемента будет толкать элемент на 20 пикселей вниз от верхнего края его относительно позиционированного родителя. Переключение значения <span class="attribute">top</span> на -20px затем будет тянуть элемент на 20 пикселей вверх от верхнего края его относительно позиционированного родителя.</p></div><p>Относительное позиционирование принимает свойства смещения блока и по прежнему оставляет элемент в обычном или статичном потоке страницы. В этом случае остальные элементы не мешают исходному положению относительно позиционированного элемента. Кроме того, относительно позиционированный элемент может перекрывать или быть перекрытым другими элементами без их перемещения из положения по умолчанию.</p><p>В демонстрации ниже можно заметить, что элементы по-прежнему располагаются друг над другом, однако они сдвинуты со своих позиций по умолчанию в соответствии с их индивидуальными значениями свойств смещения. Эти значения могут привести к перекрытию одного блока другим, но не к выталкиванию друг друга в разных направлениях. Когда элемент позиционируется относительно окружающих элементов он будет соблюдать положение по умолчанию относительно позиционированных элементов.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;box-set&quot;&gt;
+  &lt;figure class=&quot;box box-1&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box box-2&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box box-3&quot;&gt;Блок 3&lt;/figure&gt;
+  &lt;figure class=&quot;box box-4&quot;&gt;Блок 4&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-set {
+  background: #eaeaed;
+}
+.box {
+  background: #2db34a;
+  height: 80px;
+  position: relative;
+  width: 80px;
+}
+.box-1 {
+  top: 20px;
+}
+.box-2 {
+  left: 40px;
+}
+.box-3 {
+  bottom: -10px;
+  right: 20px;
+}</code></pre>
+
+<div class="notePad"><h3>Демонстрация относительного позиционирования</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/Lwn79qv6/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>В случае, если свойства смещения <span class="attribute">top</span> и <span class="attribute">bottom</span> заданы одновременно для относительно позиционированного элемента, свойство <span class="attribute">top</span> будет иметь приоритет. Кроме того, если оба свойства смещения <span class="attribute">left</span> и <span class="attribute">right</span> заданы одновременно для относительно позиционированного элемента, приоритет отдаётся в направлении, на котором написан язык страницы. Например, для русских страниц отдаётся приоритет свойству смещения <span class="attribute">left</span>, а для арабских страниц приоритет отдаётся свойству <span class="attribute">right</span>.</p><h3>Абсолютное позиционирование</h3><p>Абсолютно позиционируемые элементы принимают свойства смещения блока, однако они удаляются из обычного потока документа. При удалении элемента из обычного потока элементы располагаются непосредственно относительно родителя, который позиционирован относительно или абсолютно. Если относительно или абсолютно позиционированного родителя нет, то абсолютно позиционированный элемент будет располагаться на странице относительно <span class="tag">&lt;body&gt;</span>.</p><p>Используя абсолютно позиционированные элементы и указав вертикальные и горизонтальные свойства смещения мы переместим элемент с этими значениями по отношению к его относительно позиционированному родителю. Например, элемент со значением <span class="attribute">top</span> как 50px и <span class="attribute">right</span> как 100px будет опущен вниз на 50 пикселей от верхнего края его относительно позиционированного родителя и сдвинут на 100 пикселей от правого края.</p><p>Кроме того, с помощью абсолютного позиционирования, не указав каких-либо свойств смещения, элемент будет позиционироваться в левом верхнем углу своего ближайшего относительно позиционированного родителя. Установив одно свойство смещения блока, такое как <span class="attribute">top</span>, элемент будет позиционироваться по вертикали, но оставит значение горизонтального позиционирования по умолчанию по левому краю.</p><p>В демонстрации ниже вы можете увидеть, как каждый блок абсолютно позиционирован по отношению к родительскому разделу, который позиционирован относительно. Каждый отдельный блок перемещается от указанной стороны с положительным значением или уезжает от указанной стороны с отрицательным значением.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;box-set&quot;&gt;
+  &lt;figure class=&quot;box box-1&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box box-2&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box box-3&quot;&gt;Блок 3&lt;/figure&gt;
+  &lt;figure class=&quot;box box-4&quot;&gt;Блок 4&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-set {
+  background: #eaeaed;
+  height: 200px;
+  position: relative;
+}
+.box {
+  background: #2db34a;
+  height: 80px;
+  position: absolute;
+  width: 80px;
+}
+.box-1 {
+  top: 6%;
+  left: 2%;
+}
+.box-2 {
+  top: 0;
+  right: -40px;
+}
+.box-3 {
+  bottom: -10px;
+  right: 20px;
+}
+.box-4 {
+  bottom: 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация абсолютного позиционирования</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/qn9v66pv/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Когда элемент содержит фиксированный <span class="attribute">height</span> и <span class="attribute">width</span> и он абсолютно позиционирован, свойство <span class="attribute">top</span> имеет приоритет по сравнению с двумя объявленными свойствами смещения <span class="attribute">top</span> и <span class="attribute">bottom</span>. Как и в случае относительно позиционируемых элементов, для элемента с фиксированной шириной, у которого заданы сразу свойства <span class="attribute">left</span> и <span class="attribute">right</span>, приоритет отдаётся направлению, на котором написан язык страницы.</p><p>Если у элемента нет заданной высоты или ширины и он абсолютно позиционирован, то с помощью комбинации свойств <span class="attribute">top</span> и <span class="attribute">bottom</span> элемент отображается с высотой, охватывающей весь заданный размер. То же самое касается одновременного использования свойств <span class="attribute">left</span> и <span class="attribute">right</span>, в результате чего полная ширина элемента основывается на свойствах <span class="attribute">left</span> и <span class="attribute">right</span>. Использование всех четырёх свойств смещения отобразит элемент с полной заданной высотой и шириной.</p><h3>Фиксированное позиционирование</h3><p>Значение <span class="value">fixed</span> у позиционирования работает очень похоже на <span class="value">absolute</span>, однако позиционирует относительно области просмотра браузера и не прокручивает вместе со страницей. Другими словами, элементы всегда будут присутствовать, независимо от того, где пользователь остановился на странице. Единственное предостережение про фиксированное позиционирование&nbsp;— оно не работает в Internet Explorer 6. Если вы хотите заставить фиксированное позиционирование работать в Internet Explorer&nbsp;6 есть подходящие хаки.</p><p>Применение разных свойств смещения блока с фиксированным позиционированием ведёт себя так же, как и для абсолютно позиционируемого элемента.</p><p>Оставив свойства смещения блока от предыдущей демонстрации, видим, что блоки располагаются относительно области просмотра браузера, а не относительно позиционируемого родителя.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;box-set&quot;&gt;
+  &lt;figure class=&quot;box box-1&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box box-2&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box box-3&quot;&gt;Блок 3&lt;/figure&gt;
+  &lt;figure class=&quot;box box-4&quot;&gt;Блок 4&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  height: 80px;
+  position: fixed;
+  width: 80px;
+}
+.box-1 {
+  top: 6%;
+  left: 2%;
+}
+.box-2 {
+  top: 0;
+  right: -40px;
+}
+.box-3 {
+  bottom: -10px;
+  right: 20px;
+}
+.box-4 {
+  bottom: 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация фиксированного позиционирования</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/a3h7nqhn/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Фиксированная шапка или подвал</h3><p>Одним из наиболее распространённым использованием фиксированного позиционирования является создание фиксированной шапки или подвала, закрепленной на одной стороне страницы. Когда пользователь прокручивает страницу, элемент остаётся на месте, в пределах области просмотра, и пользователи всегда могут с ним взаимодействовать.</p><p>Код и демонстрация ниже показывает, как этого можно достичь. Обратите внимание, что объявлены оба свойства <span class="attribute">left</span> и <span class="attribute">right</span>. Это позволяет элементу <span class="tag">&lt;footer&gt;</span> охватить всю ширину нижней части страницы и он делает это не нарушая блочную модель, позволяя <span class="attribute">margin</span>, <span class="attribute">border</span> и <span class="attribute">padding</span> применяться свободно.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;footer&gt;Фиксированный подвал&lt;/footer&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">body {
+  background: #eaeaed;
+}
+footer {
+  background: #2db34a;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация фиксированного позиционирования</h3><iframe width="100%" height="300" src="https://jsfiddle.net/webref/d76zyxyh/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Свойство z-index</h2><p>По своей природе веб-страницы часто считаются двумерными, отображающие элементы по осям х и у. Однако, когда вы начинаете позиционировать элементы, они иногда располагаются поверх друг друга. Чтобы изменить <a href="http://www.impressivewebs.com/a-detailed-look-at-the-z-index-css-property/">порядок выкладывания этих элементов</a> по оси z должно использоваться свойство <span class="attribute">z-index</span>.</p><p>Как правило, элементы располагаются по оси z в том порядке, в каком они появляются в DOM. Элементы, приходящие сверху DOM, расположены позади элементов идущих после них. Изменение этого порядка с помощью свойства <span class="attribute">z-index</span> является довольно прямолинейным. Элемент с наибольшим значением <span class="attribute">z-index</span> появится сверху, независимо от его расположения в DOM.</p><p>Чтобы применить свойство <span class="attribute">z-index</span> к элементу, необходимо сначала задать значение <span class="attribute">position</span> как <span class="value">relative</span>, <span class="value">absolute</span> или <span class="value">fixed</span>. То же, как если бы вы хотели применить свойства смещения блока.</p><p>В приведённом ниже примере, без свойства <span class="attribute">z-index</span> каждый блок будет позиционироваться точно, начиная со второго блока расположенного поверх первого, а третий блок расположен поверх второго и т.&nbsp;д. Изменение порядка через свойство <span class="attribute">z-index</span> теперь позиционирует второй блок поверх остальных, затем третий блок под ним, а четвёртый под третьим.</p><p>Поменяйте значения свойства <span class="attribute">z-index</span> и обратите внимание, как элементы меняют свой порядок.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;box-set&quot;&gt;
+  &lt;figure class=&quot;box box-1&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box box-2&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box box-3&quot;&gt;Блок 3&lt;/figure&gt;
+  &lt;figure class=&quot;box box-4&quot;&gt;Блок 4&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-set {
+  background: #eaeaed;
+  height: 160px;
+  position: relative;
+}
+.box {
+  background: #2db34a;
+  border: 2px solid #ff7b29;
+  position: absolute;
+}
+.box-1 {
+  left: 10px;
+  top: 10px;
+}
+.box-2 {
+  bottom: 10px;
+  left: 70px;
+  z-index: 3;
+}
+.box-3 {
+  left: 130px;
+  top: 10px;
+  z-index: 2;
+}
+.box-4 {
+  bottom: 10px;
+  left: 190px;
+  z-index: 1;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация z-index</h3><iframe width="100%" height="240" src="https://jsfiddle.net/webref/c632demx/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Ресурсы и ссылки</h2><ul><li><a href="http://css-tricks.com/all-about-floats/" rel="nofollow">All About Floats</a> на CSS-Tricks</li><li><a href="http://www.ejeliot.com/blog/59" rel="nofollow">Methods for Containing Floats</a> на Ed Eliot</li><li><a href="http://nicolasgallagher.com/micro-clearfix-hack/" rel="nofollow">A New Micro Clearfix Hack</a> от Nicolas Gallagher</li><li><a href="http://www.satzansatz.de/cssd/onhavinglayout.html" rel="nofollow">On Having layout</a> от satzansatz</li><li><a href="http://www.alistapart.com/articles/css-positioning-101/" rel="nofollow">CSS Positioning 101</a> на A List Apart</li><li><a href="http://www.impressivewebs.com/a-detailed-look-at-the-z-index-css-property/" rel="nofollow">A Detailed Look at the z-index CSS Property</a> на Impressive Webs</li></ul><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-34f557c3e75470ab0147b0a2de814e9e"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../css/clear.html">clear</a></li><li class=""> <a href="../../css/float.html">float</a></li><li class=""> <a href="../../course/positioning/float.html">float в CSS</a></li><li class=""> <a href="../../css/overflow.html">overflow</a></li><li class=""> <a href="../../course/box-model/height-width-overflow.html">Высота и ширина в CSS</a></li><li class=""> <a href="../../course/positioning/flow.html">Поток</a></li><li class=""> <a href="../../css/after.html">Псевдоэлемент ::after</a></li><li class=""> <a href="../../css/before.html">Псевдоэлемент ::before</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 11.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css/performance-organization'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/complex-selectors'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="performance-organization.html" title="На предыдущую страницу">Производительность и организация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="complex-selectors.html" title="На следующую страницу">Комплексные селекторы</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="performance-organization.html">Производительность и организация</a></li><li class="leaf active-trail"><a href="detailed-css-positioning.html" class="active-trail active">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf"><a href="preprocessors.html">Препроцессоры</a></li><li class="leaf"><a href="jquery.html">jQuery</a></li><li class="leaf"><a href="transform.html">Трансформация</a></li><li class="leaf"><a href="transitions-animations.html">Переходы и анимация</a></li><li class="leaf"><a href="feature-support-polyfills.html">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-06155abca42696adec4b3d639b23bbf7"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="detailed-css-positioning.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

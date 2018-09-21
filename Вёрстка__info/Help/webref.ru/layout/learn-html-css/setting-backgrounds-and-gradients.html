@@ -1,0 +1,339 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Установка фона и градиента | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="next" href="creating-lists.html" />
+<link rel="prev" href="working-with-typography.html" />
+<meta name="description" content="Фон оказывает значительное воздействие на дизайн сайта. Он помогает создать впечатляюще выглядящий сайт, установить группирование и определить приоритет, фон также серьёзно влияет на юзабилити сайта. В CSS фон элемента может быть сплошного цвета, изображением, градиентом или их комбинацией. Когда мы решаем, как реализовать такой фон, то должны понимать, что каждый фон влияет на общий вид нашего сайта. В этом уроке мы рассмотрим как назначать разные типы фона для элементов, в том числе градиенты. Мы также поиграем с набором свойств CSS3, связанных с фоном." />
+<link rel="canonical" href="setting-backgrounds-and-gradients.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Установка фона и градиента</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Установка фона и градиента</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Фон оказывает значительное воздействие на дизайн сайта. Он помогает создать впечатляюще выглядящий сайт, установить группирование и определить приоритет, фон также серьёзно влияет на юзабилити сайта.</p><p>В CSS фон элемента может быть сплошного цвета, изображением, градиентом или их комбинацией. Когда мы решаем, как реализовать такой фон, то должны понимать, что каждый фон влияет на общий вид нашего сайта.</p><p>В этом уроке мы рассмотрим как назначать разные типы фона для элементов, в том числе градиенты. Мы также поиграем с набором свойств CSS3, связанных с фоном.</p><h2>Добавление цвета фона</h2><p>Самый быстрый способ добавить фон к элементу — это установить однотонный фон с помощью свойства <span class="attribute">background</span> или <span class="attribute">background-color</span>. Свойство <span class="attribute">background</span> принимает цвет и изображения в сокращённой форме, в то время как свойство <span class="attribute">background-color</span> используется строго для установки сплошной фоновой заливки. Оба свойства работают, а какое вы решите использовать зависит от ваших предпочтений, а также ситуации.</p>
+<pre><code data-language="css">div {
+  background-color: #b2b2b2;
+}</code></pre>
+<p>При добавлении цвета фона у нас есть несколько вариантов значений, которые мы можем использовать. Подобно другим цветовым значениям мы можем выбрать из ключевых слов, шестнадцатеричных кодов и значений RGB, RGBa, HSL и HSLa. Чаще мы встретим шестнадцатеричные значения, однако можем иногда пожелать задействовать RGBa или значения HSLa для прозрачности.</p><div class="notePad"><h3>Прозрачный фон</h3><p>При использовании значения RGBa или HSLa в качестве прозрачного цвета фона хорошей идеей будет обеспечить также запасной цвет, потому что не все браузеры понимают RGBa или HSLa. И когда браузер встречает значение, которое он не распознаёт, то игнорирует его.</p><p>К счастью, есть простой способ обеспечить запасной вариант для фона. CSS каскадирует с верхней части файла до его низа, таким образом, мы можем использовать два свойства background-color в едином наборе правил. Первое свойство background-color будет включать «безопасный» цвет фона в виде шестнадцатеричного значения, а второе свойство background-color будет использовать RGBa или HSLa. При этом, если браузер понимает значение RGBa или HSLa, то отобразит его, а если нет, то вернётся к шестнадцатеричному значению перед ним.</p>
+<pre><code data-language="css">div {
+  background-color: #b2b2b2;
+  background-color: rgba(0, 0, 0, .3);
+}</code></pre>
+</div><h2>Добавление фонового изображения</h2><p>Кроме цвета фона элемента мы можем также добавить к нему фоновое изображение. Такие изображения работают аналогично цвету фона, однако предлагают несколько дополнительных свойств для уточнения. Как и прежде, мы можем использовать свойство <span class="attribute">background</span> с сокращённым значением или свойство <span class="attribute">background-image</span> напрямую. Независимо от применяемого свойства они требуют указать источник изображения с помощью функции <span class="value">url()</span>.</p><p>Значение функции <span class="value">url()</span> будет адресом фоновой картинки и к нему применяются знакомые правила для создания пути гиперссылки. Следите за разными папками и не забудьте показать, где именно находится изображение. Путь помещается внутри скобок и кавычек.</p>
+<pre><code data-language="css">div {
+  background-image: url(&quot;alert.png&quot;);
+}</code></pre>
+<p>Добавление фонового изображения с одним лишь значением <span class="value">url</span> может выдать нежелательные результаты, так как по умолчанию фоновое изображение будет повторяться по горизонтали и вертикали от левого верхнего угла данного элемента, чтобы заполнить фон элемента целиком. К счастью, мы можем использовать свойства <span class="attribute">background-repeat</span> и <span class="attribute">background-position</span> для управления, как именно повторять картинки.</p><h3>background-repeat</h3><p>По умолчанию, фоновое изображение будет повторяться бесконечно по вертикали и горизонтали, если не указано иное. Свойство <span class="attribute">background-repeat</span> может быть использовано чтобы изменить направление, в котором фоновая картинка будет повторяться, если она вообще повторяется.</p>
+<pre><code data-language="css">div {
+  background-image: url(&quot;alert.png&quot;);
+  background-repeat: no-repeat;
+}</code></pre>
+<p>Свойство <span class="attribute">background-repeat</span> принимает четыре разных значения: <span class="value">repeat</span>, <span class="value">repeat-x</span>, <span class="value">repeat-y</span> и <span class="value">no-repeat</span>. <span class="value">repeat</span> является значением по умолчанию и повторяет фоновое изображение по вертикали и по горизонтали.</p><p>Значение <span class="value">repeat-x</span> повторяет фоновое изображение по горизонтали, в то время как значение <span class="value">repeat-y</span> повторяет его по вертикали. Наконец, значение <span class="value">no-repeat</span> говорит браузеру отобразить картинку один раз, то есть не повторять её вообще.</p><h3>background-position</h3><p>По умолчанию, фоновая картинка располагается в левом верхнем углу элемента. Тем не менее, с помощью свойства <span class="attribute">background-position</span> мы можем контролировать, где именно изображение размещается относительно этого угла.</p>
+<pre><code data-language="css">div {
+  background-image: url(&quot;alert.png&quot;);
+  background-position: 20px 10px;
+  background-repeat: no-repeat;
+}</code></pre>
+<p>Свойство <span class="attribute">background-position</span> требует два значения: горизонтальное смещение (первое значение) и вертикальное смещение (второе значение). Если указано только одно значение, то оно применяется для горизонтального смещения, а вертикальное по умолчанию задаётся как 50%.</p><p>Поскольку мы двигаем фоновое изображение из левого верхнего угла элемента, значения размера будут непосредственно привязаны к этому углу.</p><p>Чтобы установить значение <span class="attribute">background-position</span> мы можем использовать ключевые слова <span class="value">top</span>, <span class="value">right</span>, <span class="value">bottom</span> и <span class="value">left</span>, пиксели, проценты или любую единицу размера. Ключевые слова и проценты работают очень похоже. Значение <span class="value">left&nbsp;top</span> идентично процентному значению 0&nbsp;0, которое располагает изображение в левом верхнем углу элемента. Значение <span class="value">right&nbsp;bottom</span> идентично процентной записи 100%&nbsp;100% и будет позиционировать изображение в правом нижнем углу элемента.</p><p class="fig"><img src="../../assets/images/learn-html-css/background-position.png" alt="Фоновые изображения позиционируются от левого верхнего угла элемента" width="500" height="205"/></p><p class="figsign">Рис. 7.01. Фоновые изображения позиционируются от левого верхнего угла элемента</p><p>Одним из преимуществ процентов по сравнению с ключевыми словами является возможность центрирования фонового изображения с помощью значения 50%. Для размещения фонового изображения в верхней части элемента, мы можем использовать значение 50%&nbsp;0. Применение пикселей в качестве значения <span class="attribute">background-position</span> также распространено, так как пиксели дают нам точный контроль над положением фона.</p><h3>Значения background</h3><p>Свойства <span class="attribute">background-color</span>, <span class="attribute">background-image</span>, <span class="attribute">background-position</span> и <span class="attribute">background-repeat</span> могут выступать значением для единичного свойства <span class="attribute">background</span>. Порядок этих свойств в <span class="attribute">background</span> может варьироваться, но обычно он такой: <span class="attribute">background-color</span>, <span class="attribute">background-image</span>, <span class="attribute">background-position</span>, а затем <span class="attribute">background-repeat</span>.</p>
+<pre><code data-language="css">div {
+  background: #b2b2b2 url(&quot;alert.png&quot;) 20px 10px no-repeat;
+}</code></pre>
+<h3>Пример фонового изображения</h3><p>В следующем примере мы будем использовать свойство <span class="attribute">background</span>, которое включает значения <span class="attribute">background-color</span>, <span class="attribute">background-image</span>, <span class="attribute">background-position</span> и <span class="attribute">background-repeat</span>.</p><p>Пожалуйста, обратите внимание, что в <span class="attribute">background-position</span> содержится относительное и абсолютное значение. Первое значение, 20 пикселей&nbsp;— это горизонтальная величина, позиционирование <span class="attribute">background-image</span> на 20 пикселей от левого края элемента. Второе значение, 50%&nbsp;— это вертикальная величина, которая центрирует фоновое изображение по вертикали.</p><p>Несколько других свойств и значений также включены в правила класса <span class="class">notice-success</span>, чтобы установить дальнейший стиль сообщения.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;notice-success&quot;&gt;
+  Ура! Поздравляем, вы сделали это!
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.notice-success {
+  background: #67b11c url(&quot;tick.png&quot;) 20px 50% no-repeat;
+  border: 2px solid #467813;
+  border-radius: 5px;
+  color: #fff;
+  font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+  padding: 15px 20px 15px 50px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация фоновой картинки</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/aoed3j4q/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h2>На практике</h2><p>Возвращаясь к нашему сайту Styles Conference, давайте добавим немного фонового цвета. Пока мы это делаем, изменим несколько других стилей, чтобы заставить все наши стили работать совместно и сохранить всё наше содержание разборчивыми.</p><ol class="practice"><li><p>Начнём с большого шага и применим синий фон к элементу <span class="tag">&lt;body&gt;</span> наряду с имеющимися свойствами <span class="attribute">color</span> и <span class="attribute">font</span>. Все стилевые правила для элемента <span class="tag">&lt;body&gt;</span>, установленные на данный момент, включают следующее:</p>
+<pre><code data-language="css">body {
+  background: #293f50;
+  color: #888;
+  font: 300 16px/22px &quot;Roboto&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}</code></pre>
+<p>Мы поместили синий фон для элемента <span class="tag">&lt;body&gt;</span> намеренно, так как наш сайт будет содержать несколько разных рядов <span class="attribute">background</span>, а наиболее частым цветом фона будет синий.</p></li><li><p>Теперь, когда каждая страница на нашем сайте Styles Conference включает в себя синий фон, давайте очистим несколько областей с этим синим фоном. В частности, наши элементы <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> останутся синими, как и раздел <span class="class">hero</span> на главной странице.</p><p>Внутри элементов <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> укажем цвет ссылок белым, а затем при наведении на них курсора мыши тем же зелёным, что и заголовки.</p><p>Начнём с элемента <span class="tag">&lt;header&gt;</span>. Чтобы выбрать все элементы <span class="tag">&lt;a&gt;</span> внутри элемента <span class="tag">&lt;header&gt;</span> мы добавим класс <span class="class">primary-header</span> к <span class="tag">&lt;header&gt;</span> (в дополнение к существующим классам <span class="class">container</span> и <span class="class">group</span>). Не забывайте, мы должны добавить этот класс к элементам <span class="tag">&lt;header&gt;</span> во всех наших страницах.</p>
+<pre><code data-language="html">&lt;header class=&quot;primary-header container group&quot;&gt;
+  ...
+&lt;/header&gt;</code></pre>
+<p>С классом <span class="class">primary-header</span> у элемента <span class="tag">&lt;header&gt;</span> и существующим классом <span class="class">primary-footer</span> у <span class="tag">&lt;footer&gt;</span> мы можем добавить два новых правила ниже раздела со ссылками в нашем файле main.css.</p><p>Первый набор правил будет выбирать все элементы <span class="tag">&lt;a&gt;</span> внутри элемента с классом <span class="class">primary-header</span> или <span class="class">primary-footer</span> и установит их цвет на белый, как это определено запятой, разделяющей два отдельных селектора, у которых одно и то же свойство и значение. Второй набор правил будет выбирать те же элементы <span class="tag">&lt;a&gt;</span> что и раньше, но поменяет их цвет на зелёный, когда пользователь наводит на них указатель.</p>
+<pre><code data-language="css">.primary-header a,
+.primary-footer a {
+  color: #fff;
+}
+.primary-header a:hover,
+.primary-footer a:hover {
+  color: #648880;
+}</code></pre></li><li><p>Пока мы делаем некоторый текст белым, давайте сделаем текст в разделе <span class="class">hero</span> на главной странице тоже белым, так как он будет оставаться на синем фоне. У нас есть существующий класс <span class="class">hero</span>, к которому можно добавить стили, так что установим белый цвет текста в нём. В целом, набор правил для класса <span class="class">hero</span> должен включать в себя следующее:</p>
+<pre><code data-language="css">.hero {
+  color: #fff;
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+  text-align: center;
+}</code></pre></li><li><p>Также в разделе <span class="class">hero</span> нашей главной страницы уберём некоторые стили кнопок. Начнём с добавления нескольких новых свойств для набора правил с классом <span class="class">btn</span>, в разделе с кнопками нашего файла main.css.</p><p>В частности, заменим цвет текста кнопки на белый, зададим <span class="attribute">cursor</span> как <span class="value">pointer</span>, увеличим <span class="attribute">font-weight</span>, добавим небольшое расстояние в <span class="attribute">letter-spacing</span> и изменим <span class="attribute">text-transform</span> на <span class="value">uppercase</span>.</p><p>В целом, наш новый набор правил для класса <span class="class">btn</span> должен выглядеть следующим образом:</p>
+<pre><code data-language="css">.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}</code></pre>
+<p>Мы также очистим некоторые стили запасных кнопок путём установки класса <span class="class">btn-alt</span>. В частности, сделаем рамку у кнопки белой и добавим стиль для <span class="attribute">:hover</span>, который включает белый фон и синий цвет текста.</p><p>Со всеми дополнениями наш новый класс <span class="class">btn-alt</span> должен выглядеть следующим образом:</p>
+<pre><code data-language="css">.btn-alt {
+  border: 1px solid #fff;
+  padding: 10px 30px;
+}
+.btn-alt:hover {
+  background: #fff;
+  color: #648880;
+}</code></pre></li><li><p>Теперь у нас есть все области очищенные от синего фона, давайте добавим стили для полос, у которых задан белый фон. Вставим новый раздел внутри нашего файла main.css для полос, чуть ниже раздела clearfix. В этом разделе создадим новый селектор класса с именем <span class="class">row</span>.</p><p>В этом новом классе <span class="class">row</span> добавим белый фон, минимальную ширину 960 пикселей (чтобы убедиться, что <span class="class">row</span> всегда больше, чем <span class="attribute">width</span> у элементов <span class="class">container</span> или <span class="class">grid</span>) и <span class="attribute">padding</span> по вертикали. В общей сложности наш новый раздел в нашем файле main.css должен выглядеть следующим образом:</p>
+<pre><code data-language="css">/*
+  ========================================
+  Полосы
+  ========================================
+*/
+
+.row {
+  background: #fff;
+  min-width: 960px;
+  padding: 66px 0 44px 0;
+}</code></pre></li><li><p>С этим классом <span class="class">row</span> добавим полосу с белым фоном на главной странице. Мы сделаем это для разделов с тизерами. В настоящее время эта область содержит элемент <span class="tag">&lt;section&gt;</span> с классом <span class="class">grid</span> который обёртывает три дополнительных <span class="tag">&lt;section&gt;</span> с классами <span class="class">teaser</span> и <span class="class">col-1-3</span>.</p><p>Чтобы добавить белый <span class="attribute">background</span> к этому разделу, мы собираемся обернуть все эти элементы в элемент с классом <span class="class">row</span>.</p><p>Поскольку мы хотим обернуть разделы со всеми тизерами элементом <span class="tag">&lt;section&gt;</span>, то собираемся добавить новый элемент <span class="tag">&lt;section&gt;</span> с классом <span class="class">row</span>, который окружает существующий <span class="tag">&lt;section&gt;</span> с классом <span class="class">grid</span>.</p><p>Наличие двух элементов <span class="tag">&lt;section&gt;</span> которые оборачивают одно содержимое снижает семантическое влияние. Чтобы исправить это, мы изменим второй элемент <span class="tag">&lt;section&gt;</span> с классом <span class="class">grid</span> на элемент <span class="tag">&lt;div&gt;</span>. В конце концов, данный элемент только добавляет стили, а не смысловое значение, поэтому подходит элемент <span class="tag">&lt;div&gt;</span>.</p><p>Структура наших тизеров должна выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;grid&quot;&gt;
+
+    &lt;!-- Спикеры --&gt;
+  
+    &lt;section class=&quot;teaser col-1-3&quot;&gt;
+      ...
+    &lt;/section&gt;&lt;!--
+  
+    Расписание
+  
+    --&gt;&lt;section class=&quot;teaser col-1-3&quot;&gt;
+      ...
+    &lt;/section&gt;&lt;!--
+  
+    Место проведения
+  
+    --&gt;&lt;section class=&quot;teaser col-1-3&quot;&gt;
+    ...
+    &lt;/section&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></li></ol><p>Удивительно, как несколько фоновых цветов могут влиять на дизайн веб-сайта. Наш сайт Styles Conference становится всё краше и главная страница тому доказательство.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-7-02.png" alt="Главная страница сайта Styles Conference после добавления нескольких цветов фона" width="1014" height="933"/></p><p class="figsign">Рис. 7.02. Главная страница сайта Styles Conference после добавления нескольких цветов фона</p><h2>Дизайн градиентного фона</h2><p>Градиентные фоны были введены с CSS3, дизайнеры и фронтенд-разработчики вовсю радовались этому. Хотя градиентные фоны не работают в старых браузерах, они поддерживаются всеми современными браузерами.</p><p>В CSS градиентные фоны рассматриваются как фоновые изображения. Мы можем создать градиент с помощью свойства <span class="attribute">background</span> или <span class="attribute">background-image</span>, как обычную фоновую картинку. Значение свойства для градиента меняется в зависимости от того, какой градиент нам бы хотелось&nbsp;— линейный или радиальный.</p><div class="notePad"><h3>Вендорные префиксы для градиента</h3><p>В уроке 4, «Открываем блочную модель», мы обсуждали добавление вендорных префиксов к новым свойствам или значениям CSS, так что браузеры могут поддерживать недавно разработанные возможности CSS. Градиенты были одними из значений, которые требовали использование префиксов. К счастью, для большинства браузеров отпала необходимость в префиксах для отображения градиентов, тем не менее, всё равно стоит указать префиксы для обеспечения лучшей поддержки.</p><p>Сперва мы начнём обсуждать линейные градиенты и включим различные префиксы. После этого в интересах краткости мы опустим префиксы, когда продолжим обсуждать градиенты, в том числе радиальные.</p></div><h3>Линейный градиент</h3><p>В течение многих лет дизайнеры и разработчики нарезали градиентные изображения, созданные с помощью графических редакторов и применяли к элементам картинки в качестве линейных градиентов. Процесс работал, но отнимал время для реализации и был чрезвычайно негибким. К счастью эти времена ушли и <a href="http://dev.opera.com/articles/css3-linear-gradients/">линейные градиенты</a> теперь могут быть заданы в CSS. Если цвет нуждается в изменении, нет необходимости повторно разрезать изображение и загружать его на сервер. Теперь всё что нужно сделать, это быстро изменить значение в CSS. Красота.</p>
+<pre><code data-language="css">div {
+  background: #466368;
+  background: -webkit-linear-gradient(#648880, #293f50);
+  background:    -moz-linear-gradient(#648880, #293f50);
+  background:         linear-gradient(#648880, #293f50);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация линейного градиента</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/5etnetzn/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Линейные градиенты определяются с помощью функции <span class="value">linear-gradient()</span> в свойстве <span class="attribute">background</span> или <span class="attribute">background-image</span>. Функция <span class="value">linear-gradient()</span> должна включать в себя два значения цвета, первое из которых будет начальным цветов, а второе конечным цветом. Браузер затем обработает переход между двумя цветами.</p><p>Перед определением любого градиентного фона мы также вставим свойство <span class="attribute">background</span> по умолчанию с однотонным цветом. Такой цвет должен быть использован в качестве запасного, если браузер не поддерживает градиент.</p><h3>Смена направления градиента</h3><p>По умолчанию, линейный градиент движется с верхней до нижней части элемента, плавно переходя между первым и вторым значением цвета. Это направление, однако, может быть изменено с помощью ключевых слов или значения угла, заданным перед любыми значениями цвета.</p><p>Например, если мы хотим, чтобы градиент в элементе двигался слева направо, мы можем использовать значение <span class="value">to&nbsp;right</span> для указания направления, в котором линейный градиент должен продвигаться. Ключевые слова также могут быть объединены. Если мы хотим, чтобы градиент переходил от левой верхней до правой нижней части элемента, мы можем использовать значение ключевого слова <span class="value">to&nbsp;right&nbsp;bottom</span>.</p>
+<pre><code data-language="css">div {
+  background: #466368;
+  background: linear-gradient(to right bottom, #648880, #293f50);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация направления линейного градиента</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/0y5cmksy/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Когда мы применяем диагональный градиент в не совсем квадратном элементе, градиент не переходит напрямую из одного угла в другой. Вместо этого градиент определит абсолютный центр элемента, поместит опорные точки в перпендикулярных углах, откуда он должен продвигаться и только затем двинется в направлении угла, заданном в значении. Эти углы, которые перемещает градиент, называются «волшебные уголки», так как они не являются абсолютными. Эрик Мейер проделал замечательную работу с изложением этого синтаксиса в своей статье <a href="http://meyerweb.com/eric/thoughts/2012/04/26/lineargradient-keywords/">Linear Gradient Keywords</a>.</p><p>Кроме ключевых слов также допускаются углы. Если мы хотим, чтобы наш градиент двигался к левой верхней части элемента мы можем использовать значение угла 315deg, также если мы хотим, чтобы наш градиент двигался к правой нижней части элемента, мы можем использовать значение 135deg. Этот же подход может быть применён для любого значения угла, от 0 до 360º.</p><h3>Радиальный градиент</h3><p>В то время как линейный градиент идеально подходит для градиентного перехода от одного направления к другому, часто возникает необходимость в радиальном градиенте. Радиальные градиенты работают так же, как линейные и повторяют большинство из тех же значений. Для радиальных градиентов вместо функции <span class="value">linear-gradient()</span> в свойстве <span class="attribute">background</span> или <span class="value">background-image</span> мы будем использовать функцию <span class="value">radial-gradient()</span>.</p>
+<pre><code data-language="css">div {
+  background: #466368;
+  background: radial-gradient(#648880, #293f50);
+}</code></pre>
+
+<div class="notePad"><h3>Демонстрация радиального градиента</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/qqe5vpg3/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Радиальные градиенты работают изнутри наружу элемента. Таким образом, первый цвет заданный в функции <span class="value">radial-gradient()</span> будет располагаться в абсолютном центре элемента, а второй цвет будет находиться на внешней стороне элемента. Браузер затем создаст переход между этими двумя цветами.</p><p>Одним из основных отличий между радиальными и линейными градиентами является то, что радиальные градиенты могут быть достаточно сложными, со значениями положения, размером, радиусом и так далее. Мы рассмотрим основы, но, пожалуйста, не стесняйтесь углубиться в радиальные градиенты, так как они гораздо более мощные, чем изложено здесь.</p><div class="notePad"><h3>Генератор градиентов CSS3</h3><p>Ручная работа с градиентами может быть порой довольно трудной, особенно если вы начинающий. К счастью, появилось несколько <a href="http://www.cssmatic.com/gradient-generator">генераторов градиентов CSS3</a>. Каждый генератор работает немного по-своему и некоторые предоставляют больше возможностей, чем другие. Если вы заинтересовались, я рекомендую покопаться и найти подходящий генератор для ваших нужд.</p></div><h3>Стоп-цвета</h3><p>Как минимум, градиентный фон переходит от одного цвета к другому, однако, мы можем добавить несколько цветов к градиенту и заставить браузер сделать по всем ним переход. Для этого мы добавим стоп-цвета в данную функцию градиента&nbsp;— с запятыми, которые отделяют один цвет от другого.</p>
+<pre><code data-language="css">div {
+  background: #648880;
+  background: linear-gradient(to right, #f6f1d3, #648880, #293f50);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация стоп-цветов в градиенте</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/ot3ogtn9/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>По умолчанию браузер будет позиционировать каждый стоп-цвет на равном расстоянии от следующего и переходить между ними соответственно. Если требуется больше контроля над тем, как желательно расположить цвета, то их места в градиенте могут быть определены для каждого цвета. Место должно быть объявлено как значение размера и идёт после значения цвета.</p>
+<pre><code data-language="css">div {
+  background: #648880;
+  background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);
+}</code></pre>
+<div class="notePad"><h3>Позиционирование стоп-цветов в градиенте</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/hf40qyf0/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Если не указано иное, то первый цвет будет позиционироваться на 0%, а последний цвет на 100%.</p><h3>Пример градиента</h3><p>Используя то же сообщение об успехе, что уже было раньше, мы поменяем старое фоновое изображение на линейный градиент.</p><p>Для этого мы включим два свойства <span class="attribute">background</span>. Первое свойство <span class="attribute">background</span> определяет шестнадцатеричное значение однотонного цвета, который служит в качестве запасного варианта на случай, если браузер не поддерживает линейные градиенты. Второе свойство <span class="attribute">background</span> включает в себя функцию <span class="value">linear-gradient()</span>, которая задаёт зелёный градиент, который переходит от верхней части элемента к его нижней части.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;notice-success&quot;&gt;
+  Ура! Поздравляем, вы сделали это!
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.notice-success {
+  background: #67b11c;
+  background: linear-gradient(#72c41f, #5c9e19);
+  border: 2px solid #467813;
+  border-radius: 5px;
+  color: #fff;
+  font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+  padding: 15px 20px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация градиентного фона</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/xpaL1Ljw/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h2>На практике</h2><p>С имеющимся набором градиентов давайте создадим новую полосу для нашего сайта Styles Conference, на этот раз с помощью градиента.</p><ol class="practice"><li><p>Мы сделаем новую полосу с градиентом с помощью класса <span class="class">row-alt</span>. Поскольку для новой полосы задано то же свойство и значение <span class="attribute">min-width</span> что и для класса <span class="class">row</span>, мы объединим эти два селектора.</p>
+<pre><code data-language="css">.row,
+.row-alt {
+  min-width: 960px;
+}</code></pre>
+<p>Далее мы хотим создать новый набор правил и применить стили специально к классу <span class="class">row-alt</span>. Эти новые стили будет включать в себя градиентный <span class="attribute">background</span>, который начинается с зелёного цвета и переходит к жёлтому, слева направо.</p><p>Используя функцию <span class="value">linear-gradient()</span> с соответствующими значениями и вендорными префиксами, мы добавим градиентный <span class="attribute">background</span> для класса <span class="class">row-alt</span>. Также включим один <span class="attribute">background</span> перед градиентным <span class="attribute">background</span> как запасной вариант, на тот случай, если браузер не поддерживает градиенты.</p><p>Наконец, мы также добавим и некоторый вертикальный <span class="attribute">padding</span>. Наш обновлённый раздел теперь выглядит следующим образом:</p>
+<pre><code data-language="css">.row,
+.row-alt{
+  min-width: 960px;
+}
+.row {
+  background: #fff;
+  padding: 66px 0 44px 0;
+}
+.row-alt {
+  background: #cbe2c1;
+  background: -webkit-linear-gradient(to right, #a1d3b0, #f6f1d3);
+  background: -moz-linear-gradient(to right, #a1d3b0, #f6f1d3);
+  background: linear-gradient(to right, #a1d3b0, #f6f1d3);
+  padding: 44px 0 22px 0;
+}</code></pre></li><li><p>Стили <span class="class">row-alt</span> на месте, давайте воспользуемся ими на всех наших внутренних страницах. В данный момент все они содержат элемент <span class="tag">&lt;section&gt;</span> с классом <span class="class">container</span>. Затем, внутри каждого <span class="tag">&lt;section&gt;</span> есть элемент <span class="tag">&lt;h1&gt;</span>, содержащий заголовок страницы.</p><p>Мы собираемся изменять эти элементы <span class="tag">&lt;section&gt;</span> так же, как мы сделали раздел с тизером на главной странице. Мы обернём каждый элемент <span class="tag">&lt;section&gt;</span> с классом <span class="class">container</span> элементом <span class="tag">&lt;section&gt;</span> с классом <span class="class">row-alt</span>. Затем изменим каждый элемент <span class="tag">&lt;section&gt;</span> с классом <span class="class">container</span> на элемент <span class="tag">&lt;div&gt;</span> для лучшего соответствия семантики.</p><p>Каждая из наших внутренних страниц должна теперь включать в себя следующее:</p>
+<pre><code data-language="html">&lt;section class=&quot;row-alt&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+
+    &lt;h1&gt;...&lt;/h1&gt;
+ 
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></li><li><p>Раз мы обновляем наши внутренние страницы, давайте сделаем у них вступление чуть более привлекательным. Начнём с добавления вступления на каждой странице немного ниже <span class="tag">&lt;h1&gt;</span> в каждом элементе <span class="tag">&lt;section&gt;</span> с классом<span class="class"> row-alt</span>. Наша страница speakers.html, к примеру, теперь может включать следующий раздел:</p>
+<pre><code data-language="html">&lt;section class=&quot;row-alt&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+
+    &lt;h1&gt;Спикеры&lt;/h1&gt;
+    &lt;p&gt;Мы рады приветствовать более двадцати спикеров, готовых представить 
+    новейшие технологии в отрасли. Готовьтесь к вдохновляющей феерии.&lt;/p&gt;
+  
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></li><li><p>Дополнительно со вставкой абзаца также изменим некоторые стили в разделе со вступлением. Чтобы сделать это, мы добавим класс <span class="class">lead</span> к элементу <span class="tag">&lt;div&gt;</span>, который уже содержит класс <span class="class">container</span>. Он может быть найден внутри элемента <span class="tag">&lt;section&gt;</span> с классом <span class="class">row-alt</span>. Наше вступление для каждой внутренней страницы теперь будет выглядеть так:</p>
+<pre><code data-language="html">&lt;section class=&quot;row-alt&quot;&gt;
+  &lt;div class=&quot;lead container&quot;&gt;
+  
+    ...
+
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></li><li><p>После того, как класс <span class="class">lead</span> находится на своём месте, мы выровняем по центру весь текст внутри этих элементов <span class="class">&lt;div&gt;</span>. Также увеличим<span class="attribute"> font-size</span> и <span class="attribute">line-height</span> у всех абзацев в этих <span class="tag">&lt;div&gt;</span>.</p><p>Создайте новый раздел для вступления в нашем файле main.css, чуть ниже раздела с типографикой, и добавьте следующие стили:</p>
+<pre><code data-language="css">/*
+  ========================================
+  Вступление
+  ========================================
+*/
+
+.lead {
+  text-align: center;
+}
+.lead p {
+  font-size: 21px;
+  line-height: 33px;
+}</code></pre></li></ol><p>Внутренние страницы нашего сайта Styles Conference уже получили давно назревшую любовь в виде градиента для вступления. Убедитесь, что вы обновили код для всех внутренних страниц и видите их новое улучшенное содержимое, заголовки и абзацы.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-7-03.png" alt="Страница Спикеры сайта Styles Conference, в комплекте с градиентом"/></p><p class="figsign">Рис. 7.03. Страница Спикеры сайта Styles Conference, в комплекте с градиентом</p><h3>Демонстрация и исходный код</h3><p>Ниже вы можете просмотреть сайт Styles Conference в его нынешнем состоянии, а также скачать исходный код сайта на данный момент.</p><p><a href="https://webref.ru/example/learn-html-css/setting-backgrounds-and-gradients/" class="button radius">Просмотр сайта Styles Conference</a> или <a href="../../assets/files/setting-backgrounds-and-gradients.zip">Скачать исходный код</a></p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Использование нескольких фоновых изображений</h2><p>Долгое время к элементам разрешалось добавлять только одно фоновое изображение за раз, что создавало немало трудностей при дизайне страниц. К счастью, в CSS3 мы можем использовать более одного фонового изображения для элемента, разделяя запятыми несколько фонов в свойстве <span class="attribute">background</span> или <span class="attribute">background-image</span>.</p><p>Фоновое изображение идущее первым будет на переднем плане, а последнее в списке фоновое изображение будет на заднем плане. Любое значение между первым и последним будет, соответственно, располагаться посередине между ними. Вот пример CSS для элемента <span class="tag">&lt;div&gt;</span>, который использует три фоновых изображения:</p>
+<pre><code data-language="css">div {
+  background: url(&quot;foreground.png&quot;) 0 0 no-repeat, url(&quot;middle-ground.png&quot;) 0 0 no-repeat, url(&quot;background.png&quot;) 0 0 no-repeat;
+}</code></pre>
+<p>Данный код использует сокращённое значение для свойства <span class="attribute">background</span>, связывая несколько фоновых картинок вместе. Эти сокращённые значения также могут быть разбиты по свойствам <span class="attribute">background-image</span>, <span class="attribute">background-position</span> и <span class="attribute">background-repeat</span> со значениями, разделёнными запятыми.</p><h3>Пример нескольких фоновых изображений</h3><p>Давайте ещё раз вернёмся к сообщению об успехе, чтобы объединить фоновую картинку галочки с градиентом.</p><p>Чтобы сделать это, мы включим два значения во второе свойство <span class="attribute">background</span>. Первое значение будет картинкой галочки на переднем плане. Второе значение будет линейным градиентом на заднем плане. Эти два значения разделяются запятой.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;notice-success&quot;&gt;
+  Ура! Поздравляем, вы сделали это!
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.notice-success {
+  background: #67b11c;
+  background: url(&quot;tick.png&quot;) 20px 50% no-repeat, linear-gradient(#72c41f, #5c9e19);
+  border: 2px solid #467813;
+  border-radius: 5px;
+  color: #fff;
+  font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+  padding: 15px 20px 15px 50px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация нескольких фоновых изображений</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/96mfgLse/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h2>Изучаем новые свойства фона</h2><p>Наряду с градиентами и несколькими фоновыми изображениями, CSS3 представил три новых свойства: <span class="attribute">background-size</span>, <span class="attribute">background-clip</span> и <span class="attribute">background-origin</span>.</p><p>Свойство <span class="attribute">background-size</span> позволяет изменить размер фонового изображения, в то время как свойства <span class="attribute">background-clip</span> и <span class="attribute">background-origin</span> позволяют контролировать, как фоновое изображение обрезается и где фоновое изображение располагается в элементе (внутри <span class="attribute">border</span> или внутри <span class="attribute">padding</span>, например).</p><h3>background-size</h3><p>Свойство <span class="attribute">background-size</span> позволяет указать размер фонового изображения. Это свойство принимает несколько значений, в том числе размер и ключевые слова.</p><p>При использовании размера мы можем указать ширину и высоту с помощью двух значений разделённых пробелом. Первое значение установит ширину фонового изображения, а второе значение его высоту. Важно отметить, что процентная запись связана с размером элемента, а не с исходным размером фоновой картинки.</p><p>Следовательно, свойство <span class="attribute">background-size</span> с шириной 100% установит, что фоновое изображение занимает всю ширину элемента. Если второе значение не определено после ширины, то значение высоты будет задано автоматически, чтобы сохранить пропорции фонового изображения.</p><p>Ключевое слово <span class="value">auto</span> может быть задействовано в качестве значения ширины или высоты, чтобы сохранить пропорции фонового изображения. Так, если мы хотим установить высоту фоновой картинки на 75% от высоты элемента при сохранении её пропорций, то можем задать значение <span class="attribute">background-size</span> как <span class="value">auto&nbsp;75%</span>.</p>
+<pre><code data-language="css">div {
+  background: url(&quot;shay.jpg&quot;) 0 0 no-repeat;
+  background-size: auto 75%;
+  border: 2px dashed #9799a7;
+  height: 240px;
+  width: 200px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация background-size</h3><iframe width="100%" height="300" src="https://jsfiddle.net/webref/yr4urzd4/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h3>Ключевые слова cover и contain</h3><p>В дополнение к размерам свойство <span class="attribute">background-size</span> также допускает ключевые слова <span class="value">cover</span> и <span class="value">contain</span>.</p><p>Значение <span class="value">cover</span> указывает, что фоновое изображение будет изменено, чтобы полностью закрыть ширину и высоту элемента. Исходное соотношение сторон фоновой картинки будет сохранено, пока изображение будет растягиваться или сжиматься по мере необходимости, чтобы охватить элемент целиком. Часто при использовании значения <span class="value">cover</span> часть фонового изображения обрезается, чтобы изображение занимало всю доступную площадь элемента.</p><p>Ключевое слово <span class="value">contain</span>, с другой стороны, указывает, что фоновое изображение будет изменено, чтобы целиком вписаться в ширину и высоту элемента. При этом исходное соотношение сторон фоновое изображение будет сохранено, но картинка будет растягиваться или сжиматься по мере необходимости, чтобы остаться в пределах ширины и высоты элемента. В отличие от <span class="value">cover</span>, ключевое слово <span class="value">contain</span> всегда показывает полное фоновое изображение, при этом зачастую оно не будет занимать всю доступную площадь элемента.</p><p>Значения <span class="value">cover</span> и <span class="value">contain</span> могут привести к небольшим искажениям фоновых изображений, особенно, когда картинка растягивается за пределами своих исходных размеров. Мы должны следить за этим при использовании данных значений и убедиться, что стили в результате являются подходящими.</p><h3>background-clip и background-origin</h3><p>Свойство <span class="attribute">background-clip</span> определяет площадь поверхности, которую охватывает фоновое изображение, а свойство <span class="attribute">background-origin</span> определяет, откуда должно начинаться <span class="attribute">background-position</span>. Внедрение этих двух новых свойств связано с внедрением трёх новых значений: <span class="value">border-box</span>, <span class="value">padding-box</span> и <span class="value">content-box</span>. Каждое из этих трёх значений может быть использовано для свойств <span class="attribute">background-clip</span> и <span class="attribute">background-origin</span>.</p>
+<pre><code data-language="css">div {
+  background: url(&quot;shay.jpg&quot;) 0 0 no-repeat;
+  background-clip: padding-box;
+  background-origin: border-box;
+}</code></pre>
+<p>Значение свойства <span class="attribute">background-clip</span> по умолчанию устанавливается как <span class="value">border-box</span>, что позволяет фоновому изображению расширяться в область границ. Между тем, свойство <span class="attribute">background-origin</span> по умолчанию устанавливается как <span class="value">padding-box</span>, что позволяет фоновому изображению начинаться там же, где и <span class="attribute">padding</span> у элемента.</p><p class="fig"><img src="../../assets/images/learn-html-css/border-box.png" alt="Значение border-box расширяет фон до границ элемента" width="300" height="212"/></p><p class="figsign">Рис. 7.04. Значение border-box расширяет фон до границ элемента</p><p class="fig"><img src="../../assets/images/learn-html-css/padding-box.png" alt="" width="300"/></p><p class="figsign">Рис. 7.05. Значение padding-box расширяет фон до padding у элемента, но фон при этом находится внутри границ</p><p class="fig"><img src="../../assets/images/learn-html-css/content-box.png" alt="" width="300"/></p><p class="figsign">Рис. 7.06. Значение content-box содержит фон внутри padding и border у элемента</p><p>Мы уже обсуждали значения этих ключевых слов, когда рассматривали свойство <span class="attribute">box-sizing</span> в уроке 4, «Открываем блочную модель». Смысл самих значений не изменился, но их функции меняются при использовании разных свойств фона.</p><h2>Резюме</h2><p>Добавление фона и градиентов на наши страницы позволяет нам раскрасить фасад дизайна. Эти функции также помогают определить, как сгруппирован контент и улучшить макет наших страниц в целом.</p><p>Кратко, в этом уроке мы рассмотрели следующее:</p><ul><li>как добавить цвет фона и фоновое изображение к элементам;</li><li>линейные и радиальные градиенты и их настройка;</li><li>как задать несколько фоновых изображений для одного элемента;</li><li> новые свойства CSS3, которые позволяют менять размер, площадь поверхности и область позиционирования фоновых изображений</li></ul><p>Добавление цвета фона, градиентов и изображений приносит немало возможностей для улучшения общего дизайна наших веб-сайтов. Вскоре мы обсудим, как семантически добавлять изображения (отдельно от фоновых изображений) для наших страниц. Но перед этим давайте взглянем на то, как семантически создавать списки.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://dev.opera.com/articles/css3-linear-gradients/">CSS3 Linear Gradients</a> via Dev.Opera</li><li><a href="http://dev.opera.com/articles/css3-radial-gradients/">CSS3 Radial Gradients</a> via Dev.Opera</li><li><a href="http://www.cssmatic.com/gradient-generator">CSSmatic Gradient Generator</a></li><li><a href="http://css3files.com/background/">CSS3 Files Background</a></li></ul><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-e1e0981464f39a3fac100631709578c8"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../css/background.html">background</a></li><li class=""> <a href="../../css/background-origin.html">background-origin</a></li><li class=""> <a href="../../css/background-position.html">background-position</a></li><li class=""> <a href="../../css/background-size.html">background-size</a></li><li class=""> <a href="../../css/function/linear-gradient.html">linear-gradient()</a></li><li class=""> <a href="../../css/function/radial-gradient.html">radial-gradient()</a></li><li class=""> <a href="../../course/css-advanced/gradients.html">Градиенты в CSS</a></li><li class=""> <a href="../html5-css3/background/linear-gradient.html">Линейный градиент</a></li><li class=""> <a href="../html5-css3/background/multiple.html">Несколько фоновых картинок</a></li><li class=""> <a href="../html5-css3/background/radial-gradient.html">Радиальный градиент</a></li><li class=""> <a href="../html5-css3/background/sprite.html">Спрайты</a></li><li class=""> <a href="../../course/box-model/background.html">Фон в CSS</a></li><li class=""> <a href="../html5-css3/background/image.html">Фоновая картинка</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 18.07.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/working-with-typography'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/learn-html-css/creating-lists'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="working-with-typography.html" title="На предыдущую страницу">Работа с типографикой</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="creating-lists.html" title="На следующую страницу">Создание списков</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf"><a href="positioning-content.html">Позиционирование содержимого</a></li><li class="leaf"><a href="working-with-typography.html">Работа с типографикой</a></li><li class="leaf active-trail"><a href="setting-backgrounds-and-gradients.html" class="active-trail active">Установка фона и градиента</a></li><li class="leaf"><a href="creating-lists.html">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf"><a href="building-forms.html">Построение форм</a></li><li class="leaf"><a href="organizing-data-with-tables.html">Организация данных с помощью таблиц</a></li><li class="last leaf"><a href="writing-your-best-code.html">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-afcb89abc63b658c051eec56550725e9"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="setting-backgrounds-and-gradients.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

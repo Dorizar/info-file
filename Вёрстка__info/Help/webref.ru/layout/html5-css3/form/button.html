@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кнопки | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../form.html" />
+<link rel="next" href="label.html" />
+<link rel="prev" href="textarea.html" />
+<meta name="description" content="Кнопки являются одним из самых понятных и интуитивных элементов интерфейса. По их виду сразу становится понятно, что единственное действие, которое с ними можно производить — это нажимать на них. За счёт этой особенности кнопки часто применяются в формах, особенно при их отправке и очистке. Кнопку на веб-странице можно создать двумя способами — с помощью элемента или ." />
+<link rel="canonical" href="button.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Кнопки</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../html5-css3.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">HTML5 и CSS3 на примерах</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../form.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Формы</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Кнопки</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Кнопки являются одним из самых понятных и интуитивных элементов интерфейса. По их виду сразу становится понятно, что единственное действие, которое с ними можно производить&nbsp;— это нажимать на них. За счёт этой особенности кнопки часто применяются в формах, особенно при их отправке и очистке.</p><p> Кнопку на веб-странице можно создать двумя способами&nbsp;— с помощью элемента <span class="tag">&lt;input&gt;</span> или <span class="tag">&lt;button&gt;</span>.</p><p> Рассмотрим вначале добавление кнопки через <span class="tag">&lt;input&gt;</span> и его синтаксис.</p>
+<pre><code class="no-buttons">&lt;input type=&quot;button&quot; атрибуты&gt;</code></pre>
+<p>Атрибуты кнопки перечислены в табл.&nbsp;1.</p><table class="data"><caption>Табл. 1. Атрибуты кнопок</caption><tbody><tr><th>Атрибут</th><th>Описание</th></tr><tr><td class="sel">name</td><td>Имя кнопки; предназначено для того, чтобы обработчик формы мог его идентифицировать.</td></tr><tr><td class="sel">value</td><td>Значение кнопки и одновременно надпись на ней.</td></tr></tbody></table><p>Создание кнопки показано в примере 1.</p><p class="exampleTitle">Пример 1. Добавление кнопки</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Кнопка&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt; 
+  &lt;form&gt;
+   &lt;p&gt;&lt;input type=&quot;button&quot; value=&quot; Нажми меня нежно &quot;&gt;&lt;/p&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Пробелы в надписи на кнопке, в отличие от обычного текста в HTML, учитываются, поэтому можно ставить любое количество пробелов, которые в итоге влияют на ширину кнопки. Результат примера показан на рис.&nbsp;1.</p><p class="fig"><img src="../../../assets/images/html5-css3/form-button.png" alt="Вид кнопки" width="567" height="206" /></p><p class="figsign">Рис. 1. Вид кнопки</p><p>Второй способ создания кнопки основан на использовании элемента <span class="tag">&lt;button&gt;</span>. Он по своему действию напоминает результат, получаемый с помощью <span class="tag">&lt;input&gt;</span>. Но в отличие от него предлагает расширенные возможности по созданию кнопок. Например, на подобной кнопке можно размещать любые элементы HTML, включая изображения и таблицы. На рис.&nbsp;2 показаны разные виды кнопок, полученные с помощью <span class="tag">&lt;button&gt;</span>.</p><p class="fig"><img src="../../../assets/images/html5-css3/form-button-02.png" alt="Кнопки, созданные с помощью button" width="567" height="206" /></p><p class="figsign">Рис. 2. Кнопки, созданные с помощью &lt;button&gt;</p><p>Синтаксис создания такой кнопки следующий.</p>
+<pre><code class="no-buttons">&lt;button атрибуты&gt;Надпись на кнопке&lt;/button&gt;</code></pre>
+<p>Атрибуты перечислены в табл.&nbsp;1, но в отличие от кнопки <span class="tag">&lt;input&gt;</span> атрибут <span class="attribute">value</span> определяет только отправляемое на сервер значение, а не надпись на кнопке. Если требуется вывести на кнопке изображение, то элемент <span class="tag">&lt;img&gt;</span> добавляется внутрь <span class="tag">&lt;button&gt;</span>, как показано в примере&nbsp;2.</p><p class="exampleTitle">Пример 2. Рисунок на кнопке</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Кнопка&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt; 
+  &lt;form&gt;
+   &lt;p&gt;&lt;button&gt;Кнопка с текстом&lt;/button&gt; 
+   &lt;button&gt;
+    &lt;img src=&quot;images/umbrella.gif&quot; alt=&quot;&quot; style=&quot;vertical-align:middle&quot;&gt; 
+    Кнопка с рисунком
+   &lt;/button&gt;&lt;/p&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>В данном примере показано создание обычной кнопки с текстом, а также кнопки с одновременным использованием текста и рисунка. Размер кнопки зависит от содержимого контейнера <span class="tag">&lt;button&gt;</span>, но пробелы игнорируются, поэтому простым увеличением их количества, как в случае использования <span class="tag">&lt;input&gt;</span>, ширину кнопки изменить не удастся.</p><h2>Кнопка Submit</h2><p> Для отправки данных на сервер предназначена специальная кнопка Submit. Её вид ничем не отличается от обычных кнопок, но при нажатии на нее происходит выполнение серверной программы, указанной атрибутом <span class="attribute">action</span> элемента <span class="tag">&lt;form&gt;</span>. Эта программа, называемая еще обработчиком формы, получает данные введённые пользователем в полях формы, производит с ними необходимые манипуляции, после чего возвращает результат в виде HTML-документа. Что именно делает обработчик, зависит от автора сайта, например, подобная технология применяется при создании опросов, форумов, тестов и многих других вещей.</p><p> Синтаксис создания кнопки Submit зависит от используемого элемента <span class="tag">&lt;input&gt;</span> или <span class="tag">&lt;button&gt;</span>.</p>
+
+<pre><code class="no-buttons">&lt;input type=&quot;submit&quot; атрибуты&gt;
+&lt;button type=&quot;submit&quot;&gt;Надпись на кнопке&lt;/button&gt;</code></pre>
+<p>Атрибуты те же, что и у рядовых кнопок (пример&nbsp;3).</p><p class="exampleTitle">Пример 3. Отправка данных на сервер</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Кнопка&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt; 
+  &lt;form&gt;
+   &lt;p&gt;&lt;input name=&quot;login&quot;&gt;&lt;/p&gt;
+   &lt;p&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/p&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Атрибут <span class="attribute">name</span> для этого типа кнопки можно не писать. Если не указать значение <span class="attribute">value</span>, то браузер самостоятельно добавит текст, он различается в зависимости от браузера. Так, Firefox пишет «Отправить запрос», IE — «Подача запроса», Opera и Chrome&nbsp;— «Отправить». Сам текст надписи никак на функционал кнопки не влияет.</p><h2> Кнопка Reset</h2><p> При нажатии на кнопку Reset данные формы возвращаются в первоначальное значение. Как правило, эту кнопку применяют для очистки введённой в полях формы информации. Для больших форм от использования кнопки Reset лучше вообще отказаться, чтобы по ошибке на неё не нажать, ведь тогда придётся заполнять форму заново.</p><p> Синтаксис создания указанной кнопки прост и похож на другие кнопки.</p>
+<pre><code class="no-buttons">&lt;input type=&quot;reset&quot; атрибуты&gt;
+&lt;button type=&quot;reset&quot;&gt;Надпись на кнопке&lt;/button&gt;</code></pre>
+<p>В примере 4 показана форма с одним текстовым полем, которое уже содержит предварительно введённый текст с помощью атрибута <span class="attribute">value</span> элемента <span class="tag">&lt;input&gt;</span>. После изменения текста и нажатия на кнопку «Очистить», значение поля будет восстановлено и в нём снова появится надпись «Введите текст».</p><p class="exampleTitle"> Пример 4. Кнопка для очистки формы</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Кнопка&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt; 
+  &lt;form&gt;
+   &lt;p&gt;&lt;input value=&quot;Введите текст&quot;&gt;&lt;/p&gt;
+   &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Отправить&quot;&gt;
+      &lt;input type=&quot;reset&quot; value=&quot;Очистить&quot;&gt;&lt;/p&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Значение кнопки Reset никогда не пересылается на сервер. Если надпись на кнопке не писать, иными словами, не задавать атрибут <span class="attribute">value</span>, на кнопке по умолчанию будет добавлен текст «Очистить».</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Цветные кнопки</h2><p>Вид и цвет кнопок зависит от операционной системы и браузера. Тем не менее можно изменить цвет кнопок по своему усмотрению, воспользовавшись стилями. Для этого требуется только добавить к кнопке свойство <span class="attribute">background</span>, как показано в примере&nbsp;5. Дополнительно можно поменять цвет текста и другие параметры. Помните про одну особенность&nbsp;— как только вы меняете цвет фона, кнопка становится приподнятой, поэтому для «плоских» кнопок надо добавить ещё рамку, пусть даже прозрачную.</p><p class="exampleTitle">Пример 5. Вид кнопок</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Кнопка&lt;/title&gt;
+  &lt;style&gt;
+   .btn {
+    background: #5d8f76; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 7px 12px; /* Поля */
+    margin-bottom: 1em; /* Отступ снизу */
+   }
+   .btn:hover {
+    background: #1e6550; /* Цвет фона при наведении курсора */
+   }
+   .btn-flat {
+    border: 1px transparent; /* Прозрачная рамка */
+   }
+   .btn-round {
+    border-radius: 20px; /* Радиус скругления */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt; 
+  &lt;form&gt;
+   &lt;p&gt;&lt;input type=&quot;button&quot; value=&quot;Исходная кнопка&quot;&gt;
+      &lt;input type=&quot;button&quot; class=&quot;btn&quot; value=&quot;Цветная кнопка&quot;&gt;
+      &lt;input type=&quot;button&quot; class=&quot;btn btn-flat&quot; value=&quot;Плоская кнопка&quot;&gt;
+      &lt;input type=&quot;button&quot; class=&quot;btn btn-flat btn-round&quot; value=&quot;Кнопка со скруглёнными уголками&quot;&gt;&lt;/p&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис. 3.</p><p class="fig"><img src="../../../assets/images/html5-css3/form-button-03.png" alt="Изменение вида кнопок"></p><p class="figsign">Рис. 3. Изменение вида кнопок</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/formy">формы</a></div><div class="field-item odd"><a href="https://webref.ru/metki/knopki">кнопки</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 14.03.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/html5-css3/form/textarea'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/html5-css3/form/label'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="textarea.html" title="На предыдущую страницу">Многострочное текстовое поле</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="label.html" title="На следующую страницу">Элемент label</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="../text.html">Текст</a></li><li class="collapsed"><a href="../background.html">Фон</a></li><li class="collapsed"><a href="../link.html">Ссылки</a></li><li class="collapsed"><a href="../list.html">Списки</a></li><li class="collapsed"><a href="../img.html">Изображения</a></li><li class="collapsed"><a href="../table.html">Таблицы</a></li><li class="expanded active-trail"><a href="../form.html" class="active-trail">Формы</a><ul class="menu"><li class="first leaf"><a href="action.html">Отправка данных формы</a></li><li class="leaf"><a href="text.html">Текстовое поле</a></li><li class="leaf"><a href="password.html">Поле для ввода пароля</a></li><li class="leaf"><a href="textarea.html">Многострочное текстовое поле</a></li><li class="leaf active-trail"><a href="button.html" class="active-trail active">Кнопки</a></li><li class="leaf"><a href="label.html">Элемент label</a></li><li class="leaf"><a href="radio.html">Переключатели</a></li><li class="leaf"><a href="checkbox.html">Флажки</a></li><li class="leaf"><a href="select.html">Поле со списком</a></li><li class="leaf"><a href="hidden.html">Скрытое поле</a></li><li class="leaf"><a href="image.html">Поле с изображением</a></li><li class="leaf"><a href="file.html">Загрузка файлов</a></li><li class="leaf"><a href="email.html">Адрес электронной почты</a></li><li class="leaf"><a href="url.html">Веб-адрес</a></li><li class="leaf"><a href="color.html">Выбор цвета</a></li><li class="leaf"><a href="number.html">Ввод чисел</a></li><li class="leaf"><a href="range.html">Ползунок </a></li><li class="leaf"><a href="date.html">Календарь</a></li><li class="leaf"><a href="search.html">Поле для поиска</a></li><li class="leaf"><a href="tel.html">Номер телефона</a></li><li class="leaf"><a href="fieldset.html">Группирование элементов форм</a></li><li class="leaf"><a href="disabled.html">Блокирование элементов форм</a></li><li class="leaf"><a href="autofocus.html">Автофокус</a></li><li class="leaf"><a href="placeholder.html">Подсказывающий текст</a></li><li class="last leaf"><a href="fool.html">Защита от дурака</a></li></ul></li><li class="collapsed"><a href="../transform.html">Трансформация</a></li><li class="leaf"><a href="../transition.html">Переходы</a></li><li class="last leaf"><a href="../animation.html">Анимация</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-6de44d0e19227271a75b11d77495bd12"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="button.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

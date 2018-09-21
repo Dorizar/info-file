@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Список | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../dev.html" />
+<link rel="next" href="overlay.html" />
+<link rel="prev" href="scenes.html" />
+<meta name="description" content="Список нам требуется для вывода всех активностей сгруппированных по разделам. Задача разбивается на три части: подготовить данные;  вывести их в виде списка;  сохранять данные при выборе пользователем и отображать результат выбора. Предварительно сделаем отображение текущей активности в нашей сцене. Поскольку пользователь ещё ничего не вводил, то следует установить исходные данные по умолчанию. Задаём три переменные." />
+<link rel="canonical" href="tableview.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Список</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../corona.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Делаем приложение на Corona SDK</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Разработка</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Список</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Список нам требуется для вывода всех активностей сгруппированных по разделам. Задача разбивается на три части:</p><ul><li>подготовить данные;</li><li> вывести их в виде списка;</li><li> сохранять данные при выборе пользователем и отображать результат выбора.</li></ul><p>Предварительно сделаем отображение текущей активности в нашей сцене. Поскольку пользователь ещё ничего не вводил, то следует установить исходные данные по умолчанию. Задаём три переменные.</p>
+
+<pre><code data-language="lua">activity_name	= "Ходьба, 4 км/ч"; -- название активности
+activity_factor	= 3; -- коэффициент активности
+activity_index 	= 147; -- номер в списке</code></pre>
+
+<p>Переменная activity_name хранит текст для отображения; activity_factor — коэффициент, участвующий в расчётах калорий; activity_index нам требуется для прокрутки списка к выбранному пункту.</p><p>Теперь просто отображаем текст из переменной согласно нашему дизайну.</p>
+
+<pre><code data-language="lua">-- добавляем новую группу
+activityGroup = display.newGroup();	
+--  прямоугольник со скруглёнными уголками
+display.newRoundedRect(activityGroup, display.contentCenterX, 790, w, 60, 10):setFillColor(244/255);
+-- рисуем треугольник
+display.newPolygon(activityGroup, 500, 790, {500, 452, 520, 452, 510, 466}):setFillColor(0.4);
+-- выводим текст из переменной activity_name в прямоугольник
+activityText = display.newText(activityGroup, activity_name, display.contentCenterX, 790, native.systemFont, 24);
+-- изменяем цвет текста
+activityText:setFillColor(237/255, 103/255, 57/255);
+-- обработчик нажатия
+activityGroup:addEventListener("touch",
+	function(event)
+		composer.showOverlay("scenes.activity", {
+			isModal = true, -- модальное окно
+			effect = "fade", -- эффект появления
+			time = 400, -- время появления
+		});
+	end
+);</code></pre>
+<p>Все элементы мы уже до этого задействовали, за исключением <span class="var">display.newPolygon</span>, с помощью которого добавляем небольшой треугольник справа от списка. Треугольник носит только декоративный характер, не более.</p><p>Для перехода к другой сцене мы воспользуемся не <span class="var">composer.gotoScene</span>, как делали это ранее, а <span class="var">composer.showOverlay</span>. Эта функция выводит одну сцену поверх другой, тем самым мы получаем имитацию диалогового окна. Появление новой сцены можно сделать с эффектом перехода, чтобы она выводилась не мгновенно, а плавно, в течение какого-то времени. Смотрим что получилось в итоге.</p><p class="fig"><img src="../../../assets/images/corona/tableview.png" alt="Вид приложения с выбранной активностью" width="402" height="820"></p><p class="figsign">Вид приложения с выбранной активностью</p><p>Внутри папки scenes создаём два файла — data.lua и activity.lua. В первом файле будет храниться таблица с данными для списка, а второй файл их отображать в нужном нам виде. Сокращённое содержимое data.lua показано ниже.</p>
+
+<pre><code data-language="lua">local activityData = {
+	{ factor=0, name="Аэробика", category=1 },
+	{ factor=5, name="Аэробика, низкая нагрузка", category=0 },
+	{ factor=6.5, name="Аэробика, средняя нагрузка", category=0 },
+	{ factor=7, name="Аэробика, высокая нагрузка", category=0 },
+	{ factor=0, name="Музыка", category=1 },
+	{ factor=4, name="Игра на барабанах", category=0 },
+	{ factor=2, name="Игра на духовых инструментах", category=0 },
+	{ factor=2.5, name="Игра на клавишных", category=0 },
+	{ factor=2, name="Игра на струнных инструментах", category=0 },
+}</code></pre>
+<p>Здесь: factor — значение коэффициента; name — название активности; category — категория (1) или нет (0). Категория нужна для разделения всего списка на тематические блоки. Так проще и нагляднее пользователю ориентироваться в большом списке. Если category равна 1, то мы делаем текст заголовком блока, выбирать его в таком случае нельзя.</p><p>Структура activity.lua показана ниже. Вызываем наши данные из data.lua через функцию <span class="var">require</span> и присваиваем их переменной data. Весь остальной код вставляем внутрь метода <span class="var">create</span> и не забываем добавлять объекты в группу sceneGroup, иначе сцена со списком корректно закрываться не будет.</p>
+
+<pre><code data-language="lua">local composer = require("composer");
+local widget = require("widget");
+local data = require("scenes.data"); -- вызов файла data.lua
+local scene = composer.newScene();
+function scene:create(event)
+	local sceneGroup = self.view;
+	-- наш код
+end
+scene:addEventListener("create", scene);
+return scene;</code></pre>
+
+<p>Сам процесс создания списка с данными состоит из четырёх шагов.</p><ol><li>Добавление виджета <span class="var">widget.newTableView</span> заданного размера.</li><li> Заполнение списка данными через цикл <span class="var">for i = 1, #data do</span>. Там же в списке устанавливаем цвет заголовка блока и цвет основного текста.</li><li> Отображение списка в нашей функции onRowRender заданным шрифтом и цветом. Заметьте, что на предыдущем шаге список лишь формировался, но не выводился. Это нужно проделать отдельно.</li><li> Обработка нажатия на элемент списка в нашей функции onRowTouch. В переменных следует сохранить данные выбранного пункта и отобразить название активности.</li></ol><p>Код activity.lua целиком показан ниже.</p>
+
+<pre><code data-language="lua">local composer = require("composer");
+local widget = require("widget");
+local data = require("scenes.data"); -- вызов файла data.lua
+
+local scene = composer.newScene();
+
+function scene:create(event)
+	local sceneGroup = self.view;
+	
+	-- полупрозрачный прямоугольник
+	display.newRect(sceneGroup, display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight):setFillColor(37/255, 39/255, 46/255, 0.7);
+	
+	-- отображаем список
+	function onRowRender(event)
+		local row = event.row;
+		local id = row.index;
+		-- выводим текст заданным шрифтом
+
+		row.activityText = display.newText(data[id].name, 24, 24, native.systemFont, 22);
+		row.activityText.anchorX = 0; -- задаём точку отсчёта координат
+		if (data[id].category == 1) then 
+			row.activityText:setFillColor(1); -- для заголовков цвет белый
+			else row.activityText:setFillColor(0) -- для остального текста чёрный
+		end
+		row:insert(row.activityText);
+		return true
+	end
+	
+	-- нажатие на пункт списка
+	function onRowTouch(event)
+		local row = event.row
+		if (event.phase == "release") then
+			-- присваиваем переменным выбранные значения
+			activity_index = row.index;
+			activity_name = data[activity_index].name;
+			activity_factor = data[activity_index].factor;
+			activityText.text = activity_name;
+			composer.hideOverlay("fade", 400); -- закрываем окно
+		end
+	end
+
+	-- создаём список
+	local activityList = widget.newTableView {
+	   top = 70, left = 40, -- координаты
+	   width = 460, height = 850, -- размеры
+	   onRowRender = onRowRender,
+	   onRowTouch = onRowTouch,
+	}
+	sceneGroup:insert(activityList); -- добавляем список в группу sceneGroup
+	
+	-- добавляем в список данные
+	for i = 1, #data do
+		if (data[i].category == 1) then isCategory = true;
+			else isCategory = false;
+		end
+		if (isCategory == true) then
+			rowColor = { default = {237/255, 103/255, 57/255} };
+			else rowColor = { default = {1} }
+		end
+		activityList:insertRow{
+			rowHeight = 50,
+			isCategory = isCategory,
+			rowColor = rowColor,
+		}
+	end
+	
+	-- прокручиваем список к выбранному ранее пункту
+	if (activity_index > 1) then
+		activityList:scrollToY({y=-(activity_index-2)*50});
+	end
+	
+	-- кнопка закрытия списка
+	close = display.newImage(sceneGroup, "img/close.png", 500, 76);	
+	close:addEventListener("touch", function(event)
+			if event.phase == 'ended' then
+				composer.hideOverlay("fade", 400);
+			end
+		end
+	);
+end
+
+scene:addEventListener("create", scene);
+return scene;</code></pre>
+
+<p>Вот как выглядит наш список при его вызове.</p><p class="fig"><img src="../../../assets/images/corona/tableview2.png" alt="Прокручиваемый список" width="402" height="820"></p><p class="figsign">Прокручиваемый список</p><p>Кроме самого списка сделаем кнопку для его закрытия, это позволит убирать список без обязательного выбора. Используем обычную картинку, при нажатии на которую вызываем функцию <span class="var">composer.hideOverlay</span>. Также добавим полупрозрачный фон совпадающий с размерами нашего контента, чтобы затемнять нижележащую сцену. Так будет выглядеть профессионально и стильно. Уровень прозрачности легко регулируется через альфа-канал.</p><h2>См. также</h2><p> Документация по widget.newTableView()</p><p> <a href="http://docs.coronalabs.com/api/library/widget/newTableView.html">http://docs.coronalabs.com/api/library/widget/newTableView.html</a></p><p> Документация по display.newPolygon()</p><p> <a href="http://docs.coronalabs.com/api/library/display/newPolygon.html">http://docs.coronalabs.com/api/library/display/newPolygon.html</a></p><p> Эффекты перехода между сценами</p><p> <a href="http://docs.coronalabs.com/api/library/composer/gotoScene.html#transition-effects">http://docs.coronalabs.com/api/library/composer/gotoScene.html#transition-effects</a></p><p> Руководство по созданию списка</p><p> <a href="http://coronalabs.com/blog/2014/03/04/tutorial-advanced-tableview-tactics/">http://coronalabs.com/blog/2014/03/04/tutorial-advanced-tableview-tactics/ </a></p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 11.01.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/corona/dev/scenes'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/corona/dev/overlay'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="scenes.html" title="На предыдущую страницу">Работа со сценами</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="overlay.html" title="На следующую страницу">Всплывающее окно</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../prosandcons.html">Плюсы и минусы Corona SDK</a></li><li class="leaf"><a href="../install.html">Установка Corona SDK</a></li><li class="leaf"><a href="../run.html">Запуск программы</a></li><li class="leaf"><a href="../preferences.html">Настройки программы</a></li><li class="leaf"><a href="../ide.html">Среда разработки</a></li><li class="expanded active-trail"><a href="../dev.html" class="active-trail">Разработка</a><ul class="menu"><li class="first leaf"><a href="config.html">Файл config.lua</a></li><li class="leaf"><a href="scale.html">Рабочее поле</a></li><li class="leaf"><a href="color.html">Фон и цвет</a></li><li class="leaf"><a href="fig.html">Геометрические фигуры</a></li><li class="leaf"><a href="group.html">Группирование объектов</a></li><li class="leaf"><a href="text.html">Вывод текста</a></li><li class="leaf"><a href="slider.html">Слайдер</a></li><li class="leaf"><a href="button.html">Кнопки</a></li><li class="leaf"><a href="image.html">Изображения</a></li><li class="leaf"><a href="scenes.html">Работа со сценами</a></li><li class="leaf active-trail"><a href="tableview.html" class="active-trail active">Список</a></li><li class="leaf"><a href="overlay.html">Всплывающее окно</a></li><li class="leaf"><a href="save.html">Сохранение и загрузка параметров</a></li><li class="last leaf"><a href="icon.html">Иконка приложения</a></li></ul></li><li class="collapsed"><a href="../build.html">Компиляция приложений</a></li><li class="last leaf"><a href="../test.html">Тестирование приложения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-038fa54c3a6716848c06ac7188e06768"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="tableview.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

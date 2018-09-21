@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обход и манипуляция | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../jqfundamentals.html" />
+<link rel="next" href="events.html" />
+<link rel="prev" href="jquery-basics.html" />
+<meta name="description" content="jQuery обеспечивает мощные инструменты для нахождения элемента или последующих элементов и работы с ними для получения желаемого результата. С помощью методов обхода и манипуляций можно браться за такие задачи, выполнение которых через родную манипуляцию DOM будет весьма болезненно. jQuery делает подобные задачи довольно простыми и интуитивно понятными. В этом разделе мы рассмотрим некоторые (но не все) методы обхода и манипуляции." />
+<link rel="canonical" href="traversing-manipulating.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Обход и манипуляция</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../jqfundamentals.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Основы jQuery</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Обход и манипуляция</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>jQuery обеспечивает мощные инструменты для нахождения элемента или последующих элементов и работы с ними для получения желаемого результата. С помощью методов обхода и манипуляций можно браться за такие задачи, выполнение которых через родную манипуляцию DOM будет весьма болезненно. jQuery делает подобные задачи довольно простыми и интуитивно понятными.</p><p>В этом разделе мы рассмотрим некоторые (но не все) методы обхода и манипуляции. Предварительно вы должны знать несколько важных терминов. Рассмотрим фрагмент HTML:</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;
+    &lt;span&gt;
+      &lt;i&gt;Foo&lt;/i&gt;
+    &lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bar&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<ul><li>Первый элемент списка является <strong>дочерним</strong> для маркированного списка.</li><li>Маркированный список является <strong>родителем</strong> обоих элементов списка.</li><li><span class="tag">&lt;span&gt;</span> является <strong>потомком</strong> маркированного списка.</li><li>Маркированный список является <strong>предком</strong> для всего внутри него.</li><li>Два элемента списка являются <strong>родственными</strong>.</li></ul><h2>Обход</h2><p>jQuery позволяет нам делать «обход» или передвижение по HTML-элементам, которые составляют нашу страницу. Сперва мы делаем начальную выборку, а затем двигаемся через DOM относительно этой выборки. По мере продвижения через DOM мы меняем нашу оригинальную выборку; в некоторых случаях заменяем оригинальную выборку новой, в других случаях мы добавляем или убираем что-то из оригинальной выборки.</p><h3>Фильтрация выборки</h3><p>Вы можете отфильтровать существующую выборку, чтобы она включала только те элементы, которые соответствуют заданному критерию. Например, вы можете фильтровать выборку следующими способами:</p>
+<pre><code data-language="javascript">var listItems = $( 'li' );
+
+// фильтровать выборку только для элементов с классом special
+var special = listItems.filter( '.special' );
+
+// фильтровать выборку только для элементов без класса special
+var notSpecial = listItems.not( '.special' );
+
+// фильтровать выборку только для элементов содержащих &lt;span&gt;
+var hasSpans = listItems.has( 'span' );</code></pre>
+<p>Важно отметить, что <span class="var">.not()</span> не является противоположностью <span class="var">.is()</span>. Метод <span class="var">.is()</span> возвращает логическое значение, в то время как метод <span class="var">.not()</span> возвращает новый объект jQuery.</p><h3>Поиск элементов относительно выборки</h3><p>Начальная выборка может служить «базой» для создания дополнительных выборок. К примеру, у вас может быть имеющаяся выборка, которая содержит отдельный пункт списка, а затем необходимо работать с его родственными элементами или родительским маркированным списком. Вы можете легко сделать новую выборку относительно существующей:</p>
+<pre><code data-language="javascript">// Получить первый пункт списка на странице
+var listItem = $( 'li' ).first(); // и .last()
+  
+// Получить родственные элементы этого пункта списка
+var siblings = listItem.siblings();
+  
+// Получить следующего родственника этого пункта списка
+var nextSibling = listItem.next(); // и .prev()
+  
+// Получить родителя этого пункта списка
+var list = listItem.parent();
+
+// Получить пункты списка являющихся непосредственными потомками list
+var listItems = list.children();
+
+// Получить ВСЕ пункты списка из list, включая вложенные
+var allListItems = list.find( 'li' );
+
+// Найти всех предков этого пункта списка с классом module
+var modules = listItem.parents( '.module' );
+
+// Найти ближайшего предка этого пункта списка с классом module
+var module = listItem.closest( '.module' );</code></pre>
+<p>Вы также можете добавить что-то в существующую выборку с помощью метода <span class="var">.add()</span>. Можно передать селектор, массив элементов, строку HTML или объект jQuery.</p>
+<pre><code data-language="javascript">var list = $( '#my-unordered-list' );
+
+// Сделать нечто со списком, а затем...
+
+var listAndListItems = list.add( '#my-unordered-list li' );</code></pre>
+<h3>Возвращение к исходной выборке</h3><p>Когда вы используете один из методов обхода для поиска некоторых элементов относительно исходной выборки, jQuery сохраняет на неё указатель для случая, если вы захотите вернуться к исходной выборке. Рассмотрим, например, ситуацию, когда вы выбираете маркированный список, вносите в его элементы некоторые изменения, а затем снова желаете работать со списком. Вы можете использовать метод jQuery <span class="var">.end()</span>, чтобы вернуться к исходной выборке:</p>
+<pre><code data-language="javascript">$( '#my-unordered-list' )
+  .find('li')
+  
+  // Теперь мы работаем с элементами списка
+  .addClass('special')
+
+.end()
+
+// Теперь мы вернулись к работе со списком
+.addClass('super-special');</code></pre>
+<p>Метод <span class="var">.end()</span> позволят легко делать множество изменений в одном выражении. Такая практика мало что даёт для понимания кода, зато это коротко, словно рассказать историю, не переводя дыхания. Поэтому вы должны использовать этот метод редко. Чаще всего это приводит к коду, который трудно читать, поддерживать и отлаживать.</p><p>Лучшее решение может выглядеть следующим образом:</p>
+<pre><code data-language="javascript">var list = $( '#my-unordered-list' );
+var listItems = list.find('li');
+  
+listItems.addClass( 'special' );
+list.addClass( 'super-special' );</code></pre>
+
+<p>jQuery также предлагает метод <span class="var">.addBack()</span>, если вы хотите добавить свою исходную выборку в текущую. К примеру:</p>
+<pre><code data-language="javascript">$( 'li.special' )
+
+  .siblings()
+
+  // Теперь мы работаем с родственниками исходной выборки
+  .removeClass( 'important' )
+
+  .addBack()
+
+  // Теперь мы работаем с исходным li И его родственниками
+  .addClass( 'urgent' );</code></pre>
+<p>Запутались? Как и с <span class="var">.end()</span> всё это может привести к коду, с которым тяжело разбираться. Метод <span class="var">.addBack()</span>, несмотря на его пользу, может легко усложнить код. Вместо этого лучшим решением было бы использовать метод <span class="var">.add()</span>, чтобы объединить две исходные выборки:</p>
+<pre><code data-language="javascript">var specialListItems = $( 'li.special' );
+var otherListItems = specialListItems.siblings();
+  
+otherListItems.removeClass( 'important' );
+specialListItems.add( otherListItems ).addClass( 'urgent' );</code></pre>
+
+<p>Существуют и другие методы обхода, которые мы здесь не рассматриваем. Вы можете прочитать обо всех методах обхода в <a href="http://api.jquery.com/category/traversing/">документации</a>.</p><h2>Манипуляция</h2><p>Методы манипуляции jQuery позволяют вам менять DOM вашей страницы используя гораздо дружелюбный синтаксис, чем родные методы манипуляции DOM. Методы манипуляции возвращают объект jQuery, а значит вы можете соединять или объединять их с другими методами jQuery, которые рассматривались ранее.</p><h3>Изменение элементов</h3><p>Есть множество способов для изменения элементов с помощью jQuery. Мы рассмотрим как решать некоторые наиболее распространённые задачи.</p><h4>Добавление и удаление классов</h4><p>Атрибут class может быть использован для добавления правил CSS, а также может быть полезен для выбора элементов через jQuery. Например, к элементу может быть добавлен класс <span class="class">hidden</span>, с соответствующим правилом CSS, который определяет, что для этого класса установить <span class="attribute">display</span> как <span class="value">none</span>. Используя jQuery мы можем добавлять и удалять классы и тем самым влиять на отображение элементов.</p>
+<pre><code data-language="javascript">$( 'li' ).addClass( 'hidden' );
+$( 'li' ).eq( 1 ).removeClass( 'hidden' );</code></pre>
+<p>Если в вашем случае постоянно требуется добавлять и удалять класс, jQuery предлагает метод <span class="var">.toggleClass()</span>. Следующий код добавляет класс <span class="class">hidden</span> если его нет и удаляет его, если он присутствует.</p>
+<pre><code data-language="javascript">$( 'li' ).eq( 1 ).toggleClass( 'hidden' );</code></pre>
+<h4>Изменение стиля</h4><p class="note">При возможности каждый раз следует использовать классы в сочетании с правилами CSS, чтобы повлиять на <em>оформление</em> элементов, а jQuery применять только для добавления и удаления этих классов, как показано выше. В этом разделе мы увидим как изменить стиль элемента напрямую, но правила CSS в сочетании с классами для получения желаемого эффекта всегда предпочтительнее.</p><p>Если вы не можете получить результат через добавление и удаление классов, то jQuery предлагает метод <span class="var">.css()</span>, который позволяет вам установить стиль элементов напрямую. Обычно это требуется, если вы хотите установить числовые значения вычисляемые на лету&nbsp;— например, информация о позиционировании. Метод <span class="var">.css()</span> не должен применяться для задания простых стилей, таких как <span class="var">display: none</span>&nbsp;— практически во всех случаях для этого предпочтительнее использовать классы и CSS.</p><p>Рассмотрим, к примеру, ситуацию, когда вы хотите задать стиль элемента на основе ширины родительского элемента. Для резинового макета заранее узнать ширину родительского элемента может быть трудно или невозможно. В этом случае мы можем обратиться к методу <span class="var">.css()</span>.</p>
+<pre><code data-language="javascript">var list = $( '#my-unordered-list' );
+var width = Math.floor( list.width() * 0.1 );
+  
+list.find('li').each(function( index, elem ) {
+  var padding = width * index;
+  $( elem ).css( 'padding-left', padding + 'px' );
+});</code></pre>
+<p>Если вам нужно установить сразу несколько свойств, вы можете передать объект в метод <span class="var">.css()</span> вместо имени свойства и его значения. Обратите внимание, что имена свойств с дефисом нужно брать в кавычки.</p>
+<pre><code data-language="javascript">$( 'li' ).eq( 1 ).css({
+  'font-size': '20px',
+  'padding-left': '20px'
+});</code></pre>
+<h4>Изменение значений форм</h4><p>jQuery предлагает метод <span class="var">.val()</span> для изменения значения элементов формы, таких как <span class="tag">&lt;select&gt;</span> и <span class="tag">&lt;input&gt;</span>.</p><p>Для текстовых элементов <span class="tag">&lt;input&gt;</span> вы можете установить их содержание передавая строку в метод <span class="var">.val()</span>:</p>
+<pre><code data-language="javascript">$( 'input[type=&quot;text&quot;]' ).val( 'новое значение' );</code></pre>
+<p>Для элементов <span class="tag">&lt;select&gt;</span> вы также можете установить выбранный пункт с помощью <span class="var">.val()</span>:</p>
+<pre><code data-language="javascript">$( 'select' ).val( '2' );</code></pre>
+<p>Для чекбоксов вы должны установить свойство <span class="attribute">checked</span> для элемента используя метод <span class="var">.prop()</span>.</p>
+<pre><code data-language="javascript">$( 'input[type=&quot;checkbox&quot;]' ).prop( 'checked', 'checked' );</code></pre>
+<p class="note">Метод <span class="var">.prop()</span> был введён в jQuery 1.6; предыдущие версии jQuery использовали для этой цели метод <span class="var">.attr()</span>. Он по-прежнему работает в более поздних версиях jQuery, но для свойства <span class="attribute">checked</span> в конечном счёте просто вызывает метод <span class="var">.prop()</span>. Если вы применяете версию jQuery позднее 1.6, то должны всегда использовать метод <span class="var">.prop()</span> чтобы установить свойство <span class="attribute">checked</span> и другие свойства элементов DOM. Смотрите <a href="http://api.jquery.com/prop/">документацию</a> для подробного объяснения.</p><h4>Изменение других атрибутов</h4><p>Вы можете использовать метод <span class="var">.attr()</span>, чтобы изменить другие атрибуты элементов. Например, вы можете с его помощью установить новый атрибут <span class="attribute">title</span> для ссылки:</p>
+<pre><code data-language="javascript">$( 'a' ).attr( 'title', 'Нажми меня!' );</code></pre>
+<p>При установке атрибута вы можете передать функцию в качестве второго аргумента. Подобно другим устанавливающим методам эта функция получает два аргумента: индекс элемента, с которым она работает, и исходное значение атрибута. Функция должна вернуть новое значение атрибута.</p>
+<pre><code data-language="javascript">$( 'a' ).attr( 'href', function(index, value) {
+  return value + '?special=true';
+});</code></pre>
+<p>Вы также можете удалить атрибуты полностью через <span class="var">.removeAttr()</span>.</p><h3>Получение информации из элементов</h3><p>В разделе «Основы jQuery» мы обсудили понятия «устанавливающий метод» и «метод чтения». Все методы, которые могут быть использованы для изменения элементов, также могут применяться и для получения информации из элементов. Например, описанный выше метод <span class="var">.val()</span> может быть как устанавливающим методом, так и методом чтения.</p>
+<pre><code data-language="javascript">var input = $( 'input[type=&quot;text&quot;]' );
+input.val( 'новое значение' );
+input.val(); // вернёт 'новое значение'</code></pre>
+<p>Кроме того, метод <span class="var">.css()</span> может быть использован для получения значения отдельных свойств CSS, если для него указать только имя свойства, а не значение.</p>
+<pre><code data-language="javascript">var listItemColor = $( 'li' ).css( 'color' );</code></pre>
+<p>Когда методы манипуляции используются в качестве установки, метод работает только с первым элементом в выборке, с одним исключением: метод .text(). В этом случае, если аргумент не передаётся в метод, то будет возвращён текст всех выбранных элементов.</p><h3>Размещение элементов в документе</h3><p>Если вы выбрали элемент или создали новый элемент, то можете взять вашу выборку и поместить её в документ. Для этого есть два основных способа: путём вызова метода для элемента или элементов, которые вы хотите разместить, или путём вызова метода для элемента, относительно которого вы хотите разместить.</p><p>Рассмотрим, к примеру, ситуацию, когда вы хотите переместить первый элемент списка в его конец. Есть несколько способов для достижения этой цели.</p><p>Вы можете добавить пункт в список, вызывая <span class="var">.appendTo()</span> для элемента списка:</p>
+<pre><code data-language="javascript">var listItem = $( '#my-unordered-list li' ).first();
+listItem.appendTo( '#my-unordered-list' );</code></pre>
+<p>Вы можете добавить пункт в список, вызывая <span class="var">.append()</span> для списка:</p>
+<pre><code data-language="javascript">var listItem = $( '#my-unordered-list li' ).first();
+$( '#my-unordered-list' ).append( listItem );</code></pre>
+<p>Вы можете вставить элемент списка после последнего элемента с помощью вызова <span class="var">.insertAfter()</span> для того элемента списка, который вы хотите переместить:</p>
+<pre><code data-language="javascript">var listItems = $( '#my-unordered-list li' );
+listItems.first().insertAfter( listItems.last() );</code></pre>
+<p>Вы также можете вставить элемент списка после последнего элемента с помощью вызова <span class="var">.after()</span> для последнего пункта списка:</p>
+<pre><code data-language="javascript">var listItems = $( '#my-unordered-list li' );
+listItems.last().after( listItems.first() );</code></pre>
+<p>Существует много других методов для размещения элементов — вы можете разместить их <a href="http://api.jquery.com/category/manipulation/dom-insertion-around/">вокруг</a>, <a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">внутри</a>, <a href="http://api.jquery.com/category/manipulation/dom-insertion-outside/">снаружи</a> других элементов, всё зависит от ваших конкретных потребностей.</p><p>Наиболее эффективный способ основан на элементах, к которым у вас уже есть доступ. В приведённом выше примере вы можете выбрать как добавить элемент в маркированный список, если список был уже выбран для какой-то другой цели; или, если у вас уже имеется выборка, содержащая все элементы списка, то будет проще разместить первый элемент списка относительно последнего.</p><p>Когда выбираете как разместить элемент, вы должны учитывать не только самый простой способ, но и как его сопровождать. Остерегайтесь размещения, в котором делается предположение о точной структуре HTML на вашей страницы.</p><h3>Копирование элементов</h3><p>Вы можете сделать копию элемента или набора элементов используя метод <span class="var">.clone()</span>. Он позволяет делать копию элементов, но заметьте, что копия хранится только в памяти&nbsp;— вы должны самостоятельно поместить её в документ. Вы можете манипулировать клонированным элементом или элементами до их размещения в документе.</p>
+<pre><code data-language="javascript">var clones = $( 'li' ).clone();
+
+clones.html(function( index, oldHtml ) {
+  return oldHtml + '!!!';
+});
+  
+$( '#my-unordered-list' ).append( clones );</code></pre>
+<p class="note">jQuery не помешает вам клонировать элемент с идентификатором, поэтому вы должны убедиться, что изменили или удалили атрибут <span class="attribute">id</span> перед установкой элемента в документ, поскольку в документе не должно быть несколько элементов с одинаковым <span class="attribute">id</span>.</p><h3>Удаление элементов</h3><p>Есть три способа для удаления элементов из документа: <span class="var">.remove()</span>, <span class="var">.detach()</span> и <span class="var">.replaceWith()</span>. Каждый метод служит конкретной цели.</p><p>Метод <span class="var">.remove()</span> следует использовать для удаления элементов навсегда, также он убирает любые обработчики событий связанных с элементами. Метод <span class="var">.remove()</span> возвращает указатель на удалённые элементы, но если вы повторно их добавите, то у них больше не будет связанных с ними событий.</p>
+<pre><code data-language="javascript">$( '#my-unordered-list li' ).click(function() {
+  alert( $( this ).text() );
+});
+
+var removedListItem = $( '#my-unordered-list li' ).first().remove();
+
+removedListItem.appendTo( '#my-unordered-list' );
+removedListItem.trigger( 'click' ); // alert не работает!</code></pre>
+<p>Метод <span class="var">.detach()</span> применяется для временного удаления элементов из документа. К примеру, если вы собираетесь внести множество изменений в структуру вашей страницы через jQuery, то будет более эффективно использовать <span class="var">.detach()</span> чтобы удалить выбранные элементы, внести в них необходимые изменения, а затем снова прикрепить элемент, используя один из методов вставки. Элементы, удалённые через <span class="var">.detach()</span>, сохраняют свои обработчики событий; вы можете повторно добавить их в документ с помощью <span class="var">.appendTo()</span> или другим методом.</p>
+<pre><code data-language="javascript">$( '#my-unordered-list li' ).click(function() {
+  alert( $( this ).text() );
+});
+  
+var detachedListItem = $( '#my-unordered-list li' ).first().detach();
+
+// Сделать что-то комплексное с элементом списка
+
+detachedListItem.appendTo( '#my-unordered-list' );
+detachedListItem.trigger( 'click' ); // alert!</code></pre>
+<p>Наконец, метод <span class="var">.replaceWith()</span> заменяет элемент или элементы на элемент или HTML, который передаётся в качестве аргумента <span class="var">.replaceWith()</span>. Метод возвращает заменённые элементы, но как и с <span class="var">.remove()</span>, убираются все обработчики событий связанные с ними.</p>
+<pre><code data-language="javascript">$( '#my-unordered-list li' ).click(function() {
+  alert( $( this ).text() );
+});
+  
+var replacedListItem = $( '#my-unordered-list li' ).first()
+.replaceWith( '&lt;li&gt;новое!&lt;/li&gt;' );
+  
+replacedListItem.appendTo( '#my-unordered-list' );
+
+replacedListItem.trigger( 'click' ); // alert не работает!</code></pre>
+
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Резюме</h2><p>В этом разделе мы рассмотрели различные способы, с помощью которых мы можем перемещаться по документу, вставлять в документ новые элементы и вносить в них изменения. В следующем разделе мы рассмотрим как взаимодействовать с пользователем на нашей странице.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/jquery">jQuery</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Ребекка Мёрфи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 11.06.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/jqfundamentals/jquery-basics'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/jqfundamentals/events'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="jquery-basics.html" title="На предыдущую страницу">Азы jQuery</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="events.html" title="На следующую страницу">События и делегирование событий</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="javascript-basics.html">Основы JavaScript</a></li><li class="leaf"><a href="jquery-basics.html">Азы jQuery</a></li><li class="leaf active-trail"><a href="traversing-manipulating.html" class="active-trail active">Обход и манипуляция</a></li><li class="leaf"><a href="events.html">События и делегирование событий</a></li><li class="leaf"><a href="effects.html">Анимация с jQuery</a></li><li class="last leaf"><a href="ajax.html">AJAX</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-699a86bc5c9258ffde9a572374f1187d"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="traversing-manipulating.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Продвинутое рисование и события | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../canvasdeepdive.html" />
+<link rel="next" href="chapter04.html" />
+<link rel="prev" href="chapter02.html" />
+<meta name="description" content="В главе 1 мы узнали, что Canvas может заливать фигуры цветом и градиентом. Вы также можете залить фигуру изображениями, заданными как узор. Повторением узора можно управлять подобно фоновым изображениям в CSS. Как и градиенты, узоры рисуется относительно текущей системы координат. Вот почему я сделал сдвиг на 200 пикселей вправо перед рисованием второго прямоугольника. Попробуйте перетащить значения, чтобы увидеть, как это работает." />
+<link rel="canonical" href="chapter03.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Продвинутое рисование и события</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../canvasdeepdive.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Глубокое погружение в Canvas</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Продвинутое рисование и события</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block">
+<script src="../../sites/all/themes/ori/js/vendor/jquery.js"></script>
+<script src="../../sites/all/themes/ori/js/jangle.js"></script>
+<h2>Заливка изображением</h2><p>В главе 1 мы узнали, что Canvas может заливать фигуры цветом и градиентом. Вы также можете залить фигуру изображениями, заданными как узор. Повторением узора можно управлять подобно фоновым изображениям в CSS.</p><p>Как и градиенты, узоры рисуется относительно текущей системы координат. Вот почему я сделал сдвиг на 200 пикселей вправо перед рисованием второго прямоугольника. <strong>Попробуйте перетащить значения, чтобы увидеть, как это работает.</strong></p><div id="imagefill" class="jangle"> <canvas width="400" height="100"></canvas>
+    <pre><code data-language="javascript">var pat1 = ctx.createPattern(img,'repeat');    
+ctx.fillStyle = pat1;
+ctx.fillRect(<b id="imagefill_var1">0</b>,0,<b id="imagefill_var2">100</b>,100);    
+
+var pat2 = ctx.createPattern(img,'repeat-y');    
+ctx.fillStyle = pat2;
+ctx.translate(200,0);
+ctx.fillRect(<b id="imagefill_var3">0</b>,0,<b id="imagefill_var4">100</b>,100);</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+var img = new Image();
+function drawit(ctx, var1, var2, var3, var4) {
+var pat1 = ctx.createPattern(img,'repeat');
+ctx.fillStyle = pat1;
+ctx.fillRect(var1,0,var2,100);
+var pat2 = ctx.createPattern(img,'repeat-y');
+ctx.fillStyle = pat2;
+ctx.translate(200,0);
+ctx.fillRect(var3,0,var4,100);
+}
+img.onload = function() {
+console.log('image was loaded');
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = { var1:0, var2:100, var3:0, var4:100 };
+tangle.setup("imagefill");
+};
+img.src = '/assets/images/canvasdeepdive/tile.png';
+});
+</script>
+<p>Обратите внимание, что заливка изображением работает, только если изображение уже загружено, так что не забудьте делать рисование из функции обратного вызова <span class="attribute">onload</span>.</p><h2>Прозрачность</h2><p>Canvas API позволяет управлять прозрачностью через свойство <span class="var">globalAlpha</span>. В следующей демонстрации рисуется два красных перекрывающихся квадрата, через которые видны изменения <span class="var">globalAlpha</span> перед каждой операцией рисования.</p><div id="opacitydemo" class="jangle"> <canvas width="400" height="100"></canvas>
+    <pre><code data-language="javascript">ctx.fillStyle = 'red';
+// делим на 100 чтобы получить дробь между 0 и 1
+ctx.globalAlpha = <b id="opacitydemo_var1">50</b>/100; 
+ctx.fillRect(0,0,50,50);
+ctx.globalAlpha = <b id="opacitydemo_var2">30</b>/100;
+ctx.fillRect(25,25,50,50);
+ctx.globalAlpha = 1.0;</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, var1, var2, var3, var4) {
+ctx.fillStyle = 'red';
+// делим на 100 чтобы получить дробь между 0 и 1
+ctx.globalAlpha = var1/100;
+ctx.fillRect(0,0,50,50);
+ctx.globalAlpha = var2/100;
+ctx.fillRect(25,25,50,50);
+ctx.globalAlpha = 1.0;
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {var1:50, var2: 30};
+tangle.setup("opacitydemo");
+});
+</script>
+<p>Настройки прозрачности работают со всеми операциями рисования. Попробуйте изменить значения прозрачности, чтобы увидеть эффект. Не забудьте вернуть его обратно в 1 после всего, чтобы не оказать влияние на дальнейшее рисование. Свойство <span class="var">globalAlpha</span> должно быть значением от 0 до 1, иначе оно будет проигнорировано (или может вызвать неожиданное поведение на некоторых платформах).</p><h2>Трансформация</h2><p>В главе о диаграммах мы рисовали один и тот же прямоугольник снова и снова только с разными координатами х и у. Вместо модификации этих координат мы могли бы использовать функцию <span class="var">translate</span>. Каждую итерацию цикла мы можем вызывать <span class="var">translate</span> со 100 пикселями для перемещения следующего столбца вправо.</p><div id="translatedemo" class="jangle"> <canvas width="500" height="100"></canvas>
+    <pre><code data-language="javascript">ctx.fillStyle = "red";
+for(var i=0; i&lt;data.length; i++) {
+    var dp = data[i];
+    ctx.translate(<b id="translatedemo_var1">100</b>, 0);
+    ctx.fillRect(0,0,50,dp);
+}</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+var data = [10,20,60,5];
+function drawit(ctx, var1, var2, var3, var4) {
+ctx.fillStyle = "red";
+for(var i=0; i<data.length; i++) {
+var dp = data[i];
+ctx.translate(var1, 0);
+ctx.fillRect(0,0,50,dp);
+}
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {var1:100};
+tangle.setup("translatedemo");
+});
+</script>
+<p><strong>Попробуйте передвигать переменную х</strong>, чтобы увидеть, как эффект проявляет себя на графике.</p><p>Как и большинство двумерных API, Canvas поддерживает стандартные функции трансформации <span class="var">translate</span>, <span class="var">rotate</span> и <span class="var">scale</span>. Это позволяет рисовать фигуры и трансформировать их на экране без ручного вычисления новых точек. Canvas решает математику за вас. Вы также можете комбинировать трансформации, вызывая их по очереди. Например, чтобы нарисовать прямоугольник, сдвинуть его в центр, а затем повернуть на 30&nbsp;градусов вы можете сделать следующее:</p><div id="rotatedemo" class="jangle"> <canvas width="200" height="200"></canvas>
+    <pre><code data-language="javascript">ctx.fillStyle = "red";
+ctx.translate(<b id="rotatedemo_x1">50</b>,<b id="rotatedemo_y1">50</b>);
+// преобразуем углы в радианы
+var rads = <b id="rotatedemo_rot1">30</b> * Math.PI*2.0/360.0;
+ctx.rotate(rads)
+ctx.fillRect(0,0,100,100);</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, x1, y1, rot1) {
+ctx.fillStyle = "red";
+ctx.translate(x1,y1);
+// преобразуем углы в радианы
+var rads = rot1 * Math.PI*2.0/360.0;
+ctx.rotate(rads)
+ctx.fillRect(0,0,100,100);
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {x1:50,y1:50,rot1:30};
+tangle.setup("rotatedemo");
+});
+</script>
+<p>Каждый раз, когда вы вызываете <span class="var">translate</span>, <span class="var">rotate</span> или <span class="var">scale</span> она добавляется к предыдущей трансформации. Со временем это может привести к путанице, конечно. Вы можете отменить трансформацию так:</p>
+<pre><code data-language="javascript">for(var i=0; i&lt;data.length; i++) {
+  c.translate(40+i*100, 460-dp*4);
+  var dp = data[i];
+  c.fillRect(0,0,50,dp*4);
+  c.translate(-40-i*100, -450+dp*4);
+}</code></pre>
+<p>Но приходится писать много надоедливого кода. Если вы однажды забыли отменить его, то окажетесь взвинченным и потратите часы на просмотр кода ради этой одной ошибки. Вместо этого Canvas предлагает API для сохранения состояний.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Сохранение состояния</h2><p>Объект <span class="var">context2D</span> представляет текущее состояние рисунка. В этой книге я всегда использую переменную <span class="var">ctx</span> для хранения этого контекста. Состояние включает в себя текущую трансформацию, цвета заливки и обводки, текущий шрифт и некоторые другие переменные. Вы можете сохранить это состояние переместив его в стек с помощью функции <span class="var">save()</span>. После сохранения состояния можно вносить изменения, а затем восстановить в прежнее состояние функцией <span class="var">restore()</span>. Canvas заботится о бухгалтерии за вас. Вот предыдущий пример переписанный с сохранением состояния. Обратите внимание, что нам не надо делать шаг для отмены <span class="var">translate</span>.</p>
+<pre><code data-language="javascript">for(var i=0; i&lt;data.length; i++) {
+  c.save();
+  c.translate(40+i*100, 460-dp*4);
+  var dp = data[i];
+  c.fillRect(0,0,50,dp*4);
+  c.restore();
+}</code></pre>
+<h2>Маскирование</h2><p>Иногда вам нужно нарисовать только часть фигуры. Вы можете сделать это с помощью функции <span class="var">clip</span>. Она берёт текущую фигуру и использует её в качестве маски для дальнейшего рисования. Это означает, что любой рисунок будет виден только внутри маски. Всё, что вы рисуете за пределами маски, не будет показано на экране. Это может быть полезно, когда вы хотите создать сложную графику за счёт комбинирования фигур или когда вы желаете обновить только часть экрана для повышения производительности. Вот пример, где используется треугольник в качестве маски:</p><div id="clippingdemo" class="jangle"> <canvas width="400" height="200"></canvas>
+    <pre>// рисуем прямоугольник
+ctx.fillStyle = 'red';
+ctx.fillRect(0,0,400,100);
+
+// создаём треугольный контур
+ctx.beginPath();
+ctx.moveTo(200,<b id="clippingdemo_var1">50</b>);
+ctx.lineTo(250,150);
+ctx.lineTo(150,150);
+ctx.closePath();
+
+// обводим треугольник, чтобы его увидеть
+ctx.lineWidth = 10;
+ctx.stroke();
+
+// используем треугольник как маску
+ctx.clip();
+// заливаем прямоугольник жёлтым цветом
+ctx.fillStyle = 'yellow';
+ctx.fillRect(0,0,400,100);
+</pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, var1, var2, var3) {
+// рисуем прямоугольник
+ctx.fillStyle = 'red';
+ctx.fillRect(0,0,400,100);
+// создаём треугольный контур
+ctx.beginPath();
+ctx.moveTo(200,var1);
+ctx.lineTo(250,150);
+ctx.lineTo(150,150);
+ctx.closePath();
+// обводим треугольник, чтобы его увидеть
+ctx.lineWidth = 10;
+ctx.stroke();
+// используем треугольник как маску
+ctx.clip();
+// заливаем прямоугольник жёлтым цветом
+ctx.fillStyle = 'yellow';
+ctx.fillRect(0,0,400,100);
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {var1:50};
+tangle.setup("clippingdemo");
+});
+</script>
+<p>Обратите внимание, что пересечение красного прямоугольника и треугольника заливается жёлтым цветом. Заметьте также, что нижняя часть треугольника имеет толстую границу, а верхняя часть имеет более тонкую границу. Это происходит потому, что граница центрируется по реальным геометрическим краям треугольной фигуры. Жёлтый накрывает внутреннюю границу, когда она обрезается треугольником, но за пределами граница остаётся не накрытой.</p><h2>События</h2><p>Canvas не определяет никаких новых событий. Вы можете отслеживать те же события мыши и касания, с которыми вы работали где-то ещё. Это и хорошо и плохо.</p><p>Canvas только выглядит прямоугольной областью пикселей в браузере. Браузер не знает ни о каких-либо нарисованных вами фигур. Если вы перетащите курсор мыши за пределы холста, то браузер отправит вам стандартные события перетаскивания для холста целиком, а не к чему-то конкретному внутри холста. Это означает, что если вы хотите делать особые штуки, вроде создания кнопок или инструментов рисования, то вам самостоятельно придётся обрабатывать события путём преобразования исходных событий мыши браузера в собственную модель данных.</p><p>Вычисление, какая фигура сейчас находится под курсором мыши, может быть довольно трудным. К счастью у Canvas есть API для помощи в этом: <span class="var">isPointInPath</span>. Эта функция сообщит вам, если заданная координата располагается внутри текущего контура. Вот простой пример:</p>
+<pre><code data-language="javascript">c.beginPath();
+c.arc(
+  100,100, 40,  // окружность радиусом 40 пикселей с центром в 100,100
+  0,Math.PI*2,  // от 0 до 360 градусов для заливки окружности
+);
+c.closePath();
+var a = c.isPointInPath(80,0);     // возвращает true
+var b = c.isPointInPath(200,100);  // возвращает false</code></pre>
+<p>Другой вариант заключается в использовании библиотеки, такой как <a href="https://github.com/joshmarinacci/aminogfx">Amino</a>, которая позволяет работать в терминах фигур вместо пикселей. Она будет обрабатывать события и перерисовывать за вас.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/canvas">Canvas</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джош Мариначи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 28.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/canvasdeepdive/chapter02'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/canvasdeepdive/chapter04'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter02.html" title="На предыдущую страницу">Практика: создание диаграмм</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter04.html" title="На следующую страницу">Анимация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter01.html">Основы рисования</a></li><li class="leaf"><a href="chapter02.html">Практика: создание диаграмм</a></li><li class="leaf active-trail"><a href="chapter03.html" class="active-trail active">Продвинутое рисование и события</a></li><li class="leaf"><a href="chapter04.html">Анимация</a></li><li class="leaf"><a href="chapter05.html">Создание игры</a></li><li class="leaf"><a href="chapter06.html">Буферы пикселей и другие эффекты</a></li><li class="leaf"><a href="chapter07.html">3D-графика через WebGL и ThreeJS</a></li><li class="leaf"><a href="chapter08.html">WebGL-практикум с ThreeJS: 3D автомобиль</a></li><li class="leaf"><a href="chapter09.html">Введение в WebAudio</a></li><li class="leaf"><a href="chapter10.html">Доступ к веб-камере через getUserMedia()</a></li><li class="leaf"><a href="chapter11.html">Реальные примеры и инструменты</a></li><li class="last leaf"><a href="chapter12.html">Мобильные устройства и оптимизация производительности</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-73e3c350d33cdc5583a8a74674745b80"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter03.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Производительность и организация | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="detailed-css-positioning.html" />
+<link rel="prev" href="../advanced-html-css.html" />
+<meta name="description" content="Возможность писать HTML и CSS с твёрдым пониманием веб-технологий — это большой опыт. Но по мере роста кода и трафика сайта, в игру вступает новый набор навыков, тот, который является чрезвычайно важным как во время разработки, так и для пользовательского опыта. Знание основ производительности и организации сайта может оказать большое значение." />
+<link rel="canonical" href="performance-organization.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Производительность и организация</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Производительность и организация</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Возможность <a href="../learn-html-css/writing-your-best-code.html">писать HTML и CSS</a> с твёрдым пониманием веб-технологий — это большой опыт. Но по мере роста кода и трафика сайта, в игру вступает новый набор навыков, тот, который является чрезвычайно важным как во время разработки, так и для пользовательского опыта. Знание основ <a href="http://developer.yahoo.com/performance/rules.html">производительности</a> и организации сайта может оказать большое значение.</p><p>Организация и архитектура кода может существенно повлиять не только на скорость разработки, но и на скорость отображения страниц. Обе они могут вызвать значительные проблемы не только для разработчиков, но и для пользователей. Найдите время чтобы спроектировать правильную структуру кода и определите, как разные компоненты будут работать совместно&nbsp;— это может ускорить готовый сайт и улучшит ваш опыт во всём.</p><p>Кроме того, эти несколько небольших шагов по улучшению производительности сайта могут окупиться в виде дивидендов. <a href="http://stevesouders.com/hpws/rules.php">Производительность сайта</a> напоминает правило 80/20, где 20% оптимизации ускорит примерно 80% сайта.</p><h2>Стратегия и структура</h2><p>Первая часть по улучшению производительности и организации сайта вращается вокруг определения хорошей стратегии и структуры для разработки кода. В частности, построение строгой архитектуры папок, изложение шаблонов дизайна и поиск способов повторного использования типового кода.</p><h3>Архитектура стиля</h3><p>Вопрос, как организовать стили, сводится к личным предпочтениям и тому, что является лучшим для конкретного сайта, но в целом, есть передовой опыт, которому стоит следовать. Один из них включает в себя разделение стилей на основе смысла, который включает создание папок для общих базовых стилей, компонентов пользовательского интерфейса и модулей бизнес-логики.</p>
+<pre># Базовые стили
+  – normalize.css
+  – layout.css
+  – typography.css
+  
+# Компоненты
+  – alerts.css
+  – buttons.css
+  – forms.css
+  – list.css
+  – nav.css
+  – tables.css
+  
+# Модули
+  – aside.css
+  – footer.css
+  – header.css</pre>
+<p>Описанная выше архитектура включает в себя три папки, все с отдельными группами стилей. Здесь цель&nbsp;— <strong>начать думать о сайтах как о системах</strong>, а не как отдельных страницах и архитектура кода должна отражать это мышление. Обратите внимание, что здесь нет никаких стилей конкретных страниц.</p><p>Папка с базовыми стилями включает в себя общие стили и переменные, которые будут использоваться по всему сайту, к примеру, для макета и типографии. Папка с компонентами включает в себя стили для определённых элементов пользовательского интерфейса, которые разбиты на различные файлы компонентов, таких как предупреждения и кнопки. Наконец, папка с модулями включает в себя стили для разных разделов страницы, которые определяются в соответствии с потребностями бизнеса.</p><p>Стили компонентов — это чисто интерфейс и у них нет ничего общего с основной бизнес-логикой сайта. Модули включают в себя стили, характерные для бизнес-логики. При разметке модуля в HTML он обычно использует различные компоненты пользовательского интерфейса. Например, боковая панель страницы может содержать список и кнопку, стили которых определены в стилях компонента, в то время как другие стили, необходимые для боковой панели, наследуются от стиля модуля. Разделение стиля поощряет хорошо продумывать пресеты и возможности стилей, которые будут широко распространяться и использоваться повторно.</p><p>Стратегия организации стилей это не совсем новый путь и она уже упоминалась в разных методологиях CSS, включая объектно-ориентированный CSS (OOCSS) и SMACSS. Эти методологии имеют своё собственное мнение о структуре, а также о том, как использовать стили.</p><h3>Объектно-ориентированный CSS</h3><p>Методология <a href="http://oocss.org">объектно-ориентированного CSS</a> впервые была описана Николь Салливан в её работе по написанию стилей для больших сайтов. Объектно-ориентированный CSS определяет два принципа, которые помогут создавать масштабируемые веб-сайты со строгой архитектурой и рациональным количеством кода. Эти два принципа включают в себя:</p><ul><li>разделение структуры и оформления;</li><li>разделение содержимого и контейнера.</li></ul><p>В целом, разделение структуры и оформления включает отделение компоновки элемента от темы сайта. Структура модуля должна быть прозрачной, позволяя другим стилям наследоваться и отображается без конфликтов. Чаще это требует правильной сетки и структуры макета, наряду с хорошо продуманными модулями.</p><p>Разделение содержания и контейнера включает в себя удаление зависимости у вложенных дочерних элементов от родительского элемента. Заголовок должен выглядеть так же, независимо от его родительского контейнера. Чтобы достичь этого, элементы должны наследовать стили по умолчанию, затем расширены несколькими классами при необходимости.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;alert alert-error&quot;&gt;
+  &lt;p class=&quot;msg&quot;&gt;...&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.alert {...}
+.alert-error {...}
+.msg {...}</code></pre>
+<h3>SMACSS</h3><p>Похожей стратегии придерживается <a href="http://smacss.com">SMACSS</a> (Scalable and Modular Architecture for CSS, масштабируемая и модульная архитектура для CSS), методология, разработанная Джонатаном Снуком. Масштабируемая и модульная архитектура для CSS способствует разбиению стилей на пять основных категорий, в том числе:</p><ul><li>Основа</li><li>Структура</li><li>Модуль</li><li>Состояние</li><li>Тема</li></ul><p>Основа включает в себя стили базовых элементов и охватывает общие значения по умолчанию. Структура затем устанавливает размеры и стили сетки разных элементов, определяет их компоновку. Стили модуля&nbsp;— это более конкретные стили, ориентированные на отдельные части страницы, такие как навигация или её основные особенности. Стили состояния затем используются для дополнения или переопределения других стилей в том случае, если модуль включает альтернативное состояние, к примеру, активную вкладку. Наконец, тема может быть добавлена, когда включены стили, основанные на оформлении или внешнем виде разных модулей.</p><p>HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;alert is-error&quot;&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>CSS</p>
+<pre><code data-language="css">.alert {...}
+.alert.is-error {...}
+.alert p {...}
+.alert.is-error p {…}</code></pre>
+<p>В приведённом выше примере класс <span class="class">alert</span> попадает в категорию модуль, в то время как класс <span class="class">is-error</span> попадает в категорию состояние. Стили от каждой из этих категорий затем наследуются по необходимости.</p><h3>Выбор методологии</h3><p>Выбор, какую методологию использовать, в любом случае полностью зависит <a href="http://viget.com/inspire/css-squareoff">от вас</a> и что вам нравится, то лучше для данного веб-сайта. Вообще говоря, сочетание OOCSS и SMACSS работает хорошо, заимствуя предпочитаемые вами принципы каждой методологии.</p><h2>Производительность селекторов</h2><p>Одной функциональностью CSS часто неосознанно злоупотребляют — это <a href="http://csswizardry.com/2011/09/writing-efficient-css-selectors/">селекторы</a>. Значительное внимание в CSS отдается свойствам и значениям. Пока эти стили применяются к правильному элементу, всё выглядит нормально. Это очень плохое допущение. Выбор элементов в CSS влияет на производительность, в том числе, на то, как быстро отображается страница, а также как на практике вписать стили в общую архитектуру сайта.</p><h3>Сохраняйте селекторы короткими</h3><p>Есть несколько преимуществ, зачем сохранять селекторы CSS при возможности короткими. Они включают в себя минимизацию специфичности, что позволяет лучше наследоваться и переноситься, плюс повышение эффективности. Длинные, более точные селекторы снижают производительность, поскольку они заставляют браузер отображать каждый отдельный селектор типа справа налево. Это также накладывает бремя на все остальные селекторы, чтобы они стали более специфичными.</p>
+
+<pre><code data-language="css">/* Плохо */
+header nav ul li a {...}
+
+/* Хорошо */
+.primary-link {...}
+
+/* Плохо */
+button strong span {...}
+button strong span .callout {...}
+
+/* Хорошо */
+button span {...}
+button .callout {…}</code></pre>
+<p>В приведённом выше коде первый селектор весьма специфичен и может быть намного быстрее идентифицирован и показан с помощью класса. Кроме того, использование класса в этом случае значительно снижает необходимость определения родителей этого элемента, что позволяет элементу со временем менять своё местоположение без нарушения каких-либо стилей.</p><p>Второй пример включает в себя более короткие селекторы, чем в первом примере, но они могут быть улучшены путём обеспечения такого же уровня специфичности для каждого селектора. Избегайте применения чрезмерно конкретных селекторов, взамен это уменьшит шанс нарушения должного порядка элементов при их изменении. Удалив некоторые отдельные блоки селекторов и дав всем селекторам одинаковую силу, всё это позволит им лучше взаимодействовать.</p><p>Вообще, цель коротких селекторов — уменьшить специфичность, создать чистый, более отзывчивый код.</p><h3>Предпочитайте классы</h3><p>Классы это хорошо, потому что они отображаются быстро, позволяют повторно использовать стили и широко применяются при создании сайта. Существуют общие методы применения классов, которые позволяют увидеть, что классы работают должным образом.</p><p>Поскольку селекторы отображаются справа налево, важно следить за <strong>ключевым селектором</strong>. Это селектор в самом конце, крайний справа. Ключевой селектор имеет решающее значение, поскольку он определяет первый элемент, который браузер собирается найти. Плохой ключевой селектор может отправить браузер охотиться на диких гусей. Не бойтесь использовать класс, чтобы сделать элемент более уникальным, просто во благо производительности.</p><p>Кроме того, не предваряйте селектор класса элементом. Это запрещает стилям применяться к разным элементам и повышает общую специфичность селектора.</p>
+<pre><code data-language="css">/* Плохо */
+#container header nav {...}
+
+/* Хорошо */
+.primary-nav {...}
+
+/* Плохо */
+article.feat-post {...}
+
+/* Хорошо */
+.feat-post {…}</code></pre>
+<p>Стоит также отметить — держитесь по возможности подальше от идентификаторов, поскольку они чрезмерно специфичны и не допускают любых повторений. В конце концов применение идентификатора не сильно отличается от использования <span class="attribute">!important</span>.</p><h2>Повторное использование кода</h2><p>Одно из самых больших падений производительности приходит с раздуванием размера файла и ненужным отображением в браузере. Одним из быстрых способов, который поможет во многом сократить размеры CSS-файла, является повторное, насколько это возможно, использование стилей. Любые повторяющиеся стили или шаблоны интерфейса должны быть объединены, задействуя общий код. Если два модуля используют одинаковый фон, закругленные уголки и тень у блока, нет причин явно указывать те же стили два раза. Вместо этого они могут быть объединены в одном классе, стили при этом пишутся один раз.</p><p>Повторно используемый код не должен работать за счёт семантики. Одним из методов может быть соединение селекторов вместе, разделяя их запятой и позволяя одинаковым стилям наследоваться сразу двум селекторам. Другой подход, который часто встречается в ранее упомянутых методологиях OOCSS и SMACSS, включает в себя привязывание стилей к одному классу, а затем использование нескольких классов в одном элементе.</p>
+<pre><code data-language="css">/* Плохо */
+.news {
+  background: #eee;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
+}
+.social {
+  background: #eee;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
+}
+
+/* Хорошо */
+.news,
+.social {
+  background: #eee;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
+}
+
+/* Ещё лучше */
+.modal {
+  background: #eee;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .25);
+}</code></pre>
+<p>Между этими применяемыми подходами нет большой разницы, так как код используется повторно, а общий размер файла уменьшается.</p><h2>Минимизация и сжатие файлов</h2><p>Простое удаление дублирующего и ненужного кода является лучшим способом для сокращения размера файла, однако существуют и дополнительные пути. Один из способов включает <a href="http://www.hanselman.com/blog/TheImportanceAndEaseOfMinifyingYourCSSAndJavaScriptAndOptimizingPNGsForYourBlogOrWebsite.aspx">минимизацию</a> и сжатие файлов, таких как HTML, CSS и JavaScript. Кроме того, могут быть сжаты изображения, путём удаления ненужных комментариев и цветовых профилей.</p><h3>Сжатие gzip</h3><p>Один из наиболее популярных видов сжатия файлов называется gzip. Сжатие gzip берёт типовые файлы, включая HTML, CSS, JavaScript и др. и определяет похожие строки для их сжатия. Чем больше найдено совпадений строк, тем сильнее файл может быть сжат, таким образом пересылая уменьшенный файл от сервера к браузеру.</p><p>Настройка gzip довольно безболезненная и <a href="http://html5boilerplate.com">HTML5 Boilerplate</a> проделал большую работу для этого. Для файлов gzip требуется добавить файл .htaccess в корневую папку веб-сервера, помечая конкретные файлы, которые будут сжаты. Точка в начале имени файла правильная, так как файл .htaccess является скрытым.</p><p>В HTML5 Boilerplate часть файла .htaccess предназначается для <a href="https://github.com/h5bp/server-configs-apache/blob/master/src/web_performance/compression.conf">сжатия gzip</a>. Копирование части .htaccess или его целиком на ваш собственный сервер поможет настроить сжатие gzip. Кроме того, стоит отметить, что файлы .htaccess работают только на веб-серверах Apache, которые должны включать следующие модули.</p><ul class="list-column-3"><li>mod_setenvif.c</li><li>mod_headers.c</li><li>mod_deflate.c</li><li>mod_filter.c</li><li>mod_expires.c</li><li>mod_rewrite.c</li></ul><p>Вообще говоря, это не является проблемой и некоторые веб-серверы также могут настроить для вас сжатие. В конце концов, сжимать файлы тоже в интересах веб-сервера.</p><h3>Измерение сжатия</h3><p>В браузере Google Chrome веб-инспектор выдаёт изобилие данных связанных с производительностью, особенно во вкладке Network. Кроме того, есть несколько сайтов, которые помогают определить, что сжатие gzip включено.</p><p class="fig"><img src="../../assets/images/advanced-html-css/gzip-overview.png" alt="" width="330" height="113"></p><p class="figsign">Рис. 1.01. Вкладка Network идентифицирует каждый загруженный в браузере файл и выводит размер файла и время его загрузки. Обратите внимание, что применение gzip снизило размеры файлов примерно на 60%.</p><p class="fig"><img src="../../assets/images/advanced-html-css/gzip-detail.png" alt="" width="374" height="353"/></p><p class="figsign">Рис. 1.02. Глядя на файл, конкретно определяют, какой тип сжатия поддерживает браузер. В нашем случае gzip, deflate и sdch помечены как поддерживаемые в заголовке запроса. Глядя на заголовки ответа определяют, что файл был отправлен с помощью метода сжатия gzip.</p><h3>Сжатие изображений</h3><p>Снижение размера текстового файла помогает, но вы получите более высокие результаты путём сжатия размера файлов изображений. Общий размер файлов всех изображений по всему сайту можно быстро сложить и сжатие изображений в значительной степени поможет сохранить размер файлов под контролем.</p><p>Многие люди держатся подальше от сжатия изображений, опасаясь что сжатие подразумевает снижение качества самого изображения. По большей части это неверно и изображения могут быть сжаты без потери вида, путём удаления из него ненужных цветовых профилей и комментариев, без изменения качества изображения в целом.</p><p>Есть несколько инструментов, которые помогают сжимать изображения, двумя лучшими являются <a href="http://imageoptim.com">ImageOptim</a> для Mac и <a href="http://pnggauntlet.com">PNGGauntlet</a> для Windows. Оба они предлагают сжимать наиболее популярные форматы изображений, в частности, файлы JPG и PNG.</p><div class="notePad"><h3>Демонстрация сжатия изображения</h3><p class="fig"><img src="../../assets/images/advanced-html-css/ocean-uncompressed.jpg" alt="" width="660" height="440"/></p><p class="figsign">Несжатое, 455 Кб</p><p class="fig"><img src="../../assets/images/advanced-html-css/ocean-compressed.jpg" alt="" width="660" height="440"/></p><p class="figsign">Сжатое, 401 Кб</p></div><p class="fig"><img src="../../assets/images/advanced-html-css/imageoptim.png" alt="" width="413" height="134"/></p><p class="figsign">Рис. 1.03. С помощью ImageOptim это изображение было уменьшено более, чем на 14% без снижения или потери качества.</p><p>Следует также отметить, что установка размеров изображения в HTML путём добавления атрибутов <span class="attribute">width</span> и <span class="attribute">height</span> действительно <strong>помогает</strong> отобразить страницу быстрее, оставляя соответствующее пространство для изображения. Поймите, эти атрибуты должны быть использованы только для идентификации точных размеров изображения, а не для его сокращения. Использование большого изображения, а затем его уменьшение с помощью атрибутов <span class="attribute">height</span> и <span class="attribute">width</span> является плохой практикой, так как это загружает больше данных, чем необходимо.</p>
+<pre><code data-language="html">&lt;img src=&quot;ocean.jpg&quot; height=&quot;440&quot; width=&quot;660&quot; alt=&quot;Океан&quot;&gt;</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Уменьшение HTTP-запросов</h2><p>После размера файла число HTTP-запросов к сайту — одна из самых больших ловушек производительности. Каждый раз, когда делается запрос к серверу, увеличивается время загрузки страницы. Некоторые запросы должны завершиться до того, как начнутся другие и слишком много запросов может утопить сервер.</p><h3>Объединение файлов</h3><p>Одним из способов и, возможно, простейшим путём уменьшения числа запросов является объединение файлов. В частности, объединить все CSS-файлы в один и все JavaScript-файлы в один. Комбинация этих файлов и их сжатие создаёт один, надеюсь небольшой, HTTP-запрос.</p>
+<pre><code data-language="html">&lt;!-- Плохо --&gt;
+&lt;link href=&quot;css/reset.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/base.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/site.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;!-- Хорошо --&gt;
+&lt;link href=&quot;css/styles.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+
+<p>В общем, CSS для веб-страницы должен быть загружен в <strong>начале</strong> документа в <span class="tag">&lt;head&gt;</span>, в то время как JavaScript для веб-страницы должен быть загружен в <strong>конце</strong>, непосредственно перед закрывающим тегом <span class="tag">&lt;body&gt;</span>. Причина этих уникальных размещений происходит потому, что CSS может быть загружен, пока остальная часть сайта также загружается. JavaScript, с другой стороны, может рендерить только один файл за раз, тем самым запрещая загружать что-то ещё. С одним нюансом&nbsp;— когда JavaScript-файлы асинхронно загружаются после самой страницы, то происходит рендеринг. Другой нюанс, когда помощь JavaScript требуется для отображения страницы, как в случае с HTML5 shiv.</p><h3>Спрайты</h3><p>Практика спрайтов в CSS включает использование одного фонового изображения для нескольких элементов. Цель состоит в том, чтобы сократить число HTTP-запросов, сделанных с использованием нескольких фоновых изображений.</p><p>Чтобы создать спрайт возьмите горстку фоновых изображений, те, которые часто используются, и расположите их в одно изображение. Затем, с помощью CSS добавьте спрайт как фоновое изображение к элементу используя свойство <span class="attribute">background-position</span> для отображения правильной фоновой картинки.</p><p>Представьте, что фоновое изображение скользит позади элементов, только чтобы выставить правильное фоновое изображение для данного элемента. Например, если элемент размером 16&nbsp;пикселей в ширину и 16&nbsp;пикселей в высоту, то он может выставить только фоновое изображение 16&nbsp;пикселей на 16&nbsp;пикселей, а остальная часть фоновой картинки будет скрыта.</p><p class="fig"><img src="../../assets/images/advanced-html-css/sprite-outline.png" alt="" width="161" height="17"/></p><p class="figsign">Рис. 1.04. Вот спрайт для меню текстового редактора; рамки приведены для справки, как будет изменена позиция фонового изображения.</p><p>Используя спрайт выше, меню может быть создано через фон для элемента <span class="tag">&lt;span&gt;</span>. Затем, с помощью классов изменим положение фона спрайта, чтобы показать соответствующие иконки.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;bold&quot;&gt;Жирный текст&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;italic&quot;&gt;Курсивный текст&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;underline&quot;&gt;Подчёркнутый текст&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;size&quot;&gt;Размер текста&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;Маркированный список&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;number&quot;&gt;Нумерованный список&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;quote&quot;&gt;Цитата&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;left&quot;&gt;Выравнивание по левому краю&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;center&quot;&gt;Выравнивание по центру&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;span class=&quot;right&quot;&gt;Выравнивание по правому краю&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  float: left;
+  list-style: none;
+  margin: 2px;
+}
+li a {
+  background: linear-gradient(#fff, #eee);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display: block;
+  padding: 3px;
+}
+li a:hover {
+  border-color: #999;
+}
+li span {
+  background: url(&quot;sprite.png&quot;) 0 0 no-repeat;
+  color: transparent;
+  display: block;
+  font-size: 0;
+  height: 16px;
+  width: 16px;
+}
+.italic {
+  background-position: -16px 0;
+}
+.underline {
+  background-position: -32px 0;
+}
+.size {
+  background-position: -48px 0;
+}
+.bullet {
+  background-position: -64px 0;
+}
+.number {
+  background-position: -80px 0;
+}
+.quote {
+  background-position: -96px 0;
+}
+.left {
+  background-position: -112px 0;
+}
+.center {
+  background-position: -128px 0;
+}
+.right {
+  background-position: -144px 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация спрайтов</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/5yLwy6k0/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Картинки через data:URL</h3><p>Дополнительно, вместо спрайтов закодированные данные изображения могут быть включены в HTML и CSS напрямую через <a href="http://css-tricks.com/data-uris/">data:URL</a>, вообще устраняя необходимость в HTTP-запросе. data:URL прекрасно работает для маленьких изображений, которые никогда не меняются и там, где HTML и CSS в значительной степени кэшируются. Есть, однако, несколько проблем. Картинки может быть сложно менять и поддерживать, что приводит к необходимости генерировать другие данные. И они не работают в старых браузерах, в частности, Internet Explorer&nbsp;7 и ниже.</p><p>Если использование data:URL помогает сократить несколько HTTP-запросов и HTML или CSS могут быть в значительной степени кэшироваться, то преимущества, как правило, перевешивают риск. Несколько инструментов помогут генерировать data:URL, включая <a href="http://websemantics.co.uk/online_tools/image_to_data_uri_convertor/">конвертеры</a> и <a href="http://www.patternify.com">генераторы узоров</a>. Будьте осторожны и всегда дважды проверьте, что data:URL меньше, чем само изображение.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;img height=&quot;100&quot; width=&quot;660&quot; alt=&quot;Волнистый узор&quot; src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAPUlEQVQYV2NkQAO6m73+X/bdxogujiIAU4RNMVwhuiQ6H6wQl3XI4oy4FMHcCJPHcDS6J2A2EqUQpJhohQAyIyYy0nBAGgAAAABJRU5ErkJggg==&quot;&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">div {
+  background: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAPUlEQVQYV2NkQAO6m73+X/bdxogujiIAU4RNMVwhuiQ6H6wQl3XI4oy4FMHcCJPHcDS6J2A2EqUQpJhohQAyIyYy0nBAGgAAAABJRU5ErkJggg==&quot;) repeat;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация data:URL</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/dg2y58vd/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Кэширование общих файлов</h2><p>Ещё один способ помогает сократить HTTP-запросы и подавать страницы быстрее — это кэширование общих файлов. Когда страница загружается первый раз, определённые файлы могут затем кэшироваться. Теперь браузер не должен запрашивать те же файлы при повторном визите в течение достаточно долгого времени. Насколько длинный этот период времени решать вам, всё зависит от того, как долго вы бы хотели, чтобы пользователи удерживали определённые типы файлов.</p><p>Подобно файлам gzip, настройка заголовков для истечения кэширования файлов может быть установлена через файл .htaccess. И снова HTML5 Boilerplate находится на один шаг впереди нас. В их файле .htaccess есть раздел, помеченный как <a href="https://github.com/h5bp/server-configs-apache/blob/master/src/web_performance/expires_headers.conf">Expires headers</a>.</p><p>Изображения, видео, веб-шрифты и типовые медиа-файлы часто кэшируются на месяц, в то время как CSS и JavaScript-файлы часто кэшируются на год. Если CSS или любой другой файл меняется чаще, чем один раз в год, то имя файла должно быть изменено, желательно с учётом версий, чтобы файл загрузился. В качестве альтернативы заголовки могут быть изменены на меньший период времени.</p>
+<pre>ExpiresByType text/css &quot;access plus 1 year&quot;
+ExpiresByType application/javascript &quot;access plus 1 year&quot;</pre>
+<p>Изменение «access plus 1 year» на значение «access plus 1 week» лучше подходит для CSS и JavaScript-файлов, которые меняются еженедельно, но не контролем версий с отдельными именами файлов. Для значений заголовков смотрите справку по <a href="http://httpd.apache.org/docs/current/mod/mod_expires.html">синтаксису</a> mod_expires.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://developer.yahoo.com/performance/rules.html" rel="nofollow">Best Practices for Speeding Up Your Web Site</a> на Yahoo! Developer Network</li><li><a href="http://stevesouders.com/hpws/rules.php" rel="nofollow">Rules for Faster-Loading Web Sites</a> от Steve Sounders</li><li><a href="http://viget.com/inspire/css-squareoff" rel="nofollow">CSS Strategy Square-off</a> от Viget Labs</li><li><a href="http://csswizardry.com/2011/09/writing-efficient-css-selectors/" rel="nofollow">Writing Efficient CSS Selectors</a> от Harry Roberts</li><li><a href="http://www.hanselman.com/blog/TheImportanceAndEaseOfMinifyingYourCSSAndJavaScriptAndOptimizingPNGsForYourBlogOrWebsite.aspx" rel="nofollow">Minifying and Optimizing Files</a> от Scott Hanselman</li><li><a href="http://html5boilerplate.com/" rel="nofollow">HTML5 Boilerplate</a></li><li><a href="http://css-tricks.com/data-uris/" rel="nofollow">Data URIs</a> на CSS-Tricks</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/izobrazheniya">изображения</a></div><div class="field-item odd"><a href="https://webref.ru/metki/sprayty">спрайты</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 23.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/detailed-css-positioning'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../advanced-html-css.html" title="На предыдущую страницу">Продвинутые уроки по HTML и CSS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="detailed-css-positioning.html" title="На следующую страницу">Подробнее о позиционировании</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf active-trail"><a href="performance-organization.html" class="active-trail active">Производительность и организация</a></li><li class="leaf"><a href="detailed-css-positioning.html">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf"><a href="preprocessors.html">Препроцессоры</a></li><li class="leaf"><a href="jquery.html">jQuery</a></li><li class="leaf"><a href="transform.html">Трансформация</a></li><li class="leaf"><a href="transitions-animations.html">Переходы и анимация</a></li><li class="leaf"><a href="feature-support-polyfills.html">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-3df78d6a5b3da9370b84f4afca0f5537"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="performance-organization.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

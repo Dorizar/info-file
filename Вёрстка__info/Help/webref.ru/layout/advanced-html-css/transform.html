@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Трансформация | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="transitions-animations.html" />
+<link rel="prev" href="jquery.html" />
+<meta name="description" content="Вместе с CSS3 появились новые способы позиционирования и изменения элементов. В настоящее время основные техники вёрстки могут быть пересмотрены с альтернативными методами для размера, положения и изменения элементов. Все эти новые техники стали возможными благодаря свойству transform. Свойство transform поставляется в двух разных наборах — двумерных и трёхмерных. В каждом из них есть свои индивидуальные свойства и значения." />
+<link rel="canonical" href="transform.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Трансформация</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Трансформация</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Вместе с CSS3 появились новые способы позиционирования и изменения элементов. В настоящее время основные техники вёрстки могут быть пересмотрены с альтернативными методами для размера, положения и изменения элементов. Все эти новые техники стали возможными благодаря свойству <span class="attribute">transform</span>.</p><p>Свойство <span class="attribute">transform</span> поставляется в двух разных наборах — двумерных и трёхмерных. В каждом из них есть свои индивидуальные свойства и значения.</p><p>В этом уроке мы рассмотрим как двумерные, так и трёхмерные преобразования. Вообще говоря, поддержка браузера для свойства <span class="attribute">transform</span> не велика, но она становится всё лучше с каждым днем. Для большей поддержки рекомендуются вендорные префиксы, однако вам может понадобиться загрузить последнюю версию <a href="https://tools.google.com/dlpage/chromesxs/">Chrome</a>, чтобы увидеть все эти преобразования в действии.</p><h2>Синтаксис transform</h2><p>Фактический синтаксис для свойства <span class="attribute">transform</span> достаточно прост и включает свойство <span class="attribute">transform</span>, за которым идёт значение. Значение определяет тип трансформации, внутри скобок которого следует определённая величина.</p>
+<pre><code data-language="css">div {
+  -webkit-transform: scale(1.5);
+     -moz-transform: scale(1.5);
+       -o-transform: scale(1.5);
+          transform: scale(1.5);
+}</code></pre>
+<p>Обратите внимание, что свойство <span class="attribute">transform</span> включает в себя несколько вендорных префиксов, чтобы получить наилучшую поддержку во всех браузерах. Декларация без префикса идёт последней и чтобы переписать версии с префиксом браузер должен полностью поддерживать свойство <span class="attribute">transform</span>.</p><p>В интересах краткости, остальная часть этого урока не включает префиксы. Они, однако, настоятельно рекомендуется для любого кода в производственной среде. Со временем мы сможем убрать эти префиксы, однако для безопасного подхода оставляйте их в данный момент.</p><h2>Двумерная трансформация</h2><p>Элементы могут быть искажены или преобразованы как в двух, так и в трёх плоскостях. Двумерные преобразования работают по осям х и у, известных как горизонтальная и вертикальная оси. Трёхмерные преобразования работают по осям х и у, а также оси z. Эти трёхмерные преобразования помогают определить не только длину и ширину элемента, но и глубину. Мы начнем с обсуждения, как <a href="http://www.css3files.com/transform/">трансформировать элементы</a> в двумерной плоскости, а затем перейдём к работе с трёхмерными преобразованиями.</p><h3>2d rotate</h3><p>Свойство <span class="attribute">transform</span> принимает несколько разных значений. Значение <span class="value">rotate</span> обеспечивает возможность поворота элемента от 0 до 360 градусов. Положительное значение поворачивает элемент по часовой стрелке, а использование отрицательного значения поворачивает элемент против часовой стрелки. По умолчанию точкой поворота является центр элемента, 50%&nbsp;50%, по горизонтали и вертикали. Позже мы обсудим как вы можете изменить эту точку поворота.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: rotate(20deg);
+}
+.box-2 {
+  transform: rotate(-55deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация rotate</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/crhsbua2/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Серый квадрат за повёрнутым элементом символизирует исходное положение элемента. Кроме того, при наведении курсора мыши на блок он будет вращаться на 360&nbsp;градусов по горизонтали. По ходу урока следите за серым квадратом в каждой демонстрации в качестве указателя на исходное положение элемента и горизонтальное вращение, которые помогают продемонстрировать изменения элемента и глубину.</p><h3>2d scale</h3><p>Использование значения <span class="value">scale</span> в свойстве <span class="attribute">transform</span> позволяет изменить визуальный размер элемента. Значение масштаба по умолчанию равно 1, поэтому любое значение от .99 до .01 визуально уменьшает элемент, в то время как любое значение больше или равное 1.01 визуально увеличивает элемент.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: scale(.75);
+}
+.box-2 {
+  transform: scale(1.25);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация scale</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/p9x197ch/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Можно масштабировать только высоту или ширину элемента, используя значения <span class="value">scaleX</span> и <span class="value">ScaleY</span>. Значение <span class="value">scaleX</span> будет масштабировать ширину элемента, в то время как значение <span class="value">ScaleY</span> будет масштабировать его высоту. Для масштабирования высоты и ширины элемента, но с разными размерами, могут быть одновременно установлены значения по оси х и у. Для этого используя декларацию <span class="value">scale</span>, задав сперва значение по оси x, затем через запятую значение по оси y.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="css">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;figure class=&quot;box-3&quot;&gt;Блок 3&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: scaleX(.5);
+}
+.box-2 {
+  transform: scaleY(1.15);
+}
+.box-3 {
+  transform: scale(.5, 1.15);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация множественного масштабирования</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/kog8yspb/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>2d translate</h3><p>Значение <span class="value">translate</span> работает несколько похоже на относительное позиционирование, толкает и тянет элемент в разных направлениях, не прерывая обычного потока документа. Использование значения <span class="value">translateX</span> изменит положение элемента по горизонтальной оси, значение <span class="value">translateY</span> изменит положение элемента по вертикальной оси.</p><p>Как и со значением <span class="value">scale</span>, чтобы одновременно установить значения по осям x и y, воспользуйтесь значением <span class="value">translate</span> и сперва укажите значение по оси х, затем через запятую значение по оси y.</p><p>Значения расстояния, используемые внутри <span class="value">translate</span>, могут быть любыми основными единицами длины, наиболее часто применяются пиксели или проценты. Положительные значения толкают элемент вниз и вправо от позиции по умолчанию, а отрицательные значения тянут элемент вверх и влево.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt
+&lt;figure class=&quot;box-3&quot;&gt;Блок 3&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: translateX(-10px);
+}
+.box-2 {
+  transform: translateY(25%);
+}
+.box-3 {
+  transform: translate(-10px, 25%);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация translate</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/3shmnmye/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>2d skew</h3><p>Последнее значение <span class="value">skew</span> в группе <span class="attribute">transform</span> используется для искажения элементов по горизонтальной оси, вертикальной оси или двум осям сразу. Синтаксис очень похож на значения <span class="value">scale</span> и <span class="value">translate</span>. Применение значения <span class="value">skewX</span> деформирует элемент по горизонтальной оси, в то время как значение <span class="value">skewY</span> деформирует элемент по вертикальной оси. Чтобы исказить элемент по двум осям, используется значение <span class="value">skew</span>, сперва задаётся значение по оси х, затем через запятую значение по оси у.</p><p>Значение <span class="value">skew</span> измеряется в градусах. Единицы длины, такие как пиксели или проценты, здесь не применимы.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="css">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;figure class=&quot;box-3&quot;&gt;Блок 3&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: skewX(5deg);
+}
+.box-2 {
+  transform: skewY(-20deg);
+}
+.box-3 {
+  transform: skew(5deg, -20deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация skew</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/ojszbkbj/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Комбинация трансформаций</h2><p>Типично использовать несколько преобразований за раз, к примеру, поворот и масштабирование размера элемента одновременно. В этом случае несколько преобразований могут быть скомбинированы вместе. Для их объединения значения идут списком в свойстве <span class="attribute">transform</span> один за другим без использования запятых.</p><p>Применение нескольких деклараций <span class="attribute">transform</span> не будет работать, так как каждая декларация перезапишет всё над ним. Поведение в этом случае такое же, как если бы вы установили <span class="attribute">height</span> для элемента несколько раз.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: rotate(25deg) scale(.75);
+}
+.box-2 {
+  transform: skew(10deg, 20deg) translateX(20px);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация комбинации транформаций</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/9yqLqje7/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>За каждой трансформацией также стоит матрица, явно определяющая поведение <span class="attribute">transform</span>. Использование значений <span class="value">rotate</span>, <span class="value">scale</span>, <span class="value">transition</span> и <span class="value">skew</span> обеспечивает простой путь задать эту матрицу. Тем не менее, если вы расположены к математике и предпочитаете <a href="http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/">глубже погрузиться</a> в преобразования, попробуйте свои силы в использовании значения <span class="value">matrix</span>.</p><div class="notePad"><h3>Демонстрация двумерного куба</h3><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;cube&quot;&gt;
+  &lt;figure class=&quot;side top&quot;&gt;1&lt;/figure&gt;
+  &lt;figure class=&quot;side left&quot;&gt;2&lt;/figure&gt;
+  &lt;figure class=&quot;side right&quot;&gt;3&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.cube {
+  position: relative;
+}
+.side {
+  height: 95px;
+  position: absolute;
+  width: 95px;
+}
+.top {
+  background: #9acc53;
+  transform: rotate(-45deg) skew(15deg, 15deg);
+}
+.left {
+  background: #8ec63f;
+  transform: rotate(15deg) skew(15deg, 15deg) translate(-50%, 100%);
+}
+.right {
+  background: #80b239;
+  transform: rotate(-15deg) skew(-15deg, -15deg) translate(50%, 100%);
+}</code></pre>
+<iframe width="100%" height="300" src="https://jsfiddle.net/webref/d4g2p1fd/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Точка трансформации</h2><p>Как упоминалось ранее, по умолчанию точкой трансформации является центр элемента, 50% по горизонтали и 50% по вертикали. Чтобы изменить это положение, может быть использовано свойство <span class="attribute">transform-origin</span>.</p><p>Свойство <span class="attribute">transform-origin</span> может принимать одно или два значения. Когда задано только одно значение, то оно используется для горизонтальной и вертикальной осях. Если указаны два значения, то первое применяется для горизонтальной оси, а второе для вертикальной.</p><p>Отдельно значения похожи на позиционирование фонового изображения с помощью размера или ключевых слов. Таким образом, <span class="value">0&nbsp;0</span> аналогично значению <span class="value">top&nbsp;left</span>, а <span class="value">100%&nbsp;100%</span> то же самое, что и <span class="value">bottom&nbsp;right</span>. Более конкретные значения также могут быть установлены, к примеру, <span class="value">20px&nbsp;50px</span> задаст исходную точку элемента как 20&nbsp;пикселей от края и 50&nbsp;пикселей вниз.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;figure class=&quot;box-3&quot;&gt;Блок 3&lt;/figure&gt;
+&lt;figure class=&quot;box-4&quot;&gt;Блок 4&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: rotate(15deg);
+  transform-origin: 0 0;
+}
+.box-2 {
+  transform: scale(.5);
+  transform-origin: 100% 100%;
+}
+.box-3 {
+  transform: skewX(20deg);
+  transform-origin: top left;
+}
+.box-4 {
+  transform: scale(.75) translate(-10px, -10px);
+  transform-origin: 20px 50px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация transform-origin</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/rjd6yeg8/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Следует отметить, что свойство <span class="attribute">transform-origin</span> в действительности порождает некоторые проблемы, когда одновременно применяется значение <span class="value">translate</span> у трансформации. Так как они оба пытаются позиционировать элемент, их значения могут вступать в противоречие. Используйте их с осторожностью, лишний раз убедившись что получен желаемый результат.</p><h2>Перспектива</h2><p>Чтобы трёхмерные преобразования работали, элементы нуждаются в перспективе, относительно которой происходит трансформация. Перспектива для каждого элемента может быть представлена как точка схождения, подобно тому, что можно увидеть в трёхмерных чертежах.</p><p>Перспектива для элемента может быть задана двумя разными способами. Один из них включает в себя использование значения <span class="value">perspective</span> в свойстве <span class="attribute">transform</span> для отдельных элементов, а другой включает в себя использование свойства <span class="attribute">perspective</span> для родительского элемента, внутри которого трансформируются дочерние элементы.</p><p>Использование значения <span class="value">perspective</span> в свойстве <span class="attribute">transform</span> прекрасно работает для преобразования одного элемента относительно единичной уникальной перспективы. Если вы желаете преобразовать группу элементов с одинаковой перспективой или точкой схода, то применяйте свойство <span class="attribute">perspective</span> для их родительского элемента.</p><p>Приведённый ниже пример показывает несколько элементов, при трансформации которых используются отдельные перспективы в значении <span class="value">perspective</span>.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;figure class=&quot;box&quot;&gt;Блок 3&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box {
+  transform: perspective(200px) rotateX(45deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация значения perspective</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/kypduyy3/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>В следующем примере показано несколько элементов рядом друг с другом, все преобразованы с использованием одной перспективы, добавленной с помощью свойства <span class="attribute">perspective</span> к их прямому родительском элементу.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;group&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 1&lt;/figure&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 2&lt;/figure&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 3&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.group {
+  perspective: 200px;
+}
+.box {
+  transform: rotateX(45deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация свойства perspective</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/h0kqasmf/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Глубина перспективы</h3><p>В качестве значения перспективы может быть задано <span class="value">none</span> или длина. Значение <span class="value">none</span> отключает любую перспективу, в то время как значение длины установит глубину перспективы. Чем выше значение, тем дальше вид перспективы, создавая тем самым перспективу довольно низкой интенсивности и небольшое трёхмерное изменение. Низкое значение приближает вид перспективы, тем самым создавая перспективу высокой интенсивности и большое трёхмерное изменение.</p><p>Представьте что вы стоите в трёх метрах от трёхметрового куба и сравните его с тем же кубом, стоя в 300&nbsp;метрах от него. На трёх метрах ваше расстоянии до куба такое же, что и размеры куба, поэтому сдвиг перспективы значительно больше, чем на расстоянии 300&nbsp;метров, где размеры куба составляют лишь одну сотую вашего расстояния до куба. Те же самые размышления применяются к значениям глубины перспективы.</p><p class="exampleTitle">HTML</p>  
+  <pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Box 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Box 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+  <pre><code data-language="css">.box-1 {
+  transform: perspective(100px) rotateX(45deg);
+}
+.box-2 {
+  transform: perspective(1000px) rotateX(45deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация глубины перспективы</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/zbg5rvub/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Начало перспективы</h3><p>Как и в случае установки <span class="attribute">transform-origin</span> вы можете также задать <span class="attribute">perspective-origin</span>. Те же значения, используемые для свойства <span class="attribute">transform-origin</span>, могут быть использованы в свойстве <span class="attribute">perspective-origin</span> и оказывают такое же влияние на элемент. Есть большая разница между этими двумя подходами&nbsp;— точка трансформации определяет координаты, используемые для расчёта изменения трансформации, тогда как начало перспективы определяет координаты точки схода преобразования.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;original original-1&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;/div&gt;
+&lt;div class=&quot;original original-2&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;/div&gt;
+&lt;div class=&quot;original original-3&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 3&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.original {
+  perspective: 200px;
+}
+.box {
+  transform: rotateX(45deg);
+}
+.original-1 {
+  perspective-origin: 0 0;
+}
+.original-2 {
+  perspective-origin: 75% 75%;
+}
+.original-3 {
+  perspective-origin: 20px 40px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация perspective-origin</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/nwuo8fxv/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Трёхмерная трансформация</h2><p>Работая с двумерной трансформацией мы можем менять элементы по горизонтальной и вертикальной осям, однако есть и другая ось, вдоль которой мы можем трансформировать элементы. С помощью <a href="http://24ways.org/2010/intro-to-css-3d-transforms">трёхмерных преобразований</a> мы можем менять элементы по оси z, что даёт нам контроль глубины, а также длины и ширины.</p><h3>3d rotate</h3><p>До сих пор мы обсуждали, как повернуть объект по часовой или против часовой стрелки на плоской поверхности. С помощью трёхмерных преобразований мы можем вращать элемент вокруг любых осей. Для этого мы используем три новые значения, включая <span class="value">rotateX</span>, <span class="value">rotateY</span> н <span class="value">rotateZ</span>.</p><p>Значение <span class="value">rotateX</span> позволяет поворачивать элемент вокруг оси х, как будто он сгибается пополам по горизонтали. Значение <span class="value">rotateY</span> позволяет поворачивать элемент вокруг оси у, как будто он сгибается пополам по вертикали. И, наконец, значение <span class="value">rotateZ</span> позволяет вращать элемент вокруг оси z.</p><p>В случае общего значения <span class="value">rotate</span>, описанного ранее, положительные значения поворачивают элемент вокруг его выделенной оси по часовой стрелке, а отрицательные значения поворачивают элемент против часовой стрелки.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;figure class=&quot;box-3&quot;&gt;Блок 3&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: perspective(200px) rotateX(45deg);
+}
+.box-2 {
+  transform: perspective(200px) rotateY(45deg);
+}
+.box-3 {
+  transform: perspective(200px) rotateZ(45deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация 3d rotate</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/4jruve1q/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>3d scale</h3><p>При использовании <span class="value">scaleZ</span> для трёхмерных преобразованиях элементы могут масштабироваться по оси z. Это не очень интересно, когда никаких других трёхмерных преобразований нет, так как нечего, в частности, и масштабировать. В демонстрации ниже масштаб элементов увеличивается и уменьшается по оси z, при этом добавляется значение <span class="value">rotateX</span>, чтобы увидеть поведение <span class="value">scaleZ</span>. При удалении <span class="value">rotateX</span> элементы будут выглядеть не изменёнными.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: perspective(200px) scaleZ(1.75) rotateX(45deg);
+}
+.box-2 {
+  transform: perspective(200px) scaleZ(.25) rotateX(45deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация 3d scale</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/kdcfsn70/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>3D translate</h3><p>Элементы могут также передвигаться по оси z с помощью значения <span class="value">translateZ</span>. Отрицательное значение будет толкать элемент дальше по оси z, что приводит к уменьшению элемента. Положительное значение будет тянуть элемент ближе по оси z, что приводит к увеличению элемента.</p><p>Хотя это может показаться очень похоже на двумерную трансформацию <span class="value">scale</span>, на самом деле у них есть различия. Преобразование происходит по оси z, а не по осям х или у. При работе с трёхмерными преобразованиями возможность переместить элемент по оси z даёт серьёзные преимущества, как при построении куба в примере ниже.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: perspective(200px) translateZ(-50px);
+}
+.box-2 {
+  transform: perspective(200px) translateZ(50px);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация 3d translate</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/jdzbtr27/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>3D skew</h3><p><span class="value">skew</span> является единственной двумерной трансформацией, которая не может быть преобразована в трёхмерном масштабе. Элементы могут быть наклонены по осям х и у, затем преобразованы трёхмерно как хотелось бы, но они не могут быть наклонены по оси z.</p><h3>Сокращённые трёхмерные трансформации</h3><p>Как и в случае комбинаций двумерных преобразований, есть также значения для записи сокращённых трёхмерных преобразований. Эти значения включают <span class="value">rotate3d</span>, <span class="value">scale3d</span>, <span class="value">transition3d</span> и <span class="value">matrix3d</span>. Эти свойства требуют чуть больше математики, а также глубокого <a href="https://developer.mozilla.org/en/CSS/transform-function">понимания</a> матриц, стоящих за каждой трансформацией. Если вам интересно чуть глубже взглянуть на это, тогда вперёд!</p><h2>transform-style</h2><p>В некоторых случаях трёхмерные трансформации будут применяться к элементу, вложенному в родительский элемент, который в свою очередь также трансформируется. В этом случае вложенные преобразованные элементы не будут появляться в своём собственном трёхмерном пространстве. Чтобы позволить вложенным элементам трансформироваться в их собственной трёхмерной плоскости применяется свойство <span class="attribute">transform-style</span> со значением <span class="value">preserve-3d</span>.</p><p>Свойство <span class="attribute">transform-style</span> должно быть добавлено к родительскому элементу, выше любых вложенных преобразований. Значение <span class="value">preserve-3d</span> позволяет преобразованным дочерним элементам появляться в их собственной трёхмерной плоскости, в то время как значение <span class="value">flat</span> заставляет преобразованные дочерние элементы лежать в двухмерной плоскости.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;rotate three-d&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;/div&gt;
+&lt;div class=&quot;rotate&quot;&gt;
+  &lt;figure class=&quot;box&quot;&gt;Блок 2&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.rotate {
+  transform: perspective(200px) rotateY(45deg);
+}
+.three-d {
+  transform-style: preserve-3d;
+}
+.box {
+  transform: rotateX(15deg) translateZ(20px);
+  transform-origin: 0 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация transform-style</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/vh77L4en/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Чтобы увидеть дополнительный пример использования свойства <span class="attribute">transform-style</span> в действии прочитайте <a href="http://www.webkit.org/blog-files/3d-transforms/transform-style.html">объяснение</a> WebKit.</p><h2>backface-visibility</h2><p>При работе с трёхмерными преобразованиями, элементы время от времени трансформируются таким образом, что их поверхность отворачивается от экрана. Это может быть вызвано установкой значения <span class="value">rotateY(180deg)</span>, к примеру. По умолчанию эти элементы показываются с обратной стороны. Так что если вы не желаете видеть эти элементы вообще, установите свойство <span class="attribute">backface-visibility</span> как <span class="value">hidden</span>, и вы спрячете элемент всякий раз, когда он отворачивается от экрана.</p><p>Другим значением для <span class="attribute">backface-visibility</span> является значение по умолчанию <span class="value">visible</span>, оно всегда показывая элемент, независимо от того, в каком направлении он смотрит.</p><p>В демонстрации ниже обратите внимание, что второй блок не отображается, поскольку установлена запись <span class="var">backface-visibility: hidden</span>. Свойство <span class="attribute">backface-visibility</span> имеет более важное значение при использовании анимации.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;figure class=&quot;box-1&quot;&gt;Блок 1&lt;/figure&gt;
+&lt;figure class=&quot;box-2&quot;&gt;Блок 2&lt;/figure&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box-1 {
+  transform: rotateY(180deg);
+}
+.box-2 {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}</code></pre>
+<div class="notePad"><h3>Демонстрация backface-visibility</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/qq44jf28/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div class="notePad"><h3>Демонстрация трёхмерного куба</h3><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;cube-container&quot;&gt;
+  &lt;div class=&quot;cube&quot;&gt;
+    &lt;figure class=&quot;side front&quot;&gt;1&lt;/figure&gt;
+    &lt;figure class=&quot;side back&quot;&gt;2&lt;/figure&gt;
+    &lt;figure class=&quot;side left&quot;&gt;3&lt;/figure&gt;
+    &lt;figure class=&quot;side right&quot;&gt;4&lt;/figure&gt;
+    &lt;figure class=&quot;side top&quot;&gt;5&lt;/figure&gt;
+    &lt;figure class=&quot;side bottom&quot;&gt;6&lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.cube-container {
+  height: 200px;
+  perspective: 300;
+  position: relative;
+  width: 200px;
+}
+.cube { 
+  height: 100%;
+  position: absolute;
+  transform: translateZ(-100px);
+  transform-style: preserve-3d;
+  width: 100%;
+}
+.side {
+  background: rgba(45, 179, 74, .3);
+  border: 2px solid #2db34a;
+  height: 196px;
+  position: absolute;
+  width: 196px;
+}
+.front {
+  transform: translateZ(100px);
+}
+.back {
+  transform: rotateX(180deg) translateZ(100px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}</code></pre>
+<iframe width="100%" height="300" src="https://jsfiddle.net/webref/610ewa3p/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Ресурсы и ссылки</h2><ul><li><a href="http://www.css3files.com/transform/">Transform Property</a> на CSS3 Files</li><li><a href="http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/">Understanding the CSS Transforms Matrix</a> на Dev.Opera</li><li><a href="http://24ways.org/2010/intro-to-css-3d-transforms">An Introduction to CSS 3-D Transforms</a> на 24 Ways</li><li><a href="https://developer.mozilla.org/en/CSS/transform-function">Transform Function</a> на Mozilla Developer Network</li><li><a href="http://www.webkit.org/blog-files/3d-transforms/transform-style.html">Transform Style</a> на WebKit</li><li><a href="http://css-tricks.com/almanac/properties/b/backface-visibility/">Backface Visibility</a> на CSS-Tricks</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/transformaciya">трансформация</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-02f7038b1244010e2db655060faa7e75"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../css/backface-visibility.html">backface-visibility</a></li><li class=""> <a href="../../css/perspective.html">perspective</a></li><li class=""> <a href="../../css/perspective-origin.html">perspective-origin</a></li><li class=""> <a href="../../css/transform.html">transform</a></li><li class=""> <a href="../../css/transform-origin.html">transform-origin</a></li><li class=""> <a href="../../css/transform-style.html">transform-style</a></li><li class=""> <a href="../html5-css3/transform/origin.html">Точка трансформации</a></li><li class=""> <a href="../html5-css3/transform.html">Трансформация</a></li><li class=""> <a href="../../course/css-advanced/transform.html">Трансформация в CSS</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 10.07.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css/jquery'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/transitions-animations'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="jquery.html" title="На предыдущую страницу">jQuery</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="transitions-animations.html" title="На следующую страницу">Переходы и анимация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="performance-organization.html">Производительность и организация</a></li><li class="leaf"><a href="detailed-css-positioning.html">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf"><a href="preprocessors.html">Препроцессоры</a></li><li class="leaf"><a href="jquery.html">jQuery</a></li><li class="leaf active-trail"><a href="transform.html" class="active-trail active">Трансформация</a></li><li class="leaf"><a href="transitions-animations.html">Переходы и анимация</a></li><li class="leaf"><a href="feature-support-polyfills.html">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-1c864fa928bcdfd4fc1413390e83044b"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="transform.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

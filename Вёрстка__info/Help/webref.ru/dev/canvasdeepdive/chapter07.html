@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D-графика через WebGL и ThreeJS | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../canvasdeepdive.html" />
+<link rel="next" href="chapter08.html" />
+<link rel="prev" href="chapter06.html" />
+<meta name="description" content="WebGL — это 3D для Интернета. Как следует из названия, это связано с OpenGL, стандартным промышленным API для аппаратного ускорения 3D-графики. 3D является гораздо сложнее 2D. Мы имеем дело не только с полной системой трёхмерных координат и связанной с этим математикой, но также должны больше беспокоиться о состоянии графического контекста. И это намного, намного больше, чем основные цвета и трансформация двумерного контекста." />
+<link rel="canonical" href="chapter07.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>3D-графика через WebGL и ThreeJS</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../canvasdeepdive.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Глубокое погружение в Canvas</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">3D-графика через WebGL и ThreeJS</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>WebGL — это 3D для Интернета. Как следует из названия, это связано с OpenGL, стандартным промышленным API для аппаратного ускорения 3D-графики. 3D является гораздо сложнее 2D. Мы имеем дело не только с полной системой трёхмерных координат и связанной с этим математикой, но также должны больше беспокоиться о состоянии графического контекста. И это намного, намного больше, чем основные цвета и трансформация двумерного контекста.</p><p>В 2D мы рисуем фигуры с контурами, затем заливаем цветом. Это очень просто. С другой стороны, 3D включает в себя довольно сложный многоступенчатый процесс.</p><p>Для начала в трёхмерном пространстве у нас есть фигуры в виде геометрии, списка точек называемых «векторы». Далее, нам, возможно, потребуется дополнительная информация для фигуры. К примеру, нормаль к поверхности описывает направление, в котором свет отражается от фигуры. Затем, мы должны настроить источники света и камеру. Камера определяет точку зрения. Свет это точка в пространстве, которая определяет, откуда идёт свет. После настройки всего этого применяем шейдеры.</p><p>Шейдеры берут камеру, свет, нормали и геометрию как входные данные и превращают их в фактические пиксели. Я понимаю, что это очень упрощённое объяснение OpenGL, но, пожалуйста, потерпите. Есть два вида шейдеров, один используется для модификации векторов, чтобы создать окончательные отражения света, а другой рисует фактические пиксели. Последнее шейдеры по понятным причинам известны как пиксельные шейдеры.</p><p>Шейдеры по существу это крошечные программы, написанные на специальном языке OpenGL, который выглядит как разновидность Си. Этот код не очень легко писать, потому что он должен быть с массовым параллелизмом. Современный графический процессор, по существу, это специальный супер параллельный многоядерный чип, который делает одну вещь очень эффективно: отображает множество пикселей очень быстро.</p><p>Шейдеры это мощь современной графики, но с ними не так легко работать. Положительной стороной вашего приложения является установка своих собственных шейдеров для создания множества удивительных вещей, но это же и минус. Нет шейдеров встроенных в стандарт WebGL. Вы должны принести свои собственные.</p><p>Выше приведена упрощенная версия, как работает OpenGL ES 2.0 и OpenGL 3 (старые версии OpenGL не содержат шейдеры). Это сложная, но гибкая система. WebGL является по существу тем же самым, но с с JavaScript API вместо Си.</p><p>У нас просто нет времени, чтобы научить вас OpenGL. Мы могли бы легко заполнить всю неделю обучением OpenGL. Даже если бы у нас было время, вы, вероятно, не будет писать код таким образом. Это займёт тысячи строк кода для создания довольно простой игры. Вместо этого вы должны использовать библиотеку или графический движок, чтобы делать низкоуровневые штуки за вас, позволяя на деле сконцентрироваться на вашем приложении. В мире самая популярная WebGL-библиотека называется <a href="http://mrdoob.github.com/three.js/">ThreeJS</a> и является проектом с открытым исходным кодом. Она значительно упрощает построение интерактивных трёхмерных приложений и поставляется с собственным набором многоразовых шейдеров. Вот то, чему я собираюсь научить вас сегодня: ThreeJS.</p><h2>Примеры</h2><p>Вначале несколько примеров.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/cowvszombie.jpg" alt=""></p><p>Эта простая игра называется Зомби против Коров, где вы используете стрелки, чтобы не дать зомби съесть коров. Это полностью трёхмерная игра с аппаратным ускорением. Она выглядит как профессиональная игра, которые вы можете увидеть на Wii, но запускается исключительно в браузере.</p><p>Вот ещё один пример, Google Earth, без установки отдельного приложения.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/webgl_earth.jpg" alt=""></p><p>Вот ещё один интересный пример визуализации аудио в 3D.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/sound_vis_gl.png" alt=""></p><p>Все они были созданы на TreeJS и WebGL.</p><h2>Поддержка браузерами</h2><p>Прежде чем мы пойдём дальше, пара слов о поддержке браузерами. Opera, Firefox и все десктопные браузеры на основе WebKit поддерживают WebGL. Большой дырой является Internet Explorer. IE 10 превосходно поддерживает двумерный холст, но не поддерживает WebGL. Кроме того, Microsoft не анонсировала свои планы по его поддержки в будущем.</p><p>На мобильных устройствах практически нет поддержки WebGL. iOS поддерживает, но только как часть iAd, а не в обычном браузере. Это, однако, говорит о том, что Apple, возможно, добавит его в будущем. Некоторые телефоны на Android поддерживают WebGL, но, как правило, только если установлен альтернативный браузер, вроде Firefox или Opera. Поскольку десктопный Chrome поддерживает WebGL, а Google делает Chrome на Android по умолчанию, надеемся, что получим WebGL как стандарт на Android. Единственное реальное мобильное устройство, которое поставляется с хорошей поддержкой WebGL из коробки — BlackBerry PlayBook. Таким образом, хотя поддержка для мобильных устройств не лучшая, вероятно она улучшится в следующем году или чуть позже. WebGL станет частью будущих веб-стандартов и за ним стоят некоторые большие имена, так что теперь подходящее время для старта.</p><h2>Шаблон ThreeJS</h2><p>ThreeJS — это библиотека с открытым исходным кодом созданная творческим экстраординарным программистом Mr. Doob. Его настоящее имя Рикардо Кабельо, но если вы ищете Mr. Doob, то найдёте его классные графические хаки за последнее десятилетие. ThreeJS это библиотека, которая находится на вершине WebGL. Она автоматизирует раздражающие вещи, так что вы можете сосредоточиться на вашем приложении. Чтобы сделать это ещё проще поработайте с Джеромом Этьеном, он создал BoilerPlate Builder, который позволит вам быстро начать. Все основные вещи, вроде камеры, управление мышью и визуализация уже прилагаются, так что вы можете срау начать работать с приложением ThreeJS. Шаблон содержит несколько настроек, но для наших проектов вы можете просто оставить их по умолчанию.</p><p>Давайте посмотрим, насколько это всё легко. Перейдём к <a href="http://jeromeetienne.github.com/threejsboilerplatebuilder/">BoilerPlate Builder</a> и скачаем новый шаблон. Распакуйте его и откройте страницу index.html в вашем браузере, чтобы убедиться, что всё работает. Вы должны увидеть что-то вроде этого:</p><p class="fig"><img src="../../assets/images/canvasdeepdive/webgl_boilerplate.jpg" alt=""></p><p>Теперь откройте файл index.html в текстовом редакторе. Обратите внимание, что шаблон очень хорошо документирован. Давайте начнём с функции <span class="var">init</span>.</p>
+<pre><code data-language="javascript">// инициализация сцены
+function init(){ 
+  
+  if( Detector.webgl ){ 
+    renderer = new THREE.WebGLRenderer({ 
+      antialias : true,	// более сглаженный результат
+      preserveDrawingBuffer : true	// разрешает скриншоты
+    }); 
+    renderer.setClearColorHex( 0xBBBBBB, 1 ); 
+  // раскомментируйте, если требуется WebGL
+  //}else{ 
+  //	Detector.addGetWebGLMessage(); 
+  //	return true; 
+  }else{ 
+    renderer	= new THREE.CanvasRenderer(); 
+  } 
+renderer.setSize( window.innerWidth, window.innerHeight ); 
+document.getElementById('container').appendChild(renderer.domElement);</code></pre>
+  
+<p>Вначале шаблон инициализирует систему. Она пытается создать визуализацию WebGL, потому что на самом деле ThreeJS поддерживает некоторые другие движки, такие как 2D Canvas. В этом примере мы хотим WebGL. Если он не может создать WebGLRenderer, то вернётся обратно к 2D Canvas. Хотя Canvas работает гораздо медленнее, это может быть лучше, чем ничего. Вам решать.</p><p>Затем устанавливается размер холста и добавляется на страницу как ребёнок контейнера (<span class="tag">&lt;div&gt;</span> объявлен в документе).</p>
+<pre><code data-language="javascript">// добавьте Stats.js - https://github.com/mrdoob/stats.js 
+stats = new Stats(); 
+stats.domElement.style.position	= 'absolute'; 
+stats.domElement.style.bottom	= '0px'; 
+document.body.appendChild( stats.domElement );</code></pre>
+  
+<p>Далее создаётся объект <span class="var">Stats</span> и добавляется к сцене. Это покажет нам, насколько быстро работает наш код.</p>
+<pre><code data-language="javascript">// создание сцены
+scene = new THREE.Scene();</code></pre>
+<p>Окончательно создаётся <span class="var">Scene</span>. ThreeJS использует древовидную структуру под названием граф сцены. Scene это корень такого дерева. Всё, что мы создаём в сцене, будет дочерним узлом в дереве сцены.</p>
+<pre><code data-language="javascript">// помещаем камеру в сцену
+camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000 ); 
+camera.position.set(0, 0, 5); 
+scene.add(camera);</code></pre>
+<p>Далее идёт камера с перспективой. Как правило, вы можете оставить эти значения, но при желании изменить положение камеры.</p>
+<pre><code data-language="javascript">// управление камерой
+cameraControls	= new THREEx.DragPanControls(camera)</code></pre>
+<p><span class="var">DragPanControls</span> является объектом, который будет перемещать камеру вокруг при движении мыши. Вы можете удалить его, если хотите чтобы у вас было другое управление.</p>
+<pre><code data-language="javascript">// прозрачно поддерживает изменение размера окна
+THREEx.WindowResize.bind(renderer, camera); 
+// при нажатии на «p» делает скриншот
+THREEx.Screenshot.bindKey(renderer); 
+// при нажатии на «f» переходит в полноэкранный режим, если поддерживается
+if( THREEx.FullScreen.available() ){ 
+  THREEx.FullScreen.bindKey(); 
+  document.getElementById('inlineDoc').innerHTML	+= &quot;- f for fullscreen&quot;; 
+}</code></pre>
+<p>Обычно мы должны обрабатывать изменение размеров окна вручную, но объект <span class="var">Threex.WindowResize</span> (поддерживается шаблоном, не ThreeJS) будет обрабатывать его для нас. Он будет изменять размер сцены до размеров окна. Следующие строки добавляют полноэкранный режим через клавишу F и создание скриншота через клавишу P.</p><p>Хорошо, теперь мы прошли через шаблон и можем добавить фигуру в сцену. Мы начнём с тора, который имеет форму бублика. ThreeJS поддерживает нескольких стандартных фигур, включая тор.</p>
+<pre><code data-language="javascript">// сюда добавьте свои объекты
+// вы можете заменить эту часть по своему усмотрению
+var geometry	= new THREE.TorusGeometry( 1, 0.42 ); 
+var material	= new THREE.MeshNormalMaterial(); 
+var mesh	= new THREE.Mesh( geometry, material ); 
+scene.add( mesh );</code></pre>
+<p>Объект в этой сцене называется <span class="var">mesh</span>. Он состоит из двух частей: geometry и material. Шаблон использует геометрию тора и стандартный материал, который всегда отражает свет перпендикулярно к поверхности геометрии. Он отражает свет, но не содержит указание цвета.</p>
+<pre><code data-language="javascript">// цикл анимации
+function animate() { 
+  
+  // цикл при запросе цикла анимации
+  // - это должно быть в начале функции 
+  // - подробнее смотри здесь http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating 
+  requestAnimationFrame( animate ); 
+  
+  // визуализация
+  render(); 
+  
+  // обновляем статистику
+  stats.update(); 
+}</code></pre>
+<p>Теперь перейдём вниз к функции <span class="var">animate</span>, которая вызывает сама себя через <span class="var">requestAnimationFrame</span> (о которой мы узнали в главе об анимации), обращается к <span class="var">render()</span> и обновляет статистику.</p>
+<pre><code data-language="javascript">// визуализация сцены
+function render() { 
+  
+  // обновляем управление камерой
+  cameraControls.update(); 
+  
+  // фактическая визуализация сцены
+  renderer.render( scene, camera ); 
+}</code></pre>
+<p>Функция <span class="var">render</span> вызывается для каждого кадра анимации. Сначала она вызывает обновление управления камеры, чтобы разрешить движение камеры в ответ на действия мыши и клавиатуры. Затем вызывает <span class="var">renderer.render</span>, которая уже на деле рисует сцену на экране.</p><p>Это всё. Вот как это выглядит:</p><p class="fig"><img src="../../assets/images/canvasdeepdive/webgl_boilerplate.jpg" alt=""></p><h6>Настройка шаблона</h6><p>Теперь давайте внесём небольшие настройки. Каждый объект в сцене способен масштабироваться, поворачиваться и менять положение. Давайте повернём тор через mesh.rotation.y = Math.PI/2. Обратите внимание, что повороты указываются в радианах, а не градусах. Math.PI/2 составляет 90 градусов.
+  
+<pre><code data-language="javascript">var geometry	= new THREE.TorusGeometry( 1, 0.42 ); 
+var material	= new THREE.MeshNormalMaterial(); 
+var mesh	= new THREE.Mesh( geometry, material ); 
+mesh.rotation.y = Math.PI/2; // 90 градусов</code></pre>
+<p>Теперь закомментируем тор и заменим его чем-то более сложным. ThreeJS может использовать сборные модели так же хорошо, как и базовые вроде тора. <a href="https://ru.wikipedia.org/wiki/Чайник_Юта">Чайник Юта</a> является аналогом «Здравствуй, мир» в трёхмерной графике, так что давайте начнём с него. Геометрия чайник кодируется в виде файла JSON. Мы скачиваем teapot.js из <a href="http://joshondesign.com/p/books/canvasdeepdive-examples/WebGL/">примеров хранилища</a> и поместим его в тот же каталог где index.html. Далее мы загружаем его через <span class="var">THREE.JSONLoader().load()</span>. После завершения загрузки мы добавляем его на сцену в качестве новой модели, снова используя стандартный материал.</p>
+<pre><code data-language="javascript">//scene.add( mesh ); 
+  
+new THREE.JSONLoader().load('teapot.js', function(geometry) { 
+  var material	= new THREE.MeshNormalMaterial(); 
+  var mesh	= new THREE.Mesh( geometry, material ); 
+  scene.add( mesh ); 
+  teapot = mesh; 
+});</code></pre>
+<p>Теперь добавим анимацию и заставим чайник вращаться на каждом кадре. Мы просто установим переменную <span class="var">teapot</span> и настроим поворот на 0.01 в каждом кадре.</p>
+<pre><code data-language="javascript">// обновление управления камеры
+cameraControls.update(); 
+teapot.rotation.y += 0.01;</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Эффекты шейдера</h2><p>Наконец, мы добавим некоторые эффекты пост-обработки. Они называются пост-обработкой, потому что происходят после основного этапа визуализации. Эти части ThreeJS API в некоторой степени экспериментальные и не документированы хорошо, но я собираюсь показать их вам в любом случае, потому что они очень мощные. Пост-обработка требует подключения дополнительных скриптов к нашей странице. Нам потребуются ShaderExtras.js, RenderPass.js, BloomPass.js, ShaderPass.js, EffectComposer.js, DotScreenPass.js и MaskPass.js.</p>
+<pre><code data-language="html">&lt;script src=&quot;vendor/three.js/ShaderExtras.js&quot;&gt;&lt;/script&gt; 
+  
+&lt;script src=&quot;vendor/three.js/postprocessing/RenderPass.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;vendor/three.js/postprocessing/BloomPass.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;vendor/three.js/postprocessing/ShaderPass.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;vendor/three.js/postprocessing/EffectComposer.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;vendor/three.js/postprocessing/DotScreenPass.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;vendor/three.js/postprocessing/MaskPass.js&quot;&gt;&lt;/script&gt; </code></pre>
+
+<p>Начнём с создания новой функции с именем <span class="var">initPostProcessing()</span>. Внутри неё создадим эффект композера.</p>
+<pre><code data-language="javascript">function initPostProcessing() { 
+  
+  composer = new THREE.EffectComposer(renderer);</code></pre>
+<p>Далее, мы добавим проход визуализации, который рендерит всю сцену в текстуру изображения. Мы должны сказать, что это не надо показывать на экране, а затем добавить его к композеру.</p>
+<pre><code data-language="javascript">renderModel = new THREE.RenderPass(scene,camera); 
+renderModel.renderToScreen = false; 
+composer.addPass(renderModel);</code></pre>
+<p>Далее создадим экран с точками. Некоторые значения хороши по умолчанию, но вы можете настроить их, чтобы получить различные эффекты. Этот проход будет идёт на экран, так что мы установим <span class="var">renderToScreen</span> как <span class="value">true</span> и добавим его к композеру.</p>
+<pre><code data-language="javascript">var effectDotScreen = new THREE.DotScreenPass( 
+  new THREE.Vector2(0,0), 0.5, 0.8); 
+effectDotScreen.renderToScreen = true; 
+composer.addPass(effectDotScreen);</code></pre>
+<p>Теперь, нам необходимо обновить функцию render. Вместо вызова <span class="var">renderer.render()</span> мы будем вызовем <span class="var">renderer.clear()</span> и <span class="var">composer.render()</span>.</p>
+<pre><code data-language="javascript">// актуальная визуализация сцены
+//renderer.render( scene, camera ); 
+  
+// альтернативная запись
+renderer.clear(); 
+composer.render();</code></pre>
+<p>Мы также должны вызвать <span class="var">initPostProcessing</span> в последней строке функции <span class="var">init</span>.</p>
+<pre><code data-language="javascript">initPostProcessing();</code></pre>
+<p>Вот как это выглядит. Безумно, ага!</p><p class="fig"><img src="../../assets/images/canvasdeepdive/dot_screen_teapot.png" alt="Чайник. Шейдер создаёт эффект экрана с точками"></p><p class="figsign">Чайник. Шейдер создаёт эффект экрана с точками</p><p>Просто из любопытства, если мы откроем ShaderExtras.js, то увидим фактическую математику шейдеров, которая создаёт шаблон точек и генерирует финальный цвет каждого пикселя.</p>
+<pre><code data-language="javascript">fragmentShader: [ 
+  
+  &quot;uniform vec2 center;&quot;, 
+  &quot;uniform float angle;&quot;, 
+  &quot;uniform float scale;&quot;, 
+  &quot;uniform vec2 tSize;&quot;, 
+  &quot;uniform sampler2D tDiffuse;&quot;, 
+  &quot;varying vec2 vUv;&quot;, 
+  &quot;float pattern() {&quot;,  
+    &quot;float s = sin( angle ), c = cos( angle );&quot;, 
+    &quot;vec2 tex = vUv * tSize - center;&quot;, 
+    &quot;vec2 point = vec2( c * tex.x - s * tex.y, s * tex.x + c * tex.y ) * scale;&quot;, 
+    &quot;return ( sin( point.x ) * sin( point.y ) ) * 4.0;&quot;, 
+  &quot;}&quot;, 
+  
+  &quot;void main() {&quot;,   
+    &quot;vec4 color = texture2D( tDiffuse, vUv );&quot;, 
+    &quot;float average = ( color.r + color.g + color.b ) / 3.0;&quot;, 
+    &quot;gl_FragColor = vec4( vec3( average * 10.0 - 5.0 + pattern() ), color.a );&quot;,   
+  &quot;}&quot; 
+  
+].join(&quot;\n&quot;)</code></pre>
+<h2>Несколько деталей</h2><p>Как и OpenGL, WebGL не поддерживает текст напрямую. Вместо этого вы должны нарисовать текст с помощью 2D Canvas, а затем добавить его в качестве текстуры на плоскость (см.&nbsp;<a href="http://webglfactory.blogspot.com/2011/06/render-text-with-canvas-2d.html">WebGL Factor's explanation</a>).</p><p>Существует библиотека для быстрого построения графических интерфейсов называемая dat-gui. Страница проекта <a href="http://code.google.com/p/dat-gui/">здесь</a>.</p><p>Есть модели загрузчиков для множества форматов. Вы, вероятно, используете загрузчик <a href="https://ru.wikipedia.org/wiki/COLLADA">Collada</a> или JSON. Некоторые из них представляют собой только геометрию, некоторые включают в себя текстуры и анимацию, подобно монструозным загрузчикам. Загрузчики важны, потому что самая сложная геометрия не создаётся через код, вместо этого вы должны использовать геометрию созданную кем-то ещё, вероятно, с применением 3D-инструментов моделирования вроде Blender или Maya.</p><p>По большей части, любые общие советы по улучшению производительности для OpenGL применимы и к WebGL. Например, вы всегда должны кэшировать геометрию и материалы на графическом процессоре.</p><p><a href="http://creativejs.com">CreativeJS</a> содержит много хороших примеров 2D Canvas и WebGL.</p><p>В следующей главе вы выполните практическую лабораторную, в которой создадите новое приложение с автомобилем, который ездит по большой травянистой равнине под звёздным небом.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/canvas">Canvas</a></div><div class="field-item odd"><a href="https://webref.ru/metki/3d">3D</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джош Мариначи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 16.08.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/canvasdeepdive/chapter06'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/canvasdeepdive/chapter08'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter06.html" title="На предыдущую страницу">Буферы пикселей и другие эффекты</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter08.html" title="На следующую страницу">WebGL-практикум с ThreeJS: 3D автомобиль</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter01.html">Основы рисования</a></li><li class="leaf"><a href="chapter02.html">Практика: создание диаграмм</a></li><li class="leaf"><a href="chapter03.html">Продвинутое рисование и события</a></li><li class="leaf"><a href="chapter04.html">Анимация</a></li><li class="leaf"><a href="chapter05.html">Создание игры</a></li><li class="leaf"><a href="chapter06.html">Буферы пикселей и другие эффекты</a></li><li class="leaf active-trail"><a href="chapter07.html" class="active-trail active">3D-графика через WebGL и ThreeJS</a></li><li class="leaf"><a href="chapter08.html">WebGL-практикум с ThreeJS: 3D автомобиль</a></li><li class="leaf"><a href="chapter09.html">Введение в WebAudio</a></li><li class="leaf"><a href="chapter10.html">Доступ к веб-камере через getUserMedia()</a></li><li class="leaf"><a href="chapter11.html">Реальные примеры и инструменты</a></li><li class="last leaf"><a href="chapter12.html">Мобильные устройства и оптимизация производительности</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-17aef71aeffce6ae47f61443e2488497"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter07.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

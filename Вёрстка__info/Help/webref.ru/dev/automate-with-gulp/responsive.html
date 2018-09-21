@@ -1,0 +1,614 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Адаптивный дизайн с Gulp | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../automate-with-gulp.html" />
+<link rel="prev" href="plugins.html" />
+<meta name="description" content="Susy является системой сеток, которая предоставляет большую гибкость для управления макетом сайта. Susy даёт вам всё, чего не может дать ни один другой фреймворк, вроде Bootstrap или Foundation. У меня не найдётся прекрасных слов для описания мощи Susy; есть пост Целла Лью, представляющий Susy и рассказывающий насколько легко вы можете создать с его помощью макет." />
+<link rel="canonical" href="responsive.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Адаптивный дизайн с Gulp</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../automate-with-gulp.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Автоматизация работы с Gulp</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Адаптивный дизайн с Gulp</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p><a href="http://phpocean.com/demo/build">Нажмите сюда</a>, чтобы просмотреть демо-версию и лучше понять, что мы собираемся делать.</p><p>Предварительно позвольте мне рассказать вам немного о Susy и Breakpoint.</p><h2>Susy</h2><p>Susy является системой сеток, которая предоставляет большую гибкость для управления макетом сайта. Susy даёт вам всё, чего не может дать ни один другой фреймворк, вроде Bootstrap или Foundation. У меня не найдётся прекрасных слов для описания мощи Susy; есть пост Целла Лью на <a href="https://css-tricks.com/build-web-layouts-easily-susy/">css-tricks</a>, представляющий Susy и рассказывающий насколько легко вы можете создать с его помощью макет.</p><p>Позвольте показать немного того, как можно использовать Susy для определения макета. Susy работает с Sass, не Less и это также настраивается. Вот простая и минималистская настройка, которая у вас может быть:</p>
+<pre><code data-language="css">@import &quot;susy&quot;
+/* Меняем глобальные настройки Susy по умолчанию */
+$susy: (
+  /* Устанавливаем 12 колонок */
+  columns: 12,
+  /* Устанавливаем основной контейнер в 1120px */
+  container: 1024px
+);</code></pre>
+<p>Теперь предположим, что вам нужен макет страницы подобно текущей, на которой вы читаете этот текст. Страница содержит заголовок, который охватывает весь макет, контент слева занимает 8 колонок и боковая панель занимает 4 колонки. Написать с Susy вы можете так:</p>
+
+<pre><code data-language="css">header{
+  @include span(12);
+}
+.content{
+  @include span(8);
+}
+.content{
+  @include span(4);
+}</code></pre>
+<p>Просто, не так ли? Никакого лишнего шума.</p><h2>Breakpoint</h2><p>Без медиа-запросов нет и адаптивного дизайна. Breakpoint является простым модулем, который позволяет использовать медиа-запросы упрощённым и наглядным путём. Он предназначен для помощи в написании медиа-запросов в Sass так быстро, насколько это возможно. Давайте посмотрим пример применения:</p>
+<pre><code data-language="css">header{
+  @include breakpoint( 320px ){
+    background-color: $white;
+  }
+  @include breakpoint( 768px ){
+    background-color: $red;
+  }
+  @include breakpoint( 1024px ){
+    background-color: $black;
+  }
+}</code></pre>
+<p>Здесь просто меняется цвет фона заголовка каждый раз, когда размер экрана попадает в одну из точек останова. Это просто. Представив как это сочетается с Susy, мы собираемся творить магию.</p><p>Прочитать больше о breakpoint-sass можно <a href="http://breakpoint-sass.com">здесь</a>.</p><h2>Макет проекта</h2><p>Прежде чем идти дальше, позвольте мне показать вам что мы действительно хотим здесь сделать в качестве примера:</p><p class="fig"><img src="../../assets/images/automate-with-gulp/responsive.png" alt=""></p><p>Я думаю вы поняли смысл. Хотя эта концепция может быть просто названа эластичным макетом, я думаю, что в нашем случае правильно иллюстрировать то, что мы хотим получить. Если вы хотите сделать полностью отзывчивый дизайн, то должны обдумать несколько элементов, вроде смены меню, добавления/удаления элементов дизайна на основе размера экрана и др.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Настройка проекта</h2><p>Для этого проекта мы будем использовать систему сборки Gulp для автоматизации некоторых наших задач. И мы будем также использовать Bower для управления нашими пакетами, такими как Susy, Breakpoint. Итак, начнём.</p><p><strong>Шаг 1</strong>: создайте папку и назовите её responsive_blog или любым предпочитаемым именем.</p><p><strong>Шаг 2</strong>: перейдите в папку и запустите npm init, чтобы настроить файл package.jason. Скажите yes для всех шагов.</p><p><strong>Шаг 3</strong>: установите Gulp локально путём выполнения npm install --save-dev gulp.</p><p><strong>Шаг 4</strong>: также установите локально следующие плагины — gulp-sass, gulp-minify, gulp-uglify, gulp-rename, gulp-del, browser-sync и др., запустив npm install --save-dev &lt;имя плагина&gt; или можете просто указать их как зависимости в файле package.json:</p>
+<pre><code data-language="javascript">&quot;devDependencies&quot;: {
+  &quot;browser-sync&quot;: &quot;^2.9.0&quot;,
+  &quot;del&quot;: &quot;^2.0.0&quot;,
+  &quot;gulp-autoprefixer&quot;: &quot;^2.3.1&quot;,
+  &quot;gulp-minify-css&quot;: &quot;^1.2.1&quot;,
+  &quot;gulp-plumber&quot;: &quot;^1.0.1&quot;,
+  &quot;gulp-rename&quot;: &quot;^1.2.2&quot;,
+  &quot;gulp-sass&quot;: &quot;^2.0.4&quot;,
+  &quot;gulp-sourcemaps&quot;: &quot;^1.5.2&quot;
+}</code></pre>
+<p><strong>Шаг 5</strong>: создайте ещё одну папку внутри responsive_blog и назовите её src. Она будет содержать наши исходные файлы. Чтобы сделать папку вы можете выполнить: mkdir src.</p><p><strong>Шаг 6</strong>: создайте файл bower.json запустив bower init и сказав yes для всех шагов. Затем выполните bower install susy breakpoint. Это позволит установить пакеты Bower, в частности Susy и Breakpoint-sass.</p><p><strong>Шаг 7</strong>: создайте gulpfile.js в той же папке, запустив touch gulpfile.js.</p><p>Ваша папка проекта должна выглядеть следующим образом:</p><ul><li>responsive_blog/<ul><li> node_modules/</li><li>src/</li><li>bower_components</li><li>bower.json</li><li>gulpfile.js</li><li>package.json</li></ul></li></ul><p>Если это выглядит красиво, то продолжим.</p><p><strong>Шаг 8</strong>: перейдите в папку src и создайте основной файл, запустив touch index.html.</p><p><strong>Шаг 9</strong>: создайте две папки css и scss внутри src запустив mkdir css scss.</p><p><strong>Шаг 10</strong>: внутри scss создайте новый файл и назовите его styles.scss. Сейчас папка должна выглядеть следующим образом:</p><ul><li>responsive_blog/<ul><li>node_modules/</li><li>bower_components/</li><li>src/<ul><li>css/</li><li>index.html</li><li>scss/<ul><li>styles.scss</li></ul></li></ul></li><li>bower.json</li><li>gulpfile.js</li><li>package.json</li></ul></li></ul><p>Отличная работа!</p><h2>Код</h2><p>Мы только что создали наши папки и файлы. Теперь добавим некоторый код внутрь index.html, gulpfile.js и styles.scss:</p><p class="exampleTitle">index.html</p>
+<pre style="height:500px; overflow:auto"><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Responsive Web Design - Blog&lt;/title&gt;
+  &lt;meta name=&quot;charset&quot; content=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0, maximum-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/styles.min.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;header class=&quot;&quot;&gt;
+      &lt;h2&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;RWD&lt;/a&gt;&lt;/h2&gt;
+      &lt;nav&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;&lt;!-- /header --&gt;
+    &lt;div class=&quot;page-content&quot;&gt;
+      &lt;section class=&quot;latest-posts&quot;&gt;
+        &lt;h1&gt;Latest tutorials&lt;/h1&gt;
+ 
+         &lt;article&gt;
+           &lt;!-- пост блога --&gt;
+           &lt;h2&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;How to create a blog?&lt;/a&gt;&lt;/h2&gt;
+           &lt;p&gt;This shows you how you can create your own blog. 
+           &lt;a href=&quot;&quot; rel=bookmark&gt;Read more&lt;/a&gt;&lt;/p&gt;
+           &lt;footer&gt;
+             By zooboole | 7k views
+           &lt;/footer&gt;
+         &lt;/article&gt;
+
+         &lt;article&gt;
+           &lt;!-- пост блога --&gt;
+           &lt;h2&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;How to create a blog?&lt;/a&gt;&lt;/h2&gt;
+           &lt;p&gt;This shows you how you can create your own blog. 
+           &lt;a href=&quot;&quot; rel=bookmark&gt;Read more&lt;/a&gt;&lt;/p&gt;
+           &lt;footer&gt;
+             By zooboole | 7k views
+           &lt;/footer&gt;
+         &lt;/article&gt;
+      &lt;/section&gt;&lt;!-- /section --&gt;
+  
+      &lt;aside class=&quot;popular-posts&quot;&gt;
+        &lt;h1&gt;Popular&lt;/h1&gt;
+        &lt;article&gt;
+          &lt;!-- пост блога --&gt;
+          &lt;h2&gt;&lt;a href=&quot;&quot; title=&quot;&quot;&gt;How to create a blog?&lt;/a&gt;&lt;/h2&gt;
+          &lt;p&gt;This shows you how you can create your own blog. 
+          &lt;a href=&quot;&quot; rel=bookmark&gt;Read more&lt;/a&gt;&lt;/p&gt;
+          &lt;footer&gt;
+            By zooboole | 7k views
+          &lt;/footer&gt;
+        &lt;/article&gt;
+      &lt;/aside&gt;&lt;!-- /aside --&gt;
+    &lt;/div&gt;
+  
+    &lt;footer class=&quot;footer&quot;&gt;
+      2015 © Responsive Blog, by &lt;a href=&quot;http://zooboole.me&quot;&gt;zooboole&lt;/a&gt;
+    &lt;/footer&gt;&lt;!-- /footer --&gt;
+  &lt;/div&gt;
+  
+&lt;script src=&quot;bower_components/jquery/dist/jquery.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;bower_components/breakpoint/jquery.breakpoint.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p class="exampleTitle">styles.scss</p>
+<pre style="height:500px; overflow:auto"><code data-language="css">@import &quot;../bower_components/susy/sass/_susy.scss&quot;;
+@import &quot;../bower_components/breakpoint-sass/stylesheets/breakpoint&quot;;
+
+@import &quot;reset&quot;;
+@import &quot;variables&quot;;
+
+// Susy
+$susy: (
+  columns: 12,
+  gutters: 1/2,
+  math: fluid,
+  gutter-position: outside,
+);
+html,body{
+  font-family: $font-family-default;
+  font-size:$font-size-default;
+  line-height:$line-height;
+  color:$color-text;
+  background-color: $color-background;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container{
+  @include container($container);
+  background-color:$white;
+}
+
+.page-content{
+  padding:3%;
+  margin:0;
+}
+
+// ***********************************
+// МАЛЕНЬКИЕ УСТРОЙСТВА
+// ***********************************
+@include breakpoint($breakpoint-small) {
+  h1{
+    color: $color-secondary;
+    font-size: $font-size-title;
+  }
+  h2{
+    font-size: 1.2em;
+    margin:0;
+    padding:0;
+  }
+  
+  // Заголовок сайта
+  header{
+    @include span(12);
+    background-color:$color-secondary;
+    padding:0 1%;
+    color: $white;
+    h2{
+      @include span(12);
+      font-size: 1.5em;
+      padding:0 0.4em;
+    }
+    nav{
+      @include span(12);
+    }
+    ul{
+      list-style-type: none;
+      padding:0;
+      margin:0;
+      padding-left:0.1em;
+      li{
+        display: inline-block;
+        a{
+          font-size: 1em;
+          display: block;
+          padding: 0.5em;
+        }
+      }
+    }
+    a{
+      color: $white;
+      &amp;:hover{
+        color: $black;
+      }
+    }
+  }
+  // Последние посты
+  .latest-posts{
+    @include span(12);
+
+    article{
+      border:1px solid $color-background;
+      padding:0.5em;
+      margin-bottom: 1em;
+      p{
+        font-size: 0.9em;
+      }
+      a{
+        color: darken($color-background, 25%);
+      }
+      footer{
+        font-size: 0.9em;
+        color:#333;
+      }
+    }
+  }
+  // Популярные посты
+  .popular-posts{
+    @include span(12);
+    article{
+      background-color:lighten($color-background, 5%);
+      border:1px solid $color-background;
+      padding:0.5em;
+      margin-bottom: 1em;
+      a{
+        color: darken($color-background, 20%);;
+      }
+    }
+  }
+  // Подвал
+  .footer{
+    @include span(12);
+    background-color:$color-secondary;
+    font-size: 1em;
+    padding:0.5em 1%;
+    color: $white;
+    a{
+      color:lighten( $color-primary, 22%);
+      &amp;:hover{
+        color: $black;
+      }
+    }
+  }
+}
+
+// ***********************************
+// СРЕДНИЕ УСТРОЙСТВА
+// ***********************************
+@include breakpoint($breakpoint-medium){
+
+// Здесь мы просто изменим что необходимо модифицировать,
+// потому что предыдущий стиль применяется автоматически
+
+  // Заголовок сайта
+  header{
+    @include span(12);
+    background-color:$color-primary;
+    h2{
+      @include span(3);
+      font-size: 3em;
+    } 
+    nav{
+      @include span(8);
+    }
+    ul{
+      text-align: right;
+      margin-top:0.4em;
+      li{
+        a{
+          font-size: 1.7em;
+        }
+      }
+    }
+  }
+
+  // Последние посты
+  .latest-posts{
+    @include span(6);
+    article{
+      h2{
+        font-size: 1.8em;
+      }
+      border:1px solid $color-background;
+      padding:0.5em;
+      margin-bottom: 2em;
+      clear: both;
+      p{
+        font-size: $font-size-default+50;
+      }
+      a{
+        color: darken($color-background, 25%);
+      }
+      footer{
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  // Популярные посты
+  .popular-posts{
+    @include span(6);
+    padding-left:1em;
+    article{
+      h2{
+        font-size: 1.8em;
+      }
+      background-color:lighten($color-background, 2%);
+      border:1px solid transparent;
+      padding:0.5em;
+      margin-bottom: 1em;
+      p{
+        font-size: $font-size-default+50;
+      }
+      a{
+        color: darken($color-background, 20%);;
+      }
+      footer{
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  // Подвал
+  .footer{
+    @include span(12);
+    background-color:$color-primary;
+    font-size: 1.5em;
+  }
+}
+  
+// ***********************************
+// БОЛЬШИЕ УСТРОЙСТВА
+// ***********************************
+@include breakpoint($breakpoint-large){
+
+// Здесь мы просто изменим что необходимо модифицировать,
+// потому что предыдущий стиль применяется автоматически
+
+  // Заголовок сайта
+  header{
+    @include span(12);
+    background-color:lighten($color-primary, 15%);
+    padding:0%;
+  }
+   // Последние посты
+  .latest-posts{
+    // оставим пустым, это значит что будет применяться предыдущий стиль
+  }
+  // Популярные посты
+  .popular-posts{
+    @include span(6);
+    padding-left:1em;
+    article{
+      h2{
+        font-size: 1.8em;
+      }
+      background-color:lighten($color-background, 2%);
+      border:1px solid transparent;
+      padding:0.5em;
+      margin-bottom: 1em;
+      p{
+        font-size: $font-size-default+50;
+      }
+      a{
+        color: darken($color-background, 20%);;
+      }
+      footer{
+        font-size: 1.3em;
+      }
+    }
+  }
+  // Подвал
+  .footer{
+    padding:0em;
+    background-color:lighten($color-primary, 15%);
+  }
+}</code></pre>
+<p class="exampleTitle">gulpfile.js</p>
+<pre style="height:500px; overflow:auto"><code data-language="javascript">//////////////////////////////////////////////////
+//
+// Включаем задачи
+//
+/////////////////////////////////////////////////
+
+var gulp        = require('gulp'),
+minifycss       = require('gulp-minify-css'),
+sass            = require('gulp-sass'),
+browserSync     = require('browser-sync'),
+reload          = browserSync.reload,
+autoprefixer    = require('gulp-autoprefixer'),
+plumber         = require('gulp-plumber'),
+del             = require('del'),
+rename          = require('gulp-rename'),
+sourcemaps      = require('gulp-sourcemaps');
+
+//////////////////////////////////////////////////
+//
+// Настройка переменных
+// Задаём paths
+//
+/////////////////////////////////////////////////
+var config = {
+  scss    :[ 'src/scss/**/*.scss' ],
+  css     :[ 'src/css/' ],
+  html    :[ 'src/**/*.html' ],
+  build   :[ 'build/' ],
+  src     :[ 'src/' ]
+};
+
+//////////////////////////////////////////////////
+//
+// Задачи для CSS/Sass
+//
+/////////////////////////////////////////////////
+gulp.task('styles',function(){
+  return gulp.src(config.scss)
+    .pipe(sourcemaps.init())
+    .pipe(sass()
+    .on('error', sass.logError))
+    .pipe(autoprefixer('last 3 versions'))
+    .pipe(minifycss())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(''+config.css+''))
+    .pipe(reload({stream:true}));
+});
+
+//////////////////////////////////////////////////
+//
+// Задачи для HTML
+//
+/////////////////////////////////////////////////
+gulp.task('html', function(){
+  return gulp.src(config.html)
+    .pipe(reload({stream:true}));
+});
+
+//////////////////////////////////////////////////
+//
+// Задачи Browser-Sync
+//
+/////////////////////////////////////////////////
+gulp.task('browserSync', function() {
+  browserSync({
+    server: {
+      baseDir: config.src
+    }
+  });
+});
+
+//////////////////////////////////////////////////
+//
+// Задачи сборки
+// Создание папки build, очистка неиспользуемых файлов и папок
+//
+/////////////////////////////////////////////////
+
+// Создание
+gulp.task('build:create', function(){
+  return gulp.src(config.src+'**/*')
+    .pipe(gulp.dest(''+config.build+''));
+});
+
+// Очистка папки build
+gulp.task('build:clean',['build:create'], function(){
+  return del(['build/bower_components/',
+              'build/scss/',
+              'build/css/!(*.min.css)',
+              'build/js/!(*.min.js)'
+            ]);
+});
+
+// Задачи предварительного просмотра приложения
+gulp.task('build:start', function() {
+  browserSync({
+    server: {
+      baseDir: config.build
+    }
+  });
+});
+
+// Удаляем папку build
+gulp.task('build:delete', function(res){
+  return del([config.build+'/**'], res);
+});
+
+// Задача build
+gulp.task('build', ['build:create', 'build:clean']);
+
+//////////////////////////////////////////////////
+//
+// Задача watch
+// Отслеживает любые изменения в файлах CSS, JS и HTML
+//
+/////////////////////////////////////////////////
+gulp.task ('watch', function(){
+  gulp.watch(config.scss, ['styles']);
+  gulp.watch(config.html, ['html']);
+});
+
+//////////////////////////////////////////////////
+// Задача по умолчанию
+/////////////////////////////////////////////////
+
+gulp.task('default', ['watch', 'browserSync','styles','html']);</code></pre>
+
+<p>Хорошо. Мы разработали разные части проекта. Осталось только запустить их. Как вы, возможно, заметили из gulpfile.js, мы просто должны поставить свои задачи в работу.</p><p>Здесь следует рассмотреть два случая:</p><p><strong>Разработка</strong></p><p>Это время, когда вы всё ещё кодируете и вносите изменения в код. В нашем случае достаточно просто выполнить:</p>
+<pre><code>gulp</code></pre>
+<p>Если вы используете мои файлы, выполните следующее:</p>
+<pre><code>npm install
+bower install
+gulp</code></pre>
+<p>При этом скачаются все плагины и требуемые пакеты, после чего gulp выполнит задачи, которые отслеживают любые изменения и автоматически перезагружают страницу.</p><p>Если вы хотите увидеть, как я получил пути к Susy и Breakpoint запустите bower list --path.</p><p class="note">Но есть кое-что с точками останова, о чём мне следует предупредить. Вы должны использовать breakpoint-sass вместо breakpoint. При импорте его в ваши стили будьте аккуратны.</p><p><strong>Публикация</strong></p><p>Этап, когда вы закончили кодирование и хотите получить конечный продукт. У нас есть задачи build. Чтобы их использовать, выполните следующие команды.</p><p>Создание сборки приложения:</p>
+<pre><code>gulp build</code></pre>
+<p>Запустить финальное приложение:</p>
+<pre><code>gulp build:start</code></pre>
+<p>Если вы хотите удалить папку build:</p>
+<pre><code>gulp build:delete</code></pre>
+  <h2>Резюме</h2><p>Это просто пример того, как я бы приступил к созданию такого сайта. Это лишь один рабочий процесс и техника среди множества. Я ожидаю что вы узнали четыре основные вещи из этого урока: рабочий процесс с системой сборки Gulp, как создать адаптивный сайт, как Susy и Breakpoint позволяет нам писать семантичный HTML и как указать сперва мобильные устройства при проектировании адаптивного сайта.</p><p>Признаю, что пропустил много в коде, знайте что это для ясности цели, а иногда я сам не разобрался, как обращаться с этим, потому что всё ещё учусь, как хорошо использовать Susy и Breakpoint. Если у вас есть какие-либо идеи как что-то улучшить, я буду рад принять их.</p><p>Прежде всего, вы также должны быть осведомлены о существования Susy и Breakpoint для вашего следующего проекта. Это великолепные инструменты, которые могут сделать вашу жизнь проще.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/adaptivnyy-dizayn">адаптивный дизайн</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Ахмед Салифу Амиду</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 05.01.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/automate-with-gulp/plugins'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="plugins.html" title="На предыдущую страницу">Рекомендуемые плагины</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="setup.html">Настройка системы сборки</a></li><li class="leaf"><a href="first-task.html">Создание первой задачи</a></li><li class="leaf"><a href="watch.html">Слежение за файлами</a></li><li class="leaf"><a href="sass.html">Компиляция Sass-файла</a></li><li class="leaf"><a href="live-reloading.html">Живая перезагрузка</a></li><li class="leaf"><a href="plugins.html">Рекомендуемые плагины</a></li><li class="last leaf active-trail"><a href="responsive.html" class="active-trail active">Адаптивный дизайн с Gulp</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-23bcc0b125f666cf35c57d65577525b8"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="responsive.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Основы рисования | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../canvasdeepdive.html" />
+<link rel="next" href="chapter02.html" />
+<link rel="prev" href="../canvasdeepdive.html" />
+<meta name="description" content="Canvas — API для рисования, недавно добавленный в HTML и поддерживается большинством браузеров (даже Internet Explorer 9). Canvas позволяет рисовать всё, что вы хотите прямо в браузере без использования плагинов, вроде Flash или Java. Canvas с его обманчиво простым API может революционно преобразовать создание веб-приложений для всех устройств, а не только десктопных. Эти скриншоты позволят вам почувствовать вкус возможностей Canvas." />
+<link rel="canonical" href="chapter01.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Основы рисования</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../canvasdeepdive.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Глубокое погружение в Canvas</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Основы рисования</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block">
+<script src="../../sites/all/themes/ori/js/vendor/jquery.js"></script>
+<script src="../../sites/all/themes/ori/js/jangle.js"></script>
+<p>Canvas — API для рисования, недавно добавленный в HTML и поддерживается большинством браузеров (даже Internet Explorer 9). Canvas позволяет рисовать всё, что вы хотите прямо в браузере без использования плагинов, вроде Flash или Java. Canvas с его обманчиво простым API может революционно преобразовать создание веб-приложений для всех устройств, а не только десктопных.</p><p>Эти скриншоты позволят вам почувствовать вкус возможностей Canvas.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/screenshot1.jpg" alt=""></p><p class="fig"><img src="../../assets/images/canvasdeepdive/screenshot2.jpg" alt=""></p><h2>Что такое Canvas?</h2><p>Canvas — API для двумерного рисования. По сути браузер даёт вам прямоугольную область на экране, в которой вы можете рисовать линии, фигуры, изображения, текст, практически всё что хотите. Canvas первоначально был создан Apple для их виджетов, но с тех пор был принят всеми разработчиками основных браузеров и теперь Canvas является частью спецификации HTML5. Вот небольшой пример, как выглядит некоторый код Canvas:</p>
+<pre><code data-language="html">&lt;html&gt; 
+&lt;body&gt; 
+  &lt;canvas width=&quot;800&quot; height=&quot;600&quot; id=&quot;canvas&quot;&gt;&lt;/canvas&gt; 
+  &lt;script&gt; 
+    var canvas = document.getElementById('canvas'); 
+    var c = canvas.getContext('2d'); 
+    c.fillStyle = &quot;red&quot;; 
+    c.fillRect(100,100,400,300); 
+  &lt;/script&gt; 
+&lt;/body&gt; 
+&lt;/html&gt;</code></pre>
+<p class="fig"><img src="../../assets/images/canvasdeepdive/redrect.png" alt="Простой красный прямоугольник"></p><p class="figsign">Простой красный прямоугольник</p><p>Данный прямоугольник нарисован функцией <span class="var">context.fillRect()</span>.</p><p>Важно понимать, что Canvas предназначен для рисования пикселями. В нём нет фигур или векторов. Нет объектов для связывания с обработчиками событий. Это просто рисунки пикселями на экране. Как мы ещё увидим в этом и сила и слабость.</p><h2>Как это связано с другими веб-технологиями?</h2><p>Есть четыре способа нарисовать что-либо на веб-странице: Canvas, SVG, CSS и прямая анимация через DOM. Canvas содержит отличия от остальных трёх.</p><p><strong>SVG</strong> — это API для рисования векторных фигур. Каждая фигура представляет собой объект, который вы можете связать с обработчиками событий. При масштабировании фигуры остаются сглаженными, в то время как в Canvas заметны пиксели.</p><p><strong>CSS</strong> в реальности предназначен для стилизации элементов. Поскольку DOM не содержит никаких объектов, которые рисуются в Canvas, вы не можете использовать CSS для их стилизации. CSS будет влиять только на прямоугольную площадь самого Canvas, так что вы можете установить границы, цвет фона и на этом всё.</p><p><strong>Анимация через DOM</strong>: DOM или Document Object Model (объектная модель документа) определяет каждый объект на экране. Анимация с помощью CSS или JavaScript для передвижения объектов в некоторых случаях может быть более плавной, чем сделанной через Canvas, но это зависит от реализации вашего браузера.</p><h2>Что? Где? Когда?</h2><p>Итак, когда следует использовать Canvas вместо SVG, CSS или элементов DOM? Ну, Canvas по уровню ниже, чем другие, так что у вас больше контроля над рисованием и тратится меньше памяти, но взамен нужно писать больше кода. Используйте SVG, когда у вас имеются фигуры, которые вы хотите отобразить на экране, как на карте сделанной в Adobe Illustrator. Используйте CSS или DOM-анимацию, когда у вас есть большие статические области, которые вы хотите анимировать или желаете использовать трёхмерные преобразования. Для схем, графиков, динамических диаграмм и, конечно, видеоигр, Canvas — наилучший выбор. В дальнейшем мы обсудим несколько библиотек, которые позволяют делать вам больше штук, ориентированных на векторы и объекты, используя Canvas.</p><p>Прежде чем двигаться дальше, хочу пояснить, что когда я говорю о Canvas, то подразумеваю двумерный API. Также существует трёхмерный API в работах называемых WebGL. Я не собираюсь о нём рассказывать, потому что он всё ещё находится в разработке и браузеры поддерживают его довольно плохо. Также этот по существу OpenGL от JavaScript находится на более низком уровне чем Canvas и гораздо сложнее в использовании. Когда WebGL станет более зрелым, мы вернёмся к нему в следующих главах.</p><h2>Поддержка в браузерах</h2><p>И, наконец, прежде чем мы углубимся в работу с Canvas, давайте поговорим о том, где вы можете его использовать. К счастью Canvas это теперь стабильный API и большинство современных браузеров поддерживают его в некоторой мере. Поддерживает даже Internet Explorer начиная с версии&nbsp;9 и очень хорошо.</p><table class="data browser"><tr class="br"><td><span class="ie">Internet Explorer</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="sa">Safari</span></td><td><span class="fx">Firefox</span></td></tr><tr class="sp"><td class="yes"><span>9</span></td><td class="yes"><span>10</span></td><td class="yes"><span>9</span></td><td class="yes"><span>3</span></td><td class="yes"><span>4</span></td></tr></table><p>Большинство мобильных платформ поддерживают Canvas, потому что в основном они основаны на WebKit, который уже давно имеет хорошую поддержку. Я знаю, что поддерживает WebOS, iOS, Android. Считаю, что BlackBerry тоже, по крайней мере, на PlayBook. Windows Phone 7 не поддерживает, но это может измениться в будущем обновлении.</p><table class="data browser"><tr class="br"><td><span>iOS</span></td><td><span>webOS</span></td><td><span>Android</span></td><td><span>BlackBerry</span></td><td><span>Windows Phone 7</span></td></tr><tr class="sp"><td class="yes"><span>все</span></td><td class="yes"><span>все</span></td><td class="yes"><span>2</span></td><td class="yes"><span>PlayBook и OS 6.0</span></td><td class="no"><span></span></td></tr></table><p>Пока не все мобильные устройства содержат полную или быструю поддержку Canvas, поэтому позже мы рассмотрим, как оптимизировать наш код для мобильных устройств.</p><h2>Простое рисование</h2><p>Как я уже говорил ранее, Canvas — это просто API. Если вы уже делали работу с программированием на Flash или Java 2D, то это должно показаться довольно знакомым. Вы получаете указатель на графический контекст, устанавливаете некоторые свойства, такие как цвет текущей заливки или контура и затем рисуете несколько фигур. Вот некоторые примеры.</p><p>В данном примере мы устанавливаем текущий цвет красным и рисуем прямоугольник. <strong>Перетащите мышью числа в коде для изменения значений и посмотрите, как это влияет на прямоугольник.</strong></p><div id="simplerect" class="jangle"> <canvas width="300" height="100"></canvas>
+    <pre><code data-language="javascript">ctx.fillStyle = "red";
+//x, y, ширина, высота
+ctx.fillRect(<b id="simplerect_var1">20</b>,<b id="simplerect_var2">30</b>,<b id="simplerect_var3">40</b>,<b id="simplerect_var4">50</b>);</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, var1, var2, var3, var4) {
+ctx.fillStyle = "red";
+//x, y, ширина, высота
+ctx.fillRect(var1,var2,var3,var4);
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = { var1:20, var2:30, var3:40,  var4:50, };
+tangle.setup("simplerect");
+});
+</script>
+<p>Вот ещё один.</p><div id="simple_triangle" class="jangle"> <canvas width="300" height="100"></canvas>
+    <pre><code data-language="javascript">c.fillStyle = '#ccddff';
+c.beginPath();
+c.moveTo(50,20);
+c.lineTo(200,50);
+c.lineTo(<b id="simple_triangle_var1">150</b>,<b id="simple_triangle_var2">80</b>);
+c.closePath();
+c.fill();
+c.strokeStyle = 'rgb(0,128,0)';
+c.lineWidth = <b id="simple_triangle_var3">5</b>;
+c.stroke();</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit2(c, var1, var2, var3) {
+c.fillStyle = '#ccddff';
+c.beginPath();
+c.moveTo(50,20);
+c.lineTo(200,50);
+c.lineTo(var1,var2);
+c.closePath();
+c.fill();
+c.strokeStyle = 'rgb(0,128,0)';
+c.lineWidth = var3;
+c.stroke();
+}
+var jangle2 = new Jangle();
+jangle2.drawfun = drawit2;
+jangle2.vars = { var1:150, var2:80, var3: 5};
+jangle2.setup("simple_triangle");
+});
+</script>
+<p>В этом примере мы устанавливаем текущий цвет заливки, создаём контур, а затем заливаем и обводим его. Следует отметить, что контекст отслеживает цвет заливки и цвет обводки отдельно. Также обратите внимание на разные формы указания цвета. <span class="var">fillStyle</span> и <span class="var">strokeStyle</span> может быть любым корректным цветом из CSS, таким как шестнадцатеричным, названием или функцией <span class="value">rgb()</span>.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Контуры</h2><p>Canvas напрямую поддерживает только прямоугольник. Чтобы нарисовать любую другую фигуру необходимо сделать это самостоятельно с помощью контуров. Контуры это фигуры, созданные кучей прямых или изогнутых отрезков линий. В Canvas вы должны вначале определить контур через <span class="var">beginPath()</span>, затем залить его или использовать как маску. Вы определяете каждый отрезок такими функциями как <span class="var">moveTo()</span>, <span class="var">lineTo()</span> и <span class="var">bezierCurveTo()</span>. В данном примере фигура рисуется с помощью <span class="var">moveTo()</span>, затем идёт кривая Безье и несколько линий. После создания контура он заливается и обводится.</p><div id="simple_curve" class="jangle"> <canvas width="300" height="100"></canvas>
+    <pre><code data-language="javascript">c.fillStyle = 'red';
+c.beginPath();
+c.moveTo(10,30);
+c.bezierCurveTo(<b id="simple_curve_varcx1">50</b>,<b id="simple_curve_varcy1">90</b>,<b id="simple_curve_varcx2">159</b>,<b id="simple_curve_varcy2">-30</b>,200,30);
+c.lineTo(200,90);
+c.lineTo(10,90);
+c.closePath();
+c.fill();
+c.lineWidth = 4;
+c.strokeStyle = 'black';
+c.stroke();</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit3(c, varcx1, varcy1, varcx2, varcy2) {
+c.fillStyle = 'red';
+c.beginPath();
+c.moveTo(10,30);
+c.bezierCurveTo(varcx1,varcy1,varcx2,varcy2,200,30);
+c.lineTo(200,90);
+c.lineTo(10,90);
+c.closePath();
+c.fill();
+c.lineWidth = 4;
+c.strokeStyle = 'black';
+c.stroke();
+}
+var jangle3 = new Jangle();
+jangle3.drawfun = drawit3;
+jangle3.vars = {
+varcx1:  50, varcy1: 90,
+varcx2: 159, varcy2: -30
+};
+jangle3.setup("simple_curve");
+});
+</script>
+<h2>Система координат</h2><p>Пара слов о системе координат. Canvas ведёт отсчёт от левого верхнего угла с осью у, которая ведёт вниз. Это традиционно для компьютерной графики, но если вы хотите указать другую точку отсчёта, то можете сделать это через трансформацию, о которой мы расскажем позже. Ещё одна важная вещь — спецификация определяет координаты в левом верхнем углу пикселя. Это означает, что если вы рисуете вертикальную линию шириной в один пиксель, начиная с 5.0, то на самом деле это охватывает половину соседних пикселей (от 4.5 до 5.5). Чтобы обойти это сместите ваши координаты по оси х на 0.5. Тогда это даст вам линию, которая идёт с 5.0 до 6.0. В качестве альтернативы вы можете использовать ширину линии, указав 2 или 4.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/coords.png" alt="Система координат"></p><h2>Изображения</h2><p>Canvas может выводить изображения через функцию <span class="var">drawImage</span>.</p><p>Есть несколько форм <span class="var">drawImage</span>. Вы можете нарисовать изображение непосредственно на экране в обычном масштабе или растянуть и обрезать его, как вам нравится. Обрезка и растяжение изображений может быть очень удобны для создания спецэффектов в играх, потому что интерполяция изображения часто работает намного быстрее, чем другие типы масштабирования.</p><div id="imagedemo" class="jangle"> <canvas width="400" height="100"></canvas>
+    <pre><code data-language="javascript">ctx.drawImage(img, 0,0); //normal drawing
+ctx.drawImage(img, //draw stretched
+    0,0,66,66, //source (x,y,w,h)
+    100,0,<b id="imagedemo_var1">103</b>,<b id="imagedemo_var2">100</b>//destination (x,y,w,h)
+    );
+ctx.drawImage(img, //draw a slice
+    <b id="imagedemo_s1">20</b>,<b id="imagedemo_s2">10</b>,<b id="imagedemo_s3">20</b>,<b id="imagedemo_s4">20</b>, //source coords (x,y,w,h)
+    250,0,250,50//destination coords (x,y,w,h)
+    );</code></pre>
+    <div class="popup shadow" style="display: none; top: 168.65625px; left: 117px;">103</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+var img = new Image();
+img.onload = function() {
+function drawit(ctx,var1,var2,s1,s2,s3,s4) {
+ctx.drawImage(img, 0,0); // обычное рисование
+ctx.drawImage(img, // растягивание
+0,0,66,66, // исходник (x,y,w,h)
+100,0,var1,var2 // назначение (x,y,w,h)
+);
+ctx.drawImage(img, // рисуем фрагмент
+s1,s2,s3,s4, // исходные координаты (x,y,w,h)
+250,0,250,50 // координаты назначения (x,y,w,h)
+);
+}
+var jangle = new Jangle();
+jangle.drawfun = drawit;
+jangle.vars = {var1:100,var2:100,s1:20,s2:10,s3:20,s4:20};
+jangle.setup("imagedemo");
+}
+img.src = '/assets/images/canvasdeepdive/smile.png';
+});
+</script>
+<p>Попробуйте поменять переменные, чтобы увидеть, как работает растяжение и обрезка. Чтобы растянуть изображение вы должны указать исходные и конечные координаты. Исходные координаты говорят <span class="var">drawImage</span> какие пиксели взять из изображения. Поскольку рисунок выше имеет размеры 67x67 пикселей, то используя 0,0,66,66 мы отобразим изображение целиком. Конечные координаты говорят <span class="var">drawImage</span> куда поместить пиксели на экране. Изменяя значения w и h можно растянуть и сжать изображение.</p><p>Обрезка работает аналогично, но используются исходные координаты, которые не охватывают изображение целиком. Когда вы берёте фрагмент изображения убедитесь, что вы не выходить за его исходные границы, иначе изображение исчезнет.</p><h2>Текст</h2><p>Canvas может также рисовать текст. Атрибуты шрифта такие же, как и в аналоге CSS, так что вы можете установить стиль, размер и семейство шрифта. Обратите внимание, что функция <span class="var">fillText(строка,x,y)</span> использует базовую линию текста, а не его верхний край. Если вы поместите ваш текст в 0,0, то он нарисуется за пределами верхней части экрана. Так что опустите y на соответствующее значение.</p><div id="textdemo" class="jangle"> <canvas width="300" height="200"></canvas>
+    <pre><code data-language="javascript">ctx.fillStyle = "black";
+ctx.font = "italic "+<b id="textdemo_var1">96</b>+"pt Arial ";
+ctx.fillText("this is text", <b id="textdemo_var2">20</b>,<b id="textdemo_var3">150</b>);</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, var1, var2, var3 ) {
+ctx.fillStyle = "black";
+ctx.font = "italic "+var1+"pt Arial ";
+ctx.fillText("this is text", var2,var3);
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {var1:96, var2:20, var3:150 };
+tangle.setup("textdemo");
+});
+</script>
+<h2>Градиенты</h2><p>Canvas может заливать фигуры градиентом вместо цвета. Вот линейный градиент:</p><div id="graddemo1" class="jangle"> <canvas width="400" height="200"></canvas>
+    <pre><code data-language="javascript">var grad = ctx.createLinearGradient(0,0,<b id="graddemo1_var1">200</b>,<b id="graddemo1_var2">0</b>);
+grad.addColorStop(0, "white");
+grad.addColorStop(0.5, "red");
+grad.addColorStop(1, "black");
+
+ctx.fillStyle = grad;
+ctx.fillRect(0,0,400,200);</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, var1, var2) {
+var grad = ctx.createLinearGradient(0,0,var1,var2);
+grad.addColorStop(0, "white");
+grad.addColorStop(0.5, "red");
+grad.addColorStop(1, "black");
+ctx.fillStyle = grad;
+ctx.fillRect(0,0,400,200);
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {var1:200, var2:0};
+tangle.setup("graddemo1");
+});
+</script>
+<p>Важно отметить, что градиент закрашивается в той же системе координат, какой рисуется фигура, а не внутренних координат фигуры. В данном примере фигура рисуется в 0,0. Если мы изменим фигуру на 100,100, то градиент будет по-прежнему находиться в начале экрана, так что окажется меньше градиента, вроде этого:</p><div id="graddemo2" class="jangle"> <canvas width="400" height="200"></canvas>
+    <pre><code data-language="javascript">var grad = ctx.createLinearGradient(0,0,<b id="graddemo2_var1">200</b>,<b id="graddemo2_var2">0</b>);
+    grad.addColorStop(0, "white");
+    grad.addColorStop(0.5, "red");
+    grad.addColorStop(1, "black");
+    
+    ctx.fillStyle = grad;
+    ctx.fillRect(100,100,400,200);</code></pre>
+    <div class="popup shadow" style="display: none;">000</div></div>
+<script class="bookscript">
+$(document).ready(function() {
+function drawit(ctx, var1, var2) {
+var grad = ctx.createLinearGradient(0,0,var1,var2);
+grad.addColorStop(0, "white");
+grad.addColorStop(0.5, "red");
+grad.addColorStop(1, "black");
+ctx.fillStyle = grad;
+ctx.fillRect(100,100,400,200);
+}
+var tangle = new Jangle();
+tangle.drawfun = drawit;
+tangle.vars = {var1:200, var2:0};
+tangle.setup("graddemo2");
+});
+</script>
+<p>Итак, в случае, когда вы считаете, что заливаете фигуру градиентом, но видите единственный цвет, то это может быть потому, что ваши координаты выключены.</p><p>Вот и все основы рисования. Давайте остановимся на достигнутом и выполним несколько упражнений в следующей главе. У вас уже должен быть установлен браузер и текстовый редактор. Я рекомендую использовать <a href="https://www.google.com/chrome">Chrome</a>, поскольку он содержит хорошие инструменты отладки и <a href="http://www.jedit.org">jEdit</a>, потому что он бесплатный и кросс-платформенный. Но вы можете использовать браузер и редактор по своему усмотрению.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/canvas">Canvas</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джош Мариначи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 28.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/canvasdeepdive'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/canvasdeepdive/chapter02'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../canvasdeepdive.html" title="На предыдущую страницу">Глубокое погружение в Canvas</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter02.html" title="На следующую страницу">Практика: создание диаграмм</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf active-trail"><a href="chapter01.html" class="active-trail active">Основы рисования</a></li><li class="leaf"><a href="chapter02.html">Практика: создание диаграмм</a></li><li class="leaf"><a href="chapter03.html">Продвинутое рисование и события</a></li><li class="leaf"><a href="chapter04.html">Анимация</a></li><li class="leaf"><a href="chapter05.html">Создание игры</a></li><li class="leaf"><a href="chapter06.html">Буферы пикселей и другие эффекты</a></li><li class="leaf"><a href="chapter07.html">3D-графика через WebGL и ThreeJS</a></li><li class="leaf"><a href="chapter08.html">WebGL-практикум с ThreeJS: 3D автомобиль</a></li><li class="leaf"><a href="chapter09.html">Введение в WebAudio</a></li><li class="leaf"><a href="chapter10.html">Доступ к веб-камере через getUserMedia()</a></li><li class="leaf"><a href="chapter11.html">Реальные примеры и инструменты</a></li><li class="last leaf"><a href="chapter12.html">Мобильные устройства и оптимизация производительности</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-0b975bc378d8acb254b5acb1beacdc66"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter01.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Препроцессоры | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="jquery.html" />
+<link rel="prev" href="responsive-web-design.html" />
+<meta name="description" content="Процесс написания HTML и CSS может оказаться несколько изнурительными и требовать множества одних и тех же задач снова и снова. Таких задач, как закрытие тегов в HTML или монотонный просмотр шестнадцатеричных значений цвета в CSS. Такие разные задачи, как правило, небольшие, чуть-чуть снижают эффективность. К счастью, эти и несколько других неэффективных задач были признаны и вызов им бросили препроцессоры." />
+<link rel="canonical" href="preprocessors.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Препроцессоры</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Препроцессоры</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Процесс написания HTML и CSS может оказаться несколько изнурительными и требовать множества одних и тех же задач снова и снова. Таких задач, как закрытие тегов в HTML или монотонный просмотр шестнадцатеричных значений цвета в CSS.</p><p>Такие разные задачи, как правило, небольшие, чуть-чуть снижают эффективность. К счастью, эти и несколько других неэффективных задач были признаны и вызов им бросили препроцессоры.</p><p>Препроцессор — это программа, которая берёт один тип данных и преобразует его в другой тип данных. В случае HTML и CSS, одни из наиболее популярных языков препроцессора&nbsp;— это <a href="http://haml.info">Haml</a> и <a href="http://sass-lang.com">Sass</a>. Haml преобразуется в HTML, а Sass преобразуется в CSS.</p><p>После своего становления, при решении некоторых наиболее распространённых проблем, Haml и Sass нашли много дополнительных способов для расширения возможностей HTML и CSS. Не только путём удаления неэффективных задач, но также созданием методов, делающих разработку сайтов проще и логичнее. Популярность препроцессорам также принесли различные фреймворки, которые их поддерживают; одним из наиболее популярных является Compass.</p><h2>Haml</h2><p>Haml (<a href="http://haml.info/docs/yardoc/file.REFERENCE.html">HTML abstraction markup language</a>, абстрактный язык разметки HTML) — это язык разметки с единственной целью&nbsp;— предоставить возможность писать красивую разметку. Являясь собственным языком разметки, код, написанный на Haml, позже преобразуется в HTML. Haml продвигает принцип «не повторяйся» и способствует хорошо структурированной разметке, создавая приятный опыт для тех, кто умеет её писать и читать.</p><h3>Установка</h3><p>Haml требует Ruby для компиляции в HTML, поэтому первый шаг для его использования&nbsp;— убедитесь, что установлен Ruby. К счастью для тех, кто работает на Mac OS X, система поставляется с предустановленным Ruby, а те, кто работают на Windows, могут перейти к <a href="http://rubyinstaller.org">установщику</a> напрямую. После установки Ruby выполните следующую команду, используя Terminal или программу командной строки.</p>
+<pre>gem install haml</pre>
+<p>Файлы, написанные на Haml, должны сохраняться с расширением файла .haml. Чтобы затем преобразовать эти файлы из Haml в HTML команда haml ниже должна быть запущена для компиляции каждого отдельного файла.</p>
+<pre>haml index.haml index.html</pre>
+<p>В приведённом выше примере файл index.haml преобразован в HTML и сохранён как index.html в той же папке. Эта команда должна быть запущена в той же папке, в которой расположены файлы. В случае, если команда будет работать вне этой папки, путь к ней должен быть включён в команду. В любое время также может быть запущена команда <span class="var">haml --help</span> для просмотра списка разных доступных опций.</p><div class="notePad"><h3>Слежение за файлом или папкой</h3><p>К сожалению, Haml не предлагает способ слежения за изменением файла или папки без использования других зависимостей.</p><p>Внутри приложения Rails зависимость Haml может быть добавлена в Gemfile, таким образом, автоматически компилируя файлы Haml в HTML при любых изменениях. Есть несколько настольных приложений, доступных для тех, кто не пользуется Rails, одним из наиболее популярных является <a href="http://incident57.com/codekit/">CodeKit</a>.</p><p>CodeKit также поддерживает другие препроцессоры, которые тоже могут вам пригодиться.</p></div><h3>Доктайп</h3><p>Первая часть при написании документа на Haml — это знание, какой тип доктайпа надо использовать. При работе с HTML-документами основным типом документа будет HTML5. В Haml типы документов определяются тремя восклицательными знаками (!!!), затем идёт что-то конкретное при необходимости.</p><p>По умолчанию доктайп в Haml — это HTML 1.0 Transitional. Поэтому чтобы сделать его как HTML5, нужно передать цифру пять после восклицательных знаков (!!! 5).</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">!!! 5</code></pre>
+<p class="exampleTitle">Готовый HTML</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;</code></pre>
+<h3>Объявление элементов</h3><p>Одной из определяющих особенностей Haml является его синтаксис и то, <a href="http://screencasts.org/episodes/introduction-to-haml">как объявлять и вкладывать элементы</a>. Элементы HTML, как правило, содержат открывающий и закрывающий теги, однако в элементах Haml есть только один открывающий тег. Элементы начинаются со знака процента (%), а затем отступ определяет вложенность. Отступ в Haml можно выполнить одним или несколькими пробелами, однако важно, чтобы отступы оставались неизменными. Табуляция и пробелы не могут сочетаться друг с другом и одно и то же число табуляций или пробелов должно быть одинаковым на протяжении всего документа.</p><p>Устранение необходимости в открывающих и закрывающих тегах, а также обязательная структура с отступами создаёт схему, за которой легко следить. В любой момент времени разметка может быть бегло просмотрена и изменена без труда.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%body
+  %header
+    %h1 Привет, мир!
+  %section
+    %p Lorem ipsum dolor sit amet.</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/body&gt;</code></pre>
+<div class="notePad"><h3>Обработка текста</h3><p>Текст в Haml может быть размещён на той же строке, что и объявленный элемент или с отступом ниже элемента. Текст не может быть одновременно на той же строке, что и объявленный элемент, и вложенным ниже него; должен быть или тот или другой вариант. Приведённый выше пример можно переписать в следующем виде:</p>
+<pre><code data-language="html">%body
+  %header
+    %h1
+      Привет, мир!
+  %section
+    %p
+      Lorem ipsum dolor sit amet.</code></pre>
+</div><h3>Атрибуты</h3><p>Атрибуты, как и элементы, объявляются немного по-другому в Haml. Атрибуты объявляются непосредственно после элемента, в фигурных или круглых скобках, в зависимости от того, хотите вы использовать синтаксис Ruby или HTML. Атрибуты в стиле Ruby будут использовать стандартный синтаксис хэша внутри {}, в то время как атрибуты в стиле HTML будут использовать стандартный синтаксис HTML внутри ().</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%img{:src =&gt; &quot;shay.jpg&quot;, :alt =&gt; &quot;Шэй Хоу&quot;}
+%img{src: &quot;shay.jpg&quot;, alt: &quot;Шэй Хоу&quot;}
+%img(src=&quot;shay.jpg&quot; alt=&quot;Шэй Хоу&quot;)</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;img src=&quot;shay.jpg&quot; alt=&quot;Шэй Хоу&quot;&gt;</code></pre>
+<h4>Классы и идентификаторы</h4><p>При желании классы и идентификаторы могут быть объявлены подобно другим атрибутам, однако они также могут быть обработаны несколько иначе. Вместо перечисления атрибутов <span class="attribute">class</span> и <span class="attribute">id</span> с их значениями внутри скобок, значение может быть определено непосредственно после элемента. Используя либо точку для классов, либо решётку для идентификатора, значение может быть добавлено сразу после элемента.</p><p>Кроме того, атрибуты могут быть смешаны, соединяясь вместе в соответствующем формате. Классы должны разделяться точками, а другие атрибуты могут быть добавлены с помощью одного из ранее изложенных форматов.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%section.feature
+%section.feature.special
+%section#hello
+%section#hello.feature(role=&quot;region&quot;)</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;section class=&quot;feature&quot;&gt;&lt;/section&gt;
+&lt;section class=&quot;feature special&quot;&gt;&lt;/section&gt;
+&lt;section id=&quot;hello&quot;&gt;&lt;/section&gt;
+&lt;section class=&quot;feature&quot; id=&quot;hello&quot; role=&quot;region&quot;&gt;&lt;/section&gt;</code></pre>
+
+<h4>Классы и идентификаторы в &lt;div&gt;</h4><p>В случае, если класс или идентификатор используется в <span class="tag">&lt;div&gt;</span>, то <span class="var">%div</span> может быть опущен, а значение класса или идентификатора может быть включено напрямую. Опять же, классы должны определяться через точку, а идентификаторы через решётку.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">.awesome
+.awesome.lesson
+#getting-started.lesson</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;awesome&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;awesome lesson&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;lesson&quot; id=&quot;getting-started&quot;&gt;&lt;/div&gt;</code></pre>
+<h4>Логические атрибуты</h4><p>Логические атрибуты обрабатываются так же, как если они были бы в Ruby или в HTML, в зависимости от используемого синтаксиса.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%input{:type =&gt; &quot;checkbox&quot;, :checked =&gt; true}
+%input(type=&quot;checkbox&quot; checked=true)
+%input(type=&quot;checkbox&quot; checked)</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;input type=&quot;checkbox&quot; checked&gt;</code></pre>
+<h3>Экранирование текста</h3><p>Одним из преимуществ Haml является возможность вычислять и запускать Ruby, однако это не всегда желаемое действие. Текст и строки кода можно экранировать с помощью обратной косой черты (\), что позволяет тексту отображаться в явном виде без выполнения.</p><p>В приведённом ниже примере, первый образец <span class="var">= @author</span> выполняется Ruby, получая имя авторов из приложения. Второй образец начинается с обратной косой черты, экранирующей текст, и печатается как есть без выполнения.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">.author
+  = @author
+  \= @author</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;author&quot;&gt;
+  Шэй Хоу
+  = @author
+&lt;/div&gt;</code></pre>
+<h4>Альтернативы экранирования текста</h4><p>Время от времени экранирования текста недостаточно и Ruby необходим для формирования желаемого выходного результата. Одним популярным примером для этого является попытка включить точку сразу после ссылки, но не как часть текста ссылки. Размещение точки на новой строке не является приемлемым, поскольку это будет рассматриваться как пустое значение класса, вызывая ошибку компиляции. Добавление обратной косой черты перед точкой экранирует символ, однако поставит пробел между последним словом и точкой. Опять же, не производя желаемого результата.</p><p>В этих случаях пригодится помощник Ruby. В приведённом ниже примере помощник используется для размещения точки непосредственно после последнего слова, но за пределами текста ссылки.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%p
+  Шэй — 
+  = succeed &quot;.&quot; do
+    %a{:href =&gt; &quot;#&quot;} молодец</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;p&gt;Шэй —  &lt;a href=&quot;#&quot;&gt;молодец&lt;/a&gt;.&lt;/p&gt;</code></pre>
+
+<h3>Комментарии</h3><p>Подобно элементам и атрибутам, комментарии в Haml обрабатываются немного по-другому. Код может быть прокомментирован достаточно просто с использованием одной косой черты (/). Отдельные строки могут быть закомментированы с помощью косой черты в начале строки, а блоки кода могут быть закомментированы, будучи вложенными под косой чертой.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%div
+  / Строка комментария
+  Актуальная строка
+
+/
+  %div
+    Закомментированный блок</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;div&gt;
+  &lt;!-- Строка комментария --&gt;
+  Актуальная строка
+&lt;/div&gt;
+
+&lt;!--
+  &lt;div&gt;
+    Закомментированный блок
+  &lt;/div&gt;
+--&gt;</code></pre>
+<h4>Условные комментарии</h4><p>Условные комментарии также обрабатываются по другому в Haml. Чтобы создать условный комментарий используйте квадратные скобки ([]) вокруг условия. Эти квадратные скобки должны быть размещены непосредственно после косой черты.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">/[if lt IE 9]
+  %script{:src  =&gt; &quot;html5shiv.js&quot;}</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;!--[if lt IE 9]&gt;
+  &lt;script src=&quot;html5shiv.js&quot;&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</code></pre>
+<h4>Тихие комментарии</h4><p>Haml также предоставляет возможность создавать особые тихие комментарии. Тихие комментарии отличаются от основных комментариев HTML тем, что после компиляции любое содержание внутри тихого комментария полностью удаляется с этой страницы и не отображается в результатах. Тихие комментарии начинаются с дефиса, затем идёт решётка (-#). Как и с другими комментариями, тихие комментарии могут быть использованы для удаления одной или нескольких строк с помощью вложенности.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%div
+  -# Удалённая строка
+  Актуальная строка</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;div&gt;
+  Актуальная строка
+&lt;/div&gt;</code></pre>
+<h3>Фильтры</h3><p>Haml предлагает несколько фильтров, позволяющих использовать разные типы ввода внутри Haml. Фильтры начинаются с двоеточия, за которым идёт имя фильтра, к примеру, :markdown, со всем содержимым для фильтрации вложения под ним.</p><h4>Распространённые фильтры</h4><p>Ниже приведены некоторые распространённые фильтры, включая наиболее популярную группу :css и :javascript.</p><ul class="list-column-3"><li>:cdata</li><li>:coffee</li><li>:css</li><li>:erb</li><li>:escaped</li><li>:javascript</li><li>:less</li><li>:markdown</li><li>:maruku</li><li>:plain</li><li>:preserve</li><li>:ruby</li><li>:sass</li><li>:scss</li><li>:textile</li></ul><h4>Фильтр Javascript</h4><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">:javascript
+  $('button').on('click', function(event) {
+    $('p').hide('slow');
+  });</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;script&gt;
+  $('button').on('click', function(event) {
+    $('p').hide('slow');
+  }); 
+&lt;/script&gt;</code></pre>
+<p>Фильтры CSS и Sass</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">:css
+  .container {
+    margin: 0 auto;
+    width: 960px;
+  }
+
+:sass
+  .container
+    margin: 0 auto
+    width: 960px</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;style&gt;
+  .container {
+    margin: 0 auto;
+    width: 960px;
+  }
+&lt;/style&gt;</code></pre>
+<h3>Интерполяция Ruby</h3><p>Как упоминалось ранее, Haml может вычислять Ruby, а иногда могут возникать случаи, когда Ruby должен вычисляться внутри обычного текста. В этом случае Ruby должен быть интерполирован путём обёртывания необходимого кода на Ruby.</p><p>Ниже приведён пример на Ruby, который интерполируется как часть имени класса.</p><p class="exampleTitle">Haml</p>
+<pre><code data-language="html">%div{:class =&gt; &quot;student-#{@student.name}&quot;}</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;student-shay&quot;&gt;</code></pre>
+<h2>SCSS и Sass</h2><p>SCSS и Sass — это языки препроцессинга, которые компилируются в CSS. Немного напоминают Haml и делают написание кода проще, предлагая для этого совсем немного рычагов. По отдельности SCSS и Sass имеют одно происхождение, однако технически у них разный синтаксис.</p><p>Sass (<a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html">Syntactically Awesome Stylesheets</a>, синтаксически замечательная таблица стилей) пришёл первым и у него строгий синтаксис с отступами. Sassy CSS последовал вскоре после этого, предлагая такую же огневую мощь, что и Sass, но с более гибким синтаксисом, включая возможность писать простой CSS.</p><h3>Установка</h3><p>Как и Haml, SCSS и Sass <a href="http://sassmeister.com">компилируются</a> с помощью Ruby, поэтому Ruby должен быть установлен для создания файлов CSS. Пожалуйста, следуйте вышеприведённым указаниям для установки или убедитесь, что Ruby уже установлен.</p><p>После установки Ruby требуется команда gem install sass для установки SCSS и Sass.</p>
+<pre>gem install sass</pre>
+<p>Файлы, написанные на SCSS или Sass, должны иметь, соответственно, расширения .scss или .sass. Чтобы преобразовать любой из этих типов файлов в .css необходимо выполнить следующую команду.</p>
+<pre>sass styles.sass styles.css</pre>
+<p>Команда выше принимает Sass-файл styles.sass и компилирует его в файл styles.css. Как и с Haml, эти имена файлов являются путями и должны быть указаны правильно. Приведённая выше команда работает, когда эти файлы находятся в папке, из которой выполняется команда. Если файлы находятся за пределами папки, то путь к ним должен быть явно указан в команде.</p><p>Если изменения в файле осуществляются постоянно, Sass может следить за файлом и перекомпилировать CSS каждый раз, когда происходит изменение файла. Чтобы Sass следил за файлом, может быть запущена следующая команда.</p>
+<pre>sass --watch styles.sass:styles.css</pre>
+<p>Кроме того, вместо компиляции или слежением за отдельным файлом, Sass способен компилировать и отслеживать целые папки. Например, чтобы следить за всей папкой с файлами Sass и конвертировать их в CSS, может быть выполнена команда ниже.</p><p>sass --watch assets/sass:public/css</p><div class="notePad"><h3>Конвертирование файлов из SCSS в Sass и наоборот</h3><p>У вас есть возможность конвертировать файлы SCSS и Sass в CSS, но вы также можете конвертировать файлы из SCSS в Sass и наоборот. Чтобы это сделать, может быть использована команда sass, показанная ниже, для преобразования файла SCSS в Sass, а затем файла Sass в SCSS, соответственно.</p>
+<pre><code data-language="css"># Конвертируем Sass в SCSS
+sass-convert styles.sass styles.scss
+
+# Конвертируем SCSS в Sass
+sass-convert styles.scss styles.sass</code></pre>
+</div><h3>Синтаксис</h3><p>Как уже отмечалось ранее, основное отличие между SCSS и Sass в их синтаксисе и разница эта в деталях. Синтаксис SCSS не сильно отличается по сравнению с обычным CSS. На самом деле, стандарт CSS будет работать внутри SCSS. Sass, с другой стороны, является довольно строгим и любой отступ или ошибки символов запретят компиляцию стилей. Sass опускает все фигурные скобки ({}) и точки с запятой (;), опираясь на отступы и сплошная строка разбивается для форматирования.</p><p class="exampleTitle">SCSS</p>
+<pre><code data-language="css">.new {
+  color: #ff7b29;
+  font-weight: bold;
+  span {
+    text-transform: uppercase;
+  }
+}</code></pre>
+<p class="exampleTitle">Sass</p>
+<pre><code data-language="css">.new
+  color: #ff7b29
+  font-weight: bold
+  span
+    text-transform: uppercase</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.new {
+  color: #ff7b29;
+  font-weight: bold;
+}
+.new span {
+  text-transform: uppercase;
+}</code></pre>
+<div class="notePad"><h3>SCSS против Sass</h3><p>Принятие решения о том, что использовать — SCSS или Sass, сводится к личным предпочтениям и это решение принимается на основании того, что лучше всего подходит для конкретной команды и проекта. Плюсы и минусы есть у каждого синтаксиса и все они справедливы.</p><p>Лично я предпочитаю синтаксис Sass, поскольку он требует меньше символов и обеспечивает, как я считаю, более чистый синтаксис. Sass не допускает прямой ввод CSS как это делает SCSS и не станет мириться с какими-либо ошибками написания. У Sass чуть лучше кривая обучения, однако она, как я вижу, идёт за счёт лёгкости управления стилями.</p><p>Дальнейшие примеры в этом уроке будут использовать Sass, однако они также могут быть все выполнены и на SCSS.</p></div><h3>Вложения</h3><p>В примере с синтаксисом выше вы видели, как селекторы могут вкладываться друг в друга для создания комплексных селекторов. Вложенности быстро идентифицируют селекторы, однако важно не переборщить. <strong>Не вкладывайте</strong> селекторы без видимых причин, иначе вложенный селектор получит приоритет. Важно использовать определённые селекторы без повышения специфичности.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">.portfolio
+  border: 1px solid #9799a7
+  ul
+    list-style: none
+  li
+    float: left</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.portfolio {
+  border: 1px solid #9799a7;
+}
+.portfolio ul {
+  list-style: none;
+}
+.portfolio li {
+  float: left;
+}</code></pre>
+<h4>Вложенные свойства</h4><p>Кроме вложения селекторов можно также вкладывать свойства. Некоторое наиболее популярное применение этого можно увидеть со свойствами <span class="attribute">font</span>, <span class="attribute">margin</span>, <span class="attribute">padding</span> и <span class="attribute">border</span>. Как и в вопросе, предпочесть SCSS или Sass, это очень личное решение. Многие считают, что сокращённые значения это хорошо и сыпать значениями в таком длинном формате не требуется. В конечном счёте вам решать, что предпочесть.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">div
+  font:
+    family: Baskerville, Palatino, serif
+    style: italic
+    weight: normal</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">div {
+  font-family: Baskerville, Palatino, serif;
+  font-style: italic;
+  font-weight: normal;
+}</code></pre>
+<h4>Вложенные медиа-запросы</h4><p>Отдельные медиа-запросы также могут вкладываться внутрь селектора, меняя значения свойств исходя из состояния носителя.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">.container
+  width: 960px
+  @media screen and (max-width: 960px)
+    width: 100%</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.container {
+  width: 960px;
+}
+@media screen and (max-width: 960px) {
+  .container {
+    width: 100%;
+  }
+}</code></pre>
+<h3>Родительский селектор</h3><p>Sass предлагает способ добавления стилей к предыдущему селектору с помощью родительского селектора, реализуемого с помощью амперсанда (&amp;). Чаще родительский селектор применяется в сочетании с псевдоклассом, таким как <span class="attribute">:hover</span>, хотя это не всегда так. Кроме того, родительский селектор может быть использован, чтобы связать дополнительные селекторы с его родителем, например <span class="var">&amp;.featured</span>.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">a
+  color: #0087cc
+  &amp;:hover
+    color: #ff7b29</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">a {
+  color: #0087cc;
+}
+a:hover {
+  color: #ff7b29;
+}</code></pre>
+<h4>Родительский ключевой селектор</h4><p>Родительский селектор также может быть использован в качестве ключевого селектора, добавляя отдельные селекторы для создания составных селекторов. Есть множество способов использовать родительский селектор в качестве ключевого, но, пожалуй, один из самых полезных способов&nbsp;— разместить внутри другого селектора.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">.btn
+  background: linear-gradient(#fff, #9799a7)
+  .no-cssgradients &amp;
+    background: url(&quot;gradient.png&quot;) 0 0 repeat-x</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.btn {
+  background: linear-gradient(#fff, #9799a7);
+}
+.no-cssgradients .btn {
+  background: url(&quot;gradient.png&quot;) 0 0 repeat-x;
+}</code></pre>
+<h3>Комментарии</h3><p>Sass обрабатывает комментарии очень похоже на Haml. Стандартный синтаксис CSS / * ... * / для комментариев работает, как предполагалось, и в Sass, однако есть также синтаксис тихих комментариев, чтобы полностью удалить комментарий или строки кода из компиляции.</p><p>Синтаксис для тихих комментариев — это две косые черты (//). Любое содержание на этой строке или вложенные под ней будут исключены из компиляции. Заметьте, что в приведённом ниже примере строка // Пропущенный комментарий не отображается в скомпилированном CSS.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">/* Обычный комментарий */
+div
+  background: #333
+// Пропущенный комментарий
+strong
+  display: block</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">/* Обычный комментарий */
+div {
+  background: #333;
+}
+
+strong {
+  display: block;
+}</code></pre>
+<h3>Переменные</h3><p>Переменные являются одной из наиболее востребованных особенностей CSS, которую предлагает Sass. С помощью Sass можно определить переменные, а затем повторно использовать их по мере необходимости.</p><p>Переменные определяются знаком доллара ($), за которым следует имя переменной. Между именем переменной и значением идёт двоеточие и пробел (<span class="var">$font-base: 1em</span>). Что касается значения переменной&nbsp;— это может быть число, строка, цвет, логическое значение, <span class="value">null</span> или список значений, разделённых пробелами или запятыми.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">$font-base: 1em
+$serif: &quot;Helvetica Neue&quot;, Arial, &quot;Lucida Grande&quot;, sans-serif
+
+p
+  font: $font-base $serif</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">p {
+  font: 1em &quot;Helvetica Neue&quot;, Arial, &quot;Lucida Grande&quot;, sans-serif;
+}</code></pre>
+<h4>Интерполяция переменных</h4><p>Большая часть переменных может быть включена в любом месте внутри документа Sass. Тем не менее, с ними иногда необходимо проводить интерполяцию с использованием синтаксиса. Есть несколько случаев, когда интерполяция переменных необходима, вроде использования в именах классов, именах свойств или внутри строки обычного текста.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">$location: chicago
+$offset: left
+
+.#{$location}
+  #{$offset}: 20px</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.chicago {
+  left: 20px;
+}</code></pre>
+<h3>Вычисления</h3><p>Sass также имеет возможность выполнять вычисления разными способами. Расчёты могут справиться с большинством задач, таких как сложение, вычитание, деление, умножение и округления.</p><p>Сложение совершается с помощью знака плюс (+) и может завершаться или нет единицами измерения. Когда это сделано с единицей, она связывается с первым числом в уравнении и затем эта единица будет использоваться в вычислении значения. К примеру, десять пикселей плюс один дюйм будет равняться 106 пикселям. Вычитание обрабатывается таким же образом, что и сложение, но со знаком минус (-) вместо этого.</p><p>Умножение выполняется с помощью символа звёздочки (*), однако только одно из чисел, если они указаны, может включать в себя единицу измерения. Использование знака процентов (%) возвращает остаток от деления двух чисел, и как с умножением, допускает только одно число, которое содержит единицу измерения.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">width: 40px + 6
+width: 40px - 6
+width: 40px * 6
+width: 40px % 6</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">width: 46px;
+width: 34px;
+width: 240px;
+width: 4px;</code></pre>
+<h4>Деление</h4><p>Деление в Sass происходит немного сложнее. Для выполнения деления применяется косая черта (/), которая уже используется в некоторых значениях свойств CSS. Вообще говоря, деление будет иметь место, когда какая-то часть значения использует переменную, если значение оборачивают в скобки или если значение используется как часть другого уравнения.</p><p>При использовании в делении одной единицы измерения значение останется в той же единице. При использовании двух единиц измерения, однако, полученное значение будет безразмерным.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">width: 100px / 10
+width: (100px / 10)
+width: (100px / 10px)
+$width: 100px
+width: $width / 10
+width: 5px - 100px / 10</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">width: 100px/10;
+width: 10px;
+width: 10;
+width: 10px;
+width: -5px;</code></pre>
+<h4>Математика в деталях</h4><p>Как можно ожидать, Sass также способен объединять несколько математических операций. Sass к тому же понимает, какие операции выполнять первыми, основываясь на применении скобок.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">$grid: 16
+$column: 40px
+$gutter: 20px
+$container: ($column * $grid) + ($gutter * $grid)
+
+width: $container</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">width: 960px;</code></pre>
+<h4>Числовые функции</h4><p>По умолчанию Sass включает в себя несколько встроенных функций, многие из которых используются для манипулирования числовыми значениями по желанию.</p><p>Функция <span class="var">percentage()</span> превращает значение в проценты. Функция <span class="var">round()</span> округляет значение до ближайшего целого числа, по умолчанию округляет вверх, где это необходимо. Функция <span class="var">ceil()</span> округляет значение вверх до ближайшего целого числа, а функция <span class="var">floor()</span> округляет значение вниз до ближайшего целого числа. И, наконец, функция <span class="var">abs()</span> находит абсолютное значение заданного числа.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">width: percentage(2.5)
+width: round(2.5px)
+width: ceil(2.5px)
+width: floor(2.5px)
+width: abs(-2.5px)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">width: 250%;
+width: 3px;
+width: 3px;
+width: 2px;
+width: 2.5px;</code></pre>
+<h3>Цвет</h3><p>Sass предоставляет небольшую помощь в работе с цветом, предлагая несколько разных функций для изменения цвета и манипуляций с ним. Одной из наиболее популярных функций в Sass является возможность изменить шестнадцатеричный цвет или переменную и преобразовать его в значение RGBa.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">color: rgba(#8ec63f, .25)
+
+$green: #8ec63f
+color: rgba($green, .25)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">color: rgba(142, 198, 63, .25);</code></pre>
+<p>Кроме чисел, математика может дополнительно применяться и для цвета, используя сложение, вычитание, умножение и деление. Эти вычисления выполняются для красной, зеленой и синей компонент, меняя их как предполагалось.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">color: #8ec63f + #666
+color: #8ec63f * 2
+color: rgba(142, 198, 63, .75) / rgba(255, 255, 255, .75)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">color: #f4ffa5;
+color: #ffff7e;
+color: rgba(0, 0, 0, .75);</code></pre>
+<h4>Операции с цветом</h4><p>Использование операций для вычислений полезно, но может быть немного сложно. В этом случае операции с цветом могут оказаться лучшим вариантом. Эти операции предлагают возможность инверсии цвета, поиска комплиментарных цветов, смешивания цветов или поиска серого значения цвета.</p><ul class="list-column-3"><li>invert()</li><li>complement()</li><li>mix()</li><li>grayscale()</li></ul><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">color: invert(#8ec63f)
+color: complement(#8ec63f)
+color: mix(#8ec63f, #fff)
+color: mix(#8ec63f, #fff, 10%)
+color: grayscale(#8ec63f)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">color: #7139c0;
+color: #773fc6;
+color: #c6e29f;
+color: #f3f9eb;
+color: #838383;</code></pre>
+<h4>Операции с HSLa</h4><p>Операции с HSLa делают дальнейшие шаги, добавляя больше преобразований. Некоторые наиболее популярные операции с HSLa включают <span class="var">lighten()</span>, <span class="var">darken()</span>, <span class="var">saturate()</span> и <span class="var">desaturate()</span>.</p><ul class="list-column-3"><li>lighten()</li><li>darken()</li><li>saturate()</li><li>desaturate()</li><li>adjust-hue()</li><li>fade-in()</li><li>fade-out()</li></ul><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">color: lighten(#8ec63f, 50%)
+color: darken(#8ec63f, 30%)
+color: saturate(#8ec63f, 75%)
+color: desaturate(#8ec63f, 25%)
+color: adjust-hue(#8ec63f, 30)
+color: adjust-hue(#8ec63f, -30)
+color: fade-in(rgba(142, 198, 63, 0), .4)
+color: fade-out(#8ec63f, .4)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">color: white;
+color: #3b5319;
+color: #98ff06;
+color: #89a75e;
+color: #4ac63f;
+color: #c6bb3f;
+color: rgba(142, 198, 63, 0.4);
+color: rgba(142, 198, 63, 0.6);</code></pre>
+<h4>Манипуляции с цветом</h4><p>Кроме операций с цветом Sass также может манипулировать цветом напрямую. Такого рода манипуляции обеспечивает наибольший контроль над тонкой настройкой определённых свойств цвета. С этим контролем также повышается сложность, поэтому манипуляции с цветом делаются несколько реже, чем операции с цветом.</p><ul><li><span class="var">change-color()</span> — Устанавливает любое свойство цвета <br> <span class="var">$color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha] </span></li><li><span class="var">adjust-color()</span> — Манипулирует любым свойством цвета по возрастающей <br> <span class="var">$color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha] </span></li><li><span class="var">scale-color()</span> — Гибко масштабирует любым процентом, основываясь на свойстве цвета <br> <span class="var">$color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha]</span></li></ul><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">color: change-color(#8ec63f, $red: 60, $green: 255)
+color: adjust-color(#8ec63f, $hue: 300, $lightness: 50%)
+color: scale-color(#8ec63f, $lightness: 25%, $alpha: 30%)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">color: #3cff3f;
+color: white;
+color: #aad46f;</code></pre>
+<h3>Расширения</h3><p>Расширения предоставляют возможность легко обмениваться и повторно использовать стили без явного повторения кода или включать дополнительные классы, предлагая идеальный способ сохранить модульность кода. И элементы и классы могут быть использованы в качестве расширения, также есть селектор-заполнитель, построенный специально для расширений.</p><p>Расширения устанавливаются с помощью правила <span class="var">@extend</span>, за которым следует селектор для расширения. Вместо дублирования свойств и значений, оригинальный селектор получает и дополнительный селектор, из которого вызывается расширение.</p><p>В целом, это даёт возможность быстро использовать код повторно без увеличения веса кода. Кроме того, расширения приятно сочетаются с OOCSS и SMACSS.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">.alert
+  border-radius: 10px
+  padding: 10px 20px
+
+.alert-error
+  @extend .alert
+  background: #f2dede
+  color: #b94a48</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.alert,
+.alert-error {
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.alert-error {
+  background: #f2dede;
+  color: #b94a48;
+}</code></pre>
+<h4>Селектор-заполнитель</h4><p>Чтобы избежать создания кучи неиспользуемых классов чисто для расширений, мы можем использовать то, что известно как селектор-заполнитель. Он создаётся со знаком процентов (%) и никогда напрямую не компилируется в CSS. Вместо этого он применяется для прикрепления селекторов, когда они вызываются в расширении. В улучшенном примере ниже обратите внимание, что селектор <span class="class">.alert</span> не переходит в CSS.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">%alert
+  border-radius: 10px
+  padding: 10px 20px
+
+.alert-error
+  @extend %alert
+  background: #f2dede
+  color: #b94a48</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.alert-error {
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.alert-error {
+  background: #f2dede;
+  color: #b94a48;
+}</code></pre>
+<h4>Расширение селектора элемента</h4><p>Как и с классами, расширения также работают со стандартными селекторами элементов.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">h2
+  color: #9c6
+  span
+    text-decoration: underline
+
+.sub-heading
+  @extend h2</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">h2, .sub-heading  {
+  color: #9c6;
+}
+h2 span, .sub-heading span {
+  text-decoration: underline;
+}</code></pre>
+
+<h3>Примеси</h3><p>Примеси предлагают простой способ создания шаблонов свойств и значений, а затем обмениваться ими между разными селекторами. Примеси отличаются от расширений аргументами, передаваемые туда, где у расширений находятся фиксированные значения.</p><p>Примеси определяются с помощью правила <span class="var">@mixin</span>, за которым следуют любые возможные аргументы, затем идут любые правила стилей. Для вызова примеси внутри селектора используется знак плюс (+), за которым следует имя примеси и желаемые значения аргументов при необходимости.</p><p>Стоит упомянуть, что SCSS обрабатывает примеси немного иначе. Вместо знака плюс для вызова примеси SCSS использует правило <span class="var">@include</span>.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">@mixin btn($color, $color-hover)
+  color: $color
+  &amp;:hover
+    color: $color-hover
+
+.btn
+  +btn($color: #fff, $color-hover: #9799a7)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.btn {
+  color: #fff;
+}
+.btn:hover {
+  color: #9799a7;
+}</code></pre>
+<h4>Аргументы по умолчанию</h4><p>Используя тот же самый пример выше, можно также указать значения аргументов по умолчанию, которые могут быть перезаписаны при желании.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">@mixin btn($color: #fff, $color-hover: #9799a7)
+  color: $color
+  &amp;:hover
+    color: $color-hover
+
+.btn
+  +btn($color-hover: #9799a7)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.btn {
+  color: #fff;
+}
+.btn:hover {
+  color: #9799a7;
+}</code></pre>
+<h4>Переменные аргументы</h4><p>Когда одно или несколько значений должны быть переданы в качестве аргумента, то имя переменной внутри примеси может заканчиваться многоточием (...). В приведённом ниже примере с тенью мы можем передать в примесь значения, разделённые запятыми.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">@mixin box-shadow($shadow...)
+  -webkit-box-shadow: $shadow
+  -moz-box-shadow: $shadow
+  box-shadow: $shadow
+
+.shadows
+  +box-shadow(0 1px 2px #cecfd5, inset 0 0 5px #cecfd5)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.shadows {
+  -moz-box-shadow: 0 1px 2px #cecfd5, inset 0 0 5px #cecfd5;
+  -webkit-box-shadow: 0 1px 2px #cecfd5, inset 0 0 5px #cecfd5;
+  box-shadow: 0 1px 2px #cecfd5, inset 0 0 5px #cecfd5;
+}</code></pre>
+<h3>Импорт</h3><p>Одной из самых приятных частей Sass является его способность импортировать несколько файлов .scss или .sass и сжимать их в один файл. Сжатие всех файлов в один позволяет использовать несколько таблиц стилей для лучшей организации, не беспокоясь о многочисленных HTTP-запросах.</p><p>Вместо того, чтобы ссылаться на все разные таблицы стилей внутри HTML-документа, ссылаемся только на один файл Sass, который импортирует все остальные таблицы стилей.</p><p>В следующих примерах все три файла normalize.sass, _grid.sass и typography.sass компилируются в один файл. В этом случае, если файл Sass с именем styles.sass импортирует все остальные файлы, и он компилируется в styles.css, то в HTML-документе следует ссылаться только на styles.css.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">@import &quot;normalize&quot;
+@import &quot;grid&quot;, &quot;typography&quot;</code></pre>
+<p class="exampleTitle">Скомпилированный HTML</p>
+<pre><code data-language="css">&lt;link href=&quot;styles.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+<h3>Циклы и условные выражения</h3><p>Для более сложной стилизации Sass поддерживает различные директивы управления. Важно понимать, что эти директивы предназначены не для повседневного стиля, а для создания подробных примесей и помощников. Многие из них будут выглядеть знакомо, поскольку они заимствованы из других языков программирования.</p><h4>Операторы</h4><p>Некоторые циклы и условные выражения потребуют операторов для определения их поведения. Их можно разбить на операторы сравнения и операторы равенства. Операторы сравнения рассматривают отношения двух объектов, в то время как операторы равенства определяют равенство или различие между объектами.</p><ul class="list-column-3"><li>&lt; <br> Меньше</li><li>&gt; <br> Больше</li><li>== <br> Равно</li><li>&lt;= <br> Меньше или равно</li><li>&gt;= <br> Больше или равно</li><li>!= <br> Не равно</li></ul>
+<pre><code data-language="css">// Операторы сравнения
+6 &lt; 10   // истина
+4 &lt;= 60  // истина
+8 &gt; 2    // истина
+10 &gt;= 10 // истина
+
+// Операторы равенства
+#fff == white  // истина
+10 + 30 == 40  // истина
+normal != bold // истина</code></pre>
+<h4>Функция if</h4><p>Правило проверки выражения <span class="var">@if</span> загружает стили под этим выражением, если оно возвращает что-то, кроме <span class="value">false</span> или <span class="value">null</span>. Начально выражение <span class="var">@if</span> может быть дополнено несколькими выражениями <span class="var">@else&nbsp;if</span> и одним <span class="var">@else</span>. Как только выражение успешно определено, будут применены стили, непосредственно привязанные к нему.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">$shay: awesome
+
+.shay
+  @if $shay == awesome
+    background: #ff7b29
+  @else if $shay == cool
+    background: #0087cc
+  @else
+    background: #333</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.shay {
+  background: #ff7b29; 
+}</code></pre>
+<h4>Цикл for</h4><p>Правило <span class="var">@for</span> выводит разные наборы стилей, основываясь на переменной счётчика. Есть две различные формы, доступные для циклов <span class="var">@for</span>&nbsp;— <span class="var">to</span> и <span class="var">through</span>. Первый, к примеру, <span class="var">@for $i from 1 to 3</span> будет выводить стили до 3, не включая его. Другая форма, <span class="var">@for $i from 1 through 3</span> будет выводить стили до 3, включая его.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">@for $col from 1 to 6
+  .col-#{$col}
+    width: 40px * $col</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.col-1 {
+  width: 40px;
+}
+.col-2 {
+  width: 80px;
+}
+.col-3 {
+  width: 120px;
+}
+.col-4 {
+  width: 160px;
+}
+.col-5 {
+  width: 200px;
+}</code></pre>
+
+<h4>Цикл each</h4><p>Достаточно просто, правило <span class="var">@each</span> возвращает стили для каждого элемента в списке. Список может включать несколько элементов, разделённых запятыми.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">@each $class in uxd, rails, html, css
+  .#{$class}-logo
+    background: url(&quot;/img/#{$class}.jpg&quot;)</code></pre>
+<p class="exampleTitle">Скомпилированный CSS</p>
+<pre><code data-language="css">.uxd-logo {
+  background: url(&quot;/img/uxd.jpg&quot;);
+}
+.rails-logo {
+  background: url(&quot;/img/rails.jpg&quot;);
+}
+.html-logo {
+  background: url(&quot;/img/html.jpg&quot;);
+}
+.css-logo {
+  background: url(&quot;/img/css.jpg&quot;);
+}</code></pre>
+<h4>Цикл while</h4><p>Правило <span class="var">@while</span> постоянно возвращает стили, пока выражение не станет ложным. Эта директива принимает несколько различных операторов и переменная счётчика позволяет тонко контролировать точность цикла.</p><p class="exampleTitle">Sass</p>
+<pre><code data-language="css">$heading: 1
+  @while $heading &lt;= 6
+    h#{$heading}
+      font-size: 2em - ($heading * .25em)
+    $heading: $heading + 1</code></pre>
+<p>Скомпилированый CSS</p>
+<pre><code data-language="css">h1 {
+  font-size: 1.75em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.25em;
+}
+h4 {
+  font-size: 1em;
+}
+h5 {
+  font-size: 0.75em;
+}
+h6 {
+  font-size: 0.5em;
+}</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Другие препроцессоры</h2><p>Haml и Sass не единственные доступные препроцессоры, включая также препроцессоры JavaScript. Вот некоторые другие популярные препроцессоры: <a href="http://jade-lang.com">Jade</a>, <a href="http://slim-lang.com">Slim</a>, <a href="http://lesscss.org">LESS</a>, <a href="http://learnboost.github.com/stylus/">Stylus</a> и <a href="http://coffeescript.org">CoffeeScript</a>.</p><p>Ради краткости Haml и Sass были единственными препроцессоры, рассмотренные в этом уроке. Они также были выбраны потому, что построены с использованием Ruby и прямо подходят к приложениям Ruby on Rails. Они также получили огромную поддержку сообщества.</p><p>Когда речь заходит о выборе, какой препроцессор использовать, важно рассмотреть вопрос о том, что лучше для вашей команды и проекта. Проекты, построенные в Node.js могут, вероятно, больше выиграть от Jade и Stylus. Самым важным аспектом для рассмотрения, однако, является то, что ваша команда привыкла использовать. Проведите исследование для каждого проекта и выберите наиболее обоснованное решение.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://haml.info/" rel="nofollow">Haml</a> — HTML Abstraction Markup Language</li><li><a href="http://sass-lang.com/" rel="nofollow">Sass</a> — Syntactically Awesome Stylesheets</li><li><a href="http://haml.info/docs/yardoc/file.REFERENCE.html" rel="nofollow">Haml Documentation Reference</a></li><li><a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html" rel="nofollow">Sass Documentation Reference</a></li><li><a href="http://sassmeister.com/" rel="nofollow">Sass Playground</a> на SassMeister</li><li><a href="http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html" rel="nofollow">SassScript Function</a> на Sass Documentation</li><li><a href="http://sassme.arc90.com/" rel="nofollow">HSLa Color Function Visualization</a> на SassMe</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/haml">Haml</a></div><div class="field-item odd"><a href="https://webref.ru/metki/sass">Sass</a></div><div class="field-item even"><a href="https://webref.ru/metki/scss">SCSS</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 13.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css/responsive-web-design'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/jquery'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="responsive-web-design.html" title="На предыдущую страницу">Отзывчивый веб-дизайн</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="jquery.html" title="На следующую страницу">jQuery</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="performance-organization.html">Производительность и организация</a></li><li class="leaf"><a href="detailed-css-positioning.html">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf active-trail"><a href="preprocessors.html" class="active-trail active">Препроцессоры</a></li><li class="leaf"><a href="jquery.html">jQuery</a></li><li class="leaf"><a href="transform.html">Трансформация</a></li><li class="leaf"><a href="transitions-animations.html">Переходы и анимация</a></li><li class="leaf"><a href="feature-support-polyfills.html">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-57a2179b20bd91db915006b89b939601"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="preprocessors.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

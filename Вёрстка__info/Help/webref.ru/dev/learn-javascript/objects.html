@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Объекты | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-javascript.html" />
+<link rel="prev" href="functions.html" />
+<meta name="description" content="Примитивными типами в JavaScript являются: true, false, числа, строки, null и undefined. Все остальные значения представляют собой объект. В JavaScript объекты содержат пару «имя: значение». Создание В JavaScript существует два способа создать объект: 1. литеральный var object = {}; // Да, просто пара фигурных скобок! Это рекомендованный метод." />
+<link rel="canonical" href="objects.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Объекты</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-javascript.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Знакомство с JavaScript</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Объекты</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Примитивными типами в JavaScript являются: <span class="var">true</span>, <span class="var">false</span>, числа, строки, <span class="var">null</span> и <span class="var">undefined</span>. <strong>Все остальные значения</strong> представляют собой объект.</p><p>В JavaScript объекты содержат пару «имя: значение».</p><h2>Создание</h2><p>В JavaScript существует два способа создать объект:</p><p>1. литеральный</p>
+<pre><code data-language="javascript">var object = {};
+// Да, просто пара фигурных скобок!</code></pre>
+<p class="note">Это <strong>рекомендованный</strong> метод.</p><p>2. объектно-ориентированный</p>
+<pre><code data-language="javascript">var object = new Object();</code></pre>
+<p class="note">Почти как в Java.</p><h2>Свойства</h2><p>Свойство объекта представляет собой пару «свойство: значение», где <strong>имя свойства может быть только строкой</strong>. Если это не строка, то преобразуется в строку. Вы можете указать свойства объекта <strong>при его создании</strong> или <strong>позднее</strong>. Допустимо несколько свойств, разделённых запятыми или ни одного свойства.</p>
+<pre><code data-language="javascript">var language = {
+  name: 'JavaScript',
+  isSupportedByBrowsers: true,
+  createdIn: 1995,
+  author:{
+    firstName: 'Brendan',
+    lastName: 'Eich'
+  },
+  // Да, объекты могут быть вложенными!
+  getAuthorFullName: function(){
+    return this.author.firstName + &quot; &quot; + this.author.lastName; 
+  }
+  // Да, функции тоже могут быть значениями!
+};</code></pre>
+<p>Следующий код демонстрирует как <strong>получить</strong> значение свойства.</p>
+<pre><code data-language="javascript">var variable = language.name;
+// variable теперь содержит строку &quot;JavaScript&quot;.
+variable = language['name'];
+// Строка выше делает то же самое. Отличие в том, что этот метод позволяет использовать 
+// буквально любую строку в качестве значения свойства, но читается хуже. 
+variable = language.newProperty; 
+// variable теперь undefined, потому что мы ещё не определили это свойство.</code></pre>
+<p>В следующем примере показано, как <strong>добавить</strong> новое свойство или <strong>изменить</strong> существующее.</p>
+<pre><code data-language="javascript">language.newProperty = 'новое значение';
+// Теперь объект содержит новое свойство. Если оно уже существует, значение будет заменено.
+language['newProperty'] = 'изменённое значение';
+// Ещё раз — вы можете получить доступ к свойству двумя методами. Рекомендуется первый (с точкой).</code></pre>
+<h2>Изменчивость</h2><p>Разница между объектами и значениями примитивов в том, что <strong>мы можем изменить объекты</strong>, в то время как значения примитивов остаются неизменными.</p>
+<pre><code data-language="javascript">var myPrimitive = &quot;начальное значение&quot;;
+myPrimitive = &quot;другое значение&quot;;
+// myPrimitive теперь указывает на другую строку.
+var myObject = { key: &quot;начальное значение&quot;};
+myObject.key = &quot;другое значение&quot;;
+// myObject указывает на тот же объект.</code></pre>
+<h2> Указатели</h2><p> Объекты <strong>никогда не копируются</strong>, они передаются с помощью указателя.</p>
+
+<pre><code data-language="javascript">// Представьте, что у меня была пицца
+var myPizza = {slices: 5};
+// И я поделился ею с тобой
+var yourPizza = myPizza;
+// Я ем другой кусок
+myPizza.slices = myPizza.slices - 1;
+var numberOfSlicesLeft = yourPizza.slices;
+// Теперь у нас есть 4 куска, потому что myPizza и yourPizza
+// указывают на один объект.
+var a = {}, b = {}, c = {};
+// a, b и c указывают на разные пустые объекты
+a = b = c = {};
+// a, b и c указывают на один пустой объект</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Прототип</h2><p>Каждый объект связан с прототипом объекта, из которого он наследует свойства.</p><p>Все объекты, созданные как литеральные ({}), автоматически связаны с <span class="var">Object.prototype</span>, который является стандартным объектом JavaScript.</p><p>Когда вы хотите получить свойство объекта, интерпретатор JavaScript пытается найти это свойство, как в следующем коде:</p>
+<pre><code data-language="javascript">var adult = {age: 26},
+retrievedProperty = adult.age;</code></pre>
+<p>Вначале интерпретатор просматривает каждое свойство, которое есть у объекта. Например, <span class="var">adult</span> содержит только одно свойство&nbsp;— <span class="var">age</span>. Но кроме него на самом деле свойств несколько больше, потому что они наследуются из <span class="var">Object.prototype</span>.</p>
+<pre><code data-language="javascript">var stringRepresentation = adult.toString();
+// переменная содержит значение [object Object]</code></pre>
+<p><span class="var">toString</span> является унаследованным свойством <span class="var">Object.prototype</span>. Оно содержит значение функции, которое возвращает строку представляющую собой объект. Если вы хотите вернуть строку в более понятном виде, то можете переопределить её. Просто добавьте новое свойство в объект <span class="var">adult</span>.</p>
+<pre><code data-language="javascript">adult.toString = function(){
+  return &quot;Мне &quot; + this.age;
+}</code></pre>
+<p>Если вы сейчас вызовите функцию <span class="var">toString</span> интерпретатор найдёт новое свойство в самом объекте и остановится.</p><p>Таким образом интерпретатор извлекает первое свойство которое будет найдено в самом объекте и дальше через него в его прототипе.</p><p>Чтобы установить свой собственный объект в качестве прототипа, а не <span class="var">Object.prototype</span> по умолчанию, вы можете вызвать <span class="var">Object.create</span> следующим образом:</p>
+<pre><code data-language="javascript">var child = Object.create(adult);
+/*
+  Этот способ создания объектов позволяет нам легко заменить Object.prototype 
+  по умолчанию на желаемый. В этом случае прототипом child является объект adult.
+ */
+child.age = 8;
+/*
+  Ранее у child не было своего свойства age и интерпретатор должен был смотреть дальше 
+  на прототип child, чтобы его найти.
+  Теперь, когда мы создали свойство age у child, интерпретатору не надо далеко ходить.
+  Примечание: значение age у adult по-прежнему 26.
+ */
+var stringRepresentation = child.toString();
+// Значение: «Мне 8».
+/* 
+  Примечание: мы не переопределяем свойство toString у child, так что 
+  будет вызван метод у adult. Если у adult нет свойства toString, тогда будет 
+  вызван метод toString у Object.prototype и мы получим [object Object] вместо «Мне 8» 
+ */</code></pre>
+<p>Прототипом <span class="var">child</span> является <span class="var">adult</span>, у которого прототип <span class="var">Object.prototype</span>. Такую последовательность прототипов называют <strong>цепочкой прототипов</strong>.</p><h2>Удаление</h2><p><span class="var">delete</span> может применяться для <strong>удаления свойства</strong> из объекта, если оно присутствует. <span class="var">delete</span> не заглядывает далеко по цепочке прототипов. Удаление свойства из объекта может позволить свойству из цепочки прототипов стать видимым:</p>
+<pre><code data-language="javascript">var adult = {age:26},
+    child = Object.create(adult);
+    child.age = 8;
+  
+delete child.age;
+/* Удаление свойства age из объекта child открывает age прототипа, 
+   потому что оно не было переопределено. */
+var prototypeAge = child.age;
+// 26, потому что у child нет своего свойства age.</code></pre>
+<h2>Перечисление</h2><p>Выражение <span class="var">for in</span> может перебрать все имена свойств в объекте. Перечисление будет включать функции и свойства прототипа.</p>
+<pre><code data-language="javascript">var fruit = {
+  apple: 2,
+  orange: 5,
+  pear: 1
+},
+sentence = 'I have ',
+quantity;
+for (kind in fruit){
+  quantity = fruit[kind];
+  sentence += quantity+' '+kind+
+              (quantity===1?'':'s')+
+              ', ';
+}
+// Следующая строка удаляет последнюю запятую.
+sentence = sentence.substr(0,sentence.length-2)+'.';
+// Результат: «I have 2 apples, 5 oranges, 1 pear».</code></pre>
+<h2>Глобальное воздействие</h2><p>Если вы разрабатываете модуль, который может быть запущен на веб-странице наряду с другими модулями, то должны остерегаться перекрытия имён переменных.</p><p>Предположим, что мы разрабатываем модуль счётчика:</p>
+<pre><code data-language="javascript">var myCounter = {
+  number : 0,
+  plusPlus : function(){
+    this.number = this.number + 1;
+  },
+  isGreaterThanTen : function(){
+    return this.number &gt; 10;
+  }
+}</code></pre>
+<p class="note"> Этот приём часто применяется с замыканиями, чтобы внутреннее состояние не менялось извне.</p><p>У модуля теперь есть только одно имя переменной — <span class="var">myCounter</span>. Если любой другой модуль на странице использует такие же имена, как <span class="var">number</span> или <span class="var">isGreaterThanTen</span>, то это совершенно безопасно, потому что модуль не заменит другие значения.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Сами Песси</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 25.08.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/learn-javascript/functions'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="functions.html" title="На предыдущую страницу">Функции</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="basics.html">Основы программирования</a></li><li class="leaf"><a href="numbers.html">Числа</a></li><li class="leaf"><a href="strings.html">Строки</a></li><li class="leaf"><a href="conditional.html">Логические условия</a></li><li class="leaf"><a href="arrays.html">Массивы</a></li><li class="leaf"><a href="loops.html">Циклы</a></li><li class="leaf"><a href="functions.html">Функции</a></li><li class="last leaf active-trail"><a href="objects.html" class="active-trail active">Объекты</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-c995c4d11bd113528f94d25d77d3fa60"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="objects.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

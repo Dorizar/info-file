@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анимация с jQuery | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../jqfundamentals.html" />
+<link rel="next" href="ajax.html" />
+<link rel="prev" href="events.html" />
+<meta name="description" content="jQuery делает тривиальным добавление простых эффектов на страницу. Эффекты могут использовать встроенные настройки или подгонять продолжительность анимации индивидуально. Вы также можете создавать собственную анимацию произвольных свойств CSS. Смотрите более подробную информацию об эффектах jQuery в документации." />
+<link rel="canonical" href="effects.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Анимация с jQuery</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../jqfundamentals.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Основы jQuery</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Анимация с jQuery</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p> jQuery делает тривиальным добавление простых эффектов на страницу. Эффекты могут использовать встроенные настройки или подгонять продолжительность анимации индивидуально. Вы также можете создавать собственную анимацию произвольных свойств CSS.</p><p>Смотрите более подробную информацию об эффектах jQuery в <a href="http://api.jquery.com/category/effects/">документации</a>.</p><p class="note">Важное замечание об анимации. В современных браузерах, особенно на мобильных устройствах, часто анимацию гораздо более эффективно получить с помощью CSS, а не JavaScript. Подробности этом выходят за рамки данного руководства, но если вы ориентируетесь только на мобильные устройства или браузеры, которые поддерживают анимацию через стили, то должны использовать для анимации CSS, там где это возможно. Вы также можете установить <span class="var">jQuery.fx.off</span> как <span class="value">true</span> на устройствах с ограниченными ресурсами; это немедленно установит методы анимации для элементов в требуемое состояние, при котором анимация не происходит.</p><h2>Встроенные эффекты</h2><p>Часто используемые эффекты встроены в jQuery как методы, которые вы можете вызвать для любого объекта jQuery:</p><ul><li><span class="var">.show()</span> — показать выбранные элементы;</li><li><span class="var">.hide()</span> — скрыть выбранные элементы;</li><li><span class="var"> .fadeIn()</span> — анимация прозрачности выбранных элементов до 0%;</li><li><span class="var"> .fadeOut()</span> — анимация прозрачности выбранных элементов до 100%;</li><li><span class="var"> .slideDown()</span> — отображение выбранных элементов с помощью вертикального скользящего движения;</li><li> <span class="var">.slideUp()</span> — сокрытие выбранные элементы с помощью вертикального скользящего движения;</li><li><span class="var"> .slideToggle()</span> — показать или скрыть выбранные элементы с вертикальным скользящим движением в зависимости от того, видны элементы в данный момент или нет.</li></ul><p>После создания выборки мы просто применяем к ней эффект.</p>
+<pre><code data-language="javascript">$( '.hidden' ).show();</code></pre>
+<p>Вы также можете указать длительность встроенных эффектов. Есть два способа сделать это: можете задать время в миллисекундах</p>
+<pre><code data-language="javascript">$( '.hidden' ).show( 300 );</code></pre>
+<p>или использовать одну из предустановленных скоростей:</p>
+<pre><code data-language="javascript">$( '.hidden' ).show( 'slow' );</code></pre>
+<p>Предустановленные скорости указаны в объекте <span class="var">jQuery.fx.speeds</span>. Вы можете изменить этот объект, чтобы переопределить значения по умолчанию или расширить его новыми именами:</p>
+<pre><code data-language="javascript">// Переустановить имеющуюся предустановленную скорость
+jQuery.fx.speeds.fast = 50;
+  
+// Создать новую предустановленную скорость
+jQuery.fx.speeds.turtle = 3000;
+
+// Поскольку мы переустановили скорость 'fast', то теперь анимация 
+// длится 50 миллисекунд
+$( '.hidden' ).hide( 'fast' );
+  
+// После их создания мы можем использовать пользовательские скорости 
+// подобно встроенным
+$( '.other-hidden' ).show( 'turtle' );</code></pre>
+<p>Часто вам требуется сделать что-то после завершения анимации — если вы попытаетесь сделать это до окончания анимации, то это может повлиять на качество анимации или привести к удалению элементов, которые являются частью анимации. Вы можете предоставить функцию обратного вызова для методов анимации, если желаете указать, что должно произойти после завершения эффект. Внутри этой функции <span class="var">this</span> указывает на исходный элемент DOM, к которому применялся эффект. Подобно событиям мы можем превратить его в объект jQuery через <span class="var">$(this)</span>.</p>
+<pre><code data-language="javascript">$( 'p.old' ).fadeOut( 300, function() {
+  $( this ).remove();
+});</code></pre>
+<p>Обратите внимание, что если выборка не содержат каких-либо элементов, то ваша функция обратного вызова никогда не будет выполнена! Если вам требуется выполнить функцию независимо от того, есть элементы в выборке или нет, то вы можете создать функцию и использовать её так:</p>
+<pre><code data-language="javascript">var oldElements = $( 'p.old' );
+var thingToAnimate = $( '#nonexistent' );
+  
+// Эта функция будет «обратным вызовом» для метода show,
+// когда элементы будут показаны. В противном случае мы просто
+// вызовем её незамедлительно
+var removeOldElements = function() {
+  oldElements.remove();
+};
+
+if ( thingToAnimate.length ) {
+
+  // Когда передаётся в качестве функции обратного вызова для show,
+  // эта функция будет вызвана после завершения анимации
+  thingToAnimate.show( 'slow', removeOldElements );
+
+} else {
+  removeOldElements();
+}</code></pre>
+<h2>Произвольные эффекты с .animate()</h2><p>Если встроенные анимации не подходят, вы можете использовать <span class="var">.animate()</span> для создания произвольной анимации большинства свойств CSS. Учтите, что вы не можете анимировать свойство <span class="attribute">color</span>, но есть <a href="https://github.com/jquery/jquery-color/">плагин</a>, который делает его возможным.</p><p>У метода <span class="var">.animate()</span> есть три аргумента:</p><ul><li>объект, определяющий свойства для анимации;</li><li>продолжительность анимации в миллисекундах;</li><li>функция обратного вызова, которая будет вызываться после окончания анимации.</li></ul><p>Метод <span class="var">.animate()</span> может анимировать до указанного конечного значения или увеличить существующее значение.</p>
+<pre><code data-language="javascript">$( '.funtimes' ).animate({
+    left: '+=50', // увеличить на 50
+    opacity: 0.25,
+    fontSize: '12px'
+  },
+  300,
+  function() {
+    // выполняется, когда анимация завершена
+  }
+);</code></pre>
+<p class="note">Обратите внимание, что если вы хотите анимировать свойство CSS, название которого включает дефис, то нужно использовать <a href="https://ru.wikipedia.org/wiki/CamelCase">CamelCase</a> вариант написания свойства, если вы не возьмёте его в кавычки. К примеру, свойство <span class="attribute">font-size</span> указывается как <span class="var">fontSize</span>.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Управление анимацией</h2><p>jQuery предлагает два важных метода для управления анимацией.</p><ul><li><span class="var">.stop()</span> — останавливает выполняемую в данное время анимацию для выбранных элементов.</li><li> <span class="var">.delay()</span> — пауза перед выполнением следующей анимации. В качестве аргумента передаётся желаемое время ожидания в миллисекундах.</li></ul><p>jQuery также предлагает методы для управления очередью эффектов, создание произвольных очередей и добавление своих функций в эти очереди. Данные методы выходят за рамки нашего руководства, но <a href="http://api.jquery.com/category/effects/">вы можете прочитать о них здесь</a>.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/jquery">jQuery</a></div><div class="field-item odd"><a href="https://webref.ru/metki/animaciya">анимация</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Ребекка Мёрфи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 03.09.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/jqfundamentals/events'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/jqfundamentals/ajax'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="events.html" title="На предыдущую страницу">События и делегирование событий</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="ajax.html" title="На следующую страницу">AJAX</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="javascript-basics.html">Основы JavaScript</a></li><li class="leaf"><a href="jquery-basics.html">Азы jQuery</a></li><li class="leaf"><a href="traversing-manipulating.html">Обход и манипуляция</a></li><li class="leaf"><a href="events.html">События и делегирование событий</a></li><li class="leaf active-trail"><a href="effects.html" class="active-trail active">Анимация с jQuery</a></li><li class="last leaf"><a href="ajax.html">AJAX</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-b027512a64739498a4c5a3a99ba10b5c"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="effects.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

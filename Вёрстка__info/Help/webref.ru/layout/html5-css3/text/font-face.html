@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Загрузка своего шрифта | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../text.html" />
+<link rel="next" href="size.html" />
+<link rel="prev" href="set.html" />
+<meta name="description" content="Если у вас на компьютере уже установлен специфический шрифт, то в стилях достаточно добавить строку. h1 { font-family: SuperPuperFont; } Значением свойства font-family выступает название гарнитуры шрифта, она будет применяться ко всем заголовкам . Но что увидят посетители сайта, у которых наш эффектный и редкий шрифт не установлен? Подобная ситуация наиболее вероятна, так что если браузер не распознаёт заявленный шрифт, он будет использовать шрифт по умолчанию, к примеру в Windows это Times New Roman. Весь наш тщательно продуманный шрифтовой дизайн в одночасье рассыплется и пойдёт прахом, поэтому надо поискать наиболее универсальное решение. Первое что сразу же приходит в голову — это организовать загрузку файла шрифта на компьютер пользователя и отображение текста выбранным шрифтом. По сравнению с другими методами вроде отображения текста через рисунок этот способ самый простой и универсальный." />
+<link rel="canonical" href="font-face.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Загрузка своего шрифта</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../html5-css3.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">HTML5 и CSS3 на примерах</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../text.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Текст</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Загрузка своего шрифта</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Если у вас на компьютере уже установлен специфический шрифт, то в стилях достаточно добавить строку.</p>
+<pre><code data-language="css">h1 { font-family: SuperPuperFont; }</code></pre>
+<p>Значением свойства <span class="attribute">font-family</span> выступает название гарнитуры шрифта, она будет применяться ко всем заголовкам <span class="tag">&lt;h1&gt;</span>. Но что увидят посетители сайта, у которых наш эффектный и редкий шрифт не установлен? Подобная ситуация наиболее вероятна, так что если браузер не распознаёт заявленный шрифт, он будет использовать шрифт по умолчанию, к примеру в Windows это Times New Roman. Весь наш тщательно продуманный шрифтовой дизайн в одночасье рассыплется и пойдёт прахом, поэтому надо поискать наиболее универсальное решение. Первое что сразу же приходит в голову&nbsp;— это организовать загрузку файла шрифта на компьютер пользователя и отображение текста выбранным шрифтом. По сравнению с другими методами вроде отображения текста через рисунок этот способ самый простой и универсальный.</p><p>Какие плюсы в итоге даёт нам загрузка файла шрифта с последующим применением через CSS.</p><ul><li>Текст легко добавлять и править.</li><li>В браузере можно пользоваться поиском и находить желаемые фразы.</li><li>В настройках браузера можно уменьшать или увеличивать размер шрифта добиваясь комфортного просмотра.</li><li>Поисковые системы хорошо индексируют содержимое документа.</li><li>Текст можно выделить и скопировать в буфер, а также перевести на другой язык.</li><li>Параметры текста вроде межстрочного расстояния, цвета, размера и тому подобное легко менять с помощью свойств CSS.</li><li>К тексту опять же через CSS просто добавлять разные эффекты, например тень.</li></ul><p>Как видите, преимуществ очень много. Небольшие минусы тоже имеются и для баланса их стоит упомянуть.</p><ul><li>Не все версии браузеров поддерживают загружаемый шрифт и один для всех формат.</li><li>Файл, содержащий гарнитуру шрифта, может занимать большой объём, замедляя тем самым загрузку веб-страницы.</li></ul><p>В табл. 1 перечислены версии браузеров и форматы шрифтов, которые они поддерживают.</p><table class="data browser"><caption>Табл. 1. Поддерживаемые форматы</caption><tr class="br"><td>Формат</td><td><span class="ie">Internet Explorer</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="sa">Safari</span></td><td><span class="fx">Firefox</span></td><td><span class="an">Android</span></td></tr><tr class="sp"><td>TTF</td><td class="yes"><span>9</span></td><td class="yes"><span>4</span></td><td class="yes"><span>10</span></td><td class="yes"><span>3.1</span></td><td class="yes"><span>3.5</span></td><td class="yes"><span>2.2</span></td></tr><tr class="sp"><td>EOT</td><td class="yes"><span>5-8</span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="no"><span></span></td></tr><tr class="sp"><td>WOFF</td><td class="yes"><span>9</span></td><td class="yes"><span>5</span></td><td class="no"><span></span></td><td class="no"><span></span></td><td class="yes"><span>3.6</span></td><td class="no"><span></span></td></tr><tr class="sp"><td>SVG</td><td class="no"><span></span></td><td class="yes"><span>1</span></td><td class="yes"><span>9</span></td><td class="yes"><span>3.1</span></td><td class="yes"><span>3.5</span></td><td class="no"><span></span></td></tr></table><p>Самый поддерживаемый формат — TTF. За исключением IE до версии 9.0 все браузеры его прекрасно понимают. Так что если у вас шрифт именно в этом формате и вы ориентируетесь на современные браузеры, никаких дополнительных действий делать не придётся. Достаточно в стилях написать следующий код (пример 1).</p><p class="exampleTitle">Пример 1. Подключение TTF 
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Шрифт&lt;/title&gt;
+  &lt;style&gt;
+   @font-face {
+    font-family: Pompadur; /* Гарнитура шрифта */
+    src: url(fonts/pompadur.ttf); /* Путь к файлу со шрифтом */
+   }
+   h1 {
+    font-family: Pompadur, 'Comic Sans MS', cursive;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;Современный элемент политического процесса&lt;/h1&gt;
+  &lt;p&gt;По сути, политическое учение Монтескье приводит 
+     континентально-европейский тип политической культуры, 
+     что получило отражение в трудах Михельса.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Вначале загружаем сам файл шрифта с помощью правила <span class="attribute">@font-face</span>. Внутри него пишем название гарнитуры шрифта через <span class="attribute">font-family</span> и путь к файлу через <span class="attribute">src</span>. Дальше используем шрифт как обычно. Так, если нам требуется задать шрифт заголовка, то для селектора <span class="tag">h1</span>, как показано в примере, задаём свойство <span class="attribute">font-family</span> с именем загруженного шрифта. Для старых версий IE через запятую перечисляем запасные варианты. В данном случае шрифт заголовка будет «Comic Sans MS», поскольку IE8 и ниже не поддерживает формат TTF.</p><p>Результат данного примера показан на рис. 1.</p><p class="fig"><img src="../../../assets/images/html5-css3/font-05.png" alt="Заголовок с загруженным шрифтом" width="489" height="306"></p><p class="figsign">Рис. 1. Заголовок с загруженным шрифтом</p><p>Что делать, если вам позарез нужен свой шрифт в IE8? К счастью, <span class="attribute">@font-face</span> позволяет подключать одновременно несколько файлов шрифтов разных форматов. Браузеру остаётся только выбрать подходящий. Таким образом, универсальное решение, работающее во всех браузерах, сводится к конвертации имеющегося формата TTF в EOT с последующим подключением обоих файлов.</p><p>Для конвертации имеется несколько онлайновых сервисов, позволяющих загрузить TTF-файл и на выходе получить EOT-файл. К сожалению, у большинства этих сервисов одна и та же беда&nbsp;— файл мы получаем, но русский язык в нём не поддерживается. В итоге нужный результат не достигается, конвертация происходит неверно. Среди проверенных сайтов оказался один, показавший текст в IE правильно.</p><p> <a href="http://www.kirsle.net/wizards/ttf2eot.cgi">http://www.kirsle.net/wizards/ttf2eot.cgi</a></p><p>Переходим на этот сайт, загружаем TTF-файл и нажимаем кнопку «Convert TTF to EOT», после чего сохраняем полученный файл в папку со шрифтами. В стилях осталось совершить небольшой трюк и заставить разные браузеры загружать шрифт в нужном формате. Для этого добавляем два параметра <span class="attribute">src</span>. Первый указывает на файл EOT и предназначен для старых версий IE. Второй параметр <span class="attribute">src</span> должен содержать два адреса перечисляемых через запятую, один из них указывает на файл TTF. Дело в том, что IE версии 8.0 и младше не понимает запятую в параметре <span class="attribute">src</span> и, соответственно, будет игнорировать параметр целиком. Вариантов написания может быть несколько, например, повторить <span class="attribute">url</span>, указать имя шрифта внутри параметра <span class="value">local</span> или вообще написать несуществующий шрифт. Если браузер не сможет загрузить такой шрифт, то он перейдёт ко второму в списке, а он у нас написан правильно. Допустимые способы написания.</p><p class="example">src: url(fonts/pompadur.ttf), url(fonts/pompadur.ttf); <br>src: local(pompadur), url(fonts/pompadur.ttf); <br>src: local('bla bla'), url(fonts/pompadur.ttf);</p><p>Работающий вариант подключения шрифта для всех версий браузеров показан в примере&nbsp;2.</p><p class="exampleTitle">Пример 2. Подключение EOT 
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Шрифт&lt;/title&gt;
+  &lt;style&gt;
+   @font-face {
+    font-family: Pompadur; /* Гарнитура шрифта */
+    src: url(fonts/pompadur.eot); /* Для IE5-8 */
+    src: local(pompadur), url(fonts/pompadur.ttf); /* Для остальных браузеров */
+   }
+   h1 {
+    font-family: Pompadur, 'Comic Sans MS', cursive;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;Современный элемент политического процесса&lt;/h1&gt;
+  &lt;p&gt;По сути, политическое учение Монтескье приводит 
+     континентально-европейский тип политической культуры, 
+     что получило отражение в трудах Михельса.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>Google Web Fonts</h2><p>Удобный сервис, берущий на себя рутину по поддержке разных форматов шрифтов и версий браузеров, вы найдёте по адресу <a href="http://www.google.com/webfonts">www.google.com/webfonts</a>. Хотя в коллекции сравнительно мало разных шрифтов (их несколько десятков), все они подобраны очень качественно и свободны для использования на сайтах.</p><p>Перед выбором шрифта переключите значение Script на Cyrillic, тогда вы увидите список шрифтов поддерживающих русский язык (рис.&nbsp;2).</p><p class="fig"><img src="../../../assets/images/html5-css3/font-06.png" alt="Выбор шрифтов в Google Web Fonts" width="776" height="582" border="0"></p><p class="figsign">Рис. 2. Выбор шрифтов в Google Web Fonts</p><p>Понравившийся шрифт предварительно следует добавить в коллекцию, нажав на кнопку «Add to Collection», а затем на кнопку «Use» в правом нижнем углу экрана. На следующей странице (рис.&nbsp;3) вы можете окончательно выбрать нужные вам шрифты. При этом надо понимать, что гарнитура шрифта может содержать несколько начертаний и каждое из них повышает объём загружаемых файлов.</p><p class="fig"><img src="../../../assets/images/html5-css3/font-07.png" alt="Загружаемые на страницу шрифты" width="776" height="582"></p><p class="figsign">Рис. 3. Загружаемые на страницу шрифты</p><p>Подключить выбранные шрифты можно одним из трёх путей, добавляемый код можно скопировать ниже по странице.</p><p>1. Через элемент <span class="tag">&lt;link&gt;</span>. Строка будет иметь примерно следующий вид.</p>
+<pre><code>&lt;link href='http://fonts.googleapis.com/css?family=Philosopher&amp;subset=cyrillic' rel='stylesheet' type='text/css'&gt;</code></pre>
+<p>2. Через правило <span class="attribute">@import</span>. Такую строку вставляем в свой CSS-файл в самом верху.</p>
+<pre><code>@import url(http://fonts.googleapis.com/css?family=Philosopher&amp;subset=cyrillic);</code></pre>
+<p>3. Через JavaScript.</p><p>В принципе, все пути равноценны, так что выбирайте по своему предпочтению.</p><p>Преимущества применения данного сервиса такие.</p><ul><li>Шрифты свободны для использования, вам не нужно за них платить.</li><li>Предлагаемые шрифты «заточены» для просмотра на экране, файлы оптимизированы и занимают сравнительно небольшой объём.</li><li>Браузер определяется автоматически и под него выдаётся шрифт в нужном формате.</li></ul><p>Один из основных плюсов сервиса, что шрифты хранятся в форматах TTF, EOT, WOFF, SVG и загружаются после проверки браузера. Так, формат EOT будет доступен только для старых версий IE.</p><p>Использовать Google Web Fonts или нет решать вам. Если не нашли там подходящего шрифта, всегда можно подключить популярный и распространённый TTF. Тем более, что он поддерживается последними версиями всех популярных браузеров.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/shrift">шрифт</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 13.03.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/html5-css3/text/set'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/html5-css3/text/size'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="set.html" title="На предыдущую страницу">Установка шрифта</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="size.html" title="На следующую страницу">Размер текста</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first expanded active-trail"><a href="../text.html" class="active-trail">Текст</a><ul class="menu"><li class="first leaf"><a href="fonts.html">Шрифты</a></li><li class="leaf"><a href="set.html">Установка шрифта</a></li><li class="leaf active-trail"><a href="font-face.html" class="active-trail active">Загрузка своего шрифта</a></li><li class="leaf"><a href="size.html">Размер текста</a></li><li class="leaf"><a href="style.html">Начертание</a></li><li class="leaf"><a href="cursive.html">Наклон текста</a></li><li class="leaf"><a href="bold.html">Насыщенность</a></li><li class="leaf"><a href="sup.html">Верхний и нижний индекс</a></li><li class="last leaf"><a href="dropcap.html">Буквица</a></li></ul></li><li class="collapsed"><a href="../background.html">Фон</a></li><li class="collapsed"><a href="../link.html">Ссылки</a></li><li class="collapsed"><a href="../list.html">Списки</a></li><li class="collapsed"><a href="../img.html">Изображения</a></li><li class="collapsed"><a href="../table.html">Таблицы</a></li><li class="collapsed"><a href="../form.html">Формы</a></li><li class="collapsed"><a href="../transform.html">Трансформация</a></li><li class="leaf"><a href="../transition.html">Переходы</a></li><li class="last leaf"><a href="../animation.html">Анимация</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-f27d72f27235b1ec8f1c2531e530470e"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="font-face.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

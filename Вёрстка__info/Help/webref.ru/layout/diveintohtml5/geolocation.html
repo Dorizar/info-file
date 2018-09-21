@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вы здесь | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../diveintohtml5.html" />
+<link rel="next" href="storage.html" />
+<link rel="prev" href="video.html" />
+<meta name="description" content="Геолокация это способ выяснить, где вы находитесь в мире и дополнительно обмен этой информацией с людьми, которым вы доверяете. Существует несколько способов выяснить ваше нахождение — по IP-адресу; подключению к беспроводной сети; через антенну, к которой подключается ваш сотовый телефон во время разговора; или через GPS-оборудование, вычисляющее широту и долготу на основе информации посылаемой спутниками в небе." />
+<link rel="canonical" href="geolocation.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Вы здесь</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../diveintohtml5.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Погружение в HTML5</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Вы здесь</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Геолокация это способ выяснить, где вы находитесь в мире и дополнительно обмен этой информацией с людьми, которым вы доверяете. Существует несколько способов выяснить ваше нахождение&nbsp;— по IP-адресу; подключению к беспроводной сети; через антенну, к которой подключается ваш сотовый телефон во время разговора; или через GPS-оборудование, вычисляющее широту и долготу на основе информации посылаемой спутниками в небе.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В: Геолокация звучит страшно. Можно её отключить?</p><p>О. Конфиденциальность это первое что вызывает озабоченность, когда вы говорите об отправке информации о вашем физическом положении на веб-сервер. В <a href="http://www.w3.org/TR/geolocation-API/#security">API геолокации</a> говорится прямо: «браузеры не должны отправлять информацию о местоположении на сайты без специального разрешения пользователя». Иными словами, обмен информацией о вашем местоположении происходит всегда с вашим участием. Если вы не желаете, обмена не будет.</p></div></div><h2>API геолокации</h2><p>С помощью API геолокации вы можете делиться вашим местоположением с доверенными сайтами. Широта и долгота доступна для JavaScript, их в свою очередь, можно отправить обратно на удалённый веб-сервер и использовать для чудесных вещей, вроде поиска ближайших предприятий или показа вашего местоположения на карте.</p><p>Как вы можете видеть из следующей таблицы, API геолокации поддерживается большинством браузеров на настольных и мобильных устройствах. Кроме того, некоторые старые браузеры и устройства могут быть дополнены библиотекой, как будет показано ниже в этой главе.</p><table class="data browser"><caption>Поддержка API геолокации</caption><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>9.0+</td><td>3.5+</td><td>5.0+</td><td>5.0+</td><td>10.6+</td><td>3.0+</td><td>2.0+</td></tr></table><p>Наряду с поддержкой стандартного API геолокации есть множество API для конкретных устройств на других мобильных платформах. Я расскажу обо всем этом далее.</p><h2>Покажи мне код</h2><p>API геолокации строится вокруг нового свойства глобального объекта <span class="var">navigator</span>&nbsp;— <span class="var">navigator.geolocation</span>. Простейшее использование API выглядит следующим образом.</p>
+
+<pre><code data-language="javascript">function get_location() {
+  <mark>navigator.geolocation.getCurrentPosition</mark>(show_map);
+}</code></pre>
+
+<p>Здесь нет проверки, обработки ошибок и дополнительных опций. Ваше веб-приложение должно включать, по крайней мере, первые два пункта. Чтобы <a href="detect.html#geolocation">определить поддержку</a> API геолокации, вы можете использовать <a href="http://www.modernizr.com" class="ext">Modernizr</a>.</p>
+
+<pre><code data-language="javascript">function get_location() {
+  if (<mark>Modernizr.geolocation</mark>) {
+    navigator.geolocation.getCurrentPosition(show_map);
+  } else {
+    // Нет встроенной поддержки
+  }
+}</code></pre>
+
+<p>Что делать без поддержки геолокации зависит от вас. Я объясню про запасной вариант Gears позже, но сначала хочу поговорить о том, что происходит во время вызова <span class="var">getCurrentPosition()</span>. Как я упоминал в начале главы, поддержка геолокации происходит при вашем участии. Это означает, что браузер никогда не заставит вас раскрыть своё текущее расположение удалённому серверу. Способ взаимодействия с пользователем отличается от браузера к браузеру. В Mozilla Firefox вызов функции <span class="var">getCurrentPosition()</span> выведет информационную панель в верхней части окна браузера. Выглядит она следующим образом.</p><p class="fig"><img src="../../assets/images/diveintohtml5/geolocation.png" width="717" height="40" alt="Информационная панель"></p><p>Вам как пользователю:</p><ul><li>говорят, что сайт желает знать ваше местоположение;</li><li>говорят, какой именно сайт желает это знать;</li><li>можно щёлкнуть на «Подробнее» и перейти на <a href="http://www.mozilla.com/en-US/firefox/geolocation/">справочную страницу Firefox</a>, где объясняют что происходит;</li><li>можно сообщить своё местоположение;</li><li>можно не сообщать своё местоположение;</li><li>можно указать браузеру запомнить ваш выбор, и в дальнейшем панель на этом сайте вы больше не увидите.</li></ul><p>Кроме того, эта информационная панель является:</p><ul><li>немодальной, поэтому не помешает вам переходить в другое окно или вкладку браузера;</li><li>привязанной к вкладке, она исчезает при переключении на другую вкладку или окно и появляется снова, когда вы возвращаетесь в исходную вкладку;</li><li>безусловной, так что нет способа ее обойти;</li><li>блокируемой, поэтому нет никаких шансов, что сайт может определить ваше местоположение, пока панель ждёт ответа.</li></ul><p>Вы только что видели код JavaScript, который вызывает эту информационную панель. Это функция, которая обращается к другой функции (я назвал её <span class="var">show_map</span>) и ждет от нее отзыв. Вызов <span class="var">getCurrentPosition()</span> возвращает результат сразу, но это не означает, что у вас есть доступ к местоположению пользователя. В первый раз вы гарантированно получите информацию о местоположении в функции обратного вызова, которая выглядит следующим образом:</p>
+
+<pre><code data-language="javascript">function show_map(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  // Посмотрим карту или сделаем что-нибудь интересное!
+}</code></pre>
+
+<p>Данная функция вызывается с одним параметром, это объект с двумя свойствами: <span class="var">coords</span> и <span class="var">timestamp</span>.</p><p><span class="var">timestamp</span> содержит дату и время, когда было вычислено место. Так как это происходит асинхронно, вы не можете знать заранее, когда это произойдёт. Пользователю потребуется некоторое время, чтобы прочитать информационную панель и согласиться указать своё местоположение. Устройства на базе GPS могут занять ещё больше время для подключения к спутникам.</p><p>Объект <span class="var">coords</span> содержит свойства, такие как <span class="var">latitude</span> и <span class="var">longitude</span>, которые определяют физическое местоположение пользователя в мире.</p><table class="data"><caption>Объект position</caption><tr><th>Свойство</th><th>Тип</th><th>Замечание</th></tr><tr><td>coords.latitude</td><td>double</td><td>В градусах</td></tr><tr><td>coords.longitude</td><td>double</td><td>В градусах</td></tr><tr><td>coords.altitude</td><td>double или null</td><td>В метрах</td></tr><tr><td>coords.accuracy</td><td>double</td><td>В метрах</td></tr><tr><td>coords.altitudeAccuracy</td><td>double или null</td><td>В метрах</td></tr><tr><td>coords.heading</td><td>double или null</td><td>Градусы по часовой стрелке от севера</td></tr><tr><td>coords.speed</td><td>double или null</td><td>В метрах в секунду</td></tr><tr><td>timestamp</td><td>DOMTimeStamp</td><td>Как у объекта Date()</td></tr></table><p class="rightpic"><img src="../../assets/images/diveintohtml5/riding_a_bike.png" alt="" width="196" height="239" /></p><p>Только три свойства будут здесь гарантированно (<span class="var">coords.latitude</span>, <span class="var">coords.longitude</span> и <span class="var">coords.accuracy</span>). Остальные, возможно, вернут <span class="value">null</span> в зависимости от возможностей вашего устройства и сервера, с которым вы общаетесь. Свойства <span class="var">heading</span> и <span class="var">speed</span> при возможности вычисляются на основе предыдущей позиции пользователя.</p><h2>Обработка ошибок</h2><p>Геолокация сложна и что-нибудь может пойти не так. Я уже упоминал про «согласие пользователя». Если ваше веб-приложение желает знать местоположение пользователя, но сам пользователь не считает нужным его сообщать, все пойдёт вразброд. Пользователь всегда прав. Но как это выглядит в коде? Взгляните на второй аргумент функции <span class="var">getCurrentPosition()</span>: это функция обработки ошибок.</p>
+
+<pre><code data-language="html">navigator.geolocation.getCurrentPosition(show_map, <mark>handle_error</mark>)</code></pre>
+
+<p>Если что-то пойдёт не так, ваша функция для ошибок будет вызвана с объектом <span class="var">PositionError</span>.</p><table class="data"><caption>Объект PositionError</caption><tr><th>Свойство</th><th>Тип</th><th>Замечание</th></tr><tr><td>code</td><td>short</td><td>Перечисленные значения</td></tr><tr><td>message</td><td>DOMString</td><td>Не предназначено для пользователей</td></tr></table><p>Свойство <span class="var">code</span> может принимать следующие значения:</p><ul><li>PERMISSION_DENIED (1) — если пользователь нажал на кнопку «Не сообщать» или иным образом запретил доступ к своему местоположению;</li><li>POSITION_UNAVAILABLE (2) — если сеть не работает или нет связи со спутниками;</li><li>TIMEOUT (3) — если сеть работает, но вычисление положения занимает слишком много времени. Насколько это «слишком много»? Я покажу вам, как это определить в следующем разделе;</li><li>UNKNOWN_ERROR (0) — если что-нибудь ещё пойдёт не так.</li></ul>
+
+<pre><code data-language="javascript">function handle_error(err) {
+  if (<mark>err.code</mark> == 1) {
+    // пользователь сказал нет!
+  }
+}</code></pre>
+
+<div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В: Работает ли геолокация на Международной космической станции, Луне или на других планетах?</p><p>О. В <a href="http://www.w3.org/TR/geolocation-API/#coordinates_interface">спецификации геолокации</a> сказано «в качестве системы отсчёта координат используются Всемирная геодезическая система (WGS84). Другие системы не поддерживаются». Координаты Международной космической станции на орбите Земли могут быть описаны <a href="http://twitter.com/Astro_TJ">космонавтами</a> через широту, долготу и высоту. Тем не менее, Всемирная геодезическая система ориентирована на Землю, поэтому не может быть использована для описания мест на Луне или других планетах.</p></div></div><h2>Выбор! Я требую выбора!</h2><p>Некоторые популярные мобильные устройства вроде телефонов iPhone и Android поддерживают два метода определения, где вы находитесь. Первый метод вычисляет ваше положение на основе относительной близости от различных сотовых вышек, управляемых оператором телефона. Этот метод быстр и не требует никакого специального GPS-оборудования, но даёт только общее представление о том, где вы находитесь. В зависимости от того, сколько сотовых вышек находится в вашем районе, «общее представление» может быть небольшим, как городской квартал или намного больше (километры в любом направлении).</p><p class="leftpic"><img src="../../assets/images/diveintohtml5/young_girl_pointing.png" alt="" width="336" height="229" /></p><p>Второй способ использует встроенное в устройство GPS-оборудование для общения со спутниками на земной орбите. GPS, как правило, определяет ваше местоположение в пределах нескольких метров. Недостатком встроенного GPS-чипа является то, что устройство потребляет много энергии, поэтому телефоны и другие мобильные устройства обычно отключают чип, пока он не требуется. Это означает, что возникнет задержка, пока чип инициализирует связь со спутниками. Если вы когда-либо использовали Google Maps на iPhone или другом смартфоне, то видели оба метода в действии. Вначале вы увидите большой круг, который уточняет ваше положение (поиск ближайших сотовых вышек), затем меньший круг (уточнение по другим сотовым вышкам), затем одна точка с требуемой позицией (полученная через спутники GPS).</p><p>Поэтому я и говорю о том, что в зависимости от вашего веб-приложения вы можете не получить требуемую высокую точность. Если вы просто ищете список близлежащих кинотеатров, «низкая точность», возможно, будет и хороша. Кинотеатров не так много, даже в населённом городе, так что вы, вероятно, получите больше одного. С другой стороны, если вы поворачиваете в реальном времени, вам действительно нужно точно знать, где сказать пользователю «повернуть направо через 20 метров» или что-то подобное.</p><p>Функция <span class="var">getCurrentPosition()</span> имеет необязательный третий аргумент, объект <span class="var"><a href="http://www.w3.org/TR/geolocation-API/#position-options">PositionOptions</a></span>. Он содержит три свойства, которые вы можете установить для объекта. Все свойства являются не обязательными, вы можете задать любой, все или ни одного.</p><table class="data"><caption>Объект PositionOptions</caption><tr><th>Свойство</th><th>Тип</th><th>Значение по умолчанию</th><th>Замечание</th></tr><tr><td>enableHighAccuracy</td><td>Булевой</td><td>false</td><td>Если true, то медленнее</td></tr><tr><td>timeout</td><td>long</td><td>Нет</td><td>В миллисекундах</td></tr><tr><td>maximumAge</td><td>long</td><td>0</td><td>В миллисекундах</td></tr></table><p>Свойство <span class="var">enableHighAccuracy</span> делает именно то, как и звучит. Если оно установлено как <span class="value">true</span>, устройство поддерживает свойство и пользователь соглашается указать свое местоположение, то устройство попытается обеспечить высокую точность. Оба телефона iPhone и Android имеют отдельные разрешения для низкой и высокой точности позиционирования, поэтому не исключено, что вызов <span class="var">getCurrentPosition()</span> с <span class="var">enableHighAccuracy</span> со значением <span class="value">true</span> не получится, а вызов <span class="var">enableHighAccuracy</span> со значением <span class="value">false</span> удастся.</p><p>Свойство <span class="var">timeout</span> это количество миллисекунд, которое веб-приложение будет ожидать для получения положения. Таймер не начинает отсчёт, пока пользователь не даст разрешение на попытку вычислить его положение. Он следит не за пользователем, а за сетью.</p><p class="rightpic"><img src="../../assets/images/diveintohtml5/Galileo_Galilei.png" alt="" width="208" height="508" /></p><p>Свойство <span class="var">maximumAge</span> позволяет устройству отвечать немедленно из закэшированной позиции. Например, вы обращаетесь к <span class="var">getCurrentPosition()</span> в первый раз, пользователь соглашается и ваша функция успешно возвращает положение, вычисленное ровно в 10:00. Ровно через минуту, в 10:01 вы вызываете <span class="var">getCurrentPosition()</span> снова установив свойство <span class="var">maximumAge</span> в 75000.</p>
+
+<pre><code data-language="javascript">navigator.geolocation.getCurrentPosition(
+success_callback, error_callback, <mark>{maximumAge: 75000}</mark>);</code></pre>
+
+<p>Тем самым вы говорите, что вам необязательно знать текущее положение пользователя. Вы были бы рады знать, где он был 75 секунд назад (75000 миллисекунд). Устройство знает, где пользователь был 60 секунд назад (60000 миллисекунд), так как оно рассчитало место после первого вызова <span class="var">getCurrentPosition()</span>. Поэтому устройство не будет пересчитывать текущее местоположение пользователя. Оно вернёт ту же информацию, что и в первый раз: ту же широту и долготу, ту же точность и то же время (10:00).</p><p>Прежде чем вы запросите местоположение пользователя, вы должны подумать о том, какая точность вам требуется и установить соответствующее значение <span class="var">enableHighAccuracy</span>. Если вам необходимо найти место ещё раз, вы должны подумать о том, какая старая информация может пригодиться и установить соответствующее значение <span class="var">maximumAge</span>. Если требуется искать локацию постоянно, то <span class="var">getCurrentPosition()</span> не для вас, необходимо перейти на <span class="var">watchPosition()</span>.</p><p>Фукнция <span class="var">watchPosition()</span> имеет ту же структуру что и <span class="var">getCurrentPosition()</span>. Она содержит две функции обратного вызова, одна требуется для успеха, вторая для ошибок, также может иметь необязательный объект <span class="var">PositionOptions</span>, он имеет те же свойства, о которых вы узнали ранее. Разница в том, что ваша функция будет вызываться каждый раз при смене местоположения пользователя. Нет необходимости постоянного опроса позиции, устройство само определит оптимальный интервал опроса и вызовет функцию при изменении положения пользователя. Вы можете использовать эту возможность для обновления видимым маркеров на карте, предоставления инструкции, куда идти дальше или чего-нибудь ещё. Это полностью зависит от вас.</p><p>Сама функция <span class="var">watchPosition()</span> возвращает число, которое следует где-то хранить. Если вы хотите остановить слежение за положением пользователя, то можете вызвать метод <span class="var">clearWatch()</span>, передать ему это число и устройство остановит вызов функции. Если вы когда-либо использовали функции <span class="var">setInterval()</span> и <span class="var">clearInterval()</span> в JavaScript, то это работает точно так же.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Что насчёт IE?</h2><p>До версии 9 (технически, 9.0RC1) Internet Explorer не поддерживает API геолокации, который я только что описал. Но не отчаивайтесь! Для ранних версий нам понадобится запасной вариант на JavaScript. Это не тоже самое что и API геолокации от W3C, но служит той же цели. Пока мы затронули вопросы об устаревших платформах, я должен отметить, что многие старые мобильные платформы имеют API для геолокации ориентированные на свои устройства. <a href="http://www.tonybunce.com/2008/05/08/Blackberry-Browser-Amp-GPS.aspx">BlackBerry</a>, <a href="http://www.developer.nokia.com/Resources/Library/Web/#!web-apps/symbian-web-runtime/platform-services-20-javascript-api-reference/platform-services-20-location-api/geolocation-object.html">Nokia</a>, <a href="http://developer.palm.com/index.php?option=com_content&view=article&id=1673#GPS-getCurrentPosition">Palm</a> и <a href="http://bondi.omtp.org/1.0/apis/geolocation.html">OMTP BONDI</a> предоставляют свои собственные API для геолокации. Конечно, вся их работа отличается от W3C, которая, в свою очередь, работает иначе, чем API геолокации от W3C. Уииииии!</p><h2>geoposition.js для спасения</h2><p><a href="https://github.com/estebanav/javascript-mobile-desktop-geolocation">geoPositon.js</a> это JavaScript-библиотека с открытым исходным кодом распространяемая по лицензии MIT. Она сглаживает различия между API от W3C и API представленных на мобильных платформах. Чтобы её использовать, вам надо добавить элемент <span class="tag">&lt;script&gt;</span> в нижнюю часть страницы. Технически, вы можете вставить в любое место, но скрипты в <span class="tag">&lt;head&gt;</span> могут замедлить загрузку страницы, так что не делайте этого.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Погружение в HTML5&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...
+    <mark>&lt;script src=&quot;geoPosition.js&quot;&gt;&lt;/script&gt;</mark>
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Теперь вы готовы использовать любой установленный API геолокации.</p>
+
+<pre><code data-language="javascript">if (geoPosition.init()) {
+  geoPosition.getCurrentPosition(geoSuccess, geoError);
+}</code></pre>
+
+<p>Давайте рассмотрим это по шагам. Вначале вы должны явно вызвать функцию <span class="var">init()</span>, она возвращает <span class="value">true</span>, если поддержка геолокации доступна.</p>
+
+<pre><code data-language="javascript">if (<mark>geoPosition.init()</mark>) {</code></pre>
+
+<p>Вызов функции <span class="var">init()</span> в действительности не обнаруживает ваше положение, функция просто проверяет, что это возможно. Чтобы действительно найти свое местоположение, необходимо вызвать функцию <span class="var">getCurrentPosition()</span>.</p>
+
+<pre><code data-language="javascript"><mark>geoPosition.getCurrentPosition</mark>(geoSuccess, geo_error);</code></pre>
+
+<p>Функция <span class="var">getCurrentPosition()</span> переключает ваш браузер на запрос разрешения указать ваше местоположение. Если функция <span class="var">getCurrentPosition()</span> оказалась успешной в поиске вашего местоположения&nbsp;— то есть вы дали своё разрешение, тогда API сработает подобно магии,&nbsp;— произойдёт вызов функции, переданной в качестве первого аргумента. В этом примере функция успеха называется <span class="var">geo_success</span>.</p>
+<pre><code data-language="html">geoPosition.getCurrentPosition(<mark>geo_success</mark>, geo_error);</code></pre>
+<p>Функция успеха принимает единственный аргумент, который содержит информацию о положении.</p>
+
+<pre><code data-language="javascript">function geo_success(p) {
+  alert(&quot;Ваша широта &quot; + p.coords.latitude +
+        &quot;, долгота &quot; + p.coords.longitude);
+}</code></pre>
+
+<p>Если функция <span class="var">getCurrentPosition()</span> не может определить ваше местоположение&nbsp;— либо потому что вы отказались дать разрешение, либо API геолокации по некоторым причинам это не удалось&nbsp;— будет вызвана функция, указанная в качестве второго аргумента. В этом примере функция отказа называется <span class="var">geo_error</span>.</p>
+<pre><code data-language="html">geoPosition.getCurrentPosition</code><code data-language="javascript">(geo_success, <mark>geo_error</mark>);</code></pre>
+<p>У функции отказа нет аргументов.</p><p>geoPosition.js в настоящее время не поддерживает функцию <span class="var">watchPosition()</span>. Если вам нужна постоянная информация о местоположении, необходимо самостоятельно активно опрашивать <span class="var">getCurrentPosition()</span>.</p><h2>Заключение, живой пример</h2><p>Вот <a href="https://webref.ru/example/page/geolocation.html">живой пример</a> с использованием geoPosition.js. Он пытается получить ваше местоположение и отобразить карту на месте рисунка.</p><p>Как это работает? Давайте смотреть. При загрузке страницы вызывается <span class="var">geoPosition.init()</span> для определения геолокации доступной через любой интерфейс, который поддерживает geoPosition.js. Если это так, то появится ссылка, на которую можно нажать, чтобы посмотреть ваше местоположение. Щелчок по ссылке вызывает функцию <span class="var">lookup_location()</span> показанную здесь.</p>
+
+<pre><code data-language="javascript">function lookup_location() {
+  geoPosition.getCurrentPosition(show_map, show_map_error);
+}</code></pre>
+
+<p>Если вы дали согласие отследить ваше местоположение и службы в состоянии это сделать, geoPosition.js вызывает первую функцию <span class="var">show_map()</span> с единственным аргументом <span class="var">loc</span>. Объект <span class="var">loc</span> содержит свойство <span class="var">coords</span> в котором хранится широта, долгота и точность (в этом примере точность не используется). Остальное в функции <span class="var">show_map()</span> используется для создания встроенной карты через Google Maps API.</p>
+
+<pre><code data-language="javascript">function show_map(loc) {
+  $(&quot;#geo-wrapper&quot;).css({'width':'320px','height':'350px'});
+  var map = new GMap2(document.getElementById(&quot;geo-wrapper&quot;));
+  var center = new GLatLng(loc.coords.latitude, loc.coords.longitude);
+  map.setCenter(center, 14);
+  map.addControl(new GSmallMapControl());
+  map.addControl(new GMapTypeControl());
+  map.addOverlay(new GMarker(center, {draggable: false, title: &quot;Вы здесь&quot;}));
+}</code></pre>
+
+<p>Если geoPosition.js не может определить ваше местоположение, он вызывает вторую функцию <span class="var">show_map_error()</span>.</p>
+
+<pre><code data-language="javascript">function show_map_error() {
+  $(&quot;#live-geolocation&quot;).html('Не могу определить местоположение.');
+}</code></pre>
+
+<h2>Дальнейшее чтение</h2><ul><li><a href="http://www.w3.org/TR/geolocation-API/" hreflang="en">W3C geolocation API</a></li><li><a href="http://www.tonybunce.com/2008/05/08/Blackberry-Browser-Amp-GPS.aspx" hreflang="en">BlackBerry geolocation API</a></li><li><a href="http://www.developer.nokia.com/Resources/Library/Web/#!web-apps/symbian-web-runtime/platform-services-20-javascript-api-reference/platform-services-20-location-api/geolocation-object.html" hreflang="en">Nokia geolocation API</a></li><li><a href="http://developer.palm.com/index.php?option=com_content&view=article&id=1673#GPS-getCurrentPosition" hreflang="en">Palm geolocation API</a></li><li><a href="http://bondi.omtp.org/1.0/apis/geolocation.html" hreflang="en">OMTP BONDI geolocation API</a></li><li><a href="http://github.com/estebanav/javascript-mobile-desktop-geolocation" hreflang="en">geoPosition.js</a>, скрипт для геолокации</li><li><a href="http://msdn.microsoft.com/en-us/ie/ff468705.aspx#_HTML5_geolocation" hreflang="en">Internet Explorer 9 Guide for Developers: Geolocation</a></li></ul><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Марк Пилгрим</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 18.08.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/diveintohtml5/video'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/diveintohtml5/storage'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="video.html" title="На предыдущую страницу">Видео на сайте</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="storage.html" title="На следующую страницу">Локальное хранилище</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Пять вещей, которые надо знать об HTML5</a></li><li class="leaf"><a href="past.html">Довольно предвзятая история HTML5</a></li><li class="leaf"><a href="detect.html">Проверка технологий HTML5</a></li><li class="leaf"><a href="semantics.html">Что всё это значит?</a></li><li class="leaf"><a href="canvas.html">Давайте порисуем</a></li><li class="leaf"><a href="video.html">Видео на сайте</a></li><li class="leaf active-trail"><a href="geolocation.html" class="active-trail active">Вы здесь</a></li><li class="leaf"><a href="storage.html">Локальное хранилище</a></li><li class="leaf"><a href="offline.html">Возьмём с собой</a></li><li class="leaf"><a href="forms.html">Сумасшедшие формы</a></li><li class="leaf"><a href="extensibility.html">Микроданные</a></li><li class="last leaf"><a href="history.html">Управление историей для пользы и развлечения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-ef5e8c119d0ef3f1038087649dc71bef"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="geolocation.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

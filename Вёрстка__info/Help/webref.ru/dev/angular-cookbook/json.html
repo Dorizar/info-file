@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Извлечение данных JSON в AngularJS | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../angular-cookbook.html" />
+<link rel="next" href="table.html" />
+<link rel="prev" href="controler.html" />
+<meta name="description" content="Что такое JSON? JSON это лёгкий формат для обмена данными. Простой для людей, чтобы его читать и писать. Простой для машин для разбора и генерации. JSON — это текстовый формат, который полностью зависит от языка, но использует соглашения, которые знакомы программистам. JSON построен на двух структурах:" />
+<link rel="canonical" href="json.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Извлечение данных JSON в AngularJS</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../angular-cookbook.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">AngularJS. Рецепты программирования</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Извлечение данных JSON в AngularJS</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><h2>Что такое JSON?</h2><p><a href="http://json.org">JSON</a> это лёгкий формат для обмена данными. Простой для людей, чтобы его читать и писать. Простой для машин для разбора и генерации. JSON — это текстовый формат, который полностью зависит от языка, но использует соглашения, которые знакомы программистам.</p><p>JSON построен на двух структурах:</p><ul><li> Коллекция пар имя/значение. В различных языках это реализовано как объект, запись, структура, словарь, хэш-таблица, список ключей или ассоциативный массив.</li><li> Упорядоченный список значений. В большинстве языков это реализовано как массив, вектор, список или последовательность.</li></ul><h2>Идея примера</h2><p>В этом примере мы покажем простой способ извлечения данных из файла JSON и отображение соответствующей информации в нашем Angular-приложении, в удобном для пользователя виде. Конкретно, мы будем иметь дело с населением стран по всему миру.</p><h3>Файл JSON</h3><p>Я уже подготовил JSON-файл со странами, в котором хранятся кодовые имена и данные о населении нескольких стран.</p><h3>Само приложение</h3><p>Итак, какой план?</p><ul><li> Извлекаете JSON.</li><li> Отображаете JSON удобочитаемым способом.</li></ul><p>Извлечение JSON означает, что это должно быть сделано каждый раз, когда приложение загружается в браузер. А именно, соответствующее действие происходит в скрипте внутри <span class="tag">&lt;head&gt;</span>.</p><p>Хорошо, что было проще, как насчёт одной сложности? Упоминаемое ранее «действие» на самом деле&nbsp;— это обращение к сервису <span class="var">$http</span>, базовому сервису Angular, который облегчает общение с удалёнными HTTP-серверами через объект браузера XMLHttpRequest или через JSONP.</p><p>На практике это означает, что вам требуется развернуть приложение на веб-сервере, а не выполнить его в браузере. Для получения более подробной информации об этом факте, пожалуйста, обратитесь к <a href="http://thodorisbais.blogspot.gr/2015/03/how-to-solve-failed-to-execute-send-on.html">этому посту</a>.</p><p>В целом использование сервиса <span class="var">$http</span> — это единственный аргумент (объект с настройками), который применяется для генерации запроса HTTP. Он возвращает обещание (promise) с двумя методами <span class="var">$http</span>: <span class="var">success</span> и <span class="var">error</span>.</p><p>Вот как выглядит простой запрос GET:</p>
+<pre><code data-language="javascript">// Пример простого запроса GET:
+$http.get('/someUrl').
+  success(function(data, status, headers, config) {
+    // Этот обратный вызов будет вызываться асинхронно,
+    // когда получен ответ
+  }).
+  error(function(data, status, headers, config) {
+    // Вызывается асинхронно, если происходит ошибка
+    // или сервер возвращает ответ со статусом ошибки
+});</code></pre>
+<p>Мы только используем <span class="var">success</span> и угадайте что?! После успешного вызова/выполнения сервиса мы хотим загрузить наш JSON-файл в глобальную переменную, доступную всем приложениям, и да, ваше предположение было верно, <span class="var">$scope</span> является глобальной переменной, которую мы ищем!</p><p>Кроме того, базовый сервис <span class="var">$http</span> предлагает сокращённые методы, где обязательным является только URL, который должен быть обработан, в то время как данные запроса должны быть переданы для запросов POST/PUT:</p>
+<pre><code data-language="javascript">$http.get('/someUrl').success(successCallback);</code></pre>
+<h2>Пример</h2><p>Время для действий!</p><h3>Загрузка JSON в $scope</h3><p>В соответствии с упомянутыми выше замечаниями мы должны загрузить наш JSON-файл в переменную <span class="var">$scope</span>, скажем <span class="var">countries</span>:</p>
+<pre><code data-language="javascript">$http.get('countries.json').success(function(data) {
+  $scope.countries = data;
+});</code></pre>
+<p>Очевидно, что этот вызов сервиса должен быть частью определения контроллера приложения Angular, поэтому предполагая, что мы назвали наше приложение <span class="var">countryApp</span>, вот обновлённый формат вызова сервиса:</p>
+<pre><code data-language="javascript">countryApp.controller('CountryCtrl', function ($scope, $http) {
+  $http.get('countries.json').success(function(data) {
+    $scope.countries = data;
+  });
+});</code></pre>
+<p>Если вам нужна дополнительная помощь по контроллеру, пожалуйста, взгляните на <a href="controler.html">этот раздел</a>.</p><h3>Отображение данных JSON в таблице</h3><p>Теперь, когда мы загрузили все данные JSON в <span class="var">$scope.countries</span> давайте покажем их в таблице с тремя колонками: код, название, население. Это обстоятельство переводится в два требования:</p><ul><li> Мы должны найти способ повторно анализировать все данные из переменной <span class="var">$scope</span> (поскольку мы, очевидно, не хотим, руками вводить более 70 отдельных стран).</li><li> Мы хотим разделить данные каждой страны на её код, название и население, чтобы отображать их в соответствующей колонке таблицы.</li></ul><p>Определить заголовок таблицы очень просто:</p>
+<pre><code data-language="html">&lt;th&gt;Код&lt;/th &gt;
+  &lt;th&gt;Страна&lt;/th &gt;
+  &lt;th&gt;Население&lt;/th &gt;
+&lt;/tr &gt;</code></pre>
+<p>Теперь, чтобы полностью выполнить первое требование, мы будем использовать директиву <span class="attribute">ngRepeat</span>, которая создаёт экземпляр шаблона за раз из коллекции. Каждый экземпляр шаблона получает собственную область видимости, где переменная цикла установлена на текущее положение элемента, а <span class="var">$index</span> устанавливается на индекс или ключ элемента.</p><p>В нашем случае, для многократного цикла по каждой стране, мы должны предположить, что каждая страна является строкой таблицы:</p>
+<pre><code data-language="html">&lt;tr ng-repeat=&quot;country in countries&quot;&gt;</code></pre>
+<p>Полное выполнение второго требования теперь легче, потому что страна обрабатывается каждый раз, когда можно получить данные из переменной <span class="var">country</span>:</p>
+<pre><code data-language="html">&lt;tr ng-repeat=&quot;country in countries | orderBy: 'code' &quot;&gt;
+  &lt;td&gt;{{country.code}}&lt;/td&gt;
+  &lt;td&gt;{{country.name}}&lt;/td&gt;
+  &lt;td&gt;{{country.population}}&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+<p>Вот окончательная структура нашего приложения:</p><p class="exampleTitle">index.html</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html ng-app=&quot;countryApp&quot;&gt;
+&lt;head&gt;
+ &lt;meta charset=&quot;utf-8&quot;&gt;
+ &lt;title&gt;Пример извлечения данных JSON в Angular.js&lt;/title&gt;
+ &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+ &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js&quot;&gt;&lt;/script&gt;
+ &lt;script&gt;
+  var countryApp = angular.module('countryApp', []);
+  countryApp.controller('CountryCtrl', function ($scope, $http){
+    $http.get('countries.json').success(function(data) {
+      $scope.countries = data;
+    });
+  });
+ &lt;/script&gt;
+&lt;/head&gt;
+&lt;body ng-controller=&quot;CountryCtrl&quot;&gt;
+  &lt;h2&gt;Пример извлечения данных JSON в Angular.js&lt;/h2&gt;
+  &lt;table class=&quot;table table-striped&quot;&gt;
+   &lt;tr&gt;
+    &lt;th&gt;Код&lt;/th&gt;
+    &lt;th&gt;Страна&lt;/th&gt;
+    &lt;th&gt;Население&lt;/th&gt;
+   &lt;/tr&gt;
+   &lt;tr ng-repeat=&quot;country in countries | orderBy: 'code' &quot;&gt;
+    &lt;td&gt;{{country.code}}&lt;/td&gt;
+    &lt;td&gt;{{country.name}}&lt;/td&gt;
+    &lt;td&gt;{{country.population}}&lt;/td&gt;
+   &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Демонстрация</h2><p> Давайте запустим приложение на локальном сервере.</p><p class="fig"><img src="../../assets/images/angular-cookbook/json.png" alt="Скриншот приложения"></p><p class="figsign">Рис. 5.1. Скриншот приложения</p><h2>Скачать</h2><p>Вы можете скачать полный исходный код этого примера здесь: <a href="../../assets/files/angularjs_json.zip">angularjs_json.zip</a>.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Тодорис Баис</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 04.11.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/angular-cookbook/controler'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/angular-cookbook/table'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="controler.html" title="На предыдущую страницу">Контроллеры в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="table.html" title="На следующую страницу">Таблицы в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="single-page-app.html">Одностраничные приложения</a></li><li class="leaf"><a href="form-validation.html">Проверка формы в AngularJS</a></li><li class="leaf"><a href="routing.html">Маршрутизация в AngularJS</a></li><li class="leaf"><a href="controler.html">Контроллеры в AngularJS</a></li><li class="leaf active-trail"><a href="json.html" class="active-trail active">Извлечение данных JSON в AngularJS</a></li><li class="leaf"><a href="table.html">Таблицы в AngularJS</a></li><li class="leaf"><a href="ng-src.html">AngularJS ng-src</a></li><li class="last leaf"><a href="data-binding.html">Связывание данных в AngularJS</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-3b96ea7006d12436bb26b6c928f49ae6"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="json.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

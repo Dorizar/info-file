@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Разница между &lt;div&gt; и &lt;span&gt; | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../howtocodeinhtml.html" />
+<link rel="next" href="chapter11.html" />
+<link rel="prev" href="chapter9.html" />
+<meta name="description" content="Элементы из предыдущей главы выводятся последовательно на одной горизонтальной строке. Они ведут себя как обычный текст и просто отображаются рядом друг с другом, даже если они имеют определённые размеры и другие свойства, которые не относятся к тексту. Это не должно удивлять, так как , и  — элементы, которые относятся к одной группе называемой строчно-блочной. Такие элементы могут иметь разные размеры, однако браузер всегда отображает их горизонтально подобно тексту." />
+<link rel="canonical" href="chapter10.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Разница между &lt;div&gt; и &lt;span&gt;</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../howtocodeinhtml.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Как верстать на HTML5 и CSS3</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Разница между &lt;div&gt; и &lt;span&gt;</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Элементы из предыдущей главы выводятся последовательно на одной горизонтальной строке. Они ведут себя как обычный текст и просто отображаются рядом друг с другом, даже если они имеют определённые размеры и другие свойства, которые не относятся к тексту. Это не должно удивлять, так как <span class="tag">&lt;label&gt;</span>, <span class="tag">&lt;input&gt;</span> и <span class="tag">&lt;textarea&gt;</span>&nbsp;— элементы, которые относятся к одной группе называемой строчно-блочной. Такие элементы могут иметь разные размеры, однако браузер всегда отображает их горизонтально подобно тексту. В этой главе мы узнаем о различных группах элементов в соответствии с тем, как они выкладываются на странице.</p><p>Для начала давайте разберём, как отображать один элемент под другим по вертикали. Мы в основном должны сказать браузеру: «Эй, мы хотим контейнер, который может стыковаться вертикально». К счастью, это тег контейнера известен как <span class="tag">&lt;div&gt;</span> и это своего рода «перенос» содержания на новую строку (вроде разрыва страницы или разрыва строки в текстовых редакторах).</p><p>Чтобы увидеть как работают элементы <span class="tag">&lt;div&gt;</span> используем три из них и установим для них ширину, высоту и фон.</p><p>Согласно приведённым выше условиям, HTML будет выглядеть следующим образом.</p>
+<pre><code data-language="html">&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;</code></pre>
+<p>В CSS мы пишем класс <span class="class">.container</span>, который связан с тегом <span class="tag">&lt;div&gt;</span>.</p>
+<pre><code data-language="css">.container {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}</code></pre>
+<p>Посмотрим на это в браузере.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/blue-blocks.png" width="129" height="387" alt=""></p><p>Похоже на один большой прямоугольник. Как насчёт отделить теги<span class="tag"> &lt;div&gt;</span> друг от друга?</p>
+<pre><code data-language="css">.container {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+  <mark>margin-bottom: 10px;</mark>
+}</code></pre>
+<p>Я добавил свойство <span class="attribute">margin-bottom</span> (выделено выше), чтобы отделить каждый <span class="tag">&lt;div&gt;</span> отступом снизу в 10&nbsp;пикселей. Пришло время проверить эффект в браузере.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/blue-blocks-separated.png" width="126" height="392" alt=""></p><p>Отлично! Браузер отображает эти «блоки» один под другим, в отличие от нашего предыдущего примера с формой, где элементы выводились в одну строку.</p><p>В чём различие? Когда дело доходит до отображения тегов, браузер распознаёт три группы элементов:</p><ul><li>inline (строчные);</li><li>block (блочные);</li><li>inline-block (строчно-блочные).</li></ul><p>Строчные элементы не вызывают перевода на новую строку и показывают один элемент рядом с другим по горизонтали. Блочные элементы устанавливаются как блоки, которые укладываются по верхней части друг друга и никогда не отображаются рядом по горизонтали, если мы не используем магические трюки в CSS (о которых узнаем в следующей главе). Строчно-блочные действуют в качестве строчных элементов (отображаются рядом друг с другом), но отличаются от них тем, что им можно задать размер. К примеру, поле <span class="tag">&lt;textarea&gt;</span> может отображаться как большой прямоугольник, но при этом занять пространство за пределами одной строки текста.</p><p>Позвольте мне поделиться с вами некоторыми примерами элементов, которые можно классифицировать в соответствии с одной из этих трёх групп.</p><ul><li>Строчные — <span class="tag">&lt;span&gt;</span>, <span class="tag">&lt;em&gt;</span>, <span class="tag">&lt;strong&gt;</span></li><li>Блочные — <span class="tag">&lt;div&gt;</span>, <span class="tag">&lt;p&gt;</span>, <span class="tag">&lt;article&gt;</span></li><li>Строчно-блочные — <span class="tag">&lt;input&gt;</span>, <span class="tag">&lt;textarea&gt;</span></li></ul><p>По умолчанию, у строчных элементов стилевое свойство <span class="attribute">display</span> установлено как <span class="value">inline</span>. Для блочных элементов его значение <span class="value">block</span>, а для строчно-блочных элементов <span class="value">inline-block</span>. Теперь вы можете объяснить, из-за чего тег <span class="tag">&lt;span&gt;</span> не переносит текст на новую строку. Потому что это строчный элемент, а значит в CSS у него свойство <span class="attribute">display</span> установлено как <span class="value">inline</span>. С учётом этого код ниже:</p>
+<pre><code data-language="html">&lt;span&gt;один&lt;/span&gt; &lt;span&gt;два&lt;/span&gt; &lt;span&gt;три&lt;/span&gt;</code></pre>
+<p>Браузер отобразит в одну линию:</p><p>один два три</p><p>Однако можно изменить это поведение, добавив одну строку в CSS:</p>
+<pre><code data-language="css">span {
+  display: block;
+}</code></pre>
+<p>Теперь наши теги <span class="tag">&lt;span&gt;</span> отображаются иначе, каждый из них начинается с новой строки, поскольку мы установили свойство <span class="attribute">display</span> как <span class="value">block</span>.</p><p>один</p><p>два</p><p>три</p><p>Для этого примера мы используем <span class="tag">&lt;div&gt;</span>. Вы можете поинтересоваться, что этот тег описывает в документе. Краткий ответ: ничего. Мы используем тег <span class="tag">&lt;div&gt;</span> в тех случаях, когда все другие теги не подходят для использования того, что мы вложили в документ. В общем случае тег <span class="tag">&lt;div&gt;</span> (в сочетании с разными классами) применяется для получения различных визуальных эффектов, в результате у него нет функции для описания содержимого. К примеру, если вы желаете сделать три вертикальных колонки на сайте, то, возможно, потребуется элемент, который может разделить некоторые строчные или строчно-блочные элементы.</p><p>Вообще, хорошей идеей будет не злоупотреблять тегом <span class="tag">&lt;div&gt;</span>, если это возможно.</p><p>С нашими новыми знаниями о блоках давайте переделаем код нашей формы так, чтобы поля формы и их описания красиво отображались друг под другом.</p>
+<pre><code data-language="html">&lt;form&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;nickname&quot;&gt;Ваше имя:&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nickname&quot; name=&quot;nickname&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;user-email&quot;&gt;Ваш e-mail:&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;email&quot; id=&quot;user-email&quot; name=&quot;user-email&quot;&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for=&quot;content&quot;&gt;Содержание:&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;textarea rows=&quot;10&quot; cols=&quot;50&quot; id=&quot;content&quot; name=&quot;content&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Добавить&quot;&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p>Это выглядит чуть сложнее, но единственное что мы сделали, так это добавили теги <span class="tag">&lt;div&gt;</span>, чтобы окружить каждый элемент формы.</p><p>Ещё раз, давайте сравним новый (справа) и старый код (слева).</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/code-comparison.png" width="1225" height="433" alt=""></p><p>А теперь посмотрим, как новый код отображается в браузере!</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/form-preview.png" alt="" width="549" height="472"></p><p>Наша форма теперь выглядит превосходно!</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дамиан Вельгошик</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 25.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/howtocodeinhtml/chapter9'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/howtocodeinhtml/chapter11'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter9.html" title="На предыдущую страницу">Формы в HTML5</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter11.html" title="На следующую страницу">Дополнения форм</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter1.html">Сайты и Lego</a></li><li class="leaf"><a href="chapter2.html">Делаем наш первый сайт</a></li><li class="leaf"><a href="chapter3.html">Особенности идеального HTML-кода</a></li><li class="leaf"><a href="chapter4.html">Упражнение: верстаем пост блога</a></li><li class="leaf"><a href="chapter5.html">Визуальный сайт в CSS3</a></li><li class="leaf"><a href="chapter6.html">Меню, пожалуйста</a></li><li class="leaf"><a href="chapter7.html">Понимание селекторов CSS</a></li><li class="leaf"><a href="chapter8.html">Время для итогов</a></li><li class="leaf"><a href="chapter9.html">Формы в HTML5</a></li><li class="leaf active-trail"><a href="chapter10.html" class="active-trail active">Разница между &lt;div&gt; и &lt;span&gt;</a></li><li class="leaf"><a href="chapter11.html">Дополнения форм</a></li><li class="leaf"><a href="chapter12.html">Многоколоночный макет</a></li><li class="last leaf"><a href="chapter13.html">Что дальше?</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-7ec9096931535da90901e8305d178a78"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter10.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

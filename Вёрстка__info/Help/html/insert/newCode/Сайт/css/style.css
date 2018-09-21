@@ -1,0 +1,363 @@
+﻿
+@import url(webflowCss.css);
+/*@import url(webflow.css);
+@keyframes wave{
+	from { background-position: 0 0 } 
+	to { background-position: 0 622px }
+}
+@-webkit-keyframes wave{
+	from { background-position: 0 0 }
+	to { background-position: 0 622px }
+}
+
+
+.wave{
+	background-color: blue;
+	background-image: url(water.png);
+	background-position: 0 0 ;
+	/*background-repeat: repeat-y;*/
+}
+
+ 
+
+.wave{
+	-webkit-animation-name: wave;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite; 
+}
+
+
+*/
+
+
+
+
+/**/
+
+.w{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.g_linear { 
+	background-color: #666; color: #fff;
+}
+
+.g_linear .w-container{
+	height: 64px;   
+}
+
+/**/
+
+.g_linear2{
+	position: fixed;
+	bottom: -64px;
+	/*display: none;*/
+	transition: bottom .5s ;
+}
+.img{/*display: block;*/ bottom: -0px;}
+.imgz{/*display: none;*/ bottom: -64px;}
+
+/**/
+
+
+.logo{
+	display: block;
+	width: 190px;  height: 50px;
+	background: url(../img/login.png) no-repeat;
+	background-size: 190px 50px;
+	margin-top: 5px;
+	
+}
+
+nav li{
+	float: left;
+	list-style: none;
+	margin-top: 15px;
+	margin-right: 15px;
+}
+
+nav li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+
+.tel{
+	/*background-color: #ccc;*/ 
+	overflow: hidden;
+}
+.tel p, .tel span{ 
+	float: right;
+}
+
+.tel p{ 
+	text-transform: capitalize;
+	font-size: 18px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.tel span{ 
+	display: block;
+	font-size: 20px;
+}
+.tel span:before{
+	display: inline-block;
+	width: 20px; height: 20px;
+	content: '';
+	background: url(../img/icon.png) no-repeat ;
+	background-size: 19px 19px;
+	margin: 0 15px 0 0;
+}
+
+
+
+.ho_p{
+	margin-top: 60px;
+	width: 600px; 
+	text-align: right;
+	float: right;
+	color: #fff;
+	text-shadow: 0 0 4px #000;
+}
+
+.ho_p button{
+	margin-top: 30px;
+	margin-top: 1%;
+	padding: 8px;
+	border-radius: 5px;
+	color: #333;
+	cursor: pointer;
+	outline: none;
+} 
+
+.ho_p h1{
+	text-transform: uppercase;
+	margin: 0;
+	margin-bottom: 10px;
+} 
+
+.ho_p p{
+	font-size: 20px;
+	line-height: 25px;
+} 
+
+
+.honer{
+	width: 100%; height: 550px;
+	background: url(../images/Фото0443.jpg) no-repeat fixed;
+	background-size: 100%;
+	background-position: 0px -70px;
+}
+
+
+.honer .w-container {
+	height: 100%; 
+	overflow: hidden;
+}
+
+.uslugi{
+	width: 100%; 
+}
+
+.us_li {
+	margin-top: 50px;
+	list-style: none; 
+}
+
+.us_li_jq { 
+	 
+	/*-webkit-filter: blur(5px);
+	display: list-item; */ 
+	 
+	 -webkit-filter: opacity(0%);
+	 
+}
+
+ 
+
+.us_li img{
+	width: 150px; height: 120px; 
+	
+}
+.us_li li{
+	float: left;
+	margin-right: 47px;
+	width: 150px;	 
+	position: relative;
+}
+
+.us_li li:hover:before{
+	content: "";
+	display: block;
+	width: 100%; height: 100%; position: absolute;
+	background:  url(../dddd.svg) no-repeat center ; 
+	background-size: 150px; 
+}
+
+.us_li li:last-child{
+	margin-right: 0px;
+}
+
+ h2{ 
+	margin-top: 20px;
+}
+
+.uslugi h3{ 
+	margin-top: 5px;
+	font-weight: 300;
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.8;
+}
+
+.ks{
+	
+	 background:  #F3F1ED; 
+	background-size: 100%;
+	box-shadow: 0 0 10px #000;
+}
+
+.ks ul li img{
+	float: left;
+	width: 80px;
+	margin-right: 20px;
+}
+.ks  img[alt=t1] { 
+	width: 600px;
+	margin-left: -127px;
+	margin-top: 20px;
+}
+
+.ks .w-col{
+	overflow: hidden;
+}
+
+.ks ul{
+	margin-top: 50px;
+}
+
+.ks ul li {
+	width: 100%; height: 80px;
+	margin-bottom: 40px;
+	list-style: none; 4outline: 1px solid red;
+}
+
+.forma-a{ /*background-color: yellow;*/}
+.forma-a h2{ font-weight: 100; margin-top: 50px; margin-bottom: 20px;}
+.forma-a .w-container{ }
+.forma-a input{ 
+	margin: 20px 0px 50px 0; 
+	  width: 232px; 
+	/*width: 24%;*/
+	height: 40px; 
+	text-transform: uppercase; 
+	font-size: 15px;
+}
+.forma-a input[type=submit]{ 
+	cursor: pointer;
+}
+
+.pro{
+	background-color: #F3F1ED;
+}
+
+.tovar{
+	width: 100%;
+	list-style: none;
+}
+
+.tovar li img{
+	width: 180px; height: 150px;
+	padding: 5px;
+}
+
+.tovar li p{
+	margin-left: 5px;
+}
+
+.tovar li{
+	float: left;
+	width: 180px; height: 200px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.tovar li:nth-child(5n){
+	margin-right: 0px;}
+
+
+	
+	
+.menu-naw button:first-child  {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+	
+.menu-naw button:last-child  {
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-right: none;
+}
+	
+.menu-naw button  { 
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px 15px;
+	border-right: 1px solid #fff;
+	background-color: #ccc;
+	transition: background 1s linear  , color 1s;
+}
+.menu-naw button:hover {  
+	background-color: #333;
+	color: #fff;
+}
+
+.menu-naw button a{  
+	transition: background 1s linear  , color 1s;
+}
+.menu-naw button:hover a {   
+	color: #fff;
+}
+
+.menu-naw button.active{ 
+	background-color: #333;  
+	color: #fff;
+}
+
+.menu-naw button.active a  {  
+	color: #fff;
+}
+
+.menu-naw span{  border: 1px solid black; display: inline; padding: 10px 0; border-radius: 20px;}
+
+.menu-naw span a{  display: inline;   padding: 10px 0; color: #000; text-decoration: none;}
+.menu-naw  { display: inline-block;
+	text-align: center;
+	margin: 50px auto;
+	width: 100%;    
+	border-radius: 20px 20px 20px 20px;
+}
+
+
+/*-------------поля для формы-----------------*/
+/*
+@media screen and (max-width: 767px){
+  
+  
+
+
+input, select { 
+    width: 100% !important; 
+	margin: 20px 0px 20px 0 !important;      
+}
+}
+*/
+

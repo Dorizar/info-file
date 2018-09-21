@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Формы | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../css.html" />
+<link rel="next" href="../component.html" />
+<link rel="prev" href="icon.html" />
+<meta name="description" content="Вёрстка форм — это одна из сильных сторон Bootstrap. Фреймворк не только помогает расположить элементы форм в нужном порядке, но и обеспечивает изменение вида элементов и их взаимодействие с пользователем." />
+<link rel="canonical" href="form.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Формы</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../bootstrap.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Bootstrap</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Стили</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Формы</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Вёрстка форм — это одна из сильных сторон Bootstrap. Фреймворк не только помогает расположить элементы форм в нужном порядке, но и обеспечивает изменение вида элементов и их взаимодействие с пользователем.</p><p> Давайте рассмотрим типовую форму для входа на сайт и на её примере разберём, как работает Boostrap для форм. В примере&nbsp;1 показано создание базовой формы пока без добавления дополнительных классов.</p><p class="exampleTitle">Пример 1. Форма для входа на сайт</p>
+<pre><code data-language="html">&lt;form&gt;
+ &lt;fieldset&gt;
+  &lt;legend&gt;Вход на сайт&lt;/legend&gt;
+  &lt;p&gt;&lt;label for=&quot;inputLogin&quot;&gt;Логин&lt;/label&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input id=&quot;inputLogin&quot; placeholder=&quot;Введите логин&quot;&gt;&lt;/p&gt;
+  &lt;p&gt; &lt;label for=&quot;inputPassword&quot;&gt;Пароль&lt;/label&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;input type=&quot;password&quot; id=&quot;inputPassword&quot; placeholder=&quot;Введите пароль&quot;&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Запомнить меня&lt;/label&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;button type=&quot;submit&quot;&gt;Войти&lt;/button&gt;&lt;/p&gt;
+ &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+<p>Форма выглядит скучно (рис.&nbsp;1), поскольку какое-либо оформление ещё не включено.</p><p class="fig"><img src="../../../assets/images/bootstrap/form-1.png" alt="Вид исходной формы" width="690" height="424"></p><p class="figsign">Рис. 1. Вид исходной формы</p><p>Для начала добавим к текстовому полю и полю с паролем класс <span class="var">form-control</span>, это изменит стиль текстовых полей. Далее нужно сгруппировать заголовок и поле за ним, чтобы расстояние между ними было меньше обычного. Добавим <span class="tag">&lt;label&gt;</span> и <span class="tag">&lt;input&gt;</span> внутрь элемента <span class="tag">&lt;div&gt;</span> с классом <span class="var">form-group</span>. Кроме того изменим чекбокс с текстом, добавив их внутрь <span class="tag">&lt;div&gt;</span> с классом <span class="var">checkbox</span> и зададим другой вид кнопки. В примере&nbsp;2 показаны изменения формы.</p><p class="exampleTitle">Пример 2. Применение классов</p>
+<pre><code data-language="html">&lt;form&gt;
+ &lt;fieldset&gt;
+  &lt;legend&gt;Вход на сайт&lt;/legend&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+   &lt;label for=&quot;inputLogin&quot;&gt;Логин&lt;/label&gt;
+   &lt;input id=&quot;inputLogin&quot; placeholder=&quot;Введите логин&quot; class=&quot;form-control&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+   &lt;label for=&quot;inputPassword&quot;&gt;Пароль&lt;/label&gt;
+   &lt;input type=&quot;password&quot; id=&quot;inputPassword&quot; placeholder=&quot;Введите пароль&quot; class=&quot;form-control&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+   &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Запомнить меня&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;Войти&lt;/button&gt;
+ &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+<p>В результате форма выглядит иначе (рис. 2).</p><p class="fig"><img src="../../../assets/images/bootstrap/form-2.png" alt="Вид формы" width="690" height="424"></p><p class="figsign">Рис. 2. Вид формы</p><h2>Однострочная форма</h2><p>Чтобы сделать форму компактнее, к элементу <span class="tag">&lt;form&gt;</span> достаточно добавить класс <span class="var">form-inline</span>. Элементы формы после этого вытянутся в одну строку (рис.&nbsp;3). Также из кода следует убрать <span class="tag">&lt;fieldset&gt;</span> и <span class="tag">&lt;legend&gt;</span>.</p><p class="fig"><img src="../../../assets/images/bootstrap/form-3.png" alt="Однострочная форма" width="901" height="291"></p><p class="figsign">Рис. 3. Однострочная форма</p><p>В примере 3 показано создание такой формы.</p><p class="exampleTitle">Пример 3. Однострочная форма</p>
+<pre><code data-language="html">&lt;form class=&quot;form-inline&quot;&gt;
+ &lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;inputLogin&quot;&gt;Логин&lt;/label&gt;
+  &lt;input id=&quot;inputLogin&quot; placeholder=&quot;Введите логин&quot; class=&quot;form-control&quot;&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;inputPassword&quot;&gt;Пароль&lt;/label&gt;
+  &lt;input type=&quot;password&quot; id=&quot;inputPassword&quot; placeholder=&quot;Введите пароль&quot; class=&quot;form-control&quot;&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;checkbox&quot;&gt;
+  &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Запомнить меня&lt;/label&gt;
+ &lt;/div&gt;
+ &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;Войти&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+<p>При уменьшении размера окна форма перестанет быть однострочной и примет исходный вид показанный на рис.&nbsp;2.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Горизонтальная форма</h2><p>Такой вид формы часто встречается на сайтах, когда поле и метка к нему располагаются на одной строке (рис.&nbsp;4).</p><p class="fig"><img src="../../../assets/images/bootstrap/form-4.png" alt="Вид горизонтальной формы" width="918" height="337"></p><p class="figsign">Рис. 4. Вид горизонтальной формы</p><p>Для создания формы такого вида требуется проделать несколько действий:</p><ul><li>к <span class="tag">&lt;form&gt;</span> добавить класс <span class="var">form-horizontal</span>;</li><li>к <span class="tag">&lt;label&gt;</span> добавить класс <span class="var">control-label</span>, тогда метка поля будет выравниваться по правому краю и по центральной горизонтальной оси поля;</li><li>обернуть <span class="tag">&lt;label&gt;</span> и <span class="tag">&lt;input&gt;</span> в <span class="tag">&lt;div&gt;</span> с классом <span class="var">form-group</span>;</li><li>использовать модульную сетку.</li></ul><p>Мы уже имели дело с 12-колоночной модульной сеткой, применим эти навыки для управления дизайном формы. Метка будет занимать две колонки, а ширина самого поля&nbsp;— оставшиеся десять колонок. Вместо добавления дополнительного <span class="tag">&lt;div&gt;</span> добавим класс <span class="var">col-sm-2</span> непосредственно к <span class="tag">&lt;label&gt;</span>, так немного сократится число элементов кода. Что касается чекбокса и кнопки, то добавим к ним класс <span class="var">col-sm-offset-2</span>, он сдвинет поля прямо под текстовое поле (пример&nbsp;4).</p><p class="exampleTitle">Пример 4. Горизонтальная форма</p>
+<pre><code data-language="html">&lt;form class=&quot;form-horizontal&quot;&gt;
+ &lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;inputLogin&quot; class=&quot;col-sm-2 control-label&quot;&gt;Логин&lt;/label&gt;
+  &lt;div class=&quot;col-sm-10&quot;&gt;
+   &lt;input id=&quot;inputLogin&quot; placeholder=&quot;Введите логин&quot; class=&quot;form-control&quot;&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;form-group&quot;&gt;
+  &lt;label for=&quot;inputPassword&quot; class=&quot;col-sm-2 control-label&quot;&gt;Пароль&lt;/label&gt;
+  &lt;div class=&quot;col-sm-10&quot;&gt;
+   &lt;input type=&quot;password&quot; id=&quot;inputPassword&quot; placeholder=&quot;Введите пароль&quot; class=&quot;form-control&quot;&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;form-group&quot;&gt;
+  &lt;div class=&quot;col-sm-10 col-sm-offset-2 checkbox&quot;&gt;
+   &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Запомнить меня&lt;/label&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;form-group&quot;&gt;
+  &lt;div class=&quot;col-sm-10 col-sm-offset-2&quot;&gt;
+   &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;Войти&lt;/button&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p>В классах мы использовали префикс sm, чтобы на смартфонах форма выглядела традиционно (рис.&nbsp;2), а на больших экранах — как горизонтальная.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/formy">формы</a></div><div class="field-item odd"><a href="https://webref.ru/metki/bootstrap">Bootstrap</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 03.03.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/bootstrap/css/icon'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/bootstrap/component'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="icon.html" title="На предыдущую страницу">Иконки</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="../component.html" title="На следующую страницу">Компоненты</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../install.html">Установка Bootstrap</a></li><li class="leaf"><a href="../grid.html">Модульные сетки</a></li><li class="leaf"><a href="../responsive.html">Адаптивный дизайн</a></li><li class="expanded active-trail"><a href="../css.html" class="active-trail">Стили</a><ul class="menu"><li class="first leaf"><a href="text.html">Текст</a></li><li class="leaf"><a href="img.html">Изображения</a></li><li class="leaf"><a href="list.html">Списки</a></li><li class="leaf"><a href="table.html">Таблицы</a></li><li class="leaf"><a href="button.html">Кнопки</a></li><li class="leaf"><a href="icon.html">Иконки</a></li><li class="last leaf active-trail"><a href="form.html" class="active-trail active">Формы</a></li></ul></li><li class="last collapsed"><a href="../component.html">Компоненты</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-eca826f53e379bc5339fecf6810d41fc"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="form.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

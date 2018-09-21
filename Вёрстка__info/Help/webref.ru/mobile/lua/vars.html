@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Переменные в Lua | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../lua.html" />
+<link rel="next" href="if-else.html" />
+<link rel="prev" href="comment.html" />
+<meta name="description" content="В Lua используется динамическая типизация переменных. Это значит, что нет смысла явно указывать тип переменных, достаточно присвоить желаемое значение, а уже сам компилятор определит и установит тип переменной. При этом возможна ситуация, когда переменная в разных местах кода меняет свой тип. Впрочем, это не является заботой программиста, что облегчает ему работу." />
+<link rel="canonical" href="vars.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Переменные в Lua</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../lua.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Lua</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Переменные в Lua</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В Lua используется динамическая типизация переменных. Это значит, что
+нет смысла явно указывать тип переменных, достаточно присвоить желаемое значение, а уже сам компилятор определит и установит тип переменной. При этом возможна ситуация, когда переменная в разных местах кода меняет свой тип. Впрочем, это не является заботой программиста, что облегчает ему работу.</p><h2>Имена переменных</h2><p>В имени переменных допустимо использовать только латинские буквы и символ подчёркивания (_var). Переменные обязательно должны начинаться с латинской буквы или символа подчёркивания и не должны начинаться с цифры.<p><b>Правильные переменные</b><br>_lyric<br>dust<br>o_O<br>terminator2<p><b>Неправильные переменные</b><br>123 -- начинается с цифры<br>креветка -- содержит русские буквы<br>to-to -- содержит знак -<h2>Типы переменных</h2><p>В Lua есть несколько типов переменных: nil, логический, число, текст, функция, таблица.<p><b>nil</b><br>nil — это пустое значение. Любая переменная, которая ещё не получила значение имеет nil.
+
+<pre><code data-language="lua">apple = 5; res = apple + b;</code></pre>
+
+<p>В данном примере будет выведена ошибка, поскольку переменная <var>b</var> явно не определена и по умолчанию равна nil, что и приводит к ошибке при сложении.<p><b>Логический</b><br>К логическому (булевому) типу относятся значения false (ложь) и true (истина). Значения nil и false считаются ложными, любое другое значение считается истинным.
+
+<pre><code data-language="lua">if (a > 1) then 
+  return true
+end</code></pre>
+
+<p>В данном примере будет возвращена истина, если переменная a больше единицы.<p><b>Числа</b><br>Все числа в Lua являются вещественными (двойной точности с плавающей запятой, если вдаваться в подробности). Впрочем, если вы складываете два целых числа, то и результат увидите в виде целого числа.
+
+<pre><code data-language="lua">res = 10 + 14;
+print (res);</code></pre>
+
+<p>В данном случае будет выведено число 24.<p><b>Текст</b><br>Для обозначения текста применяются двойные или одинарные кавычки, а также их комбинация. Разницы между двойными и одинарными кавычками в большинстве случаев нет, за исключением случая, когда внутри текста встречается кавычка.
+
+<pre><code data-language="lua">song1 = 'Bohemian Rhapsody';
+song2 = "We Will Rock You";
+song3 = "Don't Try So Hard";
+song4 = 'You\'re My Best Friend';
+song5 = 'Teo Torriatte ("Let Us Cling Together")';</code></pre>
+
+<p>В данном примере в первых двух переменных применяются разные кавычки и это никак не отражается на их значении. В тексте третьей строки встречается одинарная кавычка, поэтому, чтобы исключить конфликт кавычек, весь текст взят в двойные кавычки. В четвёртой строке текст взят в одинарные кавычки, а внутренний апостроф экранирован с помощью слэша (\'). В пятой строке весь текст взят в одинарные кавычки, поскольку внутри текста встречаются двойные кавычки.<p>Многострочный текст можно сделать двумя способами.<p>1. Использовать двойные кавычки, как показано выше и в месте перевода строки вставить \n.
+
+<pre><code data-language="lua">text = "Это\nмногострочный\nтекст;</code></pre>
+
+<p>2. Обозначить многострочный текст двойными квадратными скобками, как показано ниже.
+
+<pre><code data-language="lua">text = [[ Это
+многострочный
+текст ]]</code></pre>
+
+<p><b>Функция</b><br>Функции применяются для вызова фрагмента кода. Функции могут возвращать одно или несколько значений в зависимости от заданных параметров или вообще без них. В примере ниже функция возвращает ряд чисел в переменную lost.
+
+<pre><code data-language="lua">lost = numbers();
+function numbers()
+  return 4, 8, 15, 16, 23, 42;
+end</code></pre>
+
+<p><b>Таблица</b><br>Таблица представляет собой ассоциированный массив с широкими возможностями. В качестве индекса могут применяться не только числа, но и текст, за исключением nil. Ниже в примере показано, как определить таблицу и её значения.
+
+<pre><code data-language="lua">t = {} -- определяем таблицу
+t["foo"] = 123 -- значение 123 связано с ключом "foo" в таблице t
+t[3] = "bar" -- значение "bar" связано с ключом 3 в таблице t</code></pre>
+
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Ключевые слова</h2><p>В качестве переменных нельзя использовать следующие зарезервированные ключевые слова:<p>and break do else elseif end false for function if in local nil not or repeat return then true until while<h2>Глобальные и локальные переменные</h2><p>Все переменные по умолчанию считаются глобальными, они доступны в любом месте кода. Если требуется локальная переменная, например, только внутри функции, то перед именем переменной добавляется ключевое слово local.
+
+<pre><code data-language="lua">a = 1; -- глобальная переменная
+local b = 2; -- локальная переменная</code></pre><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/lua">Lua</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 08.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/lua/comment'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/lua/if-else'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="comment.html" title="На предыдущую страницу">Комментарии в Lua</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="if-else.html" title="На следующую страницу">Условные операторы</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="comment.html">Комментарии в Lua</a></li><li class="leaf active-trail"><a href="vars.html" class="active-trail active">Переменные в Lua</a></li><li class="leaf"><a href="if-else.html">Условные операторы</a></li><li class="leaf"><a href="for.html">Цикл for</a></li><li class="leaf"><a href="while.html">Цикл while</a></li><li class="leaf"><a href="function.html">Функции</a></li><li class="last leaf"><a href="table.html">Таблицы</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-ed57d07c3cf600e1a4244387a0454c94"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="vars.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Проверка технологий HTML5 | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../diveintohtml5.html" />
+<link rel="next" href="semantics.html" />
+<link rel="prev" href="past.html" />
+<link rel="canonical" href="detect.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Проверка технологий HTML5</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../diveintohtml5.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Погружение в HTML5</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Проверка технологий HTML5</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block">
+<script src="../../sites/all/themes/ori/js/modernizr.js"></script>
+<p><img src="../../assets/images/diveintohtml5/peeking_out_the_window.png" alt="" width="257" height="436" class="rightpic"></p><p>Когда ваш браузер отображает веб-страницу, он создаёт объектную модель документа (Document Object Model, DOM)&nbsp;— набор объектов, представленных HTML-элементами на странице. Каждый элемент&nbsp;— каждый <span class="tag">&lt;p&gt;</span>, каждый <span class="tag">&lt;div&gt;</span> и каждый <span class="tag">&lt;span&gt;</span>&nbsp;— показан в DOM самостоятельным объектом (есть также глобальные объекты, вроде <span class="var">window</span> или <span class="var">element</span>, которые никак не связаны с конкретными элементами).</p><p>Ко всем DOM-объектам можно применить основные свойства, но некоторые объекты имеют больше свойств, чем другие. В браузерах, поддерживающих возможности HTML5, отдельные объекты обладают уникальными свойствами. Быстрый взгляд на DOM подскажет вам, какие возможности поддерживаются.</p><p>Вот четыре основных метода для обнаружения поддерживаемых браузером технологий. Начиная с самой простой и заканчивая сложной.</p><p id="techniques1">1. Проверка, что определённые свойства доступны для глобальных объектов (таких как <span class="var">window</span> или <span class="var">navigator</span>).</p><p>Пример: <a href="detect.html#geolocation">тест на поддержку геолокации</a></p><p id="techniques2">2. Создаём элемент, затем проверяем, что некоторые свойства для этого элемента существуют.</p><p>Пример: <a href="detect.html#canvas">тест на возможность рисования</a></p><p id="techniques3">3. Создаём элемент, затем проверяем, что некоторые методы доступны для этого элемента, после чего вызываем этот метод и смотрим возвращаемое значение.</p><p>Пример: <a href="detect.html#videoformat">тест для проверки поддерживаемых форматов видео</a></p><p id="techniques4">4. Создаём элемент, устанавливаем некоторое значение для свойства, затем проверяем, возвращает ли свойство это значение.</p><p>Пример: <a href="detect.html#inputtype">тест для проверки, какие типы тега &lt;input&gt; поддерживаются</a></p><h2 id="modernizr">Библиотека Modernizr</h2><p>Modernizr — это JavaScript-библиотека с открытым исходным кодом, распространяемая по лицензии MIT. Предназначена для проверки поддержки большинства технологий HTML5 и CSS3. Вы всегда должны применять последнюю версию библиотеки. Для использования включите следующий элемент <span class="tag">&lt;script&gt;</span> в верхнюю часть своего документа.</p><p class="exampleTitle">Это должно быть в &lt;head&gt;</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Погружение в HTML5&lt;/title&gt;
+  <mark>&lt;script src=&quot;modernizr.min.js&quot;&gt;&lt;/script&gt;</mark> 
+&lt;/head&gt;
+&lt;body&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Modernizr запускается автоматически, так что не надо использовать никакой функции modernizr_init() для вызова библиотеки. При запуске создается глобальный объект с именем <span class="var">Modernizr</span>, который содержит набор булевых свойств для каждой обнаруженной технологии. К примеру, если браузер не поддерживает Canvas API, то <span class="var">Modernizr.canvas</span> вернёт <span class="value">false</span>.</p>
+<pre><code data-laguage="javascript">if (Modernizr.canvas) {
+  // Можно что-нибудь рисовать!
+} else {
+  // Увы, нет встроенной поддержки рисования
+}</code></pre>
+<h2 id="canvas">Рисование</h2><div class="rightpic"><p><img src="../../assets/images/diveintohtml5/fishing_boat.png" alt="" width="300" height="203"></p><p class="support">
+<script>
+if (Modernizr.canvas) {
+document.write('Ваш браузер поддерживает рисование.');
+} else {
+document.write('Ваш браузер не поддерживает рисование.');
+}
+</script>
+</p></div><p>HTML5 определяет элемент <span class="tag">&lt;canvas&gt;</span> как «холст для растровой графики, который может использоваться для отображения диаграмм, компьютерных игр или вывода других изображений на лету». Сам холст представляет собой прямоугольник на странице, в котором с помощью JavaScript рисуется что вы пожелаете. HTML5 определяет набор функций называемых «Canvas API» для рисования фигур, контуров, создания градиентов и трансформации.</p><p>Для проверки Canvas API используется <a href="detect.html#techniques2">техника №2</a>. Если ваш браузер поддерживает Canvas API, то в DOM будет элемент <span class="tag">&lt;canvas&gt;</span>, у которого есть метод <span class="var">getContext()</span>. Если браузер не поддерживает Canvas API, для <span class="tag">&lt;canvas&gt;</span> будут работать только основные свойства, но никак не специфичные.</p>
+
+<pre><code data-laguage="javascript">function supports_canvas() { 
+  return !!document.createElement('canvas').getContext; 
+}</code></pre>
+
+<p>Эта функция создаёт фиктивный элемент <span class="tag">&lt;canvas&gt;</span>. Такой элемент не применяется к документу, его даже нельзя увидеть. Он только покоится в памяти, нигде и ничего не делает, подобно лодке в безмятежной реке.</p>
+
+<pre><code data-laguage="javascript">return !!document.<mark>createElement('canvas')</mark>.getContext;</code></pre>
+
+<p>Когда вы создаёте фиктивный <span class="tag">&lt;canvas&gt;</span>, его можно проверить на наличие метода <span class="var">getContext()</span>. Этот метод будет существовать, если браузер поддерживает рисование.</p>
+
+<pre><code data-laguage="javascript">return !!document.createElement('canvas').<mark>getContext;</mark></code></pre>
+
+<p>Наконец, приводим результат к булевому типу (<span class="value">true</span> или <span class="value">false</span>) с помощью приёма двойного отрицания.</p>
+<pre><code data-laguage="javascript">return <mark>!!</mark>document.createElement('canvas').getContext;</code></pre>
+<p>Эта функция определяет поддержку основных элементов Canvas API, включая фигуры, контуры, градиенты и текстуры. Она не определяет стороннюю библиотеку explorercanvas, которая используется в Internet Explorer.</p><p>Вместо написания своей функции вы можете использовать Modernizr для определения поддержки Canvas API.</p>
+<pre><code data-laguage="javascript">if (<mark>Modernizr.canvas</mark>) {
+  // Можно что-нибудь рисовать!
+} else {
+  // Увы, нет встроенной поддержки рисования
+}</code></pre>
+<p>Существует отдельный тест для текста, который я продемонстрирую ниже.</p><h2>Рисование текста</h2><div class="rightpic" style="overflow:hidden"><p><img src="../../assets/images/diveintohtml5/baseball_at_bat.png" alt="" width="414" height="254"></p><p class="support">
+<script>
+if (Modernizr.canvas) {
+document.write('Ваш браузер поддерживает рисование текста.');
+} else {
+document.write('Ваш браузер не поддерживает рисование текста.');
+}
+</script>
+</p></div><p>Даже если ваш браузер поддерживает Canvas API, это ещё не значит, что он также поддерживает и API для рисования текста. Становление Canvas API заняло какое-то время и функции для текста в этой игре были добавлены позже. Некоторые браузеры с поддержкой рисования отправились в плавание ещё до того, как API для текста был завершён.</p><p>Проверка на рисование текста основана на <a href="detect.html#techniques2">технике №2</a>. Если ваш браузер поддерживает рисование, то для созданного элемента <span class="tag">&lt;canvas&gt;</span> будет доступен метод <span class="var">getContext()</span>. Если браузер не поддерживает рисование, для <span class="tag">&lt;canvas&gt;</span> будут работать только основные свойства, но никак не специфичные.</p>
+
+<pre><code data-language="javascript">function supports_canvas_text() {
+  if (!supports_canvas()) { return false; }
+  var dummy_canvas = document.createElement('canvas');
+  var context = dummy_canvas.getContext('2d');
+  return typeof context.fillText == 'function';
+}</code></pre>
+
+<p>Данный пример начинается с проверки на возможность рисования, используя функцию <span class="var">supports_canvas()</span>, вы её видели в предыдущем разделе. Если браузер не поддерживает Canvas API, значит, нет и рисования текста!</p>
+
+<pre><code data-language="javascript">if (<mark>!supports_canvas()</mark>) { return false; }</code></pre>
+
+<p>Далее вы создаёте фиктивный элемент <span class="tag">&lt;canvas&gt;</span> и получаете его контекст рисования. Это гарантированно работает, поскольку функция <span class="var">supports_canvas()</span> уже проверила, что метод <span class="var">getContext()</span> существует для всех объектов <span class="tag">&lt;canvas&gt;</span>.</p>
+<pre><code data-language="javascript">var dummy_canvas = document.createElement('canvas');
+var context = <mark>dummy_canvas.getContext('2d')</mark>;</code></pre>
+  
+<p>Окончательно нужно проверить, есть ли в контексте рисования функция <span class="var">fillText()</span>. Если да, значит рисование текста доступно. Ура!</p>
+
+<pre><code data-language="javascript">return <mark>typeof context.fillText == 'function'</mark>;</code></pre>
+
+<p>Вместо написания своей функции вы можете использовать Modernizr для определения поддержки рисования текста.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.canvastext</mark>) {
+  // Можно рисовать текст!
+} else {
+  // Увы, нет встроенной поддержки рисования текста
+}</code></pre>
+
+<h2>Видео</h2><div class="rightpic" style="overflow:hidden; width: 224px"><p><img src="../../assets/images/diveintohtml5/at_the_theater.png" alt="" width="224" height="334"></p><p class="support">
+<script>
+if (Modernizr.video) {
+document.write('Ваш браузер поддерживает HTML5-видео.');
+} else {
+document.write('Ваш браузер не поддерживает HTML5-видео.');
+}
+</script>
+</p></div><p>HTML5 определяет новый элемент, названный <span class="tag">&lt;video&gt;</span>, предназначенный для вставки видео на вашу страницу без использования сторонних плагинов вроде Apple QuickTime® или Adobe Flash®.</p><p>Элемент <span class="tag">&lt;video&gt;</span> предназначен для использования без всяких определяемых скриптов. Вы можете указать несколько видеофайлов и браузеры, которые поддерживает HTML5-видео, выберут тот формат, с которым они работают.</p><p>Браузеры, которые не поддерживают HTML5-видео, полностью игнорируют элемент <span class="tag">&lt;video&gt;</span>, но это можно использовать в своих интересах и указать браузеру проигрывать видео через сторонний плагин. Крок Кэмен разработал решение <a href="http://camendesign.com/code/video_for_everybody">Видео для каждого!</a>, в нём используется HTML5-видео, если оно доступно и обращение к QuickTime или Flash в старых браузерах. Это решение не использует JavaScript и работает фактически во всех браузерах, включая мобильные.</p><p>Если вы хотите большего, чем добавление видео и его воспроизведение на веб-странице, необходимо использовать JavaScript. При проверке на поддержку видео используется <a href="detect.html#techniques2">техника №2</a>. Если браузер поддерживает HTML5-видео, в DOM будет создан объект, связанный с <span class="tag">&lt;video&gt;</span>, у которого есть метод <span class="var">canPlayType()</span>. Если браузер видео не поддерживает, то для созданного в DOM объекта будут работать только типовые свойства, доступные для всех элементов. Вы можете проверить поддержку видео с помощью следующей функции.</p>
+<pre><code data-language="javascript">function supports_video() {
+  return !!document.createElement('video').canPlayType;
+}</code></pre>
+<p>Вместо написания своей функции вы можете использовать Modernizr для определения поддержки видео.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.video</mark>) {
+  // Смотрим кино!
+} else {
+  // Нет встроенной поддержки видео
+  // Может взамен стоит использовать QuickTime или Flash?
+}</code></pre>
+<h2 id="videoformat">Форматы видео</h2><div class="rightpic" style="overflow:hidden; width:250px"><p><img src="../../assets/images/diveintohtml5/reading_newspaper.png" alt="" width="250" height="261"></p><p class="support">
+<script>
+v = 0; text = '';
+if (Modernizr.video.webm) {
+v = 1; text += 'WebM, ';
+}
+if (Modernizr.video.ogg) {
+v = 1; text += 'Ogg Theora, ';
+}
+if (Modernizr.video.h264) {
+v = 1; text += 'H.264';
+}
+if (v) document.write('Ваш браузер поддерживает форматы: ' + text);
+else document.write('Ваш браузер не поддерживает видео-форматы.');
+</script>
+</p></div><p>Форматы напоминают языки, на которых говорят и пишут люди. В России некоторые газеты могут выходить на английском языке, но если вы читаете только по-русски, вряд ли они будут для вас полезны. Для проигрывания видео браузер должен понимать тот «язык», на котором написано видео.</p><p>«Язык» видео называется кодеком — это алгоритм, который используется для кодирования видео в поток битов. По всему миру распространено больше десятка всяких кодеков. Какой же из них выбрать? К сожалению, браузеры не могут договориться о едином кодеке для проигрывания видео. Тем не менее, их количество сократилось до двух. Один из них требует денежных отчислений (потому что основан на патенте), но работает в Safari и iPhone. Другой кодек свободный и работает в таких браузерах как Chrome и Firefox.</p><p>Для проверки на поддержку форматов видео используется <a href="detect.html#techniques3">техника №3</a>. Если браузер поддерживает HTML5-видео, в DOM будет создан объект, связанный с <span class="tag">&lt;video&gt;</span>, у которого есть метод <span class="var">canPlayType()</span>. Этот метод говорит, поддерживает ли браузер конкретный формат видео.</p><p>Эта функция проверяет запатентованный формат H.264.</p>
+<pre><code data-language="javascript">function supports_h264_baseline_video() {
+  if (!supports_video()) { return false; }
+  var v = document.createElement("video");
+  return v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
+}</code></pre>
+<p>Функция начинается с проверки на поддержку HTML5-видео с помощью функции <span class="var">supports_video()</span>, о ней шла речь в предыдущем разделе. Если браузер не поддерживает видео, значит, не поддерживает и форматы!</p>
+
+<pre><code data-language="javascript">if (<mark>!supports_video()</mark>) { return false; }</code></pre>
+
+<p>Затем создаётся фиктивный элемент <span class="tag">&lt;video&gt;</span>, который не будет виден и вызывается метод <span class="var">canPlayType()</span>. Этот метод гарантированно будет доступен, поскольку функция <span class="var">supports_video()</span> это обеспечивает.</p>
+
+<pre><code data-language="javascript">var <mark>v</mark> = document.createElement(&quot;video&quot;);</code></pre>
+
+<p>Формат видео в действительности это комбинация разных вещей. В технической терминологии вы спрашиваете браузер, может ли он проиграть видео H.264 со звуком AAC в контейнере MPEG-4.</p>
+
+  <pre><code>return v.canPlayType(<mark>'video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;'</mark>);</code></pre>
+
+<p>Функция <span class="var">canPlayType()</span> не возвращает значение <span class="value">true</span> или <span class="value">false</span>, при распознавании формата она возвращает следующую строку:</p><ul><li>&quot;probably&quot; — браузер уверен, что сможет воспроизвести этот формат;</li><li>&quot;maybe&quot; — браузер думает, что, скорее всего, сможет воспроизвести;</li><li>&quot;&quot; (пустая строка) — браузер не знает такого формата.</li></ul><p> Вторая функция проверяет поддержку формата видео в Firefox и других браузерах с открытым кодом.</p>
+
+<pre><code>function supports_ogg_theora_video() {
+  if (!supports_video()) { return false; }
+  var v = document.createElement(&quot;video&quot;);
+  return v.canPlayType(<mark>'video/ogg; codecs=&quot;theora, vorbis&quot;'</mark>);
+}</code></pre>
+  
+<p>И, наконец, WebM, новый открытый (и свободный от отчислений) видео-кодек, который включен в новые версии основных браузеров, таких как Chrome, Firefox и Opera. Вы можете использовать аналогичную технику для определения поддержки видео WebM.</p>
+<pre><code>function supports_webm_video() {
+  if (!supports_video()) { return false; }
+  var v = document.createElement(&quot;video&quot;);
+  return v.canPlayType(<mark>'video/webm; codecs=&quot;vp8, vorbis&quot;'</mark>);
+}</code></pre>
+<p>Вместо написания своей функции вы можете включить Modernizr (версии 1.5 и старше) для определения поддержки разных форматов видео.</p><p class="exampleTitle">Проверка видео-форматов</p>
+<pre><code data-language="javascript">if (Modernizr.video) {
+  // Да, можно смотреть видео! Но какое?
+  if (<mark>Modernizr.video.webm</mark>) {
+  // Попробуем WebM
+  } else if (<mark>Modernizr.video.ogg</mark>) {
+  // Попробуем Ogg Theora + Vorbis в контейнере Ogg
+  } else if (<mark>Modernizr.video.h264</mark>){
+  // Попробуем H.264 + AAC в контейнере MP4
+  }
+}</code></pre>
+<h2>Локальное хранилище</h2><div class="rightpic" style="overflow:hidden; width:200px"><p><img src="../../assets/images/diveintohtml5/half_stack_of_horizontal_sections.png" alt="" width="135" height="341"></p><p class="support">
+<script>
+if (Modernizr.localstorage) {
+document.write('Ваш браузер поддерживает локальное хранилище.');
+} else {
+document.write('Ваш браузер не поддерживает локальное хранилище.');
+}
+</script>
+</p></div><p>Хранилище HTML5 позволяет сайтам сохранять информацию на локальном компьютере и обращаться к ней позже. Идея напоминает кукисы, но хранилище предназначено для сохранения гораздо большего объёма информации. Кукисы ограничены в размерах и ваш браузер каждый раз отправляет их обратно на сервер при запросе новой страницы (что дополнительно отнимает время и занимает ценную полосу пропускания). Хранилище HTML5 остаётся на вашем компьютере и сайты могут обращаться к нему через JavaScript после загрузки веб-страницы.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Локальное хранилище действительно является частью HTML5? Почему же оно выделено в отдельную спецификацию?</p><p>О. Краткий ответ да, локальное хранилище это часть HTML5. Развёрнутый ответ такой — локальное хранилище входит в спецификацию, но отделено от неё, потому что некоторые люди из рабочей группы HTML5 пожаловались, что HTML5 стал слишком большим. Если это звучит, как разрезание пирога на большое количество кусочков для уменьшения общего числа калорий, что ж, добро пожаловать в дурацкий мир стандартов.</p></div></div><p>Для проверки поддержки хранилища HTML5 используется <a href="detect.html#techniques1">техника №1</a>. Если браузер поддерживает эту технологию, то будет доступно свойство <span class="var">localStorage</span> для объекта <span class="var">window</span>. Если же браузер не поддерживает хранилище, то свойство <span class="var">localStorage</span> вернёт значение <span class="value">undefined</span>. В старых версиях Firefox была ошибка, при которой возникало исключение, если кукисы были отключены. Так что вся проверка проходит с использованием конструкции <span class="var">try</span>...<span class="var">catch</span>.</p>
+<pre><code data-language="javascript">function supports_local_storage() {
+  try {
+    return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
+  } catch(e) {
+    return false;
+  }
+}</code></pre>
+<p>Вместо написания своей функции вы можете использовать Modernizr для определения поддержки локального хранилища.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.localstorage</mark>) {
+  // Хранилище доступно!
+} else {
+  // Увы, нет встроенной поддержки локального хранилища
+}</code></pre>
+<p>JavaScript чувствителен к регистру, атрибут Modernizr должен писаться как <span class="var">localstorage</span> (в нижнем регистре), при этом свойство DOM вызывается как <span class="var">window.localStorage</span> (смешанный регистр).</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Как насчёт безопасности моего хранилища HTML5? Кто-нибудь может его прочитать?</p><p>О. Только те, кто имеет прямой доступ к вашему компьютеру могут просмотреть (или изменить) ваши данные в хранилище. Через браузер любой сайт может прочитать и модифицировать собственные значения, но другие сайты не смогут получить к ним доступ. Это называется <a href="https://ru.wikipedia.org/wiki/P%1FQ">правило ограничения домена</a>.</p></div></div><h2 id="webworker">Web Worker</h2><div class="rightpic" style="overflow:hidden; width:200px"><p class="support">
+<script>
+if (Modernizr.webworkers) {
+document.write('Ваш браузер поддерживает Web Worker.');
+} else {
+document.write('Ваш браузер не поддерживает Web Worker.');
+}
+</script>
+</p></div><p>Технология <a href="http://www.whatwg.org/specs/web-workers/current-work/">Web Worker</a> обеспечивает стандартный способ запуска JavaScript в браузере в фоновом режиме. С помощью Web Worker вы можете порождать несколько «потоков», которые запускаются одновременно, раньше или позже. Эти «фоновые потоки» могут производить сложные математические расчёты, делать сетевые запросы или осуществлять доступ к локальному хранилищу, пока пользователь пролистывает документ, щёлкает мышью или набирает текст.</p><p> Для проверки поддержки фоновых вычислений используется <a href="detect.html#techniques1">техника №1</a>. Если ваш браузер поддерживает Web Worker API, то глобальному объекту <span class="var">window</span> будет доступно свойство <span class="var">Worker</span>. В противном случае свойство <span class="var">Worker</span> будет недоступно.</p>
+<pre><code data-language="javascript">function supports_web_workers() {
+  return !!window.Worker;
+}</code></pre>
+<p>Вместо написания своей функции вы можете использовать Modernizr для определения поддержки Web Worker.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.webworkers</mark>) {
+  // window.Worker доступно!
+} else {
+  // Нет встроенной поддержки Web Worker
+}</code></pre>
+<p>JavaScript чувствителен к регистру, атрибут Modernizr должен писаться как <span class="var">webworkers</span> (в нижнем регистре), при этом свойство DOM вызывается как <span class="var">window.Worker</span> (с заглавной буквой W в слове Worker).</p><h2>Оффлайновые приложения</h2><div class="rightpic" style="overflow:hidden; width:260px;"><p><img src="../../assets/images/diveintohtml5/along_stream.png" alt="" width="257" height="242"></p><p class="support">
+<script>
+if (Modernizr.applicationcache) {
+document.write('Ваш браузер поддерживает оффлайновые приложения.');
+} else {
+document.write('Ваш браузер не поддерживает оффлайновые приложения.');
+}
+</script>
+</p></div><p>Читать статичные веб-страницы без сети довольно просто: подключаетесь к Интернету, загружаете веб-страницу, отключаетесь от Интернета, уезжаете в уединённое место и читаете страницы на досуге. Для сбережения времени можно пропустить шаг насчёт уединенного места. Но как насчёт веб-приложений подобных Gmail или Google Docs? Спасибо HTML5, теперь любой (а не только Google) может создать приложение, которое будет работать автономно.</p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#offline">Оффлайновое приложение</a> начинается как онлайновое. Когда вы первый раз посещаете сайт, поддерживающий оффлайновую работу, веб-сервер сообщает браузеру, какие файлы и в каком порядке нужны д ля работы. Это могут быть любые файлы&nbsp;—&nbsp;HTML, JavaScript, изображения, даже видео. Как только браузер скачает все необходимые файлы, вы можете посещать сайт даже без подключения к Интернету. Ваш браузер будет уведомлен, что вы отключены от сети, и надо использовать скачанные ранее файлы. Когда вы в следующий раз войдете в сеть, любые сделанные вами изменения могут быть отосланы на веб-сервер.</p><p>Проверить поддержку оффлайновых приложений можно с использованием <a href="detect.html#techniques1">техники №1</a>. Если ваш браузер поддерживает эту технологию, будет доступно свойство <span class="var">applicationCache</span> для глобального объекта <span class="var">window</span>. Если браузер не поддерживает оффлайновые приложения, свойство <span class="var">applicationCache</span> будет не определено.</p>
+<pre><code data-language="javascript">function supports_offline() {
+  return !!window.applicationCache;
+}</code></pre>
+<p>Вместо написания своей функции вы можете использовать Modernizr для определения поддержки оффлайновых приложений.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.applicationcache</mark>) {
+  // window.applicationCache доступно!
+} else {
+  // Увы, нет встроенной поддержки и без сети ничего не работает
+}</code></pre>
+<p>Учтите, что JavaScript чувствителен к регистру. Атрибут Modernizr должен писаться как <span class="var">applicationcache</span> (в нижнем регистре), при этом свойство DOM вызывается как <span class="var">window.applicationCache</span> (смешанный регистр).</p><h2 id="geolocation">Геолокация</h2><p>Геолокация — это способ выяснить, где вы находитесь в мире и на ваше усмотрению можно делиться этой информацией с доверенными людьми. Существует несколько способов определить ваше положение&nbsp;— по IP-адресу, подключению к беспроводной сети, сотовому телефону или через GPS, оборудование которое вычисляет координаты (широту и долготу) переданной с помощью спутников в небе.</p><div style="overflow:hidden; width:200px; margin: 0 auto"><p id="geo-wrapper"><img src="../../assets/images/diveintohtml5/globe_man.png" alt="" width="194" height="317"></p><p class="support">
+<script>
+if (Modernizr.geolocation) {
+document.write('Ваш браузер поддерживает геолокацию.');
+} else {
+document.write('Ваш браузер не поддерживает геолокацию.');
+}
+</script>
+</p></div><p>&nbsp;</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Геолокация это часть HTML5? Почему мы говорим о ней?</p><p>О. Поддержка геолокации включена в браузеры сейчас наряду поддержкой новых технологий HTML5. Строго говоря, геолокация стандартизируется рабочей группой по геолокации, которая отделена от рабочей группы HTML5. Но я всё равно в этой книге говорю о ней, потому что эта часть эволюции Интернета происходит прямо сейчас.</p></div></div><p>Для проверки поддержки геолокации используется <a href="detect.html#techniques1">техника №1</a>. Если браузер поддерживает геолокацию, будет доступно свойство <span class="var">geolocation</span> для глобального объекта <span class="var">navigator</span>. В противном случае свойство <span class="var">geolocation</span> будет недоступно. Вот как проверить поддержку геолокации.</p>
+<pre><code data-language="javascript">function supports_geolocation() {
+  return !!navigator.geolocation;
+}</code></pre>
+<p>Вместо написания своей функции, можно использовать Modernizr.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.geolocation</mark>) { 
+  // Можно смотреть, где вы находитесь! 
+} else { 
+  // Нет встроенной поддержки геолокации. 
+}</code></pre>
+<p>Если браузер не поддерживает исходно геолокацию, не стоит терять надежду. <a href="https://github.com/estebanav/javascript-mobile-desktop-geolocation">GeoPosition.js</a> — это библиотека JavaScript, которая призвана обеспечить поддержку геолокации в старых браузерах, вроде Blackberry, Palm OS и Microsoft Internet Explorer 6, 7 и 8. Это не тоже самое, что navigator.geolocation API, но служит той же цели.</p><p>Для старых мобильных платформ, включая <a href="http://www.tonybunce.com/2008/05/08/Blackberry-Browser-Amp-GPS.aspx">BlackBerry</a>, <a href="http://www.forum.nokia.com/infocenter/index.jsp?topic=/Web_Developers_Library/GUID-4DDE31C7-EC0D-4EEC-BC3A-A0B0351154F8.html">Nokia</a>, <a href="http://developer.palm.com/index.php?option=com_content&view=article&id=1673#GPS-getCurrentPosition">Palm</a> и <a href="http://bondi.omtp.org/1.0/apis/geolocation.html">OMTP BONDI</a>, есть также специфическое API для геолокации.</p><p> Подробности об этом идут в отдельной главе о геолокации.</p><h2 id="inputtype">Поля ввода</h2><div class="rightpic" style="overflow:hidden; width:261px;"><p><img src="../../assets/images/diveintohtml5/typewriter.png" alt="" width="261" height="228"></p><p class="support">
+<script>
+i = '';
+if (Modernizr.inputtypes.search) {
+i += 'search';
+}
+if (Modernizr.inputtypes.tel) {
+i += 'tel';
+}
+if (Modernizr.inputtypes.url) {
+i += 'url';
+}
+if (Modernizr.inputtypes.email) {
+i += 'email';
+}
+if (Modernizr.inputtypes.datetime) {
+i += 'datetime';
+}
+if (Modernizr.inputtypes.date) {
+i += 'date';
+}
+if (Modernizr.inputtypes.month) {
+i += 'month';
+}
+if (Modernizr.inputtypes.week) {
+i += 'week';
+}
+if (Modernizr.inputtypes.time) {
+i += 'time';
+}
+if (Modernizr.inputtypes.datetimelocal) {
+i += 'datetime-local';
+}
+if (Modernizr.inputtypes.number) {
+i += 'number';
+}
+if (Modernizr.inputtypes.range) {
+i += 'range';
+}
+if (Modernizr.inputtypes.color) {
+i += 'color';
+}
+if (i == '') document.write('Ваш браузер не поддерживает новые поля ввода.');
+else document.write('Ваш браузер поддерживает новые поля ввода');
+</script>
+</p></div><p>Вы знаете всё о формах, не так ли? Пишем <span class="tag">&lt;form&gt;</span>, вставляем несколько <span class="var">&lt;input type=&quot;text&quot;&gt;</span>, может быть <span class="var">&lt;input type=&quot;password&quot;&gt;</span> и заканчиваем кнопкой <span class="var">&lt;input type=&quot;submit&quot;&gt;</span>.</p><p>Вы не знаете и половины. HTML5 определяет более десятка новых полей для ввода, которые вы можете использовать в своих формах.</p><ol><li>&lt;input type=&quot;search&quot;&gt; для поиска</li><li>&lt;input type=&quot;number&quot;&gt; для ввода чисел</li><li>&lt;input type=&quot;range&quot;&gt; для ползунка</li><li>&lt;input type=&quot;color&quot;&gt; для выбора цвета</li><li>&lt;input type=&quot;tel&quot;&gt; для телефонного номера</li><li>&lt;input type=&quot;url&quot;&gt; для веб-адресов</li><li>&lt;input type=&quot;email&quot;&gt; для почтовых адресов</li><li>&lt;input type=&quot;date&quot;&gt; для выбора календарной даты</li><li>&lt;input type=&quot;month&quot;&gt; для месяца</li><li>&lt;input type=&quot;week&quot;&gt; для недели</li><li>&lt;input type=&quot;time&quot;&gt; для времени</li><li>&lt;input type=&quot;datetime&quot;&gt; для указания даты и времени</li><li>&lt;input type=&quot;datetime-local&quot;&gt; для местной даты и времени</li></ol><p>Проверка на поддержку полей ввода происходит с помощью <a href="detect.html#techniques4">техники №4</a>. Вначале вы должны создать фиктивный элемент<span class="tag"> &lt;input&gt;</span> в памяти. По умолчанию значением атрибута <span class="attribute">type</span> для элемента <span class="tag">&lt;input&gt;</span> выступает <span class="value">text</span>. В дальнейшем это окажется важно.</p>
+<pre><code data-language="javascript">var i = document.createElement(&quot;input&quot;);</code></pre>
+<p>Далее, меняем значение атрибута <span class="attribute">type</span> для фиктивного элемента <span class="tag">&lt;input&gt;</span> на проверяемое.</p>
+<pre><code data-language="javascript">i.setAttribute(&quot;type&quot;, &quot;color&quot;);</code></pre>
+<p>Если браузер поддерживает указанное поле ввода, тогда свойство <span class="attribute">type</span> вернёт установленное значение. В противном случае браузер проигнорирует это значение и вернёт <span class="value">text</span>.</p>
+<pre><code data-language="javascript">return i.type !== &quot;text&quot;;</code></pre>
+<p>Вместо написания 13 отдельных функций для проверки, вы можете использовать Modernizr для определения поддержки новых полей. Библиотека Modernizr повторно использует один <span class="tag">&lt;input&gt;</span> для эффективного определения всех 13 типов. Затем строится хэш с именем <span class="var">Modernizr.inputtypes</span> содержащий 13 ключей со значениями атрибута <span class="attribute">type</span> и 13 булевых значений (<span class="value">true</span>, если поддерживается и <span class="value">false</span>, если нет).</p>
+<pre><code data-language="javascript">if (<mark>!Modernizr.inputtypes.date</mark>) {
+  // Нет встроенной поддержки для &lt;input type=&quot;date&quot;&gt; 
+}</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Подсказывающий текст</h2><div class="leftpic" style="overflow:hidden; width:270px"><p><img src="../../assets/images/diveintohtml5/www.tjray.info.Mergenthaler.Ad-probably.a.Model.25.ca.1930.png" alt="" width="270" height="316"></p><p class="support">
+<script>
+if (Modernizr.input.placeholder) {
+document.write('Ваш браузер поддерживает подсказывающий текст.');
+} else {
+document.write('Ваш браузер не поддерживает подсказывающий текст.');
+}
+</script>
+</p></div><p>Помимо новых типов полей, HTML5 включает несколько небольших ухищрений существующих форм. Одним из улучшений является возможность установки <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#the-placeholder-attribute">подсказывающего текста</a> в поле ввода. Такой текст отображается внутри поля, пока оно пустое и не получило фокус. Когда вы щёлкаете по этому элементу, подсказывающий текст исчезает.</p><p>Для проверки подсказывающего текста применяется <a href="detect.html#techniques2">техника №2</a>. Если ваш браузер поддерживает эту возможность, в DOM будет создан объект соответствующий <span class="tag">&lt;input&gt;</span>, у которого имеется свойство <span class="attribute">placeholder</span>. В противном случае, это свойство для <span class="tag">&lt;input&gt;</span> будет недоступно.</p>
+<pre style="margin-left: 290px"><code data-language="javascript">function supports_input_placeholder() {
+  var i = document.createElement('input');
+  return 'placeholder' in i;
+}</code></pre>
+<p>Вместо написания собственной функции, вы можете использовать Modernizr для проверки.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.input.placeholder</mark>) {
+  // Подсказывающий текст будет виден!
+} else {
+  // Нет поддержки подсказывающего текста,
+  // надо использовать скрипты
+}</code></pre>
+
+<h2>Автофокус форм</h2><div class="rightpic" style="overflow:hidden; width:188px;"><p><img src="../../assets/images/diveintohtml5/angry_guy.png" alt="" width="188" height="262"></p><p class="support">
+<script>
+if (Modernizr.input.autofocus) {
+document.write('Ваш браузер поддерживает автофокус.');
+} else {
+document.write('Ваш браузер не поддерживает автофокус.');
+}
+</script>
+</p></div><p>Веб-сайты могут использовать JavaScript для автоматического перемещения фокуса к первому элементу формы. К примеру, на главной странице сайта <a href="http://google.ru">Google.ru</a> включен автофокус для ввода поискового запроса, поэтому не приходится перемещать в него курсор. Это удобно для большинства людей, за исключением продвинутых пользователей. Если нажать пробел, произойдет прокрутка страницы, но не в случае использования автофокуса, поскольку фокус находится в текстовом поле. Вместо прокрутки в тексте будет набран пробел. Если фокус находится в другом текстовом поле, пока страница загружается, скрипт автофокуса может «услужливо» перенести фокус обратно к исходному полю, тем самым заставляя вас набирать текст в неверном месте.</p><p>Поскольку автофокус делается на JavaScript, могут возникнуть сложности при решении этих крайних случаев, и не так уж много решений для тех людей, которые не желают, чтобы их фокус «похищался».</p><p>Решением этих проблем является атрибут <span class="attribute">autofocus</span>, который применяется ко всем элементам форм. Атрибут <span class="attribute">autofocus</span> делает именно то, о чем и говорит его название: перемещает фокус к определённому полю. Поскольку для его работы используется разметка HTML, а не скрипт, то поведение будет одинаковым для всех сайтов. К тому же разработчики браузеров (или авторы расширений) могут предложить пользователям возможность отключать автофокус.</p><p>Проверка поддержки автофокуса основана на <a href="detect.html#techniques2">технике №2</a>. Если браузер поддерживает автофокусировку в формах, в DOM будет создан объект для представления <span class="tag">&lt;input&gt;</span>, у которого есть свойство <span class="attribute">autofocus</span>. В противном случае это свойство не будет доступно. Вы можете проверить автофокус с помощью следующей функции.</p>
+<pre><code data-language="javascript">function supports_input_autofocus() {
+  var i = document.createElement('input');
+  return 'autofocus' in i;
+}</code></pre>
+<p>Вместо написания собственной функции, вы можете использовать Modernizr для проверки поддержки автофокуса.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.input.autofocus</mark>) {
+  // Автофокус работает!
+  } else {
+  // Нет поддержки автофокуса,
+  // придется снова обращаться к скриптам
+}</code></pre>
+<h2>Микроданные</h2><div class="rightpic" style="overflow:hidden; width:305px"><p><img src="../../assets/images/diveintohtml5/divider_cards.png" alt="" width="305" height="224"></p><p class="support">
+<script>
+if (!!document.getItems) document.write('Ваш браузер поддерживает микроданные.');
+else document.write('Ваш браузер не поддерживает микроданные.');
+</script>
+</p></div><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#microdata">Микроданные</a> это стандартный способ обеспечить дополнительную семантику на ваших веб-страницах. К примеру, вы можете использовать микроданные для сообщения, что фотография доступна под специальной лицензией Creative Commons. Также вы можете применять микроданные для разметки страницы «Обо мне». Браузеры, их расширения и поисковые системы конвертируют разметку микроданных в <a href="http://ru.wikipedia.org/wiki/VCard">vCard</a>&nbsp;— стандартный формат для обмена контактной информацией.</p><p>Стандарт микроданных HTML5 включает как разметку HTML (в первую очередь для поисковых систем), так и функции DOM (преимущественно для браузеров). Вашим веб-страницам не повредит, если вы добавите в них разметку микроданных. Это не более чем несколько атрибутов и поисковики, которые не понимают формат микроданных, их проигнорируют. Но если нужно получить доступ или управлять микроданными через DOM, тогда нужно проверять поддерживает ли браузер соответствующий API.</p><p>Для проверки применяется <a href="detect.html#techniques1">техника №1</a>. Если браузер поддерживает микроданные, тогда будет доступна функция <span class="var">getItems()</span> для глобального объекта <span class="var">document</span>. Если браузер не поддерживает микроданные, тогда эта функция будет недоступна.</p>
+
+<pre><code data-language="javascript">function supports_microdata_api() {
+  return !!document.getItems;
+}</code></pre>
+
+<p>Библиотека Modernizr не содержит средств для проверки микроданных, поэтому необходимо использовать функцию, как показано выше.</p><div class="rightpic" style="overflow:hidden; width:218px;"><p><img src="../../assets/images/diveintohtml5/demon_reading_Stewart_Orr.png" alt="" width="218" height="231"></p><p class="support">
+<script>
+if (Modernizr.history) {
+document.write('Ваш браузер поддерживает history API.');
+} else {
+document.write('Ваш браузер не поддерживает history API.');
+}
+</script>
+</p></div><h2 id="history">history API</h2><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html">history API</a> в HTML5 представляет собой стандартный способ манипулировать историей браузера с помощью скрипта. Часть этого API&nbsp;— навигация по истории&nbsp;— была доступна в предыдущих версиях HTML. Новая часть в HTML5&nbsp;— это способ добавления записей в историю браузера и реагирование на удаление этих записей из стека, когда пользователь нажимает кнопку браузера «Назад». Это означает, что URL может продолжать выполнять свою работу как уникальный идентификатор для текущего ресурса, даже в нагруженных скриптами приложениях, которые не всегда полностью обновляют страницу.</p><p>Для проверки применяется <a href="detect.html#techniques1">техника №1</a>. Если браузер поддерживает API истории, тогда будет доступна функция <span class="var">pushState()</span> для глобального объекта <span class="var">history</span>. Если браузер не поддерживает API истории, тогда эта функция будет недоступна.</p>
+<pre><code data-language="javascript">function supports_history_api() {
+  return !!(window.history && history.pushState);
+}</code></pre>
+<p>Вместо написания собственной функции, вы можете использовать Modernizr.</p>
+<pre><code data-language="javascript">if (<mark>Modernizr.history</mark>) {
+  // Управление историей работает!
+} else {
+  // Нет поддержки истории,
+  // попробуйте другие решения вроде <a href="https://github.com/balupton/History.js/">History.js</a>
+}</code></pre>
+<h2>Дальнейшее чтение</h2><p>Спецификации и стандарты:</p><ul><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html" hreflang="en">элемент &lt;canvas&gt;</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html#video" hreflang="en">элемент &lt;video&gt;</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#states-of-the-type-attribute" hreflang="en">типы &lt;input&gt;</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#the-placeholder-attribute" hreflang="en">атрибут &lt;input placeholder&gt;</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#autofocusing-a-form-control" hreflang="en">атрибут &lt;input autofocus&gt;</a></li><li><a href="http://dev.w3.org/html5/webstorage/" hreflang="en">хранилище HTML5</a></li><li><a href="http://www.whatwg.org/specs/web-workers/current-work/" hreflang="en">Web Workers</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#offline" hreflang="en">Оффлайновые веб-приложения</a></li><li><a href="http://www.w3.org/TR/geolocation-API/" hreflang="en">Geolocation API</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/history.html" hreflang="en">Session history and navigation</a></li></ul><p>JavaScript-библиотеки:</p><ul><li><a href="http://www.modernizr.com" hreflang="en">Modernizr</a> для проверки HTML5</li><li><a href="http://code.google.com/p/geo-location-javascript/" hreflang="en">geo.js</a> для использования геолокации</li><li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills" hreflang="en">Кроссбраузерный костыль</a></li></ul><p>Другие статьи:</p><ul><li><a href="http://camendesign.com/code/video_for_everybody" hreflang="en">Video for Everybody!</a></li><li><a href="http://wiki.whatwg.org/wiki/Video_type_parameters" hreflang="en">Video type parameters</a></li><li><a href="http://msdn.microsoft.com/en-us/ie/ff468705.aspx" hreflang="en">Internet Explorer 9 Guide for Developers</a></li></ul><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Марк Пилгрим</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 23.06.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/diveintohtml5/past'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/diveintohtml5/semantics'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="past.html" title="На предыдущую страницу">Довольно предвзятая история HTML5</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="semantics.html" title="На следующую страницу">Что всё это значит?</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Пять вещей, которые надо знать об HTML5</a></li><li class="leaf"><a href="past.html">Довольно предвзятая история HTML5</a></li><li class="leaf active-trail"><a href="detect.html" class="active-trail active">Проверка технологий HTML5</a></li><li class="leaf"><a href="semantics.html">Что всё это значит?</a></li><li class="leaf"><a href="canvas.html">Давайте порисуем</a></li><li class="leaf"><a href="video.html">Видео на сайте</a></li><li class="leaf"><a href="geolocation.html">Вы здесь</a></li><li class="leaf"><a href="storage.html">Локальное хранилище</a></li><li class="leaf"><a href="offline.html">Возьмём с собой</a></li><li class="leaf"><a href="forms.html">Сумасшедшие формы</a></li><li class="leaf"><a href="extensibility.html">Микроданные</a></li><li class="last leaf"><a href="history.html">Управление историей для пользы и развлечения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-d77e63ffe4ef935175e735ec34e35ec7"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="detect.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

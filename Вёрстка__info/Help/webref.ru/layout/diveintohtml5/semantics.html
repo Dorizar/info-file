@@ -1,0 +1,491 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Что всё это значит? | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../diveintohtml5.html" />
+<link rel="next" href="canvas.html" />
+<link rel="prev" href="detect.html" />
+<meta name="description" content="В этой главе мы возьмём веб-страницу и не делая с ней ничего плохого, улучшим её. Местами она станет короче, местами длиннее, но она станет более семантической. Возрадуемся! Вот пример страницы. Откройте её в новой вкладке и не возвращайтесь, пока не посмотрите её исходный код по меньшей мере один раз." />
+<link rel="canonical" href="semantics.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Что всё это значит?</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../diveintohtml5.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Погружение в HTML5</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Что всё это значит?</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В этой главе мы возьмём веб-страницу и не делая с ней ничего плохого, улучшим её. Местами она станет короче, местами длиннее, но она станет более семантической. Возрадуемся!</p><p>Вот <a href="https://webref.ru/example/page/blog-original.html">пример страницы</a>. Откройте её в новой вкладке и не возвращайтесь, пока не посмотрите её исходный код по меньшей мере один раз.</p><h2>Доктайп</h2><p>Посмотрите на первую строку нашего кода.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html
+          PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+          &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</code></pre>
+
+<p>Она называется доктайп. Это длинная история с чёрной магией, стоящая за доктайпом. Во время работы над Internet Explorer&nbsp;5 под Mac его разработчики столкнулись с неожиданной проблемой. Новая версия этого браузера содержала столько улучшений по части стандартов, что старые страницы отображались некорректно. Вернее, отображались они надлежащим образом, по спецификации, но люди считали, что отображаются они неправильно. Авторы страниц при вёрстке ориентировались на доминирующие браузеры того времени&nbsp;— Netscape&nbsp;4 и Internet Explorer&nbsp;4. Браузер IE5/Mac был настолько передовым, что фактически разрушил Интернет.</p><p>Microsoft придумал оригинальное решение. Перед отображением страницы IE5/Mac смотрит на доктайп, который, как правило, стоит в первой строке кода (ещё до элемента <span class="tag">&lt;html&gt;</span>). Старые страницы, которые ориентировались на «причуды» старых браузеров, обычно не имеют доктайпа, поэтому IE5/Mac отображал их подобно этим браузерам. Для включения поддержки новых стандартов, авторы страниц должны были вставить доктайп перед <span class="tag">&lt;html&gt;</span>.</p><p>Эта идея распространилась как лесной пожар и вскоре все основные браузеры имели два режима: «режим совместимости» и «стандартный режим». Конечно, вскоре всё это вышло из-под контроля. Когда Mozilla запустила версию 1.1 своего браузера, то обнаружила, что страницы, которые отображаются в «стандартном режиме» в действительности основываются на одной конкретной причуде. Mozilla подправила свой браузерный движок для устранения этого недостатка и тысячи страниц рассыпались в один миг. Таким образом был создан, и я не выдумываю это, «<a href="https://developer.mozilla.org/en-US/docs/Gecko%27s_Almost_Standards_Mode">почти стандартный режим</a>».</p><p>В своей основной работе <a href="http://hsivonen.iki.fi/doctype/">Переключение режимов браузера через доктайп</a> Хенри Сивонен выделил следующие режимы.</p><h3>Режим совместимости</h3><p>В режиме совместимости браузеры нарушают современные веб-спецификации и чтобы избежать «рассыпания» страниц отображают их в соответствии с практикой, распространённой в конце 90-х годов.</p><h3>Стандартный режим</h3><p>В стандартном режиме браузеры пытаются вывести документы в соответствии со спецификацией в той мере, насколько она реализована в браузере. В HTML5 он называется «не режим совместимости».</p><h3>Почти стандартный режим</h3><p>Браузеры Firefox, Safari, Chrome, Opera (начиная с 7.5) и IE8 также поддерживают почти стандартный режим, в котором вертикальные размеры ячеек таблиц реализуются традиционно, а не в полном соответствии со спецификацией CSS2. В HTML5 называется «ограниченный режим совместимости».</p><p>Вы должны прочитать остальные статьи Хенри, потому что я привел здесь всё упрощённо. Даже в IE5/Mac было несколько вариантов доктайпа. Со временем список особенностей браузеров вырос и вместе с ним увеличился список доктайпов, которые переключают в режим совместимости. В последний раз, когда я занимался подсчётом, было 5 доктайпов для переключения в «почти стандартный режим» и 73 для переключения в «режим совместимости». Вероятно, при этом я пропустил несколько и ещё молчу про ту сумасшедшую фигню, что делает Internet Explorer&nbsp;8 для переключения между четырьмя (четырьмя!) режимами отображения. Вот <a href="../../assets/images/diveintohtml5/ie8-mode.png">схема</a>. Убейте её! Убейте и сожгите!</p><p>Так, где мы? Ах, да, доктайп.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html
+          PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+          &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</code></pre>
+
+<p>Если вам нравится этот доктайп, можете оставить его. Или можете изменить доктайп на HTML5, который короче и приятнее, к тому же переключает в «стандартный режим» во всех современных браузерах.</p><p>Вот доктайп HTML5.</p>
+
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;</code></pre
+
+>
+<p>Вот и всё. Всего 15 символов. Это так просто, что вы можете  набрать его вручную и не выкручиваться.</p>
+<h2>Корневой элемент</h2>
+<p><img src="../../assets/images/diveintohtml5/tree_on_top_of_hill.png" alt="" width="280" height="394" class="leftpic">HTML-страница&nbsp;&#8212;  это набор вложенных элементов, по своей структуре напоминающей дерево.  Некоторые элементы являются «родственными», подобно ветвям, выходящим из одного  ствола. Другие элементы «дочерние» для других элементов, как маленькая ветвь,  растущая из большой ветки. Это правило работает и в обратную сторону&nbsp;— элемент,  непосредственно содержащий другие элементы, называется «родительским», и  «предком» для «внучатых» элементов. Элемент, не имеющий дочерних элементов,  называется узлом. Самый главный элемент, который выступает предком для всех  остальных, зовётся «корневым». В HTML-документе корневым всегда является  <span class="tag">&lt;html&gt;</span>.</p>
+<p>Корневой элемент может выглядеть так.</p>
+
+<pre><code data-language="html">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+      lang=&quot;ru&quot;
+      xml:lang=&quot;ru&quot;&gt;</code></pre>
+
+<p>Ничего плохого в этом коде нет, так что если он вам нравится, можете его оставить, в HTML5 он абсолютно корректен. Но некоторые части уже не требуются, поэтому можно удалить их, тем самым сэкономив несколько байт.</p><p>Первое, что нужно обговорить, это атрибут <span class="attribute">xmlns</span>, который остался от <a href="http://www.w3.org/TR/xhtml1/">XHTML</a>. Данный атрибут сообщает, что элементы на этой странице находятся в пространстве имен XHTML, описанному по адресу http://www.w3c.org/1999/xhtml. Однако элементы HTML5 и так находятся <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/infrastructure.html#xml">в этом пространстве имён</a>, так что нет необходимости объявлять это намеренно. Страница HTML5 будет работать одинаково во всех браузерах, независимо от того, присутствует атрибут <span class="attribute">xmlns</span> или нет.</p><p>После удаления <span class="attribute">xmlns</span> останется следующее:</p>
+
+<pre><code data-language="html">&lt;html lang=&quot;ru&quot; xml:lang=&quot;ru&quot;&gt;</code></pre>
+
+<p>Два атрибута, <span class="attribute">lang</span> и <span class="attribute">xml:lang</span> оба определяют язык текущей веб-страницы. Значение <span class="value">ru</span> обозначает русский язык, его можно поменять на другой <a href="../../html/attr/lang.html">код языка</a>. Почему используется два атрибута для одного и того же? Опять же, это наследие XHTML. В HTML5 только атрибут <span class="attribute">lang</span> даёт какой-либо эффект. Вы можете оставить <span class="attribute">xml:lang</span> при желании, но тогда нужно убедиться, что он содержит то же значение, что и <span class="attribute">lang</span>.</p><blockquote cite="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#the-lang-and-xml:lang-attributes"><p>Чтобы упростить переход от или к XHTML, авторы могут писать атрибут без указания пространства имён в виде xml:язык или без префикса для элементов в HTML-документах, но такие атрибуты должны присутствовать, только если атрибут lang указан вне пространства имён, и оба атрибута должны иметь одинаковое значение с учётом регистра.</p><p>Атрибут без префикса и вне пространства имён и с именем xml:язык не имеет никакого влияния на обработку языка.</p></blockquote><p>Готовы к выбрасыванию? Если да, то поехали. Едем, едем... приехали. Вот что осталось от нашего корневого элемента.</p>
+<pre><code data-language="html">&lt;html lang=&quot;ru&quot;&gt;</code></pre>
+
+<p>И это всё, что я хотел сказать об этом.</p><h2>Элемент &lt;head&gt;</h2><p style="text-align:center"><img src="../../assets/images/diveintohtml5/from_behind.png" alt="" width="554" height="164"></p><p>Первый дочерний элемент в корне это, как правило, <span class="tag">&lt;head&gt;</span>. Элемент <span class="tag">&lt;head&gt;</span> содержит метаданные&nbsp;— информацию о странице, но не тело самой страницы, которое располагается в <span class="tag">&lt;body&gt;</span>. Сам элемент <span class="tag">&lt;head&gt;</span> довольно скучен и не изменился на интересный вариант в HTML5.</p><p>Хорошие вещи находятся внутри <span class="tag">&lt;head&gt;</span>. И для их изучения обратимся к нашему примеру.</p>
+<pre><code data-language="html">&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+  &lt;title&gt;Мой блог&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style/style-original.css&quot;&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;
+                        title=&quot;Фид моего блога&quot;
+                        href=&quot;/rss.xml&quot;&gt;
+  &lt;link rel=&quot;search&quot; type=&quot;application/opensearchdescription+xml&quot;
+                     title=&quot;Поиск по  блогу&quot;
+                     href=&quot;/sites/search/search.xml&quot;&gt;
+  &lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;&gt;
+&lt;/head&gt;</code></pre>
+<p>Вначале элемент <span class="tag">&lt;meta&gt;</span>.</p><h2>Кодировка символов</h2><p>Когда вы думаете о «тексте», вы, вероятно, думаете о «знаках и символах, которые я вижу на экране моего компьютера». Но компьютерам нет дела до  знаков и символов, они имеют дело с битами и байтами. Каждый фрагмент текста, который вы когда-либо видели на экране компьютера, на самом деле хранится в <em>определённой кодировке</em>. Существуют <a href="http://www.iana.org/assignments/character-sets">сотни различных кодировок символов</a>, некоторые из них оптимизированы для конкретных языков, таких как русский, китайский или английский, другие могут быть использованы сразу для нескольких языков. Грубо говоря, кодировка символов обеспечивает соответствие между тем, что вы видите экране и тем, что компьютер хранит в памяти и на диске.</p><p>В действительности, всё гораздо сложнее. Некоторые символы могут быть более чем в одной кодировке, каждая кодировка может использовать разные последовательности байтов, в зависимости от способа хранения символов в памяти или на диске. Таким образом, кодировка это своего рода ключ для расшифровки текста. Всякий раз, когда кто-то даёт вам последовательность байтов и утверждает что это «текст», вы должны знать, какую кодировку символов они использовали, чтобы суметь перевести байты в символы и вывести их.</p><p>Итак, как же ваш браузер фактически определяет кодировку потока байтов, которую посылает веб-сервер? Рад, что спросили. Если вы знакомы с HTTP-заголовками, то возможно видели подобный.</p>
+<pre><code data-language="html">Content-Type: text/html; charset=&quot;utf-8&quot;</code></pre>
+<p>Вкратце, эта строка говорит, что веб-сервер считает, что посылает вам HTML-документ в кодировке UTF-8. К сожалению, в Интернете творится каша&nbsp;— некоторые авторы могут контролировать HTTP-сервер, другие же нет. К примеру, сайт <a href="http://www.blogger.com">Blogger</a> может содержать различный контент предоставленный разными людьми, но управляется серверами Google.  В HTML4 используется способ указания кодировки самостоятельно в любом HTML-документе. Вы, наверное, встречали такую строку.</p>
+
+<pre><code data-language="html">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;</code></pre>
+
+<p>Эта строка говорит о том, что автор считает, что в HTML-документе применяется кодировка UTF-8.</p><p>Оба указанных метода работают в HTML5. Использование HTTP-заголовка является предпочтительным методом и он перекрывает <span class="tag">&lt;meta&gt;</span>, если таковой имеется. Но не каждый может установить HTTP-заголовки, так что метатеги всё еще применяются. К тому же он стал намного проще в HTML5. Теперь это выглядит так.</p>
+<pre><code data-language="html">&lt;meta charset=&quot;utf-8&quot;&gt;</code></pre>
+<p>Это работает во всех браузерах. Как произошло сокращение синтаксиса? Вот <a href="http://lists.w3.org/Archives/Public/public-html/2007Jul/0550.html">лучшее объяснение, что мне удалось найти</a>:</p><blockquote cite="http://lists.w3.org/Archives/Public/public-html/2007Jul/0550.html"><p>Выбор атрибута charset продиктован тем, что он уже реализован в браузерах, к тому же люди часто оставляли значение без кавычек, например:</p>
+<pre><code data-language="html">&lt;META HTTP-EQUIV="Content-Type" CONTENT="text/html;" charset="ISO-8859-1"&gt;</code></pre>
+</blockquote><p>Есть <a href="http://simon.html5.org/test/html/parsing/encoding/">несколько тестов для &lt;meta charset&gt;</a>, если вы ещё не верите, что браузеры уже это делают.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Я никогда не использую смешные символы. Надо ли мне объявлять мою кодировку?</p><p>О. Да, вы всегда должны указывать кодировку на каждой веб-странице. Отсутствие кодировки может привести к <a href="http://openmya.hacker.jp/hasegawa/security/utf7cs.html">уязвимости системы безопасности</a>.</p></div></div><p>Подведём итоги. Кодировка трудна для понимания и ничуть не стала проще за десятилетия плохо написанного софта, в котором используется метод копипаста. Вы должны всегда указывать кодировку в каждом HTML-документе, иначе могут произойти неприятные вещи. Вы можете сделать это через HTTP-заголовки, написанием <span class="tag">&lt;meta http-equiv&gt;</span> или более коротким <span class="tag">&lt;meta charset&gt;</span>, но, пожалуйста, сделайте это. Мир скажет вам спасибо.</p><h2>Дружеские отношения</h2><p>Обычные ссылки (<span class="tag">&lt;a href&gt;</span>) всего лишь указывают на другой сайт. Отношения между ссылками&nbsp;— это способ пояснить, почему вы указываете на другую страницу. Вот окончания предложения «Я указываю на другую страницу, потому что...».</p><ul><li>...это таблица стилей, содержащая правила CSS, которые браузер должен применить к документу.</li><li>...это фид, содержащий тот же контент, что и сама страница, но в специальном формате.</li><li>...это перевод страницы на другой язык.</li><li>...это следующая глава онлайновой книги.</li></ul><p>И так далее. HTML5 разделяет отношения ссылок <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#attr-link-rel">на две категории</a>:</p><blockquote cite="http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#attr-link-rel"><p>Две категории ссылок могут быть созданы с помощью элемента &lt;link&gt;. <strong>Ссылки на внешние ресурсы</strong> являются ссылками на ресурсы, которые используются в качестве дополнения текущего документа, и <strong>гиперссылки</strong>&nbsp;— ссылки на другие документы...</p><p>Точное поведение ссылок на внешние ресурсы зависит от точного отношения, как это определено для соответствующего типа связи.</p></blockquote><p>В примере, что я приводил ранее, только первая ссылка (<span class="var">rel=&quot;stylesheet&quot;</span>) указывает на внешний ресурс. Остальные являются гиперссылками на другие документы. Вы можете при желании пройти по этим ссылкам, но они не требуются для просмотра текущей страницы.</p><p>Чаще всего отношения ссылок видны в элементе <span class="tag">&lt;link&gt;</span> внутри <span class="tag">&lt;head&gt;</span>. Некоторые отношения также могут быть использованы для элементов <span class="tag">&lt;a&gt;</span>, но это встречается нечасто, даже когда разрешено. HTML5 также позволяет включить некоторые отношения для <span class="tag">&lt;area&gt;</span>, но это ещё реже используется (HTML4 не разрешает атрибут <span class="attribute">rel</span> для элементов <span class="tag">&lt;area&gt;</span>). Посмотрите <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#linkTypes">таблицу целиком</a> для проверки, где вы можете использовать заданные значения <span class="attribute">rel</span>.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Могу я создать свои собственные отношения между ссылками?</p><p>О. Кажется, имеется бесконечный запас идей для новых отношений между ссылками. В попытках ограничить людей <a href="http://developer.apple.com/safari/library/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW4">от раздувания списка</a>, сообщество микроформатов <a href="http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions">ведёт реестр предложенных значений rel</a> и HTML спецификация <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#other-link-types">устанавливает процесс для их принятия</a>.</p></div></div><h3>rel=&quot;stylesheet&quot;</h3><p>Давайте посмотрим на первую ссылку в нашем примере.</p>
+
+<pre><code data-language="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style/style-original.css&quot; type=&quot;text/css&quot;&gt;</code></pre>
+
+<p>Это наиболее встречаемое отношение ссылок в мире (в буквальном смысле). Строка <span class="var">&lt;link rel=&quot;stylesheet&quot;&gt;</span> указывает на CSS-правила, которые хранятся в отдельном файле. Одну небольшую оптимизацию можно сделать в HTML5 и убрать атрибут <span class="attribute">type</span>. В нём только один язык стилей&nbsp;— CSS, так что он установлен по умолчанию. Это работает во всех браузерах. Думаю, кто-то может придумать когда-нибудь новый язык стилей, но если это произойдёт, просто добавьте атрибут <span class="attribute">type</span> обратно.</p>
+<pre><code data-language="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;style/style-original.css&quot;&gt;</code></pre>
+<h3>rel=&quot;alternate&quot;</h3><p>Вернёмся к <a href="https://webref.ru/example/page/blog-original.html">нашей странице</a>.</p>
+<pre><code data-language="html">&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;
+                      title=&quot;Фид моего блога&quot;
+                      href=&quot;/feed/&quot;&gt;</code></pre>
+<p>Эти отношения ссылок также весьма распространены. <span class="var">&lt;link rel=&quot;alternate&quot;&gt;</span> в сочетании с RSS&nbsp;или Atom в атрибуте <span class="attribute">type</span> позволяет то, что называется «автоматическое обнаружение канала». Это позволяет собирать фид читалками (вроде Google Reader) для получения с сайта последних новостей. Большинство браузеров также поддерживает автоматическое обнаружение фида, показывая специальный значок рядом с адресом сайта. В отличие от <span class="var">rel=&quot;stylesheet&quot;</span>, атрибут <span class="attribute">type</span> здесь важен. Не убирайте его!</p><p>Ссылка с отношением <span class="var">rel=&quot;alternate&quot;</span> всегда была странным гибридом в использовании, даже в HTML4. В HTML5 её определение было уточнено и расширено, чтобы более точно описать существующий контент. Как вы видели, использование <span class="var">rel=&quot;alternate&quot;</span> в сочетании с <span class="var">type=application/atom+xml</span> указывает на Atom-фид для текущей страницы. Но вы также можете использовать <span class="var">rel=&quot;alternate&quot;</span> в сочетании с другими значениями <span class="attribute">type</span> для обозначения того же содержания в другом формате, например PDF.</p><p>HTML5 также отправляет на отдых давнюю путаницу о том, как делать ссылку на переводы документов. HTML 4 говорит использовать атрибут <span class="attribute">lang</span> в сочетании с <span class="attribute">rel=&quot;alternate&quot;</span> для указания языка связанного документа, но это некорректно. В списке <a href="http://www.w3.org/MarkUp/html4-updates/errata">исправлений HTML4</a> перечислены четыре ошибки спецификации. Одна из этих ошибок связана с заданием языка документа через <span class="var">rel=&quot;alternate&quot;</span>. Правильный способ, описанный в исправлениях HTML4 и применяемый в HTML5, заключается в использовании атрибута <span class="attribute">hreflang</span>. К сожалению, эти исправления не были повторно включены в спецификацию HTML 4, потому что никто больше в Рабочей группе по HTML не работает над ней.</p><h3>Другие отношения ссылок в HTML5</h3><p><span class="var">rel=&quot;author&quot;</span> используется для ссылки на страницу с информацией об авторе. Это может быть почтовый адрес, хотя и не обязательно. Обычно это ссылка на контактную информацию или на страницу «Об авторе».</p><img src="../../assets/images/diveintohtml5/girl_feeding_birds.png" alt="" width="313" height="384" class="rightpic"><p>HTML4 включает <a href="http://www.w3.org/TR/html401/types.html#type-links">rel=&quot;start&quot;, rel=&quot;prev&quot; и rel=&quot;next&quot;</a> для определения отношений между страницами, которые являются частью серии (например, разделы книги или даже сообщения в блоге). При этом корректно использовалась только запись <span class="var">rel=&quot;next&quot;</span>. Люди вставляли <span class="var">rel=&quot;previous&quot;</span> вместо <span class="var">rel=&quot;prev&quot;</span>, вставляли <span class="var">rel=&quot;begin&quot;</span> и <span class="var">rel=&quot;first&quot;</span> вместо <span class="var">rel=&quot;start&quot;</span>, использовали <span class="var">rel=&quot;end&quot;</span> вместо <span class="var">rel=&quot;last&quot;</span>.</p><p>И ох, самостоятельно делали <span class="var">rel=&quot;up&quot;</span> для указания на «родительскую» страницу. Лучший способ подумать об <span class="var">rel=&quot;up&quot;</span> это взглянуть на навигацию в виде хлебных крошек (или представить её). Ваша главная страница, вероятно, идёт первой в хлебных крошках, а текущая страница находится в хвосте. <span class="var">rel=&quot;up&quot;</span> указывает на предпоследнюю страницу.</p><p>HTML5 включает <span class="var">rel=&quot;next&quot;</span> и <span class="var">rel=&quot;prev&quot;</span> как в HTML4 и поддерживает rel=&quot;previous&quot; для обратной совместимости. В спецификации когда-то также было <span class="var">rel=&quot;first&quot;</span>, <span class="var">rel=&quot;last&quot;</span> и <span class="var">rel=&quot;up&quot;</span>. Однако, «<a href="http://lists.w3.org/Archives/Public/public-html/2011Feb/att-0481/issue-118-decision.html">в виду отсутствия интереса со стороны разработчиков и пользователей</a>» рабочая группа HTML решила убрать эти значения из спецификации.</p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon" class="var">rel=&quot;icon&quot;</a> является <a href="http://code.google.com/webstats/2005-12/linkrels.html">вторым по популярности отношением между ссылками</a> после <span class="var">rel=&quot;stylesheet&quot;</span>. Оно обычно используется вместе с иконкой сайта, вот так.</p>
+
+<pre><code data-language="html">&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;&gt;</code></pre>
+
+<p>Все основные браузеры поддерживают такое связывание иконки со страницей. Обычно она отображается в адресной строке браузера рядом с URL или во вкладке браузера или в том и другом месте.</p><p>Новое в HTML5: атрибут <span class="var">sizes</span> может быть использован для указания размера иконки.</p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-license" class="var">rel=&quot;license&quot;</a> был включен <a href="http://microformats.org/wiki/rel-license">сообществом по микроформатам</a>. Такое отношение означает, что «ссылка ведёт на страницу с авторскими правами, согласно которым предоставляется текущий документ».</p><p><span class="var"><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-nofollow">rel=&quot;nofollow&quot;</a></span> указывает, что ссылка не одобрена автором или издателем страницы или что ссылка на указанный документ включена в основном из-за коммерческих отношений между людьми связанных с этими страницами. Это отношение было изобретено в Google и стандартизировано в сообществе по микроформатам. WordPress вставляет <span class="var">rel=&quot;nofollow&quot;</span> в ссылки, добавленные в комментариях, полагая, что раз ссылки с nofollow не передают PageRank, то спамеры откажутся постить спам в комментариях блога. Этого не произошло, но <span class="var">rel=&quot;nofollow&quot;</span> остался.</p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-noreferrer" class="var">rel=&quot;noreferrer&quot;</a> указывает, что информация о <a href="http://ru.wikipedia.org/wiki/Реферрер">реферере</a> не будет уходить при переходе по ссылке. <a href="http://webkit.org/blog/907/webkit-nightlies-support-html5-noreferrer-link-relation/">Webkit поддерживает это отношение</a>, так что оно работает в Google Chrome и Safari (и, надеюсь, в других браузерах, основанных на этом движке).</p><p class="leftpic"><img src="../../assets/images/diveintohtml5/dog_on_chair.png" alt="" width="271" height="309"></p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-prefetch" class="var">rel=&quot;prefetch&quot;</a> сообщает, что превентивная выборка и кэширование указанного ресурса, вероятно, будет полезна и скорее всего пользователю понадобится этот ресурс. Поисковые системы иногда добавляют <span class="var">&lt;link rel=&quot;prefetch&quot; href=&quot;URL топа поисковой выдачи&quot;&gt;</span> на страницу результатов поиска, если полагают, что верхние результаты гораздо более популярны других. Посмотрите исходный код результатов поиска <a href="http://www.google.ru/search?q=cnn">Google для CNN</a> через Firefox и сделайте поиск по ключевому слову <span class="value">prefetch</span>. Mozilla Firefox является пока единственным браузером, поддерживающим <span class="var">rel=&quot;prefetch&quot;</span>.</p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-search" class="var">rel=&quot;search&quot;</a> говорит, что ссылаемый документ содержит интерфейс поиска и связанных с ним ресурсов. Так, если вы хотите полезно использовать <span class="var">rel=&quot;search&quot;</span>, укажите на <a href="http://www.opensearch.org">OpenSearch</a>-документ, который описывает, как браузер может формировать адреса для поиска ключевых слов по текущему сайту. Формат OpenSearch поддерживается браузером Internet Explorer начиная с версии 7.0, Mozilla Firefox с версии 2.0 и Google Chrome.</p><p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-tag" class="var">rel=&quot;tag&quot;</a> сообщает, что метка непосредственно связана с текущим документом. Понятие «метка» (теги, категории) было <a href="http://www.powazek.com/2005/07/000532.html">придумано компанией Technorati</a> для помощи в систематизации постов блога. Ранее блоги и руководства называли их «метки Technorati». Вы правильно поняли: коммерческая компания убедила весь мир добавить метаданные, которые сделали работу компании проще. Прекрасная работа, если вы получите её! Синтаксис позже был <a href="http://microformats.org/wiki/rel-tag">стандартизирован сообществом по микроформатам</a>, где его просто назвали <span class="var">rel=&quot;tag&quot;</span>. В большинстве систем блогов, которые позволяют связывать категории, ключевые слова или метки с постами, ссылки маркируются через <span class="var">rel=&quot;tag&quot;</span>. Браузеры ничего особого с такими ссылками не делают, поскольку они в действительности предназначены для поисковых систем.</p><h2>Новые семантические элементы в HTML5</h2><p>HTML5 не просто делает существующую разметку компактнее, он также определяет новые семантические элементы.</p><table class="data"><tr><td><a href="../../html/section.html">&lt;section&gt;</a></td><td>Элемент <span class="tag">&lt;section&gt;</span> определяет основной документ или раздел приложения. В данном контексте это тематическая группировка содержания, как правило, с заголовком. Например, разделами могут быть главы, вкладки в диалоговом окне с вкладками или пронумерованные разделы диссертации. Главная страница веб-сайта может быть разбита на разделы для вступления, вывода новостей, контактной информации.</td></tr><tr><td><a href="../../html/nav.html">&lt;nav&gt; </a></td><td>Элемент <span class="tag">&lt;nav&gt;</span> представляет собой раздел навигационных ссылок, содержащий ссылки на другие страницы. Не все группы ссылок должны заключаться в <span class="tag">&lt;nav&gt;</span>&nbsp;— только разделы, состоящие из основных блоков навигации. В частности, в подвале страницы часто содержится краткий список ссылок, таких как: условия обслуживания, главная страница, страница с авторскими правами. Для подобных случаев вполне достаточно элемента <span class="tag">&lt;footer&gt;</span>, без использования <span class="tag">&lt;nav&gt;</span>.</td></tr><tr><td><a href="../../html/article.html">&lt;article&gt;</a></td><td>Элемент <span class="tag">&lt;article&gt;</span> представляет собой компонент страницы, которая содержит самодостаточный набор в документе, странице, приложении или сайте, для самостоятельного распространения или повторного использования, например в синдикации. Это может быть сообщение форума, журнальная или газетная статья, запись в блоге, пользовательский комментарий, интерактивный виджет, гаджет или любой другой независимый контент.</td></tr><tr><td><a href="../../html/aside.html">&lt;aside&gt;</a></td><td>Этот элемент представляет раздел страницы, имеющий косвенное отношение к содержимому и который можно рассматривать отдельно от этого содержимого. В полиграфии такие участки часто выделяют плашкой. Элемент <span class="tag">&lt;aside&gt;</span> может быть использован для вывода цитат, боковых панелей, рекламы, навигации через <span class="tag">&lt;nav&gt;</span> и другого контента, который считается отдельным от основного содержания страницы.</td></tr><tr><td><a href="../../html/hgroup.html">&lt;hgroup&gt;</a></td><td>Элемент <span class="tag">&lt;hgroup&gt;</span> задаёт заголовок раздела и применяется для группирования набора элементов <span class="tag">&lt;h1&gt;</span>–<span class="tag">&lt;h6&gt;</span>, когда заголовок включает несколько уровней, таких как подзаголовки, альтернативные названия или лозунги.</td></tr><tr><td><a href="../../html/header.html">&lt;header&gt;</a></td><td>Представляет собой группу из вступительных или навигационных средств. Элемент <span class="tag">&lt;header&gt;</span> обычно содержит заголовок раздела (элементы <span class="tag">&lt;h1&gt;</span>–<span class="tag">&lt;h6&gt;</span> или <span class="tag">&lt;hgroup&gt;</span>), но это не обязательно. <span class="tag">&lt;header&gt;</span> также может быть использован для обёртывания оглавления разделов, формы поиска или любых подходящих логотипов.</td></tr><tr><td><a href="../../html/footer.html">&lt;footer&gt;</a></td><td>Задаёт нижний колонтитул для раздела содержания или подвал для страницы. Элемент <span class="tag">&lt;footer&gt;</span> обычно содержит информацию о разделе, такую как: имя автора, ссылки на соответствующие документы, авторские данные и тому подобное. Колонтитулы не обязательно должны выводиться в конце раздела, как это обычно делается.</td></tr><tr><td><a href="../../html/time.html">&lt;time&gt;</a></td><td>Представляет собой либо время в 24-часовом формате, либо точную дату, которую при желании можно совмещать со временем и указанием часового пояса.</td></tr><tr><td><a href="../../html/mark.html">&lt;mark&gt;</a></td><td>Помечает фрагмент документа или выделяет его в справочных целях.</td></tr></table><p>Я знаю, вам не терпится начать использовать эти новые элементы, иначе вы бы не читали эту главу. Но прежде нам надо немного отклониться от темы.</p><h2>Длинное отступление о том, как браузеры обрабатывают неизвестные элементы</h2><p>Каждый браузер содержит основной список HTML-элементов, которые он поддерживает. Например, список элементов Mozilla Firefox хранит в nsElementTable.cpp. Элементы вне этого списка рассматриваются как «неизвестные». Вот две фундаментальные проблемы, связанные с такими элементами.</p><ol><li><strong>Как должен быть стилизован элемент</strong>? По умолчанию у <span class="tag">&lt;p&gt;</span> есть отступ сверху и снизу, у <span class="tag">&lt;blockquote&gt;</span> отступ от левого края, а <span class="tag">&lt;h1&gt;</span> отображается крупным шрифтом. Но какой стиль по умолчанию должен применяться к неизвестным элементам?</li><li><strong>Как элемент должен выглядеть в DOM</strong>? Файл nsElementTable.cpp хранит информацию, какие элементы могут содержать в себе другие. Если вы написали <span class="tag">&lt;p&gt;&lt;p&gt;</span>, второй элемент неявно закрывает первый, так что они являются элементами одного уровня, а не родителем и потомком. Но если вы пишете <span class="tag">&lt;p&gt;&lt;span&gt;</span>, то <span class="tag">&lt;span&gt;</span> не закрывает <span class="tag">&lt;p&gt;</span> потому что Firefox знает, что <span class="tag">&lt;p&gt;</span> это блочный элемент, который может содержать строчные элементы <span class="tag">&lt;span&gt;</span>. Так что <span class="tag">&lt;span&gt;</span> в DOM обозначается как дочерний для <span class="tag">&lt;p&gt;</span>.</li></ol><p>Различные браузеры отвечают на эти вопросы по своему. Вы в шоке, я знаю. Из основных браузеров Microsoft Internet Explorer имеет больше всех проблем, но и остальные браузеры нуждаются в небольшой помощи.</p><p>На первый вопрос есть относительно простой ответ: к неизвестным элементам вообще не надо применять стили. В действительности они наследуют свойства CSS там, где это возможно, автор же добавляет остальной требуемый ему стиль через CSS. В основном это работает, но есть один маленький глюк, который нужно знать.</p><div class="profmarkup"><h4>Профессор Разметкин говорит</h4><div class="inner"><p><span class=q>☞</span>Все браузеры отображают неизвестные элементы как строчные, т.&nbsp;е. так, словно в стилях к ним добавили display:&nbsp;inline.</p></div></div><p>Есть несколько новых элементов, определённых в HTML5 как блочные. При этом они могут содержать другие блочные элементы и HTML5-совместимые браузеры будут добавлять к ним <span class="var">display:&nbsp;block</span>. Если вы хотите использовать эти элементы в старых браузерах, вам нужно задать стиль для них вручную.</p>
+
+<pre><code data-language="html">article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}</code></pre>
+<p>Этот код взят из статьи Ричи Кларка <a href="http://html5doctor.com/html-5-reset-stylesheet/">HTML5 Reset Stylesheet</a>, где написано много других вещей выходящих за рамки этой главы.</p><p>Но погодите, это ещё хуже! До версии 9, Internet Explorer не применяет любые стили к неизвестным элементам. Например, если у вас такая разметка.</p>
+<pre><code data-language="html">&lt;style type=&quot;text/css&quot;&gt;
+  article { display: block; border: 1px solid red; }
+&lt;/style&gt;
+  ... 
+&lt;article&gt;
+  &lt;h1&gt;Добро пожаловать в Инитех&lt;/h1&gt; 
+  &lt;p&gt;Это ваш &lt;span&gt;первый день&lt;/span&gt;.&lt;/p&gt; 
+&lt;/article&gt;</code></pre>
+<p>Internet Explorer до версии 8 включительно не будет рассматривать элемент <span class="tag">&lt;article&gt;</span> как блочный и не покажет красную рамку вокруг статьи. Все стилевые правила просто игнорируются. В Internet Explorer 9 <a href="http://msdn.microsoft.com/en-us/ie/hh410106#_HTML_Parsing">пофиксили эту проблему</a>.</p><p> Вторая проблема — это DOM, который создают браузеры, когда они сталкиваются c неизвестными им элементами. Опять же, самый проблематичный браузер&nbsp;— это старые версии Internet Explorer (до версии 9, в котором <a href="http://msdn.microsoft.com/en-us/ie/hh410106#_HTML_Parsing">эта проблема также решена</a>). Если IE&nbsp;8 не признаёт элемент, то вставляет его в DOM как пустой узел без детей. Все элементы, которые ожидаются как прямые потомки неизвестного элемента, на самом деле будут вставлены как родственные.</p><p>Для иллюстрации этих различий приведён ASCII-рисунок. Это DOM, который диктует HTML5.</p>
+
+<pre style="background:none; border: none">article
+|
++--h1 (дочерний к article)
+|  |
+|  +--текст &quot;Добро пожаловать в Инитех&quot;
+|
++--p (дочерний к article, родственный h1)
+   |
+   +--текст &quot;Это ваш &quot;
+   |
+   +--span
+   |  |
+   |  +--текст &quot;первый день&quot;
+   |
+   +--текст &quot;.&quot;</pre>
+
+<p>В действительности Internet Explorer создаёт следующий DOM.</p>
+
+<pre style="background:none; border: none">article (без дочерних элементов)
+h1 (родственный article)
+|
++--текст &quot;Добро пожаловать в Инитех&quot;
+p (родственный of h1)
+|
++--текст &quot;Это ваш &quot;
+|
++--span
+|  |
+|  +--текст &quot;первый день&quot;
+|
++--текст &quot;.&quot;</pre>
+
+<p>Если вы <a href="http://xopus.com/devblog/2008/style-unknown-elements.html">создаёте фиктивный элемент</a> <span class="tag">&lt;article&gt;</span> через JavaScript, прежде чем использовать его на вашей странице, то Internet Explorer волшебным образом признаёт элемент <span class="tag">&lt;article&gt;</span> и позволяет стилизовать его через CSS. Нет необходимости вставлять фиктивный элемент в DOM. Простого однократного создания элемента достаточно, чтобы научить IE стилизации элемента, который он не признаёт.</p>
+<pre><code data-language="html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;style&gt;
+      article { display: block; border: 1px solid red }
+    &lt;/style&gt;
+    <mark>&lt;script&gt;document.createElement(&quot;article&quot;);&lt;/script&gt;</mark>
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;article&gt; 
+      &lt;h1&gt;Добро пожаловать в Инитех&lt;/h1&gt; 
+      &lt;p&gt;Это ваш &lt;span&gt;первый день&lt;/span&gt;.&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Это работает во всех версиях Internet Explorer, включая IE 6! Мы можем расширить эту технику, чтобы сразу создать фиктивные копии всех новых элементов HTML5&nbsp;— опять же, они никогда не вставляются в DOM, так что вы их не увидите. Иначе пришлось бы беспокоиться о браузерах, не поддерживающих HTML5.</p><p>Реми Шарп написал скрипт с именем <abbr><a href="http://remysharp.com/2009/01/07/html5-enabling-script/">HTML5</a></abbr><a href="http://remysharp.com/2009/01/07/html5-enabling-script/"> enabling script</a>. Скрипт прошёл более десятка редакций с момента написания этой книги, но вот его основная идея.</p>
+<pre><code data-language="html">&lt;!--[if lt IE 9]&gt;
+&lt;script&gt;
+  var e = (&quot;abbr,article,aside,audio,canvas,datalist,details,&quot; +
+           &quot;figure,footer,header,hgroup,mark,menu,meter,nav,output,&quot; +
+           &quot;progress,section,time,video&quot;).split(',');
+  for (var i = 0; i &lt; e.length; i++) {
+    document.createElement(e[i]);
+  }
+&lt;/script&gt;
+&lt;![endif]--&gt;</code></pre>
+<p>Фрагмент <span class="var">&lt;!--[if lt IE 9]&gt;</span> и <span class="var">&lt;![endif]--&gt;</span> называется <a href="http://msdn.microsoft.com/en-us/library/ms537512">условным комментарием</a>. Internet Explorer интерпретирует его как установку: «если текущий браузер Internet Explorer и версия ниже 9, то выполнить этот блок». Любой другой браузер будет рассматривать весь блок как комментарий HTML. Конечным результатом является то, что Internet Explorer до версии 8 включительно будет выполнять этот скрипт, а другие браузеры целиком его игнорируют. Это позволяет страницам загружаться быстрее в тех браузерах, что не поддерживают данный хак.</p><p>Код JavaScript относительно простой. В переменной <span class="var">e</span> хранится массив строк вроде «abbr», «article», «aside» и др. Затем в цикле обходим этот массив и создаем каждый элемент через <span class="var">document.createElement()</span>. Так как мы игнорируем возвращаемое значение, элементы не добавляются в DOM. Этого достаточно, чтобы заставить Internet Explorer обрабатывать эти элементы так, как нам надо, чтобы использовать их позже на странице.</p><p>Это «позже» имеет большое значение. Скрипт должен располагаться в верхней части страницы, предпочтительно внутри <span class="tag">&lt;head&gt;</span>, а не внизу. Таким образом, Internet Explorer будет выполнять скрипт прежде, чем он разберёт теги и атрибуты. Если вы вставите скрипт в нижнюю часть страницы, будет слишком поздно. Internet Explorer уже получит неправильную разметку и построит ошибочный DOM и уже нельзя будет повернуть назад и настроить все заново.</p><p>Реми Шарп уменьшил скрипт и разместил его на <a href="http://code.google.com/p/html5shiv/">Google Project Hosting</a>. Там находится сам код скрипта и MIT-лицензия, так что вы можете использовать его в любом проекте. Если хотите, можете сделать ссылку на последнюю версию скрипта напрямую, как показано ниже.</p>
+
+<pre><code data-language="html">&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Мой блог&lt;/title&gt;
+  &lt;!--[if lt IE 9]&gt;
+    &lt;script <mark>src=&quot;http://html5shiv.googlecode.com/svn/trunk/html5.js&quot;</mark>&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/head&gt;</code></pre>
+<p>Теперь мы готовы начать использовать новые семантические элементы HTML5.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Заголовки</h2><p>Вернемся к <a href="https://webref.ru/example/page/blog-original.html">нашему примеру</a>. В частности, посмотрим только на заголовки.</p>
+<pre><code data-language="html">&lt;div id=&quot;header&quot;&gt;
+  &lt;h1&gt;Мой блог&lt;/h1&gt;
+  &lt;p class=&quot;tagline&quot;&gt;Много усилий пошло на создание этих усилий&lt;/p&gt;
+&lt;/div&gt;
+  
+  ... 
+
+&lt;div class=&quot;entry&quot;&gt;
+  &lt;h2&gt;День путешествия&lt;/h2&gt;
+&lt;/div&gt;
+
+  ...
+
+&lt;div class=&quot;entry&quot;&gt;
+  &lt;h2&gt;Я уехал в Прагу!&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
+<p>Ничего плохого в этой разметке нет, если она вам нравится, можете её оставить, это валидный HTML5. Но HTML5 предоставляет некоторые дополнительные семантические элементы для заголовков и разделов.</p><p>Для начала, давайте избавимся от <span class="var">&lt;div id=&quot;header&quot;&gt;</span>. Хотя это типовой шаблон, он ничего не значит. Для элемента <span class="tag">&lt;div&gt;</span> не задана семантика, атрибут <span class="attribute">id</span> тоже не несёт определённого смысла. Браузеры не могут сделать какой-либо вывод на основе значения <span class="attribute">id</span>. Вы можете заменить строку на <span class="var">&lt;div id=&quot;shazbot&quot;&gt;</span> и у неё останется такое же семантическое значение, т.&nbsp;е. никакое.</p><p>В HTML5 для этих целей определён элемент <span class="tag">&lt;header&gt;</span>. Вот как это будет выглядеть на странице нашего примера.</p>
+<pre><code data-language="html">&lt;header&gt;
+  &lt;h1&gt;Мой блог&lt;/h1&gt;
+  &lt;p class=&quot;tagline&quot;&gt;Много усилий пошло на создание этих усилий&lt;/p&gt;
+  ...
+&lt;/header&gt;</code></pre>
+<p>Это хорошо. Страница рассказывает желающим, что это заголовок. Но что делать со слоганом, ещё одним типовым элементом, для которого нет стандартной разметки? Это трудный выбор, как его верстать. Слоган вроде бы подзаголовок, но «привязан» к основному заголовку. То есть, это подзаголовок, но не имеющий собственного раздела.</p><p>Элементы заголовков, такие как <span class="tag">&lt;h1&gt;</span> и <span class="tag">&lt;h2&gt;</span> формируют структуру вашей страницы. Собранные воедино они создают иерархию, которую можно использовать для визуализации страницы или навигации по ней. Экранные ридеры используют схему документа, чтобы помочь слепым пользователям перемещаться по странице. Есть <a href="http://gsnedders.html5.org/outliner/">онлайн-инструменты</a> и <a href="http://chrispederick.com/work/web-developer/">расширения браузера</a>, которые также могут помочь вам представить схему вашего документа.</p><p>В HTML4 элементы <span class="tag">&lt;h1&gt;</span>–<span class="tag">&lt;h6&gt;</span> были единственным способом создания схемы документа, например, такой.</p>
+<pre style="background:none;border:none">Мой блог (h1)
+   |
+   +--День путешествия (h2)
+   |
+   +--Я в Праге! (h2)</pre>
+<p>Прекрасно, но это означает, что нет никакого способа для разметки слогана «Много усилий пошло на создание этих усилий». Если мы попытемся отметить его как <span class="tag">&lt;h2&gt;</span>, то добавится фантомный узел в схему документа.</p>
+
+<pre style="background:none;border:none">Мой блог (h1)
+   |
+   +--Много усилий пошло на создание этих усилий (h2)
+   |
+   +--День путешествия (h2)
+   |
+   +--Я в Праге! (h2)</pre>
+
+<p>Может быть, мы могли бы отметить слоган как <span class="tag">&lt;h2&gt;</span>, а каждый заголовок статьи как <span class="tag">&lt;h3&gt;</span>? Нет, это ещё хуже.</p>
+<pre style="background:none; border:none">Мой блог (h1)
+   |
+   +--Много усилий пошло на создание этих усилий (h2)
+       |
+       +--День путешествия (h3)
+       |
+       +--Я в Праге! (h3)</pre>
+<p>У нас все ещё есть фантомный узел в схеме документа, но он «украл» детей, которые по праву принадлежат корневому узлу. В этом и заключается проблема: HTML4 не предоставляет способ разметки подзаголовка без добавления его в схему документа. Независимо от наших перестановок, «Много усилий пошло на создание этих усилий» окажется в конечном итоге на этой диаграмме. Именно поэтому мы остановились на семантически бессмысленной разметке вроде <span class="var">&lt;p class=&quot;tagline&quot;&gt;</span>.</p><p>HTML5 предоставляет решение для этого&nbsp;— элемент <span class="tag">&lt;hgroup&gt;</span>. Он используется в качестве обрамления для двух или более связанных элементов заголовка. Что значит «связанных»? Лишь то, что взятые вместе они создают один узел в схеме документа.</p><p>Возьмем эту разметку.</p>
+
+<pre><code data-language="html">&lt;header&gt;
+  <mark>&lt;hgroup&gt;</mark>
+    &lt;h1&gt;Мой блог&lt;/h1&gt;
+    <mark>&lt;h2&gt;</mark>Много усилий пошло на создание этих усилий<mark>&lt;/h2&gt;</mark>
+  <mark>&lt;/hgroup&gt;</mark>  
+&lt;/header&gt;
+
+  ... 
+
+&lt;div class=&quot;entry&quot;&gt;
+  &lt;h2&gt;День путешествия&lt;/h2&gt;
+&lt;/div&gt;
+
+  ...
+
+&lt;div class=&quot;entry&quot;&gt;
+  &lt;h2&gt;Я уехал в Прагу!&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
+
+<p>Созданная схема документа.</p>
+<pre style="background:none;border:none">Мой блог (h1 и hgroup)
+   |
+   +--День путешествия (h2)
+   |
+   +--Я в Праге! (h2)</pre>
+<p>Вы можете проверить ваши страницы через <a href="http://gsnedders.html5.org/outliner/">HTML5 Outliner</a> чтобы убедиться, что вы используете заголовки правильно.</p><h2>Статьи</h2><p>Вновь обратимся к <a href="https://webref.ru/example/page/blog-original.html">нашему примеру</a> и посмотрим, что можно сделать с этим кодом.</p>
+<pre><code data-language="html">&lt;div class=&quot;entry&quot;&gt;
+  &lt;p class=&quot;post-date&quot;&gt;Октябрь 22, 2009&lt;/p&gt;
+  &lt;h2&gt;
+    &lt;a href=&quot;#&quot;
+       rel=&quot;bookmark&quot;
+       title=&quot;ссылка на этот пост&quot;&gt;
+       День путешествия
+    &lt;/a&gt;
+  &lt;/h2&gt;
+  ...
+&lt;/div&gt;</code></pre>
+<p>Опять же, это валидный HTML5. Но HTML5 включает специфичный элемент для общего случая разметки статьи на странице&nbsp;— метко названный <span class="tag">&lt;article&gt;</span>.</p>
+<pre><code data-language="html"><mark>&lt;article&gt;</mark>
+  &lt;p class=&quot;post-date&quot;&gt;Октябрь 22, 2009&lt;/p&gt;
+  &lt;h2&gt;
+    &lt;a href=&quot;#&quot;
+       rel=&quot;bookmark&quot;
+       title=&quot;ссылка на этот пост&quot;&gt;
+       День путешествия
+    &lt;/a&gt;
+  &lt;/h2&gt;
+  ...
+<mark>&lt;/article&gt;</mark></code></pre>
+
+<p>Ах, не всё так просто. Существует ещё одно изменение, которое вы должны сделать. Вначале я покажу, а потом объясню его.</p>
+<pre><code data-language="html">&lt;article&gt;
+  &lt;header&gt;
+    &lt;p class=&quot;post-date&quot;&gt;Октябрь 22, 2009&lt;/p&gt;
+    <mark>&lt;h1&gt;</mark>
+      &lt;a href=&quot;#&quot;
+         rel=&quot;bookmark&quot;
+         title=&quot;ссылка на этот пост&quot;&gt;
+         День путешествия
+      &lt;/a&gt;
+    <mark>&lt;/h1&gt;</mark>
+  &lt;/header&gt;
+  ...
+&lt;/article&gt;</code></pre>
+  
+<p>Уловили, да? Я заменил <span class="tag">&lt;h2&gt;</span> на <span class="tag">&lt;h1&gt;</span> и обернул его элементом <span class="tag">&lt;header&gt;</span>. Вы уже видели <span class="tag">&lt;header&gt;</span> в действии. Он выступает контейнером для всех элементов образующих заголовок статьи (в данном случае это дата публикации статьи и её название). Но... но... но... разве не должен быть только один <span class="tag">&lt;h1&gt;</span> на странице? Не испортит ли это схему документа? Нет, но чтобы понять это мы должны вернуться на шаг назад.</p><p>В HTML 4 единственным путём формирования схемы документа было использование <span class="tag">&lt;h1&gt;</span>–<span class="tag">&lt;h6&gt;</span>. Если вы хотели иметь лишь один корневой узел в схеме, то должны были ограничиться одним <span class="tag">&lt;h1&gt;</span>. Но спецификация HTML5 <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#headings-and-sections">устанавливает алгоритм генерации схемы документа</a>, включающий в себя новые семантические элементы. Этот алгоритм говорит, что <span class="tag">&lt;article&gt;</span> создаёт новый раздел, иными словами, новый узел в схеме документа. А в HTML5 каждый раздел может содержать собственный элемент <span class="tag">&lt;h1&gt;</span>.</p><p>Это довольно сильное отличие от HTML4 и вот почему оно замечательно. Многие веб-страницы в действительности формируются шаблонно. Кусок взят из одного источника, кусок из другого и вставлен в код. Многие учебники поощряют этот путь&nbsp;— «Вот HTML-код, скопируйте его и вставьте к себе на страницу». Это хорошо для небольших фрагментов, но что если вы вставите целый раздел? В этом случае, в учебнике можно прочесть нечто вроде «Вот HTML-код, скопируйте его, вставьте в текстовый редактор и поправьте заголовки, чтобы они соответствовали уровню вложенности в вашей странице».</p><p>Зайду с другой стороны. В HTML4 нет <em>универсального</em> элемента для заголовков. Есть шесть строго пронумерованных элементов <span class="tag">&lt;h1&gt;</span>–<span class="tag">&lt;h6&gt;</span>, которые должны быть вложены в указанном порядке. Это хреново, особенно если ваша страница «сборная», а не «авторская». Эта проблема решается новыми элементами для разделов и правилами для имеющихся заголовков. Если вы используете новые элементы для разделов, я могу дать вам эту разметку.</p>
+<pre><code data-language="html">&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Заголовок&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Бла-бла...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+<p>Вы можете скопировать и вставить её в <em>любом месте</em> вашей страницы без изменений. Тот факт, что код содержит <span class="tag">&lt;h1&gt;</span>, не является проблемой из-за контейнера <span class="tag">&lt;article&gt;</span>. Этот элемент задаёт автономный узел в схеме документа, а элемент <span class="tag">&lt;h1&gt;</span> обеспечивает название узла. Все остальные элементы в других разделах страницы остаются на том же уровне, где они и были до этого.</p><div class="profmarkup"><h4>Профессор Разметкин говорит</h4><div class="inner"><p><span class=q>☞</span>Как это обычно бывает, в реальности всё немного сложнее, чем я изложил. Новые «явные» элементы разделов (например, <span class="tag">&lt;h1&gt;</span> внутри <span class="tag">&lt;article&gt;</span>) могут взаимодействовать самым неожиданным образом со старыми «неявными» элементами разделов (<span class="tag">&lt;h1&gt;</span>–<span class="tag">&lt;h6&gt;</span>). Ваша жизнь будет проще, если вы станете использовать только один подход, но не оба сразу. Если придётся на странице включить оба подхода, проверьте результат в <a href="http://gsnedders.html5.org/outliner/">HTML5 Outliner</a> и убедитесь, что схема вашего документа осмысленна.</p></div></div><h2>Дата и время</h2><p><img src="../../assets/images/diveintohtml5/clock_tower.png" alt="" width="205" height="378" class="rightpic"></p><p>Интересно, не так ли? Конечно, не так интересно как спускаться голышом на лыжах с Эвереста и напевать гимн родной страны, но довольно захватывающе, насколько это позволяет семантическая верстка. Продолжим с <a href="https://webref.ru/example/page/blog-original.html">нашим примером</a>. Я выделил следующую строку.</p>
+<pre><code data-language="html">&lt;div class=&quot;entry&quot;&gt;
+  <mark>&lt;p class=&quot;post-date&quot;&gt;Октябрь 22, 2009&lt;/p&gt;</mark>
+  &lt;h2&gt;День путешествия&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
+
+<p>Всё та же старая история, не правда ли? Для даты публикации статьи нет отдельных семантических элементов, поэтому авторы прибегают к типовой разметке, добавляя своё значение атрибута <span class="attribute">class</span>. Опять же этот код валиден в HTML5, так что вы не обязаны его менять. Но HTML5 предлагает конкретное решение для этого случая&nbsp;— элемент <span class="tag">&lt;time&gt;</span>.</p>
+<pre><code data-language="html">&lt;time datetime=&quot;2009-10-22&quot; pubdate&gt;Октябрь 22, 2009&lt;/time&gt;</code></pre>
+<p>У элемента <span class="tag">&lt;time&gt;</span> три части:</p><ol><li>машинный шаблон времени;</li><li>понятный для человека текст;</li><li>необязательный атрибут <span class="attribute">pubdate</span>.</li></ol><p>В данном примере атрибут <span class="attribute">datetime</span> указывает только дату, не время. Формат такой: четыре цифры года, две цифры месяца и две цифры дня, разделенные дефисом.</p>
+<pre><code data-language="html">&lt;time <mark>datetime=&quot;2009-10-22&quot;</mark> pubdate&gt;Октябрь 22, 2009&lt;/time&gt;</code></pre>
+<p>Если вы хотите включить и время, добавьте букву T после даты, затем напишите время в 24-часовом формате и укажите часовой пояс.</p>
+<pre><code data-language="html">&lt;time datetime=&quot;<mark>2009-10-22T13:59:47+07:00</mark>&quot; pubdate&gt;
+  Октябрь 22, 2009 13:59 Крск 
+&lt;/time&gt;</code></pre>
+<p>Формат даты/времени довольно гибок. Спецификации HTML5 <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#datetime-value">содержит валидные примеры</a>.</p><p>Заметьте, я изменил и содержание текста&nbsp;— то, что находится между <span class="tag">&lt;time&gt;</span> и <span class="tag">&lt;/time&gt;</span>&nbsp;— в соответствии с машинным шаблоном. На самом деле это не обязательно. Текст может быть любым, главное правильное значение даты/времени в атрибуте <span class="attribute">datetime</span>. Вот валидный HTML5.</p>
+<pre><code data-language="html">&lt;time datetime=&quot;2009-10-22&quot;&gt;<mark>в четверг</mark>&lt;/time&gt;</code></pre>
+<p>И это тоже валидный HTML5.</p>
+<pre><code data-language="html">&lt;time datetime=&quot;2009-10-22&quot;&gt;&lt;/time&gt;</code></pre>
+<p>Последний фрагмент нашей головоломки это атрибут <span class="attribute">pubdate</span>. Это логический атрибут, поэтому если он вам требуется, просто добавьте его как показано ниже.</p>
+<pre><code data-language="html">&lt;time datetime=&quot;2009-10-22&quot; <mark>pubdate</mark>&gt;Октябрь 22, 2009&lt;/time&gt;</code></pre>
+<p>Если вам не нравится «голый» атрибут, то есть альтернатива.</p>
+<pre><code data-language="html">&lt;time datetime=&quot;2009-10-22&quot; <mark>pubdate=&quot;pubdate&quot;</mark>&gt;Октябрь 22, 2009&lt;/time&gt;</code></pre>
+<p>Что означает <span class="attribute">pubdate</span>? Одно из двух. Если <span class="tag">&lt;time&gt;</span> располагается внутри <span class="tag">&lt;article&gt;</span>, то это дата публикации статьи, если <span class="tag">&lt;time&gt;</span> не внутри <span class="tag">&lt;article&gt;</span>, то это дата публикации всего документа.</p><p>Вот как надо изменить статью, чтобы она в полной мере соответствовала HTML5.</p>
+<pre><code data-language="html">&lt;article&gt;
+  &lt;header&gt;
+    &lt;time datetime=&quot;2009-10-22&quot; pubdate&gt;
+      Октябрь 22, 2009  
+    &lt;/time&gt;
+    &lt;h1&gt;
+      &lt;a href=&quot;#&quot;
+         rel=&quot;bookmark&quot;
+         title=&quot;ссылка на этот пост&quot;&gt;
+         День путешествия  
+      &lt;/a&gt;
+    &lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+<h2>Навигация</h2><p><img src="../../assets/images/diveintohtml5/a_pink.png" alt="" width="345" height="377" class="rightpic">Одна из наиболее важных частей любого веб-сайта это навигация. На сайте CNN.com вверху каждой страницы имеются вкладки, ссылающиеся на разные новостные разделы сайта: «Entertainment», «Tech», «Travel» и др. У Google на страницах результатов поиска есть аналогичная полоса в верхней части страницы, чтобы опробовать другие службы Google&nbsp;— «Картинки», «Видео», «Карты» и др. В <a href="https://webref.ru/example/page/blog-original.html">нашем примере</a> страница содержит навигацию в заголовке по разным разделам нашего гипотетического сайта&nbsp;— «главная», «блог», «галерея» и «обо мне».</p><p>Вот как панель навигации исходно выглядит.</p>
+<pre><code data-language="html">&lt;div id=&quot;nav&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;главная&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;блог&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;галерея&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;обо мне&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>Опять же, это валидный HTML5. Но пока код размечен как список из четырёх пунктов и ничего не говорит что он является частью навигации по сайту. Визуально вы могли бы догадаться, что это часть заголовка страницы и прочитать текст ссылок. Но семантически нет ничего, чтобы отличить этот список ссылок от любого другого.</p><p>Кто заботится о семантике навигации? В первую очередь люди с ограниченными возможностями. Почему? Рассмотрим такой сценарий: ваши движения ограничены и пользоваться мышью вам трудно или невозможно. Чтобы компенсировать это, вы можете использовать дополнение браузера, которое позволяет переходить к основным навигационным ссылкам. Или подумайте об этом: если вы плохо видите, можно использовать специальную программу под названием «экранный ридер», которая преобразует текст в речь. Как только вы получите заголовок страницы, следующая важная информация о странице это основные навигационные ссылки. Если вы хотите перейти к ним, то скажете вашему ридеру перепрыгнуть к панели навигации и начать читать. Если вы хотите, можете сказать ридеру пропустить навигацию и начать читать основное содержание. В любом случае, выявленные программно навигационные ссылки важны.</p><p>Таким образом, пока нет ничего плохого в использовании <span class="var">&lt;div id=&quot;nav&quot;&gt;</span> для разметки навигации по сайту, как и ничего хорошего. В действительности, это затрагивает некоторых людей. HTML5 предоставляет семантический способ разметки навигации по разделам: элемент <span class="tag">&lt;nav&gt;</span>.</p>
+<pre><code data-language="html"><mark>&lt;nav&gt;</mark>
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;главная&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;блог&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;галерея&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;обо мне&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+<mark>&lt;/nav&gt;</mark></code></pre>
+<div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. <a href="http://www.webaim.org/techniques/skipnav/">Ссылки «пропустить»</a> совместимы с элементом <span class="tag">&lt;nav&gt;</span>? Нужны ли такие ссылки в HTML5?</p><p>О. Ссылки «пропустить» позволяют ридерам пропускать блоки навигации. Они полезны для пользователей с ограниченными возможностями, которые используют стороннее программное обеспечение для чтения веб-страниц вслух и переходов без мыши.</p><p>Некоторые ридеры обновлены для распознавания элемента <span class="tag">&lt;nav&gt;</span>, пропускают устаревшие ссылки, также они могут автоматически предложить пропустить раздел навигации, обозначенный через <span class="tag">&lt;nav&gt;</span>. Однако потребуется какое-то время, прежде чем все пользователи обновят программу своих ридеров, так что вы должны продолжать вставлять собственные ссылки «пропустить» для перескакивания через навигацию.</p></div></div><h2>Подвал</h2><p>В конце концов, мы подошли к финалу <a href="https://webref.ru/example/page/blog-original.html">нашего примера</a>. Последняя вещь, о которой я хотел бы сказать это подвал. Оригинальный код подвала такой.</p>
+<pre><code data-language="html">&lt;div id=&quot;footer&quot;&gt;
+  &lt;p&gt;&amp;#167;&lt;/p&gt;
+  &lt;p&gt;&amp;#169; 2001&amp;#8211;9 &lt;a href=&quot;#&quot;&gt;Марк Пилгрим&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>Это валидный HTML5. Если вам нравится код, оставьте его. Но HTML5 предоставляет для этих целей специальный элемент&nbsp;— <span class="tag">&lt;footer&gt;</span>.</p>
+<pre><code data-language="html"><mark>&lt;footer&gt;</mark>
+  &lt;p&gt;&amp;#167;&lt;/p&gt;
+  &lt;p&gt;&amp;#169; 2001&amp;#8211;9 &lt;a href=&quot;#&quot;&gt;Марк Пилгрим&lt;/a&gt;&lt;/p&gt;
+<mark>&lt;/footer&gt;</mark></code></pre>
+  
+<p>Что можно поместить в подвал? Наверное то, что вы добавили сейчас в <span class="var">&lt;div id=&quot;footer&quot;&gt;</span>. Это зацикленный ответ, но это действительно так. В спецификации HTML5 говорится: «подвал обычно содержит информацию о разделе, такую как: автор, ссылки на соответствующие документы, авторские данные и тому подобное». В нашем примере это указание авторского права и ссылка на страницу об авторе. Глядя на некоторые популярные сайты, я вижу большой потенциал у подвала.</p><ul><li>На <a href="http://www.cnn.com">CNN</a> подвал содержит авторские права, ссылки на переводы, а также ссылки на условия обслуживания, конфиденциальность, страницы «О нас», «Контакты» и «Справка». Всё полностью можно добавить в <span class="tag">&lt;footer&gt;</span>.</li><li>У <a href="http://www.google.ru">Google</a> симпатичная главная страница, внизу ссылки «Рекламные программы», «Решения для предприятий», «Всё о Google»; авторские права, ссылка на политику конфиденциальности. Всё это может быть внутри контейнера <span class="tag">&lt;footer&gt;</span>.</li><li>В подвале <a href="http://diveintomark.org">моего блога</a> содержатся ссылки на другие мои сайты плюс авторские права. Определённо подходит для элемента <span class="tag">&lt;footer&gt;</span>. Замечу, что ссылки сами по себе не должны оборачиваться элементом <span class="tag">&lt;nav&gt;</span>, поскольку это не навигация по сайту, а всего лишь коллекция ссылок на другие мои проекты.</li></ul><p>В наше время в моде «<a href="http://ui-patterns.com/pattern/FatFooter">толстые подвалы</a>». Посмотрите на <a href="http://www.w3.org">сайт W3C</a>. Подвал содержит три столбца, помеченных как «Navigation», «Contact W3C» и «W3C Updates». Код выглядит примерно так.</p>
+<pre><code data-language="html">&lt;div id=&quot;w3c_footer&quot;&gt;
+  &lt;div class=&quot;w3c_footer-nav&quot;&gt;
+    &lt;h3&gt;Navigation&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/standards/&quot;&gt;Standards&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/participate/&quot;&gt;Participate&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/membership&quot;&gt;Membership&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/&quot;&gt;About W3C&lt;/a&gt;&lt;/li&gt; 
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;w3c_footer-nav&quot;&gt;
+    &lt;h3&gt;Contact W3C&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/Consortium/contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Help/&quot;&gt;Help and FAQ&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/sup&quot;&gt;Donate&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/siteindex&quot;&gt;Site Map&lt;/a&gt;&lt;/li&gt; 
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;w3c_footer-nav&quot;&gt;
+    &lt;h3&gt;W3C Updates&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://twitter.com/W3C&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://identi.ca/w3c&quot;&gt;Identi.ca&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;p class=&quot;copyright&quot;&gt;Copyright © 2009 W3C&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>Чтобы преобразовать это в семантический HTML5, я хотел бы сделать следующие изменения:</p><ul><li>Преобразовать внешний <span class="var">&lt;id=&quot;w3c_footer&quot;&gt;</span> в <span class="tag">&lt;footer&gt;</span>.</li><li>Преобразовать два первых <span class="var">&lt;div class=&quot;w3c_footer-nav&quot;&gt;</span> в элемент <span class="tag">&lt;nav&gt;</span>, а третий в <span class="tag">&lt;section&gt;</span>.</li><li>Преобразовать заголовки <span class="tag">&lt;h3&gt;</span> в <span class="tag">&lt;h1&gt;</span>, так как они теперь будут внутри своего раздела. Элемент <span class="tag">&lt;nav&gt;</span> создаёт раздел в схеме документа подобно элементу <span class="tag">&lt;article&gt;</span>.</li></ul><p>Окончательный код может выглядеть примерно так.</p>
+<pre><code data-language="html"><mark>&lt;footer&gt;</mark>
+  <mark>&lt;nav&gt;</mark>
+    <mark>&lt;h1&gt;</mark>Navigation<mark>&lt;/h1&gt;</mark>
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/standards/&quot;&gt;Standards&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/participate/&quot;&gt;Participate&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/membership&quot;&gt;Membership&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/&quot;&gt;About W3C&lt;/a&gt;&lt;/li&gt; 
+    &lt;/ul&gt;
+  <mark>&lt;/nav&gt;</mark>
+  <mark>&lt;nav&gt;</mark>
+    <mark>&lt;h1&gt;</mark>Contact W3C<mark>&lt;/h1&gt;</mark>
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/Consortium/contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Help/&quot;&gt;Help and FAQ&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/sup&quot;&gt;Donate&lt;/a&gt;&lt;/li&gt; 
+      &lt;li&gt;&lt;a href=&quot;/Consortium/siteindex&quot;&gt;Site Map&lt;/a&gt;&lt;/li&gt; 
+    &lt;/ul&gt;
+  <mark>&lt;/nav&gt;</mark>
+  <mark>&lt;section&gt;</mark>
+    <mark>&lt;h1&gt;</mark>W3C Updates<mark>&lt;/h1&gt;</mark>
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://twitter.com/W3C&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://identi.ca/w3c&quot;&gt;Identi.ca&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  <mark>&lt;/section&gt;</mark>
+  &lt;p class=&quot;copyright&quot;&gt;Copyright © 2009 W3C&lt;/p&gt;
+<mark>&lt;/footer&gt;</mark></code></pre>
+<h2>Дальнейшее чтение</h2><p>Примеры страниц используемых в этой главе:</p><ul><li><a href="https://webref.ru/example/page/blog-original.html">Исходная (HTML4)</a></li><li><a href="https://webref.ru/example/page/blog-html5.html">Изменённая (HTML5)</a></li></ul><p>Кодировка символов:</p><ul><li><a href="http://www.joelonsoftware.com/articles/Unicode.html" hreflang="en">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a></li><li><a href="http://www.tbray.org/ongoing/When/200x/2003/04/06/Unicode" hreflang="en">On the Goodness of Unicode</a>, <a href="http://www.tbray.org/ongoing/When/200x/2003/04/13/Strings">On Character Strings</a> и <a href="http://www.tbray.org/ongoing/When/200x/2003/04/26/UTF" hreflang="en">Characters vs. Bytes</a></li></ul><p>Как разрешить новые элементы HTML5 в Internet Explorer:</p><ul><li><a href="http://xopus.com/devblog/2008/style-unknown-elements.html" hreflang="en">How to style unknown elements in IE</a></li><li><a href="http://ejohn.org/blog/html5-shiv/" hreflang="en">HTML5 shiv</a></li><li><a href="http://paulirish.com/2011/the-history-of-the-html5-shiv/" hreflang="en">The Story of the HTML5 Shiv</a></li></ul><p>Стандартные режимы и разнюхивание доктайпа:</p><ul><li><a href="http://hsivonen.iki.fi/doctype/" hreflang="en">Activating Browser Modes with Doctype</a>. Это единственная статья по теме, которую вы обязаны прочитать. Любая статья по доктайпу без ссылки на работу Анри гарантированно считается устаревшими, неполной или неверной.</li></ul><p>Валидатор HTML5:</p><ul><li><a href="http://html5.validator.nu" hreflang="en">html5.validator.nu</a></li></ul><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-f657afdde7932aeb8bfe642fd0e49d3a"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/article.html">&lt;article&gt;</a></li><li class=""> <a href="../../html/footer.html">&lt;footer&gt;</a></li><li class=""> <a href="../../html/head.html">&lt;head&gt;</a></li><li class=""> <a href="../../html/header.html">&lt;header&gt;</a></li><li class=""> <a href="../../html/nav.html">&lt;nav&gt;</a></li><li class=""> <a href="../../html/time.html">&lt;time&gt;</a></li><li class=""> <a href="../../course/html-basics/valid-document.html">Валидный HTML-документ</a></li><li class=""> <a href="../learn-html-css/getting-to-know-html.html">Знакомство с HTML</a></li><li class=""> <a href="../advanced-html-css/semantics-accessibility.html">Продвинутая семантика и доступность</a></li><li class=""> <a href="../../course/css-basics/css-reset.html">Сброс CSS</a></li><li class=""> <a href="../learn-html-css/first-web-page.html">Создание первой веб-страницы</a></li><li class=""> <a href="../../course/html-tutorial/structure.html">Структура HTML-кода</a></li><li class=""> <a href="../../course/html-content/structure.html">Структура в HTML</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Марк Пилгрим</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 12.09.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/diveintohtml5/detect'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/diveintohtml5/canvas'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="detect.html" title="На предыдущую страницу">Проверка технологий HTML5</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="canvas.html" title="На следующую страницу">Давайте порисуем</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Пять вещей, которые надо знать об HTML5</a></li><li class="leaf"><a href="past.html">Довольно предвзятая история HTML5</a></li><li class="leaf"><a href="detect.html">Проверка технологий HTML5</a></li><li class="leaf active-trail"><a href="semantics.html" class="active-trail active">Что всё это значит?</a></li><li class="leaf"><a href="canvas.html">Давайте порисуем</a></li><li class="leaf"><a href="video.html">Видео на сайте</a></li><li class="leaf"><a href="geolocation.html">Вы здесь</a></li><li class="leaf"><a href="storage.html">Локальное хранилище</a></li><li class="leaf"><a href="offline.html">Возьмём с собой</a></li><li class="leaf"><a href="forms.html">Сумасшедшие формы</a></li><li class="leaf"><a href="extensibility.html">Микроданные</a></li><li class="last leaf"><a href="history.html">Управление историей для пользы и развлечения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-6a5218ac92f9bf1d63f21daec39f8f6f"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="semantics.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

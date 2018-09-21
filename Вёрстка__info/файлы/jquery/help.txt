@@ -1,0 +1,10 @@
+1) html5shiv.min.js = джава скрипт html5 для браузера Internet Explorer 
+
+
+2) jquery.js = библиотека jquery
+
+
+3) jquery-ui.min.js = анимация для библиотеки jquery 
+
+
+4) less.min.js = препроцессор less

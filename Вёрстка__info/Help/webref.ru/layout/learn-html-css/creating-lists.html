@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Создание списков | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="next" href="adding-media.html" />
+<link rel="prev" href="setting-backgrounds-and-gradients.html" />
+<meta name="description" content="Списки являются частью повседневной жизни. Список дел определяет что сделано. Навигационные маршруты предлагают пошаговый список направлений. Для рецептов требуется список ингредиентов и список инструкций. Списки встречаются практически везде, так что легко понять, почему они также популярны в Интернете." />
+<link rel="canonical" href="creating-lists.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Создание списков</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Создание списков</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Списки являются частью повседневной жизни. Список дел определяет что сделано. Навигационные маршруты предлагают пошаговый список направлений. Для рецептов требуется список ингредиентов и список инструкций. Списки встречаются практически везде, так что легко понять, почему они также популярны в Интернете.</p><p>Когда мы хотим использовать список на сайте, HTML предлагает три разных типа на выбор: маркированный, нумерованный и список описаний. Какой тип списка выбрать для использования и применять ли список вообще&nbsp;— зависит от содержимого и семантически наиболее подходящего варианта для его отображения.</p><p>В дополнение к трём разным типам списков доступных в HTML есть несколько путей для стилизации этих списков через CSS. Например, мы можем выбрать, какой тип маркера указать для списка. Маркер может быть квадратным, круглым, числом, буквой или, возможно, отсутствовать. Кроме того, мы можем решить, как должен отображаться список&nbsp;— по вертикали или горизонтали. Все эти варианты играют важную роль при стилизации наших веб-страниц.</p><h2>Маркированные списки</h2><p>Маркированный или неупорядоченный список — это просто список связанных элементов, для которых порядок не имеет значения. Создание маркированного списка в HTML осуществляется с помощью блочного элемента списка <span class="tag">&lt;ul&gt;</span>. Каждый отдельный пункт в списке размечается с помощью элемента <span class="tag">&lt;li&gt;</span>.</p><p>По умолчанию, большинство браузеров добавляет вертикальный margin и левый <span class="attribute">padding</span> к элементу <span class="tag">&lt;ul&gt;</span>, а перед каждым элементом <span class="tag">&lt;li&gt;</span> ставит однотонную точку. Эта точка называется маркером списка и может быть изменена с помощью CSS.</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Оранжевый&lt;/li&gt;
+  &lt;li&gt;Зелёный&lt;/li&gt;
+  &lt;li&gt;Синий&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация маркированного списка</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/59vnaqbq/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Нумерованные списки</h2><p>Нумерованный или упорядоченный список элементов <span class="tag">&lt;ol&gt;</span> очень похож на маркированный список, отдельные пункты списка создаются таким же образом. Основным различием между списками является то, что для упорядоченного списка важен порядок представления пунктов.</p><p>Поскольку порядок имеет значение, вместо точки в качестве маркера по умолчанию в нумерованном списке применяются номера.</p>
+<pre><code data-language="html">&lt;ol&gt;
+  &lt;li&gt;Пройдите по Абрикосовой улице&lt;/li&gt;
+  &lt;li&gt;Сверните на Виноградную&lt;/li&gt;
+  &lt;li&gt;Остановитесь на Тенистой улице&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация нумерованного списка</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/vammhcbt/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><p>У нумерованных списков также есть доступные для них уникальные атрибуты, включая start и reversed.</p><h3>Атрибут start</h3><p>Атрибут start определяет номер, с которого должен начинаться нумерованный список. По умолчанию списки начинаются с 1, однако могут возникнуть ситуации, когда список должен начинаться с 30 или с другого числа. Когда мы используем атрибут <span class="attribute">start</span> для элемента <span class="tag">&lt;ol&gt;</span>, то можем точно определить, с какого номера должен начинаться отсчёт нумерованного списка.</p><p>Атрибут <span class="attribute">start</span> принимает только целые значения, хотя в нумерованных списках могут применяться разные системы нумерации, например, римские числа.</p>
+<pre><code data-language="html">&lt;ol start=&quot;30&quot;&gt;
+  &lt;li&gt;Пройдите по Абрикосовой улице&lt;/li&gt;
+  &lt;li&gt;Сверните на Виноградную&lt;/li&gt;
+  &lt;li&gt;Остановитесь на Тенистой улице&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация атрибута start</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/momo2oux/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Атрибут reversed</h3><p>Атрибут <span class="attribute">reversed</span> при добавлении к элементу <span class="tag">&lt;ol&gt;</span> позволяет списку отображаться в обратном порядке. Список из пяти пунктов пронумерованных от 1 до 5 может быть задан обратно и нумероваться от 5 до 1.</p><p>Атрибут <span class="attribute">reversed</span> является логическим атрибутом и как таковой он не принимает никакого значения. Он может быть истиной, либо ложью. Ложь является значением по умолчанию, значение становится истинным, когда атрибут <span class="attribute">reversed</span> появляется у элемента <span class="tag">&lt;ol&gt;</span>.</p>
+<pre><code data-language="html">&lt;ol reversed&gt;
+  &lt;li&gt;Пройдите по Абрикосовой улице&lt;/li&gt;
+  &lt;li&gt;Сверните на Виноградную&lt;/li&gt;
+  &lt;li&gt;Остановитесь на Тенистой улице&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация атрибута reversed</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/f9rzuu79/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Атрибут value</h3><p>Атрибут <span class="attribute">value</span> может применяться к отдельным элементам <span class="tag">&lt;li&gt;</span> в нумерованном списке, чтобы изменить его значение в списке. Номер любого пункта списка, который появляется ниже пункта списка с атрибутом <span class="attribute">value</span>, будет пересчитан соответственно.</p><p>В качестве примера, если у второго пункта списка атрибут <span class="attribute">value</span> задан как 9, номер этого пункта списка будет выводиться, как если бы он был девятым. Все последующие пункты списка будут пронумерованы от 9.</p>
+<pre><code data-language="html">&lt;ol&gt;
+  &lt;li&gt;Пройдите по Абрикосовой улице&lt;/li&gt;
+  &lt;li value=&quot;9&quot;&gt;Сверните на Виноградную&lt;/li&gt;
+  &lt;li&gt;Остановитесь на Тенистой улице&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация атрибута value</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/49fjnxk6/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Списки описания</h2><p>Другой тип списка который вы видели в Интернете (но не так часто, как маркированные или нумерованные списки)&nbsp;— это список описаний. Такие списки применяются для обозначения нескольких терминов и их описаний, как в глоссарии, к примеру.</p><p>Создание списка описания в HTML происходит с помощью блочного элемента <span class="tag">&lt;dl&gt;</span>. Вместо использования элемента <span class="tag">&lt;li&gt;</span> для разметки пунктов списка, список описания требует два блочных элемента: <span class="tag">&lt;dt&gt;</span> для термина и <span class="tag">&lt;dd&gt;</span> для описания.</p><p>Список описания может содержать множество терминов и описаний, один за другим. Кроме того, такой список может содержать несколько терминов на одно описание, а также несколько описаний на термин. Один термин может иметь несколько значений и допускать несколько описаний. И наоборот, одно описание может подходить к нескольким терминам.</p><p>При добавлении списка описания элемент <span class="tag">&lt;dt&gt;</span> должен идти до элемента <span class="tag">&lt;dd&gt;</span>. Термин и описание, которое следует непосредственно за ним, связаны друг с другом. Таким образом, порядок этих элементов имеет важное значение.</p><p>По умолчанию, элемент <span class="tag">&lt;dl&gt;</span> включает вертикальные отступы, подобно элементам <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;ol&gt;</span>. Кроме того, элемент <span class="tag">&lt;dd&gt;</span> включает в себя по умолчанию левый <span class="attribute">margin</span>.</p>
+<pre><code data-language="html">&lt;dl&gt;
+  &lt;dt&gt;учёба&lt;/dt&gt;
+  &lt;dd&gt;Посвящение времени и внимания для получения знаний по преподаваемому предмету, особенно с помощью книг.&lt;/dd&gt;
+  &lt;dt&gt;проект&lt;/dt&gt;
+  &lt;dd&gt;Представленный план или чертёж, который показывает, как будет выглядеть и функционировать здание, одежда или другой предмет, прежде чем он будет построен или сделан.&lt;/dd&gt;
+  &lt;dd&gt;Существующие цели, планы или намерения до их воплощения или реализации в материальном объекте.&lt;/dd&gt;
+  &lt;dt&gt;бизнес&lt;/dt&gt;
+  &lt;dt&gt;работа&lt;/dt&gt;
+  &lt;dd&gt;Регулярные занятия человека, профессия или ремесло.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация списка описания</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/o1cgpLmc/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Вложенные списки</h2><p>Особенность, которая делает списки очень мощными — это возможность вложения. Каждый список может быть помещён в другой список и они могут быть вложены неоднократно. Но возможность вкладывать списки бесконечно не даёт свободу делать это. Списки должны быть зарезервированы специально там, где они сохраняют наиболее семантическое значение.</p><p>Трюк с вложением списков заключается в том, что следует знать, где начинается и заканчивается каждый список и пункт списка. Говоря конкретно о маркированных и нумерованных списках, единственным элементом, который может находиться непосредственно внутри <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;ol&gt;</span> является элемент <span class="tag">&lt;li&gt;</span>. Повторим&nbsp;— единственным элементом, который мы можем поставить как прямой потомок элементов <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;ol&gt;</span>, является <span class="tag">&lt;li&gt;</span>.</p><p>Тем не менее, внутри элемента <span class="tag">&lt;li&gt;</span> может быть добавлен стандартный набор элементов, включая любые элементы <span class="tag">&lt;ul&gt;</span> или <span class="tag">&lt;ol&gt;</span>.</p><p>Чтобы вложить список — перед закрытием пункта списка начните новый список. После того, как вложенный список завершён и закрыт, закройте обрамляющий пункт списка и продолжите с первоначального списка.</p>
+<pre><code data-language="html">&lt;ol&gt;
+  &lt;li&gt;Погулять с собакой&lt;/li&gt;
+  &lt;li&gt;Сложить бельё&lt;/li&gt;
+  &lt;li&gt;
+    Сходить в магазин и купить:
+    &lt;ul&gt;
+      &lt;li&gt;Молоко&lt;/li&gt;
+      &lt;li&gt;Хлеб&lt;/li&gt;
+      &lt;li&gt;Сыр&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Подстричь газон&lt;/li&gt;
+  &lt;li&gt;Приготовить ужин&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация вложенных списков</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/c2e2cfvf/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><p>Поскольку вложенные списки могут немного запутать и отобразить нежелательные стили, если они сделаны неправильно&nbsp;— давайте быстро их просмотрим. Элементы <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;ol&gt;</span> могут содержать только элементы <span class="tag">&lt;li&gt;</span>. Элемент <span class="tag">&lt;li&gt;</span> может содержать любой обычный элемент, какой пожелаете. Однако элемент <span class="tag">&lt;li&gt;</span> должен быть прямым потомком либо элемента <span class="tag">&lt;ul&gt;</span>, либо <span class="tag">&lt;ol&gt;</span>.</p><p>Стоит также отметить, что когда списки вложены внутрь других списков, их маркеры будут меняться в зависимости от глубины вложения. В предыдущем примере маркированный список, вложенный в нумерованный, использует в качестве маркеров кружок вместо точки. Это изменение происходит потому, что маркированный список вложен на один уровень в нумерованном списке.</p><p>К счастью, мы можем управлять, как маркеры пунктов списка выглядят на любом уровне, что мы и рассмотрим дальше.</p><h2>Стилизация пунктов списка</h2><p>Маркированные и нумерованные списки используют маркеры пунктов списка по умолчанию. Для маркированных списков это, как правило, однотонные точки, в то время как для нумерованных списков, как правило, применяются числа. С помощью CSS стиль и положение этих маркеров можно настраивать.</p><h3>Свойство list-style-type</h3><p>Свойство <span class="attribute">list-style-type</span> используется для установки содержимого маркера пунктов списка. Доступные значения находятся в диапазоне от квадратиков и десятичных чисел до армянской нумерации и стиль в CSS может быть добавлен к элементам <span class="tag">&lt;ul&gt;</span>, <span class="tag">&lt;ol&gt;</span> или <span class="tag">&lt;li&gt;</span>.</p><p>Любое значение свойства <span class="attribute">list-style-type</span> может быть добавлено к маркированному или нумерованному списку. Имея это в виду, можно использовать нумерацию в маркированном списке и не числовые маркеры в нумерованном списке.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Оранжевый&lt;/li&gt;
+  &lt;li&gt;Зелёный&lt;/li&gt;
+  &lt;li&gt;Синий&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">ul {
+  list-style-type: square;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация свойства list-style-type</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/wjz6kjvo/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h4>Значения list-style-type</h4><p>Как упоминалось ранее, свойство <span class="attribute">list-style-type</span> содержит горстку разных значений. В следующей таблице представлены эти значения, а также соответствующее им содержимое.</p><table class="data"><thead><tr><th>Значение list-style-type</th><th>Содержимое</th></tr></thead><tbody><tr><td>none</td><td>Нет пунктов списка</td></tr><tr><td>disc</td><td>Однотонный кружок</td></tr><tr><td>circle</td><td>Пустая окружность</td></tr><tr><td>square</td><td>Однотонный квадрат</td></tr><tr><td>decimal</td><td>Десятичные числа</td></tr><tr><td>decimal-leading-zero</td><td>Десятичные числа начинающиеся с нуля</td></tr><tr><td>lower-roman</td><td>Строчные римские числа</td></tr><tr><td>upper-roman</td><td>Заглавные римские числа</td></tr><tr><td>lower-greek</td><td>Строчные греческие числа</td></tr><tr><td>lower-alpha / lower-latin</td><td>Строчные латинские буквы</td></tr><tr><td>upper-alpha / upper-latin</td><td>Заглавные латинские буквы</td></tr><tr><td>armenian</td><td>Традиционная армянская нумерация</td></tr><tr><td>georgian</td><td>Традиционная грузинская нумерация</td></tr></tbody></table><h3>Использование изображения в качестве маркера списка</h3><p>Может наступить время, когда значений по умолчанию для свойства <span class="attribute">list-style-type</span> не хватит и мы пожелаем задать свой собственный маркер списка. Чаще всего это делается путём размещения фонового изображения для каждого элемента <span class="tag">&lt;li&gt;</span>.</p><p>Процесс включает в себя удаление любого значения свойства <span class="attribute">list-style-type</span> по умолчанию и добавление фонового изображения и полей для элемента <span class="tag">&lt;li&gt;</span>.</p><p>Подробнее — значение <span class="value">none</span> свойства <span class="attribute">list-style-type</span> удалит существующие маркеры списка. Свойство <span class="attribute">background</span> задаст фоновое изображение вместе с его положением и повтором, если необходимо. А свойство <span class="attribute">padding</span> обеспечит пространство слева от текста для фоновой картинки.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Оранжевый&lt;/li&gt;
+  &lt;li&gt;Зелёный&lt;/li&gt;
+  &lt;li&gt;Синий&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">li {
+  background: url(&quot;arrow.png&quot;) 0 50% no-repeat;
+  list-style-type: none;
+  padding-left: 12px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация изображения в качестве маркера</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/r7a76ju6/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Свойство list-style-position</h3><p>По умолчанию маркеры списка располагаются слева от содержимого в элементе <span class="tag">&lt;li&gt;</span>. Такой стиль позиционирования описывается как <span class="value">outside</span>, это означает, что всё содержимое будет отображаться непосредственно справа, за пределами маркера списка. С помощью свойства <span class="attribute">list-style-position</span> мы можем изменить значение по умолчанию <span class="value">outside</span> на <span class="value">inside</span> или <span class="value">inherit</span>.</p><p>Значение <span class="value">outside</span> размещает маркер списка слева от элемента <span class="tag">&lt;li&gt;</span> и не позволяют любому содержимому обтекать ниже этот маркер. Значение <span class="value">inside</span> (которое редко используется и можно увидеть) размещает маркер списка в первой строке элемента <span class="tag">&lt;li&gt;</span> и позволяет содержимому обтекать маркер при необходимости.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Капкейки...&lt;/li&gt;
+  &lt;li&gt;Обсыпка...&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">ul {
+  list-style-position: inside;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация свойства list-style-position</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/2h58xm12/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Универсальное свойство list-style</h3><p>Свойства списка, которые мы недавно обсудили, <span class="attribute">list-style-type</span> и <span class="attribute">list-style-position</span>, могут быть объединены в одно универсальное свойство <span class="attribute">list-style</span>. В этом свойстве мы можем использовать одно или все значения свойств списка одновременно. Порядок этих значений должен быть: <span class="attribute">list-style-type</span>, затем идёт <span class="attribute">list-style-position</span>.</p>
+<pre><code data-language="css">ul {
+  list-style: circle inside;
+}
+ol {
+  list-style: lower-roman;
+}</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Горизонтальное отображение списка</h2><p>Иногда мы хотим отобразить списки горизонтально, а не вертикально. Возможно, мы желаем разделить список на несколько колонок, чтобы построить список навигации или разместить несколько пунктов списка в один ряд. В зависимости от содержания и желаемого внешнего вида есть несколько способов для отображения списков в виде одной строки, например, путём принятия значения свойства <span class="attribute">display</span> для элементов <span class="tag">&lt;li&gt;</span> как <span class="value">inline</span> или <span class="value">inline-block</span> или через свойство <span class="attribute">float</span>.</p><h3>Отображение списка</h3><p>Самый быстрый способ отобразить список на одной строке — это задать элементам <span class="tag">&lt;li&gt;</span> свойство <span class="attribute">display</span> со значением <span class="value">inline</span> или <span class="value">inline-block</span>. Это поставит все элементы <span class="tag">&lt;li&gt;</span> в одну строку с одинаковым промежутком между каждым пунктом списка.</p><p>Если промежутки между элементами <span class="tag">&lt;li&gt;</span> доставляют проблемы, то они могут быть удалены с помощью тех же методов, что мы обсуждали в уроке&nbsp;5, «Позиционирование содержимого».</p><p>Намного чаще мы будем использовать значение <span class="value">inline-block</span> вместо значения <span class="value">inline</span>. Значение <span class="value">inline-block</span> позволяет легко добавлять вертикальные отступы и другое пространство к элементам <span class="tag">&lt;li&gt;</span>, в то время как значение <span class="value">inline</span> нет.</p><p>При изменении значения свойства <span class="attribute">display</span> на <span class="value">inline</span> или <span class="value">inline-block</span>, маркер списка, будь то точка, число или другое, удаляется.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Оранжевый&lt;/li&gt;
+  &lt;li&gt;Зелёный&lt;/li&gt;
+  &lt;li&gt;Синий&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">li {
+  display: inline-block;
+  margin: 0 10px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация списка с inline-block</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/asc0kxy1/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Списки с float</h3><p>Изменение значение свойства <span class="attribute">display</span> на <span class="value">inline</span> или <span class="value">inline-block</span> быстро, однако это удаляет маркеры списка. Если они необходимы, то добавление <span class="attribute">float</span> к каждому элементу <span class="tag">&lt;li&gt;</span> является лучшим вариантом, чем изменение свойства <span class="attribute">display</span>.</p><p>Установка для всех элементов <span class="tag">&lt;li&gt;</span> свойства <span class="attribute">float</span> как <span class="value">left</span> выровняет горизонтально все элементы <span class="tag">&lt;li&gt;</span> непосредственно рядом друг с другом без каких-либо промежутков между ними. Когда мы используем <span class="attribute">float</span> для <span class="tag">&lt;li&gt;</span>, маркер списка отображается по умолчанию и будет располагаться поверх элемента <span class="tag">&lt;li&gt;</span> рядом с ним. Чтобы предотвратить отображение маркера списка поверх других элементов <span class="tag">&lt;li&gt;</span>, должны быть добавлены горизонтальный <span class="attribute">margin</span> или <span class="attribute">padding</span>.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;ul&gt;
+  &lt;li&gt;Оранжевый&lt;/li&gt;
+  &lt;li&gt;Зелёный&lt;/li&gt;
+  &lt;li&gt;Синий&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">li {
+  float: left;
+  margin: 0 20px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация списка с float</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/65aygw9v/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Как и с любыми обтекаемыми элементами это нарушает поток страницы. Мы не должны забывать очищать <span class="attribute">float</span> и возвращать страницу в обычный поток&nbsp;— наиболее распространённым методом через clearfix.</p><h3>Пример навигационного списка</h3><p>Мы часто разрабатываем и находим навигационные меню, в которых применяются неупорядоченные списки. Эти списки, как правило, располагаются горизонтально с помощью одного из двух методов, упомянутых ранее. Вот, к примеру, горизонтальное навигационное меню, размеченное с помощью неупорядоченного списка, в котором элементы <span class="tag">&lt;li&gt;</span> отображаются как <span class="value">inline-block</span>.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;nav class=&quot;navigation&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Профиль&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Настройки&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Уведомления&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Выход&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.navigation ul {
+  font: bold 11px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.navigation li {
+  display: inline-block;
+}
+.navigation a {
+  background: #395870;
+  background: linear-gradient(#49708f, #293f50);
+  border-right: 1px solid rgba(0, 0, 0, .3);
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+.navigation a:hover {
+  background: #314b60;
+  box-shadow: inset 0 0 10px 1px rgba(0, 0, 0, .3);
+}
+.navigation li:first-child a {
+  border-radius: 4px 0 0 4px;
+}
+.navigation li:last-child a {
+  border-right: 0;
+  border-radius: 0 4px 4px 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация навигационного списка</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/y0npea2q/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>На практике</h2><p>Теперь, когда мы знаем, как создавать списки в HTML и CSS, давайте оглянемся на наш сайт Styles Conference и посмотрим, где мы могли бы использовать списки.</p><ol class="practice"><li><p>Сейчас навигационные меню в элементах <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> на наших страницах состоят из нескольких ссылок. Эти элементы могут быть лучше организованы в виде неупорядоченного списка.</p><p>Использование неупорядоченного списка (через элемент <span class="tag">&lt;ul&gt;</span>) и пунктов списка (через элемент <span class="tag">&lt;li&gt;</span>) задаст структуру наших навигационных меню. Эти новые элементы, однако, будут отображать наши навигационные меню вертикально.</p><p>Мы собираемся изменить значение <span class="attribute">display</span> для наших элементов <span class="tag">&lt;li&gt;</span> на <span class="value">inline-block</span>, чтобы все они выравнивались в строке по горизонтали. Когда мы это сделаем, то также должны учесть пустое пространство слева между каждым элементом <span class="tag">&lt;li&gt;</span>. Вспоминая урок&nbsp;5, «Позиционирование содержимого», мы знаем что открытие комментария HTML в конце элемента <span class="tag">&lt;li&gt;</span> и закрытие комментария в начале элемента <span class="tag">&lt;li&gt;</span> удалит это пространство.</p><p>Помня об этом, разметка для навигационного меню внутри нашего элемента <span class="tag">&lt;header&gt;</span> будет выглядеть так:</p>
+<pre><code data-language="html">&lt;nav class=&quot;nav primary-nav&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Главная&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;speakers.html&quot;&gt;Спикеры&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;schedule.html&quot;&gt;Расписание&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;venue.html&quot;&gt;Место проведения&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;register.html&quot;&gt;Регистрация&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+<p>В том же духе, разметка для навигационного меню внутри нашего элемента <span class="tag">&lt;footer&gt;</span> будет выглядеть так:</p>
+<pre><code data-language="html">&lt;nav class=&quot;nav&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Главная&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;speakers.html&quot;&gt;Спикеры&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;schedule.html&quot;&gt;Расписание&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;venue.html&quot;&gt;Место проведения&lt;/a&gt;&lt;/li&gt;&lt;!--
+    --&gt;&lt;li&gt;&lt;a href=&quot;register.html&quot;&gt;Регистрация&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+<p>Не забывайте внести эти изменения во все наши HTML-файлы.</p></li><li><p>С нашим маркированным списком давайте удостоверимся, что пункты списка выровнены по горизонтали и слегка очистим их стили. Мы будем использовать существующий класс <span class="class">nav</span> для указания наших новых стилей.</p><p>Начнём с того, чтобы все элементы <span class="tag">&lt;li&gt;</span> внутри какого-либо элемента со значением <span class="value">nav</span> атрибута <span class="attribute">class</span> отображались как <span class="value">inline-block</span>, чтобы включить горизонтальные <span class="attribute">margin</span> и чтобы можно было выравнивать элементы по вертикали.</p><p>Кроме того, мы воспользуемся псевдоклассом <span class="attribute">:last-child</span> чтобы определить последний элемент <span class="tag">&lt;li&gt;</span> и сбросить его правый <span class="attribute">margin</span> в 0. Это гарантирует, что любое горизонтальное пространство между элементами <span class="tag">&lt;li&gt;</span> и краем его родителя исчезнет.</p><p>В наш файл main.css, ниже стилей навигации добавим следующий CSS:</p>
+<pre><code data-language="css">.nav li {
+  display: inline-block;
+  margin: 0 10px;
+  vertical-align: top;
+}
+.nav li:last-child {
+  margin-right: 0;
+}</code></pre>
+<p>Вы наверное удивлены, почему наш список не включает каких-либо маркеров списка или стилей по умолчанию. Эти стили были удалены сбросом вверху нашего стиля. Если мы посмотрим на сброс, то увидим что элементы <span class="tag">&lt;ol&gt;</span>, <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;li&gt;</span> включают в себя нулевые <span class="attribute">margin</span> и <span class="attribute">padding</span>, а для <span class="tag">&lt;ol&gt;</span> и <span class="tag">&lt;ul&gt;</span> значение <span class="attribute">list-style</span> задано как <span class="value">none</span>.</p></li><li><p>Меню навигации не единственное место, где мы будем использовать списки. Также применим их на некоторых наших внутренних страницах, включая страницу Спикеры. Давайте добавим несколько спикеров в нашу конференцию.</p><p>В файле speakers.html, чуть ниже раздела со вступлением, создадим новый раздел, где мы представим всех наших спикеров. Повторно задействуя некоторые существующие стили мы воспользуемся элементом <span class="tag">&lt;section&gt;</span> с классом <span class="class">row</span>, чтобы обернуть всех наших спикеров и применить белый фон и поля за ними. Внутри элемента <span class="tag">&lt;section&gt;</span> мы добавим элемент <span class="tag">&lt;div&gt;</span> с классом <span class="class">grid</span> чтобы выровнять по центру страницы наших спикеров и это позволит нам также включить несколько колонок.</p><p>Пока наш HTML ниже раздела со вступлением выглядит следующим образом:</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;grid&quot;&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></li><li><p>Внутри <span class="class">grid</span> каждый спикер будет размечен с собственным элементом <span class="tag">&lt;section&gt;</span>, который включает две колонки. Первая колонка отмеряет две трети элемента <span class="tag">&lt;section&gt;</span> и будет размечена с помощью элемент <span class="tag">&lt;div&gt;</span>. Вторая колонка отмеряет оставшуюся треть элемента <span class="tag">&lt;section&gt;</span> и будет размечена с помощью элемента <span class="tag">&lt;aside&gt;</span>, а его содержимое вторично по отношению к спикеру и его речи.</p><p>Используя наши существующие классы <span class="class">col-2-3</span> и <span class="class">col-1-3</span>, схема для раздела со спикерами будет выглядеть так:</p>
+<pre><code data-language="html">&lt;section id=&quot;shay-howe&quot;&gt;
+
+
+  &lt;div class=&quot;col-2-3&quot;&gt;
+    ...
+  &lt;/div&gt;&lt;!--
+
+  --&gt;&lt;aside class=&quot;col-1-3&quot;&gt;
+    ...
+  &lt;/aside&gt;
+
+&lt;/section&gt;</code></pre>
+<p>Здесь есть несколько пунктов, на которые стоит обратить внимание. Первое, каждый элемент <span class="tag">&lt;section&gt;</span> для каждого спикера включает в себя атрибут <span class="attribute">id</span> с именем спикера в качестве значения. Позже, когда мы создадим расписание для нашей конференции, эти атрибуты <span class="attribute">id</span> послужат якорями, которые позволят нам связать расписание с профилем спикера.</p><p>Кроме того, закрывающий тег элемента <span class="tag">&lt;div&gt;</span> сопровождается открытием комментария в HTML и открывающим тегом элемента <span class="tag">&lt;aside&gt;</span>, которому предшествует закрытие комментария. Поскольку классы для колонок будут отображать эти элементы как строчно-блочные, мы удаляем пустое пространство, которое появится между ними.</p></li><li><p>Внутри колонки 2/3 размеченный элементом <span class="tag">&lt;div&gt;</span> мы будем использовать несколько заголовков и абзацев, чтобы показать имя спикера, краткую биографию, название доклада и его анонс.</p><p>Учитывая это содержимое, раздел спикера будет выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;section id=&quot;shay-howe&quot;&gt;
+
+  &lt;div class=&quot;col-2-3&quot;&gt;
+ 
+    &lt;h2&gt;Шэй Хоу&lt;/h2&gt;
+    &lt;h5&gt;Лучше меньше, да лучше: как ограничения культивируют рост&lt;/h5&gt;
+  
+    &lt;p&gt;Установив ограничения, мы заставляем себя...&lt;/p&gt;
+  
+    &lt;h5&gt;О спикере&lt;/h5&gt;
+
+    &lt;p&gt;Как дизайнер и фронтенд-разработчик, Шэй...&lt;/p&gt;
+  
+  &lt;/div&gt;&lt;!--
+  --&gt;&lt;aside class=&quot;col-1-3&quot;&gt;
+    ...
+  &lt;/aside&gt;
+&lt;/section&gt;</code></pre></li><li><p>В колонку 1/3 размеченной элементом <span class="tag">&lt;aside&gt;</span> мы собираемся добавить элемент <span class="tag">&lt;div&gt;</span> с классом <span class="class">speaker-info</span>. Мы будем использовать элемент <span class="tag">&lt;div&gt;</span>, потому что добавим стили к этому элементу в ближайшее время.</p><p>Прежде чем перейти к каким-либо стилям, давайте добавим неупорядоченный список в элемент <span class="tag">&lt;div&gt;</span>, который включает в себя пункты списка, имеющие отношение к спикеру.</p><p>Теперь наш HTML для спикера будет выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;section id=&quot;shay-howe&quot;&gt;
+
+  &lt;div class=&quot;col-2-3&quot;&gt;
+
+    &lt;h2&gt;Шэй Хоу&lt;/h2&gt;
+    &lt;h5&gt;Лучше меньше, да лучше: как ограничения культивируют рост&lt;/h5&gt;
+  
+    &lt;p&gt;Установив ограничения, мы заставляем себя...&lt;/p&gt;
+  
+    &lt;h5&gt;О спикере&lt;/h5&gt;
+
+    &lt;p&gt;Как дизайнер и фронтенд-разработчик, Шэй...&lt;/p&gt;
+  
+  &lt;/div&gt;&lt;!--
+
+  --&gt;&lt;aside class=&quot;col-1-3&quot;&gt;
+    &lt;div class=&quot;speaker-info&quot;&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;https://twitter.com/shayhowe&quot;&gt;@shayhowe&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;http://learn.shayhowe.com/&quot;&gt;learn.shayhowe.com&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+&lt;/section&gt;</code></pre></li><li><p>Когда элемент <span class="tag">&lt;div&gt;</span> с классом <span class="class">speaker-info</span> готов, мы можем добавить к нему некоторые стили.</p><p>Начнём с добавления нового раздела в наш файл main.css для стилей страницы Спикеры. В нём добавим однопиксельную сплошную рамку с радиусом 5&nbsp;пикселей вокруг любого элемента с классом <span class="class">speaker-info</span>.</p><p>Далее добавим верхний <span class="attribute">margin</span> 88 пикселей, чтобы поместить элемент на той же вертикальной строке, что и первый абзац докладчика, а также добавим 22&nbsp;пикселя по вертикали для <span class="attribute">padding</span>, чтобы обеспечить место для вложенного маркированного списка.</p><p>Наконец, выровняем по центру весь текст внутри элемента.</p><p>В целом, наш CSS для класса <span class="class">speaker-info</span> выглядит следующим образом:</p>
+<pre><code data-language="css">/*
+  ========================================
+  Спикеры
+  ========================================
+*/
+  
+.speaker-info {
+  border: 1px solid #dfe2e5;
+  border-radius: 5px;
+  margin-top: 88px;
+  padding: 22px 0;
+  text-align: center;
+}</code></pre>
+<p>Остановимся на минутку и разберём, почему мы используем здесь элемент <span class="tag">&lt;div&gt;</span> и соответствующие стили.</p><p>Мы размещаем элемент <span class="tag">&lt;div&gt;</span> внутри элемента <span class="tag">&lt;aside&gt;</span> со значением <span class="value">col-1-3</span> у атрибута <span class="attribute">class</span>, потому что хотим чтобы <span class="attribute">padding</span>, унаследованный от класса <span class="class">col-1-3</span>, был за пределами <span class="attribute">border</span> у элемента <span class="tag">&lt;div&gt;</span>. Вскоре мы включим изображение внутрь элемента <span class="tag">&lt;div&gt;</span> наряду со списком, поэтому мы создали элемент <span class="tag">&lt;div&gt;</span>, а не применили эти стили непосредственно к элементу <span class="tag">&lt;ul&gt;</span>.</p><p>По мере добавления больше и больше спикеров на страницу мы хотим убедиться, что они остаются на равном расстоянии друг от друга по вертикали. Чтобы сделать это, мы создадим набор правил для класса <span class="class">speaker</span>, который включает в себя нижний <span class="attribute">margin</span> 44&nbsp;пикселя, таким образом:</p>
+<pre><code data-language="css">.speaker {
+  margin-bottom: 44px;
+}</code></pre>
+<p>Мы можем применить данный класс к <span class="tag">&lt;section&gt;</span> для каждого спикера, при условии, что это не последний спикер. Мы опускаем этот класс для последнего спикера, так как не хотим создать ненужные отступы перед нашим элементом <span class="tag">&lt;footer&gt;</span>. С более чем одним спикером наша разметка будет выглядеть так:</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;grid&quot;&gt;
+
+    &lt;section class=&quot;speaker&quot; id=&quot;chris-mills&quot;&gt;
+ 
+      &lt;div class=&quot;col-2-3&quot;&gt;
+        ...
+      &lt;/div&gt;&lt;!--
+
+      --&gt;&lt;aside class=&quot;col-1-3&quot;&gt;
+        ...
+      &lt;/aside&gt;
+
+    &lt;/section&gt;
+  
+    &lt;section id=&quot;shay-howe&quot;&gt;
+  
+      &lt;div class=&quot;col-2-3&quot;&gt;
+        ...
+      &lt;/div&gt;&lt;!--
+  
+      --&gt;&lt;aside class=&quot;col-1-3&quot;&gt;
+        ...
+      &lt;/aside&gt;
+  
+    &lt;/section&gt;
+  
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p>Обратите внимание на первый элемент <span class="tag">&lt;section&gt;</span> со спикером Крис Миллс. Раздел включает в себя атрибут <span class="attribute">class</span> со значением <span class="class">speaker</span>, который вертикально отделяет его от моего раздела, Шэя Хоу. Последний элемент <span class="tag">&lt;section&gt;</span> снова мой и он не включает в себя класс <span class="class">speaker</span> чтобы сохранить его на нужном расстоянии от элемента <span class="tag">&lt;footer&gt;</span>.</p></li></ol><p>Наше меню навигации в настоящее время завершено и страница Спикеры начала принимать свою форму.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-8-01.png" alt="Наша страница Спикеры после обновления навигационных меню и добавления колонки" width="1117" height="901"/></p><p class="figsign">Рис. 8.01. Наша страница Спикеры после обновления навигационных меню и добавления колонки</p><h3>Демонстрация и исходный код</h3><p>Ниже вы можете просмотреть сайт Styles Conference в его нынешнем состоянии, а также скачать исходный код сайта на данный момент.</p><p><a href="https://webref.ru/example/learn-html-css/creating-lists/" class="button radius">Просмотр сайта Styles Conference</a> или <a href="../../assets/files/creating-lists.zip">Скачать исходный код</a></p><h2>Резюме</h2><p>Списки довольно часто применяются в HTML, нередко в местах, которые не явны или очевидны. Главное, насколько это возможно, использовать их семантически и там, где они подходят лучше всего.</p><p>Подводя итоги, в этом уроке мы рассмотрели следующее:</p><ul><li>как создать маркированный, нумерованный список и список описаний;</li><li>как правильно вкладывать одни списки внутрь других;</li><li> как изменить стиль маркера списка и его положение;</li><li>как использовать фоновое изображение вместо маркера списка;</li><li>как горизонтально отобразить список через <span class="attribute">display</span> и <span class="attribute">float</span>.</li></ul><p>Теперь, когда мы знаем, как добавить списки на наши страницы, давайте также включим медиа-контент. В следующей главе мы погрузимся во встраивание медиа, таких как изображения, аудио и видео.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://www.smashingmagazine.com/2009/12/11/styling-html-lists-with-css-techniques-and-resources/">Styling HTML Lists with CSS</a> via Smashing Magazine</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">List Style Type</a> via Mozilla Developer Network</li><li><a href="http://alistapart.com/article/taminglists">CSS Design: Taming Lists</a> via A List Apart</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/spiski">списки</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-f6de4e433843afa8f6a40b3c4f6ac682"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/dd.html">&lt;dd&gt;</a></li><li class=""> <a href="../../html/dl.html">&lt;dl&gt;</a></li><li class=""> <a href="../../html/dt.html">&lt;dt&gt;</a></li><li class=""> <a href="../../html/ol.html">&lt;ol&gt;</a></li><li class=""> <a href="../../html/ul.html">&lt;ul&gt;</a></li><li class=""> <a href="../../css/list-style.html">list-style</a></li><li class=""> <a href="../../css/list-style-image.html">list-style-image</a></li><li class=""> <a href="../../css/list-style-position.html">list-style-position</a></li><li class=""> <a href="../../css/list-style-type.html">list-style-type</a></li><li class=""> <a href="../html5-css3/list/ul.html">Маркированные списки</a></li><li class=""> <a href="../html5-css3/list/ol.html">Нумерованные списки</a></li><li class=""> <a href="../../course/html-tutorial/list.html">Списки</a></li><li class=""> <a href="../html5-css3/list/dl.html">Список описаний</a></li><li class=""> <a href="../../course/html-content/text.html">Текст в HTML</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 18.07.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/setting-backgrounds-and-gradients'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/learn-html-css/adding-media'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="setting-backgrounds-and-gradients.html" title="На предыдущую страницу">Установка фона и градиента</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="adding-media.html" title="На следующую страницу">Добавление медиа-контента</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf"><a href="positioning-content.html">Позиционирование содержимого</a></li><li class="leaf"><a href="working-with-typography.html">Работа с типографикой</a></li><li class="leaf"><a href="setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li><li class="leaf active-trail"><a href="creating-lists.html" class="active-trail active">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf"><a href="building-forms.html">Построение форм</a></li><li class="leaf"><a href="organizing-data-with-tables.html">Организация данных с помощью таблиц</a></li><li class="last leaf"><a href="writing-your-best-code.html">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-209a09c334ef2d4bc2bd58c177b8a745"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="creating-lists.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

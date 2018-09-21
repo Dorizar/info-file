@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Одностраничные приложения | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../angular-cookbook.html" />
+<link rel="next" href="form-validation.html" />
+<link rel="prev" href="../angular-cookbook.html" />
+<meta name="description" content="Одностраничные приложения становятся всё популярнее, поскольку спрос на высоко отзывчивые приложения растёт. Мы могли бы для их создания использовать Ajax и Javascript, но применим Angular в качестве структурного фреймворка для динамических веб-приложений, эффективный и простой в использовании, как его описали люди которые его сделали. Мы собираемся создать простое приложение, в котором будет только главная страница, страница «О нас» и страница с датой. При этом сделаем так, чтобы не нужно было обновлять страницу для просмотра изменений, все они должны отображаться сразу." />
+<link rel="canonical" href="single-page-app.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Одностраничные приложения</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../angular-cookbook.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">AngularJS. Рецепты программирования</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Одностраничные приложения</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Одностраничные приложения становятся всё популярнее, поскольку спрос на высоко отзывчивые приложения растёт. Мы могли бы для их создания использовать Ajax и Javascript, но применим Angular в качестве структурного фреймворка для динамических веб-приложений, эффективный и простой в использовании, как его описали люди которые его сделали.</p><p>Мы собираемся создать простое приложение, в котором будет только главная страница, страница «О нас» и страница с датой. При этом сделаем так, чтобы не нужно было обновлять страницу для просмотра изменений, все они должны отображаться сразу.</p><p>Мы будем использовать:</p><ul><li>AngularJS</li><li> Bower</li><li> Bootstrap</li></ul><h2>Приступая к работе</h2><p>Чтобы приступить к проекту вы должны скачать <a href="http://getbootstrap.com">Bootstrap</a>, а также Bower (<a href="http://bower.io">здесь</a> вы найдёте необходимую информацию как это сделать).</p><p>Для начала создадим папку с именем SinglePageApp (можно назвать её как пожелаете) и внутри неё HTML-файл с именем index.html и JavaScript-файл с именем app.js.</p><h2>Настройка AngularJS</h2><p> Попросим Bower установить пакет Angular, выполнив эту команду в терминале (убедитесь, что вы находитесь в папке проекта):</p>
+<pre><code>bower install angular</code></pre>
+<p>Тогда, вновь используя Bower, мы устанавливаем пакет Angular-Route, выполнив:</p>
+<pre><code>bower install angular-route</code></pre>
+<p>После выполнения этих команд вы заметите, что в папке нашего проекта добавилась папка bower_components, внутри которой находятся две папки, одна с именем angular, а другая angular-route. Мы воспользуемся ими позже. Затем открываем app.js и пишем код JavaScript для создания модуля Angular и добавляем к нему зависимость <span class="var">ngRoute</span>. Это должно выглядеть так:</p>
+<pre><code data-language="javascript">var app=angular.module('app',['ngRoute']);</code></pre>
+<p>Настало время определить маршруты с помощью функции <span class="var">config()</span>, предоставленной angular.module. Прямо под кодом для модуля, в файле app.js мы вставляем этот код:</p>
+<pre><code data-language="javascript">app.config(function($routeProvider){
+  $routeProvider
+  // страница по умолчанию
+  .when('/',{
+    templateUrl : 'pages/homepage.html',
+    controller : 'Homepage'
+  })
+  // страница о нас
+  .when('/about',{
+    templateUrl : 'pages/about.html',
+    controller : 'About'
+  })
+  // страница с датой
+  .when('/date',{
+    templateUrl : 'pages/date.html',
+    controller : 'Date'
+  });
+});</code></pre>
+<p>Мы внедрили <span class="var">$routeProvider</span> в качестве параметра функции. Теперь <span class="var">when()</span> для <span class="var">$routeProvider</span> может применяться для настройки маршрутов. Эта функция принимает два параметра: название маршрута и объект, который содержит различные детали для маршрута. Мы будем использовать только два из этих свойств: <span class="var">templateURL</span>&nbsp;— указывает относительное положение файла представления, начиная с index.html; и контроллер, связанный с этим представлением.</p><p>Мы достигли точки, где должны создать контроллеры для различных представлений. Сначала мы создаём папку с именем controllers в папке js и внутри неё создаём файл JavaScript с именем controllers.js, в который помещаем этот фрагмент кода:</p>
+<pre><code data-language="javascript">app.controller('Homepage',['$scope',function($scope){
+  $scope.homepage = &quot;Главная&quot;;
+}]);
+app.controller('About',['$scope', function($scope){
+  $scope.about = &quot;Lorem ipsum...&quot;;
+}]);
+app.controller('Date',['$scope', function($scope) {
+  $scope.now = new Date();
+}]);</code></pre>
+<p>Не забудьте про controllers.js в файле index.html. Вы даже можете разместить этот код в файле app.js, но это не рекомендуется, поскольку может снизить читабельность кода и в более тяжёлых приложениях усложнить материал.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>HTML-разметка нашего приложения</h2><p>Важную вещь надо сделать, если мы хотим, чтобы наше приложение функционировало должным образом&nbsp;— это связать все файлы, которые мы скачали. Для начала ссылаемся на стилевой файл Bootstrap путём добавления этой строки ниже тега <span class="tag">&lt;title&gt;</span>:</p>
+<pre><code data-language="html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.min.css&quot;&gt;</code></pre>
+<p>Теперь установим скрипты Bootstrap, Angular и Angular-Route путём добавления этого кода после тега &lt;link&gt;:</p>
+<pre><code data-language="html">&lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;bower_components/angular-route/angular-route.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>Кроме того, мы добавляем файл app.js, так как он содержит модуль и другие необходимые вещи, так:</p>
+<pre><code data-language="html">&lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>Вы можете разместить всё это в разделе <span class="tag">&lt;body&gt;</span>, прямо перед тегом <span class="tag">&lt;/body&gt;</span> для повышения производительности, так браузер отобразит HTML-разметку первой, а затем загрузит код JavaScript. Пожалуйста, имейте в виду, что скрипты angular-route.min.js и app.js должны идти после скрипта angular.min.js, а controller.js должен идти после скрипта app.js.</p><p>Теперь давайте создадим папку с именем pages, внутри которой мы разместим HTML-файлы для представлений. Будьте осторожнее, они не должны быть полностью HTML-файлами, а должны иметь только разметку для определённого представления.</p><p>В файле homepage.html мы размещаем только выражение <span class="tag">{{homepage}}</span>.</p><p>Страница «О нас» будет типичной описательной страницей, поэтому нам понадобится только этот код:</p>
+<pre><code data-language="html">{{ about }}</code></pre>
+<p>Страница с датой покажет нам сегодняшнюю дату. Код будет такой:</p>
+<pre><code data-language="html">{{ now | date:'medium' }}</code></pre>
+<p>То, что мы разместили внутри двойных фигурных скобок, представляет собой выражение. Стоит отметить, что <span class="var">| date:'medium'</span> является фильтром&nbsp;— кратким способом форматирования некоторых, наиболее часто используемых выражений, таких как даты, числа, валюта и т.&nbsp;д. Angular даёт нам несколько встроенных фильтров, а также простой путь для создания собственных фильтров. Данный фильтр форматирует дату так, чтобы показать месяц, число, а затем год, а также время в часах, минутах и секундах в формате AM/PM.</p><p>Теперь взглянем на index.html. Нам следует сказать Angular какая часть приложения должна быть активной. Вы видели, что при объявлении модуля мы назвали его <span class="var">app</span>. Чтобы сказать ему, какая часть должна быть активной, мы добавляем атрибут <span class="var">ng-app=&quot;app&quot;</span> к тегу и всё внутри превращается в приложение AngularJS. В нашем случае нужна вся страница целиком, поэтому лучше атрибут <span class="attribute">ng-app</span> поместить в тег <span class="var">&lt;html&gt;</span> или в <span class="tag">&lt;body&gt;</span>. Я выбираю второе.</p><p>В раделе <span class="tag">&lt;body&gt;</span> мы добавим кнопки, по одной на каждое представление. Воспользуемся Bootstrap чтобы сделать это проще, но также чтобы кнопки выглядели стильно. Код будет следующий:</p>
+<pre><code data-language="html">&lt;a href=&quot;#/&quot;&gt;&lt;button class=&quot;btn btn-danger&quot;&gt;Главная&lt;/button&gt;&lt;/a&gt;
+&lt;a href=&quot;#/about&quot;&gt;&lt;button class=&quot;btn btn-success&quot;&gt;О нас&lt;/button&gt;&lt;/a&gt;
+&lt;a href=&quot;#/date&quot;&gt;&lt;button class=&quot;btn btn-warning&quot;&gt;Дата&lt;/button&gt;&lt;/a&gt;</code></pre>
+<p>Взгляните на атрибут <span class="attribute">href</span> в каждой ссылке. Знакомо? Это маршрут, который мы использовали в функции <span class="var">when()</span>, только с решёткой (#) впереди. Атрибут <span class="attribute">class</span> который вы видите в тегах <span class="tag">&lt;button&gt;</span> предоставлен Bootstrap, он делает кнопки красиво выглядящими и даёт им определённые цвета (красный для <span class="class">btn-danger</span>, зелёный <span class="class">btn-success</span> и оранжевый для <span class="class">btn-warning</span>).</p><p>Но где приложение будет показывать представление, которые мы создали? Мы говорим ему где, поместив элемент, содержащий атрибут <span class="attribute">ng-view</span>. Это будет выглядеть так:</p>
+<pre><code data-language="html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div ng-view&gt;
+  &lt;!-- Представление будет здесь --&gt;
+  &lt;/div &gt;
+&lt;/div &gt;</code></pre>
+<p>Я вставляю это внутрь другого элемента <span class="tag">&lt;div&gt;</span>, но вы можете разместить его в любом месте в теле приложения. AngularRoute даёт возможность полностью заменить элемент <span class="var">&lt;div ng-app&gt;</span> на <span class="var">&lt;ng-app&gt; &lt;/ng-app&gt;</span>, но так делать не рекомендуется, если ваши целевые пользователи используют IE, поскольку он не поддерживает такой подход.</p><p>Вы, возможно, заметили класс row у <span class="tag">&lt;div&gt;</span>, внутри которого содержится элемент <span class="attribute">ng-view</span>. Он нужен только для целей стилизации. Чтобы сайт выглядел немного симпатичнее вы создаёте файл style.css внутри папки css (не забудьте сделать на него ссылку) и помещаете внутри него такой код:</p>
+<pre><code data-language="css">.row {
+  text-align: center;
+  background-color: steelblue;
+  font-family: &quot;Georgia&quot;, serif, sans-serif;
+  font-size: 30px;
+}</code></pre>
+<p>Теперь вы можете открыть своё одностраничное приложение и оно покажет вам различные представления при щелчке по кнопкам без перезагрузки страницы. Выглядит это так:</p><p class="fig"><img src="../../assets/images/angular-cookbook/single-page-app.png" alt="Одностраничное приложение при нажатии кнопки «About»" width="672" height="427"></p><p class="figsign">Рис. 1.1. Одностраничное приложение при нажатии кнопки «About»</p><p>Такова магия AngularJS.</p><h2>Скачать код</h2><p>Вы можете скачать полный исходный код этого примера <a href="../../assets/files/SinglePageApp.zip">здесь</a>.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Эра Баллиу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 03.11.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/angular-cookbook'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/angular-cookbook/form-validation'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../angular-cookbook.html" title="На предыдущую страницу">AngularJS. Рецепты программирования</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="form-validation.html" title="На следующую страницу">Проверка формы в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf active-trail"><a href="single-page-app.html" class="active-trail active">Одностраничные приложения</a></li><li class="leaf"><a href="form-validation.html">Проверка формы в AngularJS</a></li><li class="leaf"><a href="routing.html">Маршрутизация в AngularJS</a></li><li class="leaf"><a href="controler.html">Контроллеры в AngularJS</a></li><li class="leaf"><a href="json.html">Извлечение данных JSON в AngularJS</a></li><li class="leaf"><a href="table.html">Таблицы в AngularJS</a></li><li class="leaf"><a href="ng-src.html">AngularJS ng-src</a></li><li class="last leaf"><a href="data-binding.html">Связывание данных в AngularJS</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-8112dcc9332329e9f66e89cb38bec7ab"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="single-page-app.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

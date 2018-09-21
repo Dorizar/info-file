@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Объекты | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../javascript-basics.html" />
+<link rel="next" href="array.html" />
+<link rel="prev" href="../javascript-basics.html" />
+<meta name="description" content="Как оказалось, большинство всего с чем мы работаем в JavaScript является объектом — на самом деле, есть только пять типов значений, не являющихся объектами: строки (текст); логические (true/false); числа; undefined; null. Эти значения называются примитивами, но даже некоторые из них можно рассматривать как если бы они были объектами — подробнее об этом узнаете через минуту. Но что такое объект? Давайте посмотрим на примере простого объекта: var person = { firstName : &#039;Баз&#039;, lastName : &#039;Сендер&#039; }; Созданный нами объект содержит два свойства: firstName и lastName. Мы создали его с помощью «синтаксиса литеральных объектов» — то есть, установив набор пар ключ-значение в {}. Обратите внимание, что для каждой пары поставлено двоеточие между ключом и значением и запятая между каждой парой. Отметим также, что после последней пары ключ-значение нет запятой — если вы случайно поставите запятую после последней пары, то получите ошибки в старых браузерах." />
+<link rel="canonical" href="object.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Объекты</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../jqfundamentals.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Основы jQuery</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../javascript-basics.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Основы JavaScript</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Объекты</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Как оказалось, большинство всего с чем мы работаем в JavaScript является объектом&nbsp;— на самом деле, есть только пять типов значений, не являющихся объектами:</p><ul><li>строки (текст);</li><li>логические (<span class="value">true</span>/<span class="value">false</span>);</li><li>числа;</li><li> <span class="value">undefined</span>;</li><li><span class="value">null</span>.</li></ul><p>Эти значения называются <strong>примитивами</strong>, но даже некоторые из них можно рассматривать как если бы они были объектами&nbsp;— подробнее об этом узнаете через минуту. Но что такое объект? Давайте посмотрим на примере простого объекта:</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер'
+};</code></pre>
+<p>Созданный нами объект содержит два свойства: <span class="var">firstName</span> и <span class="var">lastName</span>. Мы создали его с помощью «синтаксиса литеральных объектов» — то есть, установив набор пар ключ-значение в {}. Обратите внимание, что для каждой пары поставлено двоеточие между ключом и значением и запятая между каждой парой. Отметим также, что после последней пары ключ-значение нет запятой&nbsp;— если вы случайно поставите запятую после последней пары, то получите ошибки в старых браузерах.</p><h2>Доступ к свойствам</h2><p>Мы храним наш объект в переменной с именем <span class="var">person</span>, которая позволяет легко получить доступ к свойствам объекта, используя нотацию с точкой или с квадратными скобками.</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер'
+};
+  
+console.log( 'Имя: ' + person.firstName );     // нотация с точкой
+console.log( 'Фамилия: ' + person[ 'lastName' ] );  // нотация с квадратными скобками</code></pre>
+<p>Заметьте, что в нотации со скобками мы использовали строку в кавычках для имени свойства; в нотации с точкой мы просто использовали имя свойства без кавычек. Нотация со скобками является полезным подходом, если, скажем, позже вы сохраняете имя свойства в переменной:</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер'
+};
+  
+var prop = 'lastName';
+
+console.log( 'Фамилия: ' + person[ prop ] );</code></pre>
+<p>После создания объекта мы можем изменить его свойства.</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер'
+};
+  
+person.firstName = 'Бен';
+person.lastName = 'Альман';
+
+console.log( 'Имя: ' + person.firstName );
+console.log( 'Фамилия: ' + person.lastName );</code></pre>
+<p>Данный аспект JavaScript является одновременно и благословением и проклятием. Это означает, что объекты невероятно гибкие, но также означает, что не существует «конфиденциальности». Любой код может легко переписать значение свойства любого объекта, к которому он имеет доступ. Это ещё одна причина, почему важно хранить переменные за пределами глобальной области видимости&nbsp;— разве это нормально, когда другой код их меняет.</p><h2>Методы объекта</h2><p><strong>Методы</strong> объекта — это просто свойства, значения которых являются функциями. Давайте добавим метод <span class="var">.greet()</span> к нашему объекту <span class="var">person</span>:</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер',
+  greet : function(name) {
+    console.log( 'Привет, ' + name );
+  }
+};
+  
+person.greet( person.firstName );</code></pre>
+<p>Метод <span class="var">.greet()</span> в данном примере получил в качестве аргумента строку <span class="var">name</span>. Когда мы вызываем метод, то просто отправляем ему значение свойства <span class="var">firstName</span> объекта <span class="var">person</span>. Если бы мы хотели супер-гибкий метод <span class="var">.greet()</span>, который может приветствовать любого, это то что нам нужно. Но, вероятно, больше смысла в том, что метод <span class="var">.greet()</span> будет приветствовать конкретное лицо.</p><h2>Понимание this</h2><p>Внутри метода, а в действительности внутри любой функции, есть доступное нам специальное ключевое слово <span class="var">this</span>. Оно относится к объекту, который является контекстом в котором функция была вызвана.</p><p>Когда мы вызываем <span class="var">person.greet()</span>, контекстом объекта служит сам <span class="var">person</span>. Это значит, что мы можем использовать <span class="var">this</span> и получить доступ к свойству объекта <span class="var">person</span> непосредственно из метода <span class="var">.greet()</span>.</p><p class="note">Понимание <span class="var">this</span> может невероятно запутать новых разработчиков JavaScript и вас должно утешить что jQuery в основном делает так, что вам пока и не нужно понимать. Однако, обсуждение объектов и методов не является полным, если вообще не упомянуть о <span class="var">this</span>, хотя бы немного. Короче говоря, если этот раздел вас смущает, то смело пропускайте его и возвращайтесь к нему когда будете готовы.</p><p>Давайте посмотрим, как мы могли бы использовать <span class="var">this</span> в нашем методе.</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер',
+  greet : function() {
+    console.log( 'Привет, ' + this.firstName );
+  }
+};
+  
+person.greet();</code></pre>
+<p>Не так уж и запутанно, верно? Путаница возникает, потому что смысл <span class="var">this</span> может поменяться&nbsp;— как упоминалось ранее, это зависит от контекста, в котором функция была вызвана! Рассмотрим следующий код:</p><p class="exampleTitle">Внимание! Некорректный код</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер',
+  greet : function() {
+    console.log( 'Привет, ' + this.firstName );
+  }
+};
+  
+var sayIt = person.greet; // сохраняем метод в переменной
+
+sayIt(); // выводит: 'Привет, undefined' — ой-ой</code></pre>
+<p>Когда мы сохраняем метод <span class="var">.greet()</span> в переменной <span class="var">sayIt</span>, а затем вызываем <span class="var">sayIt()</span>, контекст объекта меняется на глобальный объект <span class="var">window</span>, а не объект <span class="var">person</span>. Поскольку у объекта <span class="var">window</span> нет свойства <span class="var">firstName</span>, мы получаем <span class="var">undefined</span> при попытке получить к нему доступ.</p><p>Что делать разработчику? Во-первых, следует знать, что сохранение методов объекта в переменных может иметь непредсказуемые последствия для <span class="var">this</span>. Во-вторых, помните что вы можете зафиксировать значение <span class="var">this</span> на желаемое с помощью методов <span class="var">.call()</span> или <span class="var">.apply()</span> для самой функции.</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер',
+  greet : function() {
+    console.log( 'Привет, ' + this.firstName );
+  }
+};
+  
+var sayIt = person.greet;
+sayIt.call( person );</code></pre>
+<p>Оба метода очень похожи. Метод <span class="var">.apply()</span> также позволяет передавать аргументы в функцию, к которой мы обращаемся. Представьте, что в наш метод <span class="var">.greet()</span> передаются некоторые аргументы; мы могли бы передать их с помощью <span class="var">.call()</span>, вот так:</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер',
+  greet : function(greeting, punctuation) {
+    console.log( greeting + ', ' + this.firstName + punctuation );
+  }
+};
+  
+var sayIt = person.greet;
+
+sayIt.call( person, 'Привет', '!!!' );</code></pre>
+<p>Мы могли бы сделать то же самое через <span class="var">.apply()</span>, но тогда придётся передавать аргументы в виде единого массива, вместо отдельных аргументов:</p>
+<pre><code data-language="javascript">var person = {
+  firstName : 'Баз',
+  lastName : 'Сендер',
+  greet : function(greeting, punctuation) {
+    console.log( greeting + ', ' + this.firstName + punctuation );
+  }
+};
+  
+var sayIt = person.greet;
+
+sayIt.apply( person, [ 'Привет', '!!!' ] );</code></pre>
+<p class="note">Подробнее об этих методах рассказывается в документации на MDN о <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/call">.call()</a> и <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply()</a>.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Объекты в jQuery</h2><p>Мы лишь поверхностно освоили объекты, но теперь зная основы вы научитесь как работать с объектами jQuery. В базовом jQuery вы будете широко использовать объекты, чтобы задать параметры конфигурации. Например, вы можете указать объект и тем самым одновременно изменить несколько свойств CSS для элемента:</p>
+<pre><code data-language="javascript">$('#main').css({
+  color: 'red',
+  border: '1px solid blue'
+});</code></pre>
+<p>Что касается <span class="var">this</span>, jQuery, как правило, управляет его значением. В случае обработчиков событий, <span class="var">this</span> будет ссылаться на элемент, к которому привязан обработчик; в случае перебора элементов в выборке, <span class="var">this</span> будет ссылаться на текущий элемент. Вам не стоит сильно беспокоиться о понимании <span class="var">this</span> во время начального обучения&nbsp;— это просто хорошая штука и помните о ней, пока ваше обучение продолжается.</p><h2>Дальнейшее чтение</h2><p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Working_with_Objects">Руководство по JavaScript на MDN</a> подробно рассматривает такие темы как прототипы объектов, конструкторы и удаление свойств объектов.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/javascript">JavaScript</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Ребекка Мёрфи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 24.03.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/jqfundamentals/javascript-basics'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/jqfundamentals/javascript-basics/array'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../javascript-basics.html" title="На предыдущую страницу">Основы JavaScript</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="array.html" title="На следующую страницу">Массивы</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first expanded active-trail"><a href="../javascript-basics.html" class="active-trail">Основы JavaScript</a><ul class="menu"><li class="first leaf active-trail"><a href="object.html" class="active-trail active">Объекты</a></li><li class="leaf"><a href="array.html">Массивы</a></li><li class="leaf"><a href="logic.html">Логика и истина</a></li><li class="last leaf"><a href="gotcha.html">Подводные камни JavaScript</a></li></ul></li><li class="leaf"><a href="../jquery-basics.html">Азы jQuery</a></li><li class="leaf"><a href="../traversing-manipulating.html">Обход и манипуляция</a></li><li class="leaf"><a href="../events.html">События и делегирование событий</a></li><li class="leaf"><a href="../effects.html">Анимация с jQuery</a></li><li class="last leaf"><a href="../ajax.html">AJAX</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-5b6b265035e0a4a0e5a5d1e5f8a4459b"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="object.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

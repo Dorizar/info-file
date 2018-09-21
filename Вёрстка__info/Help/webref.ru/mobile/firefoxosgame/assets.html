@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Управление ассетами | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosgame.html" />
+<link rel="next" href="gameloop.html" />
+<link rel="prev" href="initialization.html" />
+<meta name="description" content="В предыдущей главе мы инициализировали Phaser и вывели Canvas на экран. В этой главе мы собираемся загрузить необходимые для игры ассеты." />
+<link rel="canonical" href="assets.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Управление ассетами</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosgame.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Создание игр для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Управление ассетами</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В предыдущей главе мы инициализировали Phaser и вывели Canvas на экран. В этой главе мы собираемся загрузить необходимые для игры ассеты.</p><p>Прежде чем покажем код для создания игрового состояния <strong>Preload</strong>, мы должны немного поговорить об ассетах. В наши дни большинство основных создателей игр для успеха своей игры полагаются только на отменную графику. Многих пользователей привлекает такой тип игр, где графика следующего поколения козыряет перед игровой механикой. Построение игры, которая опирается только на такие ассеты это плохой ход, по моему скромному мнению. Также в штат графических и арт-дизайнеров требуется команда особого типа, которой у небольших разработчиков нет.</p><p>В центре внимания этой книги является построение двумерных казуальных игр для смартфонов. Обычно игры, которые блистают на мобильном рынке, имеют лучшую механику (или ту, к которой отчасти привыкли) и, как правило, не слишком полагаются на графику, поскольку мобильные телефоны сильно различаются по производительности и мощности.</p><p>Если у вас есть отличная идея, вы можете запрограммировать её используя шаблонные рисунки, которые применяются только в процессе разработки, а затем нанять подходящего дизайнера для изготовления реальных ассетов.</p><p>Подобно разработчикам настольных игр делающих прототипы из картона и карандашей, так и вы можете задействовать шаблонную графику и звуки используя свободные доступные инструменты. Любая графическая программа будет работать, и не важно, Adobe Photoshop это или Microsoft Paint, пока она может быть использована для создания достаточно хороших ассетов, чтобы продолжить делать игру.</p><h2>Определение атмосферы</h2><p>Главным аспектом ассетов, под которыми я подразумеваю графические и звуковые файлы, используемые в игре, является то, насколько они помогают установить игровую атмосферу. Вы можете вдохновиться конфетами и использовать яркие сочетания цветов в глянцевых формах для разработки издания для детей. Или вы можете задать разные оттенки чёрного, красного и коричневого цветов для создания некоторого минималистского жанра ужасов. Механика может быть той же самой и игра будет отличаться только своими ассетами, но Candy Escape действительно другая игра, нежели Zombies: Run For Your Life.</p><p>Игровая механика усиливает атмосферу игры, но её визуальные аспекты являются ключом к установлению тона и передачи эмоций игроку. Некоторые механики подходят для одних жанров и не годятся для других. Создание игры одного жанра и использование ассетов из другого жанра будет работать, если вы называете себя инди и даже есть шанс, что это сделает вас миллионером (иными словами, Zombie: Brain Candy Escape вероятно сработает).</p><p>Важным шагом является планирование. Когда вы определяете правила игры и проектируете её, нужно подумать, какую атмосферу вы хотите получить и планировать свои ассеты исходя из этого.</p><p>Иногда забывают, что частью проектирования ассетов является определение форм-факторов и платформ, на которых будет выпускаться ваша игра.</p><h2>Проектирование для различных форм-факторов</h2><p>В центре внимания этой книги является Firefox OS, но я не советую вам ориентироваться исключительно на эту платформу. Классной стороной веба является кросс-платформенность. Игра, которую вы запускаете на Firefox OS, с минимальными настройками может работать на Android, iOS, Facebook, OUYA и др.</p><p>Если вы планируете с самого начала выпускать игру для нескольких платформ, то можете готовить свои ассеты по мере необходимости. Когда мы говорим о выпуске веб-материала для нескольких платформ, то обычно подразумеваем разные размеры экрана, пропорции и методы ввода. Оставим пока методы ввода до соответствующей главы и поговорим о разрешении и размерах экрана.</p><p>Вы когда-нибудь брали миниатюру фотографии и увеличивали её? Это выглядит довольно плохо, не так ли? Если у вас есть PNG-файл размером 16x16 и вы измените его размер до 2500x1600, то результат не будет выглядеть сглаженным. Гораздо проще иметь файл с большим разрешением и уменьшить его (что означает отбрасывание информации), чем небольшой файл и его увеличить (что означает создание информации или, теоретически, вытягивание кроликов из шляп).</p><p>Если вы думаете о выпуске вашей игры на SmartTVs с HD-разрешением, то у вас должны быть ассеты, которые хорошо выглядят в данном разрешении. Вы можете уменьшить их для устройств на Firefox OS по мере необходимости и/или создать более простые ассеты для таких устройств.</p><p>Планируя наперёд становится намного легче разрабатывать игру. Если вы начинаете разработку мобильной игры с низким разрешением и потом решаете отправить её на большие экраны, то можете в итоге получить уродливую игру или необходимость переделать ассеты.</p><p>По крайней мере, звук воспроизводится одинаково, независимо от размеров экрана...</p><p>Анекдот. Пока я разрабатывал Foxnoid, то решил использовать шаблоны, пока не смогу найти дизайнера для создания настоящей графики. В конце концов, я полюбил свои шаблоны настолько, что решил оставить их. Во всяком случае, я могу оставить их только потому, что это игрушка. Я не рекомендую проделывать такое с вашей графикой.</p><h2>Планирование ассетов нашей игры</h2><p>Если мы подсчитаем минимальное количество необходимых для игры ассетов, то это будет фон, ракетка, блок и мяч. Этих четырёх рисунков достаточно, чтобы собрать экран и сосредоточиться на игре.</p><p>Позже мы добавим больше графики для улучшения нашей игры, но прямо сейчас нам достаточно и этого, чтобы двигаться дальше.</p><h3>Фон</h3><p>Вы все знаете, что я не умею рисовать. Поэтому я решил использовать бесплатную доступную графику в качестве шаблона. Mozilla Assets Repository — это коллекция ассетов для помощи людям развивающим Mozilla. Firefox OS имеет некоторые действительно хорошие ассеты, которые, в том числе, включают синий разлинованный фон. Я вырезал часть фона, чтобы использовать в этой игре.</p><p class="fig"><img src="../../assets/images/firefoxosgame/assets----background.jpg" alt="Фон Foxnoid" width="320" height="480"></p><p class="figsign">Фон Foxnoid</p><h3>Блок и ракетка</h3><p>Блоки это кирпичи, которые располагаются в верхней части экрана, мы используем их в качестве мишени для стрельбы с помощью ракетки и мяча. Чтобы создать наш кирпич я просто выбрал прямоугольник подходящего размера и сделал заливку цветом.</p><p class="fig"><img src="../../assets/images/firefoxosgame/assets----block.png" width="40" height="20"></p><p class="figsign">Блок</p><p>Учтите, что фоновое изображение это JPEG-файл, поскольку данный формат занимает меньше места. Все остальные ассеты хранятся в PNG, так как этот формат поддерживает прозрачность и тем самым лучше сочетается с фоном.</p><p>Если вы думаете об ассетах как о наборе изображений одного поверх другого вы захотите использовать формат, который поддерживает прозрачные участки.</p><p class="fig"><img src="../../assets/images/firefoxosgame/assets----player.png" alt="Платформа" width="50" height="20"></p><p class="figsign">Ракетка</p><p class="figsign"><img src="../../assets/images/firefoxosgame/assets----ball.png" alt="Мяч" width="15" height="15"></p><p class="figsign">«Мяч»</p><p>Наша ракетка создаётся таким же образом, как блок и мяч. Мяч не шарик, а на самом деле квадрат. Я решил использовать квадрат в качестве нашего «мяча», потому что это выглядит более гармонично с нашей графикой и потому что намного проще отслеживать столкновения. Гораздо легче обнаружить столкновение между прямоугольниками, чем между полигонами или шариками.</p><h3>Как это выглядит в собранном виде</h3><p>Наша игра выглядит так.</p><p class="fig"><img src="../../assets/images/firefoxosgame/foxnoid-placeholders.png" alt="Как выглядит наша игра" width="320" height="476"></p><p class="figsign">Как выглядит наша игра</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Построение игрового состояния Preload</h2><p>Итак, наши ассеты готовы и мы продолжим создание игрового состояния, которое отвечает за их загрузку в память, так что ассеты будут доступны для других состояний в игре.</p><h3>Подготовка ассетов</h3><p>Для хранения всех наших ассетов мы создали папку <strong>assets</strong> в нашей папке <strong>foxnoid</strong>. Все графические файлы располагаются там и мы собираемся загрузить их в наш код ниже.</p><p class="fig"><img src="../../assets/images/firefoxosgame/assets1.png" alt="Папка assets" width="171" height="102"></p><p class="figsign">Папка assets</p><p>Вы можете взять ассеты из хранилища Github и поместить их в правильное место.</p><h3>Код preload.js</h3><p>Игровые состояния представляют собой объекты JavaScript со специальными функциями в них. Эти функции вызываются Phaser в процессе жизненного цикла игрового состояния. Наш прелоадер загружает графические ассеты и после готовности переключается в игровое состояние с именем Game.</p><p>Функция <span class="var">preload()</span>, которую Phaser вызывает, когда заинтересован в загрузке ассетов, является функцией объекта игрового состояния. В этой функции мы загружаем наши ассеты. После вызова <span class="var">preload()</span> вызывается функция <span class="var">create()</span>, которая инициализирует игру. Поскольку после загрузки ассетов ничего нет, то Preloader нужен для использования функции <span class="var">create()</span>, чтобы перейти в другое состояние.</p><p>Создайте файл с именем <strong>preload.js</strong> внутри папки <strong>js</strong>. Добавьте в этот файл следующий код.</p><p class="exampleTitle">preload.js: состояние игры для загрузки наших ассетов</p>
+<pre><code data-language="javascript">GameStates.Preloader = {
+  preload: function() {
+    this.load.image('background', 'assets/background.jpg');
+    this.load.image('player', 'assets/player.png');
+    this.load.image('ball', 'assets/ball.png');
+    this.load.image('block', 'assets/block.png');
+  },
+  create: function(){
+    this.state.start('Game');
+  }
+};</code></pre>
+<p>Функция <span class="var">preload()</span> загружает нашу графику. Мы используем <span class="var">this.load.image()</span> с двумя параметрами для загрузки каждого изображения:</p><ul><li>ключ, который будет использоваться для ссылки на изображение;</li><li>путь к файлу изображения.</li></ul><p>В <span class="var">create()</span> мы просто переключаемся в игровое состояние <strong>Game</strong>, которое будем компоновать в следующей главе.</p><h3>Изменение index.html</h3><p>Теперь мы должны изменить наш файл <strong>index.html</strong> и включить в него готовый <strong>preload.js</strong>.</p><p class="exampleTitle">index.html: теперь включает в себя наш прелоадер</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Foxnoid Game&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; /&gt;
+    &lt;script defer src=&quot;js/phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/init.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/preload.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+    &lt;div id=&quot;game&quot;&gt;&lt;/div&gt;
+  
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3>Изменение init.js</h3><p>Помните наш файл инициализации? Итак, мы должны изменить его тоже, чтобы зарегистрировать <strong>игровое состояние Preloader</strong>.</p><p class="exampleTitle">init.js: отвечает за инициализацию Phaser</p>
+<pre><code data-language="javascript">var GameStates = {}; // &lt;-- Объект для хранения всех наших игровых состояний
+  
+document.addEventListener(&quot;DOMContentLoaded&quot;, function()  {
+  
+  // Портретная ориентация игры
+  
+  var width = 320;
+  var height = 480;
+  
+  var game = new Phaser.Game(width, height, Phaser.CANVAS, &quot;game&quot;);
+  
+  // Добавляем игровое состояние
+  game.state.add('Preloader', GameStates.Preloader);
+  
+  // Запускаем состояние Preloader
+  game.state.start('Preloader');
+});</code></pre>
+<p>Изменения видны в строке 13, где мы используем <span class="var">game.state.add()</span>, чтобы добавить игровое состояние. У функции два параметра:</p><ul><li>ключ, который мы будем использовать для обозначения данного состояния позже;</li><li>объект, содержащий наше состояние.</li></ul><p>Затем в строке 16 мы запускаем состояние <strong>Preloader</strong>. Чтобы узнать больше о болтах и гайках игровых состояний обратитесь к <a href="http://docs.phaser.io/Phaser.State.html">документации Phaser.State</a>.</p><p>Мы переместились на один шаг ближе к завершению игры.</p><h2>Резюме</h2><p>В этой главе мы узнали немного больше об ассетах и как они влияют на атмосферу нашей игре и опыт игрока. Мы переместились к созданию простых графических ассетов и загрузили их в игровом состоянии Preload.</p><p>В следующей главе мы собираемся построить игровой цикл и наконец заставить мяч немного попрыгать на экране.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 17.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosgame/initialization'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosgame/gameloop'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="initialization.html" title="На предыдущую страницу">Инициализация Foxnoid</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="gameloop.html" title="На следующую страницу">Цикл игры</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="gametheory.html">Об играх</a></li><li class="leaf"><a href="ourgame.html">Наша игра</a></li><li class="leaf"><a href="gamescaffold.html">Настройки нашей игры</a></li><li class="leaf"><a href="initialization.html">Инициализация Foxnoid</a></li><li class="leaf active-trail"><a href="assets.html" class="active-trail active">Управление ассетами</a></li><li class="leaf"><a href="gameloop.html">Цикл игры</a></li><li class="leaf"><a href="input.html">Обработка ввода</a></li><li class="leaf"><a href="winning-or-losing.html">Победа или поражение</a></li><li class="last leaf"><a href="levels.html">Привлечение игроков</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-99ba630adba1844594d9b4b19b94923b"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="assets.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

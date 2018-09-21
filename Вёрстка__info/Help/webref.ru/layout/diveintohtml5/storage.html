@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Локальное хранилище | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../diveintohtml5.html" />
+<link rel="next" href="offline.html" />
+<link rel="prev" href="geolocation.html" />
+<meta name="description" content="Постоянное локальное хранилище это одна из областей, где клиентские приложения имеют преимущества перед серверными. Для приложений, таких как операционная система, обеспечивается уровень абстракции для хранения и извлечения данных вроде настроек или статуса выполнения. Эти значения могут быть сохранены в реестре, INI-файлах, XML-файлах или в другом месте в зависимости от принципов платформы. Если ваше клиентское приложение нуждается в локальном хранилище больше чем просто пара ключ/значение, вы можете вставить свою собственную базу данных, придумать свой формат файлов или любое количество других решений." />
+<link rel="canonical" href="storage.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Локальное хранилище</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../diveintohtml5.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Погружение в HTML5</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Локальное хранилище</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Постоянное локальное хранилище это одна из областей, где клиентские приложения имеют преимущества перед серверными. Для приложений, таких как операционная система, обеспечивается уровень абстракции для хранения и извлечения данных вроде настроек или статуса выполнения. Эти значения могут быть сохранены в реестре, INI-файлах, XML-файлах или в другом месте в зависимости от принципов платформы. Если ваше клиентское приложение нуждается в локальном хранилище больше чем просто пара ключ/значение, вы можете вставить свою собственную базу данных, придумать свой формат файлов или любое количество других решений.</p><p>Исторически, у веб-приложений не было ни одной из этих роскошей. Кукисы были изобретены в начале истории Интернета и они могут быть использованы для постоянного локального хранения небольших объёмов данных. Но у них есть три потенциальных минуса:</p><ul><li>кукисы включаются в каждый HTTP-запрос, замедляя тем самым ваше веб-приложение на напрасную передачу одних и тех же данных снова и снова;</li><li>кукисы включаются в каждый HTTP-запрос при передаче данных через Интернет в незашифрованном виде (если веб-приложение целиком не передаётся через SSL);</li><li>кукисы ограничены объёмом данных примерно 4&nbsp;Кб&nbsp;— достаточно, чтобы замедлить ваше приложение (см. выше), но не достаточно, чтобы быть полезным.</li></ul><p>Вот что мы действительно хотим:</p><ul><li>много места для хранения;</li><li>работа на стороне клиента;</li><li>учитывать обновление страницы;</li><li>и никакой отправки на сервер.</li></ul><p>Перед HTML5 все попытки добиться этого в конечном итоге были по-разному провальными.</p><h2>Краткая история локального хранилища до HTML5</h2><p>Вначале был только один Internet Explorer. По крайней мере, Microsoft хотел, чтобы мир так думал. С этой целью в рамках <a href="https://ru.wikipedia.org/wiki/Война_браузеров">Первой Великой Войны браузеров</a> Microsoft изобрёл очень много вещей и включил их в свой браузер-который-завершил-войну&nbsp;— Internet Explorer. Одна из таких штук называлась <a href="http://msdn.microsoft.com/en-us/library/ms531078(v=VS.85).aspx">DHTML Behaviors</a>, а одна из её форм&nbsp;— <a href="http://msdn.microsoft.com/en-us/library/ms531424%28VS.85%29.aspx">userData</a>.</p><p>UserData позволяет веб-странице хранить до 64&nbsp;Кб данных на каждый домен в иерархической XML-подобной структуре. Доверенные домены, такие как интранет-сайты могут хранить в десять раз больше. И эй, <a href="https://ru.wikiquote.org/wiki/Билл_Гейтс#.D0.9E.D1.88.D0.B8.D0.B1.D0.BE.D1.87.D0.BD.D0.BE_.D0.BF.D1.80.D0.B8.D0.BF.D0.B8.D1.81.D0.B0.D0.BD.D0.BD.D1.8B.D0.B5">640&nbsp;Кб должно быть достаточно для каждого</a>. IE не представил диалога разрешений в какой-либо форме, поэтому нет способа увеличить объём доступной памяти.</p><p>В 2002 году компания Adobe представила функцию во Flash&nbsp;6, которая получилась неудачной и с названием, вводящим в заблуждение&nbsp;— «Flash-кукисы». В среде Flash эта возможность известна более правильно как <a href="http://kb2.adobe.com/cps/161/tn_16194.html">Local Shared Objects</a> (локальные доступные объекты, LSO). Вкратце, она позволяет Flash-объектам хранить до 100&nbsp;Кб данных на каждый домен. Брэд Нойберг разработавший ранний прототип моста между Flash и JavaScript назвал её <a href="http://codinginparadise.org/weblog/2005/10/amass-ajax-massive-storage-system.html">AMASS</a> (AJAX Massive Storage System), но она была ограничена некоторыми причудами Flash-дизайна. К 2006 году с появлением <a href="http://www.adobe.com/livedocs/flash/9.0/ActionScriptLangRefV3/flash/external/ExternalInterface.html">ExternalInterface</a> во Flash 8 доступ к LSO через JavaScript стал на порядок проще и быстрее. Брэд переписал AMASS и интегрировал её в популярный <a href="http://www.dojotoolkit.org/">Dojo Toolkit</a> под псевдонимом <a href="http://api.dojotoolkit.org/jsdoc/HEAD/dojox.storage.manager">dojox.storage</a>. Flash «бесплатно» даёт каждому домену 100&nbsp;Кб для хранения. Кроме того, он предлагает пользователю при запросе увеличивать объём хранения на порядок (1&nbsp;Мб, 10&nbsp;Мб и т.&nbsp;д.).</p><p>В 2007 году Google запустила <a href="http://gears.google.com/">Gears</a>, открытый плагин для браузера направленный на обеспечение дополнительных возможностей. Gears предоставляет <a href="http://code.google.com/apis/gears/api_database.html">API для встроенной базы данных</a> на основе <a href="http://www.sqlite.org">SQLite</a>. К 2010 году Google приложил усилия на перемещение всех возможностей Gears в веб-стандарты HTML5, так что в конце концов <a href="http://gearsblog.blogspot.com/2010/02/hello-html5.html">Google Gears была приостановлена</a>.</p><p> В то же время Брэд Нойберг и другие продолжали вкалывать на dojox.storage чтобы обеспечить единый интерфейс для всех этих разных плагинов и API. На 2009 год dojox.storage может автоматически определить (и обеспечить универсальный интерфейс) Adobe Flash, Gears, Adobe AIR и ранний прототип хранилища HTML5, который был реализован только в старых версиях Firefox.</p><p> В обзоре этих решений есть закономерность: все они либо специфичны для одного браузера, либо полагаются на сторонние плагины. Несмотря на героические усилия, они все радикально различаются интерфейсами, имеют разные ограничения по хранению и предоставляют разные способы взаимодействия с пользователем. Вот проблема, которую в HTML5 необходимо было решить: обеспечить стандартный API, который изначально поддерживается несколькими браузерами без необходимости полагаться на сторонние плагины.</p><h2>Введение в хранилище HTML5</h2><p>То, что я буду называть «HTML5-хранилище» в спецификации именуется «<a href="http://dev.w3.org/html5/webstorage/">веб-хранилище</a>», которое в своё время было частью спецификации HTML5, но затем выделено в отдельную спецификацию по неинтересным для вас политическим мотивам. Некоторые разработчики браузеров также называют его «Локальное хранилище» или «DOM-хранилище». Ситуацию с именами осложняют некоторые похожие названия из других стандартов, о которых пойдёт речь ниже.</p><p>Так что такое HTML5-хранилище? Проще говоря, это способ для веб-страниц хранить пары ключ/значение локально с помощью браузера. Как и кукисы, эти данные сохраняется даже после ухода с сайта, закрытия вкладки браузера, с выходом из браузера или чего-нибудь ещё. В отличие от кукисов эти данные никогда не передаются на удаленный веб-сервер (если только вы не пожелаете отправлять их самостоятельно). В отличие от всех предыдущих попыток обеспечить постоянное локальное хранилище, эта технология встроена в браузеры, поэтому она доступна даже тогда, когда нет сторонних плагинов.</p><p> Какие браузеры? Ну, последние версии практически каждого браузера поддерживает HTML5-хранилище... даже Internet Explorer!</p><table class="data browser"><caption>Поддержка HTML5-хранилища</caption><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>8.0+</td><td>3.5+</td><td>4.0+</td><td>4.0+</td><td>10.5+</td><td>2.0+</td><td>2.0+</td></tr></table><p>С помощью JavaScript вы можете получить доступ к HTML5-хранилищу через объект <span class="var">localStorage</span> глобального объекта <span class="var">window</span>. Перед использованием вы должны проверить, что браузер поддерживает технологию.</p><p class="exampleTitle">Проверка на HTML5-хранилище</p>
+<pre><code data-language="javascript">function supports_html5_storage() {
+  try {
+    return 'localStorage' in window  &amp;&amp; window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}</code></pre>
+
+<p>Вместо самостоятельного написания этой функции, вы можете использовать библиотеку <a href="http://www.modernizr.com">Modernizr</a>.</p>
+
+<pre><code data-language="javascript">if (<mark>Modernizr.localstorage</mark>) {
+  // window.localStorage доступно!
+} else {
+  // нет встроенной поддержки HTML5-хранилища
+}</code></pre>
+
+<h2>Использование HTML5-хранилища</h2><p>HTML5-хранилище базируется на именах пар ключ/значение. Вы сохраняете информацию, основываясь на имени ключа, а затем можете получить эти данные с тем же ключом. Имя ключа это строка. Данные могут быть любого типа, который поддерживает JavaScript, включая строки, логические, целые числа или числа с плавающей запятой. Однако в действительности данные хранятся в виде строки. Если вы сохраняете и извлекаете не строки, то надо будет использовать такие функции как <span class="var">parseInt()</span> или <span class="var">parseFloat()</span>, чтобы перевести полученные данные в корректные типы JavaScript.</p>
+
+<pre><code>Интерфейс хранилища {
+  Получить через getItem(ключ);
+  Установить через setItem(ключ, данные);
+};</code></pre>
+
+<p>Вызов <span class="var">setItem()</span> с существующим именем ключа молча перепишет предыдущее значение. Вызов <span class="var">getItem()</span> с несуществующим ключом вернет NULL, а не вызовет исключение.</p><p> Подобно другим объектам JavaScript вы можете обращаться к объекту <span class="var">localStorage</span> как к ассоциативному массиву. Вместо использования методов <span class="var">getItem()</span> и <span class="var">setItem()</span>, вы можете просто указать квадратные скобки. Например, этот фрагмент кода</p>
+
+<pre><code data-language="javascript">var foo = localStorage.<mark>getItem</mark>(&quot;bar&quot;);
+// ...
+localStorage.<mark>setItem</mark>(&quot;bar&quot;, foo);</code></pre>
+
+<p>может быть переписан с использованием синтаксиса квадратных скобок:</p>
+<pre><code data-language="javascript">var foo = localStorage<mark>[&quot;bar&quot;]</mark>;
+// ...
+localStorage<mark>[&quot;bar&quot;]</mark> = foo;</code></pre>
+
+<p>Есть также методы для удаления значений по имени ключа, а также очистки всего хранилища (то есть удаление всех ключей и значений одновременно).</p>
+
+<pre><code data-language="javascript">Интерфейс хранилища {
+  Удалить через removeItem(ключ);
+  clear();
+}</code></pre>
+
+<p>Вызов <span class="var">removeItem()</span> с несуществующим ключом ничего не вернёт.</p><p>Наконец, есть свойство для получения общего количества значений в области хранения и для перебора всех ключей по индексу (получает имя каждого ключа).</p>
+
+<pre><code data-language="javascript">Интерфейс хранилища {
+  length
+  Получить key(целое неотрицательное число);
+}</code></pre>
+
+<p>Если при вызове <span class="var">key()</span> индекс лежит не в диапазоне от 0 до (length-1), то функция вернет <span class="value">null</span>.</p><h2>Слежение за областью HTML5-хранилища</h2><p>Если вы хотите программно отслеживать изменения хранилища, то должны отлавливать событие <span class="var">storage</span>. Это событие возникает в объекте <span class="var">window</span>, когда <span class="var">setItem()</span>, <span class="var">removeItem()</span> или <span class="var">clear()</span> вызываются и что-то изменяют. Например, если вы установили существующее значение или вызвали <span class="var">clear()</span> когда нет ключей, то событие не сработает, потому что область хранения на самом деле не изменилась.</p><p>Событие <span class="var">storage</span> поддерживается везде, где работает объект <span class="var">localStorage</span>, включая Internet Explorer 8. IE 8 не поддерживает стандарт W3C <span class="var">addEventListener</span> (хотя он, наконец-то, будет добавлен в IE 9), поэтому, чтобы отловить событие <span class="var">storage</span> нужно проверить, какой механизм событий поддерживает браузер (если вы уже проделывали это раньше с другими событиями, то можете пропустить этот раздел до конца). Перехват события <span class="var">storage</span> работает так же, как и перехват других событий. Если вы предпочитаете использовать jQuery или какую-либо другую библиотеку JavaScript для регистрации обработчиков событий, то можете проделать это и со <span class="var">storage</span> тоже.</p>
+
+<pre><code data-language="javascript">if (window.addEventListener) {
+  window.addEventListener(&quot;storage&quot;, handle_storage, false);
+} else {
+  window.attachEvent(&quot;onstorage&quot;, handle_storage);
+};</code></pre>
+
+<p>Функция обратного вызова <span class="var">handle_storage</span> будет вызвана с объектом <span class="var">StorageEvent</span>, за исключением Internet Explorer, где события хранятся в <span class="var">window.event</span>.</p>
+
+<pre><code data-language="javascript">function handle_storage(e) {
+  if (!e) { e = window.event; }
+}</code></pre>
+<p>В данном случае переменная <span class="var">e</span> будет объектом <span class="var">StorageEvent</span>, который обладает следующими полезными свойствами.</p><table class="data"><caption>Объект StorageEvent</caption><tr><th>Свойство</th><th>Тип</th><th>Описание</th></tr><tr><td>key</td><td>string</td><td>Ключ может быть добавлен, удалён или изменён.</td></tr><tr><td>oldValue</td><td>любой</td><td>Предыдущее значение (если переписано) или null, если добавлено новое значение.</td></tr><tr><td>newValue</td><td>любой</td><td>Новое значение или null, если удалено.</td></tr><tr><td>url*</td><td>string</td><td>Страница, которая вызывает метод, приведший к изменению.</td></tr></table><p>* Примечание: свойство <span class="var">url</span> изначально называлось <span class="var">uri</span> и некоторые браузеры поддерживали это свойство перед изменением спецификации. Для обеспечения максимальной совместимости вы должны проверить существует ли свойство <span class="var">url</span>, и если нет, то проверить вместо него свойство <span class="var">uri</span>.</p><p>Событие <span class="var">storage</span> нельзя отменить, внутри функции обратного вызова <span class="var">handle_storage</span> нет возможности остановить изменение. Это просто способ браузеру сказать вам: «Эй, это только что случилось. Вы ничего не можете сделать, я просто хотел, чтобы вы знали».</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Ограничения в текущих браузерах</h2><p>Говоря об истории локального хранилища с помощью сторонних плагинов, я упомянул про ограничения каждой техники. Я вспомнил, что не сказал ничего об ограничениях теперь уже стандартного HTML5-хранилища. Я дам вам ответы, а затем объясню их. Ответы в порядке важности такие: «5 мегабайт», «QUOTA_EXCEEDED_ERR» и «нет».</p><p>«5 мегабайт»&nbsp;— сколько места для хранения выдается по умолчанию. Это значение на удивление одинаково во всех браузерах, хотя и сформулировано не более как предложение в спецификации HTML5. Надо понимать, что вы храните строки, а не данные в исходном формате. Если вы храните много целых чисел или чисел с плавающей запятой, разница в представлении может оказаться большой. Каждая цифра в числе с плавающей запятой хранится в виде символа, а не в обычном представлении для таких чисел.</p><p>«QUOTA_EXCEEDED_ERR» это исключение, которое вы получите, если превысите свою квоту в 5&nbsp;Мб. «Нет» является ответом на следующий очевидный вопрос: «Могу ли я попросить у пользователя больше пространства для хранения?». На момент написания в браузерах не реализован какой-либо механизм для веб-разработчиков, чтобы запросить больше места для хранения. Некоторые браузеры (например, Opera) позволяют пользователю контролировать квоты хранилища для каждого сайта, но это чисто инициатива пользователя, не связанная с тем, что вы как разработчик можете встроить в ваше веб-приложение.</p><h2>HTML5-хранилище в действии</h2><p>Давайте посмотрим на HTML5-хранилище в действии. Снова обратимся к <a href="https://webref.ru/example/halma/">игре «уголки»</a>, которую мы построили в главе про рисование. С этой игрой связана небольшая проблема: если вы закроете окно браузера посередине игры, то потеряете результаты. Но с HTML5-хранилищем мы можем сохранять процесс игры на месте, в самом браузере. Откройте демонстрацию, сделайте несколько ходов, закройте вкладку браузера, а затем снова её откройте. Если ваш браузер поддерживает HTML5-хранилище, демонстрационная страница волшебным образом вспомнит точное положение в игре, в том числе, сколько ходов вы сделали, положение каждой фишки на доске и даже выбранную фишку.</p><p>Как это работает? Каждый раз, когда происходит изменение в игре, мы будем вызывать эту функцию.</p>
+
+<pre><code data-language="javascript">function saveGameState() {
+    if (!supportsLocalStorage()) { return false; }
+    localStorage[&quot;halma.game.in.progress&quot;] = gGameInProgress;
+    for (var i = 0; i &lt; kNumPieces; i++) {
+        localStorage[&quot;halma.piece.&quot; + i + &quot;.row&quot;] = gPieces[i].row;
+        localStorage[&quot;halma.piece.&quot; + i + &quot;.column&quot;] = gPieces[i].column;
+    }
+    localStorage[&quot;halma.selectedpiece&quot;] = gSelectedPieceIndex;
+    localStorage[&quot;halma.selectedpiecehasmoved&quot;] = gSelectedPieceHasMoved;
+    localStorage[&quot;halma.movecount&quot;] = gMoveCount;
+    return true;
+}</code></pre>
+
+<p>Как видите, используется объект <span class="var">localStorage</span> для сохранения процесса игры (<span class="var">gGameInProgress</span>, логический тип). Далее перебираются все фишки (<span class="var">gPieces</span>, массив JavaScript) и сохраняется строка и столбец для каждой из них. После чего сохраняются некоторые дополнительные состояния игры, включая выбранную фишку (<span class="var">gSelectedPieceIndex</span>, целое число), фишку, которая находится в середине длинной серии прыжков (<span class="var">gSelectedPieceHasMoved</span>, логический тип) и общее число сделанных ходов (<span class="var">gMoveCount</span>, целое число).</p><p> При загрузке страницы вместо автоматического вызова функции <span class="var">newGame()</span>, которая бы вернула все переменные в исходные значения, мы вызываем <span class="var">resumeGame()</span>. Функция <span class="var">resumeGame()</span> с помощью HTML5-хранилища проверяет состояние игры в локальном хранилище. Если оно есть, то восстанавливает значения с использованием объекта <span class="var">localStorage</span>.</p>
+
+<pre><code data-language="javascript">function resumeGame() {
+    if (!supportsLocalStorage()) { return false; }
+    gGameInProgress = (localStorage[&quot;halma.game.in.progress&quot;] == &quot;true&quot;);
+    if (!gGameInProgress) { return false; }
+    gPieces = new Array(kNumPieces);
+    for (var i = 0; i &lt; kNumPieces; i++) {
+        var row = parseInt(localStorage[&quot;halma.piece.&quot; + i + &quot;.row&quot;]);
+        var column = parseInt(localStorage[&quot;halma.piece.&quot; + i + &quot;.column&quot;]);
+        gPieces[i] = new Cell(row, column);
+    }
+    gNumPieces = kNumPieces;
+    gSelectedPieceIndex = parseInt(localStorage[&quot;halma.selectedpiece&quot;]);
+    gSelectedPieceHasMoved = localStorage[&quot;halma.selectedpiecehasmoved&quot;] == &quot;true&quot;;
+    gMoveCount = parseInt(localStorage[&quot;halma.movecount&quot;]);
+    drawBoard();
+    return true;
+}</code></pre>
+
+<p>Наиболее важной частью этой функции является оговорка, о которой я упоминал ранее в этой главе и повторю здесь: данные хранятся в виде строк. Если вы храните нечто другое, а не строки, вам нужно конвертировать их при получении. К примеру, флаг о том, что игра в процессе (<span class="var">gGameInProgress</span>) является логическим типом. В функции <span class="var">saveGameState()</span> мы просто храним его и не беспокоимся о типе данных.</p>
+
+<pre><code data-language="javascript">localStorage[&quot;halma.game.in.progress&quot;] = <mark>gGameInProgress</mark>;</code></pre>
+
+<p>Но в функции <span class="var">resumeGame()</span> мы должны рассмотреть значение, полученное из локального хранилища в виде строки и вручную построить собственное логическое значение.</p>
+
+<pre><code data-language="javascript">gGameInProgress = (localStorage[&quot;halma.game.in.progress&quot;] <mark>== &quot;true&quot;</mark>);</code></pre>
+
+<p>Аналогичным образом, число ходов хранится в <span class="var">gMoveCount</span> как целое, в функции <span class="var">saveGameState()</span> мы просто сохраняем его.</p>
+
+<pre><code data-language="javascript">localStorage[&quot;halma.movecount&quot;] = <mark>gMoveCount</mark>;</code></pre>
+
+<p>Но в функции <span class="var">resumeGame()</span> мы должны конвертировать значение в целое, используя встроенную в JavaScript функцию <span class="var">parseInt()</span>.</p>
+
+<pre><code data-language="javascript">gMoveCount = <mark>parseInt</mark>(localStorage[&quot;halma.movecount&quot;]);</code></pre>
+
+<h2>За пределами пары ключ/значение: конкурентное видение</h2><p>Хотя в истории было много уловок и обходных путей, нынешнее состояние HTML5-хранилища на удивление благополучно. Новый API был стандартизирован и включен во все основные браузеры, платформы и устройства. Для веб-разработчика такое увидишь не каждый день, не так ли? Но это больше, чем «5 мегабайт пар ключ/значение» и будущее постоянного локального хранилища это... как бы сказать... ну, пусть конкурентное видение.</p><p> Одно видение является аббревиатурой, которую вы уже знаете&nbsp;— SQL. В 2007 году Google запустил <a href="http://gears.google.com">Gears</a>, кроссбраузерный плагин с открытым исходным кодом, в который включена встроенная база данных на основе <a href="http://www.sqlite.org">SQLite</a>. Этот ранний прототип позже повлиял на создание спецификации <a href="http://dev.w3.org/html5/webdatabase/">Web SQL Database</a>. База данных Web SQL (ранее известная как «WebDB») обеспечивает тонкую оболочку вокруг базы данных SQL, что позволяет делать следующие вещи из JavaScript:</p>
+
+<pre><code data-language="javascript"><mark>openDatabase</mark>('documents', '1.0', 'Local document storage', 5*1024*1024, function (db) {
+  db.changeVersion('', '1.0', function (t) {
+    t.<mark>executeSql</mark>('CREATE TABLE docids (id, name)');
+  }, error);
+});</code></pre>
+<p>Как вы можете видеть, большая часть действий находится в строке с методом <span class="var">ExecuteSQL</span>. Эта строка может поддерживать любые команды SQL, в том числе SELECT, UPDATE, INSERT и DELETE. Это все равно, что серверное программирования баз данных, за исключением того, что вы делаете это с JavaScript! О радость!</p><p> Спецификация базы данных Web SQL была реализована в четырёх браузерах и платформах.</p><table class="data browser"><caption>Поддержка базы данных Web SQL</caption><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>–</td><td>–</td><td>4.0+</td><td>4.0+</td><td>10.5+</td><td>3.0+</td><td>2.0+</td></tr></table><p>Конечно, если вы использовали более чем одну базу данных в своей жизни, то знаете, что «SQL» это скорее маркетинговый термин, чем жёсткий и быстрый стандарт (кто-то может сказать то же самое об HTML5, но это не важно). Конечно, есть актуальная спецификация SQL (она называется <a href="http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL-92</a>), но в мире нет сервера баз данных, который соответствует только этой спецификации. Есть Oracle SQL, Microsoft SQL, SQL в MySQL, SQL в PostgreSQL, SQL в SQLite. В действительности, каждый из этих продуктов с течением времени добавляет новые функции SQL, так что недостаточно даже произнести «SQL в SQLite». Вы должны сказать «версия SQL, который поставляется вместе с SQLite версии X.Y.Z».</p><p>Все это подводит нас к следующей оговорке, в настоящее время размещённой вверху спецификации Web SQL.</p><blockquote><p>Спецификация зашла в тупик: все заинтересованные разработчики использовали один и тот же серверный SQL (Sqlite), но нам нужно несколько независимых реализаций, чтобы двигаться по пути стандартизации. Пока другие разработчики заинтересованы в реализации этой спецификации, описание диалекта SQL было оставлено как обычная ссылка на Sqlite, который не приемлем для стандарта.</p></blockquote><p> Именно на этом фоне я расскажу вам о другом конкурентном видении для продвинутых, постоянное локальное хранилище для веб-приложений: <a href="http://dev.w3.org/2006/webapi/IndexedDB/">Indexed Database API</a>, ранее известное как «WebSimpleDB», теперь ласково называемое IndexedDB.</p><p>Indexed Database API предоставляет то, что называется хранилище объектов, при этом много идей заимствовано из баз данных SQL. Есть «базы данных» с «записями», каждая запись имеет определённое количество «полей». У каждого поля есть характерный тип данных, который определяется при создании базы данных. Вы можете выбрать часть записей, затем перечислить их «курсором». Изменения в хранилище объектов обрабатываются с «транзакциями».</p><p>Если вы хоть раз программировали базы данных SQL, то эти термины, вероятно, вам знакомы. Основная разница в том, что хранилище объектов не имеет структурированного языка запросов. Вы не напишете условие вроде «SELECT * from USERS where ACTIVE = 'Y'». Вместо этого используются методы, предоставляемые хранилищем объектов для открытия базы USERS, перечисления записей, фильтрации наших записей и использование методов доступа для получения значения каждого поля оставшихся записей. <a href="http://hacks.mozilla.org/2010/06/comparing-indexeddb-and-webdatabase/">An early walk-through of IndexedDB</a> (Ранний проход IndexedDB) это хорошее руководство о том, как работает IndexedDB и сравнение IndexedDB с Web SQL.</p><p> На момент написания IndexedDB был реализован только в <a href="https://developer.mozilla.org/en/Firefox_4_for_developers">бета-версии Firefox&nbsp;4</a>. Для контраста, Mozilla заявила, что никогда не будет воплощать Web&nbsp;SQL. Google заявил, что они <a href="http://www.chromium.org/developers/design-documents/indexeddb">рассматривают поддержку IndexedDB</a> для Chromium и Google Chrome. И даже Майкрософт заявил, что IndexedDB «<a href="http://blogs.msdn.com/b/ie/archive/2010/03/09/working-with-the-html5-community.aspx">отличное решение для веба</a>».</p><p> Что вы как веб-разработчик можете делать с IndexedDB? На данный момент практически ничего, кроме некоторых технологических демонстраций. Через год? Возможно.</p><h2>Дальнейшее чтение</h2><h3>HTML5-хранилище</h3><ul><li>Спецификация <a href="http://dev.w3.org/html5/webstorage/" hreflang="en">HTML5 Storage</a> </li><li><a href="http://msdn.microsoft.com/en-us/library/cc197062(VS.85).aspx" hreflang="en">Introduction to DOM Storage</a> на MSDN</li><li><a href="http://dev.opera.com/articles/view/web-storage/" hreflang="en">Web Storage: easier, more powerful client-side data storage</a> на Opera Developer Community</li><li><a href="http://developer.mozilla.org/en/dom/storage" hreflang="en">DOM Storage</a> на Mozilla Developer Center</li><li><a href="http://www.ibm.com/developerworks/xml/library/x-html5mobile2/" hreflang="en">Unlock local storage for mobile Web applications with HTML5</a>, руководство на IBM DeveloperWorks</li></ul><h3>Web SQL Database</h3><ul><li>Спецификация <a href="http://dev.w3.org/html5/webdatabase/" hreflang="en">Web SQL Database</a></li><li><a href="http://html5doctor.com/introducing-web-sql-databases/" hreflang="en">Introducing Web SQL Databases</a></li><li>Демонстрация <a href="http://html5demos.com/database" hreflang="en">Web Database</a></li><li><a href="http://zef.me/2774/persistence-js-an-asynchronous-javascript-orm-for-html5gears" hreflang="en">persistence.js</a></li></ul><h3>IndexedDB</h3><ul><li>Спецификация <a href="http://dev.w3.org/2006/webapi/IndexedDB/" hreflang="en">Indexed Database API</a></li><li><a href="http://hacks.mozilla.org/2010/06/beyond-html5-database-apis-and-the-road-to-indexeddb/" hreflang="en">Beyond HTML5: Database APIs and the Road to IndexedDB</a></li><li><a href="http://hacks.mozilla.org/2010/06/comparing-indexeddb-and-webdatabase/" hreflang="en">Firefox 4: An early walk-through of IndexedDB</a></li></ul><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Марк Пилгрим</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 24.12.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/diveintohtml5/geolocation'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/diveintohtml5/offline'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="geolocation.html" title="На предыдущую страницу">Вы здесь</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="offline.html" title="На следующую страницу">Возьмём с собой</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Пять вещей, которые надо знать об HTML5</a></li><li class="leaf"><a href="past.html">Довольно предвзятая история HTML5</a></li><li class="leaf"><a href="detect.html">Проверка технологий HTML5</a></li><li class="leaf"><a href="semantics.html">Что всё это значит?</a></li><li class="leaf"><a href="canvas.html">Давайте порисуем</a></li><li class="leaf"><a href="video.html">Видео на сайте</a></li><li class="leaf"><a href="geolocation.html">Вы здесь</a></li><li class="leaf active-trail"><a href="storage.html" class="active-trail active">Локальное хранилище</a></li><li class="leaf"><a href="offline.html">Возьмём с собой</a></li><li class="leaf"><a href="forms.html">Сумасшедшие формы</a></li><li class="leaf"><a href="extensibility.html">Микроданные</a></li><li class="last leaf"><a href="history.html">Управление историей для пользы и развлечения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-25fe67f717a914f15792743a4336b329"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="storage.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

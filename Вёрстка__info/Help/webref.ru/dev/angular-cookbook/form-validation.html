@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Проверка формы в AngularJS | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../angular-cookbook.html" />
+<link rel="next" href="routing.html" />
+<link rel="prev" href="single-page-app.html" />
+<meta name="description" content="Одним из преимуществ AngularJS является простота, которую он предлагает для проверки форм. Пример ниже демонстрирует простой путь для внедрения проверки на стороне клиента используя свойства форм AngularJS. Предположим, у нас есть форма с двумя полями — именем пользователя, адресом электронной почты и двумя кнопками — одна для сброса, а другая для отправки формы. Идея нашего примера состоит в том, что оба поля формы обязательны, поэтому форма не может быть отправлена, если любое из полей пустое или содержит неверный формат (например, электронной почты)." />
+<link rel="canonical" href="form-validation.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Проверка формы в AngularJS</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../angular-cookbook.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">AngularJS. Рецепты программирования</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Проверка формы в AngularJS</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Одним из преимуществ AngularJS является простота, которую он предлагает для проверки форм. Пример ниже демонстрирует простой путь для внедрения проверки на стороне клиента используя свойства форм AngularJS.</p><p>Предположим, у нас есть форма с двумя полями — именем пользователя, адресом электронной почты и двумя кнопками&nbsp;— одна для сброса, а другая для отправки формы. Идея нашего примера состоит в том, что оба поля формы обязательны, поэтому форма не может быть отправлена, если любое из полей пустое или содержит неверный формат (например, электронной почты).</p><h2>Страница представления</h2><p>Лучший способ воспользоваться возможностями Angular для проверки формы — это присоединение контроллера к нашей форме.</p><p class="exampleTitle">index.html</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; &gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h2&gt;Пример проверки формы в AngularJS&lt;/h2&gt;
+  &lt;form ng-controller=&quot;validationCtrl&quot; name=&quot;sampleForm&quot; novalidate&gt;
+   &lt;label&gt;Имя пользователя:&lt;/label&gt;
+   &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;username&quot; ng-model=&quot;username&quot; required&gt;
+   &lt;span ng-show=&quot;sampleForm.username.$error.required&quot;&gt;Имя пользователя обязательно.&lt;/span&gt;
+   &lt;label&gt;Email:&lt;/label&gt;
+   &lt;input type=&quot;email&quot; class=&quot;form-control&quot; name=&quot;email&quot; ng-model=&quot;email&quot; required&gt;
+   &lt;span ng-show=&quot;sampleForm.email.$error.required&quot;&gt;Email обязателен.&lt;/span&gt;
+   &lt;span ng-show=&quot;sampleForm.email.$error.email&quot;&gt;Неверный адрес.&lt;/span&gt;
+   &lt;button class=&quot;btn btn-link&quot; ng-click=&quot;reset()&quot;&gt;Сбросить&lt;/button&gt;
+   &lt;input type=&quot;submit&quot; class=&quot;btn btn-primary&quot; ng-disabled=&quot;sampleForm. $invalid&quot; ng-click=&quot;checkData()&quot;&gt;
+  &lt;/form&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Как понятно из определения &lt;head&gt;, мы решили разделить HTML на JavaScript и CSS.</p><p>Строка 11 объявляет, что наша форма прикреплена к <span class="var">validationCtrl</span> и да, ваше предположение верно, script.js будет содержать логику контроллера, который только обрабатывает кнопки нашей формы.</p><p>Типичный процесс проверки на стороне клиента содержит сообщения об ошибках, за исключением случаев неверных (адрес электронной почты) или пустых полей ввода.</p><p>В Angular есть дискретные состояния формы такие как <span class="var">$dirty</span> или <span class="var">$invalid</span>, соответственно, для проверки взаимодействия пользователя с формой и для проверки неверных полей ввода. Чтобы узнать больше о свойствах форм обратитесь к официальной документации.</p><p>Как правило, это означает, что нам частично нужны дополнительные сообщения, которые станут отображаться в нашем приложении. AngularJS предлагает директиву <span class="attribute">ng-show</span> для этой цели, которая в сочетании с состояниями формы показывает результаты проверки на стороне клиента. Строки 14 и 17-18 осуществляют проверку в стиле AngularJS.</p><p>Мы хотим чтобы наша кнопка для отправки формы была заблокирована, пока форма неверная (строка 20). AngularJS предлагает директиву <span class="attribute">ng-disabled</span>, чтобы сделать это возможным.</p><p>Наконец, мы объясняем нашему контроллеру что хотим запустить специальную функцию для каждой кнопки формы с помощью директивы <span class="attribute">ng-click</span>.</p><h2>Работа контроллера</h2><p>Когда наша форма содержит корректное состояние, кнопка отправки становится доступной. Предположим, что существуют предустановленные корректные имя пользователя и адрес электронной почты из веб-приложения и что это цель кнопки сброса: вернуть нашу форму к приемлемому формату. С другой стороны, кнопка отправки должна проверять, что форма содержит корректные данные.</p><p>Соответственно в AngularJS клеем между контроллером приложений и представлением выступает объект <span class="var">$scope</span>.</p><p class="exampleTitle">script.js</p>
+<pre><code data-language="html">function validationCtrl($scope) {
+  var validUsername = &quot;Тодорис Баис&quot;;
+  var validEmail = &quot;thodoris.bais@gmail.com&quot;;
+  $scope.reset = function(){
+   $scope.username = validUsername;
+   $scope.email = validEmail;
+  }
+  $scope.checkData = function() {
+    if ($scope.username != validUsername || $scope.email != validEmail) {
+     alert(&quot;Предоставленные данные не совпадают с владельцем по умолчанию&quot;);
+    } else {
+     alert(&quot;Вроде нормально!&quot;);
+    }
+  }
+}</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Демонстрация</h2><p>Давайте запустим наше приложение.</p><p class="fig"><img src="../../assets/images/angular-cookbook/form-validation1.png" alt="Первоначальный скриншот приложения"></p><p class="figsign">Рис. 2.1. Первоначальный скриншот приложения</p><p>Если оставить поле для электронной почты пустым, то работает <span class="attribute">ng-show</span>.</p><p class="fig"><img src="../../assets/images/angular-cookbook/form-validation2.png" alt="Поле не может быть пустым"></p><p class="figsign">Рис. 2.2. Поле не может быть пустым</p><p>Подставив корректные входные данные мы сразу заметим, что кнопка Отправить становится доступной (оба поля должны быть с зелёной рамкой).</p><p class="fig"><img src="../../assets/images/angular-cookbook/form-validation3.png" alt="Введены корректные данные"></p><p class="figsign">Рис. 2.3. Введены корректные данные</p><h2> Скачать</h2><p>Вы можете скачать полный исходный код этого примера здесь: <a href="../../assets/files/angularjs_form_validation.zip">angularjs_form_validation.zip</a>.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Тодорис Баис</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 03.11.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/angular-cookbook/single-page-app'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/angular-cookbook/routing'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="single-page-app.html" title="На предыдущую страницу">Одностраничные приложения</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="routing.html" title="На следующую страницу">Маршрутизация в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="single-page-app.html">Одностраничные приложения</a></li><li class="leaf active-trail"><a href="form-validation.html" class="active-trail active">Проверка формы в AngularJS</a></li><li class="leaf"><a href="routing.html">Маршрутизация в AngularJS</a></li><li class="leaf"><a href="controler.html">Контроллеры в AngularJS</a></li><li class="leaf"><a href="json.html">Извлечение данных JSON в AngularJS</a></li><li class="leaf"><a href="table.html">Таблицы в AngularJS</a></li><li class="leaf"><a href="ng-src.html">AngularJS ng-src</a></li><li class="last leaf"><a href="data-binding.html">Связывание данных в AngularJS</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-41ecc4be35271e93a9d8e19ba126d048"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="form-validation.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

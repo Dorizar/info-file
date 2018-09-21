@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Победа или поражение | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosgame.html" />
+<link rel="next" href="levels.html" />
+<link rel="prev" href="input.html" />
+<meta name="description" content="В Foxnoid теперь можно играть, но вы не можете выиграть или проиграть. В этой главе мы собираемся решить этот вопрос, добавив в игру ту и другую механику." />
+<link rel="canonical" href="winning-or-losing.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Победа или поражение</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosgame.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Создание игр для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Победа или поражение</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В Foxnoid теперь можно играть, но вы не можете выиграть или проиграть. В этой главе мы собираемся решить этот вопрос, добавив в игру ту и другую механику.</p><p>Победа и поражение важные аспекты игр. Вы можете делать игры только с одним из этих пунктов. Игра со сценариями без победы — это игры, где выигрыш, как правило, выражается в том, кто дольше продержался перед поражением. Игры без сценария проигрыша характерны в наше время, особенно на мобильных телефонах. Это игры, где вы можете играть вечно, пока выигрываете или даже, в некоторых случаях, игры, в которых вы можете потратить реальные деньги, чтобы повысить уровень или купить апгрейды.</p><p>Flappy Bird — игра без сценария победы (по крайней мере, мне об этом неизвестно). В основном такой тип игр работает очень хорошо, если они жёсткие и используют список лидеров, где игроки могут конкурировать друг с другом за лучший результат.</p><p>Angry Birds является своего рода игрой, где вы на деле не можете проиграть, просто застрянете на одном уровне до тех пор, пока не пройдёте его. Такое поведение распространено в мобильных аркадах/головоломках, которые, в основном, стали стандартной вещью в наши дни.</p><p>В Foxnoid мы собираемся реализовать как сценарий победы, так и сценарий поражения.</p><h2>Сценарий окончания игры</h2><p>Окончание игры произойдет, как только игрок теряет все жизни. Первоначальное число жизней устанавливается функцией <span class="var">initWorld()</span> и обновляется при необходимости функцией <span class="var">ballCollidesWithGround()</span>. Всё что нам надо сделать&nbsp;— это проверить, что у игрока ноль жизней и при необходимости переключиться в новое состояние игры с именем GameOver. Давайте изменим эту функцию.</p><p class="exampleTitle">game.js: функция ballCollidesWithBlock() с переключателем</p>
+<pre><code data-language="javascript">ballCollidesWithGround: function() {
+  if (this.ball.y &gt;= 470) {
+    this.playerLives -= 1;
+    this.resetBall();
+  }
+  
+  /*
+   Обновляем отображение жизней
+   */
+  
+this.livesDisplay.setText(&quot;Lives: &quot; + this.playerLives);
+
+  if (this.playerLives === 0) {
+    this.state.start(&quot;GameOver&quot;);
+  }
+  
+}</code></pre>
+<p>Важной частью является строка <span class="var">this.state.start (&quot;GameOver&quot;)</span>, которая переключает в новое состояние. Наше новое состояние во время игры будет выглядеть следующим образом.</p><p class="fig"><img src="../../assets/images/firefoxosgame/gameover.jpg" alt="Экран завершения игры Foxnoid" width="318" height="478"></p><p class="figsign">Экран завершения игры Foxnoid</p><p>Мы используем тот же фон, что и в самой игре с двумя рисунками для текста. Нам нужно добавить эти изображения в состояние <strong>Preload</strong>, так что для этого отредактируем <strong>preload.js</strong>.</p><p class="exampleTitle">preload.js: игровое состояние для загрузки наших ассетов</p>
+<pre><code data-language="javascript">GameStates.Preloader = {
+  preload: function() {
+    this.load.image('background', 'assets/background.jpg');
+    this.load.image('player', 'assets/player.png');
+    this.load.image('ball', 'assets/ball.png');
+    this.load.image('block', 'assets/block.png');
+    this.load.image('gameover', 'assets/gameover.png');
+    this.load.image('taptoplay', 'assets/taptoplay.png');
+  },
+  create: function(){
+    this.state.start('Game');
+  }
+};</code></pre>
+<p>Как вы видите, мы просто добавили два изображения в функцию <span class="var">preload()</span>, так что они доступны в нашем новом игровом состоянии при загрузке. Говоря о игровых состояния нам нужно проделать некоторые шаги при создании нового. Вначале следует создать новый файл. Назовём его <strong>game_over.js</strong> и поместим в папку <strong>js</strong>.</p><p>Мы должны включить его в index.html, как показано ниже.</p><p class="exampleTitle">index.html: теперь включает игровое состояние GameOver</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Foxnoid Game&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; /&gt;
+    &lt;script defer src=&quot;js/phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/init.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/preload.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/game.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/game_over.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+   &lt;div id=&quot;game&quot;&gt;&lt;/div&gt;
+  
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>После включения этого файла в HTML нужно зарегистрировать состояние в init.js как показано ниже.</p><p class="exampleTitle">init.js: с новым состоянием GameOver</p>
+<pre><code data-language="javascript">var GameStates = {}; // &lt;-- Объект для хранения всех наших игровых состояний
+  
+document.addEventListener(&quot;DOMContentLoaded&quot;, function()  {
+  
+  // Портретная ориентация игры
+  
+  var width = 320;
+  var height = 480;
+  
+  var game = new Phaser.Game(width, height, Phaser.CANVAS, &quot;game&quot;);
+  
+  // Добавляем игровые состояния
+  game.state.add('Preloader', GameStates.Preloader);
+  game.state.add('Game', GameStates.Game);
+  game.state.add('GameOver', GameStates.GameOver);
+  
+  // Запускаем состояние Preloader
+  game.state.start('Preloader');
+  
+});</code></pre>
+<p>После завершения этих шагов мы можем писать код <strong>game_over.js</strong>.</p><p class="exampleTitle">game_over.js: игрок проиграл, как грустно</p>
+<pre><code data-language="javascript">GameStates.GameOver = {
+  create: function() {
+  
+    // Добавляем фон
+    this.add.sprite(0, 0, 'background');
+  
+    // Добавляем сообщение
+    this.add.sprite(20, 30, 'gameover');
+  
+    // Добавляем кнопку для продолжения игры
+    this.add.sprite(20, 300, 'taptoplay');
+  },
+  
+  update: function() {
+  
+    /**
+     * Мы просто хотим отследить нажатие.
+     * Если оно произошло, то переключаемся обратно в 
+     * игровое состояние и начинаем игру заново.
+     */
+  
+    if (this.input.pointer1.isDown) {
+      this.state.start('Game');
+    }
+  
+  }
+  
+};</code></pre>
+<p>Это новое игровое состояние довольно простое. В <span class="var">create()</span> мы строим экран с нашими сообщениями, а в <span class="var">update()</span> продолжаем проверку прикосновения к экрану. Если игрок касается экрана, то переключаемся в игровое состояние <strong>Game</strong>, которое перезапускает игру.</p><h2>Сценарий выигрыша</h2><p>Сценарий выигрыша будет таким же, как и сценарий поражения, но с другими изображениями, как показано ниже.</p><p class="fig"><img src="../../assets/images/firefoxosgame/gamewin.jpg" alt="Игрок выиграл!" width="318" height="478"></p><p class="figsign">Игрок выиграл!</p><p>Вначале добавим новое изображение в состоянии <strong>Preload</strong>.</p><p class="exampleTitle">preload.js: игровое состояние для загрузки наших ассетов</p>
+<pre><code data-language="javascript">GameStates.Preloader = {
+  preload: function() {
+    this.load.image('background', 'assets/background.jpg');
+    this.load.image('player', 'assets/player.png');
+    this.load.image('ball', 'assets/ball.png');
+    this.load.image('block', 'assets/block.png');
+    this.load.image('gameover', 'assets/gameover.png');
+    this.load.image('taptoplay', 'assets/taptoplay.png');
+    this.load.image('gamewin', 'assets/gamewin.png');
+  },
+  create: function(){
+    this.state.start('Game');
+  }
+};</code></pre>
+<p>И создадим файл <strong>game_win.js</strong> в папке <strong>js</strong>. Мы должны зарегистрировать это новое игровое состояние в <strong>init.js</strong> и добавить его в <strong>index.html</strong>.</p><p class="exampleTitle">index.html: теперь включает в себя состояние GameWin</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Foxnoid Game&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; /&gt;
+    &lt;script defer src=&quot;js/phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/init.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/preload.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/game.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/game_over.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/game_win.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+    &lt;div id=&quot;game&quot;&gt;&lt;/div&gt;
+  
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>После включения этого файла в HTML нам нужно зарегистрировать состояние в <strong>init.js</strong> как показано ниже.</p><p class="exampleTitle">init.js: с новым состоянием GameWin</p>
+<pre><code data-language="javascript">var GameStates = {}; // &lt;-- Объект для хранения всех наших игровых состояний
+  
+document.addEventListener(&quot;DOMContentLoaded&quot;, function()  {
+  
+  // Портретная ориентация игры
+  
+  var width = 320;
+  var height = 480;
+  
+  var game = new Phaser.Game(width, height, Phaser.CANVAS, &quot;game&quot;);
+  
+  // Добавляем имеющиеся игровые состояния
+  game.state.add('Preloader', GameStates.Preloader);
+  game.state.add('Game', GameStates.Game);
+  game.state.add('GameOver', GameStates.GameOver);
+  game.state.add('GameWin', GameStates.GameWin);
+  
+  // Запускаем состояние Preloader
+  game.state.start('Preloader');
+  
+});</code></pre>
+<p>Как только это сделано можем приступать к коду файла <strong>game_win.js</strong>.</p><p>game_win.js: игрок выиграл!</p>
+<pre><code data-language="javascript">GameStates.GameWin = {
+  create: function() {
+  
+    // Добавляем фон
+    this.add.sprite(0, 0, 'background');
+  
+    // Добавляем сообщение
+    this.add.sprite(20, 30, 'gamewin');
+  
+    // Добавляем кнопку для продолжения игры
+    this.add.sprite(20, 300, 'taptoplay');
+  },
+  
+  update: function() {
+  
+    /**
+     * Мы просто хотим отследить нажатие.
+     * Если оно произошло, то переключаемся обратно в 
+     * игровое состояние и начинаем игру заново.
+     */
+  
+    if (this.input.pointer1.isDown) {
+      this.state.start('Game');
+    }
+  
+  }
+  
+};</code></pre>
+<p>Мы создали все файлы необходимые для победы в игре, но также следует добавить условие в <strong>game.js</strong>. Игрок побеждает, как только все блоки удалены из игры. Лучшее место для проверки это <span class="var">update()</span> после проверки столкновения, уничтожающего блоки. Давайте добавим функцию в этот файл.</p><p class="exampleTitle">game.js: новая функция для проверки состояния GameWin</p>
+<pre><code data-language="javascript">checkGameWin: function () {
+  if (this.blocks.countLiving() === 0) {
+    this.state.start(&quot;GameWin&quot;);
+  }
+}</code></pre>
+<p>Вызываем <span class="var">this.blocks.countLiving()</span> из <span class="var">Phaser.Group</span>, оно возвращает количество доступных спрайтов в данной группе. Поскольку каждый раз при столкновении с блоком мы вызываем <span class="var">kill()</span>, то функция возвратит ноль, как только все блоки исчезнут. Когда это произойдёт, мы переключаемся в сценарий выигрыша, который работает аналогично окончанию игры.</p><p>Нужно добавить это в функцию <span class="var">update()</span>.</p><p class="exampleTitle">game.js: новая функция update()</p>
+<pre><code data-language="javascript">update: function() {
+  this.handleTouchInput();
+  this.handleKeyboardInput();
+  this.checkHitWithBlocks();
+  this.checkHitWithPlayer();
+  this.ballCollidesWithGround();
+  this.checkGameWin();
+}</code></pre>
+<p>Теперь вы можете играть, побеждать и проигрывать!</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Резюме</h2><p>В этой главе мы добавили в игру механику для победы и поражения. В следующей главе мы рассмотрим, как удержать игроков, привлекая их дополнительными уровнями игры.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 17.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosgame/input'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosgame/levels'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="input.html" title="На предыдущую страницу">Обработка ввода</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="levels.html" title="На следующую страницу">Привлечение игроков</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="gametheory.html">Об играх</a></li><li class="leaf"><a href="ourgame.html">Наша игра</a></li><li class="leaf"><a href="gamescaffold.html">Настройки нашей игры</a></li><li class="leaf"><a href="initialization.html">Инициализация Foxnoid</a></li><li class="leaf"><a href="assets.html">Управление ассетами</a></li><li class="leaf"><a href="gameloop.html">Цикл игры</a></li><li class="leaf"><a href="input.html">Обработка ввода</a></li><li class="leaf active-trail"><a href="winning-or-losing.html" class="active-trail active">Победа или поражение</a></li><li class="last leaf"><a href="levels.html">Привлечение игроков</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-11636c589942d72f543ad1bd1c75b543"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="winning-or-losing.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

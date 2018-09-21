@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Слайдер | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../dev.html" />
+<link rel="next" href="button.html" />
+<link rel="prev" href="text.html" />
+<meta name="description" content="Слайдер это такой ползунок, с помощью которого можно указывать числовое значение в заданном диапазоне. Слайдер в Corona на деле является картинкой особым образом подготовленной в графическом редакторе. Также необходимо написать код, который указывает движку, какая часть картинки за что отвечает. Для начала находим подходящее изображение слайдера или рисуем его сами. Исходное изображение слайдера" />
+<link rel="canonical" href="slider.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Слайдер</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../corona.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Делаем приложение на Corona SDK</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Разработка</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Слайдер</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p> Слайдер это такой ползунок, с помощью которого можно указывать числовое значение в заданном диапазоне. Слайдер в Corona на деле является картинкой особым образом подготовленной в графическом редакторе. Также необходимо написать код, который указывает движку, какая часть картинки за что отвечает.</p><p> Для начала находим подходящее изображение слайдера или рисуем его сами.</p><p class="fig"><img src="../../../assets/images/corona/slider.png" alt="Исходное изображение слайдера" width="340" height="45"></p><p class="figsign"> Исходное изображение слайдера</p><p> Далее разбиваем эту картинку на составляющие фрагменты, они показаны ниже.</p><table class="data"><tr><td >Левый край слайдера</td><td><img src="../../../assets/images/corona/slider-1.png" alt="Левый край слайдера" width="15" height="31"></td></tr><tr><td>Средняя часть слайдера</td><td><img src="../../../assets/images/corona/slider-3.png" alt="Средняя часть слайдера" width="42" height="31"></td></tr><tr><td>Правый край слайдера</td><td><img src="../../../assets/images/corona/slider-2.png" alt="Правый край слайдера" width="15" height="31"></td></tr><tr><td>Заполнитель</td><td><img src="../../../assets/images/corona/slider-4.png" alt="Заполнитель" width="42" height="31"></td></tr><tr><td>Ползунок</td><td><img src="../../../assets/images/corona/slider-5.png" alt="Ползунок" width="47" height="46"></td></tr></table><p>Теперь соединяем эти фрагменты в новое изображение слайдера.</p><p class="fig"><img src="../../../assets/images/corona/slider2.png" width="400" height="47"></p><p class="figsign"> Подготовленное изображение слайдера</p><p>Для каждого фрагмента в коде надо будет указать координаты его левого верхнего угла относительно целой картинки, а также ширину и высоту. Несмотря на относительную простоту данных, легко совершить ошибку и тогда слайдер будет выглядеть причудливо, а не так как нам требуется. На первых порах рекомендуем использовать программу TexturePacker, которая готовит изображения и код для работы в Corona. Программа платная, но доступна полнофункциональная пробная версия, её должно хватить на некоторое время. Скачать можно на сайте разработчика программы.</p><p><a href="https://www.codeandweb.com/texturepacker">https://www.codeandweb.com/texturepacker</a></p><p>Слайдер в Corona SDK имеет диапазон от 0 до 100, поэтому нам надо значение слайдера интерполировать в значение из нашего диапазона. И наоборот, наше значение перевести в значения слайдера.</p><p>Для примера возьмём возраст, остальные вводимые параметры делаются по аналогии. Вводим две переменные, они задают минимальное и максимальное допустимое значение возраста. Формула Маффина-Джеора, лежащая в основе нашего приложения, корректно работает только с 18-летнего возраста. Поэтому минимальный возраст устанавливаем 18, максимальный же произвольный. Будем считать, что 98-летние люди тоже захотят воспользоваться нашим приложением. Итак, с помощью слайдера получаем возраст в диапазоне [18, 98] через следующий код.</p>
+<pre><code data-language="lua">ageMin = 18;  -- минимальный возраст
+ageMax = 98;  -- максимальный возраст
+-- вводимый пользователем возраст
+age = ageMin + (ageMax - ageMin)*event.value/100;</code></pre>
+<p>Здесь <span class="value">event.value</span> — это текущее значение слайдера, оно лежит в интервале [0, 100].</p><p>И, наоборот, зная введённый пользователем возраст, хранимый в переменной <span class="value">age</span>, мы можем интерполировать его в значение слайдера по следующей формуле.</p>
+<pre><code data-language="lua">100*(age - ageMin)/(ageMax – ageMin));</code></pre>
+<p>С весом обстоит немного проще. У нас он меняется от 40 до 140, поэтому достаточно к минимальному значению <span class="value">weightMin</span> прибавить значение слайдера и так получить введённый пользователем возраст. Или воспользоваться формулами выше, тогда мы не будем привязаны к стобальной шкале и можем указывать произвольную минимальную и максимальную величину возраста.</p><p>Переходим к коду. Для начала нам потребуется подключить библиотеку виджетов, куда входят слайдер и кнопки. В самом верху нашей программы пишем следующую строку.</p>
+<pre><code data-language="lua">local widget = require("widget");</code></pre>
+<p>После создания самого слайдера нам надо реагировать на движения ползунка — сохранять введённое значение в переменную <span class="value">weight</span> и менять значение текста <span class="value">myWeight</span>. Это делается через <span class="var">listener</span> — функцию, которая вызывает обработчик событий. Можно написать отдельную функцию и указать её имя, но так как кода у нас мало, то мы его вставим здесь же.</p>
+<pre><code data-language="lua">listener = function(event)
+	weight = math.round(weightMin + (weightMax - weightMin)*event.value/100);
+	myWeight.text = weight; -- выводим новый текст
+end</code></pre>
+<p>Текст менять легко через метод <span class="var">text</span>, добавляемый к имени любого текстового объекта. Просто присваиваем значение и текст становится другим. Также поясним, зачем требуется округление до целого числа через <span class="var">math.round</span>. Сам слайдер это не набор целых чисел 0,1,2...,100. При движении ползунка мы вполне можем получить число вида 3.14, к тому же при интерполяции значения слайдера в необходимый нам диапазон возможно появление вещественных чисел. Так что округление гарантирует, что на выходе мы всегда получим целое число.</p><p>Окончательный код нашего приложения с геометрическими фигурами, текстом и слайдером показан ниже.</p>
+<pre><code data-language="lua">local widget = require("widget");
+
+weightMin	= 40;   -- минимальный вес
+weightMax 	= 140;  -- максимальный вес
+
+weight = 60; -- вес пользователя
+
+-- прячем строку состояния
+display.setStatusBar(display.HiddenStatusBar);
+
+-- фон приложения
+display.setDefault("background", 37/255, 39/255, 46/255);
+	
+-- цвет текста по умолчанию
+display.setDefault("fillColor", 0);
+
+-- ширина контента
+w = display.contentWidth - 20;
+
+
+-- Вес
+------------------------------------------------------------------
+
+-- создаём группу для ввода веса
+local weightGroup = display.newGroup(); 
+
+-- добавляем круг
+display.newCircle(weightGroup, display.contentCenterX, 74, 60):setFillColor(244/255);
+	
+-- прямоугольник со скруглёнными уголками
+display.newRoundedRect(weightGroup, display.contentCenterX, 110, w, 100, 10):setFillColor(244/255);
+
+-- выводим текст
+display.newText(weightGroup, "Укажите вес в килограммах", display.contentCenterX, 90, native.systemFont, 24);
+
+-- выводим текущий вес
+local myWeight = display.newText({
+	parent = weightGroup,
+	text = weight,
+	x = display.contentCenterX, y = 53,
+	font = native.systemFont, 
+	fontSize = 50,
+});
+
+-- меняем цвет текста
+myWeight:setFillColor(0/255, 131/255, 202/255);
+
+-- параметры слайдера
+local optionsSlider = {
+	frames = {   
+		{ x=0, y=0, width=15, height=45 },
+		{ x=16, y=0, width=130, height=45 },
+		{ x=332, y=0, width=15, height=45 },
+		{ x=153, y=0, width=15, height=45 },        
+		{ x=353, y=0, width=47, height=47 },
+	},
+	sheetContentWidth = 400,
+	sheetContentHeight = 45
+}
+
+-- выводим слайдер для ввода веса
+weightSlider = widget.newSlider {
+	sheet = graphics.newImageSheet("img/slider.png", optionsSlider),
+	leftFrame = 1, middleFrame = 2, rightFrame = 3, fillFrame = 4, handleFrame = 5,
+	frameWidth = 15, frameHeight = 45,
+	handleWidth = 45, handleHeight = 45,
+	-- координаты слайдера
+	top = 110, left= 91,
+	-- размеры слайдера
+	width = 360, height=47,
+	orientation = "horizontal",
+	-- устанавливаем положение ползунка веса
+	value = 100*(weight - weightMin)/(weightMax - weightMin),
+	-- выводим вес при перемещении слайдера
+	listener = function(event)
+		--weight = weightMin + event.value; -- простой вариант
+		-- универсальный вариант
+		weight = math.round(weightMin + (weightMax - weightMin)*event.value/100);
+		myWeight.text = weight; -- выводим новый текст
+	end
+}</code></pre>
+
+<p>Вот как выглядит результат в эмуляторе.</p><p class="fig"><img src="../../../assets/images/corona/slider3.png" alt="Вид слайдера в эмуляторе" width="402" height="820"></p><p class="figsign">Вид слайдера в эмуляторе</p><h2>См. также</h2><p>Документация по созданию слайдера</p><p><a href="http://docs.coronalabs.com/api/library/widget/newSlider.html">http://docs.coronalabs.com/api/library/widget/newSlider.html</a></p><p>TexturePacker</p><p><a href="https://www.codeandweb.com/texturepacker">https://www.codeandweb.com/texturepacker</a></p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 10.01.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/corona/dev/text'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/corona/dev/button'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="text.html" title="На предыдущую страницу">Вывод текста</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="button.html" title="На следующую страницу">Кнопки</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../prosandcons.html">Плюсы и минусы Corona SDK</a></li><li class="leaf"><a href="../install.html">Установка Corona SDK</a></li><li class="leaf"><a href="../run.html">Запуск программы</a></li><li class="leaf"><a href="../preferences.html">Настройки программы</a></li><li class="leaf"><a href="../ide.html">Среда разработки</a></li><li class="expanded active-trail"><a href="../dev.html" class="active-trail">Разработка</a><ul class="menu"><li class="first leaf"><a href="config.html">Файл config.lua</a></li><li class="leaf"><a href="scale.html">Рабочее поле</a></li><li class="leaf"><a href="color.html">Фон и цвет</a></li><li class="leaf"><a href="fig.html">Геометрические фигуры</a></li><li class="leaf"><a href="group.html">Группирование объектов</a></li><li class="leaf"><a href="text.html">Вывод текста</a></li><li class="leaf active-trail"><a href="slider.html" class="active-trail active">Слайдер</a></li><li class="leaf"><a href="button.html">Кнопки</a></li><li class="leaf"><a href="image.html">Изображения</a></li><li class="leaf"><a href="scenes.html">Работа со сценами</a></li><li class="leaf"><a href="tableview.html">Список</a></li><li class="leaf"><a href="overlay.html">Всплывающее окно</a></li><li class="leaf"><a href="save.html">Сохранение и загрузка параметров</a></li><li class="last leaf"><a href="icon.html">Иконка приложения</a></li></ul></li><li class="collapsed"><a href="../build.html">Компиляция приложений</a></li><li class="last leaf"><a href="../test.html">Тестирование приложения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-0ae722dbaf513a31c259b4386f0ea12b"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="slider.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

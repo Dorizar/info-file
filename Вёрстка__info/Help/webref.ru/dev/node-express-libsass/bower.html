@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bower для всего | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../node-express-libsass.html" />
+<link rel="next" href="bower-grunt-sass.html" />
+<link rel="prev" href="grunt-watch.html" />
+<meta name="description" content="Если вы не живёте в норе, то хорошо осведомлены о том, что JavaScript вращает всё вокруг нас. Многие из удивительных идей, что я обнаружил в экосистеме Rails, теперь вырвались в космос JavaScript и способствуют распространению замечательных продуктов. Три столпа: Yeoman, Bower и Grunt." />
+<link rel="canonical" href="bower.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Bower для всего</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../node-express-libsass.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Node, Express и libsass: проект с нуля</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Bower для всего</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Если вы не живёте в норе, то хорошо осведомлены о том, что JavaScript вращает всё вокруг нас. Многие из удивительных идей, что я обнаружил в экосистеме Rails, теперь вырвались в космос JavaScript и способствуют распространению замечательных продуктов. Три столпа: Yeoman, Bower и Grunt.</p><p>Проблема, которую мне нужно решить, следующая&nbsp;— какой лучший способ получить код некоторой библиотеки с Github и сделать его легко доступным для пользователей без клонирования проекта? Потому что это довольно отстало, не так ли?</p><h2>Генераторы Yeoman</h2><p>Первоначально я наткнулся на <a href="https://github.com/srsgores/generator-sass-boilerplate">generator-sass-boilerplate</a>, «Генератор Yeoman для быстрого скаффолдинга из стилей Sass». Это очень интересный подход для создания сложной библиотеки и позволяет пользователю настраивать установку. Но для простой библиотеки кода, которой, возможно, требуются только несколько функций и примесей, данный метод слишком накладной.</p><h2>Bower — вот ответ</h2><p>Недавно я наткнулся на новые посты, которые на самом деле рассказывают что есть Bower и что он лучше всего. И меня осенило, что это и есть ответ!</p><p>Для тех, кто не в курсе, Bower является чрезвычайно простым решением для управления фронтенд-пакетами.</p><blockquote>Он предлагает общее нестрогое решение проблемы управления фронтенд-пакетами, в то время раскрывая модель зависимостей пакета через API, который может использоваться более своевольным набором сборки.</blockquote><p>Красота Bower в его простоте. У Bower есть реестр, но он не на 100% необходим. Общая команда такая: bower install &lt;пакет&gt;, где &lt;пакет&gt; может указывать на <a href="http://bower.io/#using-a-different-name-and-a-specific-version-of-a-package">огромное число вариантов</a>, что позволяет чрезвычайно просто делиться некоторым кодом. Прекрасно!</p><p>Придерживаясь темы «чрезвычайно просто» вы можете с помощью Bower легко вытащить хранилище в ваш проект без его клонирования. Даже если у него нет файла bower.json.</p><p>Например Stipe, библиотека для Compass которую я написал, не известна Bower вообще.</p>
+<pre><code>$ bower install git://github.com/Toadstool-Stipe/stipe.git</code></pre>
+<p>Запустите эту команду в любой папке и вы вытяните всё хранилище без истории Github. Это само по себе довольно интересно.</p><h2>Начало работы с Bower</h2><p>Начать довольно просто. Предполагая, что Node и npm уже установлен, выполните:</p>
+<pre><code>$ npm install -g bower</code></pre>
+<h3>Установка пакета Bower</h3><p>Я не буду здесь вдаваться в мельчайшие подробности, но 99% времени вам просто нужно выполнить:</p>
+<pre><code>$ bower install &lt;пакет&gt;</code></pre>
+<p>Как указано выше, существуют альтернативные методы установки, но основным решением является файл bower.json в хранилище и его регистрация в Bower.</p><p>Если в вашем проекте есть файл bower.json, о котором пойдёт речь в следующем разделе, вы можете добавить флаг --save при установке и это добавит библиотеку в качестве зависимости в ваш проект. Мило.</p><p>Когда вы распространяете проект, то пользователю, который его клонирует, достаточно только запустить $ bower install и он будет тянуть все внешние ресурсы. Красота!</p><h2>Коммит или не коммит!?</h2><p>Эта новая система создания и распространения ресурсов поднимает интересный вопрос — нужно ли коммитить все пакеты Bower или нет? В мире Ruby на самом деле Gem не является частью проекта, но связан с проектом и никогда не коммитится в систему контроля версий проекта. В этом новом JavaScript-мире зависимые пакеты Node и Bower являются ссылками в манифесте, подобно Gemfile в Ruby, но в действительности установлены в корневую папку проекта.</p><p>Существует целая дискуссия по этому вопросу. Я смотрю на это так — когда вы устанавливаете библиотеку Bower, вы оставляете её как зависимость или вносите модификации?</p><p>Выбор остается за вами, аргументы сильны у обеих сторон. В ситуации, когда вы на самом деле выполняете форк установленного кода, ответ довольно очевиден, следует ли коммитить в проект или нужен форк зависимости.</p><h2>Создание нового пакета Bower</h2><p>Создать новый пакет Bower снова на самом деле просто.</p>
+<pre><code>$ bower init</code></pre>
+<p>В консоли это инициализирует ряд вопросов, ответы на которые будут включены в новый созданный файл bower.json. Пишите что пожелаете, но всё что на самом деле нужно, это следующее:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;your-project&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;
+}</code></pre>
+<p>И это всё на самом деле. Вы только что создали свою первую библиотеку ресурсов Bower. Теперь двигайтесь вперед и стройте — свои ресурсы, документацию и т. д., ваш пакет готов в любое время!</p><p>Для простого тестирования вспомните трюк $ bower install git://github.com/...? Запустите это с новым хранилищем и увидите, как оно устанавливается.</p><p>Будьте внимательны на этом этапе и с содержимым пакета. На мой взгляд, я вижу Bower как отличный способ для распространения небольших, специальных библиотек кода. Когда я тяну пакет через Bower, то действительно хочу всю документацию, тесты, демонстрационные ресурсы и др. В качестве примера я собираюсь взять Bourbon, для этого выполните:</p>
+<pre><code>$ bower install bourbon</code></pre>
+<p>Запустив эту установку вы получите всё хранилище. Мне не нужно хранилище целиком, всё, что мне действительно требуется это папка dist/. Чтобы решить эту проблему, другой разработчик сделал форк Bourbon и создал новое хранилище с названием bower-bourbon:</p>
+<pre><code>$ bower install bower-bourbon</code></pre>
+<p>Выполнив эту установку вы на деле получите только то, что находится в папке dist/. Но эти форки заслуживают доверия?</p><p><strong>ОБНОВЛЕНИЕ</strong>. До моего внимания довели, что при установке тянется версия Bourbon 3.2 Beta и она, кажется, не полностью функциональна. В этом разделе я не намерен говорить «плохой Bourbon», а просто показываю, что в некоторых случаях с помощью Bower вы получите больше библиотек, чем действительно хотите.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Регистрация Bower</h2><p>После того, как пакет готов к выпуску, <a href="http://bower.io/#registering-packages">зарегистрируйте его в Bower</a>. Критерии довольно простые:</p><ol><li>убедитесь, что ваше хранилище содержит файл bower.json;</li><li> вы должны использовать <a href="http://semver.org/lang/ru/" hreflang="ru">семантическую версионность</a>;</li><li>ваш пакет должен быть доступен через Git, например, на Github.</li></ol><p>После того, как всё это у вас есть, выполните следующую команду с новым именем пакета и хранилищем Git:</p>
+<pre><code>$ bower register &lt;имя пакета&gt; &lt;хранилище git&gt;</code></pre>
+<p>Регистрация проходит безболезненно. После того, как вы получите зелёный свет на всё, сделайте проверку и выполните $ bower install &lt;имя пакета&gt;.</p><h2>Bower и Sass</h2><p>Bower и Sass — это библиотеки, которые удивительно сочетаются друг с другом. Есть небольшие хранилища по всему Github на Ruby Gem/Compass, но их сложность бывает слишком накладной. Вы должны сделать либо форк, либо клон или не дай бог, скопировать и вставить код в свой проект. Что? Мы не цивилизованные?</p><p>В мире Ruby разработчики привыкли к тому, что Gem и Compass установлены в безопасном неприкасаемом месте. Новый Gem добавляется в Gemfile и мы просто ссылаемся на библиотеку в проекте.</p><p>Неприкасаемое место является разочарованием многих разработчиков. Импорт библиотеки Sass, над которой на самом деле нет контроля или которую невозможно модифицировать, может сделать вывод CSS на практике очень досадным.</p><p>В новом мире JavaScript, библиотека добавляется в манифест bower.json или просто устанавливается, но вместо того, чтобы находиться в неопределённом месте, устанавливается в корень проекта. Это сохраняет всё простым с точки зрения установки, но означает, что Sass импортируется в относительную папку. Небольшая разница, но отличается от того, к чему мы привыкли.</p><p>Итак, как выглядит пакет Sass Bower? Давайте возьмём простой проект, который я создал с именем sass-icon-fonts. Этот пакет является просто парой примесей, которые позволяет разработчику легко создавать набор правил <span class="attribute">@font-face</span>, а также быстро генерировать набор правил со шрифтовыми иконками. Мини-библиотека поставляется с инструкциями и очень простым API.</p><p>Теперь представив что вы создаёте Node-проект и хотите использовать этот пакет в качестве ресурса, выполните:</p><p>$ bower install sass-icon-fonts --save</p><p>Эта команда установит пакет и добавит зависимость в ваш файл bower.json. Создайте в корне проекта папку sass/, а внутри неё файл application.scss. В корне также находится папка bower_components. Для доступа к вашему файлу application.scss вам нужно импортировать относительный путь к библиотеке, как показано в следующей строке:</p>
+<pre><code>@import &quot;../bower_components/sass-icon-fonts/_ico-font.scss&quot;;</code></pre>
+<p>Предыдущий пример работает и я считаю его приемлемым, но не замечательным. Роясь дальше в Grint-Sass API я обнаружил функцию <a href="https://github.com/sindresorhus/grunt-sass#includepaths">includePaths</a>. Она позволяет вам установить путь импорта.</p>
+<pre><code>options: {
+  includePaths: [
+    './bower_components/bower-bourbon'
+  ]
+}</code></pre>
+<p>Теперь у нас есть это в Gruntfile.js и вы можете легко ссылаться на основной файл манифеста библиотеки через простой импорт Sass, например, так:</p>
+<pre><code>@import &quot;bourbon&quot;;</code></pre>
+<h2>Bower в npm</h2><p>Одна из вещей, которые я нахожу немного раздражающей при использовании Bower&nbsp;— это то, что я должен выполнять различные команды при инициализации нового проекта. У меня уже есть npm, почему бы просто не связать их вместе?</p><p>Да, да, вы можете. В файле package.json просто расширьте объект <span class="var">scripts</span> и передайте команду bower install. Вот почему я действительно люблю эту штуку!</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;install&quot;: &quot;bower install&quot;
+}</code></pre>
+<p>Теперь, при запуске npm install вы не только установите все пакеты Node, но и заодно пакеты Bower. Прекрасно!</p><h2>Bower за фаерволом</h2><p>Если вы оказались за фаерволом, который не разрешает протокол git://, это можно исправить. Для начала я предлагаю сделать вручную клон с использованием протокола https://, чтобы убедиться, что это действительно проблема. Если протокол https:// работает, то вы можете сделать следующее обновление:</p>
+<pre><code>git config --global url.&quot;https://&quot;</code></pre>
+<p>Спасибо <a href="http://stackoverflow.com/questions/15669091/bower-install-using-only-https">Stack Overflow</a>!</p><h2>Резюме</h2><p>Когда я говорю, что хочу использовать Bower для всего, я подразумеваю именно это. Теперь освоившись с Bower я рассматриваю простое управления пакетами в совершенно новом свете и надеюсь, что вы сделаете то же самое.</p><p>Не нужны больше форки, клонирование, удаление папки .git/, достаточно просто включить библиотеку в проект. Я смотрю на создание модулей Sass также в совершенно новом свете. Не то, чтобы Compass был сложен, но Bower освобождает меня от нескольких зависимостей. А это было реальной проблемой во многих проектах.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/bower">Bower</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дейл Санде</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 17.04.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/node-express-libsass/grunt-watch'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/node-express-libsass/bower-grunt-sass'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="grunt-watch.html" title="На предыдущую страницу">grunt-watch</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="bower-grunt-sass.html" title="На следующую страницу">Bower + Grunt + Sass</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="node-npm.html">Node и npm</a></li><li class="leaf"><a href="express.html">Express, Node-фреймворк</a></li><li class="leaf"><a href="grunt.html">Установка и настройка Grunt</a></li><li class="leaf"><a href="gulp.html">Узнайте больше о Gulp</a></li><li class="leaf"><a href="sass.html">Добавление libsass</a></li><li class="leaf"><a href="grunt-watch.html">grunt-watch</a></li><li class="expanded active-trail"><a href="bower.html" class="active-trail active">Bower для всего</a><ul class="menu"><li class="first last leaf"><a href="bower-grunt-sass.html">Bower + Grunt + Sass</a></li></ul></li><li class="leaf"><a href="add-data.html">Добавление данных</a></li><li class="leaf"><a href="heroku.html">Развёртывание кода на Heroku</a></li><li class="last leaf"><a href="demo.html">Создание демонстрационной формы</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-b7e362eef83820a4237ff15abffe01f8"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="bower.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

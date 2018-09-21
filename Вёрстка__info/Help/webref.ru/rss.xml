@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xml:base="https://webref.ru/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WebReference</title>
+    <link>https://webref.ru/</link>
+    <description></description>
+    <language>ru</language>
+     <atom:link href="https://webref.ru/rss.xml" rel="self" type="application/rss+xml" />
+      <item>
+    <title>Атрибут dirname</title>
+    <link>https://webref.ru/html/input/dirname</link>
+    <description></description>
+     <pubDate>Sat, 13 Aug 2016 08:27:50 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1731 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>Формы в HTML</title>
+    <link>https://webref.ru/course/html5-form</link>
+    <description>      &lt;p&gt;Формы являются одним из важных элементов любого сайта и предназначены для обмена данными между пользователем и сервером. Область применения форм не ограничена отправкой данных на сервер, с помощью клиентских скриптов можно получить доступ к любому элементу формы, изменять его и применять по своему усмотрению.&lt;/p&gt;</description>
+     <pubDate>Mon, 25 Jul 2016 12:18:14 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1655 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>Фильтр</title>
+    <link>https://webref.ru/css/value/filter</link>
+    <description>      &lt;p&gt;Фильтр — это функция, которая позволяет изменять вид изображения, применяя к нему разные эффекты, вроде контрастности, яркости, преобразования в чёрно-белую картинку и др.&lt;/p&gt;</description>
+     <pubDate>Mon, 25 Jul 2016 04:57:31 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1653 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>sepia()</title>
+    <link>https://webref.ru/css/value/sepia</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;sepia()&lt;/span&gt; превращает изображение в сепию — так называется чёрно-белое изображение с коричневым оттенком. Сепия придаёт фотографиям старинный вид.&lt;/p&gt;</description>
+     <pubDate>Mon, 25 Jul 2016 04:01:17 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1652 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>saturate()</title>
+    <link>https://webref.ru/css/value/saturate</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;saturate()&lt;/span&gt; изменяет насыщенность цветов в изображении.&lt;/p&gt;</description>
+     <pubDate>Mon, 25 Jul 2016 03:38:51 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1651 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>opacity()</title>
+    <link>https://webref.ru/css/value/opacity</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;opacity()&lt;/span&gt; задаёт степень прозрачности изображений. По своему действию похожа на свойство &lt;a href=&quot;/css/opacity&quot;&gt;opacity&lt;/a&gt;, но некоторые браузеры для фильтров применяют аппаратное ускорение, чтобы повысить их производительность.&lt;/p&gt;</description>
+     <pubDate>Mon, 25 Jul 2016 03:18:46 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1650 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>invert()</title>
+    <link>https://webref.ru/css/value/invert</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;invert()&lt;/span&gt; инвертирует цвета в изображении. По своему действию похоже на превращение фотографии в негатив.&lt;/p&gt;</description>
+     <pubDate>Sun, 24 Jul 2016 15:17:17 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1649 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>hue-rotate()</title>
+    <link>https://webref.ru/css/value/hue-rotate</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;hue-rotate()&lt;/span&gt; изменяет цветность изображения за счёт поворота оттенка на цветовом круге.&lt;/p&gt;</description>
+     <pubDate>Sun, 24 Jul 2016 15:00:34 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1648 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>grayscale()</title>
+    <link>https://webref.ru/css/value/grayscale</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;grayscale()&lt;/span&gt; превращает изображение в чёрно-белое.&lt;/p&gt;</description>
+     <pubDate>Sat, 23 Jul 2016 11:34:59 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1647 at https://webref.ru</guid>
+  </item>
+  <item>
+    <title>drop-shadow()</title>
+    <link>https://webref.ru/css/value/drop-shadow</link>
+    <description>      &lt;p&gt;Функция &lt;span class=&quot;var&quot;&gt;drop-shadow()&lt;/span&gt; добавляет тень к изображениям. В отличие от свойства &lt;span class=&quot;attribute&quot;&gt;box-shadow&lt;/span&gt; во внимание принимаются прозрачные участки в изображении и тень отбрасывается с их учётом.&lt;/p&gt;</description>
+     <pubDate>Sat, 23 Jul 2016 11:19:31 +0000</pubDate>
+ <dc:creator>Влад Мержевич</dc:creator>
+ <guid isPermaLink="false">1646 at https://webref.ru</guid>
+  </item>
+  </channel>
+</rss>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Примеси в Sass | Уроки | WebReference</title>
+<meta charset="utf-8" />
+<meta name="description" content="Когда вам надоедает писать один и тот же код снова и снова, то вам помогут примеси Sass. Примеси являются функциями CSS, которые можно включать где вы пожелаете. Синтаксис Помните, как мы пишем @keyframes при создании CSS-анимации? Синтаксис примеси очень похож:" />
+<link rel="canonical" href="mixins.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_MeCKDEAcDazcCK41G4GR43KJYVnQK8YRTWdigp7K_q4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Примеси в Sass</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../course.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Учебные курсы</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../sass.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Основы Sass</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Примеси в Sass</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><ul class="tabs" data-tabs id="lesson-tabs" role="tablist"><li class="tabs-title is-active"><a href="mixins.html#lesson-content" aria-selected="true" role="tab" aria-controls="lesson-content">Описание</a></li><li class="tabs-title"><a href="mixins.html#lesson-task" role="tab" aria-controls="lesson-task">Задания</a></li></ul><div class="tabs-content" data-tabs-content="lesson-tabs"><section class="tabs-panel is-active" id="lesson-content" role="tabpanel"><p>Когда вам надоедает писать один и тот же код снова и снова, то вам помогут примеси Sass.</p><p>Примеси являются <strong>функциями CSS</strong>, которые можно <strong>включать</strong> где вы пожелаете.</p><h2>Синтаксис</h2><p>Помните, как мы пишем <span class="attribute">@keyframes</span> при создании CSS-анимации? Синтаксис примеси очень похож:</p>
+<pre><code data-language="css">@mixin overlay() {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}</code></pre>
+<p><strong>Именем</strong> этой примеси является <span class="var">overlay</span>. Вы можете ссылаться на эту примесь в любом правиле CSS с помощью <span class="var">@include</span>:</p>
+<pre><code data-language="css">.modal-background {
+  @include overlay();
+  background: black;
+  opacity: 0.9;
+}</code></pre>
+<p>Как обычно, этот .scss будет скомпилирован в .css:</p>
+<pre><code data-language="css">.modal-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: black;
+  opacity: 0.9;
+}</code></pre>
+<h2>Повторное использование</h2><p>Основная цель примесей — <strong>повторное использование набора свойств</strong>.</p><p>Подобно переменным Sass (когда вы определяете ваши <strong>значения</strong> в одном месте), примеси позволяют определить в одном месте <strong>свойства</strong>.</p><p>Предыдущая примесь может быть повторно использована в других правилах:</p>
+<pre><code data-language="css">.modal-background {
+  @include overlay();
+}
+  
+.product-link {
+  @include overlay();
+}
+
+.image-pattern {
+  @include overlay();
+}</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.modal-background {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+  
+.product-link {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+  
+.image-pattern {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}</code></pre>
+<h2>Параметры</h2><p>Поскольку примеси являются <strong>функциями</strong> и вы можете <strong>изменить</strong> <em>вывод</em>, то примеси могут принимать <strong>параметры</strong>.</p><p>К примеру, эта примесь <a href="http://sass-lang.com/guide#topic-6-SCSS">border-radius</a> позволяет не писать <strong>вендорные префиксы</strong> и принимает фактическое значение <em>радиуса</em> в качестве параметра:</p>
+<pre><code data-language="css">@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+  
+.box{
+  @include border-radius(3px);
+}</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.box{
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+          border-radius: 3px;
+}</code></pre>
+<p>Эта примесь позволяет обойти хлопоты с написанием всех вендорных префиксов и использует <span class="var">$radius</span>, который позволяет определить одинаковое значение радиуса для каждого вендорного свойства.</p><h2>Дополнительные параметры</h2><p>Если вы хотите чтобы параметр имел значение по умолчанию, которое позволяет установить его сразу, то можете создать дополнительные параметры:</p>
+<pre><code data-language="css">@mixin label($text: &quot;Код&quot;, $background: $yellow, $color: rgba(black, 0.5)) {
+  position: relative;
+  &amp;:before {
+    background: $background;
+    color: $color;
+    content: $text;
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    height: 1rem;
+    left: 0;
+    letter-spacing: 0.1em;
+    line-height: 1rem;
+    padding: 0 0.5em;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+  }
+}</code></pre>
+<p>Эта примесь добавляет <strong>метки</strong> в левом верхнем углу фрагментов кода. У неё три дополнительных параметра, каждый из них со своим собственным значением по умолчанию, заданным через двоеточие.</p><p>Эта примесь используется несколько раз в коде:</p>
+<pre><code data-language="css">div.highlighter-rouge {
+  @include label();
+  &amp;.css {
+    @include label(&quot;CSS&quot;, $blue, white);
+  }
+  &amp;.scss {
+    @include label(&quot;SCSS&quot;, #c69, white);
+  }
+}</code></pre>
+<p><span class="var">div.highlighter-rouge</span> будет использовать значения по умолчанию:</p><ul><li>текст &quot;Код&quot;</li><li> фон: $yellow</li><li>цвет: rgba(black, 0.5)</li></ul><p>Версии .css и .scss, поскольку их параметры заданы, будут использовать разные метки и цвета.</p><h2>Библиотеки примесей</h2><p>Если вы не хотите тратить время на написание собственных примесей, то можете использовать любую из следующих <strong>библиотек</strong>:</p><ul><li>Bourbon: <a href="http://bourbon.io">bourbon.io</a></li><li>Compass: <a href="http://compass-style.org">compass-style.org</a></li><li>Susy: <a href="http://susy.oddbird.net">susy.oddbird.net</a></li></ul><p><a href="mixins.html#lesson-tabs" class="button radius" onclick="jQuery('#lesson-tabs').foundation('selectTab', 'lesson-task')">Перейти к заданиям</a></p><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-74ce808ac84443884502372870757543"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../layout/sass/mixin.html">Примеси</a></li></ul></div></div></div></div></div></section><section class="tabs-panel" id="lesson-task" role="tabpanel" aria-hidden><div id="views-task-block" class="block"><div class="block_content"><div class="view view-task view-id-task view-display-id-block view-dom-id-1b5b9399b1d42aab40d4e5d110f1a16e"><div class="view-content"><ul class="tabs" data-tabs id="task-tabs"><li class="tabs-title is-active"><a href="mixins.html#t1" aria-selected="true">1</a></li><li class="tabs-title"><a href="mixins.html#t2">2</a></li><li class="tabs-title"><a href="mixins.html#t3">3</a></li><li class="tabs-title"><a href="mixins.html#t4">4</a></li></ul><div class="tabs-content" data-tabs-content="task-tabs"><section id="t1" class="tabs-panel task-content is-active"><div class="h5p-content" data-content-id="5895"></div></section><section class="tabs-panel task-content" id="t2"><div class="h5p-iframe-wrapper"><iframe id="h5p-iframe-5896" class="h5p-iframe" data-content-id="5896" style="height:1px" src="about:blank" frameBorder="0" scrolling="no"></iframe></div></section><section class="tabs-panel task-content" id="t3"><div class="h5p-iframe-wrapper"><iframe id="h5p-iframe-5897" class="h5p-iframe" data-content-id="5897" style="height:1px" src="about:blank" frameBorder="0" scrolling="no"></iframe></div></section><section class="tabs-panel task-content" id="t4"><div class="h5p-content" data-content-id="5898"></div></section></div></div></div></div></div></section></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джереми Томас</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 16.07.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="views-course-toc" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><div class="view view-course view-id-course view-display-id-toc view-dom-id-f99349cc0f93bee54a8175dab93f6357"><div class="view-content"><ul class="menu"><li class=""> <a href="sass-scss-less.html">Sass, SCSS и Less</a></li><li class=""> <a href="variables.html">Переменные в Sass</a></li><li class=""> <a href="nesting.html">Вложения в Sass</a></li><li class=""> <a href="mixins.html" class="active">Примеси в Sass</a></li><li class=""> <a href="extend.html">Расширение в Sass</a></li><li class=""> <a href="quiz.html">Проверка знаний</a></li></ul></div></div></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-3b944fd4d8e848791249d5873f38d922"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="mixins.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_dYvxOx5sgvwoCeTk6KQb8svhAXGSm0_i-rGSDtoNOVY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+H5PIntegration = {"baseUrl":"https:\/\/webref.ru","url":"\/assets\/h5p","postUserStatistics":false,"ajaxPath":"\/h5p-ajax\/","ajax":{"setFinished":"\/h5p-ajax\/set-finished.json","contentUserData":"\/h5p-ajax\/content-user-data\/:contentId\/:dataType\/:subContentId"},"tokens":{"result":"7a49af5247cc2","contentUserData":"2932d5efe4452"},"saveFreq":false,"l10n":{"H5P":{"fullscreen":"Fullscreen","disableFullscreen":"Disable fullscreen","download":"\u0421\u043a\u0430\u0447\u0430\u0442\u044c","copyrights":"Rights of use","embed":"Embed","size":"\u0420\u0430\u0437\u043c\u0435\u0440","showAdvanced":"Show advanced","hideAdvanced":"Hide advanced","advancedHelp":"Include this script on your website if you want dynamic sizing of the embedded content:","copyrightInformation":"Rights of use","close":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c","title":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a","author":"\u0410\u0432\u0442\u043e\u0440","year":"Year","source":"Source","license":"License","thumbnail":"Thumbnail","noCopyrights":"No copyright information available for this content.","downloadDescription":"Download this content as a H5P file.","copyrightsDescription":"View copyright information for this content.","embedDescription":"View the embed code for this content.","h5pDescription":"Visit H5P.org to check out more cool content.","contentChanged":"This content has changed since you last used it.","startingOver":"You'll be starting over.","by":"by","showMore":"Show more","showLess":"Show less","subLevel":"Sublevel","confirmDialogHeader":"Confirm action","confirmDialogBody":"Please confirm that you wish to proceed. This action is not reversible.","cancelLabel":"\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c","confirmLabel":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c"}},"siteUrl":"https:\/\/webref.ru\/","contents":{"cid-5895":{"library":"H5P.SingleChoiceSet 1.3","jsonContent":"{\"choices\":[{\"question\":\"<p>\\u041a\\u0430\\u043a \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e \\u043e\\u043f\\u0438\\u0441\\u0430\\u0442\\u044c \\u043f\\u0440\\u0438\\u043c\\u0435\\u0441\\u044c?<\\\/p>\\n\",\"answers\":[\"<p>@mixin border() {}<\\\/p>\\n\",\"<p>@border() {}<\\\/p>\\n\",\"<p>@include border() {}<\\\/p>\\n\",\"<p>@function border() {}<\\\/p>\\n\"]},{\"question\":\"<p>\\u041a\\u0430\\u043a \\u0432\\u0441\\u0442\\u0430\\u0432\\u0438\\u0442\\u044c \\u043f\\u0440\\u0438\\u043c\\u0435\\u0441\\u044c \\u0432 \\u043a\\u043e\\u0434 Sass?<\\\/p>\\n\",\"answers\":[\"<p>@include border();<\\\/p>\\n\",\"<p>@require border();<\\\/p>\\n\",\"<p>@mixin border();<\\\/p>\\n\",\"<p>@insert border();<\\\/p>\\n\"]},{\"question\":\"<p>\\u041a\\u0430\\u043a \\u043d\\u0430\\u043f\\u0438\\u0441\\u0430\\u0442\\u044c \\u043f\\u0440\\u0438\\u043c\\u0435\\u0441\\u044c \\u0441 \\u043f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u0440\\u0430\\u043c\\u0438?<\\\/p>\\n\",\"answers\":[\"<p>@mixin border($width, $style, $color) {}<\\\/p>\\n\",\"<p>@mixin border(width, style, color) {}<\\\/p>\\n\",\"<p>@mixin border(var $width, var $style, var $color) {}<\\\/p>\\n\",\"<p>@mixin border(option: {$width, $style, $color}) {}<\\\/p>\\n\"]},{\"question\":\"<p>\\u041a\\u0430\\u043a \\u0432\\u044b\\u0437\\u0432\\u0430\\u0442\\u044c \\u043f\\u0440\\u0438\\u043c\\u0435\\u0441\\u044c \\u0441 \\u043f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u0440\\u0430\\u043c\\u0438?<\\\/p>\\n\",\"answers\":[\"<p>@include button(#00558b, white);<\\\/p>\\n\",\"<p>@include button($background: #00558b, $color: white);<\\\/p>\\n\",\"<p>@include button(option: {$background: #00558b; $color: #fff});<\\\/p>\\n\",\"<p>@include button($background=#00558b, $color=#fff);<\\\/p>\\n\"]}],\"behaviour\":{\"timeoutCorrect\":2000,\"timeoutWrong\":3000,\"soundEffectsEnabled\":false,\"enableRetry\":true,\"enableSolutionsButton\":true},\"l10n\":{\"resultSlideTitle\":\"\\u041f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e :numcorrect \\u0438\\u0437 :maxscore\",\"showSolutionButtonLabel\":\"\\u041f\\u043e\\u043a\\u0430\\u0437\\u0430\\u0442\\u044c \\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\",\"retryButtonLabel\":\"\\u041f\\u043e\\u0432\\u0442\\u043e\\u0440\\u0438\\u0442\\u044c\",\"solutionViewTitle\":\"\\u0420\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\"}}","fullScreen":"0","exportUrl":"","embedCode":"<iframe src=\"https:\/\/webref.ru\/h5p\/embed\/1608\" width=\":w\" height=\":h\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe>","resizeCode":"<script src=\"https:\/\/webref.ru\/sites\/all\/modules\/h5p\/library\/js\/h5p-resizer.js\" charset=\"UTF-8\"><\/script>","mainId":"1608","url":"https:\/\/webref.ru\/task\/1608","title":"\u041f\u0440\u0438\u043c\u0435\u0441\u0438 \u0432 Sass 1","contentUserData":[{"state":false}],"disable":1},"cid-5896":{"library":"H5P.DragText 1.4","jsonContent":"{\"taskDescription\":\"<p>\\u0420\\u0430\\u0441\\u0441\\u0442\\u0430\\u0432\\u044c\\u0442\\u0435 \\u0432 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e\\u043c \\u043f\\u043e\\u0440\\u044f\\u0434\\u043a\\u0435.<\\\/p>\\n\",\"checkAnswer\":\"\\u041f\\u0440\\u043e\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c\",\"tryAgain\":\"\\u041f\\u043e\\u0432\\u0442\\u043e\\u0440\\u0438\\u0442\\u044c\",\"showSolution\":\"\\u041f\\u043e\\u043a\\u0430\\u0437\\u0430\\u0442\\u044c \\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\",\"score\":\"\\u041f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e @score \\u0438\\u0437 @total\",\"behaviour\":{\"enableRetry\":true,\"enableSolutionsButton\":true,\"instantFeedback\":false},\"textField\":\"*@mixin* *button($bg, $color)* {\\n *background*: $bg;\\n *color*: $color;\\n}\\n\\n.button {\\n*@include* button(red, white);\\n *padding*: *10px*;\\n}\"}","fullScreen":"0","exportUrl":"","embedCode":"<iframe src=\"https:\/\/webref.ru\/h5p\/embed\/1609\" width=\":w\" height=\":h\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe>","resizeCode":"<script src=\"https:\/\/webref.ru\/sites\/all\/modules\/h5p\/library\/js\/h5p-resizer.js\" charset=\"UTF-8\"><\/script>","mainId":"1609","url":"https:\/\/webref.ru\/task\/1609","title":"\u041f\u0440\u0438\u043c\u0435\u0441\u0438 \u0432 Sass 2","contentUserData":[{"state":false}],"disable":1,"styles":["https:\/\/webref.ru\/assets\/css\/css_VtNXXOxmGycT0l1yM18yNLroVetva2R5b87eOe2rcEY.css"],"scripts":["https:\/\/webref.ru\/assets\/js\/js_T25R13Q1m0IhXjT4PhE-e_o-YPXIGICZ7iafYK9HFz4.js"]},"cid-5897":{"library":"H5P.DragText 1.4","jsonContent":"{\"taskDescription\":\"<p>\\u0420\\u0430\\u0441\\u0441\\u0442\\u0430\\u0432\\u044c\\u0442\\u0435 \\u0432 \\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e\\u043c \\u043f\\u043e\\u0440\\u044f\\u0434\\u043a\\u0435.<\\\/p>\\n\",\"checkAnswer\":\"\\u041f\\u0440\\u043e\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c\",\"tryAgain\":\"\\u041f\\u043e\\u0432\\u0442\\u043e\\u0440\\u0438\\u0442\\u044c\",\"showSolution\":\"\\u041f\\u043e\\u043a\\u0430\\u0437\\u0430\\u0442\\u044c \\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\",\"score\":\"\\u041f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e @score \\u0438\\u0437 @total\",\"behaviour\":{\"enableRetry\":true,\"enableSolutionsButton\":true,\"instantFeedback\":false},\"textField\":\"*@mixin* table() {\\n *width*: 100%;\\nborder-radius: 3px;\\nmargin-bottom: 1rem;\\n*border-collapse*: *collapse*;\\n}\\n\\n.stripe {\\n*@include* *table()*;\\n*background*: #f0f0f0;\\n*border*: 1px solid red;\\n}\"}","fullScreen":"0","exportUrl":"","embedCode":"<iframe src=\"https:\/\/webref.ru\/h5p\/embed\/1610\" width=\":w\" height=\":h\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe>","resizeCode":"<script src=\"https:\/\/webref.ru\/sites\/all\/modules\/h5p\/library\/js\/h5p-resizer.js\" charset=\"UTF-8\"><\/script>","mainId":"1610","url":"https:\/\/webref.ru\/task\/1610","title":"\u041f\u0440\u0438\u043c\u0435\u0441\u0438 \u0432 Sass 3","contentUserData":[{"state":false}],"disable":1,"styles":["https:\/\/webref.ru\/assets\/css\/css_VtNXXOxmGycT0l1yM18yNLroVetva2R5b87eOe2rcEY.css"],"scripts":["https:\/\/webref.ru\/assets\/js\/js_T25R13Q1m0IhXjT4PhE-e_o-YPXIGICZ7iafYK9HFz4.js"]},"cid-5898":{"library":"H5P.Blanks 1.4","jsonContent":"{\"text\":\"<p>\\u041a\\u0430\\u043a\\u043e\\u0439 \\u0440\\u0435\\u0437\\u0443\\u043b\\u044c\\u0442\\u0430\\u0442 \\u0431\\u0443\\u0434\\u0435\\u0442 \\u043f\\u043e\\u0441\\u043b\\u0435 \\u043a\\u043e\\u043c\\u043f\\u0438\\u043b\\u044f\\u0446\\u0438\\u0438 \\u0441\\u043b\\u0435\\u0434\\u0443\\u044e\\u0449\\u0435\\u0433\\u043e \\u043a\\u043e\\u0434\\u0430 Sass?<\\\/p>\\n\\n<p>@mixin table-hover($bg, $color) {<br>\\n&nbsp; tr {<br>\\n&nbsp; &nbsp; &amp;:hover {<br>\\n&nbsp; &nbsp; &nbsp; background-color: $bg;<br>\\n&nbsp; &nbsp; &nbsp; color: $color;<br>\\n&nbsp; &nbsp; }<br>\\n&nbsp; }<br>\\n}<\\\/p>\\n\\n<p>table {<br>\\n@include table-hover(#005b23, white);<br>\\n}<\\\/p>\\n\",\"score\":\"\\u041f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u043e @score \\u0438\\u0437 @total\",\"showSolutions\":\"\\u041f\\u043e\\u043a\\u0430\\u0437\\u0430\\u0442\\u044c \\u0440\\u0435\\u0448\\u0435\\u043d\\u0438\\u0435\",\"tryAgain\":\"\\u041f\\u043e\\u0432\\u0442\\u043e\\u0440\\u0438\\u0442\\u044c\",\"checkAnswer\":\"\\u041f\\u0440\\u043e\\u0432\\u0435\\u0440\\u0438\\u0442\\u044c\",\"notFilledOut\":\"\\u041f\\u043e\\u0436\\u0430\\u043b\\u0443\\u0439\\u0441\\u0442\\u0430, \\u0437\\u0430\\u043f\\u043e\\u043b\\u043d\\u0438\\u0442\\u0435 \\u0432\\u0441\\u0435 \\u043f\\u043e\\u043b\\u044f\",\"behaviour\":{\"enableRetry\":true,\"enableSolutionsButton\":true,\"autoCheck\":false,\"caseSensitive\":false,\"showSolutionsRequiresInput\":true,\"separateLines\":false,\"disableImageZooming\":false},\"questions\":[\"<p>*table* *tr*:*hover* {<br>\\n&nbsp; *background-color*: *#005b23*;<br>\\n&nbsp; *color*: *white*;<br>\\n}<\\\/p>\\n\"]}","fullScreen":"0","exportUrl":"","embedCode":"<iframe src=\"https:\/\/webref.ru\/h5p\/embed\/1611\" width=\":w\" height=\":h\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe>","resizeCode":"<script src=\"https:\/\/webref.ru\/sites\/all\/modules\/h5p\/library\/js\/h5p-resizer.js\" charset=\"UTF-8\"><\/script>","mainId":"1611","url":"https:\/\/webref.ru\/task\/1611","title":"\u041f\u0440\u0438\u043c\u0435\u0441\u0438 \u0432 Sass 4","contentUserData":[{"state":false}],"disable":1}},"loadedJs":"\/assets\/h5p\/libraries\/H5P.Blanks-1.4\/js\/cloze.js?ver=1.4.2","loadedCss":["\/assets\/h5p\/libraries\/FontAwesome-4.3\/font-awesome.css?ver=4.3.2","\/assets\/h5p\/libraries\/Tether-1.0\/styles\/tether.min.css?ver=1.0.1","\/assets\/h5p\/libraries\/Drop-1.0\/css\/drop-theme-arrows-bounce.min.css?ver=1.0.1","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-help-dialog.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-message-dialog.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-progress-circle.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-simple-rounded-button.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-speech-bubble.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-tip.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-slider.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-score-bar.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-progressbar.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.JoubelUI-1.2\/css\/joubel-ui.css?ver=1.2.3","\/assets\/h5p\/libraries\/H5P.Question-1.1\/styles\/question.css?ver=1.1.4","\/assets\/h5p\/libraries\/H5P.SingleChoiceSet-1.3\/styles\/single-choice-set.css?ver=1.3.3","\/assets\/h5p\/libraries\/H5P.Blanks-1.4\/css\/blanks.css?ver=1.4.2"],"core":{"scripts":["\/sites\/all\/modules\/h5p\/library\/js\/jquery.js?oe1d53","\/sites\/all\/modules\/h5p\/library\/js\/h5p.js?oe1d53","\/sites\/all\/modules\/h5p\/library\/js\/h5p-event-dispatcher.js?oe1d53","\/sites\/all\/modules\/h5p\/library\/js\/h5p-x-api-event.js?oe1d53","\/sites\/all\/modules\/h5p\/library\/js\/h5p-x-api.js?oe1d53","\/sites\/all\/modules\/h5p\/library\/js\/h5p-content-type.js?oe1d53","\/sites\/all\/modules\/h5p\/library\/js\/h5p-confirmation-dialog.js?oe1d53"],"styles":["\/sites\/all\/modules\/h5p\/library\/styles\/h5p.css?oe1d53","\/sites\/all\/modules\/h5p\/library\/styles\/h5p-confirmation-dialog.css?oe1d53","\/sites\/all\/modules\/h5p\/library\/styles\/h5p-core-button.css?oe1d53"]}};
+//--><!]]>
+</script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

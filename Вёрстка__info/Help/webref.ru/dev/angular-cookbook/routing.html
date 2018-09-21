@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Маршрутизация в AngularJS | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../angular-cookbook.html" />
+<link rel="next" href="controler.html" />
+<link rel="prev" href="form-validation.html" />
+<meta name="description" content="Этот пример связан с маршрутизацией в AngularJS. Первое, что я обнаружил при поиске в сети аналогичных ресурсов — что нет ещё достаточно простого примера, который подходит для новичков в Angular. Итак, я постараюсь чтобы этот раздел оказался настолько простым, насколько это возможно." />
+<link rel="canonical" href="routing.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Маршрутизация в AngularJS</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../angular-cookbook.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">AngularJS. Рецепты программирования</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Маршрутизация в AngularJS</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p> Этот пример связан с маршрутизацией в AngularJS. Первое, что я обнаружил при поиске в сети аналогичных ресурсов&nbsp;— что нет ещё достаточно простого примера, который подходит для новичков в Angular. Итак, я постараюсь чтобы этот раздел оказался настолько простым, насколько это возможно.</p><h2>Что такое маршрутизация в веб-приложении?</h2><p>Как правило, веб-приложения используют читаемые адреса и описывают содержание, которое за ними скрывается. Типичным примером может быть щелчок по ссылке на главную страницу: это означает, что действие будет выполнено на стороне сервера, затем результат передан в другое представление на стороне клиента. Мы часто оказываемся в подобной ситуации после взаимодействия в корне веб-приложения (/ или index.html), заметив изменения в адресной строке браузера.</p><h2> Идея примера</h2><p>В этом примере мы покажем простую навигацию по страницам приложения. Предположим, что у нас есть главная страница с двумя ссылкам и каждая из них будет перенаправлять на определённую страницу.</p><p>Чтобы лучшее понять нашу идею мы реализуем встроенную навигацию. Это означает, что мы хотим, чтобы содержимое наших страниц отображалось внутри исходной/главной страницы.</p><p>AngularJS предлагает директиву <a href="https://docs.angularjs.org/api/ngRoute/directive/ngView">ngView</a> для реализации вышеупомянутой функциональности. Конкретно, директива <span class="attribute">ngView</span> дополняет сервис <a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a> за счёт включения шаблона текущего маршрута в основной файл макета. То есть каждый раз, когда меняется текущий маршрут, включенное представление меняется в соответствии с настройками сервиса <span class="var">$route</span>.</p><p>Итак, подразумевая что наш index.html содержит простое предложение с двумя ссылкам, мы хотим отобразить шаблоны (в соответствии с нажатыми ссылкам) ниже этого предложения. Это должно выглядеть так:</p>
+<pre><code data-language="html">&lt;p&gt;Перейти к &lt;a href=&quot;#first&quot;&gt;первой&lt;/a&gt; или &lt;a href=&quot;#second&quot;&gt;второй странице&lt;/a&gt;.&lt;/p&gt;
+&lt;div ng-view&gt;</code></pre>
+
+<p>Как видите, ссылки уже указаны, так что остаётся только настроить соответствующие маршруты для Angular. На данный момент у нас должна быть готова главная страница:</p><p class="exampleTitle">index.html</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Пример маршрутизации в AngularJS&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+  &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body ng-app=&quot;RoutingApp&quot;&gt;
+  &lt;h2&gt;Пример маршрутизации в AngularJS&lt;/h2&gt;
+  &lt;p&gt;Перейти к &lt;a href=&quot;#first&quot;&gt;первой&lt;/a&gt; или &lt;a href=&quot;#second&quot;&gt;второй странице&lt;/a&gt;.&lt;/p&gt;
+  &lt;div ng-view&gt;&lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>В AngularJS мы можем использовать модуль <a href="https://docs.angularjs.org/api/ngRoute">ngRoute</a> для маршрутизации и сервиса ссылок.</p><p>Вот некоторые важные моменты перед его применением:</p><ul><li>чтобы использовать модуль <span class="var">ngRoute</span> вы должны включить angular-route.js в приложение, которое, очевидно, должно быть загружено после скрипта angular.js;</li><li>нужную нам маршрутизацию мы должны настроить внутри модуля, чтобы было проще определить наш модуль в отдельном файле script.js;</li><li>вы должны указать одинаковое имя для <span class="attribute">ng-app</span> (в HTML-файле, содержащем приложение Angular) и при определении модуля.</li></ul><h3>Определение модуля</h3><p>Теперь давайте определим модуль Angular, задав ему имя нашего приложения (как в index.html) и установив, что он зависит от модуля <span class="var">ngRoute</span>. Последние слова означают, что мы должны «внедрить» <span class="var">ngRoute</span> в наш модуль (script.js), вроде этого:</p>
+<pre><code data-language="javascript">angular.module('RoutingApp', ['ngRoute']);</code></pre>
+<p>Вот почему мы должны были включить файл angular-route.js в наше приложение. Для того, чтобы использовать <span class="var">ngRoute</span> мы должны вызвать метод angular.config:</p>
+<pre><code data-language="javascript">angular.module('RoutingApp', ['ngRoute'])
+  .config(function() {
+});</code></pre>
+<p>Как вы заметили, я также создал анонимную функцию внутри метода, в противном случае мы получим сообщение об ошибке скрипта из нашего браузера, поскольку метод <span class="var">angular.config</span> <strong>требует вызов с функцией</strong>.</p><p>Из официальной документации мы можем использовать <span class="var">$routeProvider</span> для настройки маршрутизации Angular, так что мы должны передать <span class="var">$routeProvider</span> в качестве параметра в нашу анонимную функцию:</p>
+<pre><code data-language="javascript">angular.module('RoutingApp', ['ngRoute'])
+  .config( ['$routeProvider', function($routeProvider) {
+}]);</code></pre>
+
+<p>Метод в <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a> добавляет новое определение маршрута в сервис <span class="var">$route</span> через <span class="var">when(path, route)</span>:</p><ul><li> <span class="var">path</span> соответствует запросу из клиентского пути;</li><li> <span class="var">route</span> — параметр объекта и содержит сведения о сопоставлении, которые должны быть назначены, пока рассматривается подходящий маршрут (т.&nbsp;е. мы хотим обработать недавно зарегистрированный маршрут с определённым контроллером; свойство controller несёт ответственность за это дело).</li></ul><p>Вы можете прочитать об остальных свойств объекта <span class="var">route</span>, но, как я уже упоминал ранее, мы реализуем простую маршрутизацию между двумя HTML-файлами, так что я буду использовать только <span class="var">templateUrl</span>.</p><p>Пожалуйста, взгляните на заключительную структуру модуля:</p><p class="exampleTitle">script.js</p>
+<pre><code data-language="javascript">angular.module('RoutingApp', ['ngRoute'])
+  .config( ['$routeProvider', function($routeProvider) {
+  $routeProvider
+  .when('/first', {
+    templateUrl: 'first.html'
+  })
+  .when('/second', {
+    templateUrl: 'second.html'
+  })
+  .otherwise({
+    redirectTo: '/'
+  });
+}]);</code></pre>
+
+<p>Теперь, позвольте мне объяснить: первый <span class="var">when</span> означает, что когда /first запрашивается как маршрут, будет загружен first.html. Аналогично для /second.</p><p>Метод <span class="var">otherwise(параметры)</span> устанавливает определение маршрута, который будет использоваться при изменении маршрута, когда нет соответствия ни с каким другим маршрутом. На практике это значит, что если клиент запрашивает маршрут, который не определён в методе <span class="var">when</span>, то будет выполнен этот метод. Представьте себе это как выражение if-else в целом.</p><p>В нашем случае, я полагаю, мы хотим отобразить только главную страницу (/), когда нет соответствия с заданными маршрутами.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Демонстрация</h2><p>Вначале, пожалуйста, взгляните на этот <a href="http://thodorisbais.blogspot.gr/2015/03/how-to-solve-failed-to-execute-send-on.html">пост</a>, просто чтобы понять, почему вы должны развернуть это приложение на локальном сервере, а не просто выполнить его в браузере.</p><p>Доступ к веб-приложению с локального сервера:</p><p class="fig"><img src="../../assets/images/angular-cookbook/routing1.png" alt="Главная страница приложения" width="713" height="161"></p><p class="figsign">Рис. 3.1. Главная страница приложения</p><p>Теперь щёлкните по «первой».</p><p class="fig"><img src="../../assets/images/angular-cookbook/routing2.png" alt="«Первая» страница приложения"></p><p class="figsign">Рис. 3.2. «Первая» страница приложения</p><p>Аналогично для «второй».</p><p class="fig"><img src="../../assets/images/angular-cookbook/routing3.png" alt="«Вторая» страница приложения"></p><p class="figsign">Рис. 3.3. «Вторая» страница приложения</p><h2> Скачать</h2><p>Вы можете скачать полный исходный код этого примера здесь: <a href="../../assets/files/angularjs_routing.zip">angularjs_routing.zip</a>.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Тодорис Баис</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 04.11.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/angular-cookbook/form-validation'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/angular-cookbook/controler'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="form-validation.html" title="На предыдущую страницу">Проверка формы в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="controler.html" title="На следующую страницу">Контроллеры в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="single-page-app.html">Одностраничные приложения</a></li><li class="leaf"><a href="form-validation.html">Проверка формы в AngularJS</a></li><li class="leaf active-trail"><a href="routing.html" class="active-trail active">Маршрутизация в AngularJS</a></li><li class="leaf"><a href="controler.html">Контроллеры в AngularJS</a></li><li class="leaf"><a href="json.html">Извлечение данных JSON в AngularJS</a></li><li class="leaf"><a href="table.html">Таблицы в AngularJS</a></li><li class="leaf"><a href="ng-src.html">AngularJS ng-src</a></li><li class="last leaf"><a href="data-binding.html">Связывание данных в AngularJS</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-2a6a9133a8190f4c57ff3a017733fdb5"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="routing.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

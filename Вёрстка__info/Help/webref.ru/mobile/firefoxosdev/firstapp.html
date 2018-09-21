@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наше первое приложение | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosdev.html" />
+<link rel="next" href="developertools.html" />
+<link rel="prev" href="concepts.html" />
+<meta name="description" content="Memos, минималистское приложение для заметок В этой главе мы собираемся создать простое приложение Memos, предназначенное для заметок. Перед написанием кода давайте рассмотрим, как оно работает." />
+<link rel="canonical" href="firstapp.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Наше первое приложение</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosdev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Разработка для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Наше первое приложение</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p class="fig"><img src="../../assets/images/firefoxosdev/memos-app.png" alt="минималистское приложение для заметок" width="320" height="526"></p><p class="figsign">Memos, минималистское приложение для заметок</p><p>В этой главе мы собираемся создать простое приложение <strong>Memos</strong>, предназначенное для заметок. Перед написанием кода давайте рассмотрим, как оно работает.</p><p>Приложение имеет три экрана. Первый экран основной и содержит список сохранённых заметок по названию. Когда вы щёлкаете по заметке (или добавляете новую), то перемещаетесь к другому экрану, на котором можно редактировать содержимое и заголовок выбранной заметки. Это показано на рисунке ниже.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-editing-screen.png" alt="Memos, экран редактирования" width="320" height="526"></p><p class="figsign">Memos, экран редактирования</p><p>На экране показанном выше пользователь может удалить выбранную заметку, щёлкнув на иконку корзины. Это вызовет диалоговое окно для подтверждения.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-delete-screen.png" alt="Memos, экран подтверждения удаления" width="320" height="526"></p><p class="figsign">Memos, экран подтверждения удаления</p><p>Исходный код для Memos доступен на <a href="https://github.com/soapdog/memos-for-firefoxos">Github</a> (также в виде файла <a href="https://github.com/soapdog/memos-for-firefoxos/archive/master.zip">.zip</a>). Я рекомендую вам скачать файлы, чтобы было проще идти дальше. Другая копия исходного кода доступна в папке <strong>code</strong> внутри <a href="https://github.com/soapdog/firefoxos-quick-guide">хранилища GitHub для этой книги</a>.</p><p>Memos использует <a href="https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB">IndexedDB</a> для хранения заметок и <a href="http://buildingfirefoxos.com/building-blocks">Gaia Building Blocks</a> для построения интерфейса. В будущем обновлении этой книге я скажу больше о Gaia Building Blocks, но на данный момент просто использую это. Вы можете посмотреть ссылку выше, чтобы узнать больше о Gaia и о том, какие инструменты интерфейса предоставляются.</p><p>Первый шаг заключается в создании папки приложения, назовём эту папку <strong>memos</strong>.</p><h2>Создание манифеста приложения</h2><p>Создайте файл с именем <strong>manifest.webapp</strong> в папке <strong>memos</strong>. Манифест&nbsp;— это файл в формате <a href="http://json.org">JSON</a>, который описывает приложение. В этом файле мы пишем такие вещи, как имя приложения, кто разработчик, какие иконки использовать, какой файл применяется для запуска приложения, какие привилегированные API вы хотели бы использовать и др.</p><p>Ниже мы можем увидеть содержимое манифеста приложения Memos. Будьте внимательны при копировании данных, потому что очень легко добавить запятую не в том месте и создать некорректный JSON. Существует множество инструментов, которые можно использовать для проверки файлов JSON, но есть особый, который сделан специально для проверки манифеста приложения. Вы можете посмотреть этот онлайновый инструмент на <a href="https://marketplace.firefox.com/developers/validator">marketplace.firefox.com</a>. Чтобы узнать больше о манифесте приложения прочитайте <a href="https://developer.mozilla.org/docs/Apps/Manifest">эту страницу на MDN</a>.</p><p class="exampleTitle">Файл манифеста Memos (manifest.webapp)</p>
+<pre><code data-language="javascript">{
+  &quot;name&quot;: &quot;Memos&quot;,
+  &quot;version&quot;: &quot;1.1&quot;,
+  &quot;description&quot;: &quot;A simple memo taking app&quot;,
+  &quot;launch_path&quot;: &quot;/index.html&quot;,
+  &quot;permissions&quot;: {
+    &quot;storage&quot;: {
+      &quot;description&quot;: &quot;Required for storing and retrieving notes.&quot;
+    }
+  },
+  &quot;developer&quot;: {
+    &quot;name&quot;: &quot;Andre Garzia&quot;,
+    &quot;url&quot;: &quot;http://andregarzia.com&quot;
+  },
+  &quot;icons&quot;: {
+    &quot;60&quot;: &quot;/style/icons/icon_60.png&quot;,
+    &quot;128&quot;: &quot;/style/icons/icon_128.png&quot;
+  }
+}</code></pre>
+<p>Рассмотрим поля из манифеста выше.</p><table class="data"><tr><th>Поле</th><th>Описание</th></tr><tr><td>name</td><td>Имя приложения.</td></tr><tr><td>version</td><td>Текущая версия приложения.</td></tr><tr><td>launch_path</td><td>Какой файл использовать для запуска вашего приложения.</td></tr><tr><td>permissions</td><td>Какие права доступа требуются вашему приложению. Подробнее об этом ниже.</td></tr><tr><td>developer</td><td>Кто разработал это приложение.</td></tr><tr><td>icons</td><td>Иконки разных размеров используемые приложением.</td></tr></table><p>Самая интересная часть манифеста это поле permissions, где мы просим разрешения на хранение данных, что позволяет нам использовать IndexedDB без ограничения размера. Благодаря этому разрешению мы можем хранить столько заметок, сколько захотим. Так что надо быть внимательным, чтобы не занять слишком много места на диске пользователя!</p><p>Теперь, когда манифест готов, давайте перейдём к HTML.</p><h2>Создание HTML</h2><p>Прежде, чем мы начнем работать с HTML, немного отойдём от темы и быстро поговорим о <a href="http://buildingfirefoxos.com/building-blocks">Gaia Building Blocks</a>, она представляет собой коллекцию CSS и JS предназначенную специально для Firefox OS, которую можно использовать в наших приложениях.</p><p>Подобно сайтам вы не обязаны использовать внешний вид Firefox OS в вашем приложении. Применять или нет Gaia Building Blocks&nbsp;— это личный выбор каждого, поскольку хорошие приложения должны иметь свой собственный отличительный стиль и работу с пользователями. Важно понимать, что ваше приложение на Firefox Marketplace не будет наказано или оценено предвзято, если вы не используете внешний вид Gaia. Я использую её здесь, потому что не очень хороший дизайнер и не готов делать привлекательные интерфейсы (или нанимать дизайнера).</p><p>Структура HTML, которую мы используем в этом приложении, была построена с помощью шаблонов заимствованных из Gaia Building Blocks. Каждый экран представляет собой <span class="tag">&lt;section&gt;</span>, а элементы идут в определённом формате. Если вы ещё этого не сделали, то загрузите исходный код из <a href="https://github.com/soapdog/memos-for-firefoxos">хранилища memos</a>, чтобы у вас были файлы для работы (в том числе Building Blocks). Для тех, кто не привык работать с git и GitHub, файлы также доступны в виде <a href="https://github.com/soapdog/memos-for-firefoxos/archive/master.zip">.zip</a>.</p><p class="note">Версия Gaia Building Blocks, которую я использовал для этого приложения, не самая современная с Mozilla. Попытка обновиться до текущей версии приведёт, к сожалению, к выходу из строя приложение Memos. В ваших собственных проектах, однако, всегда используйте последнюю версию Gaia Building Blocks.</p><h2>Включение Building Blocks</h2><p>Прежде чем сделать что-либо скопируйте папки <strong>shared</strong> и <strong>styles</strong> загруженные из хранилища Memos в ранее созданную папку memos. Это позволит использовать Gaia Building Blocks в нашем приложении.</p><p>Начнём с файла <strong>index.html</strong>, добавив в него необходимые фрагменты.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style/base.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style/ui.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style/building_blocks.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;shared/style/headers.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;shared/style_unstable/lists.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;shared/style_unstable/toolbars.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;shared/style/input_areas.css&quot; /&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;shared/style/confirm.css&quot; /&gt;
+  &lt;title&gt;Memos&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+<p>В первой строке мы объявляем DOCTYPE как HTML5. В строках с 05 по 12 мы включаем CSS от разных компонент, которые собираемся использовать в нашем приложении, таких как заголовки, списки, поля ввода текста и др.</p><h2>Построение основного экрана</h2><p>Теперь мы можем начать строить различные экраны. Как упоминалось ранее, каждый экран нашего приложения задействует <span class="tag">&lt;section&gt;</span> внутри <span class="tag">&lt;body&gt;</span>. Тег <span class="tag">body</span> должен содержать атрибут <span class="attribute">role</span> со значением <span class="value">application</span>, поскольку используется селекторами CSS для построения интерфейса, так что у нас получится <span class="var">&lt;body role=&quot;application&quot;&gt;</span>. Давайте построим первый экран и заодно объявим наш тег <span class="tag">body</span>.</p>
+<pre><code data-language="html">&lt;body role=&quot;application&quot;&gt;
+&lt;section role=&quot;region&quot; id=&quot;memo-list&quot;&gt;
+  &lt;header&gt;
+    &lt;menu type=&quot;toolbar&quot;&gt;
+      &lt;a id=&quot;new-memo&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;icon icon-add&quot;&gt;add&lt;/span&gt;&lt;/a&gt;
+    &lt;/menu&gt;
+    &lt;h1&gt;Memos&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;article id=&quot;memoList&quot; data-type=&quot;list&quot;&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre>
+<p>Наш экран содержит <span class="tag">&lt;header&gt;</span> с кнопкой для добавления новой заметки и именем приложения. Экран также имеет <span class="tag">&lt;article&gt;</span>, который будет использоваться для хранения списка сохранённых заметок. Мы собираемся использовать кнопку и идентификатор <span class="tag">&lt;article&gt;</span> в работе событий, когда перейдём к добавлению JavaScript.</p><p>Помните, что каждый экран это довольно простой фрагмент HTML. Построение тех же экранов на нескольких языках, как правило, требует гораздо больше работы. Всё, что мы делаем — это объявляем наши контейнеры и даём им идентификаторы, на которые должны ссылаться позже.</p><p>Теперь основной экран готов и переходим к экрану редактирования.</p><h2>Построение экрана редактирования</h2><p>Экран редактирования немного сложнее, поскольку содержит диалоговое окно, появляющееся, когда пользователь пытается удалить заметку.</p>
+<pre><code data-language="html">&lt;section role=&quot;region&quot; id=&quot;memo-detail&quot; class=&quot;skin-dark hidden&quot;&gt;
+  &lt;header&gt;
+    &lt;button id=&quot;back-to-list&quot;&gt;&lt;span class=&quot;icon icon-back&quot;&gt;back&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;menu type=&quot;toolbar&quot;&gt;
+      &lt;a id=&quot;share-memo&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;icon icon-share&quot;&gt;share&lt;/span&gt;&lt;/a&gt;
+    &lt;/menu&gt;
+    &lt;form action=&quot;#&quot;&gt;
+      &lt;input id=&quot;memo-title&quot; placeholder=&quot;Memo Title&quot; required=&quot;required&quot; type=&quot;text&quot;&gt;
+      &lt;button type=&quot;reset&quot;&gt;Remove text&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/header&gt;
+  &lt;p id=&quot;memo-area&quot;&gt;
+    &lt;textarea placeholder=&quot;Memo content&quot; id=&quot;memo-content&quot;&gt;&lt;/textarea&gt;
+  &lt;/p&gt;
+  &lt;div role=&quot;toolbar&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;button id=&quot;delete-memo&quot; class=&quot;icon-delete&quot;&gt;Delete&lt;/button&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;form id=&quot;delete-memo-dialog&quot; role=&quot;dialog&quot; data-type=&quot;confirm&quot; class=&quot;hidden&quot;&gt;
+    &lt;section&gt;
+      &lt;h1&gt;Confirmation&lt;/h1&gt;
+      &lt;p&gt;Are you sure you want to delete this memo?&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;menu&gt;
+      &lt;button id=&quot;cancel-delete-action&quot;&gt;Cancel&lt;/button&gt;
+      &lt;button id=&quot;confirm-delete-action&quot; class=&quot;danger&quot;&gt;Delete&lt;/button&gt;
+    &lt;/menu&gt;
+  &lt;/form&gt;
+&lt;/section&gt;</code></pre>
+<p>В верхней части экрана, в виде элемента <span class="tag">&lt;header&gt;</span>, у нас есть:</p><ul><li>кнопка back для возврата на основной экран;</li><li>поле ввода текста, которое применяется для хранения заголовка выбранной заметки;</li><li>и кнопка, которая используется, чтобы поделиться заметкой по электронной почте.</li></ul><p>Ниже верхней панели у нас есть абзац с <span class="tag">&lt;textarea&gt;</span>, который содержит содержание заметки, а затем идёт ещё одна панель с кнопкой корзины для удаления текущей заметки.</p><p>Эти три элемента, включая дочерние, и представляют собой экран редактирования. После них идёт элемент <span class="tag">&lt;form&gt;</span>, который применяется для диалогового окна, содержащего экран подтверждения, когда пользователь пытается удалить заметку. Это диалоговое окно довольно простое, содержит только текст подтверждения и две кнопки: одна для удаления заметки, а вторая для отмены действия.</p><p>Теперь мы закрываем <span class="tag">&lt;section&gt;</span>, поскольку все наши экраны реализованы, остальной код нужен для включения файлов JavaScript и закрытия HTML.</p>
+<pre><code data-language="html">  &lt;script src=&quot;/js/model.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;/js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Работа с кодом JavaScript</h2><p>Теперь мы собираемся вдохнуть жизнь в наше приложение, добавив JavaScript. Чтобы лучше организовать этот код, я разделил JavaScript на два файла.</p><p><strong>model.js</strong>: содержит процедуры по работе с хранением и получением заметок, но не содержит логику приложения или что-либо связанное с интерфейсом и вводом данных. В теории, мы могли бы использовать этот же файл в других приложениях, требующих текстовых заметок.</p><p><strong>app.js</strong>: связывает элементы HTML с обработчиками событий и содержит логику приложения.</p><p>Оба файла должны находиться внутри папки js там же, где папки style и shared.</p><h3>model.js</h3><p>Мы собираемся использовать <a href="https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB">IndexedDB</a> для хранения наших заметок. Поскольку мы запросили разрешение на хранение в манифесте приложения, то можем хранить столько заметок, сколько пожелаем, однако не должны злоупотреблять этим! Устройства на Firefox, как правило, имеют довольно ограниченное место для хранения, так что всегда помните о данных, которые вы сохраняете. Пользователи удалят ваше приложение и понизят его рейтинг, если оно использует слишком много места для хранения! К тому же это приводит к снижению производительности и сделает ваше приложение медлительным. Также обратите внимание, что когда вы подаёте заявку в Firefox Marketplace рецензенты спросят вас, зачем вам требуется неограниченное пространство для хранения. Если вы не сможете это обосновать, то приложение будет отклонено.</p><p>Часть кода из model.js приведённая ниже отвечает за открытие соединения и создание хранилища.</p><p class="note">Этот код был написан, чтобы быть понятным и представляет не лучшие практики для программирования на JavaScript. Используются глобальные переменные (я готов отправиться в ад за такое) среди других лакомых кусочков. Код обработки ошибок в основном не реален. Основная цель этой книги — обучить рабочему процессу разработки приложений для Firefox OS, а не показать лучшие техники JS. В зависимости от обратной связи я обновлю код в этой книге, чтобы лучше отразить хорошую практику, если достаточное количество людей думает, что это не повлияет на новичков.</p>
+<pre><code data-language="javascript">var dbName = &quot;memos&quot;;
+var dbVersion = 1;
+  
+var db;
+var request = indexedDB.open(dbName, dbVersion);
+
+request.onerror = function (event) {
+  console.error(&quot;Can't open indexedDB!!!&quot;, event);
+};
+request.onsuccess = function (event) {
+  console.log(&quot;Database opened ok&quot;);
+  db = event.target.result;
+};
+  
+request.onupgradeneeded = function (event) {
+  
+  console.log(&quot;Running onUpgradeNeeded&quot;);
+  db = event.target.result;
+ 
+  if (!db.objectStoreNames.contains(&quot;memos&quot;)) {
+ 
+    console.log(&quot;Creating objectStore for memos&quot;);
+    var objectStore = db.createObjectStore(&quot;memos&quot;, {
+        keyPath: &quot;id&quot;,
+        autoIncrement: true
+    });
+    objectStore.createIndex(&quot;title&quot;, &quot;title&quot;, {
+      unique: false
+    });
+
+   console.log(&quot;Adding sample memo&quot;);
+   var sampleMemo1 = new Memo();
+   sampleMemo1.title = &quot;Welcome Memo&quot;;
+   sampleMemo1.content = &quot;This is a note taking app. Use the plus sign &quot; +
+                         &quot;in the topleft corner of the main screen to &quot; +
+                         &quot;add a new memo. Click a memo to edit it. All &quot; +
+                         &quot;your changes are automatically saved.&quot;;
+
+    objectStore.add(sampleMemo1);
+  }
+}</code></pre>
+<p class=note>Простите меня снова за глобальные переменные, это лишь образовательный ресурс. Еще одна деталь: я удалил комментарии из исходного кода, чтобы сэкономить место в книге. Если вы возьмёте исходники с GitHub, то получите все комментарии.</p><p>Код выше создаёт объект <span class="var">db</span> и <span class="var">request</span>. Объект <span class="var">db</span> используется другими функциями для манипуляции хранилищем заметок.</p><p>При выполнении функции <span class="var">request.onupgradeneeded</span> мы также создаём заметку с приветствием. Эта функция выполняется, когда приложение запускается в первый раз (или когда изменяется версия базы данных). Таким образом, как только приложение запускается впервые, то в базе данных появляется единственная заметка с приветствием.</p><p>Теперь, когда соединение открыто и хранилище инициализировано, пришло время реализации основных функций для манипуляции с заметками.</p>
+<pre><code data-language="javascript">function Memo() {
+  this.title = &quot;Untitled Memo&quot;;
+  this.content = &quot;&quot;;
+  this.created = Date.now();
+  this.modified = Date.now();
+}
+
+function listAllMemoTitles(inCallback) {
+  var objectStore = db.transaction(&quot;memos&quot;).objectStore(&quot;memos&quot;);
+  console.log(&quot;Listing memos...&quot;);
+  
+  objectStore.openCursor().onsuccess = function (event) {
+    var cursor = event.target.result;
+    if (cursor) {
+      console.log(&quot;Found memo #&quot; + cursor.value.id +
+                  &quot; - &quot; + cursor.value.title);
+      inCallback(null, cursor.value);
+      cursor.continue();
+    }
+  };
+}
+  
+function saveMemo(inMemo, inCallback) {
+  var transaction = db.transaction([&quot;memos&quot;], &quot;readwrite&quot;);
+  console.log(&quot;Saving memo&quot;);
+  
+  transaction.oncomplete = function (event) {
+    console.log(&quot;All done&quot;);
+  };
+  
+  transaction.onerror = function (event) {
+    console.error(&quot;Error saving memo:&quot;, event);
+    inCallback({
+      error: event
+    }, null); 
+  };
+  
+  var objectStore = transaction.objectStore(&quot;memos&quot;);
+  
+  inMemo.modified = Date.now();
+  
+  var request = objectStore.put(inMemo);
+  request.onsuccess = function (event) {
+    console.log(&quot;Memo saved with id: &quot; + request.result);
+    inCallback(null, request.result);  
+  };
+}
+  
+function deleteMemo(inId, inCallback) {
+  console.log(&quot;Deleting memo...&quot;);
+  var request = db.transaction([&quot;memos&quot;],
+                &quot;readwrite&quot;).objectStore(&quot;memos&quot;).delete(inId);
+
+  request.onsuccess = function (event) {
+    console.log(&quot;Memo deleted!&quot;);
+    inCallback();
+  };
+}</code></pre>
+<p>В куске кода выше мы добавляем функцию конструктора, которая создаёт новые заметки, с некоторыми уже заполненными полями. После этого мы реализуем функции для вывода списка, сохранения и удаления заметок. Многие из этих функций содержат параметр с именем <span class="var">inCallback</span>, который функция будет вызывать после того, как сделает своё дело. Это необходимо из-за асинхронной природы IndexedDB. Все функции обратного вызова имеют одинаковую структуру— <span class="var">callback(error, value)</span>, где одно из значений равно нулю в зависимости от результатов предыдущей функции.</p><p class="note">Так как эта книга для новичков, то я решил не использовать <a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Promise">Promises</a>, поскольку многие начинающие с этим не знакомы. Я рекомендую использовать подобные концепции для создания более наглядного кода, который к тому же более приятен для чтения.</p><p>Теперь, когда хранилище заметок и функции для их управления готовы, реализуем логику нашего приложения в файле <strong>app.js</strong>.</p><h3>app.js</h3><p>Этот файл будет содержать логику нашего приложения. Поскольку исходный код слишком большой, чтобы разместить всё сразу в книге, я разобью его на части и объясню каждую часть одну за другой.</p>
+<pre><code data-language="javascript">var listView, detailView, currentMemo, deleteMemoDialog;
+  
+function showMemoDetail(inMemo) {
+  currentMemo = inMemo;
+  displayMemo();
+  listView.classList.add(&quot;hidden&quot;);
+  detailView.classList.remove(&quot;hidden&quot;);
+}
+  
+function displayMemo() {
+  document.getElementById(&quot;memo-title&quot;).value = currentMemo.title;
+  document.getElementById(&quot;memo-content&quot;).value = currentMemo.content;
+}
+
+function shareMemo() {
+  var shareActivity = new MozActivity({
+    name: &quot;new&quot;,
+    data: {
+      type: &quot;mail&quot;,
+      body: currentMemo.content,
+      url: &quot;mailto:?body=&quot; + encodeURIComponent(currentMemo.content) +
+           &quot;&amp;subject=&quot; + encodeURIComponent(currentMemo.title)
+    }
+  });
+  shareActivity.onerror = function (e) {
+    console.log(&quot;can't share memo&quot;, e);
+  };
+}
+  
+function textChanged(e) {
+  currentMemo.title = document.getElementById(&quot;memo-title&quot;).value;
+  currentMemo.content = document.getElementById(&quot;memo-content&quot;).value;
+  saveMemo(currentMemo, function (err, succ) {
+    console.log(&quot;save memo callback &quot;, err, succ);
+    if (!err) {
+      currentMemo.id = succ;
+    }
+  });
+}
+  
+function newMemo() {
+  var theMemo = new Memo();
+  showMemoDetail(theMemo);
+}</code></pre>
+<p>Вначале мы объявляем некоторые глобальные переменные (фу!!!), чтобы ссылаться на элементы DOM, которые мы хотим использовать позже внутри некоторых функций. Самое интересное&nbsp;— это глобальная переменная <span class="var">currentMemo</span>&nbsp;— объект, в котором хранится текущая заметка, которую читает пользователь.</p><p>Фукнкции <span class="var">showMemoDetail()</span> и <span class="var">displayMemo()</span> работают совместно. Первая загружает выбранную заметку в <span class="var">currentMemo</span> и манипулирует стилем элементов таким образом, чтобы показать экран редактирования. Вторая берёт содержимое из переменной <span class="var">currentMemo</span> и помещает на экран. Мы могли бы сделать их одной функцией, но разделение упрощает эксперименты с новыми реализациями.</p><p>Функция <span class="var">shareMemo()</span> использует <a href="https://hacks.mozilla.org/2013/01/introducing-web-activities/">WebActivity</a>, чтобы открыть приложение электронной почты с новым сообщением, предварительно заполненным содержанием выбранной заметки.</p><p>Функция <span class="var">TextChanged()</span> берёт данные из полей ввода и помещает их в объект <span class="var">currentMemo</span>, после чего сохраняет заметку. Это делается потому, что приложение автоматически сохраняет ваше содержимое. Любое изменение содержимого или заголовка заметки вызовет эту функцию и заметка всегда будет сохранена в хранилище IndexedDB.</p><p>Функция <span class="var">newMemo()</span> создаёт новую заметку и открывает экран её редактирования.</p>
+<pre><code data-language="javascript">function requestDeleteConfirmation() {
+  deleteMemoDialog.classList.remove(&quot;hidden&quot;);
+}
+  
+function closeDeleteMemoDialog() {
+  deleteMemoDialog.classList.add(&quot;hidden&quot;);
+}
+  
+function deleteCurrentMemo() {
+  closeDeleteMemoDialog();
+  deleteMemo(currentMemo.id, function (err, succ) {
+    console.log(&quot;callback from delete&quot;, err, succ);
+    if (!err) {
+      showMemoList();
+    }
+  });
+}
+  
+function showMemoList() {
+  currentMemo = null;
+  refreshMemoList();
+  listView.classList.remove(&quot;hidden&quot;);
+  detailView.classList.add(&quot;hidden&quot;);
+}</code></pre>
+<p>Функция <span class="var">requestDeleteConfirmation()</span> отвечает за показ диалога подтверждения удаления заметки.</p><p><span class="var">closeDeleteMemoDialog()</span> и <span class="var">deleteCurrentMemo()</span> срабатывают с помощью кнопок в диалоговом окне подтверждения удаления.</p><p>Функция <span class="var">showMemoList()</span> делает некоторые чистки, прежде чем показывать список сохранённых заметок. Например, она очищает содержимое currentMemo, поскольку мы ещё не читали никаких заметок.</p>
+<pre><code data-language="javascript">function refreshMemoList() {
+  if (!db) {
+    // ХАК:
+    // это условие может произойти первый раз,
+    // когда хранилище indexDB создано и вызвана
+    // функция refreshMemoList(). Просто подождите
+    // немного дольше, перед тем как попробовать снова
+    // выполнить ту же работу.
+    console.warn(&quot;Database is not ready yet&quot;);
+    setTimeout(refreshMemoList, 1000);
+    return;
+  }
+  console.log(&quot;Refreshing memo list&quot;);
+
+  var memoListContainer = document.getElementById(&quot;memoList&quot;);
+  
+  while (memoListContainer.hasChildNodes()) {
+    memoListContainer.removeChild(memoListContainer.lastChild);
+  }
+  
+  var memoList = document.createElement(&quot;ul&quot;);
+  memoListContainer.appendChild(memoList);
+  
+  listAllMemoTitles(function (err, value) {
+    var memoItem = document.createElement(&quot;li&quot;);
+    var memoP = document.createElement(&quot;p&quot;);
+    var memoTitle = document.createTextNode(value.title);
+  
+    memoItem.addEventListener(&quot;click&quot;, function (e) {
+      console.log(&quot;clicked memo #&quot; + value.id);
+      showMemoDetail(value);
+    });
+  
+    memoP.appendChild(memoTitle);
+    memoItem.appendChild(memoP);
+    memoList.appendChild(memoItem);  
+  });
+}</code></pre>
+<p>Функция <span class="var">refreshMemoList()</span> модифицирует DOM, строя элемент за элементом список заметок, которые отображаются на экране. Было бы намного легче использовать помощь некоторых шаблонизаторов, таких как <a href="http://handlebarsjs.com">handlebars</a> или <a href="http://underscorejs.org">underscore</a>, но так как это приложение построено только на ванильном JavaScript, то мы всё делаем вручную. Эта функция вызывает <span class="var">showMemoList()</span>, которая была показана выше.</p><p>Вот и все функции применяемые в нашем приложении. Отсутствует только часть кода, которая инициализирует обработчики событий и начальный вызов <span class="var">refreshMemoList()</span>.</p>
+<pre><code data-language="javascript">window.onload = function () {
+  // Элементы, которые мы собираемся использовать в коде
+  listView = document.getElementById(&quot;memo-list&quot;);
+  detailView = document.getElementById(&quot;memo-detail&quot;);
+  deleteMemoDialog = document.getElementById(&quot;delete-memo-dialog&quot;);
+  
+  // Все слушатели для кнопок интерфейса и для изменения ввода
+  document.getElementById(&quot;back-to-list&quot;).addEventListener(&quot;click&quot;, showMemoList);
+  document.getElementById(&quot;new-memo&quot;).addEventListener(&quot;click&quot;, newMemo);
+  document.getElementById(&quot;share-memo&quot;).addEventListener(&quot;click&quot;, shareMemo);
+  document.getElementById(&quot;delete-memo&quot;).addEventListener(&quot;click&quot;, requestDeleteConfirmation);
+  document.getElementById(&quot;confirm-delete-action&quot;).addEventListener(&quot;click&quot;, deleteCurrentMemo);
+  document.getElementById(&quot;cancel-delete-action&quot;).addEventListener(&quot;click&quot;, closeDeleteMemoDialog);
+  document.getElementById(&quot;memo-content&quot;).addEventListener(&quot;input&quot;, textChanged);
+  document.getElementById(&quot;memo-title&quot;).addEventListener(&quot;input&quot;, textChanged);
+  
+  // Точкой входа для приложения является следующая команда
+  refreshMemoList();
+};</code></pre>
+<p>Теперь все файлы готовы и мы можем начать тестировать наше приложение на симуляторе. Есть два способа сделать это в зависимости от того, используете ли вы <strong>Менеджер приложений</strong> или старый <strong>симулятор Firefox&nbsp;OS&nbsp;1.1</strong>. В следующем разделе мы покажем оба способа. Позже пойдут конкретные главы, посвященные каждой технологии.</p><p>Если вы работаете с <strong>Firefox 29 или новее</strong>, то у вас уже есть <strong>Менеджер приложений</strong>, для ранних версий вы можете использовать старый симулятор. Помните, что Менеджер приложений возможно подключить только к устройствам с Firefox OS 1.2 и выше.</p><p>Если у вас есть устройство на Firefox OS 1.1 и вы работаете с Firefox 29, то установите симулятор Firefox OS 1.1 версии 5.0 для <a href="http://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-5.0pre7-mac.xpi">Mac OS X</a>, <a href="http://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-5.0pre7-linux.xpi">Linux</a> или <a href="http://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-5.0pre7-windows.xpi">Windows</a>. Если вы установите этот симулятор, то сможете следовать инструкциям для старого симулятора Firefox OS 1.1 и возможностью подключения устройства.</p><p>Если ваше устройство на Firefox OS 1.1 разблокировано и может получить версию 1.2 или старше, то вам необходимо обновиться, потому что это сделает жизнь намного проще. Ежедневные билды Firefox OS для Geeksphone Keon, Geeksphone Peak и Geeksphone Revolution доступны на <a href="http://downloads.geeksphone.com">http://downloads.geeksphone.com</a>. ZTE Open также можно обновить, следуя <a href="http://ftp.mozilla.org/pub/mozilla.org/labs/r2d2b2g/r2d2b2g-5.0pre7-windows.xpi">этим инструкциям</a>. LG Fireweb не может быть обновлён; если вам как и мне это не нравится, то напишите об ошибке LG. Alcatel One Touch Fire может быть разблокирован, но инструкция об этом выходит за рамки этой книги.</p><p class="note">Замечание. <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1001590">Баг № 1001590</a> на Bugzilla исправит текущую проблему, при которой невозможно запустить симулятор Firefox OS 1.1 на Firefox 29.</p><h2>Тестирование приложения в Менеджере приложений</h2><p>Прежде чем мы испытаем наше приложение, надо проверить что все файлы находятся на своих местах. Папка memos должна выглядеть так.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-file-list.png" alt="Список файлов Memos" width="162" height="158"></p><p class="figsign">Список файлов Memos</p><p>Если есть подозрение, что вы написали что-то неправильно, просто сравните вашу версию с версией из <a href="https://github.com/soapdog/memos-for-firefoxos">хранилища memos на GitHub</a>. Есть также копия исходного кода в папке <strong>code</strong> в <a href="https://github.com/soapdog/guia-rapido-firefox-os">хранилище книги</a>.</p><p>Чтобы открыть панель симулятора перейдите в меню <span class="menuitem">Инструменты&nbsp;-&gt; Веб разработка&nbsp;-&gt; Менеджер приложений</span>.</p><p class="note">Примечание редактора. В новых версиях Firefox нельзя вызвать Менеджер приложений через меню, потому что от него отказались в пользу WebIDE. Для открытия Менеджера наберите в адресной строке about:app-manager.</p><p>Открыв Менеджер приложений, нажмите <strong>Добавить упакованное приложение</strong> на вкладке <strong>Приложения</strong> и выберите папку, в которой у вас хранятся файлы memos.</p><p class="fig"><img src="../../assets/images/firefoxosdev/app-manager-add-packaged-app.png" alt="Добавление нового приложениям" width="945" height="744"></p><p class="figsign">Добавление нового приложениям</p><p>Если все работает как ожидалось, то вы увидите приложение Memos в списке приложений.</p><p class="fig"><img src="../../assets/images/firefoxosdev/app-manager-showing-memos.png" alt="Memos показывается в Менеджере приложений" width="1094" height="743"></p><p class="figsign">Memos показывается в Менеджере приложений</p><p>После добавления приложения нажмите кнопку <strong>Запустите симулятор</strong> и выберите один из установленных симуляторов. Если симулятор у вас ещё не установлен, я советую вам следовать инструкциям на экране и установить их все.</p><p>С работающим симулятором нажмите кнопку <strong>Обновить</strong> в списке <strong>Менеджера приложений</strong> для установки Memos и запуска симулятора. После установки иконка приложения появится на домашнем экране симулятора. Вы можете просто щёлкнуть по ней для запуска приложения.</p><p class="fig"><img src="../../assets/images/firefoxosdev/app-manager-updating-memos.png" alt="Memos установлено в симуляторе" width="1093" height="742"></p><p class="figsign">Memos установлено в симуляторе</p><p>Поздравляем! Вы создали и протестировали своё первое приложение. Это не сложное или революционное приложение&nbsp;— но я надеюсь, оно помогло вам понять рабочий процесс разработки под Firefox OS. Как вы можете видеть, он не сильно отличается от стандартной веб-разработки.</p><p>Помните, что всякий раз, когда вы вносите изменения в исходные файлы вам нужно нажать на кнопку <strong>Обновить</strong> для обновления копии приложения, хранящейся в запущенном симуляторе.</p><h2>Тестирование приложения в симуляторе</h2><p>Прежде чем испытать наше приложение в симуляторе, нам лучше проверить, что все файлы находятся на своих местах. Папка <strong>memos</strong> должна выглядеть так.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-file-list.png" alt="Список файлов Memos" width="162" height="158"></p><p class="figsign">Список файлов Memos</p><p>Если есть подозрение, что вы написали что-то неправильно, просто сравните вашу версию с версией из <a href="https://github.com/soapdog/memos-for-firefoxos">хранилища memos на GitHub</a>. Есть также копия исходного кода в папке <strong>code</strong> в <a href="https://github.com/soapdog/guia-rapido-firefox-os">хранилище книги</a>.</p><p>Чтобы открыть панель симулятора перейдите в меню <span class="menuitem">Инструменты&nbsp;-&gt; Веб разработка&nbsp;-&gt; Firefox OS Simulator</span>.</p><p class="fig"><img src="../../assets/images/firefoxosdev/tools-web-developer-simulator.png" alt="Как открыть панель симулятора" width="629" height="533"></p><p class="figsign">Как открыть панель симулятора</p><p>В открытой панели нажмите кнопку <strong>Add Directory</strong>, сделайте обзор файлов и выберите манифест приложения в папке memos.</p><p class="fig"><img src="../../assets/images/firefoxosdev/simulator-add-directory.png" alt="Добавление нового приложения" width="767" height="356"></p><p class="figsign">Добавление нового приложения</p><p>Если всё работает как и ожидалось, то вы увидите приложение Memos в списке приложений.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-on-dashboard-display.png" alt="Memos показано на панели" width="776" height="173"></p><p class="figsign">Memos показано на панели</p><p>При добавлении нового приложения, симулятор запускается и выполняет ваше приложение, что позволяет его проверить. Теперь вы можете опробовать все возможности Memos.</p><p>Поздравляем! Вы создали и протестировали своё первое приложение. Это не сложное или революционное приложение — но я надеюсь, оно помогло вам понять рабочий процесс разработки под Firefox OS. Как вы можете видеть, он не сильно отличается от стандартной веб-разработки.</p><p>Помните, что всякий раз, когда вы вносите изменения в исходные файлы вам нужно нажать на кнопку <strong>Обновить</strong> для обновления копии приложения, хранящейся в запущенном симуляторе.</p><h2>Резюме</h2><p>В этой главе мы построили наше первое приложение на Firefox OS и увидели как оно работает в симуляторе. В следующей главе мы собираемся сделать обзор инструментов разработчика, которые поставляется в комплекте с Firefox, они сделают вашу жизнь намного проще при разработке приложений.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 18.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков, Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosdev/concepts'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosdev/developertools'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="concepts.html" title="На предыдущую страницу">Основные понятия</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="developertools.html" title="На следующую страницу">Инструменты разработчика</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="setup.html">Настройки для разработки приложения на Firefox OS</a></li><li class="leaf"><a href="concepts.html">Основные понятия</a></li><li class="leaf active-trail"><a href="firstapp.html" class="active-trail active">Наше первое приложение</a></li><li class="leaf"><a href="developertools.html">Инструменты разработчика</a></li><li class="leaf"><a href="app-manager.html">Менеджер приложений</a></li><li class="leaf"><a href="distribution.html">Дистрибуция ваших приложений</a></li><li class="last leaf"><a href="marketplace.html">Firefox Marketplace</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-7349d19fc50b015799998b8efdc4cc50"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="firstapp.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

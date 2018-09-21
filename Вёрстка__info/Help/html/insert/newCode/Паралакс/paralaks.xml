@@ -1,0 +1,16 @@
+﻿<mirows>
+	<strana id="1">
+		<stranas value="ukraina"/>
+		<stranas value="Rassiay"/>
+	</strana>
+		
+	<gorad id="2">
+		<gorads value="odessa"/>
+		<gorads value="kiev"/>
+	</gorad>
+	
+	<selo id="3">
+		<seloa value="katovka"/>
+		<seloa value="nejenskay"/>
+	</selo>
+</mirows>

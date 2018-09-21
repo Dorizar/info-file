@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Функции трансформации | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../transform.html" />
+<link rel="next" href="matrix.html" />
+<link rel="prev" href="../transform.html" />
+<meta name="description" content="Функций трансформаций довольно много и они делятся по следующим группам: поворот, масштабирование, наклон и сдвиг, а также на двумерные и трёхмерные трансформации. Последние обозначаются добавлением 3d к имени функции. Кроме того, с помощью этих трансформаций можно делать отражение элемента, задавая отрицательные значения параметров у некоторых функций. Все функции комбинируются между собой, позволяя тем самым получить множество новых фигур." />
+<link rel="canonical" href="function.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Функции трансформации</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../html5-css3.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">HTML5 и CSS3 на примерах</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../transform.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Трансформация</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Функции трансформации</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Функций трансформаций довольно много и они делятся по следующим группам: поворот, масштабирование, наклон и сдвиг, а также на двумерные и трёхмерные трансформации. Последние обозначаются добавлением 3d к имени функции. Кроме того, с помощью этих трансформаций можно делать отражение элемента, задавая отрицательные значения параметров у некоторых функций. Все функции комбинируются между собой, позволяя тем самым получить множество новых фигур.</p><p>Любая трансформация происходит относительно центральной точки элемента, её положение можно задать с помощью свойства <span class="attribute">transform-origin</span>. Координатные оси показаны на рис.&nbsp;1; оси X и Y находятся в плоскости экрана, а ось Z ему перпендикулярна.</p><p class="fig"><img src="../../../assets/images/html5-css3/transform-04.png" alt="Координатные оси"></p><p class="figsign">Рис. 1. Координатные оси</p><h3>translate()</h3><p> Сдвигает элемент на заданное значение по горизонтали и вертикали в плоскости экрана.</p>
+<pre><code>transform: translate(tx[, ty])</code></pre>
+<p> Здесь: tx — значение смещения по оси X в пикселях, процентах или других единицах CSS; ty&nbsp;— смещение по оси Y. Если значение ty не указано, то оно считается равным tx: translate(2) соответствует translate(2, 2).</p><h3>translate3d()</h3><p> Сдвигает элемент на заданное значение в трёхмерном пространстве.</p>
+<pre><code>transform: translate3d(tx, ty, tz)</code></pre>
+<p> Здесь: tx — смещение по оси X; ty — смещение по оси Y; tz&nbsp;— смещение по оси Z. tz не может указываться в процентах, в этом случае функция игнорируется.</p><h3>translateX()</h3><p>Сдвигает элемент по горизонтали на указанное значение. Положительное значение сдвигает вправо, отрицательное влево.</p><p><img src="../../../assets/images/html5-css3/transform-fun-01.png" alt="translateX()"></p>
+<pre><code>transform: translateX(tx)</code></pre>
+
+<h3>translateY()</h3><p>Сдвигает элемент по вертикали на указанное значение. Положительное значение сдвигает вниз, отрицательное вверх.</p><p><img src="../../../assets/images/html5-css3/transform-fun-02.png" alt="translateY()"></p>
+<pre><code>transform: translateY(ty)</code></pre>
+
+<p> translateY(ty) является синонимом translate(0, ty).</p><h3>translateZ()</h3><p>Сдвигает элемент по оси Z в трёхмерном пространстве. Положительное значение сдвигает вперёд, отрицательное назад.</p>
+<pre><code>transform: translateZ(tz)</code></pre>
+<p>translateZ(tz) является синонимом translate3d(0, 0, tz).</p><h3>scale()</h3><p>Задаёт масштаб элемента по горизонтали и вертикали.</p>
+<pre><code>transform: scale(sx[, sy]);</code></pre>
+<p>Здесь: sx — изменение масштаба по оси X; sy — изменение масштаба по оси Y. Значение больше 1 увеличивает масштаб элемента, меньше 1, наоборот, его уменьшает. Если задано только одно значение, то масштабирование будет происходить пропорционально в обе стороны.</p><h3>scale3d()</h3><p>Масштабирует элемент в трёхмерном пространстве.</p>
+<pre><code>transform: scale3d(sx, sy, sz)</code></pre>
+<h3> scaleX()</h3><p>Масштабирует элемент по горизонтали.</p>
+<pre><code>transform: scaleX(sx);</code></pre>
+<p>Значение -1 отражает элемент по горизонтали (пример 1).</p><p class="exampleTitle">Пример 1. Отражение по горизонтали</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Отражение&lt;/title&gt;
+  &lt;style&gt;
+   .mirrorX {
+    transform: scaleX(-1) translateX(-20px);
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;img src=&quot;images/igels.png&quot; alt=&quot;&quot;&gt;
+  &lt;img src=&quot;images/igels.png&quot; alt=&quot;&quot; class=&quot;mirrorX&quot;&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p> scaleX() не только отражает изображение, но и меняет направление координат. Поэтому для сдвига картинки вправо применяется отрицательное значение в функции translateX() (рис.&nbsp;1).</p><p class="fig"><img src="../../../assets/images/html5-css3/transform-05.png" alt="Отражение картинки по горизонтали"></p><p class="figsign">Рис. 1. Отражение картинки по горизонтали</p><h3>scaleY()</h3><p>Масштабирует элемент по вертикали.</p>
+<pre><code>transform: scaleY(sy);</code></pre>
+<p>Значение -1 отражает элемент по вертикали (пример 2).</p><p class="exampleTitle">Пример 2. Отражение по вертикали</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt; 
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Отражение&lt;/title&gt;
+  &lt;style&gt;
+   .mirrorY {
+    transform: scaleY(-1); /* Отражаем по вертикали */
+    opacity: 0.2; /* Полупрозрачность */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;img src=&quot;images/igels.png&quot; alt=&quot;&quot;&gt;
+  &lt;img src=&quot;images/igels.png&quot; alt=&quot;&quot; class=&quot;mirrorY&quot;&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p> Результат данного примера показан на рис. 2.</p><p class="fig"><img src="../../../assets/images/html5-css3/transform-06.png" alt="Отражение картинки по вертикали"></p><p class="figsign">Рис. 2. Отражение картинки по вертикали</p><h3>scaleZ()</h3><p>Масштабирует элемент по оси Z.</p>
+<pre><code>transform: scaleZ(sz);</code></pre>
+<p>scaleZ(sz) является синонимом scale3d(1, 1, sz).</p><h3>rotate()</h3><p>Поворачивает элемент на заданный угол относительно точки трансформации, задаваемой свойством <span class="attribute">transform-origin</span>.</p>
+<pre><code>transform: rotate(α)</code></pre>
+<p>Здесь: α — угол поворота. Положительное значение поворачивает элемент по часовой стрелке, отрицательное против.</p><h3>rotate3d()</h3><p>Поворачивает элемент в трёхмерном пространстве без искажений. Вращающийся элемент имеет три степени свободы&nbsp;— оси X, Y и Z, относительно которых происходит поворот. Они задаются с помощью вектора [x, y, z] с учётом точки вращения.</p>
+<pre><code>transform: rotate3d(x, y, z, α)</code></pre>
+<p>Здесь: x — целое число описывающее координату X вектора оси вращения; y — целое число описывающее Y-координату вектора оси вращения; z&nbsp;— целое число описывающее координату Z вектора оси вращения; α&nbsp;— угол поворота. Положительное значение угла поворачивает элемент по часовой стрелке, отрицательное против.</p><h3> rotateX()</h3><p>Поворачивает элемент вокруг оси X на заданный угол α.</p>
+<pre><code>transform: rotateX(α)</code></pre>
+<p>rotateX(α) является синонимом rotate3D(1, 0, 0, α).</p><h3> rotateY()</h3><p>Поворачивает элемент вокруг оси Y на заданный угол α.</p>
+<pre><code>transform: rotateY(α)</code></pre>
+<p>rotateY(α) является синонимом rotate3D(0, 1, 0, α).</p><h3> rotateZ()</h3><p>Поворачивает элемент вокруг оси Z на заданный угол α.</p>
+<pre><code>transform: rotateZ(α)</code></pre>
+<p>rotateZ(α) является синонимом rotate3D(0, 0, 1, α).</p><h3> skew()</h3><p>Наклоняет элемент на заданное значение по горизонтали и вертикали в плоскости экрана.</p>
+<pre><code>transform: skew(ax[, ay])</code></pre>
+<p> Здесь: ax — угол наклона по оси X; ay — угол наклона по оси Y. Если значение ay не указано, то оно считается равным ax: skew(30deg) соответствует skew(30deg, 30deg).</p><h3> skewX()</h3><p>Наклоняет элемент на заданный угол по горизонтали. Положительное значение наклоняет влево, отрицательное вправо.</p><p><img src="../../../assets/images/html5-css3/transform-fun-03.png" alt="skewX()" width="198" height="85"></p>
+<pre><code>transform: skewX(α)</code></pre>
+<p>Здесь: α — угол наклона по оси X. В примере 3 показано создание наклонного меню с помощью функции skewX().</p><p class="exampleTitle">Пример 3. Использование skewX()</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Трансформация&lt;/title&gt;
+  &lt;style&gt;
+   li {
+    background: #a9c358; /* Цвет фона */
+    list-style: none; /* Убираем маркеры */
+    width: 300px; /* Ширина списка */
+    margin-bottom: 10px; /* Отступ снизу */
+    transform: skewX(-30deg); /* Наклоняем вправо */
+   }
+   li a {
+    color: #2c285d; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчёркивание */
+    display: block; /* Блочные ссылки */
+    padding: 5px 20px; /* Поля */
+    transform: skewX(30deg); /* Наклоняем ссылки обратно */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;ul&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Пирамида Хеопса&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Висячие сады Семирамиды&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Статуя Зевса в Олимпии&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Храм Артемиды в Эфесе&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Мавзолей в Галикарнасе&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Колосс Родосский&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Александрийский маяк&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис. 3. Поскольку трансформация действует на содержимое всего элемента, то ссылки внутри <span class="tag">&lt;li&gt;</span> тоже окажутся под наклоном. Нам это не требуется, поэтому ещё раз применяем функцию skewX() для <span class="tag">&lt;a&gt;</span>, но уже с противоположным знаком.</p><p class="fig"><img src="../../../assets/images/html5-css3/transform-07.png" alt="Наклон пунктов меню"></p><p class="figsign">Рис. 3. Наклон пунктов меню</p><h3> skewY()</h3><p>Наклоняет элемент на заданный угол по вертикали.</p><p><img src="../../../assets/images/html5-css3/transform-fun-04.png" alt="skewY()"></p>
+<pre><code>transform: skewY(α)</code></pre>
+<p> Здесь: α — угол наклона по оси Y. Положительное значение наклоняет вниз, отрицательное вверх.</p><h3>perspective()</h3><p>Функция задаёт степень перспективы элемента в трёхмерном пространстве. Выражается расстоянием по оси Z от плоскости экрана до точки схода на линии горизонта. Чем меньше расстояние в пикселях, тем сильнее выражены искажения и наоборот.</p>
+<pre><code>transform: perspective(l)</code></pre>
+<p>Здесь: l — размер в пикселях или других единицах CSS. Процентная запись неприменима. Если значение равно 0 или отрицательное, то функция не работает.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/transformaciya">трансформация</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 07.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/html5-css3/transform'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/html5-css3/transform/matrix'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../transform.html" title="На предыдущую страницу">Трансформация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="matrix.html" title="На следующую страницу">Матрица преобразований</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="../text.html">Текст</a></li><li class="collapsed"><a href="../background.html">Фон</a></li><li class="collapsed"><a href="../link.html">Ссылки</a></li><li class="collapsed"><a href="../list.html">Списки</a></li><li class="collapsed"><a href="../img.html">Изображения</a></li><li class="collapsed"><a href="../table.html">Таблицы</a></li><li class="collapsed"><a href="../form.html">Формы</a></li><li class="expanded active-trail"><a href="../transform.html" class="active-trail">Трансформация</a><ul class="menu"><li class="first leaf active-trail"><a href="function.html" class="active-trail active">Функции трансформации</a></li><li class="leaf"><a href="matrix.html">Матрица преобразований</a></li><li class="last leaf"><a href="origin.html">Точка трансформации</a></li></ul></li><li class="leaf"><a href="../transition.html">Переходы</a></li><li class="last leaf"><a href="../animation.html">Анимация</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-846fbea0d6d8790716d2110fdcfbdd9d"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="function.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

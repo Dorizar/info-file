@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Построение форм | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="next" href="organizing-data-with-tables.html" />
+<link rel="prev" href="adding-media.html" />
+<meta name="description" content="Формы являются неотъемлемой частью Интернета, так как они предлагают сайтам метод сбора информации от пользователей и обработки запросов, а также элементы управления практически для любого мыслимого применения. С помощью элементов управления или полей, формы могут запросить небольшой объём информации — часто это поисковый запрос, имя пользователя или пароль. Или большой объём информации — возможно, данные о посылке, платёжная информация или предложение работы." />
+<link rel="canonical" href="building-forms.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Построение форм</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Построение форм</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Формы являются неотъемлемой частью Интернета, так как они предлагают сайтам метод сбора информации от пользователей и обработки запросов, а также элементы управления практически для любого мыслимого применения. С помощью элементов управления или полей, формы могут запросить небольшой объём информации&nbsp;— часто это поисковый запрос, имя пользователя или пароль. Или большой объём информации&nbsp;— возможно, данные о посылке, платёжная информация или предложение работы.</p><p>Мы должны знать как создавать формы чтобы получить входные данные от пользователя. В этом уроке мы обсудим, как использовать HTML для разметки формы, какие элементы использовать для захвата разных типов данных и как стилизовать формы с помощью CSS. Мы не станем слишком углубляться в то, как информация из формы обрабатывается на стороне сервера. Обработка форм представляет собой глубокую тему, вне области этой книги; здесь мы будем придерживаться создания и стилизации форм.</p><h2>Инициализация формы</h2><p>Чтобы добавить форму на страницу мы будем использовать элемент <span class="tag">&lt;form&gt;</span>. Данный элемент определяет, где на странице появятся элементы управления. Кроме того, элемент <span class="tag">&lt;form&gt;</span> обёртывает все элементы включенные в форму, подобно элементу <span class="tag">&lt;div&gt;</span>.</p>
+<pre><code data-language="html">&lt;form action=&quot;/login&quot; method=&quot;post&quot;&gt;
+  ...
+&lt;/form&gt;</code></pre>
+<p>К элементу <span class="tag">&lt;form&gt;</span> может применяться горстка различных атрибутов, наиболее распространёнными из которых являются <span class="attribute">action</span> и <span class="attribute">method</span>. Атрибут <span class="attribute">action</span> содержит URL, на который информация в форме будет отправлена для обработки сервером. Атрибут <span class="attribute">method</span> является методом HTTP, который должны использовать браузеры для отправки данных формы. Оба эти атрибута <span class="tag">&lt;form&gt;</span> имеют отношение к отправке и обработке данных.</p><h2>Текстовые поля и текстовые области</h2><p>Когда дело доходит до сбора текстовой информации от пользователей, есть несколько разных элементов, доступных для получения данных в формах. В частности, для сбора данных на основе текста или строки применяются текстовые поля и текстовые области. Эти данные могут включать в себя отрывки текста, пароли, номера телефонов и другую информацию.</p><h3>Текстовые поля</h3><p>Одним из основных элементов, используемых для получения текста от пользователей, является элемент <span class="tag">&lt;input&gt;</span>. Данный элемент включает атрибут <span class="attribute">type</span> для определения, какой тип информации будет получен в элементе управления. Наиболее популярное значение атрибута <span class="attribute">type</span> — это <span class="value">text</span>, который обозначает ввод одной строки текста.</p><p>Наряду с установкой атрибута <span class="attribute">type</span>, хорошей практикой будет также дать элементу <span class="tag">&lt;input&gt;</span> атрибут <span class="attribute">name</span>. Значение атрибута <span class="attribute">name</span> применяется в качестве имени элемента управления и отправляется вместе с входными данными на сервер.</p>
+<pre><code data-language="html">&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация текстового поля</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/suzvhm5a/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><p>Элемент <span class="tag">&lt;input&gt;</span> является самостоятельным, то есть он задействует только один тег и не оборачивает какой-либо контент. Значение элемента обеспечивается его атрибутами и их соответствующими значениями.</p><p>Первоначально было только два текстовых значения атрибута <span class="attribute">type</span> — <span class="value">text</span> и <span class="value">password</span> (для ввода паролей), однако HTML5 привёз с собой несколько новых значений атрибута <span class="attribute">type</span>.</p><p>Эти значения были добавлены, чтобы обеспечить чёткое смысловое значение для полей ввода, а также предоставить лучшее управление пользователям. Если браузер не понимает одно из этих HTML5-значений атрибута <span class="attribute">type</span>, он автоматически вернётся к значению <span class="value">text</span>. Ниже приведён список новых типов HTML5.</p><ul class="list-column-3"><li>color</li><li>date</li><li>datetime</li><li>email</li><li>month</li><li>number</li><li>range</li><li>search</li><li>tel</li><li>time</li><li>url</li><li>week</li></ul><p>Следующие элементы <span class="tag">&lt;input&gt;</span> показывают некоторые из этих значений атрибута <span class="attribute">type</span> из HTML5 в использовании, а на рисунках показано, как эти уникальные значения могут выглядеть в iOS. Обратите внимание, что различные значения обеспечивают разные элементы управления, все они делают сбор информации от пользователей проще.</p>
+<pre><code data-language="html">&lt;input type=&quot;date&quot; name=&quot;birthday&quot;&gt;
+&lt;input type=&quot;time&quot; name=&quot;game-time&quot;&gt;
+&lt;input type=&quot;email&quot; name=&quot;email-address&quot;&gt;
+&lt;input type=&quot;url&quot; name=&quot;website&quot;&gt;
+&lt;input type=&quot;number&quot; name=&quot;cost&quot;&gt;
+&lt;input type=&quot;tel&quot; name=&quot;phone-number&quot;&gt;</code></pre>
+
+<p class="fig"><img src="../../assets/images/learn-html-css/ios-date.png" alt="Элемент &lt;input&gt; со значением date у атрибута type для iOS7" width="240"/></p><p class="figsign">Рис. 10.01. Элемент &lt;input&gt; со значением date у атрибута type для iOS7</p><p class="fig"><img src="../../assets/images/learn-html-css/ios-time.png" alt="Элемент &lt;input&gt; со значением time у атрибута type для iOS7" width="240"/></p><p class="figsign">Рис. 10.02. Элемент &lt;input&gt; со значением time у атрибута type для iOS7</p><p class="fig"><img src="../../assets/images/learn-html-css/ios-email.png" alt="Элемент &lt;input&gt; со значением time у атрибута type для iOS7" width="240"/></p><p class="figsign">Рис. 10.03. Элемент &lt;input&gt; со значением email у атрибута type для iOS7</p><p class="fig"><img src="../../assets/images/learn-html-css/ios-url.png" alt="Элемент &lt;input&gt; со значением time у атрибута type для iOS7" width="240"/></p><p class="figsign">Рис. 10.04. Элемент &lt;input&gt; со значением url у атрибута type для iOS7</p><p class="fig"><img src="../../assets/images/learn-html-css/ios-number.png" alt="Элемент &lt;input&gt; со значением number у атрибута type для iOS7" width="240"/></p><p class="figsign">Рис. 10.05. Элемент &lt;input&gt; со значением number у атрибута type для iOS7</p><p class="fig"><img src="../../assets/images/learn-html-css/ios-tel.png" alt="Элемент &lt;input&gt; со значением tel у атрибута type для iOS7" width="240"/></p><p class="figsign">Рис. 10.06. Элемент &lt;input&gt; со значением tel у атрибута type для iOS7</p><h3>&lt;textarea&gt;</h3><p>Ещё одним элементом, используемым для сбора текстовых данных, является элемент <span class="tag">&lt;textarea&gt;</span>. Он отличается от элемента <span class="tag">&lt;input&gt;</span> тем, что может принимать большие отрывки текста в несколько строк. Элемент <span class="tag">&lt;textarea&gt;</span> также содержит начальный и конечный теги, которые могут обернуть простой текст. Поскольку <span class="tag">&lt;textarea&gt;</span> принимает только один тип значения, атрибут type здесь не применим, но атрибут name по прежнему используется.</p>
+<pre><code data-language="html">&lt;textarea name=&quot;comment&quot;&gt;Добавьте сюда свой комментарий&lt;/textarea&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация текстовой области</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/sd96ybur/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Поля множественного выбора и меню</h2><p>Помимо текстовых полей, HTML также позволяет пользователям выбирать данные, используя множественный выбор и раскрывающиеся списки. Есть несколько разных вариантов и полей для этих элементов формы, каждый из которых имеет свои отличительные преимущества.</p><h3>Переключатели</h3><p>Переключатели — это простой способ, позволяющий пользователям сделать быстрый выбор из небольшого списка вариантов. Переключатели дают пользователю выбрать только один вариант в отличие от нескольких.</p><p>Чтобы создать переключатель, используется элемент <span class="tag">&lt;input&gt;</span> со значением <span class="value">radio</span> у атрибута <span class="attribute">type</span>. Каждый переключатель должен иметь одинаковое значение атрибута <span class="attribute">name</span>, чтобы все они в группе были связаны друг с другом.</p><p>С текстовыми полями их значение определяется тем, что пользователь в них набирает; с переключателями пользователь делает множественный выбор. Таким образом, мы должны определить входное значение. Используя атрибут <span class="attribute">value</span> мы можем установить конкретное значение для каждого элемента <span class="tag">&lt;input&gt;</span>.</p><p>Кроме того, для предварительного выбора переключателя мы можем использовать логический атрибут <span class="attribute">checked</span>.</p>
+<pre><code data-language="html">&lt;input type=&quot;radio&quot; name=&quot;day&quot; value=&quot;Friday&quot; checked&gt; Пятница
+&lt;input type=&quot;radio&quot; name=&quot;day&quot; value=&quot;Saturday&quot;&gt; Суббота
+&lt;input type=&quot;radio&quot; name=&quot;day&quot; value=&quot;Sunday&quot;&gt; Воскресенье</code></pre>
+<div class="notePad"><h3>Демонстрация переключателей</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/om7ubdrc/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Флажки</h3><p>Флажки очень похожи на переключатели. Они используют те же атрибуты и шаблоны, за исключением значения атрибута <span class="attribute">type</span>. Разница между ними состоит в том, что флажки позволяют пользователям выбрать несколько значений и связать их все с одним именем, в то время как переключатели ограничивают пользователей одним значением.</p>
+<pre><code data-language="html">&lt;input type=&quot;checkbox&quot; name=&quot;day&quot; value=&quot;Friday&quot; checked&gt; Пятница
+&lt;input type=&quot;checkbox&quot; name=&quot;day&quot; value=&quot;Saturday&quot;&gt; Суббота
+&lt;input type=&quot;checkbox&quot; name=&quot;day&quot; value=&quot;Sunday&quot;&gt; Воскресенье</code></pre>
+<div class="notePad"><h3>Демонстрация флажков</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/tx2r0ds3/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Выпадающие списки</h3><p>Выпадающие списки являются идеальным способом, чтобы практическим образом предоставить пользователям длинный список вариантов. Длинный столбец переключателей рядом со списком разных вариантов не только визуально непривлекателен, но кроме того сложен и труден для понимания, особенно на мобильном устройстве. Выпадающие списки, с другой стороны, обеспечивают идеальный формат для длинного списка вариантов.</p><p>Для создания выпадающего списка мы будем применять элементы <span class="tag">&lt;select&gt;</span> и <span class="tag">&lt;option&gt;</span>. Элемент <span class="tag">&lt;select&gt;</span> оборачивает все пункты меню, а каждый пункт меню размечен с помощью элемента <span class="tag">&lt;option&gt;</span>.</p><p>Атрибут <span class="attribute">name</span> располагается в элементе <span class="tag">&lt;select&gt;</span>, а атрибут <span class="attribute">value</span> располагается в элементах <span class="tag">&lt;option&gt;</span>, вложенных в элемент <span class="tag">&lt;select&gt;</span>. Таким образом, атрибут <span class="attribute">value</span> в каждом элементе <span class="tag">&lt;option&gt;</span> связан с атрибутом name элемента <span class="tag">&lt;select&gt;</span>.</p><p>Каждый элемент <span class="tag">&lt;option&gt;</span> оборачивает текст (который виден пользователям) отдельного пункта в списке.</p><p>Подобно логическому атрибуту <span class="attribute">checked</span> у переключателей и флажков, для выпадающего меню можно использовать логический атрибут <span class="attribute">selected</span>, чтобы предварительно выделить пункт для пользователей.</p>
+<pre><code data-language="html">&lt;select name=&quot;day&quot;&gt;
+  &lt;option value=&quot;Friday&quot; selected&gt;Пятница&lt;/option&gt;
+  &lt;option value=&quot;Saturday&quot;&gt;Суббота&lt;/option&gt;
+  &lt;option value=&quot;Sunday&quot;&gt;Воскресенье&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация выпадающего списка</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/4hd54coy/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Множественный выбор</h3><p>Логический атрибут <span class="attribute">multiple</span> при добавлении к элементу <span class="tag">&lt;select&gt;</span> для стандартного выпадающего списка позволяет пользователю выбрать более одного варианта из списка одновременно. Кроме того, с помощью логического атрибута <span class="attribute">selected</span>, добавленного к более чем одному элементу <span class="tag">&lt;option&gt;</span>, в меню можно заранее выбрать несколько вариантов.</p><p>Размером элемента <span class="tag">&lt;select&gt;</span> можно управлять с помощью CSS и он должен быть скорректирован соответствующим образом для множественного выбора. Возможно, есть смысл информировать пользователей, что для выбора нескольких вариантов они должны удерживать клавишу <kbd>Shift</kbd> во время щелчка, чтобы сделать выбор.</p>
+<pre><code data-language="html">&lt;select name=&quot;day&quot; multiple&gt;
+  &lt;option value=&quot;Friday&quot; selected&gt;Пятница&lt;/option&gt;
+  &lt;option value=&quot;Saturday&quot;&gt;Суббота&lt;/option&gt;
+  &lt;option value=&quot;Sunday&quot;&gt;Воскресенье&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация множественного выбора</h3><iframe width="100%" height="140" src="https://jsfiddle.net/webref/pn5ywq1x/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Кнопки в форме</h2><p>После того, как пользователь вводит запрашиваемую информацию, кнопки позволяют пользователю пустить эту информацию в дело. Чаще всего для обработки данных используются поле или кнопка для отправки.</p><h3>Поле для отправки</h3><p>Когда пользователь щёлкает по кнопке, данные формы обрабатываются после её заполнения. Кнопка для отправки создаётся с помощью элемента <span class="tag">&lt;input&gt;</span> со значением <span class="value">submit</span> у атрибута <span class="attribute">type</span>. Атрибут <span class="attribute">value</span> применяется для указания текста, который отображается внутри кнопки.</p>
+<pre><code data-language="html">&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Отправить&quot;&gt;</code></pre>
+
+<div class="notePad"><h3>Демонстрация поля для отправки</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/1x3rhj51/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Кнопка для отправки</h3><p>Кнопка для отправки в виде элемента <span class="tag">&lt;input&gt;</span> является самодостаточной и не может оборачивать любой другой контент. Если хочется иметь больше контроля над структурой и дизайном поля, наряду с возможностью обернуть другие элементы&nbsp;— тогда может быть использован элемент <span class="tag">&lt;button&gt;</span>.</p><p>Элемент <span class="tag">&lt;button&gt;</span> выполняет то же самое, что и элемент <span class="tag">&lt;input&gt;</span> со значением <span class="value">submit</span> у атрибута <span class="attribute">type</span>. Однако, он включает в себя открывающий и закрывающий теги, которые могут обернуть другие элементы. По умолчанию, элемент <span class="tag">&lt;button&gt;</span> действует, как если у атрибута <span class="attribute">type</span> задано значение <span class="value">submit</span>, поэтому атрибут <span class="attribute">type</span> и его значение можно по желанию опустить.</p><p>Вместо использования атрибута <span class="attribute">value</span> для управления текстом в кнопке для отправки, будет показан текст, который пишется между открывающим и закрывающим тегами элемента <span class="tag">&lt;button&gt;</span>.</p>
+<pre><code data-language="html">&lt;button name=&quot;submit&quot;&gt;
+  &lt;strong&gt;Отправьте нам&lt;/strong&gt; сообщение
+&lt;/button&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация кнопки для отправки</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/sh0uwhmj/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Другие поля</h2><p>Помимо применения, которое мы только что обсудили, элемент <span class="tag">&lt;input&gt;</span> имеет несколько других вариантов использования. Они включают в себя получение скрытых данных и прикрепление файлов в процессе обработки формы.</p><h3>Скрытое поле</h3><p>Скрытые поля предоставляют способ передачи данных на сервер без отображения их пользователям. Скрытые поля обычно используются для отслеживания кодов, ключей или другой информации, которая не имеет отношения к пользователю, но может быть полезна при обработке формы. Эта информация не отображается на странице, однако может быть найдена путём просмотра исходного кода страницы. По этой причине она не должна применяться для уязвимой или защищённой информации.</p><p>Чтобы создать скрытое поле используйте значение <span class="value">hidden</span> атрибута <span class="attribute">type</span>. Дополнительно включает в себя соответствующие значения атрибутов <span class="attribute">name</span> и <span class="attribute">value</span>.</p>
+<pre><code data-language="html">&lt;input type=&quot;hidden&quot; name=&quot;tracking-code&quot; value=&quot;abc-123&quot;&gt;</code></pre>
+<h3>Поле для файла</h3><p>Чтобы позволить пользователям добавить файл в форму, вроде прикрепления файла к письму, используйте значение <span class="value">file</span> атрибута <span class="attribute">type</span>.</p>
+<pre><code data-language="html">&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация поля для файла</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/chhhvv5w/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><p>К сожалению, стилизация с помощью CSS элемента <span class="tag">&lt;input&gt;</span>, у которого значение атрибута <span class="attribute">type</span> задано как <span class="value">file</span>, является трудной задачей. Каждый браузер содержит свой собственный стиль поля по умолчанию и ни один не даёт много свободы, чтобы переопределить этот стиль. JavaScript и другие решения могут быть использованы для этого, но они несколько сложны для построения.</p><h2>Организация элементов формы</h2><p>Знать, как получить данные с полей формы, это лишь половина дела. Другая половина&nbsp;— это организация элементов формы и полей в удобном порядке. При взаимодействии с формами пользователи должны понять что от них требуется и как предоставить запрашиваемую информацию.</p><p>С помощью <span class="tag">&lt;label&gt;</span>, <span class="tag">&lt;fieldset&gt;</span> и <span class="tag">&lt;legend&gt;</span> мы можем лучше организовать формы и направлять пользователей правильно их завершать.</p><h3>&lt;label&gt;</h3><p>Элемент <span class="tag">&lt;label&gt;</span> содержит подписи или заголовки для управления формой, однозначно связывая их вместе, создавая тем самым доступную форму для всех пользователей и вспомогательных технологий. <span class="tag">&lt;label&gt;</span> должны включать в себя текст, описывающий поля к которым они относятся.</p><p><span class="tag">&lt;label&gt;</span> могут включать в себя атрибут <span class="attribute">for</span>, его значение должно быть таким же, как значение атрибута <span class="attribute">id</span> у элемента, с которым связан <span class="tag">&lt;label&gt;</span>. Соответствие значений атрибутов <span class="attribute">for</span> и <span class="attribute">id</span> связывает два элемента вместе, что позволяет пользователям нажать на <span class="tag">&lt;label&gt;</span> и передать фокус нужному полю формы.</p>
+<pre><code data-language="html">&lt;label for=&quot;username&quot;&gt;Имя пользователя&lt;/label&gt;
+&lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot;&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация label</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/70bj1sq3/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><p>При желании, <span class="tag">&lt;label&gt;</span> может обернуть поля формы, такие как переключатели или флажки. Это позволяет опустить атрибуты <span class="attribute">for</span> и <span class="attribute">id</span>.</p>
+<pre><code data-language="html">&lt;label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;day&quot; value=&quot;Friday&quot; checked&gt; Пятница
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;day&quot; value=&quot;Saturday&quot;&gt; Суббота
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;day&quot; value=&quot;Sunday&quot;&gt; Воскресенье
+&lt;/label&gt;</code></pre>
+
+<div class="notePad"><h3>Демонстрация label с вложением</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/n3Ldc5qy/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>&lt;fieldset&gt;</h3><p><span class="tag">&lt;fieldset&gt;</span> группирует поля формы в организованные разделы. Подобно <span class="tag">&lt;section&gt;</span> или иным структурным элементам, но <span class="tag">&lt;fieldset&gt;</span> является блочным элементом, который оборачивает связанные элементы, в частности, в <span class="tag">&lt;form&gt;</span>, для их лучшей организации. <span class="tag">&lt;fieldset&gt;</span> по умолчанию также включают в себя границы контура, которые могут быть изменены с помощью CSS.</p>
+<pre><code data-language="html">&lt;fieldset&gt;
+  &lt;label&gt;
+    Имя пользователя
+    &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    Пароль
+    &lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;
+  &lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+
+<div class="notePad"><h3>Демонстрация fieldset</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/2pq7t9L2/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>&lt;legend&gt;</h3><p>Элемент <span class="tag">&lt;legend&gt;</span> предоставляет подпись или заголовок для элемента <span class="tag">&lt;fieldset&gt;</span>. Элемент <span class="tag">&lt;legend&gt;</span> оборачивает текст, описывающий элементы управления формы, которые находятся внутри <span class="tag">&lt;fieldset&gt;</span>. Разметка должна включать в себя элемент <span class="tag">&lt;legend&gt;</span> сразу после открывающего тега <span class="tag">&lt;fieldset&gt;</span>. На странице подпись появится в левом верхнем углу рамки <span class="tag">&lt;fieldset&gt;</span>.</p>
+<pre><code data-language="html">&lt;fieldset&gt;
+  &lt;legend&gt;Вход в систему&lt;/legend&gt;
+  &lt;label&gt;
+    Имя пользователя
+    &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    Пароль
+    &lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;
+  &lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация legend</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/dtpLb2gd/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Атрибуты формы и полей</h2><p>Для настройки всех различных форм, полей и элементов управления, существует ряд атрибутов и соответствующих значений. Эти атрибуты и значения выполняют несколько разных функций, таких как отключение полей и добавление проверки форм. Далее описаны некоторые часто используемые и полезные атрибуты.</p><h3>disabled</h3><p>Логический атрибут <span class="attribute">disabled</span> выключает элемент управления таким образом, что он не доступен для взаимодействия или ввода. Заблокированные элементы не будут отправлять никакого значения на сервер для обработки формы.</p><p>Применение атрибута <span class="attribute">disabled</span> к элементу <span class="tag">&lt;fieldset&gt;</span> отключит все элементы управления формы внутри группы.</p>
+<pre><code data-language="html">&lt;label&gt;
+  Имя пользователя
+  &lt;input type=&quot;text&quot; name=&quot;username&quot; disabled&gt;
+&lt;/label&gt;</code></pre>
+
+<div class="notePad"><h3>Демонстрация disabled</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/f7j8rxmu/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>placeholder</h3><p>Атрибут <span class="attribute">placeholder</span> в HTML5 предлагает подсказку или совет внутри элемента <span class="tag">&lt;input&gt;</span> или <span class="tag">&lt;textarea&gt;</span>, которая исчезает при щелчке по элементу управления или при получении фокуса. Это применяется, чтобы дать пользователям дальнейшую информацию о том, как поле формы должно быть заполнено, к примеру, использовать формат электронной почты.</p>
+<pre><code data-language="html">&lt;label&gt;
+  Email
+  &lt;input type=&quot;email&quot; name=&quot;email-address&quot; placeholder=&quot;name@domain.com&quot;&gt;
+&lt;/label&gt;</code></pre>
+<p>Основное различие между атрибутами <span class="attribute">placeholder</span> и <span class="attribute">value</span> в том, что текст <span class="attribute">value</span> остаётся на месте, когда элемент управления получает фокус, пока пользователь не удалит его вручную. Это очень удобно для предварительно заполненных данных, таких как личная информация, но не для предоставления указаний.</p><div class="notePad"><h3>Демонстрация placeholder</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/r0arq78b/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>required</h3><p>Логический атрибут <span class="attribute">required</span> в HTML5 утверждает, что элемент формы должен содержать значение при отправке на сервер. Если у элемента формы нет значения, будет отображаться сообщение об ошибке с просьбой пользователю заполнить обязательное поле. В настоящее время стили сообщения об ошибке контролируются браузером и не могут быть оформлены в CSS. Некорректные элементы формы, с другой стороны, могут быть стилизованы с помощью псевдоклассов <span class="attribute">:optional</span> и <span class="attribute">:required</span>.</p><p>Проверка также специфична для конкретного типа элемента управления. Например, элемент <span class="tag">&lt;input&gt;</span> со значением <span class="value">email</span> у атрибута <span class="attribute">type</span> потребует не только чтобы значение в поле существовало, но также чтобы это был корректный адрес электронной почты.</p>
+<pre><code data-language="html">&lt;label&gt;
+  Email 
+  &lt;input type=&quot;email&quot; name=&quot;email-address&quot; required&gt;
+&lt;/label&gt;</code></pre>
+
+<div class="notePad"><h3>Демонстрация required</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/7sotffym/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Дополнительные атрибуты</h3><p>Элементы форм также включают следующие атрибуты, но не ограничиваются ими. Пожалуйста, не стесняйтесь исследовать эти атрибуты при необходимости.</p><ul class="list-column-3"><li>accept</li><li>autocomplete</li><li>autofocus</li><li>formaction</li><li>formenctype</li><li>formmethod</li><li>formnovalidate</li><li>formtarget</li><li>max</li><li>maxlength</li><li>min</li><li>pattern</li><li>readonly</li><li>selectionDirection</li><li>step</li></ul><h2>Пример формы для входа</h2><p>Ниже приведён пример полной формы авторизации, которая включает в себя несколько разных элементов и атрибутов для иллюстрации того, что мы изучали до сих пор. Эти элементы затем стилизуются с помощью CSS.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;form&gt;
+  &lt;fieldset class=&quot;account-info&quot;&gt;
+    &lt;label&gt;
+      Имя пользователя
+      &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+      Пароль
+      &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset class=&quot;account-action&quot;&gt;
+    &lt;input class=&quot;btn&quot; type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Войти&quot;&gt;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;remember&quot;&gt; Запомнить
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+form {
+  border: 1px solid #c6c7cc;
+  border-radius: 5px;
+  font: 14px/1.4 &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  width: 240px;
+}
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+input {
+  border-radius: 5px;
+  font: 14px/1.4 &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+.account-info {
+  padding: 20px 20px 0 20px;
+}
+.account-info label {
+  color: #395870;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.account-info input {
+  background: #fff;
+  border: 1px solid #c6c7cc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+  width: 100%;
+}
+.account-action {
+  background: #f0f0f2;
+  border-top: 1px solid #c6c7cc;
+  padding: 20px;
+}
+.account-action .btn {
+  background: linear-gradient(#49708f, #293f50);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  float: left;
+  padding: 8px 16px;
+}
+.account-action label {
+  color: #7c7c80;
+  font-size: 12px;
+  float: left;
+  margin: 10px 0 0 20px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация формы для входа</h3><iframe width="100%" height="320" src="https://jsfiddle.net/webref/knpymnf5/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>На практике</h2><p>С пониманием того как строить формы, давайте создадим страницу регистрации для нашего сайта Styles Conference, чтобы мы могли начать собирать интерес и продавать билеты на мероприятие.</p><p>Перепрыгнем к нашему файлу register.html и начнём, следуя тому же макету что мы использовали для страниц Спикеры и Место проведения. Он включает в себя добавление элемента <span class="tag">&lt;section&gt;</span> с классом <span class="class">row</span> чуть ниже вступления и вложенный элемент <span class="tag">&lt;div&gt;</span> с классом <span class="class">grid</span> непосредственно внутри элемента <span class="tag">&lt;section&gt;</span>.</p><p>Наш код чуть ниже вступления для страницы Регистрация должен выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;grid&quot;&gt;
+  ...
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p>В качестве напоминания — класс <span class="class">row</span> добавляет белый фон и обеспечивает некоторый вертикальный <span class="attribute">padding</span>, в то время как класс <span class="class">grid</span> выравнивает по центру наш контент в середине страницы и обеспечивает некоторый горизонтальный <span class="attribute">padding</span>.</p><p>Внутри элемента <span class="tag">&lt;div&gt;</span> с классом <span class="class">grid</span> мы собираемся создать две колонки, одна 2/3, а другая 1/3 от ширины страницы. Колонка 2/3 будет элементом <span class="tag">&lt;section&gt;</span> с левой стороны, которая говорит пользователям, почему они должны зарегистрироваться на нашей конференции. Колонка 1/3 будет элементом <span class="tag">&lt;form&gt;</span> справа и предоставляет пользователям возможность регистрироваться на нашей конференции.</p><p>Мы добавим эти два элемента и соответствующие им классы <span class="class">col-2-3</span> и <span class="class">col-1-3</span> непосредственно внутрь элемента <span class="tag">&lt;div&gt;</span> с классом <span class="class">grid</span>. Так как эти элементы будут строчно-блочными, мы должны открыть комментарий сразу после закрывающего тега колонки 2/3, а затем закрыть этот комментарий непосредственно перед открывающим тегом колонки 1/3.</p><p>В целом, наш код должен выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;grid&quot;&gt;
+
+    &lt;section class=&quot;col-2-3&quot;&gt;
+      ...
+    &lt;/section&gt;&lt;!--
+
+    --&gt;&lt;form class=&quot;col-1-3&quot;&gt;
+      ...
+    &lt;/form&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p>Теперь внутри нашей колонке 2/3 добавим некоторые детали о нашем мероприятии и почему поучаствовать в нём будет хорошей идеей для начинающих дизайнеров и фронтенд-разработчиков. Мы сделаем это, используя несколько разных уровней заголовков (вместе с заранее установленными для них стилями), абзацем и маркированным списком.</p><p>В нашем элементе <span class="tag">&lt;section&gt;</span> с классом <span class="class">col-2-3</span> код должен выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;section class=&quot;col-2-3&quot;&gt;
+
+  &lt;h2&gt;Закажи билет на конференцию&lt;/h2&gt;
+  &lt;h5&gt;$99 за билет&lt;/h5&gt;
+
+  &lt;p&gt;Приобретите билет на Styles Conference, используя форму справа. 
+     Можно приобрести сразу несколько билетов, так что не стесняйтесь взять 
+     с собой друга или двух. После того, как ваш заказ будет готов, мы 
+     свяжемся с вами и предоставим квитанцию за покупку. Скоро увидимся!&lt;/p&gt;
+ 
+  &lt;h4&gt;Зачем участвовать?&lt;/h4&gt;
+ 
+  &lt;ul&gt;
+    &lt;li&gt;Более двадцати спикеров мирового класса&lt;/li&gt;
+    &lt;li&gt;Один полный день мастер-классов и два полных дня презентаций&lt;/li&gt;
+    &lt;li&gt;Состоится в Театре Чикаго, исторической достопримечательности&lt;/li&gt;
+    &lt;li&gt;Август в Чикаго просто поражает&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/section&gt;</code></pre>
+<p>В данный момент наш маркированный список не содержит маркеры списка. Все стили браузера по умолчанию были выключены сбросом CSS, мы добавили всё обратно в уроке&nbsp;1. Давайте создадим несколько пользовательских стилей специально для этого списка.</p><p>Чтобы сделать это, добавим класс <span class="class">why-attend</span> к маркированному списку.</p>
+<pre><code data-language="html">&lt;ul class=&quot;why-attend&quot;&gt;
+  ...
+&lt;/ul&gt;</code></pre>
+<p>С этим добавленным классом создадим новый раздел для стилей страницы Регистрация в нижней части нашего файла main.css. В этом разделе мы будем использовать класс, чтобы выбрать маркированный список и добавить <span class="attribute">list-style</span> как <span class="value">square</span>, а также некоторые <span class="attribute">margin</span>.</p><p>Новый раздел в нижней части нашего файла main.css должен выглядеть следующим образом:</p>
+<pre><code data-language="css">/*
+  ========================================
+  Регистрация
+  ========================================
+*/
+
+.why-attend {
+  list-style: square;
+  margin: 0 0 22px 30px;
+}</code></pre>
+<p>Раздел нашей страницы Регистрация завершён, так что теперь пришло время обратиться к регистрационной форме. Начнём с добавления атрибутов <span class="attribute">action</span> и <span class="attribute">method</span> к элементу <span class="tag">&lt;form&gt;</span>. Так как мы не создали обработчик нашей формы, эти атрибуты будут просто служить заполнителем и должны быть пересмотрены.</p><p>Код для нашего элемента <span class="tag">&lt;form&gt;</span> должен выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;form class=&quot;col-1-3&quot; action=&quot;#&quot; method=&quot;post&quot;&gt;
+  ...
+&lt;/form&gt;</code></pre>
+<p>Далее, внутри элемента <span class="tag">&lt;form&gt;</span> мы добавим элемент <span class="tag">&lt;fieldset&gt;</span>. Внутри него вставим набор элементов <span class="tag">&lt;label&gt;</span>, которыми мы обернём поля формы.</p><p>Мы хотим получить имя пользователя, адрес электронной почты, желаемое число билетов и какие-либо потенциальные комментарии. Имя, адрес электронной почты и количество билетов обязательны для заполнения, так что мы должны убедиться, что используем соответствующие элементы и атрибуты для каждого поля формы.</p><p>С этой смесью разных полей и атрибутов, код для нашей формы должны выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;form class=&quot;col-1-3&quot; action=&quot;#&quot; method=&quot;post&quot;&gt;
+
+  &lt;fieldset&gt;
+ 
+    &lt;label&gt;
+      Имя
+      &lt;input type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;Полное имя&quot; required&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      Email
+      &lt;input type=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Адрес почты&quot; required&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      Число билетов
+      &lt;select name=&quot;quantity&quot; required&gt;
+        &lt;option value=&quot;1&quot; selected&gt;1&lt;/option&gt;
+        &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+        &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+        &lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
+        &lt;option value=&quot;5&quot;&gt;5&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+
+    &lt;label&gt;
+      Комментарии
+      &lt;textarea name=&quot;comments&quot;&gt;&lt;/textarea&gt;
+    &lt;/label&gt;
+
+  &lt;/fieldset&gt;
+ 
+  &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Заказать&quot;&gt;
+ 
+&lt;/form&gt;</code></pre>
+
+<p>Здесь мы видим, что каждое поле формы вложено в элемент <span class="tag">&lt;label&gt;</span>. Поле для «Имя» использует элемент <span class="tag">&lt;input&gt;</span> со значением атрибута <span class="attribute">type</span> как <span class="value">text</span>, в то время как поле «Email» использует элемент <span class="tag">&lt;input&gt;</span> со значением <span class="value">email</span> у атрибута <span class="attribute">type</span>.</p><p>Оба поля формы — «Имя» и «Email» включают в себя логический атрибут <span class="attribute">required</span> и атрибут <span class="attribute">placeholder</span>.</p><p>Для поля «Количество билетов» применяется элемент <span class="tag">&lt;select&gt;</span> и вложенные элементы <span class="tag">&lt;option&gt;</span>. Сам элемент <span class="tag">&lt;select&gt;</span> включает в себя логический атрибут <span class="attribute">required</span>, а первый элемент <span class="tag">&lt;option&gt;</span> включает логический атрибут <span class="attribute">selected</span>.</p><p>Для поля комментариев используется элемент <span class="tag">&lt;textarea&gt;</span> без каких-либо специальных модификаций. И, наконец, за пределами элемента <span class="tag">&lt;fieldset&gt;</span> содержится поле для отправки формы, которое формируется с помощью элемента <span class="tag">&lt;input&gt;</span> со значением <span class="value">submit</span> у атрибута <span class="attribute">type</span>.</p><p>Форма на месте, пора добавить к ней стили. Мы начнём с нескольких стилей по умолчанию для самого элемента <span class="tag">&lt;form&gt;</span> и для элементов <span class="tag">&lt;input&gt;</span>, <span class="tag">&lt;select&gt;</span> и <span class="tag">&lt;textarea&gt;</span>.</p><p>В разделе Регистрация нашего файла main.css мы хотим добавить следующие стили:</p>
+<pre><code data-language="css">form {
+  margin-bottom: 22px;
+}
+input,
+select,
+textarea {
+  font: 300 16px/22px &quot;Roboto&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}</code></pre>
+<p>Мы начали с размещения 22-пиксельного <span class="attribute">margin</span> снизу формы, чтобы вертикальное пространство помогло отделить его от других элементов. Затем добавили некоторые шрифтовые свойства, в том числе насыщенность, размер, высота строки и семейство для всех элементов <span class="tag">&lt;input&gt;</span>, <span class="tag">&lt;select&gt;</span> и <span class="tag">&lt;textarea&gt;</span>.</p><p>По умолчанию, у каждого браузера есть своя собственная интерпретация того, как должны выглядеть стили для полей формы. Имея это в виду, мы повторили шрифтовые стили из элемента <span class="tag">&lt;body&gt;</span>, чтобы наши стили остались неизменными.</p><p>Добавим некоторые стили для элементов внутри <span class="tag">&lt;fieldset&gt;</span>. Поскольку мы можем добавить дополнительные элементы <span class="tag">&lt;fieldset&gt;</span> позже, добавим класс <span class="class">register-group</span> к нашему существующему элементу <span class="tag">&lt;fieldset&gt;</span>, оттуда мы можем применить уникальные стили к элементам вложенных в него.</p>
+<pre><code data-language="html">&lt;fieldset class=&quot;register-group&quot;&gt;
+  ...
+&lt;/fieldset&gt;</code></pre>
+<p>После того, как класс <span class="class">register-group</span> находится на месте, мы добавим несколько стилей для элементов, вложенных в <span class="tag">&lt;fieldset&gt;</span>. Эти стили появятся в нашем файле main.css, ниже существующих стилей формы.</p>
+<pre><code data-language="css">.register-group label {
+  color: #648880;
+  cursor: pointer;
+  font-weight: 400;
+}
+.register-group input,
+.register-group select,
+.register-group textarea {
+  border: 1px solid #c6c9cc;
+  border-radius: 5px;
+  color: #888;
+  display: block;
+  margin: 5px 0 27px 0;
+  padding: 5px 8px;
+}
+.register-group input,
+.register-group textarea {
+  width: 100%;
+}
+.register-group select {
+  height: 34px;
+  width: 60px;
+}
+.register-group textarea {
+  height: 78px;
+}</code></pre>
+<p>Вы заметите, что большинство из этих свойств и значений вращаются вокруг блочной модели, которую мы рассмотрели в уроке&nbsp;4. Мы, прежде всего, настроили размеры разных полей формы, гарантируя, что они располагаются должным образом. Помимо добавления некоторых стилей блочной модели, мы настроили <span class="attribute">color</span> и <span class="attribute">font-weight</span> у нескольких элементов.</p><p>Пока всё идёт хорошо и наша форма становится довольно красивой. Единственный оставшийся элемент, который ещё не стилизован&nbsp;— это кнопка для отправки. Для кнопок у нас уже есть некоторые существующие стили и мы можем применить их здесь. Если мы мысленно перенесёмся к нашей главной странице, наш раздел <span class="class">hero</span> содержит кнопку, которая получает несколько стилей через класс <span class="class">btn</span>.</p><p>Добавим значение <span class="class">btn</span> к атрибуту <span class="attribute">class</span>, наряду с новым классом <span class="class">btn-default</span> к нашей кнопке для отправки. Мы будем использовать имя класса <span class="class">btn-default</span> специально, так как эта кнопка выводится на белом фоне и стиль для кнопок по умолчанию передвинется вперёд.</p>
+<pre><code data-language="html">&lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Заказать&quot;&gt;</code></pre>
+<p>Теперь наша кнопка для отправки делит некоторые общие стили с кнопкой на главной странице. Мы воспользуемся классом <span class="class">btn-default</span> чтобы применить некоторые новые стили конкретно к нашей кнопке.</p><p>Возвращаясь назад к разделу с кнопками в нашем файле main.css, добавим следующее:</p>
+<pre><code data-language="css">.btn-default {
+  border: 0;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: #77a198;
+}</code></pre>
+<p>Эти новые стили определяют размер и фон нашей кнопки, затем комбинируются с существующими стилями класса <span class="class">btn</span> и создают финальную презентацию нашей кнопки.</p><p>Наша страница Регистрация закончена и посетители теперь могут начать бронировать билеты.</p><p class="figsign"><img src="../../assets/images/learn-html-css/practice-10-07.png" alt="Наша страница регистрации с формой" width="1082" height="1022" class="fig"/></p><p class="figsign">Рис. 10.07. Наша страница регистрации с формой</p><h3>Демонстрация и исходный код</h3><p>Ниже вы можете скачать исходный код сайта на данный момент.</p><p><a href="https://webref.ru/example/learn-html-css/building-forms/register.html" class="button radius">Просмотр сайта Styles Conference</a> или <a href="../../assets/files/building-forms.zip">Скачать исходный код</a></p><h2>Резюме</h2><p>Формы играют большую роль в том, как пользователи взаимодействуют с сайтами, предоставляют им информацию и работают с ними. Мы предприняли все правильные шаги, чтобы не только узнать как создавать формы, но и как их стилизовать.</p><p>Напомним быстро, что мы обсудили в этом уроке:</p><ul><li>как инициализировать форму;</li><li>способы получения текстовой информации от пользователей;</li><li>разные элементы и методы для создания нескольких вариантов выбора и меню;</li><li>какие элементы и атрибуты лучше всего использовать для отправки данных формы на обработку;</li><li>как лучше организовать формы, задать структуру и значение полям формы;</li><li>набор атрибутов, которые помогают собрать больше подходящих данных.</li></ul><p>Наше понимание HTML и CSS продвигается достаточно хорошо и у нас остался только один компонент для изучения: таблицы. В следующей главе мы рассмотрим как организовать и представить данные в таблицах.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://htmldog.com/guides/html/beginner/forms/">Forms</a> на HTML Dog</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">Form Element</a> наa Mozilla Developer Network</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">Input Element</a> на Mozilla Developer Network</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/formy">формы</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-e080b93f68544965d22195f0653579ad"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/form.html">&lt;form&gt;</a></li><li class=""> <a href="../../html/input.html">&lt;input&gt;</a></li><li class=""> <a href="../../html/option.html">&lt;option&gt;</a></li><li class=""> <a href="../../html/select.html">&lt;select&gt;</a></li><li class=""> <a href="../../course/html5-form/button.html">Кнопки</a></li><li class=""> <a href="../../course/html5-form/send.html">Отправка данных формы</a></li><li class=""> <a href="../../course/html5-form/radio.html">Переключатели</a></li><li class=""> <a href="../../course/html5-form/password.html">Поле для пароля</a></li><li class=""> <a href="../html5-css3/form/select.html">Поле со списком</a></li><li class=""> <a href="../../course/html5-form/select.html">Поле со списком</a></li><li class=""> <a href="../../course/html5-form/form.html">Создание форм</a></li><li class=""> <a href="../diveintohtml5/forms.html">Сумасшедшие формы</a></li><li class=""> <a href="../../course/html5-form/text.html">Текстовое поле</a></li><li class=""> <a href="../../course/html5-form/checkbox.html">Флажки</a></li><li class=""> <a href="../html5-css3/form.html">Формы</a></li><li class=""> <a href="../../course/html-content/forms.html">Формы в HTML</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 12.04.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/adding-media'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/learn-html-css/organizing-data-with-tables'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="adding-media.html" title="На предыдущую страницу">Добавление медиа-контента</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="organizing-data-with-tables.html" title="На следующую страницу">Организация данных с помощью таблиц</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf"><a href="positioning-content.html">Позиционирование содержимого</a></li><li class="leaf"><a href="working-with-typography.html">Работа с типографикой</a></li><li class="leaf"><a href="setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li><li class="leaf"><a href="creating-lists.html">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf active-trail"><a href="building-forms.html" class="active-trail active">Построение форм</a></li><li class="leaf"><a href="organizing-data-with-tables.html">Организация данных с помощью таблиц</a></li><li class="last leaf"><a href="writing-your-best-code.html">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-3390d93103d367684e6ed7720bd81dd8"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="building-forms.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вкладки | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../component.html" />
+<link rel="next" href="breadcrumb.html" />
+<link rel="prev" href="dropdown.html" />
+<meta name="description" content="Вкладки как элемент интерфейса пришли из делопроизводства. В обычные деловые папки вставляют небольшие кусочки картона с надписями, которые позволяют быстро сориентироваться в содержании и перейти к нужному разделу. На сайтах вкладки применяются там, где требуется компактно и наглядно скомпоновать информацию по блокам. Переход по вкладкам происходит без перезагрузки страницы, что ускоряет работу и упрощает пользователю жизнь. Код вкладок состоит из двух частей — это отображение самих вкладок, а также информации с ними связанных." />
+<link rel="canonical" href="tabs.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Вкладки</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../bootstrap.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Bootstrap</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../component.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Компоненты</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Вкладки</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Вкладки как элемент интерфейса пришли из делопроизводства. В обычные деловые папки вставляют небольшие кусочки картона с надписями, которые позволяют быстро сориентироваться в содержании и перейти к нужному разделу. На сайтах вкладки применяются там, где требуется компактно и наглядно скомпоновать информацию по блокам. Переход по вкладкам происходит без перезагрузки страницы, что ускоряет работу и упрощает пользователю жизнь.</p><p>Код вкладок состоит из двух частей — это отображение самих вкладок, а также информации с ними связанных.</p><p>Вначале создаём список <span class="tag">&lt;ul&gt;</span> с классами <span class="var">nav</span> и <span class="var">nav-tabs</span>. Важны оба класса, иначе мы не получим желаемый вид. Каждая вкладка формируется элементом <span class="tag">&lt;li&gt;</span>, для текущей открытой вкладки требуется добавить класс <span class="var">active</span>. Текст на вкладках делается с помощью ссылок, для каждой из них следует добавить атрибут <span class="attribute">data-toggle</span> со значением <span class="value">tab</span>. Сама ссылка указывает на элемент с идентификатором, который должен отображаться при открытии вкладки. Вот что в итоге получится.</p>
+<pre><code data-language="html">&lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+  &lt;li role=&quot;presentation&quot; class=&quot;active&quot;&gt;&lt;a href=&quot;#tab1&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Сепульки&lt;/a&gt;&lt;/li&gt;
+  &lt;li role=&quot;presentation&quot;&gt;&lt;a href=&quot;#tab2&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Сепулькарии&lt;/a&gt;&lt;/li&gt;
+  &lt;li role=&quot;presentation&quot;&gt;&lt;a href=&quot;#tab3&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Сепуление&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>Даже с этим куцым кодом вкладки должны уже работать и визуально переключаться.</p><p>Переходим к выводимому тексту. Оборачиваем всё элементом <span class="tag">&lt;div&gt;</span> с классом <span class="var">tab-content</span>, внутри для каждой вкладки делаем отдельный <span class="tag">&lt;div&gt;</span> с классом <span class="var">tab-pane</span>. Плюс добавляем уникальный идентификатор, связывающий текст с самой вкладкой. Последний штрих&nbsp;— для текущей вкладки указываем класс <span class="var">active</span>.</p>
+<pre><code data-language="html">&lt;div class=&quot;tab-content&quot;&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane active&quot; id=&quot;tab1&quot;&gt;
+  Важный элемент цивилизации ардритов с планеты Энтеропия.
+ &lt;/div&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane&quot; id=&quot;tab2&quot;&gt;
+  Устройства для сепуления.
+ &lt;/div&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane&quot; id=&quot;tab3&quot;&gt;
+  Занятие ардритов с планеты Энтеропия.
+ &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Соединяем вместе два фрагмента и получаем итоговый код для создания вкладок.</p><p class="exampleTitle">Пример 1. Создание вкладок</p>
+<pre><code data-language="html">&lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+  &lt;li role=&quot;presentation&quot; class=&quot;active&quot;&gt;&lt;a href=&quot;#tab1&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Сепульки&lt;/a&gt;&lt;/li&gt;
+  &lt;li role=&quot;presentation&quot;&gt;&lt;a href=&quot;#tab2&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Сепулькарии&lt;/a&gt;&lt;/li&gt;
+  &lt;li role=&quot;presentation&quot;&gt;&lt;a href=&quot;#tab3&quot; role=&quot;tab&quot; data-toggle=&quot;tab&quot;&gt;Сепуление&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;tab-content&quot;&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane active&quot; id=&quot;tab1&quot;&gt;
+  Важный элемент цивилизации ардритов с планеты Энтеропия.
+ &lt;/div&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane&quot; id=&quot;tab2&quot;&gt;
+  Устройства для сепуления.
+ &lt;/div&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane&quot; id=&quot;tab3&quot;&gt;
+  Занятие ардритов с планеты Энтеропия.
+ &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Результат данного примера показан на рис. 1.</p><p class="fig"><img src="../../../assets/images/bootstrap/tabs.png" alt="Вид вкладок" width="568" height="264"></p><p class="figsign">Рис. 1. Вид вкладок</p><h2>Плавный переход</h2><p>Переход между вкладками происходит мгновенно, но можно сделать это с небольшим эффектом, если добавить класс <span class="var">fade</span> к блоку с текстом. Тогда текст будет плавно исчезать и появляться. Для активной вкладки обязательно надо включить ещё один класс <span class="var">in</span>, без него возникнут ошибки.</p>
+<pre><code data-language="html">&lt;div class=&quot;tab-content&quot;&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane active in fade&quot; id=&quot;tab1&quot;&gt;
+  Важный элемент цивилизации ардритов с планеты Энтеропия.
+ &lt;/div&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane fade&quot; id=&quot;tab2&quot;&gt;
+  Устройства для сепуления.
+ &lt;/div&gt;
+ &lt;div role=&quot;tabpanel&quot; class=&quot;tab-pane fade&quot; id=&quot;tab3&quot;&gt;
+  Занятие ардритов с планеты Энтеропия.
+ &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h2>Вкладки на всю ширину</h2><p>Размер вкладки зависит от длины текста в ней, но можно насильно изменить их ширину, чтобы вкладки занимали всё доступную ширину. Просто добавьте класс <span class="var">nav-justified</span> к элементу <span class="tag">&lt;ul&gt;</span>.</p>
+<pre><code data-language="html">&lt;ul class=&quot;nav nav-tabs nav-justified&quot; role=&quot;tablist&quot;&gt;</code></pre>
+<p>Вот как выглядят подобные вкладки (рис. 2).</p><p class="fig"><img src="../../../assets/images/bootstrap/tabs-2.png" alt="Вкладки на всю ширину" width="983" height="284"></p><p class="figsign">Рис. 2. Вкладки на всю ширину</p><p>При уменьшении размера окна такие вкладки меняют свой вид и выстраиваются не по горизонтали, а друг под другом (рис.&nbsp;3).</p><p class="fig"><img src="../../../assets/images/bootstrap/tabs-3.png" width="570" height="345" alt="Вид вкладок при уменьшении размера окна"></p><p class="figsign">Рис. 3. Вид вкладок при уменьшении размера окна</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Вид вкладок</h2><p>Традиционно вкладки имеют вид унаследованный из жизни — выступающие из папки кусочки картона с надписью. Заменив класс <span class="var">nav-tabs</span> на <span class="var">nav-pills</span> получим вкладки в виде пилюль (рис.&nbsp;4).</p><p class="fig"><img src="../../../assets/images/bootstrap/tabs-4.png" width="568" height="275" alt="Изменение вида вкладок"></p><p class="figsign">Рис. 4. Изменение вида вкладок</p><p>Код будет таким.</p>
+<pre><code data-language="html">&lt;ul class=&quot;nav nav-pills&quot; role=&quot;tablist&quot;&gt;</code></pre>
+<p>Вкладки также можно расположить вертикально, для этого предназначен класс <span class="var">nav-stacked</span>.</p>
+<pre><code data-language="html">&lt;ul class=&quot;nav nav-pills nav-stacked&quot; role=&quot;tablist&quot;&gt;</code></pre>
+<p>Вид таких вкладок продемонстрирован на рис. 5.</p><p class="fig"><img src="../../../assets/images/bootstrap/tabs-5.png" width="673" height="303" alt="Вертикальное расположение вкладок"></p><p class="figsign">Рис. 5. Вертикальное расположение вкладок</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 08.02.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/bootstrap/component/dropdown'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/bootstrap/component/breadcrumb'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="dropdown.html" title="На предыдущую страницу">Ниспадающее меню</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="breadcrumb.html" title="На следующую страницу">Хлебные крошки</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../install.html">Установка Bootstrap</a></li><li class="leaf"><a href="../grid.html">Модульные сетки</a></li><li class="leaf"><a href="../responsive.html">Адаптивный дизайн</a></li><li class="collapsed"><a href="../css.html">Стили</a></li><li class="last expanded active-trail"><a href="../component.html" class="active-trail">Компоненты</a><ul class="menu"><li class="first leaf"><a href="group.html">Группа кнопок</a></li><li class="leaf"><a href="dropdown.html">Ниспадающее меню</a></li><li class="leaf active-trail"><a href="tabs.html" class="active-trail active">Вкладки</a></li><li class="leaf"><a href="breadcrumb.html">Хлебные крошки</a></li><li class="leaf"><a href="pager.html">Нумерация страниц</a></li><li class="leaf"><a href="thumb.html">Эскизы</a></li><li class="leaf"><a href="alert.html">Сообщения</a></li><li class="last leaf"><a href="tooltip.html">Всплывающая подсказка</a></li></ul></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-e2096a50838690700248f650f02b8e21"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="tabs.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

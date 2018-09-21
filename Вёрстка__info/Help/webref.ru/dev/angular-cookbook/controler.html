@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контроллеры в AngularJS | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../angular-cookbook.html" />
+<link rel="next" href="json.html" />
+<link rel="prev" href="routing.html" />
+<meta name="description" content="В примере ниже мы увидим, как работают контроллеры в Angular. Чтобы сделать это, я выбрал простую форму, в которой у пользователя запрашивается его имя. После чего обновляется информационное сообщение (то есть «Ваше имя...»). Я также включил кнопку сброса для демонстрационных целей. Обязательные предпосылки Перед тем как перейти к технической части данного примера, позвольте представить вам элемент $scope." />
+<link rel="canonical" href="controler.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Контроллеры в AngularJS</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../angular-cookbook.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">AngularJS. Рецепты программирования</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Контроллеры в AngularJS</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В примере ниже мы увидим, как работают <a href="https://docs.angularjs.org/guide/controller">контроллеры</a> в Angular.</p><p>Чтобы сделать это, я выбрал простую форму, в которой у пользователя запрашивается его имя. После чего обновляется информационное сообщение (то есть «Ваше имя...»). Я также включил кнопку сброса для демонстрационных целей.</p><h2>Обязательные предпосылки</h2><p> Перед тем как перейти к технической части данного примера, позвольте представить вам элемент <a href="https://docs.angularjs.org/guide/scope">$scope</a>.</p><h3>Что такое $scope</h3><p>AngularJS поддерживает <a href="http://www.tutorialspoint.com/design_pattern/mvc_pattern.htm">шаблон MVC</a>, в котором объект <span class="var">$scope</span> связан с моделью приложения. На самом деле, это клей между представлением и контроллером. Кроме того, он хранит данные модели, которые нужно переслать в представление и применяется в качестве двусторонней привязки данных Angular чтобы связать данные модели с представлением.</p><p>Его обязанность заключается в инициализации данных, которые необходимо отобразить в представлении. <span class="var">$scope</span> располагается в иерархической структуре, которая имитирует структуру DOM приложения.</p><h3>Что такое контроллеры?</h3><p>Как правило, контроллер в Angular является функцией-конструктором JavaScript, которая дополняет объект <span class="var">$scope</span>. Она может быть прикреплена к DOM через директиву <span class="attribute">ng-controller</span>, где Angular создаёт новый объект контроллера, используя специальную функцию контроллера. Применяя контроллер мы можем представить новую дочернюю область видимости в качестве внедряемого параметра функции контроллера. Этот параметр доступен через <span class="var">$scope</span>.</p><h4>Как инициализировать состояние объекта $scope</h4><p>При создании приложения мы должны настроить начальное состояние для <span class="var">$scope</span>. Это может быть сделано путём присоединения свойства к объекту <span class="var">$scope</span>. Эти свойства содержат представление (модель, которая будет представлена через представление). Все свойства <span class="var">$scope</span> будут доступны в шаблоне в тот момент в DOM, когда контроллер зарегистрирован.</p><h4>Небольшой пример</h4><p>Мы создали <span class="var">HelloController</span>, к которому присоединено свойство <span class="var">helloMessage</span>, содержащее строку «Привет, мир!» в <span class="var">$scope</span>:</p>
+<pre><code data-language="javascript">var myApp = angular.module('myApp',[]);
+  myApp.controller('HelloController', ['$scope', function($scope) {
+  $scope.helloMessage= 'Привет, мир!';
+}]);</code></pre>
+<p>Что фактически сделали, так это создали модуль Angular (myApp) для нашего приложения. Затем мы добавили функцию-конструктор контроллера в модуль, используя метод <span class="var">.controller()</span>. Это держит функцию контроллера за пределами глобальной области видимости.</p><p>Далее мы присоединяем наш контроллер к DOM через директиву <span class="attribute">ng-controller</span>. Свойство <span class="var">helloMessage</span> теперь можно присоединить к шаблону:</p>
+<pre><code data-language="html">&lt; div ng-controller=&quot;HelloController&quot; &gt;
+  {{ helloMessage }}
+&lt;/div &gt;</code></pre>
+<h4>Случаи использования контроллера</h4><p>Как правило, мы обычно применяем контроллеры для установки начального состояния объекта <span class="var">$scope</span> или для добавления поведения к объекту <span class="var">$scope</span>.</p><p>Случаи, когда мы не можем использовать контроллеры.</p><ul><li> Манипулирование DOM (контроллеры должны содержать только бизнес-логику).</li><li> Формат ввода; используйте взамен элементы форм Angular.</li><li> Выходной фильтр; используйте взамен фильтры Angular.</li><li> Делиться кодом или состоянием между контроллерами; используйте взамен сервисы Angular.</li><li> Управление жизненным циклом других компонентов (т. е. для создания экземпляров сервисов).</li></ul><h2>Наш пример</h2><p>Как я упоминал ранее, пример содержит текстовое поле для имени пользователя с кнопкой сброса и обновляемым сообщением, связанным с логикой контроллера.</p><p class="exampleTitle">index.html</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Пример работы контроллера в AngularJS&lt;/title&gt; 
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+  &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+ &lt;/head&gt;
+ &lt;body ng-app=&quot;myApp&quot;&gt;
+  &lt;h2&gt;Пример работы контроллера в AngularJS&lt;/h2&gt;
+  &lt;div ng-controller=&quot;UserController&quot;&gt;
+   &lt;form&gt;
+    &lt;label&gt;Имя:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;username&quot; ng-model=&quot;username&quot;&gt;
+    &lt;button class=&quot;btn btn-link&quot; ng-click=&quot;reset()&quot;&gt;Сбросить&lt;/button&gt;
+    &lt;p&gt;Ваше имя: {{username}}&lt;/p&gt;
+   &lt;/form&gt;
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Как поясняет строка 8, функциональность нашего контроллера будет определена в файле script.js. В строке 11 мы объявляем наше приложение Angular по имени <span class="var">myApp</span>. Строки 13-20 содержат важный <span class="tag">&lt;div&gt;</span>, который взаимодействует с <span class="var">UserController</span> (это в сочетании с 8 строкой включённого скрипта означает, что логика нашего контроллера содержится в JavaScript-файле.</p><p>Что еще важно здесь, с точки зрения Angular, это атрибут <span class="attribute">ng-model</span> текстового поля в строке 16. На самом деле это директива, которая связывает наше текстовое поле со свойством username с помощью <span class="var">UserController</span>, который создаётся и раскрывается этой директивой.</p><p>Иными словами, значение текстового поля может быть изменено внутри контроллера путём доступа к свойству username из объекта <span class="var">$scope</span> (т.&nbsp;е. <span class="var">$scope.username</span>).</p><p>Что насчёт строки 17 и <span class="attribute">ng-click</span>? Итак, с помощью директивы <span class="attribute">ng-click</span> мы связываем элемент <span class="tag">&lt;div&gt;</span>, включая его детей c контекстом контроллера <span class="var">UserController</span>. Директива <span class="attribute">ng-click</span> будет вызывать функцию <span class="var">reset()</span> нашего контроллера при нажатии кнопки Сбросить.</p><p>В строке 18 есть сообщение, о котором мы говорили ранее, где в двойных фигурных скобках ({{}}) выражение привязывается к элементу.</p><p>Достаточно сказано для реализации нашего представления. Давайте теперь перейдём к коду контроллера, а затем объясним необходимые детали.</p><p class="exampleTitle">script.js</p>
+<pre><code data-language="javascript">var myApp = angular.module('myApp', []);
+myApp.controller('UserController', ['$scope', function($scope) {
+  $scope.username = 'не известно';
+  $scope.reset = function() {
+    $scope.username = '';
+  };
+}]);</code></pre>
+<p>Сперва мы должны определить, что этот скрипт является модулем Angular, особенно тот, что задан в нашем index.html как имя приложения <span class="var">myApp</span>. Затем мы определяем имя контроллера и инициализируем username со значением «не известно». Таким образом, когда приложение загружается в браузере, текстовое поле будет заранее содержать значение, но при изменении его пользователем <span class="attribute">ng-model</span> взаимодействует с контроллером и обновляет значение имени пользователя (через переменную в фигурных скобках в представлении).</p><p>Очевидно, что функция <span class="var">reset()</span> применяется для очистки содержимого текстового поля.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Демонстрация</h2><p>Давайте теперь покажем быстро демонстрацию. Вот начальный вид:</p><p class="fig"><img src="../../assets/images/angular-cookbook/controller1.png" alt="Исходное состояние приложения"></p><p class="figsign">Рис. 4.1. Исходное состояние приложения</p><p>Если мы нажали на кнопку Очистить, наше текстовое поле пустеет:</p><p class="fig"><img src="../../assets/images/angular-cookbook/controller2.png" alt="Кнопка сброса"></p><p class="figsign">Рис. 4.2. Кнопка сброса</p><p>Наконец, вот обновлённое сообщение, которое, в сочетании с вводом имени, приведёт к динамическому виду в нашем приложении:</p><p class="fig"><img src="../../assets/images/angular-cookbook/controller3.png" alt="Ввод имени"></p><p class="figsign">Рис. 4.3. Ввод имени</p><h2>Скачать</h2><p>Вы можете скачать полный исходный код этого примера здесь: <a href="../../assets/files/angularjs_controller.zip">angularjs_controller.zip</a>.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Тодорис Баис</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 04.11.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/angular-cookbook/routing'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/angular-cookbook/json'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="routing.html" title="На предыдущую страницу">Маршрутизация в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="json.html" title="На следующую страницу">Извлечение данных JSON в AngularJS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="single-page-app.html">Одностраничные приложения</a></li><li class="leaf"><a href="form-validation.html">Проверка формы в AngularJS</a></li><li class="leaf"><a href="routing.html">Маршрутизация в AngularJS</a></li><li class="leaf active-trail"><a href="controler.html" class="active-trail active">Контроллеры в AngularJS</a></li><li class="leaf"><a href="json.html">Извлечение данных JSON в AngularJS</a></li><li class="leaf"><a href="table.html">Таблицы в AngularJS</a></li><li class="leaf"><a href="ng-src.html">AngularJS ng-src</a></li><li class="last leaf"><a href="data-binding.html">Связывание данных в AngularJS</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-4e7c07d7dc3f02061ac90ff858e14938"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="controler.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

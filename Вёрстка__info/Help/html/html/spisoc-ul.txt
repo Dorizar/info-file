@@ -1,0 +1,16 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'> 
+		<link rel='stylesheet' href='css/spisoc-ul.css' media='all'>
+		<link rel='icon' href='icon.jpg' media='all'>
+		<title>spisoc-ul Help</title>
+		
+		<script src='jq/jquery.js'></script>
+		<script src='jq/jquery-ui.min.js'></script>
+		<script src='jq/my_script.js'></script>
+	</head>
+	<body>
+		 
+	</body>
+</html>

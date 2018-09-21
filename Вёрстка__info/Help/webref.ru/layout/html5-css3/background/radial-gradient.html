@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Радиальный градиент | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../background.html" />
+<link rel="next" href="../link.html" />
+<link rel="prev" href="linear-gradient.html" />
+<meta name="description" content="Радиальные градиенты по своему принципу похожи на линейные, но один цвет переходит в другой не вдоль прямой линии, а словно круги по воде вокруг точки. На рис. 1 представлено для сравнения одновременно два разных градиента: радиальный (рис. 1а) и линейный (рис. 1б).       а  б  Рис. 1. Радиальный и линейный градиент" />
+<link rel="canonical" href="radial-gradient.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Радиальный градиент</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../html5-css3.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">HTML5 и CSS3 на примерах</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../background.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Фон</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Радиальный градиент</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Радиальные градиенты по своему принципу похожи на линейные, но один цвет переходит в другой не вдоль прямой линии, а словно круги по воде вокруг точки. На рис.&nbsp;1 представлено для сравнения одновременно два разных градиента: радиальный (рис.&nbsp;1а) и линейный (рис.&nbsp;1б).</p><table style="width: 200px; margin: auto"><tr><td><img src="../../../assets/images/html5-css3/radial-gradient-1a.png" width="100" height="100" alt="Радиальный градиент"></td><td><img src="../../../assets/images/html5-css3/radial-gradient-1b.png" width="100" height="100" alt="Линейный градиент"></td></tr><tr><td class="figsign">а</td><td class="figsign">б</td></tr></table><p class="figsign">Рис. 1. Радиальный и линейный градиент</p><p>Радиальный градиент создаётся с помощью свойства <span class="attribute">background</span> или <span class="attribute">background-image</span> с функцией <span class="value">radial-gradient()</span>. В простейшем случае для задания радиального градиента понадобится всего два параметра: начальный и конечный цвет. По умолчанию, начальная точка располагается при этом в центре. В примере&nbsp;1 показано создание некоторого подобия шарика, для этого используется радиальный градиент и свойство <span class="attribute">border-radius</span>.</p><p class="exampleTitle">Пример 1. Градиент</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Градиент&lt;/title&gt;
+  &lt;style&gt;
+   div {
+    height: 100px; width: 100px; /* Размеры */
+    border-radius: 50%; /* Превращаем в круг */
+    background: radial-gradient(#55ddff, #0081b5);
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div&gt;&lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Результат данного примера показан на рис.&nbsp;1.</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-2.png" alt="Радиальный градиент" width="100" height="100"></p><p class="figsign">Рис. 2. Радиальный градиент</p><p>Начальную точку градиента можно задавать в любом месте элемента, для этого вначале указывается её позиция.</p><p class="figsign"><img src="../../../assets/images/html5-css3/radial-gradient-pos.png" alt="Синтаксис radial-gradient" width="582" height="76"></p><p>Позиция точки пишется аналогично значениям свойства <span class="attribute">background-position</span> с помощью ключевых слов или доступных единиц измерения вроде пикселей или процентов; ниже приведены возможные сочетания.</p><ul><li>at top left = at left top = at 0% 0% (в левом верхнем углу);</li><li> at top = at top center = at center top = at 50% 0% (по центру вверху);</li><li> at right top = at top right = at 100% 0% (в правом верхнем углу);</li><li> at left = at left center = at center left = at 0% 50% (по левому краю и по центру);</li><li> at center = at center center = at 50% 50% (по центру) &#8212; это значение по умолчанию;</li><li> at right = at right center = at center right = at 100% 50% (по правому краю и по центру);</li><li> at bottom left = at left bottom = at 0% 100% (в левом нижнем углу);</li><li> at bottom = at bottom center = at center bottom = at 50% 100% (по центру внизу);</li><li> at bottom right = at right bottom = at 100% 100% (в правом нижнем углу).</li></ul><p>Если задать позицию начальной точки для примера&nbsp;1 как at 40px&nbsp;45px, а второй цвет сделать несколько темнее (#0076a5), то получится чуть более реалистичный шарик (рис. 3).</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-3.png" alt="Изменение начальной точки градиента" width="100" height="100"></p><p class="figsign">Рис. 3. Изменение начальной точки градиента</p><p>Возможны две формы радиального градиента — круг (circle) и эллипс (ellipse), которые различаются своим видом. По умолчанию устанавливается эллиптический градиент.</p><p class="figsign"><img src="../../../assets/images/html5-css3/radial-gradient-type.png" alt="Синтаксис radial-gradient" width="575" height="76"></p><p>Разница между круговым и эллиптическим градиентом для цветов #f9e497 и #ffb60f продемонстрирована на рис.&nbsp;4.</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-4a.png" alt="круговой градиент (значение circle)" width="304" height="80"></p><p class="figsign">а. круговой градиент (значение circle)</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-4b.png" alt="эллиптический градиент (значение ellipse)" width="304" height="80"></p><p class="figsign">б. эллиптический градиент (значение ellipse)</p><p class="figsign">Рис. 4. Разные виды градиента</p><p>Для элемента, у которого ширина равна высоте, как в примере с шариком, разница между типами градиента будет незаметна.</p><p>В примере 2 показано создание кругового градиента с заданной начальной точкой. Для усиления контрастности между цветами используется три значения цвета, а не два.</p><p class="exampleTitle">Пример 2. Круговой градиент</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Градиент&lt;/title&gt;
+  &lt;style&gt;
+   div {
+    background: radial-gradient(circle at 80px 40px, #f9eec7, #ffb60f, #ffb60f);
+    padding: 20px;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div&gt;Этот элемент помогает в случае, когда вы находитесь в осознании того
+   факта, что совершенно не понимаете, кто и как вам может помочь. Именно
+   в этот момент мы и подсказываем, что помочь вам никто не сможет.
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Обратите внимание на синтаксис, если мы хотим сочетать форму градиента с указанием начальной точки, то вначале идёт ключевое слово <span class="value">circle</span>, а потом уже через пробел позиция. Результат данного примера показан на рис.&nbsp;5.</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-5.png" alt="Круговой градиент" width="569" height="267"></p><p class="figsign">Рис. 5. Круговой градиент</p><p>Наряду с типом градиента можно задавать и его размер, который зависит от применяемых ключевых слов. Размер пишется через пробел после типа градиента (circle или ellipse).</p><p class="figsign"><img src="../../../assets/images/html5-css3/radial-gradient-size.png" alt="Синтаксис radial-gradient" width="726" height="77"></p><p>В табл. 1 перечислены возможные значения размера с их описанием и результатом для белого и чёрного цвета. Код и вид дан для кругового и эллиптического градиента.</p><table class="data"><caption>Табл. 1. Ключевые слова для изменения размера градиента</caption><tr><th>Значение</th><th>Код</th><th>Описание</th><th>Вид</th></tr><tr><td class="sel">closest-side</td><td><p>background: radial-gradient(circle closest-side at 30px 20px, #fff, #000);</p><p>background: radial-gradient(ellipse closest-side at 30px 20px, #fff, #000);</p></td><td>Форма градиента совпадает с ближайшей к нему стороной блока.</td><td><div style="width:150px;height:100px;background:radial-gradient(circle closest-side at 30px 20px, #fff, #000);margin-bottom:5px"></div><div style="width:150px;height:100px;background:radial-gradient(ellipse closest-side at 30px 20px, #fff, #000);"></div></td></tr><tr><td class="sel">closest-corner</td><td><p>background: radial-gradient(circle closest-corner at 30px 20px, #fff, #000);</p><p>background: radial-gradient(ellipse closest-corner at 30px 20px, #fff, #000);</p></td><td>Форма градиента вычисляется на основании информации о расстоянии до ближайшего угла блока.</td><td><div style="width:150px;height:100px;background:radial-gradient(circle closest-corner at 30px 20px, #fff, #000);margin-bottom:5px"></div><div style="width:150px;height:100px;background:radial-gradient(ellipse closest-corner at 30px 20px, #fff, #000);"></div></td></tr><tr><td class="sel">farthest-side</td><td><p>background: radial-gradient(circle farthest-side at 30px 20px, #fff, #000);</p><p>background: radial-gradient(ellipse farthest-side at 30px 20px, #fff, #000);</p></td><td>Градиент распространяется до дальней стороны блока.</td><td><div style="width:150px;height:100px;background:radial-gradient(circle farthest-side at 30px 20px, #fff, #000);margin-bottom:5px"></div><div style="width:150px;height:100px;background:radial-gradient(ellipse farthest-side at 30px 20px, #fff, #000);"></div></td></tr><tr><td class="sel">farthest-corner</td><td><p>background: radial-gradient(circle farthest-corner at 30px 20px, #fff, #000);</p><p>background: radial-gradient(ellipse farthest-corner at 30px 20px, #fff, #000);</p></td><td>Форма градиента вычисляется на основании информации о расстоянии до дальнего угла блока,</td><td><div style="width:150px;height:100px;background:radial-gradient(circle farthest-corner at 30px 20px, #fff, #000);margin-bottom:5px"></div><div style="width:150px;height:100px;background:radial-gradient(ellipse farthest-corner at 30px 20px, #fff, #000);"></div></td></tr></table><p>Для центральной начальной точки градиенты вроде <span class="value">closest-corner</span> и <span class="value">farthest-side</span> совпадают. Но градиенты будут различаться, если установить начальную точку в углу. В примере&nbsp;3 используется значение <span class="value">closest-corner</span> с заданием начальной точки в пикселях.</p><p class="exampleTitle">Пример 3. Размер градиента</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Градиент&lt;/title&gt;
+  &lt;style&gt;
+   div {
+    background: radial-gradient(circle closest-corner at 40px 30px, #fff, #009ec3);
+    padding: 20px;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div&gt;Содержимое&lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис.&nbsp;6.</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-6.png" alt="Использование значения closest-corner" width="569" height="228"></p><p class="figsign">Рис. 6. Использование значения closest-corner</p><p>Подобно линейному градиенту можно указывать несколько цветов, устанавливать их позицию и делать резкие переходы между цветами. Для этого произвольное количество цветов перечисляется через запятую, а после значения цвета через пробел идёт его позиция, которая может быть задана в пикселях или процентах. Крайние значения 0% и 100% можно не писать, они подразумеваются автоматически.</p><p class="figsign"><img src="../../../assets/images/html5-css3/radial-gradient-color.png" alt="Позиция цветов" width="800" height="78"></p><p>Резкие переходы получаются, когда позиция одного цвета совпадает с позицией другого, как показано в примере&nbsp;4. Разница в один процент сделана, чтобы немного сгладить переход, иначе получается «лесенка» из пикселей, что смотрится не очень красиво.</p><p class="exampleTitle">Пример 4. Резкие переходы</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Градиент&lt;/title&gt;
+  &lt;style&gt;
+   .french {
+    width: 200px;  height: 200px; /* Размеры */
+    border-radius: 50%; /* Превращаем в круг */
+    margin: auto; /* Выравниваем по центру */
+    background: radial-gradient(circle at center, 
+        #000e5e 24%, #fff 25%, #fff 50%, #c70102 51%, #c70102);
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div class=&quot;french&quot;&gt;&lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис.&nbsp;7.</p><p class="fig"><img src="../../../assets/images/html5-css3/radial-gradient-7.png" alt="Резкие переходы между разными цветами" width="569" height="359"></p><p class="figsign">Рис. 7. Резкие переходы между разными цветами</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/fon">фон</a></div><div class="field-item odd"><a href="https://webref.ru/metki/gradient">градиент</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-d8878e22b75c2902185acb3ba97c1362"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../../css/function/radial-gradient.html">radial-gradient()</a></li><li class=""> <a href="../../../course/css-advanced/gradients.html">Градиенты в CSS</a></li><li class=""> <a href="../../learn-html-css/setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 11.11.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/html5-css3/background/linear-gradient'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/html5-css3/link'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="linear-gradient.html" title="На предыдущую страницу">Линейный градиент</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="../link.html" title="На следующую страницу">Ссылки</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="../text.html">Текст</a></li><li class="expanded active-trail"><a href="../background.html" class="active-trail">Фон</a><ul class="menu"><li class="first leaf"><a href="color.html">Цвет фона</a></li><li class="leaf"><a href="image.html">Фоновая картинка</a></li><li class="leaf"><a href="size.html">Масштабирование фона</a></li><li class="leaf"><a href="sprite.html">Спрайты</a></li><li class="leaf"><a href="multiple.html">Несколько фоновых картинок</a></li><li class="leaf"><a href="linear-gradient.html">Линейный градиент</a></li><li class="last leaf active-trail"><a href="radial-gradient.html" class="active-trail active">Радиальный градиент</a></li></ul></li><li class="collapsed"><a href="../link.html">Ссылки</a></li><li class="collapsed"><a href="../list.html">Списки</a></li><li class="collapsed"><a href="../img.html">Изображения</a></li><li class="collapsed"><a href="../table.html">Таблицы</a></li><li class="collapsed"><a href="../form.html">Формы</a></li><li class="collapsed"><a href="../transform.html">Трансформация</a></li><li class="leaf"><a href="../transition.html">Переходы</a></li><li class="last leaf"><a href="../animation.html">Анимация</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-311c767d2d8ccff349c7a3e733f274f4"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="radial-gradient.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Написание хорошего кода | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="prev" href="organizing-data-with-tables.html" />
+<meta name="description" content="Для написания HTML и CSS много что следует изучить — разные элементы, атрибуты, свойства, значения и т. д. Основной целью каждого урока до этого момента было объяснение этих различных компонентов HTML и CSS, в надежде помочь вам понять базовые основы обоих языков. Данный урок делает шаг назад и смотрит на более абстрактную картину HTML и CSS." />
+<link rel="canonical" href="writing-your-best-code.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Написание хорошего кода</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Написание хорошего кода</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Для написания HTML и CSS много что следует изучить — разные элементы, атрибуты, свойства, значения и т.&nbsp;д. Основной целью каждого урока до этого момента было объяснение этих различных компонентов HTML и CSS, в надежде помочь вам понять базовые основы обоих языков. Данный урок делает шаг назад и смотрит на более абстрактную картину HTML и CSS.</p><p>Более точно, этот урок посвящён передовой практики написания кода на HTML и CSS. Описанные методы служат в качестве общего каркаса для написания HTML и CSS. Они применяются в каждом уроке и о них всегда следует помнить при программировании.</p><p>Когда вы просматриваете эти методы, думайте о том, что они также могут применяться в других областях или языках программирования. Например, использование комментариев для организации кода (как мы рассмотрим в этом уроке) выгодно во всех языках программирования. Сохраняйте открытость мышления и подумайте, как вы можете в полной мере воспользоваться каждым методом.</p><h2>Методы написания HTML</h2><p>Набор передовых практик предназначен для сохранения кода простым и хорошо организованным. Основные методы в HTML не различаются, их целью является написание разметки, хорошо структурированной и совместимой со стандартами. Описанные здесь рекомендации предлагают краткое введение в методы написания HTML и список ни в коем случае не исчерпывается ими.</p><h3>Разметка по стандартам</h3><p>HTML по своей природе относится к прощающему языку, который допускает плохой код для выполнения и отображения с различной степенью точности. Успешное отображение, однако, не означает, что наш код семантически правильный или гарантирует, что код совместим со стандартами. Кроме того, плохой код непредсказуем и вы не можете быть уверены, что получите при отображении. Мы должны быть внимательны при написании HTML&nbsp;— во вложениях закрывать все элементы правильно, использовать идентификаторы и классы надлежащим образом и всегда проверять наш код.</p><p>Следующий код содержит несколько ошибок, в том числе использует значение intro для атрибута id несколько раз, тогда как он должен быть уникальным значением, элементы <span class="tag">&lt;p&gt;</span> и <span class="tag">&lt;strong&gt;</span> закрываются в неправильном порядке в первом абзаце, а элемент <span class="tag">&lt;р &gt;</span> во втором абзаце не закрывается вообще.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;p id=&quot;intro&quot;&gt;Новинки в меню сегодня включают &lt;strong&gt;карамельный яблочный сидр и утренние блинчики&lt;/p&gt;.&lt;/strong&gt;
+&lt;p id=&quot;intro&quot;&gt;Карамельный яблочный сидр вкусный.</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;p class=&quot;intro&quot;&gt;Новинки в меню сегодня включают &lt;strong&gt;карамельный яблочный сидр и утренние блинчики&lt;/strong&gt;.&lt;/p&gt;
+&lt;p class=&quot;intro&quot;&gt;Карамельный яблочный сидр вкусный.&lt;/p&gt;</code></pre>
+<h3>Использование семантических элементов</h3><p>Библиотека элементов в HTML является довольно большой, состоит более чем из 100 элементов, доступных для применения. Решить, какие элементы использовать для описания разного содержимого, может быть сложно, но эти элементы являются основой семантики. Мы должны исследовать и перепроверить свой код и убедиться что используем соответствующие семантические элементы. Люди будут благодарить нас в долгосрочной перспективе за создание более доступного сайта, а ваш HTML будет несравненно легче стилизовать. Если вы не уверены в своём коде, найдите друга, который вам поможет и выполнит рутинный обзор кода.</p><p>Ниже в HTML не используются подходящие элементы заголовка и абзаца, вместо этого применяются бессмысленные элементы стилизации и группирования содержимого.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;span class=&quot;heading&quot;&gt;&lt;strong&gt;С возвращением&lt;/span&gt;&lt;/strong&gt;
+&lt;br&gt;&lt;br&gt;
+Прошло некоторое время. Чем вы занимались?
+&lt;br&gt;&lt;br&gt;</code></pre>
+
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;h1&gt;С возвращением&lt;/h1&gt;
+&lt;p&gt;Прошло некоторое время. Чем вы занимались?&lt;/p&gt;</code></pre>
+<h3>Используйте правильную структуру документа</h3><p>Как упоминалось ранее, HTML является прощающим языком, следовательно, страницы будут отображаться без использования доктайп или элементов <span class="tag">&lt;html&gt;</span>, <span class="tag">&lt;head&gt;</span> и <span class="tag">&lt;body&gt;</span>. Без доктайпа и этих структурных элементов, страницы не будут отображаться правильно в любом браузере.</p><p>Мы всегда должны быть уверены, что используем правильную структуру документа, в том числе доктайп и элементы <span class="tag">&lt;html&gt;</span>, <span class="tag">&lt;head&gt;</span> и <span class="tag">&lt;body&gt;</span>. Это делает наши страницы совместимыми со стандартами и полностью семантическими и гарантирует, что они будут отображаться как нам нужно.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;html&gt;
+  &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+  &lt;p&gt;Это веб-страница.&lt;/p&gt;
+&lt;/html&gt;</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Привет, мир&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+    &lt;p&gt;Это веб-страница.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3>Сохраняйте синтаксис организованным</h3><p>При росте страниц управлять HTML становится непростой задачей. К счастью, есть несколько простых правил, которые могут помочь сохранить наш синтаксис чистым и организованным. К ним относятся следующие:</p><ul><li>используйте строчные буквы в именах элементов, атрибутах и значений; делайте отступ вложенных элементов;</li><li>используйте строго двойные кавычки, а не одинарные или вообще без кавычек;</li><li>уберите слэш в конце самозакрывающихся элементов; опустите значения для логических атрибутов.</li></ul><p>Соблюдение этих правил поможет сохранить наш код аккуратным и разборчивым. Взгляните на два набора HTML ниже, хороший код легче воспринимается и понятнее.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;Aside&gt;
+  &lt;h3&gt;Чикаго&lt;/h3&gt;
+  &lt;H5 HIDDEN='HIDDEN'&gt;Город в Иллинойсе&lt;/H5&gt;
+  &lt;img src=chicago.jpg alt=&quot;Чикаго, третий по числу жителей город в Соединенных Штатах&quot; /&gt;
+  &lt;ul&gt;
+    &lt;li&gt;234 квадратных миль&lt;/li&gt;
+    &lt;li&gt;2.715 миллионов человек&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ASIDE&gt;</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;aside&gt;
+  &lt;h3&gt;Чикаго&lt;/h3&gt;
+  &lt;h5 hidden&gt;Город в Иллинойсе&lt;/h5&gt;
+  &lt;img src=&quot;chicago.jpg&quot; alt=&quot;Чикаго, третий по числу жителей город в Соединенных Штатах&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;234 квадратных миль&lt;/li&gt;
+    &lt;li&gt;2.715 миллионов человек&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+<h3>Используйте практичные значения идентификаторов и классов</h3><p>Создание значений идентификаторов и классов может быть одной из наиболее сложных частей написания HTML. Эти значения должны быть практичными, относящиеся к самому содержимому, а не к его стилю. Использование значения <span class="class">red</span> для описания красного текста не является идеальным, так как описывает внешний вид содержимого. Если когда-нибудь понадобится стиль текста сменить на синий, то должен поменяться не только CSS, но также и HTML в каждом случае, где встречается класс <span class="class">red</span>.</p><p>Ниже в HTML предполагается, что предупреждение будет красным. Однако, когда стиль предупреждения изменится на оранжевый, имя класса <span class="class">red</span> потеряет смысл и, скорее всего, приведёт к путанице.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;p class=&quot;red&quot;&gt;Ошибка! Попробуйте ещё раз.&lt;/p&gt;</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;p class=&quot;alert&quot;&gt;Ошибка! Попробуйте ещё раз.&lt;/p&gt;</code></pre>
+<h3>Используйте альтернативный текст для изображений</h3><p>Изображения всегда должны включать атрибут <span class="attribute">alt</span>. Экранные ридеры и другое программное обеспечение полагаются на атрибут <span class="attribute">alt</span>, чтобы обеспечить контекст для изображений.</p><p>Значение атрибута <span class="attribute">alt</span> должно описывать, что содержит изображение. Если изображение не содержит ничего актуального, атрибут <span class="attribute">alt</span> по прежнему должен быть включён, но при этом его значение должно быть пустым, чтобы экранные ридеры его игнорировали, а не читали имя графического файла.</p><p>Кроме того, если изображение не несёт важного смысла, возможно, к примеру, как часть пользовательского интерфейса, оно при возможности должно быть включено в CSS как фоновое изображение, а не как элемент <span class="tag">&lt;img&gt;</span>.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;img src=&quot;puppy.jpg&quot;&gt;</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;img src=&quot;puppy.jpg&quot; alt=&quot;Красивый щенок дворняги&quot;&gt;</code></pre>
+<h3>Отделяйте содержимое от стиля</h3><p>Никогда, никогда не используйте встроенные стили в HTML. Это создаёт страницы, которые слишком долго загружаются, трудно поддерживаются и вызывают головную боль у дизайнеров и разработчиков. Вместо этого используйте внешние таблицы стилей с помощью классов для целевых элементов и применяйте стили как надо.</p><p>Здесь в плохом коде любые желаемые изменения в стилях должны вноситься в HTML. Следовательно, эти стили не могут быть повторно использованы и скорее всего страдает согласованность стилей.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;p style=&quot;color: #393; font-size: 24px;&quot;&gt;Спасибо!&lt;/p&gt;</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;p class=&quot;alert-success&quot;&gt;Спасибо!&lt;/p&gt;</code></pre>
+
+<h3>Избегайте лишних &lt;div&gt;</h3><p>При написании HTML легко увлечься, добавив элемент <span class="tag">&lt;div&gt;</span> здесь, элемент <span class="tag">&lt;div&gt;</span> там, для построения любых необходимых стилей. Хотя это работает и добавляет совсем немного наворотов на страницу, в итоге мы не уверены, что каждый элемент <span class="tag">&lt;div&gt;</span> делает.</p><p>Нам следует сделать всё, чтобы сохранить код небольшим и сократить разметку, связывая несколько стилей в одном элементе, при возможности. Кроме того, мы должны использовать подходящие структурные элементы HTML5.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="html">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;article&quot;&gt;
+    &lt;div class=&quot;headline&quot;&gt;Заголовки по всему миру&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="html">&lt;div class=&quot;container&quot;&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Заголовки по всему миру&lt;/h1&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+<h3>Постоянно реорганизуйте код</h3><p>Со временем сайты и базовый код продолжают развиваться и расти, оставляя за собой совсем немного хлама. Не забудьте удалить старый код и стили как надо при редактировании страницы. Также выделите время, чтобы оценить и реорганизовать код после его написания, ищите способы, чтобы сократить его и сделать более управляемым.</p><h2>Методы написания CSS</h2><p>Подобно HTML, методы написания CSS сосредоточены на сохранении кода простым и хорошо организованным. CSS также содержит дополнительные принципы, связанные с некоторыми тонкостями языка.</p><h3>Организация кода через комментарии</h3><p>CSS-файлы могут стать весьма обширными, занимая сотни строк. Такие большие файлы делают поиск и редактирование наших стилей почти невозможным. Так что организуйте стили в логические группы. Затем перед каждой группой давайте комментарий, отмечая к чему относятся следующие стили.</p><p>При желании мы также можем использовать комментарии для построения оглавления в верхней части нашего файла. Это напомнит нам и другим, что именно содержится в файле со стилями.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">header { ... }
+  article { ... }
+.btn { ... }</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">/* Основной заголовок */
+header { ... }
+
+/* Избранная статья */
+article { ... }
+
+/* Кнопки */
+.btn { ... }</code></pre>
+<h3>Пишите CSS с помощью нескольких строк и пробелов</h3><p>При написании CSS важно поместить каждый селектор и описание правил на новой строке. Затем внутри каждого селектора мы хотим сделать отступ описаний.</p><p>После селектора и до первого описания идёт открывающая фигурная скобка, которая должна содержать перед ней пробел. В описании мы должны поставить пробел после двоеточия, затем идёт свойство и завершается точкой с запятой.</p><p>Такой код легко читать, а также редактировать. Когда весь код свален в одну строку без пробелов, его трудно просматривать и вносить изменения.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">a,.btn{background:#aaa;color:#f60;font-size:18px;padding:6px;}</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">a,
+.btn {
+  background: #aaa;
+  color: #f60;
+  font-size: 18px;
+  padding: 6px;
+}</code></pre>
+<div class="notePad"><h3>Комментарии и пробелы</h3><p>Эти две рекомендации — организация кода через комментарии и использование нескольких строк и пробелов, относится не только к CSS, но и к HTML или любому другому языку. В целом, мы должны держать наш код организованным и хорошо документированным. Если определённая часть кода является более сложной, объясните, как она работает и что к ней относится в комментариях. Это помогает другим, работающим с тем же базовым кодом, а также самому себе, когда мы пересмотрим наш собственный код в будущем.</p></div><h3>Используйте подходящие имена классов</h3><p>Имена классов (или значения) должны быть модульными и относиться к содержимому внутри элемента, а не к его внешнему виду, насколько это возможно. Эти значения должны быть записаны таким образом, что они походили на синтаксис языка CSS. Соответственно, имена классов должны быть в нижнем регистре и использовать дефис в качестве разделителя.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">.Red_Box { ... }</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">.alert-message { ... }</code></pre>
+<h3>Выстраиваете правильные селекторы</h3><p>Селекторы CSS могут выйти из-под контроля, если они не тщательно поддерживаются. Селекторы легко могут стать слишком длинными и чересчур специфичными.</p><p>Чем длиннее селектор и больше включает уточнений, тем выше его специфичность. А чем выше специфичность, тем больше вероятность что селектор прервёт каскад CSS и вызовет нежелательные проблемы.</p><p>Кроме того, сохраняя специфичность наших селекторов как можно ниже, давайте не будем применять идентификаторы в наших селекторах. Идентификаторы излишне конкретны, быстро поднимают специфичность селектора и довольно часто нарушают каскад в CSS-файлах. Минусы идентификаторов далеко перевешивают их плюсы и разумнее будет избегать их.</p><p>Давайте использовать более короткие и в основном прямые селекторы. Указывайте только два-три уровня вложения и удалите столько чересчур длинных селекторов, насколько это возможно.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">#aside #featured ul.news li a { ... }
+#aside #featured ul.news li a em.special { ... }</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">.news a { ... }
+.news .special { ... }</code></pre>
+<h3>Используйте конкретные классы при необходимости</h3><p>Бывают времена, когда селектор CSS настолько длинный и специфичный, что он больше не несёт смысла. Это создаёт задержки производительности и напряжение при управлении. В этом случае рекомендуется использовать одиночный класс. Применение класса к целевому элементу может создать больше кода в HTML, но позволит коду отображаться быстрее и уберёт любые препятствия для управления.</p><p>Например, если элемент <span class="tag">&lt;em&gt;</span> вложен в <span class="tag">&lt;h1&gt;</span> внутри элемента <span class="tag">&lt;aside&gt;</span> и всё это вложено в элемент <span class="tag">&lt;section&gt;</span>, то селектор может выглядеть как <span class="var">aside&nbsp;h1&nbsp;em</span>. Как только элемент <span class="tag">&lt;em&gt;</span> перемещается из <span class="tag">&lt;h1&gt;</span>, стили больше не будут применяться. Более гибким селектором будет использование класса, такого как <span class="class">text-offset</span>, для элемента <span class="tag">&lt;em&gt;</span>.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">section aside h1 em { ... }</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">.text-offset { ... }</code></pre>
+<h3>Используйте сокращённые свойства и значения</h3><p>Одной из особенностей CSS является возможность использовать сокращённые свойства и значения. Большинство свойств и значения допускают сокращённый вариант написания. В качестве примера, вместо написания четырёх разных свойств на основе margin- и их значений для задания отступов вокруг всех четырёх сторон элемента, используйте единственное свойство <span class="attribute">margin</span>, которое установит значения для всех четырёх сторон одновременно. Использование сокращённого варианта позволяет быстро установить и определить стили.</p><p>При этом, когда вам требуется установить одно значение, не следует применять сокращённый вариант. Если для блока нужен только нижний <span class="attribute">margin</span>, используйте одно свойство <span class="attribute">margin-bottom</span>. Это гарантирует, что другие значения <span class="attribute">margin</span> не будут перезаписаны и мы можем легко определить, к какой стороне применяется <span class="attribute">margin</span> без особых когнитивных усилий.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">img {
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+button {
+  padding: 0 0 0 20px;
+}</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">img {
+  margin: 5px 10px;
+}
+button {
+  padding-left: 20px;
+}</code></pre>
+<h3>Используйте сокращённые шестнадцатеричные значения цвета</h3><p>При возможности используйте трёхсимвольное сокращённое шестнадцатеричное значение цвета и всегда пишите строчные символы в любом шестнадцатеричном значении цвета. Идея, опять же, в том, чтобы оставаться последовательным во избежание путаницы и принять синтаксис написания языка кода.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">.module {
+  background: #DDDDDD;
+  color: #FF6600;
+}</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">.module {
+  background: #ddd;
+  color: #f60;
+}</code></pre>
+<h3>Отбросьте единицы у нулевых значений</h3><p>Один из способов для простого сокращения количества CSS при написании&nbsp;— это удаление единиц у нулевых значений. Независимо от того, какая единица длины применяется&nbsp;— пиксели, проценты, em и др.&nbsp;— ноль всегда ноль. Добавление единицы не нужно и не несёт никакой дополнительной ценности.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">div {
+  margin: 20px 0px;
+  letter-spacing: 0%;
+  padding: 0px 5px;
+}</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">div {
+  margin: 20px 0;
+  letter-spacing: 0;
+  padding: 0 5px;
+}</code></pre>
+<h3>Группирование и выравнивание вендорных префиксов</h3><p>С CSS3 префиксы получили некоторую популярность, добавив немного кода в CSS-файлы. Работа по добавлению префиксов нередко имеет смысл при генерации стилей, однако, они должны храниться организованно. Соответственно, с целью написания кода, который легко читать и изменять, лучше группировать и сдвигать отдельные префиксы так, чтобы имена свойств располагались вертикально, как и их значения.</p><p>В зависимости от того, где расположен вендорный префикс — в свойстве или в значении, выравнивание может изменяться. Например, следующий хороший код сохраняет свойства <span class="attribute">background</span> выровненными влево, в то время как функции <span class="value">linear-gradient()</span> с префиксами сдвинуты так, чтобы их значения подгонялись по вертикали. Затем свойства <span class="attribute">box-sizing</span> с префиксами сдвинуты так, чтобы все они подгонялись по вертикали.</p><p>Как всегда, цель — сделать стили проще для чтения и редактирования.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">div {
+  background: -webkit-linear-gradient(#a1d3b0, #f6f1d3);
+  background: -moz-linear-gradient(#a1d3b0, #f6f1d3);
+  background: linear-gradient(#a1d3b0, #f6f1d3);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">div {
+  background: -webkit-linear-gradient(#a1d3b0, #f6f1d3);
+  background:    -moz-linear-gradient(#a1d3b0, #f6f1d3);
+  background:         linear-gradient(#a1d3b0, #f6f1d3);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  }</code></pre>
+<div class="notePad"><h3>Вендорные префиксы</h3><p>При использовании префиксов мы должны убедиться, что поместили версию свойства или значения без префикса в конец, после всех версий с префиксом. Это гарантирует, что браузеры, поддерживающие версию без префикса отобразят этот стиль в соответствии с его размещением в каскаде, читая стили с верхней части файла до низа.</p></div><p>Хорошей новостью является то, что браузеры в основном отходят от использования префиксов. Со временем это станет меньше беспокоить, однако, в настоящее время мы советуем перепроверить, какие стили требуют префикса и держать эти префиксы организованно.</p><h3>Модульность стилей для повторного использования</h3><p>CSS построен на том, что позволяет повторно использовать стили, в частности, с помощью классов. По этой причине, стили, назначенные классу, должны быть модульными и доступны для обмена между элементами при необходимости.</p><p>Если раздел новостей представлен в блоке, который включает границы, цвет фона и другие стили, класс news может показаться хорошим вариантом. Однако, те же самые стили могут также применяться к разделу предстоящих событий. Класс <span class="class">news</span> не подходит в данном случае. Класс <span class="class">feat-box</span> имел бы больше смысла и может быть широко использован по всему сайту.</p><p class="exampleTitle">Плохой код</p>
+<pre><code data-language="css">.news {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.events {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}</code></pre>
+<p class="exampleTitle">Хороший код</p>
+<pre><code data-language="css">.feat-box {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}</code></pre>
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Резюме</h2><p>Надеюсь, принципы написания красивых HTML и CSS становятся понятнее. Хотя каждый язык содержит свои собственные сложности, большинство из этих методов может быть поделено между двумя языками как и со многими другими языками программирования.</p><p>Лично мы должны сделать всё возможное, чтобы поддержать эти принципы, а при работе в команде мы также должны сделать всё возможное, чтобы обучить команду этим техникам. В свою очередь, у команды могут быть ценные предложения и методы, которым мы должны следовать.</p><p>Чтобы выделить некоторые главные темы этого урока, наши HTML и CSS всегда должны:</p><ul><li>быть хорошо организованными, так что их легко читать, редактировать и поддерживать;</li><li>быть модульными и гибкими, что позволяет нам повторно использовать код и шаблоны по мере необходимости;</li><li>выглядеть так, словно их писал один человек, даже если свой вклад внесли несколько людей.</li></ul><p>Эти методы являются лишь началом и поскольку языки развиваются и мы пишем всё больше и больше HTML и CSS, мы разработаем новые методы. Это всё часть прекрасных знаний HTML и CSS.</p><p>Сейчас вы вооружены некоторыми мощными знаниями того, как создавать веб-сайты на HTML и CSS и я рад видеть, что вы с ними делаете. Держите меня в курсе о том, как это происходит и удачного вам созидания!</p><h2>Ресурсы и ссылки</h2><p>Каждый урок идёт с набором ресурсов для дополнительного обучения и находок. Ниже изложен длинный список ресурсов, а также полезных ссылок.</p><h3>HTML и CSS</h3><ul><li><a href="https://developer.mozilla.org/en-US/">Mozilla Developer Network</a> на Mozilla</li><li><a href="http://dev.opera.com">Opera.Dev</a> на Opera</li><li><a href="http://www.htmldog.com">HTML and CSS Tutorials</a> на HTML Dog</li><li><a href="http://dochub.io">DocHub</a> — Мгновенный поиск документации</li><li><a href="http://stephenbau.com/lab/experiments/xslt-pears/">Pears</a> — Основные шаблоны разметки и стиля</li></ul><h3>Дизайн для вдохновения</h3><ul><li><a href="http://dribbble.com">Dribbble</a></li><li><a href="http://patterntap.com">Pattern Tap</a></li><li><a href="http://www.premiumpixels.com">Premium Pixels</a></li></ul><h3>Фреймворки и руководства по стилям</h3><ul><li><a href="http://webstyleguide.com/wsg3/index.html">Web Style Guide</a></li><li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></li><li><a href="http://foundation.zurb.com">Foundation</a></li><li><a href="http://getskeleton.com">Skeleton Framework</a></li><li><a href="https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml">Google HTML/CSS Style Guide</a></li><li><a href="https://github.com/styleguide/">GitHub Styleguide</a></li></ul><h3>Иконки</h3><ul><li><a href="http://hlvticons.ch/">Helveticons</a> на Goodbye Horses</li><li><a href="http://ionicons.com/">Ion Icons</a> от Ben Sperry</li><li><a href="http://www.komodomedia.com/blog/2009/06/social-network-icon-pack/">Social Network Icon Pack</a> на Rogie King</li><li><a href="http://p.yusukekamiyamane.com/">Fugue Icons</a> на Yusuke Kamiyamane</li><li><a href="http://www.famfamfam.com/lab/icons/silk/">famfamfam Icons</a> от Mark James</li><li><a href="http://pictos.cc/">Pictos</a> от Drew Wilson</li><li><a href="http://picons.me/">Picons</a></li><li><a href="http://thenounproject.com/">The Noun Project</a></li></ul><h3>Разное</h3><ul><li><a href="http://www.colourlovers.com/">COLOURlovers</a> — Тенденции цвета и палитры</li><li><a href="http://www.colorhexa.com/">ColorHexa</a> — Энциклопедия цвета</li><li><a href="http://modernizr.com/">Modernizr</a> — Библиотека обнаружения фич на JavaScript</li><li><a href="http://jquery.com/">jQuery</a> — Навороченная JavaScript-библиотека</li><li><a href="https://developers.google.com/speed/libraries/devguide">Google Hosted Libraries</a> — Сеть распределения контента для библиотек JavaScript</li><li><a href="http://copypastecharacter.com/">Copy Paste Character</a> — Копирование «скрытых» символов</li></ul><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-9a4228f286b4534369f08f121fb0c6e1"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/!doctype.html">&lt;!DOCTYPE&gt;</a></li><li class=""> <a href="../../course/html-basics/valid-document.html">Валидный HTML-документ</a></li><li class=""> <a href="../../course/css-basics/priority.html">Приоритет в CSS</a></li><li class=""> <a href="../../course/html-tutorial/structure.html">Структура HTML-кода</a></li><li class=""> <a href="../../course/html-basics/formatting.html">Форматирование HTML</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 07.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/organizing-data-with-tables'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="organizing-data-with-tables.html" title="На предыдущую страницу">Организация данных с помощью таблиц</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf"><a href="positioning-content.html">Позиционирование содержимого</a></li><li class="leaf"><a href="working-with-typography.html">Работа с типографикой</a></li><li class="leaf"><a href="setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li><li class="leaf"><a href="creating-lists.html">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf"><a href="building-forms.html">Построение форм</a></li><li class="leaf"><a href="organizing-data-with-tables.html">Организация данных с помощью таблиц</a></li><li class="last leaf active-trail"><a href="writing-your-best-code.html" class="active-trail active">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-0a64ab69ddef65b5607a326f029a1069"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="writing-your-best-code.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

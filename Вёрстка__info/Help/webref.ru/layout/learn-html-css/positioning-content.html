@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Позиционирование содержимого | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="next" href="working-with-typography.html" />
+<link rel="prev" href="box-model.html" />
+<meta name="description" content="Одной из лучших сторон CSS является то, что стили дают нам возможность позиционировать содержимое и элементы на странице практически любым мыслимым образом. Это вносит структурность в наш дизайн и помогает сделать контент более наглядным. Есть несколько разных типов позиционирования в CSS, каждый из этих типов имеет свою область действия. В этой главе мы собираемся взглянуть на несколько различных случаев применения — создание многократно используемых макетов и уникальное позиционирование одноразовых элементов, а также описание нескольких методов как это сделать." />
+<link rel="canonical" href="positioning-content.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Позиционирование содержимого</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Позиционирование содержимого</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Одной из лучших сторон CSS является то, что стили дают нам возможность позиционировать содержимое и элементы на странице практически любым мыслимым образом. Это вносит структурность в наш дизайн и помогает сделать контент более наглядным.</p><p>Есть несколько разных типов позиционирования в CSS, каждый из этих типов имеет свою область действия. В этой главе мы собираемся взглянуть на несколько различных случаев применения&nbsp;— создание многократно используемых макетов и уникальное позиционирование одноразовых элементов, а также описание нескольких методов как это сделать.</p><h2>Позиционирование через float</h2><p>Один из способов позиционирования элементов на странице — через свойство <span class="attribute">float</span>. Это свойство довольно универсально и может применяться разными путями.</p><p>По существу, свойство <span class="attribute">float</span> берёт элемент, убирает его из обычного потока страницы и позиционирует слева или справа от родительского элемента. Все остальные элементы на странице будут обтекать такой элемент. Например, абзацы будут обтекать изображение, если для элемента <span class="tag">&lt;img&gt;</span> установлено свойство <span class="attribute">float</span>.</p><p>Когда свойство <span class="attribute">float</span> применяется к нескольким элементам одновременно, это даёт возможность создать макет с обтекаемыми элементами расположенными рядом или напротив друг друга, как показано в многоколоночном макете.</p><p>Свойство <span class="attribute">float</span> принимает несколько значений, два самых популярных — это <span class="value">left</span> и <span class="value">right</span>, они позволяют элементу располагаться слева или справа от своего родителя.</p>
+<pre><code data-language="css">img {
+  float: left;
+}</code></pre>
+<h3>float на практике</h3><p>Давайте создадим общий макет страницы с шапкой вверху, двумя колонками в центре и подвалом внизу. В идеале эту страницу следует разметить с помощью элементов <span class="tag">&lt;header&gt;</span>, <span class="tag">&lt;section&gt;</span>, <span class="tag">&lt;aside&gt;</span> и <span class="tag">&lt;footer&gt;</span>, как описано в уроке&nbsp;2 «Знакомство с HTML». Внутри элемента <span class="tag">&lt;body&gt;</span> HTML может выглядеть так:</p>
+<pre><code data-language="html">&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;aside&gt;...&lt;/aside&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация макета без float</h3><iframe width="100%" height="440" src="https://jsfiddle.net/webref/n6sa8e73/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Здесь элементы <span class="tag">&lt;section&gt;</span> и <span class="tag">&lt;aside&gt;</span> являются блочными, поэтому они укладываются один поверх другого по умолчанию. Однако мы хотим, чтобы эти элементы располагались бок о бок. Установив <span class="attribute">float</span> для <span class="tag">&lt;section&gt;</span> как <span class="value">left</span>, а для <span class="tag">&lt;aside&gt;</span> как <span class="value">right</span>, мы можем позиционировать их как две колонки, расположенных напротив друг друга. Наш CSS должен выглядеть так:</p>
+<pre><code data-language="css">section {
+  float: left;
+}
+aside {
+  float: right;
+}</code></pre>
+<p>Для справки, обтекаемые элементы располагаются по краю родительского элемента. Если нет родителя, обтекаемый элемент будет располагаться по краю страницы.</p><p>Когда мы устанавливаем элемент обтекаемым, то убираем его из обычного потока HTML-документа. Это приводит к тому, что ширина этого элемента по умолчанию становится шириной его содержимого. Иногда, например, когда мы создаём колонки для многократно используемого макета, такое поведение нежелательно. Это можно исправить путём добавления свойства <span class="attribute">width</span> с фиксированным значением для каждой колонки. Кроме того, чтобы обтекаемые элементы не соприкасались друг с другом, в результате чего содержимое одного элемента располагается рядом с другим, мы можем использовать свойство <span class="attribute">margin</span>, чтобы установить пространство между элементами.</p><p>Ниже мы расширяем предыдущий блок кода, добавив <span class="attribute">margin</span> и <span class="attribute">width</span> для каждой колонки, чтобы лучше формировать наш желаемый результат.</p>
+<pre><code data-language="css">section {
+  float: left;
+  margin: 0 1.5%;
+  width: 63%;
+}
+aside {
+  float: right;
+  margin: 0 1.5%;
+  width: 30%;
+}</code></pre>
+
+<div class="notePad"><h3>Демонстрация макета с float</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/yu6vq9h2/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><div class="notePad"><h3>float могут изменить значение display у элемента</h3><p>Для обтекаемого элемента также важно понимать, что элемент удаляется из обычного потока страницы и что у элемента может измениться значение <span class="attribute">display</span>, заданное по умолчанию. Свойство <span class="attribute">float</span> опирается на то, что у элемента значение <span class="attribute">display</span> задано как <span class="value">block</span> и может изменить значение <span class="attribute">display</span> у элемента по умолчанию, если он ещё не отображается как блочный элемент.</p><p>Например, элемент, у которого <span class="attribute">display</span> указан как <span class="value">inline</span>, такой как строчный <span class="tag">&lt;span&gt;</span>, игнорирует любые свойства <span class="attribute">height</span> или <span class="attribute">width</span>. Однако, если для строчного элемента указать <span class="attribute">float</span>, значение <span class="attribute">display</span> изменится на <span class="value">block</span> и тогда элемент уже может принимать свойства <span class="attribute">height</span> или <span class="attribute">width</span>.</p><p>Когда мы применяем <span class="attribute">float</span> для элемента, то должны следить за тем, как это влияет на значение свойства <span class="attribute">display</span>.</p></div><p>Для двух колонок вы можете установить <span class="attribute">float</span> для одной колонка как <span class="value">left</span>, а для другой как <span class="value">right</span>, но для нескольких колонок нам придётся изменить наш подход. Скажем, к примеру, мы хотели бы получить ряд из трёх колонок между нашими элементами <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span>. Если мы выбросим наш элемент <span class="tag">&lt;aside&gt;</span> и воспользуемся тремя элементами <span class="tag">&lt;section&gt;</span>, наш HTML может выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+<p>Чтобы расположить эти три элемента <span class="tag">&lt;section&gt;</span> в строку из трёх колонок, мы должны задать <span class="attribute">float</span> для всех элементов <span class="tag">&lt;section&gt;</span> как <span class="value">left</span>. Мы также должны настроить ширину <span class="tag">&lt;section&gt;</span> с учётом дополнительных колонок и расположить их один рядом с другим.</p>
+<pre><code data-language="css">section {
+  float: left;
+  margin: 0 1.5%;
+  width: 30%;
+}</code></pre>
+<p>Здесь у нас есть три колонки, все с равной шириной и значением <span class="attribute">margin</span>, а также с <span class="attribute">float</span>, заданным как <span class="value">left</span>.</p><div class="notePad"><h3>Демонстрация трёхколоночного макета с float</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/tz1phtaa/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h3>Очистка и содержимое float</h3><p>Свойство <span class="attribute">float</span> было первоначально разработано, чтобы позволить содержимому обтекать вокруг изображений. Для изображения может быть задано <span class="attribute">float</span> и всё содержимое вокруг этого изображения, естественно, обтекает вокруг него. Хотя это прекрасно работает для картинок, свойство <span class="attribute">float</span> на самом деле не было предназначено для использования в макете и с целью позиционирования и, таким образом, оно идёт с несколькими ловушками.</p><p>Одной из этих ловушек является то, что иногда надлежащие стили не отображаются на элементе, который расположен рядом с обтекаемым элементом или является его родителем. Когда элемент установлен обтекаемым, то он убирается из обычного потока страницы и, как результат, стили элементов вокруг этого обтекаемого элемента могут получить негативное влияние.</p><p>Часто значения свойств <span class="attribute">margin</span> и <span class="attribute">padding</span> интерпретируются некорректно, заставляя их сливаться с обтекаемым элементом. Другие свойства также могут быть затронуты.</p><p>Другая ошибка состоит в том, что иногда нежелательный контент начинает обтекать элемент с <span class="attribute">float</span>. Удаление элемента из потока документа позволяет всем элементам вокруг обтекаемого элемента обходить его и задействовать любое доступное пространство вокруг обтекаемого элемента, что часто бывает нежелательно.</p><p>В нашем предыдущем примере с двумя колонками, после того как мы добавили <span class="attribute">float</span> к элементам <span class="tag">&lt;section&gt;</span> и <span class="tag">&lt;aside&gt;</span>, но до того как установили свойство <span class="attribute">width</span> к любому из них, содержимое внутри элемента <span class="tag">&lt;footer&gt;</span> располагалось между двумя обтекаемыми элементами выше него, заполняя всё доступное пространство. Следовательно, элемент <span class="tag">&lt;footer&gt;</span> находился бы в промежутке между элементами <span class="tag">&lt;section&gt;</span> и <span class="tag">&lt;aside&gt;</span>, занимая свободное место.</p><div class="notePad"><h3>Демонстрация макета без очистки float</h3><iframe width="100%" height="280" src="https://jsfiddle.net/webref/b5m1q1na/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Чтобы предотвратить содержимое от обматывания вокруг обтекаемых элементов, нам нужно сделать очистку <span class="attribute">float</span> и вернуть страницу в её обычный поток. Мы рассмотрим как очистить <span class="attribute">float</span>, а затем взглянем на их содержимое.</p><h4>Очистка float</h4><p>Очистка <span class="attribute">float</span> происходит с помощью свойства <span class="attribute">clear</span>, которое принимает несколько различных значений: наиболее часто используемые значения&nbsp;— <span class="value">left</span>, <span class="value">right</span> и <span class="value">both</span>.</p>
+<pre><code data-language="css">div {
+  clear: left;
+}</code></pre>
+<p>Значение <span class="value">left</span> очищает левые <span class="attribute">float</span>, в то время как значение <span class="value">right</span> очищает правые <span class="attribute">float</span>. Значение <span class="value">both</span>, однако, очистит левые и правые <span class="attribute">float</span> и часто является наиболее идеальным вариантом.</p><p>Возвращаясь к нашему предыдущему примеру, если мы используем свойство <span class="attribute">clear</span> со значением <span class="value">both</span> для элемента <span class="tag">&lt;footer&gt;</span>, то можем очистить <span class="attribute">float</span>. Важно, что <span class="attribute">clear</span> применяется к элементу, указанному после обтекаемых элементов, а не раньше, чтобы вернуть страницу в её обычный поток.</p>
+<pre><code data-language="css">footer {
+  clear: both;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация макета с очисткой float</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/jm3554s5/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h4>Содержимое float</h4><p>Вместо очистки <span class="attribute">float</span>, ещё одним вариантом является установка содержимого <span class="attribute">float</span>. Результат получится почти такой же, однако содержимое <span class="attribute">float</span> действительно гарантирует, что все наши стили будут отображаться надлежащим образом.</p><p>Чтобы установить содержимое <span class="attribute">float</span>, обтекаемые элементы должны находиться внутри родительского элемента, он будет выступать в качестве контейнера, оставляя поток документа полностью обычным за его пределами. В стилях для этого родительского элемента представлен класс <span class="class">group</span>, как показано здесь:</p>
+<pre><code data-language="css">.group::before,
+.group::after {
+  content: &quot;&quot;;
+  display: table;
+}
+.group::after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}</code></pre>
+<p>Здесь немного что происходит, но, по сути, всё что CSS делает — очищает все обтекаемые элементы внутри элемента с классом <span class="class">group</span> и возвращает документ в обычный поток.</p><p>Более конкретно, псевдоэлементы <span class="attribute">::before</span> и <span class="attribute">::after</span>, как указано в уроке 4, динамически генерируют элементы выше и ниже элемента с классом <span class="class">group</span>. Эти элементы не включают в себя какой-либо контент и отображаются как табличные элементы, подобно элементам блочным. Динамически генерируемый элемент после элемента с классом <span class="class">group</span> очищает <span class="attribute">float</span> внутри элемента с классом <span class="class">group</span>, так же, как и <span class="attribute">clear</span> ранее. И, наконец, элемент с классом group также очищает все <span class="attribute">float</span>, которые могут появиться до него на случай, если существует <span class="attribute">float</span> со значением <span class="value">left</span> или <span class="value">right</span>. Также сюда включена небольшая хитрость, которая заставляет старые браузеры играть красиво.</p><p>Здесь больше кода, чем единственная команда <span class="var">clear: both</span>, но он может оказаться весьма полезным.</p><p>Рассматривая наш макет страницы с двумя колонками мы могли бы обернуть <span class="tag">&lt;section&gt;</span> и <span class="tag">&lt;aside&gt;</span> родительским элементом. Этот родительский элемент будет содержать в себе обтекаемые элементы. Код будет выглядеть следующим образом:</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;header&gt;...&lt;/header&gt;
+&lt;div class=&quot;group&quot;&gt;
+  &lt;section&gt;...&lt;/section&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+&lt;/div&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.group::before,
+.group::after {
+  content: &quot;&quot;;
+  display: table;
+}
+.group::after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+section {
+  float: left;
+  margin: 0 1.5%;
+  width: 63%;
+}
+aside {
+  float: right;
+  margin: 0 1.5%;
+  width: 30%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация макета с содержимым float</h3><iframe width="100%" height="500" src="https://jsfiddle.net/webref/bt8vfe2u/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Показанная здесь техника известна как «clearfix» и часто встречается на других сайтах с именем класса clearfix или cf. Мы решили использовать имя класса <span class="class">group</span>, потому что он представляет группу элементов и лучше выражает содержимое.</p><p>Когда для элементов задано <span class="attribute">float</span> важно следить за тем, как они влияют на поток страницы и убедитесь, что поток страницы сбрасывается путём очистки или через содержимое float, как надо. В противном случае, отслеживание <span class="attribute">float</span> может вызвать немало головной боли, особенно на страницах, содержащих несколько строк, в каждой из которых несколько колонок.</p><h2>На практике</h2><p>Вернёмся к сайту Styles Conference и опробуем на нём добавление <span class="attribute">float</span> к некоторому содержимому.</p><ol class="practice"><li>Перво-наперво, перед применением <span class="attribute">float</span> к любому элементу, давайте обеспечим содержимым эти обтекаемые элементы, добавив clearfix в наш CSS. В файле main.css, чуть ниже наших стилей сетки, добавим clearfix под именем класса <span class="class">group</span>, как и раньше.
+
+<pre><code data-language="css">/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+.group::before,
+.group::after {
+  content: &quot;&quot;;
+  display: table;
+}
+.group::after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}</code></pre></li><li><p>Теперь, когда мы можем использовать <span class="attribute">float</span>, давайте зададим его для основного <span class="tag">&lt;h1&gt;</span> внутри элемента <span class="tag">&lt;header&gt;</span> как <span class="value">left</span> и позволим остальному содержимому в заголовке обтекать его справа.</p><p>Чтобы сделать это, добавим класс <span class="class">logo</span> к элементу <span class="tag">&lt;h1&gt;</span>. Затем внутри нашего CSS добавим новый раздел стилей для основного заголовка. В этом разделе мы выберем элемент <span class="tag">&lt;h1&gt;</span> с классом <span class="class">logo</span> и установим <span class="attribute">float</span> как <span class="value">left</span>.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;h1 class=&quot;logo&quot;&gt;
+  &lt;a href=&quot;index.html&quot;&gt;Styles Conference&lt;/a&gt;
+&lt;/h1&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">/*
+  ========================================
+  Основной заголовок
+  ========================================
+*/
+
+.logo {
+  float: left;
+}</code></pre></li><li><p>Пока мы здесь, добавим чуть больше деталей к нашему логотипу. Начнём с размещения элемента <span class="tag">&lt;br&gt;</span> или разрыва строки между словами «Styles» и «Conference», чтобы заставить текст нашего логотипа располагаться на двух строках.</p><p>В CSS добавим границу по верху нашего логотипа и небольшой вертикальный <span class="attribute">padding</span>, чтобы логотип свободно «дышал».</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;h1 class=&quot;logo&quot;&gt;
+  &lt;a href=&quot;index.html&quot;&gt;Styles &lt;br&gt; Conference&lt;/a&gt;
+&lt;/h1&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.logo {
+  border-top: 4px solid #648880;
+  padding: 40px 0 22px 0;
+  float: left;
+}</code></pre></li><li><p>Поскольку мы сделали элемент <span class="tag">&lt;h1&gt;</span> обтекаемым, то хотим установить содержимое <span class="attribute">float</span>. Ближайшим родителем для <span class="tag">&lt;h1&gt;</span> является элемент <span class="tag">&lt;header&gt;</span>, поэтому мы добавим к нему класс <span class="class">group</span>. Это применит к нему стили clearfix, которые мы установили ранее.</p>
+<pre><code data-language="html">&lt;header class=&quot;container group&quot;&gt;
+  ...
+&lt;/header&gt;</code></pre></li><li><p>Элемент <span class="tag">&lt;header&gt;</span> принимает форму, так что давайте взглянем на элемент <span class="tag">&lt;footer&gt;</span>. Подобно тому, что мы сделали с <span class="tag">&lt;header&gt;</span>, мы установим <span class="attribute">float</span> для наших авторских прав как <span class="value">left</span> внутри <span class="tag">&lt;small&gt;</span> и пусть все остальные элементы обтекают его справа.</p><p>В отличие от элемента <span class="tag">&lt;header&gt;</span>, однако, мы не собираемся применять класс непосредственно к обтекаемому элементу. На этот раз мы собираемся добавить класс к родителю обтекаемого элемента и использовать уникальный селектор CSS, чтобы выбрать элемент, а затем задать ему <span class="attribute">float</span>.</p><p>Начнём с добавления класса <span class="class">primary-footer</span> к элементу <span class="tag">&lt;footer&gt;</span>. Поскольку мы знаем, что у нас будут обтекаемые элементы внутри <span class="tag">&lt;footer&gt;</span>, то должны добавить класс <span class="class">group</span>, пока мы здесь.</p>
+<pre><code data-language="html">&lt;footer class=&quot;primary-footer container group&quot;&gt;
+  ...
+&lt;/footer&gt;</code></pre></li><li><p>Теперь, когда класс <span class="class">primary-footer</span> установлен для элемента <span class="tag">&lt;footer&gt;</span>, мы можем использовать этот класс, чтобы целенаправленно выбрать элемент <span class="tag">&lt;small&gt;</span> с помощью CSS. Мы хотим задать ему <span class="attribute">float</span> как <span class="value">left</span>. Не забудьте создать новый раздел в нашем файле main.css для стиля основного подвала.</p>
+<pre><code data-language="css">/*
+  ========================================
+  Основной подвал
+  ========================================
+*/
+
+.primary-footer small {
+  float: left;
+}</code></pre>
+<p>Для проверки — здесь мы выбираем элемент <span class="tag">&lt;small&gt;</span>, который должен находиться внутри элемента со значением <span class="value">primary-footer</span> у атрибута <span class="attribute">class</span>, такой как наш элемент <span class="tag">&lt;footer&gt;</span>, к примеру.</p></li><li><p>Наконец, добавим небольшой <span class="attribute">padding</span> сверху и снизу элемента <span class="tag">&lt;footer&gt;</span>, это поможет немного отделить его от остальной части страницы. Мы можем сделать это напрямую с помощью класса <span class="class">primary-footer</span>.</p>
+<pre><code data-language="css">.primary-footer {
+  padding-bottom: 44px;
+  padding-top: 44px;
+}</code></pre></li></ol><p>С учётом всех этих изменений в элементах <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span>, мы должны быть уверены, что внесли их на каждой странице, а не только на странице index.html.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-5-01.png" alt="С помощью нескольких float, элементы &lt;header&gt; и &lt;footer&gt; на главной странице Styles Conference работают совместно "></p><p class="figsign">Рис. 5.01. С помощью нескольких float, элементы &lt;header&gt; и &lt;footer&gt; на главной странице Styles Conference работают совместно</p><h2>Позиционирование через inline-block</h2><p>В дополнение к использованию <span class="attribute">float</span>, ещё один способ, которым мы можем позиционировать контент&nbsp;— это применение свойства <span class="attribute">display</span> в сочетании со значением <span class="value">inline-block</span>. Метод с <span class="value">inline-block</span>, как мы ещё обсудим, в первую очередь полезен для компоновки страниц или для размещения элементов в линию рядом друг с другом.</p><p>Напомним, что значение <span class="value">inline-block</span> для свойства <span class="attribute">display</span> отображает элементы в линию и позволяет им принимать все свойства блочной модели, включая <span class="attribute">height</span>, <span class="attribute">width</span>, <span class="attribute">padding</span>, <span class="attribute">border</span> и <span class="attribute">margin</span>. Применение <span class="value">inline-block</span> позволяет нам в полной мере воспользоваться блочной моделью, не беспокоясь об очистке каких-либо <span class="attribute">float</span>.</p><h3>inline-block на практике</h3><p>Давайте взглянем на наш трёхколоночный пример с самого начала. Начнём мы, сохраняя наш HTML таким:</p>
+<pre><code data-language="html">&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;section&gt;...&lt;/section&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+
+<p>Теперь вместо <span class="attribute">float</span> для наших трёх элементов &lt;section&gt; мы изменим у них значение <span class="attribute">display</span> на <span class="value">inline-block</span>, оставляя свойства <span class="attribute">margin</span> и <span class="attribute">width</span> те, что были ранее. В результате наш CSS будет выглядеть следующим образом:</p>
+<pre><code data-language="css">section {
+  display: inline-block;
+  margin: 0 1.5%;
+  width: 30%;
+}</code></pre>
+
+<p>К сожалению, одного этого кода недостаточно чтобы сделать трюк и последний элемент <span class="tag">&lt;section&gt;</span> выталкивается на новую строку. Помните, поскольку строчно-блочные элементы отображаются на одной линии друг за другом, они включают единое пространство между ними. Когда размер каждого отдельного пространства добавляется к ширине и значению горизонтального <span class="attribute">margin</span> всех элементов в строке, общая ширина становится слишком большой, выталкивая последний элемент <span class="tag">&lt;section&gt;</span> на новую строку. Чтобы отобразить все элементы <span class="tag">&lt;section&gt;</span> на одной строке, следует удалить пустое пространство между каждым <span class="tag">&lt;section&gt;</span>.</p><div class="notePad"><h3>Демонстрация элементов inline-block с пробелом</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/0nhqjtwb/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h3>Удаление пространства между строчно-блочными элементами</h3><p>Есть несколько методов, как удалить пространство между строчно-блочными элементами и некоторые из них более сложные, чем другие. Мы собираемся сосредоточиться на двух самых простых методах, каждый из которых происходят внутри HTML.</p><p>Первое решение — это поместить каждый новый открывающий тег элемента <span class="tag">&lt;section&gt;</span> в той же строке, что и закрывающий тег предыдущего элемента <span class="tag">&lt;section&gt;</span>. Вместо использования новой строки для каждого элемента мы в итоге начинаем элементы с той же строки. Наш HTML может выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;
+  ...
+  &lt;/section&gt;&lt;section&gt;
+  ...
+  &lt;/section&gt;&lt;section&gt;
+  ...
+&lt;/section&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+<p>Написание строчно-блочных элементов таким образом гарантирует, что пространства между такими элементами в HTML не существует. Следовательно, пространство и не появится при отображении страницы.</p><div class="notePad"><h3>Демонстрация элементов inline-block без пробелов</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/x0neqgga/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Ещё один метод для удаления пространства между строчно-блочными элементами состоит в открытии комментария HTML непосредственно после закрывающего тега элемента. Затем закройте комментарий непосредственно перед открывающим тегом следующего элемента. Это позволяет строчно-блочным элементам начинаться и завершаться на отдельных строках в HTML и «закомментирует» любое потенциальное пространство между элементами. В результате код будет выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;header&gt;...&lt;/header&gt;
+&lt;section&gt;
+  ...
+&lt;/section&gt;&lt;!--
+--&gt;&lt;section&gt;
+  ...
+&lt;/section&gt;&lt;!--
+--&gt;&lt;section&gt;
+  ...
+&lt;/section&gt;
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+<p>Ни один из этих вариантов не является совершенным, но они полезны. Я склоняюсь в пользу применения комментариев для лучшей организации, но какой вариант вы выберете полностью зависит от вас.</p><h2>Создание многократно используемых макетов</h2><p>При создании сайта всегда лучше написать модульные стили, которые могут быть повторно задействованы в других местах, а многократно используемые макеты находятся в верхней части списка повторно применяемого кода. Макеты могут быть созданы с помощью <span class="attribute">float</span> или строчно-блочных элементов, но что работает лучше и почему?</p><p>Вопрос что лучше для структуры страницы — обтекаемые или строчно-блочные элементы открыт для обсуждения. Мой подход заключается в использовании строчно-блочных элементов для создания сетки или макета страницы, а затем задействовать <span class="attribute">float</span>, когда мне хочется чтобы контент обтекал вокруг данного элемента (для чего <span class="attribute">float</span> и были предназначены при работе с изображениями). Вообще, я также считаю, что со строчно-блочными элементами легче работать.</p><p>Тем не менее, используйте то, что работает лучше для вас. Если с одним подходом вы знакомы лучше чем с другим, тогда задействуйте его.</p><p>В настоящее время в работе появились новые спецификации CSS&nbsp;— в частности, свойства flex- и grid-, которые помогут решить, как лучше всего сверстать страницы. Следите за этими методами, когда они начнут всплывать.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>На практике</h2><p>С твёрдым пониманием многократно используемых макетов, пришло время внедрить один на наш сайт Styles Conference.</p><ol class="practice"><li><p>Для сайта Styles Conference мы создадим трёхколоночный макет используя строчно-блочные элементы. Мы сделаем это так, чтобы получить три колонки одинаковой ширины или две колонки с общей шириной, разделённой между ними как 2/3 для одной и 1/3 для другой.</p><p>Для начала мы создадим классы, определяющие ширину этих колонок. Эти два класса мы назовём <span class="class">col-1-3</span> для одной трети и <span class="class">col-2-3</span> для двух третей. В разделе «Сетка» нашего файла main.css перейдём вперед и определим эти классы и соответствующую им ширину.</p>
+<pre><code data-language="css">.col-1-3 {
+  width: 33.33%;
+}
+.col-2-3 {
+  width: 66.66%;
+}</code></pre>
+<li><p>Мы хотим чтобы обе колонки отображались как строчно-блочные элементы. Нам также надо убедиться, что вертикальное выравнивание у них задано по верхней части каждой колонки.</p><p>Давайте создадим два новых селектора, которые совместно будут использовать <span class="attribute">display</span> и <span class="attribute">vertical-align</span>.</p>
+<pre><code data-language="css">.col-1-3,
+.col-2-3 {
+  display: inline-block;
+  vertical-align: top;
+}</code></pre>
+<p>Взгляните на CSS снова. Мы создали два селектора класса <span class="class">col-1-3</span> и <span class="class">col-2-3</span> разделённых запятой. Запятая в конце первого селектора означает, что за ней следует другой селектор. После второго селектора идёт открывающая фигурная скобка, которая сообщает что начинается описание стиля. С помощью запятой разделяющей селекторы мы можем привязать один стиль к нескольким селекторам одновременно.</p></li><li><p>Мы хотим поместить некоторое пространство между колонок, которое поможет разбить содержимое. Это можно сделать, добавив горизонтальный <span class="attribute">padding</span> к каждой колонке.</p><p>Это хорошо работает, однако, когда две колонки располагаются рядом друг с другом, ширина пространства между ними будет вдвое больше, чем пространство от внешнего края. Чтобы уравновесить это, мы поместим все наши колонки в сетку и добавим к ней тот же <span class="attribute">padding</span>.</p><p>Давайте воспользуемся классом <span class="class">grid</span>, чтобы определить нашу сетку, а затем зададим одинаковый горизонтальный <span class="attribute">padding</span> для классов <span class="class">grid</span>, <span class="class">col-1-3</span> и <span class="class">col-2-3</span>. С запятыми, снова разделяющих наши селекторы, наш CSS выглядит следующим образом:</p>
+<pre><code data-language="css">.grid,
+.col-1-3,
+.col-2-3 {
+  padding-left: 15px;
+  padding-right: 15px;
+}</code></pre></li><li><p>Когда мы устанавливаем горизонтальный <span class="attribute">padding</span>, нам нужно быть осторожными. Помните, в прошлом уроке мы создали контейнер с классом <span class="class">container</span> по центру всего нашего контента на странице с шириной 960 пикселей. В данный момент, если бы мы поставили элемент с классом <span class="class">grid</span> внутрь элемента с классом <span class="class">container</span>, то их горизонтальные <span class="attribute">padding</span> сложились бы вместе и наши колонки не будут отображаться пропорционально ширине остальной части страницы.</p><p>Мы не хотим чтобы это произошло, так что вместо этого мы должны поделиться некоторыми стилями из правил <span class="class">container</span> с набором правил <span class="class">grid</span>. В частности, мы должны поделиться свойством <span class="attribute">width</span> (чтобы убедиться, что наша страница остаётся фиксированной на 960 пикселей в ширину) и свойством <span class="attribute">margin</span> (чтобы выровнять по центру страницы элемент с классом <span class="attribute">grid</span>).</p><p>Мы осуществим это, разбивая набор старых правил <span class="class">container</span> на следующее:</p>
+<pre><code data-language="css">.container,
+.grid {
+  margin: 0 auto;
+  width: 960px;
+}
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}</code></pre>
+<p>Теперь любой элемент с классом <span class="class">container</span> или <span class="class">grid</span> будет 960 пикселей в ширину и располагаться по центру страницы. Кроме того, мы сохранили существующий горизонтальный <span class="attribute">padding</span> для любого элемента с классом <span class="class">container</span> путём перемещения его в новый, отдельный набор правил.</p></li><li><p>Хорошо, всю тяжёлую необходимую часть по настройке сетки завершили. Теперь пришло время для работы с нашим HTML и просмотра, как эти классы действуют.</p><p>Мы начнём с тизеров на главной странице, в файле index.html, выровняв их по трём колонкам. В настоящее время тизеры обёрнуты элементом <span class="tag">&lt;section&gt;</span> с классом <span class="class">container</span>. Мы хотим изменить класс <span class="class">container</span> на <span class="class">grid</span> так, чтобы внутри мы могли начать размещение колонок.</p>
+<pre><code data-language="html">&lt;section class=&quot;grid&quot;&gt;
+  ...
+&lt;/section&gt;</code></pre></li><li><p>Далее мы хотим добавить класс <span class="class">col-1-3</span> для каждого элемента <span class="tag">&lt;section&gt;</span> внутри <span class="tag">&lt;section&gt;</span> с классом <span class="class">grid</span>.</p>
+<pre><code data-language="html">&lt;section class=&quot;grid&quot;&gt;
+
+  &lt;section class=&quot;col-1-3&quot;&gt;
+  ...
+  &lt;/section&gt;
+  
+  &lt;section class=&quot;col-1-3&quot;&gt;
+  ...
+  &lt;/section&gt;
+  
+  &lt;section class=&quot;col-1-3&quot;&gt;
+  ...
+  &lt;/section&gt;
+  
+&lt;/section&gt;</code></pre></li><li><p>И, наконец, поскольку каждая наша колонка является строчно-блочным элементом, нам следует убедиться что мы удалили пустое пространство между ними. Чтобы сделать это мы воспользуемся комментариями и добавим немного документации к каждому разделу, чтобы лучше организовать свой код.</p>
+<pre><code data-language="html">&lt;section class=&quot;grid&quot;&gt;
+  
+  &lt;!-- Спикеры --&gt;
+  
+  &lt;section class=&quot;col-1-3&quot;&gt;
+  ...
+  &lt;/section&gt;&lt;!--
+  
+  Расписание
+  
+  --&gt;&lt;section class=&quot;col-1-3&quot;&gt;
+  ...
+  &lt;/section&gt;&lt;!--
+  
+  Место проведения
+  
+  --&gt;&lt;section class=&quot;col-1-3&quot;&gt;
+  ...
+  &lt;/section&gt;
+  
+&lt;/section&gt;</code></pre>
+
+<p>Для проверки — в строке 3 мы оставили комментарий, идентифицирующий раздел «Спикеры», который за ним следует. В конце строки 7 мы открываем комментарий сразу после закрывающего тега <span class="tag">&lt;/section&gt;</span>. Внутри этого комментария, в строке 9 мы определяем следующий раздел «Расписание». Затем закрываем комментарий в начале строки 11, сразу перед открывающим тегом <span class="tag">&lt;section&gt;</span>. Аналогичная структура комментариев появляется в строках с 13 до 17 между двумя элементами <span class="tag">&lt;section&gt;</span>, прямо перед разделом «Место проведения». В целом, мы закомментировали любое потенциальное пустое пространство между колонок, одновременно используя те же комментарии для идентификации наших разделов.</p></li></ol><p>Теперь у нас есть повторно используемая трёхколоночная сетка, которая поддерживает разные расстановки, с использованием ширины колонок как 1/3 и 2/3. Наша главная страница теперь содержит три колонки, разделяя все тизеры.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-5-02.png" alt="Главная страница Styles Conference теперь включает трёхколоночный макет "></p><p class="figsign">Рис. 5.02. Главная страница Styles Conference теперь включает трёхколоночный макет</p><h3>Демонстрация и исходный код</h3><p>Ниже вы можете просмотреть сайт Styles Conference в его нынешнем состоянии, а также скачать исходный код сайта на данный момент.</p><p><a href="https://webref.ru/example/learn-html-css/positioning-content/" class="button radius">Просмотр сайта Styles Conference</a> или <a href="../../assets/files/positioning-content.zip">Скачать исходный код</a></p><h2>Уникальное позиционирование элементов</h2><p>Рано или поздно каждый пожелает точно позиционировать элемент, но <span class="attribute">float</span> или строчно-блочные элементы не позволяют проделать такой трюк. Обтекаемые элементы, которые удаляют элемент из потока страницы, часто приводят к нежелательным результатам, поскольку окружающие элементы обтекают вокруг элемента с <span class="attribute">float</span>. Строчно-блочные элементы, если только мы не создаём колонки, могут быть довольно неудобны, когда дело касается правильного положения. Для подобных ситуаций мы можем использовать свойство <span class="attribute">position</span> в сочетании со свойствами смещения блока.</p><p>Свойство <span class="attribute">position</span> определяет, как элемент позиционируется на странице и будет ли он отображаться в обычном потоке документа. Оно применяется в сочетании со свойствами смещения блока&nbsp;— <span class="attribute">top</span>, <span class="attribute">right</span>, <span class="attribute">bottom</span> и <span class="attribute">left</span>, которые точно определяют, где элемент будет расположен путём перемещения элемента в разных направлениях.</p><p>По умолчанию у каждого элемента значение <span class="attribute">position</span> установлено как <span class="value">static</span>, это означает, что элемент существует в обычном потоке документа и не принимает какие-либо свойства для его смещения. Значение <span class="value">static</span> наиболее часто переписывается значением <span class="value">relative</span> или <span class="value">absolute</span>, которые мы рассмотрим дальше.</p><h3>Относительное позиционирование</h3><p>Значение <span class="value">relative</span> для свойства position позволяет элементам отображаться в обычном потоке страницы, резервируя место для элемента как предполагалось и не позволяя другим элементам его обтекать. Однако, оно также позволяет модифицировать положение элемента с помощью свойств смещения. К примеру, рассмотрим следующие HTML и CSS:</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div&gt;...&lt;/div&gt;
+&lt;div class=&quot;offset&quot;&gt;...&lt;/div&gt;
+&lt;div&gt;...&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">div {
+  height: 100px;
+  width: 100px;
+}
+.offset {
+  left: 20px;
+  position: relative;
+  top: 20px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация относительного позиционирования</h3><iframe width="100%" height="360" src="https://jsfiddle.net/webref/zon8qv8n/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Здесь для второго элемента <span class="tag">&lt;div&gt;</span> с классом <span class="class">offset</span> задано значение <span class="attribute">position</span> как <span class="value">relative</span>, а также два свойства смещения&nbsp;— <span class="attribute">left</span> и <span class="attribute">top</span>. Это сохраняет исходное положение элемента и другим элементам не разрешено двигаться в эту область. Кроме того, свойства смещения перемещают элемент, выталкивая его на 20&nbsp;пикселей от левого и на 20&nbsp;пикселей от верхнего исходного местоположения.</p><p>Для относительно позиционированных элементов важно знать, что свойства смещения блока определяют, куда элемент будет перемещён, учитывая его исходное положение. Таким образом, свойство <span class="attribute">left</span> со значением 20 пикселей фактически толкает элемент вправо на 20 пикселей. Свойство <span class="attribute">top</span> со значением 20 пикселей затем будет толкать элемент вниз на 20 пикселей.</p><p>Когда мы позиционируем элемент с помощью свойств смещения, элемент перекрывает элемент под ним, а не сдвигает его вниз, как это делают свойства <span class="attribute">margin</span> или <span class="attribute">padding</span>.</p><h3>Абсолютное позиционирование</h3><p>Значение <span class="value">absolute</span> для свойства <span class="attribute">position</span> отличается от значения <span class="value">relative</span> тем, что элемент с абсолютным позиционированием не появляется в обычном потоке документа, исходное пространство и положение абсолютно позиционируемого элемента не резервируется.</p><p>Кроме того, абсолютно позиционируемые элементы перемещаются относительно их ближайшего относительно позиционированного родительского элемента. Если относительно позиционированного родителя не существует, то абсолютно позиционированный элемент будет позиционироваться относительно элемента <span class="tag">&lt;body&gt;</span>. Это небольшая часть информации; давайте взглянем на то, как это работает внутри некоторого кода:</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;section&gt;
+  &lt;div class=&quot;offset&quot;&gt;...&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">section {
+  position: relative;
+}
+div {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация абсолютного позиционирования</h3><iframe width="100%" height="260" src="https://jsfiddle.net/webref/kb6tw7u7/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>В этом примере элемент <span class="tag">&lt;section&gt;</span> позиционируется относительно, но не включает каких-либо свойств смещения. Следовательно, его положение не меняется. Элемент <span class="tag">&lt;div&gt;</span> с классом <span class="class">offset</span> включает значение <span class="attribute">position</span> как <span class="value">absolute</span>. Поскольку элемент <span class="tag">&lt;section&gt;</span> является ближайшим относительно позиционированным родительским элементом для <span class="tag">&lt;div&gt;</span>, то элемент <span class="tag">&lt;div&gt;</span> будет позиционироваться относительно элемента <span class="tag">&lt;section&gt;</span>.</p><p>Для относительно позиционированных элементов свойства смещения определяют, в каком направлении элемент будет перемещён относительного самого себя. Для абсолютно позиционируемых элементов свойства смещения определяют, в каком направлении элемент будет перемещён относительно его ближайшего относительно позиционированного родителя.</p><p>В результате свойств <span class="attribute">right</span> и <span class="attribute">top</span>, элемент <span class="tag">&lt;div&gt;</span> появится в 20 пикселях справа и 20 пикселях сверху внутри <span class="tag">&lt;section&gt;</span>.</p><p>Поскольку элемент <span class="tag">&lt;div&gt;</span> позиционируются абсолютно, он не располагается в обычном потоке страницы и будет перекрывать любые окружающие его элементы. Кроме того, исходное положение <span class="tag">&lt;div&gt;</span> не сохраняется и другие элементы могут занять это место. Как правило, большая часть позиционирования может происходить без применения свойств position и свойств смещения, но в некоторых случаях они могут оказаться чрезвычайно полезны.</p><h2>Резюме</h2><p>Изучение позиционирования содержимого в HTML и CSS является огромным шагом в сторону освоения этих языков. Добавьте к этому блочную модель и вот мы уверенно движемся по пути превращения во фронтенд-разработчиков.</p><p>Для проверки, в этом уроке мы рассмотрели следующее:</p><ul><li>Что такое <span class="attribute">float</span> и как его использовать, чтобы позиционировать содержимое.</li><li> Как очистить и установить содержимое обтекаемых элементов.</li><li> Как позиционировать содержимое с помощью строчно-блочных элементов.</li><li> Как удалить пустое пространство между строчно-блочными элементами.</li><li> Как уникально позиционировать контент через относительное и абсолютное позиционирование элементов.</li></ul><p>Мы добавляем новые навыки с каждым уроком, так что давайте продолжим. Следующая тема — типографика!</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://www.smashingmagazine.com/2007/05/01/css-float-theory-things-you-should-know/">CSS Float Theory</a> via Smashing Magazine</li><li><a href="http://alistapart.com/article/css-positioning-101">CSS Positioning 101</a> via A List Apart</li></ul><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 08.06.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/box-model'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/learn-html-css/working-with-typography'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="box-model.html" title="На предыдущую страницу">Открываем блочную модель</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="working-with-typography.html" title="На следующую страницу">Работа с типографикой</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf active-trail"><a href="positioning-content.html" class="active-trail active">Позиционирование содержимого</a></li><li class="leaf"><a href="working-with-typography.html">Работа с типографикой</a></li><li class="leaf"><a href="setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li><li class="leaf"><a href="creating-lists.html">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf"><a href="building-forms.html">Построение форм</a></li><li class="leaf"><a href="organizing-data-with-tables.html">Организация данных с помощью таблиц</a></li><li class="last leaf"><a href="writing-your-best-code.html">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-f8914d9c56acb725bf9286436f45c1d9"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="positioning-content.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

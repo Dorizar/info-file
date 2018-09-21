@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Работа с типографикой | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="next" href="setting-backgrounds-and-gradients.html" />
+<link rel="prev" href="positioning-content.html" />
+<meta name="description" content="Область веб-типографики значительно расширилась за последнее время. Существует несколько разных причин роста популярности, одной из широко признанной причиной является разработка системы для встраивания собственных веб-шрифтов на сайт." />
+<link rel="canonical" href="working-with-typography.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Работа с типографикой</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Работа с типографикой</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Область <a href="http://webtypography.net">веб-типографики</a> значительно расширилась за последнее время. Существует несколько разных причин роста популярности, одной из широко признанной причиной является разработка системы для встраивания собственных веб-шрифтов на сайт.</p><p>В прошлом мы были ограничены небольшим количеством шрифтов, которые могли использовать на сайте. Эти шрифты наиболее типовые установленные шрифты на компьютерах, так что они, скорее всего, правильно отображались на экране. Если шрифта на компьютере не было, то он и не отображался на сайте. Теперь, когда у нас есть возможность встраивать шрифты, у нас имеется гораздо большая палитра шрифтов на выбор, включая те, которые мы добавляем на сайт.</p><p>Возможность встраивания шрифтов даёт нам доступ к бесчисленным новым шрифтам, но при этом также важно знать основные принципы типографики. В этом уроке мы собираемся взглянуть на некоторые из этих основных принципов и как их применять для наших веб-страниц с помощью HTML и CSS.</p><div class="notePad"><h3>Гарнитура и шрифт</h3><p>Термины «гарнитура» и «шрифт» часто взаимозаменяемы, что приводит к путанице. Вот что означает каждый термин.</p><p>Гарнитура это то, что мы видим. Это художественное впечатление от того, как текст выглядит, воспринимается и читается.</p><p>Шрифт представляет собой файл, содержащий гарнитуру. Использование шрифта позволяет компьютеру получить доступ к гарнитуре.</p><p>Один из способов помочь прояснить разницу между гарнитурой и шрифтом — это сравнить их <a href="http://fontfeed.com/archives/font-or-typeface/">с песней и MP3</a>. Гарнитура очень похожа на песню, в том что это произведение искусства. Она создана художником или художниками и открыта для публичного обсуждения. Шрифт, с другой стороны, очень похож на МР3 тем, что он сам не оказывает художественного впечатления, это только способ передачи художественной ценности.</p></div><h2>Добавление цвета к тексту</h2><p>Обычно первыми шагами, которые мы будем делать при создании сайта, являются выбор основной гарнитуры и цвета текста для использования. Хотя есть ряд разных свойств, которые могут быть изменены&nbsp;— размер, насыщенность и так далее, но гарнитура и цвет текста, как правило, оказывают наибольшее влияние на внешний вид и читаемость страницы. Избавьтесь от настроек браузера по умолчанию, примените собственную гарнитуру и цвет текста, что немедленно задаст тон нашей странице.</p><p>Единственное свойство, которое нам требуется для установки цвета текста — это свойство <span class="attribute">color</span>. Оно принимает одно значение цвета, но в разных форматах. Эти форматы, как мы обсуждали в уроке 3, «Знакомство с CSS», включают ключевые слова, шестнадцатеричные значения и значения RGB, RGBa, HSL и HSLa. Шестнадцатеричные значения являются наиболее распространёнными, поскольку они обеспечивают максимальный контроль с минимальными усилиями.</p><p>Давайте взглянем на CSS, необходимый для изменения цвета всего текста в пределах элемента <span class="tag">&lt;html&gt;</span> на странице:</p>
+<pre><code data-language="css">html {
+  color: #555;
+}</code></pre>
+<h2>Изменение свойств шрифта</h2><p>CSS предлагает много разных свойств для редактирования внешнего вида текста на странице. Эти свойства входят в две категории: свойства шрифта и свойства текста. Большинство из этих свойств начинаются с font- или text-. Для начала мы обсудим основные свойства шрифта.</p><h3>font-family</h3><p>Свойство <span class="attribute">font-family</span> применяется, чтобы объявить, какой шрифт, а также какие резервные или заменяющие шрифты должны быть использованы для отображения текста. Значение font-family содержит несколько имён шрифтов, перечисляемых через запятую.</p><p>Первый указанный шрифт, начиная слева, является основным выбранным шрифта. Если первый шрифт недоступен, после него указываются альтернативные шрифты в порядке предпочтения слева направо.</p><p>Имена шрифтов, состоящие из двух или более слов должны быть взяты в кавычки. Кроме того, последний шрифт должен быть ключевым словом, который обозначает системный шрифт по умолчанию для указанного типа, наиболее популярные это <span class="value">sans-serif</span> и <span class="value">serif</span>.</p><p>Свойство <span class="attribute">font-family</span> в действии выглядит так:</p>
+<pre><code data-language="css">body {
+  font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}</code></pre>
+<p>В данном случае Helvetica Neue является предпочтительным шрифтом для отображения. Если этот шрифт недоступен или не установлен на указанном устройстве, будет использоваться следующий шрифт в списке&nbsp;— Helvetica и так далее.</p><h3>font-size</h3><p>Свойство <span class="attribute">font-size</span> даёт возможность установить размер текста, используя типовые значения размера, включая пиксели, em, проценты, пункты или ключевые слова.</p><p>Здесь в CSS устанавливается размер шрифта 14 пикселей для элемента <span class="tag">&lt;body&gt;</span>:</p>
+<pre><code data-language="css">body {
+  font-size: 14px;
+}</code></pre>
+<h3>font-style</h3><p>Чтобы сделать текст курсивным или предотвратить его от этого, мы будем использовать свойство <span class="attribute">font-style</span>. Это свойство принимает четыре ключевых слова: <span class="value">normal</span>, <span class="value">italic</span>, <span class="value">oblique</span> и <span class="value">inherit</span>. Из них наиболее часто используются <span class="value">italic</span> (задаёт текст курсивным) и <span class="value">normal</span> (возвращает текст к своему обычному стилю).</p><p>Ниже CSS устанавливает для всех элементов с классом <span class="class">special</span> свойство <span class="attribute">font-style</span> как <span class="value">italic</span>:</p>
+<pre><code data-language="css">.special {
+  font-style: italic;
+}</code></pre>
+<h3>font-variant</h3><p>Это происходит не часто, но иногда текст необходимо установить небольшими заглавными буквами, также известными как капитель. Для такого особого случая мы воспользуемся свойством <span class="attribute">font-variant</span>. Оно принимает три значения: <span class="value">normal</span>, <span class="value">small-caps</span> и <span class="value">inherit</span>. Наиболее типовыми значениями являются <span class="value">normal</span> и <span class="value">small-caps</span>, которые используются для переключения шрифтов между капителью и обычным текстом.</p><p>Для переключения всех элементов с классом <span class="class">firm</span>, мы будем использовать <span class="attribute">font-variant</span> со значением <span class="value">small-caps</span>:</p>
+<pre><code data-language="css">.firm {
+  font-variant: small-caps;
+}</code></pre>
+<h3>font-weight</h3><p>Иногда мы хотим сделать текст жирным или изменить насыщенность гарнитуры. В таких случаях мы будем использовать свойство <span class="attribute">font-weight</span>. Оно принимает в качестве значения ключевое слово или число.</p><p>Ключевое слово включает <span class="value">normal</span>, <span class="value">bold</span>, <span class="value">bolder</span>, <span class="value">lighter</span> и <span class="value">inherit</span>. Из этих ключевых слов рекомендуется в первую очередь задействовать <span class="value">normal</span> и <span class="value">bold</span>, чтобы изменить текст от обычного до жирного и наоборот. Вместо использования ключевых слов <span class="value">bolder</span> или <span class="value">lighter</span> лучше применять числовое значение для более точного управления.</p><p>На практике, вот CSS для установки <span class="attribute">font-weight</span> как <span class="value">bold</span> для любого элемента с классом <span class="class">daring</span>:</p>
+<pre><code data-language="css">.daring {
+  font-weight: bold;
+}</code></pre>
+<p>Числовые значения 100, 200, 300, 400, 500, 600, 700, 800 и 900 связаны с гарнитурами шрифтов, которые имеют несколько жирностей. Их порядок начинается с самой тонкой жирности, 100, и повышается до самой толстой жирности, 900. Для справки, значение <span class="value">normal</span> соответствует 400, а значение <span class="value">bold</span> соответствует 700. Таким образом, любое числовое значение ниже 400 будет достаточно тонким, а любое значение выше 700 будет достаточно жирным.</p><p>Изменение насыщенности шрифта до 600 для любого элемента с классом <span class="class">daring</span> теперь отображает текст как полужирный&nbsp;— не совсем жирный, как ключевое слово <span class="value">bold</span> до этого:</p>
+<pre><code data-language="css">.daring {
+  font-weight: 600;
+}</code></pre>
+<div class="notePad"><h3>Насыщенность шрифта</h3><p>Перед применением числового значения мы должны проверить и посмотреть, пойдёт ли используемый шрифт с указанной насыщенностью. Попытка использовать число, которое не доступно для данного шрифта, приведёт эти стили к ближайшему значению.</p><p>Например, шрифт Times New Roman содержит две насыщенности: нормальная или 400 и жирная или 700. Попытка использовать 900 установит шрифт в ближайшую насыщенность, 700 в данном случае.</p></div><h3>line-height</h3><p>Межстрочный интервал — расстояние между двумя строками текста — объявляется с помощью свойства <span class="attribute">line-height</span>. Оно принимает все основные значения размера, которые мы рассмотрели в уроке 3, «Знакомство с CSS».</p><p>Лучше всего для читаемости задать межстрочный интервал примерно в полтора раза больше значения свойства <span class="attribute">font-size</span>. Это можно быстро получить путём установки <span class="attribute">line-height</span> как 150% или просто 1.5. Однако если мы работаем с базовой сеткой, предпочтительнее использовать пиксели и получить немного больше контроля над <span class="attribute">line-height</span>.</p><p>Взгляните на CSS, мы установили <span class="attribute">line-height</span> как 22 пикселя для элемента <span class="tag">&lt;body&gt;</span>, тем самым задав 22 пикселя между каждой строкой текста:</p>
+<pre><code data-language="css">body {
+  line-height: 22px;
+}</code></pre>
+<p>Межстрочный интервал также может быть использован для вертикального выравнивания по центру одной строки текста внутри элемента. Используя одинаковые значения свойств <span class="attribute">line-height</span> и <span class="attribute">height</span> вы выровняете текст по центру вертикали:</p>
+<pre><code data-language="css">.btn {
+  height: 22px;
+  line-height: 22px;
+}</code></pre>
+<p>Этот метод может быть полезен для кнопок, предупреждающих сообщений и других однострочных текстовых блоков.</p><h3>Универсальное свойство font</h3><p>Все перечисленные выше шрифтовые свойства могут быть объединены в одном универсальном свойстве <span class="attribute">font</span>. Это свойство может принимать несколько значений шрифтовых свойств. Порядок значений этих свойств должен быть следующим, слева направо: <span class="attribute">font-style</span>, <span class="attribute">font-variant</span>, <span class="attribute">font-weight</span>, <span class="attribute">font-size</span>, <span class="attribute">line-height</span> и <span class="attribute">font-family</span>.</p><p>Эти значения перечисляются слева направо без применения запятых (кроме названий шрифтов, поскольку свойство <span class="attribute">font-family</span> задействует запятые). Косая черта (/) необходима для разделения значений свойств <span class="attribute">font-size</span> и <span class="attribute">line-height</span>.</p><p>Каждое значение свойства не является обязательным, за исключением значений <span class="attribute">font-size</span> и <span class="attribute">font-family</span>. Иными словами, мы можем включить только значения свойств <span class="attribute">font-size</span> и <span class="attribute">font-family</span> при желании.</p>
+<pre><code data-language="css">html {
+  font: italic small-caps bold 14px/22px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}</code></pre>
+<h3>Свойства шрифта все разом</h3><p>Давайте взглянем на пример, который использует все эти свойства шрифта совместно. В следующем HTML и CSS демонстрируются разные возможности для стилизации текста.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;h2&gt;&lt;a href=&quot;#&quot;&gt;Я разработчик&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p class=&quot;byline&quot;&gt;Опубликовано: Шэй Хоу&lt;/p&gt;
+
+&lt;p&gt;Каждый день я вижу дизайнеров и программистов работающих совместно друг с другом. 
+Они работают разумно, преследуя бизнес-цели. Они работают старательно, делая 
+исключительные продукты. Они решают реальные проблемы и гордятся своей работой. 
+Они разработчики. &lt;a href=&quot;#&quot;&gt;Продолжить&amp;#8230;&lt;/a&gt;&lt;/p&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">h2,
+p {
+  color: #555;
+  font: 13px/20px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+a {
+  color: #0087cc;
+}
+a:hover {
+  color: #ff7b29;
+}
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.byline {
+  color: #9799a7;
+  font-family: Georgia, Times, &quot;Times New Roman&quot;, serif;
+  font-style: italic;
+  margin-bottom: 18px;
+}</code></pre>
+
+<div class="notePad"><h3>Демонстрация свойств шрифта</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/rdvw9rpu/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><div class="notePad"><p>Псевдоклассы в CSS</p><p>Данная демонстрация использует псевдокласс <span class="attribute">:hover</span>, который мы никогда не видели прежде. Для справки, псевдоклассы&nbsp;— это ключевые слова, которые могут быть добавлены в конце селектора для стилизации элемента, когда он находится в уникальном состоянии.</p><p>Псевдокласс <span class="attribute">:hover</span> задаёт стиль элемента, когда пользователь проводит курсор мыши над этим элементом. При использовании с элементом <span class="tag">&lt;a&gt;</span>, как показано выше, все элементы <span class="tag">&lt;a&gt;</span> получают уникальные стили, когда на них наводят курсор. Теперь наши элементы <span class="tag">&lt;a&gt;</span> изменят цвет в этот момент.</p></div><h2>На практике</h2><p>Вернёмся назад к нашему сайту Styles Conference и начнём добавлять некоторые свойства шрифта.</p><ol class="practice"><li><p>Мы начнём с обновления шрифта для всего нашего текста. Чтобы сделать это, мы применим стили к элементу <span class="tag">&lt;body&gt;</span>. Начнём с <span class="attribute">color</span>, а также добавим значения <span class="attribute">font-weight</span>, <span class="attribute">font-size</span>, <span class="attribute">line-height</span> и <span class="attribute">font-family</span> через свойство <span class="attribute">font</span>.</p><p>В попытке сохранить наш файл main.css организованным, насколько это возможно, создадим новый раздел для этих пользовательских стилей, поместив его чуть ниже нашего сброса и выше стилей сетки.</p><p>Нам нужно добавить следующее:</p>
+<pre><code data-language="css">/*
+  ========================================
+  Пользовательские стили
+  ========================================
+*/
+body {
+  color: #888;
+  font: 300 16px/22px &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}</code></pre></li><li><p>В уроке 4, «Открываем блочную модель», мы начали добавлять некоторые типографские стили, в частности, нижний margin для некоторых заголовков разного уровня и абзацев. В этом же разделе файла main.css давайте добавим цвет к заголовкам от первого до четвёртого уровней.</p>
+<pre><code data-language="css">h1, h2, h3, h4 {
+  color: #648880;
+}</code></pre>
+<p>Пока мы здесь, добавим также размер шрифта для этих заголовков. Наши элементы <span class="tag">&lt;h1&gt;</span> и <span class="tag">&lt;h2&gt;</span> будут использовать достаточно большие значения <span class="attribute">font-size</span>, следовательно, мы также хотим увеличить у них значения <span class="attribute">line-height</span>, чтобы сохранить текст внутри этих элементов разборчивым. Для справки, мы установим значение <span class="attribute">line-height</span> как 44&nbsp;пикселя, удвоив значение основного <span class="attribute">line-height</span>, установленного в правилах для элемента <span class="tag">&lt;body&gt;</span>.</p>
+<pre><code data-language="css">h1 {
+  font-size: 36px;
+  line-height: 44px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 44px;
+}
+h3 {
+  font-size: 21px;
+}
+h4 {
+  font-size: 18px;
+}</code></pre></li><li><p>Наши элементы <span class="tag">&lt;h5&gt;</span> планируются чуть более уникальными, чем остальные заголовки. Соответственно, мы собираемся немного изменить их стили.</p><p>Мы применим другое значение свойства <span class="attribute">color</span> и немного уменьшим <span class="attribute">font-size</span> для этих элементов, а также собираемся изменить <span class="attribute">font-weight</span> на 400 или <span class="value">normal</span>.</p><p>По умолчанию, браузеры отображают заголовки с <span class="attribute">font-weight</span> как <span class="value">bold</span>. Для наших заголовков, однако, в данный момент все <span class="attribute">font-weight</span> заданы как 300. Сброс CSS в верхней части файла main.css изменил <span class="attribute">font-weight</span> на <span class="value">normal</span>, а затем <span class="attribute">font-weight</span> внутри элемента <span class="tag">&lt;body&gt;</span> задал значение 300 для всех заголовков.</p><p>Значение <span class="tag">font-weight</span> как 400 для элемента <span class="tag">&lt;h5&gt;</span> на самом деле сделает это немного толще, чем остальные заголовки и текст.</p>
+<pre><code data-language="css">h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+}</code></pre></li><li><p>Наш сброс в начале стилей также сбросит стили браузера по умолчанию для элементов <span class="tag">&lt;strong&gt;</span>, <span class="tag">&lt;cite&gt;</span> и <span class="tag">&lt;em&gt;</span>, которые мы хотим добавить обратно. Для элементов <span class="tag">&lt;strong&gt;</span> мы хотим установить <span class="attribute">font-weight</span> как 400, который на самом деле приравнивается к <span class="value">normal</span>, а не <span class="value">bold</span>, поскольку используемая нами гарнитура толще, чем большинство других гарнитур. Затем для элементов <span class="tag">&lt;cite&gt;</span> и <span class="tag">&lt;em&gt;</span> мы хотим установить <span class="attribute">font-style</span> как <span class="value">italic</span>.</p>
+<pre><code data-language="css">strong {
+  font-weight: 400;
+}
+cite, em {
+  font-style: italic;
+}</code></pre></li><li><p>У нас всё получается, так что давайте продолжать, добавляя некоторые стили для наших ссылок. В данный момент они синие, так указал браузер по умолчанию. Сделаем их того же цвета, что наши заголовки от <span class="tag">&lt;h1&gt;</span> до <span class="tag">&lt;h4&gt;</span>. Кроме того, применим псевдокласс <span class="attribute">:hover</span>, чтобы изменить цвет на светло-серый, когда пользователь наводит курсор на ссылку.</p>
+<pre><code data-language="css">/*
+  ========================================
+  Ссылки
+  ========================================
+*/
+
+a:hover {
+  color: #a9b2b9;
+}
+a {
+  color: #648880;
+}</code></pre></li><li><p>Теперь взглянем на наш элемент <span class="tag">&lt;header&gt;</span> и обновим для него наши стили. Мы начнём обновление с логотипа, добавив свойства <span class="attribute">font-size</span> и <span class="attribute">line-height</span> в наборе правил для <span class="class">logo</span>. После добавления к существующим свойствам <span class="attribute">border-top</span>, <span class="attribute">float</span> и <span class="attribute">padding</span>, новый набор правил должен выглядеть так:</p>
+<pre><code data-language="css">.logo {
+  border-top: 4px solid #648880;
+  float: left;
+  font-size: 48px;
+  line-height: 44px;
+  padding: 40px 0 22px 0;
+}</code></pre></li><li><p>Поскольку мы совсем немного увеличили ширину логотипа, добавим <span class="attribute">margin</span> к элементу <span class="tag">&lt;h3&gt;</span> внутри <span class="tag">&lt;header&gt;</span>, чтобы сбалансировать это. Мы сделаем это путём размещения значения <span class="value">tagline</span> у атрибута <span class="attribute">class</span> для элемента <span class="tag">&lt;h3&gt;</span>, а затем используя этот класс в нашем CSS, чтобы применить соответствующие поля.</p><p>Не забывайте, что изменения в элементе <span class="tag">&lt;h3&gt;</span> должны произойти на каждой странице.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;h3 class=&quot;tagline&quot;&gt;24&amp;ndash;26 августа &amp;mdash; Чикаго, штат Иллинойс&lt;/h3&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.tagline {
+  margin: 66px 0 22px 0;
+}</code></pre></li><li><p>После элемента <span class="tag">&lt;h3&gt;</span> с классом <span class="class">tagline</span> наступает очередь элемента <span class="tag">&lt;nav&gt;</span>. Добавим значение <span class="value">primary-nav</span> к атрибуту <span class="attribute">class</span> элемента <span class="tag">&lt;nav&gt;</span>, а также свойства <span class="attribute">font-size</span> и <span class="attribute">font-weight</span>, чтобы навигация выделялась по сравнению с остальной частью заголовка.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;nav class=&quot;primary-nav&quot;&gt;
+  ...
+&lt;/nav&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.primary-nav {
+  font-size: 14px;
+  font-weight: 400;
+}</code></pre></li><li><p>Теперь элемент <span class="tag">&lt;header&gt;</span> в несколько лучшей форме, давайте также взглянем на наш элемент <span class="tag">&lt;footer&gt;</span>. Используя класс <span class="class">primary-footer</span> изменим <span class="attribute">color</span> и <span class="attribute">font-size</span> для всего текста внутри <span class="tag">&lt;footer&gt;</span>. Кроме того, поднимем <span class="attribute">font-weight</span> для <span class="tag">&lt;small&gt;</span> до 400.</p><p>Учитывая существующие стили, стиль для нашего подвала должен выглядеть так:</p>
+<pre><code data-language="css">.primary-footer {
+  color: #648880;
+  font-size: 14px;
+  padding-bottom: 44px;
+  padding-top: 44px;
+}
+.primary-footer small {
+  float: left;
+  font-weight: 400;
+}</code></pre></li><li><p>Также обновим немного нашу главную страницу. Начнём с раздела <span class="class">hero</span> и увеличим общий <span class="attribute">line-height</span> в разделе до 44&nbsp;пикселей. Мы также сделаем текст в этом разделе больше, увеличив <span class="attribute">font-size</span> для элемента <span class="tag">&lt;h2&gt;</span> до 36&nbsp;пикселей и <span class="attribute">font-size</span> для элемента <span class="tag">&lt;p&gt;</span> до 24&nbsp;пикселей.</p><p>Мы можем внести все эти изменения, используя существующий класс <span class="class">hero</span> и создав новые селекторы для элементов <span class="tag">&lt;h2&gt;</span> и <span class="tag">&lt;p&gt;</span>. Наши стили для раздела <span class="class">hero</span> переделаются теперь таким образом:</p>
+<pre><code data-language="css">.hero {
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+}
+.hero h2 {
+  font-size: 36px;
+}
+.hero p {
+  font-size: 24px;
+}</code></pre></li><li><p>В завершении, у нас есть небольшая проблемка, которую надо исправить на главной странице. Ранее мы задали для всех ссылок светло-серый цвет при наведении на них. Это прекрасно работает, за исключением трёх тизеров на главной странице, где ссылка охватывает оба элемента <span class="tag">&lt;h3&gt;</span> и <span class="tag">&lt;h5&gt;</span>. Поскольку у этих элементов есть своё собственное определение <span class="attribute">color</span>, псевдокласс <span class="attribute">:hover</span>, описанный ранее, не оказывает на них влияние.</p><p>К счастью, мы можем это исправить, хотя для этого потребуется достаточно сложный селектор. Начнём с добавления класса <span class="class">teaser</span> ко всем трём колонкам на главной странице. Мы будем использовать этот класс в качестве отборочного селектора в ближайшее время.</p>
+<pre><code data-language="html">&lt;section class=&quot;grid&quot;&gt;
+
+  &lt;!-- Спикеры --&gt;
+  &lt;section class=&quot;teaser col-1-3&quot;&gt;
+    &lt;a href=&quot;speakers.html&quot;&gt;
+      &lt;h5&gt;Спикеры&lt;/h5&gt;
+      &lt;h3&gt;Спикеры мирового класса&lt;/h3&gt;
+    &lt;/a&gt;
+    &lt;p&gt;К нам приедут более двадцати фантастических спикеров со всего мира, чтобы поделиться своими историями.&lt;/p&gt;
+  &lt;/section&gt;
+
+  ... 
+&lt;/section&gt;</code></pre>
+<p>С классом <span class="class">teaser</span> мы готовы несколько утяжелить CSS и создать достаточно сложный селектор. Начнём наш селектор с этого класса, поскольку мы хотим только нацелиться на элементы внутри элемента с классом <span class="class">teaser</span>. Отсюда мы хотим применить стили к элементам, которые находятся внутри ссылок и на которые навели курсор мыши. Таким образом, мы добавим селектор типа совместно с псевдоклассом <span class="attribute">:hover</span>. Наконец, мы добавим селектор типа <span class="tag">h3</span>, чтобы выбрать действительные элементы <span class="tag">&lt;h3&gt;</span>, к которым мы хотели бы применить стили.</p><p>В общей сложности, наш селектор и стили для этих элементов <span class="tag">&lt;h3&gt;</span> будут выглядеть следующим образом:</p>
+<pre><code data-language="css">.teaser a:hover h3 {
+  color: #a9b2b9;
+}</code></pre></li></ol><p>Уфф, это было немного. Хорошая новость — наша страница Styles Conference начинает выглядеть действительно приятно и показывает немного индивидуальности.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-6-01.png" alt="Наш сайт Styles Conference получил немного любви от горстки шрифтовых свойств"></p><p class="figsign">Рис. 6.01. Наш сайт Styles Conference получил немного любви от горстки шрифтовых свойств</p><h2>Применение текстовых свойств</h2><p>Знать, как установить семейство, размер, стиль, начертание, насыщенность и межстрочный интервал это только полдела. Дополнительно мы можем решить, как выровнять, украсить, трансформировать текст, добавить красную строку и межбуквенное расстояние в текст. Начнём с выравнивания текста.</p><h3>text-align</h3><p>Выравнивание текста является важной частью построения ритма и потока на странице. Мы делаем это с помощью свойства<span class="attribute"> text-align</span>. У этого свойства пять значений: <span class="value">left</span>, <span class="value">right</span>, <span class="value">center</span>, <span class="value">justify</span> и <span class="value">inherit</span>. Все эти значения довольно просты; как и ожидалось, они выравнивают текст по левому краю, правому краю, по центру или по ширине.</p><p>Ниже CSS устанавливает текст всех абзацев выровненный по центру:</p>
+<pre><code data-language="css">p {
+  text-align: center;
+}</code></pre>
+<p>Свойство <span class="attribute">text-align</span>, однако, не следует путать со свойством <span class="attribute">float</span>. Значения <span class="attribute">text-align</span> как <span class="value">left</span> или <span class="value">right</span> выравнивают текст внутри элемента влево или вправо, в то время как значения <span class="attribute">float</span> как <span class="value">left</span> или <span class="value">right</span> двигают весь элемент. Иногда свойство <span class="attribute">text-align</span> даст нам желаемый результат, в другой раз нам, возможно, потребуется использовать свойство <span class="attribute">float</span>.</p><h3>text-decoration</h3><p>Свойство <span class="attribute">text-decoration</span> предлагает несколько способов для украшения текста. Оно принимает в качестве значений ключевые слова <span class="value">none</span>, <span class="value">underline</span>, <span class="value">overline</span>, <span class="value">line-through</span> и <span class="value">inherit</span>. Использование <span class="attribute">text-decoration</span> варьируется, но самое популярное применение&nbsp;— это подчёркивание ссылок, что является стилем браузера по умолчанию.</p><p>Здесь стиль для любого элемента с классом <span class="class">note</span> задаёт <span class="attribute">text-decoration</span> как <span class="value">underline</span>:</p>
+<pre><code data-language="css">.note {
+  text-decoration: underline;
+}</code></pre>
+<p>К одному элементу можно применить несколько значений <span class="attribute">text-decoration</span>, указывая значения ключевых слов через пробел.</p><h3>text-indent</h3><p>Свойство <span class="attribute">text-indent</span> может быть использовано для создания красной строки внутри элемента, как это обычно наблюдается в печатных изданиях. Для этого свойства доступны все основные значения размера, в том числе пиксели, пункты, проценты и так далее. Положительные значения делают отступ текста внутрь, в то время как отрицательные значения делают отступ наружу.</p><p>Здесь CSS меняет отступ текста для всех элементов <span class="tag">&lt;p&gt;</span> внутрь на 20 пикселей:</p>
+<pre><code data-language="css">p {
+  text-indent: 20px;
+}</code></pre>
+<h3>text-shadow</h3><p>Свойство <span class="attribute">text-shadow</span> позволяет нам добавить тень или несколько теней к тексту. Свойство обычно принимает четыре значения, все они перечисляются друг за другом слева направо. Первые три значения&nbsp;— это размер, а последнее значение&nbsp;— цвет.</p><p>В трёх значениях размера первое значение определяет горизонтальное смещение тени, второе значение определяет вертикальное смещение тени, а третье определяет радиус размытия тени. Четвертое и последнее значение&nbsp;— это цвет тени, который может быть любым значением применяемым в свойстве <span class="attribute">color</span>.</p><p>Здесь для всего текста элемента <span class="tag">&lt;p&gt;</span> свойство <span class="attribute">text-shadow</span> задаёт на 30% прозрачную чёрную тень, сдвинутую на 3&nbsp;пикселя вправо, на 6&nbsp;пикселей вниз и с размытием 2&nbsp;пикселя:</p>
+<pre><code data-language="css">p {
+  text-shadow: 3px 6px 2px rgba(0, 0, 0, .3);
+}</code></pre>
+<p>Использование отрицательных значений размера для горизонтальных и вертикальных смещений позволяет перемещать тени влево и вверх.</p><p>Несколько теней также могут быть соединены вместе с помощью разделённых запятыми значений, добавляя больше, чем одна тень для текста. Применение ряда теней позволяет разместить их выше и ниже текста или в любой желаемой вариации.</p><div class="notePad"><h3>box-shadow</h3><p>Свойство <span class="attribute">text-shadow</span> устанавливает тень конкретно для текста элемента. Если бы нам хотелось разместить тень для элемента в целом, то мы можем использовать свойство <span class="attribute">box-shadow</span>.</p><p>Свойство <span class="attribute">box-shadow</span> работает так же, как <span class="attribute">text-shadow</span>, принимая значения для горизонтальных и вертикальных смещений, размытие и цвет.</p><p><span class="attribute">box-shadow</span> также принимает необязательное четвёртое значение размера, перед значением цвета, для растяжения тени. Положительное значение растяжения расширит тень больше, чем размер элемента, к которому применяется свойство, а отрицательное значение сократит тень меньше, чем размер самого элемента.</p><p>Наконец, свойство <span class="attribute">box-shadow</span> может включать впереди необязательное значение <span class="value">inset</span> для размещения тени внутри элемента, а не снаружи.</p></div><h3>text-transform</h3><p>Подобно свойству <span class="attribute">font-variant</span> есть свойство <span class="attribute">text-transform</span>. В то время как свойство <span class="attribute">font-variant</span> ищет альтернативный вариант гарнитуры, свойство <span class="attribute">text-transform</span> изменит строку текста без необходимости альтернативной гарнитуры. Свойство <span class="attribute">text-transform</span> принимает пять значений: <span class="value">none</span>, <span class="value">capitalize</span>, <span class="value">uppercase</span>, <span class="value">lowercase</span> и <span class="value">inherit</span>.</p><p>Значение <span class="value">capitalize</span> делает заглавной первую букву каждого слова, значение <span class="value">uppercase</span> устанавливает заглавной каждую букву, а значение <span class="value">lowercase</span> делает каждую букву строчной. С помощью none любые из этих унаследованных значений вернутся к исходному стилю текста.</p><p>Ниже CSS устанавливает текст для всех элементов <span class="tag">&lt;р&gt;</span> заглавными буквами:</p>
+<pre><code data-language="css">p {
+  text-transform: uppercase;
+}</code></pre>
+<h3>letter-spacing</h3><p>Используя свойство <span class="attribute">letter-spacing</span> мы можем регулировать (или отслеживать) расстояние между букв на странице. Положительное значение будет толкать буквы дальше друг от друга, а отрицательное значение будет тянуть буквы ближе друг к другу. Значение <span class="value">none</span> вернёт пространство между букв к своей обычной величине.</p><p>Использование относительного размера со свойством <span class="attribute">letter-spacing</span> гарантирует, что мы поддерживаем правильное расстояние между буквами, когда меняется <span class="attribute">font-size</span> для текста. Это, однако, всегда хорошая идея, чтобы перепроверить нашу работу.</p><p>Здесь с помощью CSS все буквы в пределах наших элементов <span class="tag">&lt;p&gt;</span> на .5 em станут ближе друг к другу:</p>
+<pre><code data-language="css">p {
+  letter-spacing: -.5em;
+}</code></pre>
+<h3>word-spacing</h3><p>Также, подобно свойству <span class="attribute">letter-spacing</span> мы можем отрегулировать расстояние между словами в элементе, используя свойство <span class="attribute">word-spacing</span>. Это свойство принимает те же значения размера и ключевые слова, что и <span class="attribute">letter-spacing</span>. Вместо расстояния между букв, свойство <span class="attribute">word-spacing</span> применяет эти значения между словами.</p><p>Здесь каждое слово в элементе <span class="tag">&lt;p&gt;</span> будет на расстоянии .25 друг от друга.</p>
+<pre><code data-language="css">p {
+  word-spacing: .25em;
+}</code></pre>
+
+<h3>Свойства текста все разом</h3><p>Давайте вернёмся к нашей демонстрации тизера блога, на этот раз добавив несколько текстовых свойств перед свойствами шрифта.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;h2&gt;&lt;a href=&quot;#&quot;&gt;Я разработчик&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p class=&quot;byline&quot;&gt;Опубликовано: Шэй Хоу&lt;/p&gt;
+
+&lt;p class=&quot;intro&quot;&gt;Каждый день я вижу дизайнеров и программистов работающих совместно друг с другом. 
+Они работают разумно, преследуя бизнес-цели. Они работают старательно, делая исключительные продукты. 
+Они решают реальные проблемы и гордятся своей работой. Они разработчики. &lt;a href=&quot;#&quot;&gt;Продолжить&amp;#8230;&lt;/a&gt;&lt;/p&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">h2,
+p {
+  color: #555;
+  font: 13px/20px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+a {
+  color: #0087cc;
+}
+a:hover {
+  color: #ff7b29;
+}
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+}
+h2 a {
+  text-decoration: none;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, .2);
+}
+.byline {
+  color: #9799a7;
+  font-family: Georgia, Times, &quot;Times New Roman&quot;, serif;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+.intro {
+  text-indent: 15px;
+}
+.intro a {
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-transform: uppercase;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация свойств текста</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/tygq80vw/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h2>На практике</h2><p>С текстовыми свойствами подмышкой, перепрыгнем обратно к нашему сайту Styles Conference и включим их в работу.</p><ol class="practice"><li><p>В настоящий момент каждая ссылка на странице подчёркивается, что является стилем по умолчанию для ссылок. Этот стиль является временами несколько преобладающим, с другой стороны, мы собираемся его немного поменять.</p><p>Начнём добавление к разделу с нашими ссылкам в файле main.css с удаления подчёркивания для всех ссылок через свойство <span class="attribute">text-decoration</span>. Далее выберем все ссылки, которые появляются в абзацах, и зададим им нижнюю границу.</p><p>Мы могли бы использовать свойство <span class="attribute">text-decoration</span> вместо <span class="attribute">border-bottom</span> для подчёркивания ссылок внутри каждого абзаца, однако с помощью свойства <span class="attribute">border-bottom</span> мы получим больше контроля над внешним видом подчёркивания. Здесь, например, подчёркивание будет другого цвета, чем сам текст.</p><p>Наш раздел со ссылками, который включает в себя предыдущие стили при наведении, теперь должен выглядеть следующим образом:</p>
+<pre><code data-language="css">a {
+  color: #648880;
+  text-decoration: none;
+}
+a:hover {
+  color: #a9b2b9;
+}
+p a {
+  border-bottom: 1px solid #dfe2e5;
+}</code></pre></li><li><p>Возвращаясь к нашим элементам <span class="tag">&lt;h5&gt;</span>, у которых стиль немного отличается от остальных заголовков, установим их все в верхнем регистре с помощью свойства <span class="attribute">text-transform</span>. Наши новые стили элементов <span class="tag">&lt;h5&gt;</span> должны выглядеть следующим образом:</p>
+<pre><code data-language="css">h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}</code></pre></li><li><p>Вернёмся к нашему элементу <span class="tag">&lt;header&gt;</span> и применим дополнительные стили к нашему навигационному меню (к которому мы ранее добавили класс <span class="class">primary-nav</span>). После существующих свойств <span class="attribute">font-size</span> и <span class="attribute">font-weight</span> добавим <span class="attribute">letter-spacing</span> и изменим наш текст на заглавный с помощью свойства <span class="attribute">text-transform</span>.</p><p>Наши стили для элемента <span class="tag">&lt;nav&gt;</span> с классом <span class="class">primary-nav</span> теперь должны выглядеть следующим образом:</p>
+<pre><code data-language="css">.primary-nav {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}</code></pre></li><li><p>Ранее для логотипа мы задали <span class="attribute">float</span> как <span class="value">left</span> внутри элемента <span class="tag">&lt;header&gt;</span>. Теперь наш слоган находится непосредственно справа от логотипа, однако, мы хотели бы, чтобы он был виден в правой части элемента <span class="tag">&lt;header&gt;</span>.</p><p>Нам нужно добавить свойство <span class="attribute">text-align</span> со значением <span class="value">right</span> для элемента <span class="tag">&lt;h3&gt;</span> с классом <span class="class">tagline</span>, чтобы получить слоган, который располагается с правой стороны.</p><p>При добавлении к существующему свойству margin наши новые стили для элемента <span class="tag">&lt;h3&gt;</span> с классом <span class="class">tagline</span> будут выглядеть следующим образом:</p>
+<pre><code data-language="css">.tagline {
+  margin: 66px 0 22px 0;
+  text-align: right;
+}</code></pre></li><li><p>Нам также хотелось бы, чтобы наши навигационные меню в элементах <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> располагались по правому краю. Поскольку оба элемента <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> содержат дочерние обтекаемые элементы, мы можем использовать тот же подход, что проделали с нашим слоганом.</p><p>Обтекаемые элементы внутри <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> убираются из обычного потока страницы, и это заставляет другие элементы обтекать вокруг них. В данном конкретном случае наши навигационные меню это элементы, которые обтекают вокруг обтекаемых элементов.</p><p>Поскольку мы применяем одни и те же стили сразу к двум навигационным меню, то дадим каждому класс <span class="class">nav</span>. Наш элемент <span class="tag">&lt;header&gt;</span> будет выглядеть так:</p>
+<pre><code data-language="html">&lt;header class=&quot;container group&quot;&gt;
+
+  &lt;h1 class=&quot;logo&quot;&gt;...&lt;/h1&gt;
+ 
+  &lt;h3 class=&quot;tagline&quot;&gt;...&lt;/h3&gt;
+ 
+  &lt;nav class=&quot;nav primary-nav&quot;&gt;
+   ...
+  &lt;/nav&gt;
+  
+&lt;/header&gt;</code></pre>
+<p>А элемент <span class="tag">&lt;footer&gt;</span> будет выглядеть так:</p>
+<pre><code data-language="css">&lt;footer class=&quot;primary-footer container group&quot;&gt;
+
+  &lt;small&gt;...&lt;/small&gt;
+ 
+  &lt;nav class=&quot;nav&quot;&gt;
+   ...
+  &lt;/nav&gt;
+  
+&lt;/footer&gt;</code></pre>
+<p>Не забывайте, что изменения в наших элементах <span class="tag">&lt;header&gt;</span> и <span class="tag">&lt;footer&gt;</span> должны быть сделаны на каждой странице.</p></li><li><p>С классом <span class="class">nav</span> для двух навигационных меню создадим новый раздел в рамках нашего файла main.css, чтобы добавить общие стили навигации. Начнём с добавления свойства <span class="attribute">text-align</span> со значением <span class="value">right</span> к классу <span class="class">nav</span>. Мы расширим эти стили позже, но это пока послужит хорошей основой.</p>
+<pre><code data-language="css">/*
+  ========================================
+  Навигация
+  ========================================
+*/
+
+.nav {
+  text-align: right;
+}</code></pre></li><li><p>Мы уже добавили свойство <span class="attribute">text-align</span> к нескольким разным элементам, давайте также добавим <span class="attribute">text-align</span> со значением <span class="value">center</span> к набору правил с классом <span class="class">hero</span>. Для справки, эти стили, в том числе содержащие свойства <span class="attribute">line-height</span> и <span class="attribute">padding</span>, находятся в разделе главной страницы нашего файла main.css.</p>
+<pre><code data-language="css">.hero {
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+  text-align: center;
+}</code></pre></li></ol><p>У Styles Conference теперь серьёзный стиль (плохая шутка, извините). Если серьёзно, то все наши стили вместе сочетаются очень хорошо и сайт прогрессирует.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-6-02.png" alt="Наш сайт Styles Conference продвигается довольно хорошо после добавления нескольких текстовых свойств"></p><p class="figsign">Рис. 6.02. Наш сайт Styles Conference продвигается довольно хорошо после добавления нескольких текстовых свойств</p><h2>Использование безопасных веб-шрифтов</h2><p>По умолчанию, есть несколько шрифтов которые заранее установлены на каждом компьютере, планшете, смартфоне или другом устройстве с браузером. Поскольку они установлены на каждом устройстве, мы можем свободно использовать эти шрифты на наших сайтах, зная, что независимо от того, какое устройство просматривает наш сайт, шрифт будет отображаться правильно. Эти шрифты известны как «безопасные веб-шрифты». Таких шрифтов только горстка и наиболее надёжные перечислены здесь:</p><ul class="list-column-2"><li>Arial</li><li>Courier New, Courier</li><li>Garamond</li><li>Georgia</li><li>Lucida Sans, Lucida Grande, Lucida</li><li>Palatino Linotype</li><li>Tahoma</li><li>Times New Roman, Times</li><li>Trebuchet</li><li>Verdana</li></ul><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Встраивание веб-шрифтов</h2><p>У нас также есть возможность загружать шрифты с сервера и включать их на сайт через стилевое правило <span class="attribute">@font-face</span>. Эта возможность делает чудеса для сетевой типографики. Сейчас, более чем когда-либо, типографика приходит в жизнь в Интернете.</p><p>Встраивание собственных веб-шрифтов выглядит как приведённый CSS. Сперва мы используем правило <span class="attribute">@font-face</span>, чтобы определить имя нашего шрифта через свойство <span class="attribute">font-family</span>, а также исходник нашего шрифта (путь к файлу, содержащему наш выбранный шрифт) через свойство <span class="attribute">src</span>. Отсюда мы можем использовать этот шрифт, включая его имя в качестве значения свойства <span class="attribute">font-family</span>.</p>
+<pre><code data-language="css">@font-face {
+  font-family: &quot;Lobster&quot;;
+  src: local(&quot;Lobster&quot;), url(&quot;lobster.woff&quot;) format(&quot;woff&quot;);
+}
+body {
+  font-family: &quot;Lobster&quot;, &quot;Comic Sans&quot;, cursive;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация свойств текста</h3><iframe width="100%" height="220" src="https://jsfiddle.net/webref/7ex04mkb/embedded/result,html,css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><p>Возможность встраивать любые шрифты на сайте не означает, что мы имеем юридическое право сделать это. Гарнитуры являются формой искусства и размещение их на нашем сервере может позволить другим легко украсть их. Полномочия применять гарнитуру зависят от лицензирования, на которые у нас есть права.</p><p>К счастью, важность использования новых шрифтов на сайте была признана и компании начали разработку способов лицензирования и включают новые шрифты на сайтах. Некоторые из таких компаний, вроде <a href="https://typekit.com">Typekit</a> и <a href="http://fontdeck.com">Fontdeck</a>, работают по модели подписки для лицензирования шрифтов, в то время как другие, вроде <a href="https://www.google.com/fonts">Google Fonts</a>, лицензируют шрифты бесплатно. Перед загрузкой каких-либо шрифтов удостоверьтесь, что у вас есть на это разрешение.</p><h2>На практике</h2><p>Чтобы добавить немного характера к нашему сайту Styles Conference, попробуем использовать на нём Google Font.</p><ol class="practice"><li><p>Зайдём на <a href="https://www.google.com/fonts">сайт Google Fonts</a> и поищем шрифт, который мы хотели бы использовать: Roboto. После того как нашли, добавим его к нашей коллекции, следуя инструкциям на сайте.</p><p>Когда придёт время выбора, какое начертание мы хотели бы использовать, удостоверимся, что указали 300 и 400, как мы уже применяли в нашем CSS. Также добавим 100 к коллекции для другого варианта тоже.</p><p>Google выдаст нам дополнительный элемент <span class="tag">&lt;link&gt;</span> для включения в <span class="tag">&lt;head&gt;</span> на всех наших страницах. Мы поместим этот новый элемент <span class="tag">&lt;link&gt;</span> непосредственно ниже нашего существующего <span class="tag">&lt;link&gt;</span>. Новый элемент будет включать в себя правильный указатель на стили Google, который в том числе включает новый файл CSS с правильным правилом <span class="attribute">@font-face</span>, необходимым для использования шрифта Roboto.</p><p>После добавления нового элемента <span class="tag">&lt;link&gt;</span>, наш элемент <span class="tag">&lt;head&gt;</span> будет выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Styles Conference&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/stylesheets/main.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:400,300,100&amp;subset=cyrillic,latin&quot;&gt;
+&lt;/head&gt;</code></pre></li><li><p>После того, как мы добавили новый элемент <span class="tag">&lt;link&gt;</span> для всех наших страниц мы готовы начать использовать шрифт Roboto. Мы сделаем это, добавив его в наш основной набор шрифтов в свойстве <span class="attribute">font</span> внутри стиля для элемента <span class="tag">&lt;body&gt;</span>.</p><p>Добавим Roboto в начале нашего набора шрифтов так: <span class="value">&quot;Roboto&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif</span>.</p><p>Хотя Roboto это одно слово, но поскольку это встроенный веб-шрифт, то мы хотим взять его в кавычки внутри любого CSS. Наш новый стиль для элемента <span class="tag">&lt;body&gt;</span> будет выглядеть следующим образом:</p>
+<pre><code data-language="css">body {
+  color: #888;
+  font: 300 16px/22px &quot;Roboto&quot;, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}</code></pre></li><li><p>Теперь Roboto должен загрузиться и работать, что видно по всему тексту на сайте Styles Conference. Поближе взглянем на наш логотип и обновим его немного.</p><p>Внутри набора правил с классом <span class="class">logo</span> начнём с добавления свойства <span class="attribute">font-weight</span> со значением 100, чтобы сделать текст достаточно тонким. Также используем свойство <span class="attribute">text-transform</span> со значением <span class="value">uppercase</span>, чтобы сделать все буквы заглавными и свойство <span class="attribute">letter-spacing</span> со значением .5 пикселей, чтобы добавить немного пространства между букв внутри логотипа.</p><p>Все стили для нашего логотипа будут выглядеть следующим образом:</p>
+<pre><code data-language="css">.logo {
+  border-top: 4px solid #648880;
+  float: left;
+  font-size: 48px;
+  font-weight: 100;
+  letter-spacing: .5px;
+  line-height: 44px;
+  padding: 40px 0 22px 0;
+  text-transform: uppercase;
+}</code></pre></li><li><p>Поскольку нам доступно значение 100 у свойства <span class="attribute">font-weight</span>, давайте также установим абзац для раздела <span class="class">hero</span> такой же насыщенности. Мы можем использовать существующий селектор чтобы сделать это и новый набор правил будет выглядеть следующим образом:</p>
+<pre><code data-language="css">.hero p {
+  font-size: 24px;
+  font-weight: 100;
+}</code></pre></li></ol><p>Наш сайт Styles Conference проделал несколько довольно больших шагов в этом уроке и внешний вид сайта начинает по-настоящему блистать.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-6-03.png" alt="Главная страница Styles Conference после добавления веб-шрифта от Google"></p><p class="figsign">Рис. 6.03. Главная страница Styles Conference после добавления веб-шрифта от Google</p><h3>Демонстрация и исходный код</h3><p>Ниже вы можете посмотреть сайт Styles Conference в его нынешнем состоянии, а также скачать исходный код сайта на данный момент.</p><p><a href="https://webref.ru/example/learn-html-css/working-with-typography/" class="button radius">Просмотр сайта Styles Conference</a> или <a href="../../assets/files/working-with-typography.zip">Скачать исходный код</a></p><h2>Добавление цитат</h2><p>Тексты на сайтах иногда включает различные цитаты. Все варианты цитирования могут быть охвачены семантически в HTML с помощью элементов <span class="tag">&lt;cite&gt;</span>, <span class="tag">&lt;q&gt;</span> и <span class="tag">&lt;blockquote&gt;</span>. Из-за того, что цитаты, как правило, отличается от обычного текста по своему виду, мы обсудим их здесь, в уроке по типографике.</p><p>Понять, когда и какой элемент использовать для разметки цитаты правильно, отнимает немного практики. В общем, соблюдайте следующие правила:</p><ul><li><span class="tag">&lt;cite&gt;</span>: применяется для указания на творческую работу, автора или ресурс;</li><li><span class="tag">&lt;q&gt;</span>: применяется для коротких, встроенных цитат;</li><li><span class="tag">&lt;blockquote&gt;</span>: применяется для наиболее длинных внешних цитат.</li></ul><h3>Цитата на творческую работу</h3><p>Строчный элемент <span class="tag">&lt;cite&gt;</span> используется в HTML в качестве указателя на творческую работу; элемент должен включать в себя название работы, имя автора, или ссылку ведущую на работу. По умолчанию, содержимое внутри элемента <span class="tag">&lt;cite&gt;</span> отображается в браузере курсивом.</p><p>Для получения дополнительной справки поможет добавление гиперссылки на первоисточник цитаты, когда это целесообразно.</p><p>Вот цитата из книги Уолтера Айзексона про Стива Джобса внутри элемента <span class="tag">&lt;cite&gt;</span>. В цитате также есть гиперссылка на книгу.</p>
+<pre><code data-language="html">&lt;p&gt;Книга &lt;cite&gt;&lt;a href=&quot;http://www.amazon.com/Steve-Jobs-Walter-Isaacson/dp/1451648537&quot;&gt;Стив Джобс&lt;/a&gt;&lt;/cite&gt; действительно вдохновляет.&lt;/p&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация цитаты на творческую работу</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/duhvv7vd/embedded/result,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h3>Строчные цитаты</h3><p>Довольно часто текст от автора выступает как строчная цитата в другом тексте. Для этой цели должен применяться элемент <span class="tag">&lt;q&gt;</span>. Он семантически указывает цитату на авторский текст и не должен использоваться для каких-либо других целей.</p><p>По умолчанию браузер вставит соответствующие кавычки и даже изменит их вид, основываясь на языке, указанном в глобальном атрибуте <span class="attribute">lang</span>.</p><p>Вот пример:</p>
+<pre><code data-language="html">&lt;p&gt;Стив Джобс однажды сказал: &lt;q&gt;Один хоум-ран гораздо лучше, чем два дабла&lt;/q&gt;.&lt;/p&gt;</code></pre>
+
+<p>Элемент <span class="tag">&lt;q&gt;</span> включает необязательный атрибут <span class="attribute">cite</span>. Он действует в качестве указателя на ссылку в виде URL. Этот атрибут не меняет внешний вид элемента, он просто добавляет значение для экранных читалок и других устройств. Поскольку атрибут не доступен для просмотра в браузере, также полезно предложить гиперссылку на этот источник, рядом с актуальной цитатой.</p><p>Вот пример:</p>
+<pre><code data-language="html">&lt;p&gt;&lt;a href=&quot;http://www.businessweek.com/magazine/content/06_06/b3970001.htm&quot;&gt;Стив Джобс&lt;/a&gt; однажды сказал: 
+&lt;q cite=&quot;http://www.businessweek.com/magazine/content/06_06/b3970001.htm&quot;&gt;Один хоум-ран гораздо лучше, чем два дабла&lt;/q&gt;.&lt;/p&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация строчной цитаты</h3><iframe width="100%" height="100" src="https://jsfiddle.net/webref/0qz96sjs/embedded/result,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h3>Внешние цитаты</h3><p>Цитируя большой блок текста, который заимствован из внешнего источника и занимает несколько строк, мы будем использовать элемент <span class="tag">&lt;blockquote&gt;</span>. Данный элемент является блочным и может содержать другие вложенные в него блочные элементы, в том числе заголовки и абзацы.</p><p>Вот пример, который использует элемент <span class="tag">&lt;blockquote&gt;</span>:</p>
+<pre><code data-language="html">&lt;blockquote&gt;
+  &lt;p&gt;В понимании большинства людей дизайн — это внешний лоск. Это украшение интерьера. 
+     Это ткань штор, ткань дивана. Но для меня, всё это далеко от смысла дизайна. 
+     Дизайн — это основа души человеческого творчества, что в конечном итоге выражает 
+     себя в последующих внешних слоях продукта.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+<p>Более длинные цитаты в элементе <span class="tag">&lt;blockquote&gt;</span> могут включать в себя прямую речь. Подобные цитаты могут содержать как атрибут <span class="attribute">cite</span>, так и элемент <span class="tag">&lt;cite&gt;</span>.</p><p>Атрибут <span class="attribute">cite</span> может добавляться к элементу <span class="tag">&lt;blockquote&gt;</span> тем же путём, что был использован для элемента <span class="tag">&lt;q&gt;</span> ранее, чтобы указать на цитату в виде URL. Элемент <span class="tag">&lt;cite&gt;</span> может быть добавлен после самой цитаты для указания оригинального источника цитаты, если это необходимо.</p><p>Здесь в HTML излагается расширенная цитат из Стива Джобса, которая первоначально появилась в журнале Fortune. Цитата размечена с помощью элемента <span class="tag">&lt;blockquote&gt;</span> с атрибутом <span class="attribute">cite</span>, который показывает, где цитата появилась первоначально. В элементе <span class="tag">&lt;blockquote&gt;</span> есть элемент <span class="tag">&lt;cite&gt;</span> наряду с элементом <span class="tag">&lt;a&gt;</span>, он обеспечивает дополнительное цитирование и ссылку на цитату, которая видна пользователям.</p>
+<pre><code data-language="html">&lt;blockquote cite=&quot;http://money.cnn.com/magazines/fortune/fortune_archive/2000/01/24/272277/index.htm&quot;&gt;
+  &lt;p&gt;«В понимании большинства людей дизайн — это внешний лоск. Это украшение интерьера. 
+     Это ткань штор, ткань дивана. Но для меня, всё это далеко от смысла дизайна. 
+     Дизайн — это основа души человеческого творчества, что в конечном итоге выражает 
+     себя в последующих внешних слоях продукта.»&lt;/p&gt;
+  &lt;p&gt;&lt;cite&gt;Стив Джобс в &lt;a href=&quot;http://money.cnn.com/ magazines/fortune/fortune_archive/2000/01/24/272277/index.htm&quot;&gt;
+     журнале Fortune&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация внешней цитаты</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/2w2nazff/embedded/result,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe></div><h2>Резюме</h2><p>Учиться стилизовать текст увлекательно, так как наш контент начинает передавать некоторые эмоции. Мы также можем начать играть с иерархией нашего содержимого, что делает наш сайт более разборчивыми и удобным.</p><p>Напомним быстро, что мы обсудили в этом уроке:</p><ul><li>добавление цвета к нашему тексту для его улучшения;</li><li> применение шрифтовых свойств, в том числе font-family, font-size, font-style, font-weight и др.;</li><li> применение текстовых свойств, включая text-align, text-decoration, text-indent, text-shadow и др.;</li><li> история безопасных веб-шрифтов и как внедрить наши собственные веб-шрифты;</li><li> как правильно разметить цитаты.</li></ul><p>Концентрирование на тексте и небольшое баловство с типографикой продвинуло наш дизайн довольно далеко вперёд. Дальше мы внесём в наш сайт чуть больше цвета с помощью фона и градиентов.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://webtypography.net/">The Elements of Typographic Style Applied to the Web</a> via Richard Rutter</li><li><a href="http://www.impressivewebs.com/css-font-shorthand-property-cheat-sheet/">CSS Font Shorthand Property Cheat Sheet</a> via Impressive Webs</li><li><a href="https://www.google.com/fonts">Google Fonts</a></li></ul><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-2eb83b56ce42541038f672a186e802ac"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/blockquote.html">&lt;blockquote&gt;</a></li><li class=""> <a href="../../html/cite.html">&lt;cite&gt;</a></li><li class=""> <a href="../../html/font.html">&lt;font&gt;</a></li><li class=""> <a href="../../html/q.html">&lt;q&gt;</a></li><li class=""> <a href="../../css/color.html">color</a></li><li class=""> <a href="../../course/css-basics/color.html">Единицы цвета в CSS</a></li><li class=""> <a href="../../course/css-basics/inheritance.html">Наследование в CSS</a></li><li class=""> <a href="../../css/hover.html">Псевдокласс :hover</a></li><li class=""> <a href="../../course/css-advanced/pseudo-classes.html">Псевдоклассы в CSS</a></li><li class=""> <a href="../../course/css-basics/selectors.html">Селекторы CSS</a></li><li class=""> <a href="../../course/html-content/inline-semantics.html">Семантика строчных элементов</a></li><li class=""> <a href="../../course/css-basics/syntax.html">Синтаксис CSS</a></li><li class=""> <a href="../../course/html-content/text.html">Текст в HTML</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 10.06.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/positioning-content'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/learn-html-css/setting-backgrounds-and-gradients'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="positioning-content.html" title="На предыдущую страницу">Позиционирование содержимого</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="setting-backgrounds-and-gradients.html" title="На следующую страницу">Установка фона и градиента</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf"><a href="positioning-content.html">Позиционирование содержимого</a></li><li class="leaf active-trail"><a href="working-with-typography.html" class="active-trail active">Работа с типографикой</a></li><li class="leaf"><a href="setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li><li class="leaf"><a href="creating-lists.html">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf"><a href="building-forms.html">Построение форм</a></li><li class="leaf"><a href="organizing-data-with-tables.html">Организация данных с помощью таблиц</a></li><li class="last leaf"><a href="writing-your-best-code.html">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-ab614d2190614a3e7ca9650668d7fc4c"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="working-with-typography.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

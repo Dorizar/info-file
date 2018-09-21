@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обработка ввода | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosgame.html" />
+<link rel="next" href="winning-or-losing.html" />
+<link rel="prev" href="gameloop.html" />
+<meta name="description" content="В этой главе мы собираемся сделать нашу игру рабочей, добавив процедуры для управления ракеткой. Перед демонстрацией кода мы должны остановиться и немного подумать об управлении игрой. Действия, которые управляют игрой Управление может сделать или сломать всю игры. Вы должны обратить особое внимание на реализацию управления в вашей игре и экспериментировать с разными схемами, прежде чем остановиться на решении. Лучше всего создать прототипы вариантов и проверить их на людях." />
+<link rel="canonical" href="input.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Обработка ввода</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosgame.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Создание игр для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Обработка ввода</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В этой главе мы собираемся сделать нашу игру рабочей, добавив процедуры для управления ракеткой. Перед демонстрацией кода мы должны остановиться и немного подумать об управлении игрой.</p><h2>Действия, которые управляют игрой</h2><p>Управление может сделать или сломать всю игры. Вы должны обратить особое внимание на реализацию управления в вашей игре и экспериментировать с разными схемами, прежде чем остановиться на решении. Лучше всего создать прототипы вариантов и проверить их на людях.</p><p>Распространённой практикой является отведение части экрана под виртуальный геймпад как часть интерфейса. Такое решение использует большую часть экрана, и в отличие от своих реальных аналогов (игровых контроллеров) обеспечивают очень плохую тактильную обратную связь.</p><p class="fig"><img src="../../assets/images/firefoxosgame/virtual-gamepad.jpg" alt="Виртуальный геймпад" width="290" height="522"></p><p class="figsign">Виртуальный геймпад</p><p>Другим популярным вариантом является геймпад наложенный поверх игрового экрана и имеющий, как правило, полупрозрачный интерфейс, как показано ниже.</p><p class="fig"><img src="../../assets/images/firefoxosgame/gamepad-overlay.jpg" alt="Наложение геймпада" width="924" height="519"></p><p class="figsign">Наложение геймпада</p><p>В обоих случаях у вас есть определённые области экрана, на которые нужно нажимать для управления действиями игрока. В некоторых случаях такое управление удобно. В примерах выше это популярный эмулятор видеоигры и у него нет другого способа, как имитировать игровой контроллер. Вторая <a href="https://play.google.com/store/apps/details?id=com.jiinfeng3d.bfrdemo">игра файтер</a>&nbsp;— жанр, который включает в себя много действий в реальном времени и комбинаций кнопок.</p><p>Но представьте себе хоть немного, что если бы популярный хит <strong>Angry Birds</strong> использовал показанную выше схему управления. Вы всё еще играете? Будет ли механика стрельбы из рогатки бедными птичками с помощью виртуального геймпада полезнее натягивания и отпускания резинки? Я твёрдо убеждён, что наглядное/органичное управление лучше всего. Мобильные устройства имеют огромный сенсорный экран, который может быть целиком использован для ввода. Вместо болтов традиционных схем управления в мобильном устройстве мы можем гораздо умнее использовать сенсорный экран.</p><p>Ниже мы видим скриншот игры Craigen, в которой бесконечный бегун должен прыгать через препятствия и бить монстров.</p><p class="fig"><img src="../../assets/images/firefoxosgame/craigen-1.jpg" alt="Экран Craigen, прыжок и уничтожение монстра" width="720" height="480"></p><p class="figsign">Экран Craigen, прыжок и уничтожение монстра</p><p>Данный тип игр, как правило, программируется с использованием виртуальных геймпадов или наложения, но у автора появилась идея лучше, как мы можем видеть.</p><p class="fig"><img src="../../assets/images/firefoxosgame/craigen-2.jpg" alt="Объяснения по управлению Craigen" width="720" height="480"></p><p class="figsign">Объяснения по управлению Craigen</p><p>Автор просто разделил экран на две половины и касание одной стороны означает прыжок, а другой стороны — удар. Вам не нужно касаться определённой точки, это можно сделать в любом месте на одной или другой половине. Это приводит к приятному опыту и счастливым пользователям.</p><h2>Соображения по сенсорному вводу</h2><p>При разработке игр для мобильных устройств с сенсорными экранами вы должны действительно хорошо продумать ненавязчивый способ управления игрой. Выберите топ мобильных игр, посмотрите как они решают эту задачу и спланируйте свою игру соответственно. Есть важные вещи, которые вы должны учитывать.</p><p>Палец/рука игрока будет двигаться по экрану и иногда скрывать часть экрана в поле зрения. Старайтесь, чтобы взаимодействия располагались ближе к границе экрана. Если что-то происходит в середине областей, то сделайте так, чтобы игрок мог коснуться и быстро убрать палец, дабы избежать слепых зон.</p><p>Остерегайтесь рисовать маленькие предметы для касания. Кончик пальца не очень точен. Если вы размещаете элементы для касания на экране, то старайтесь не располагать их слишком близко друг к другу. Просто вспомните, сколько раз вы набирали неправильное сообщение на виртуальной клавиатуре телефона. Например, если вы делаете игру наподобие <a href="https://ru.wikipedia.org/wiki/Сапёр_(игра)">Сапёра</a>, то попробуйте использовать большую решётку, чтобы избежать неправильного выбора.</p><h2>Ввод с клавиатуры</h2><p>Ввод с клавиатуры довольно прост. Мы должны отметить одну вещь&nbsp;— при написании мобильной игры вы также должны рассмотреть поддержку стандартной клавиатуры. Одним из преимуществ является то, что это помогает при разработке и позволит вам развернуть игру на мобильных и настольных устройствах.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Ввод с геймпада</h2><p>Геймпады для настольных компьютеров и мобильных устройств становятся всё более популярными у казуальных игроков. Множество контроллеров совместимо с мобильными устройствами; предлагая в своём приложении поддержку таких контроллеров вы получите больше игроков. Существует <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/Gamepad">HTML5 Gamepad API</a>, который вы можете использовать в собственных играх.</p><p>Главное что надо знать о геймпадах — это то, что иногда они сильно отличаются друг от друга расположением кнопок. Если вы поддерживаете геймпады, ты должны предложить экран, на котором игрок может изменить конфигурацию контроллера, вроде того, какую кнопку нажать для стрельбы или прыжка. Как анекдот позвольте рассказать вам, что у меня есть дешёвый китайский геймпад, неправильно спаянный (я верю, что произошла ошибка), и у него перевёрнуто направление осей. Я не могу использовать этот контроллер во всех тех играх, которые не позволяют мне поменять направление осей.</p><h2>Управление нашей игрой</h2><p>Для краткости мы собираемся реализовать только прикосновения и ввод с клавиатуры. Phaser поддерживает геймпады из коробки, но это выходит за рамки простой игры которую мы строим, потому что я не хочу делать экран настроек в данный момент. Если вы хотите узнать больше об этом API в Phaser, обратитесь к <a href="http://docs.phaser.io/Phaser.Gamepad.html">документации по геймпаду</a>.</p><p>Что требуется Foxnoid для управления игрой? В сущности игрок управляет ракеткой, которая движется влево или вправо. Как в игре Craigen мы разделим экран на две половины и касание любой половины заставит ракетку двигаться в этом направлении. Также добавим поддержку ввода с клавиатуры с помощью клавиш со стрелками.</p><h3>Обработка прикосновений</h3><p>Как объяснялось в главе об игровом цикле мы должны получать данные от игрока на каждом цикле. Это значит, что мы собираемся создать дополнительную функцию в game.js и вызывать её из <span class="var">update()</span>.</p><p class="exampleTitle">game.js: функция handleTouchInput()</p>
+<pre><code data-language="javascript">handleTouchInput: function () {
+  if (this.input.pointer1.isDown) {
+    if (this.input.pointer1.worldX &gt; 160) {
+      this.player.body.velocity.x = this.playerSpeed;
+    }
+
+    if (this.input.pointer1.worldX &lt;= 160) {
+      this.player.body.velocity.x = -1 * this.playerSpeed;
+    }
+  }
+}</code></pre>
+<p>Для обработки прикосновений мы используем шаблоны Phaser Input. Чтобы узнать о них больше, обратитесь к <a href="http://docs.phaser.io/Phaser.Input.html">документации Phaser.Input</a>.</p><p>По умолчанию Phaser поддерживает ввод двумя пальцами, прикосновение первого пальца привязано к <span class="var">this.input.pointer1</span>, если второй палец в это же время касается экрана, то он привязан к <span class="var">this.input.pointer2</span>. В нашем случае требуется единственное касание на одной или другой стороне экрана. Так что мы просто проверяем <span class="var">this.input.pointer1</span>.</p><p>Свойства this.input.pointer1.worldX дают нам координаты по оси X, где произошло касание. Так как наш игровой мир имеет ширину 320 пикселей, то легко выяснить, какой стороны коснулся игрок. В зависимости от стороны мы <strong>задаём скорость ракетки в том же направлении</strong>. Значение этой скорости находится в константе <span class="var">this.playerSpeed</span>, указанной в функции <span class="var">this.initWorld()</span>.</p><p>Система Arcade Physics, используемая в Phaser, вычисляет положение ракетки на основе её скорости. Вот в чём красота проверенных фреймворков&nbsp;— не приходится больше возиться с формулами из физики.</p><h3>Ввод с клавиатуры</h3><p>Код для клавиатуры очень похож на один из приведённых выше, в том смысле, что мы просто проверяем, какую стрелку на клавиатуре нажал игрок, а затем задаём скорость ракетки.</p><p>У Phaser есть удобный способ для настройки обработчика клавиатуры, включая стрелки. Мы можем использовать его вместо регистрации каждой клавиши для отслеживания. Можно воспользоваться и обычным слушателем событий HTML, но поскольку у нас есть Phaser, то применим собственные функции, потому что они красиво привязаны к остальному циклу через <span class="var">update()</span>.</p><p class="exampleTitle">game.js: функция handleKeyboardInput()</p>
+<pre><code data-language="javascript">handleKeyboardInput: function () {
+  if (this.cursors.right.isDown) {
+    this.player.body.velocity.x = this.playerSpeed;
+  }
+
+  if (this.cursors.left.isDown) {
+    this.player.body.velocity.x = -1 * this.playerSpeed;
+  }
+}</code></pre>
+<p>Чтобы использовать этот код, мы должны кое-что добавить в функцию <span class="var">initWorld()</span>. Следует сказать Phaser настроить менеджер клавиатуры для нашей работы со стрелками.</p><p class="exampleTitle">game.js: новая функция initWorld()</p>
+<pre><code data-language="javascript">initWorld: function() {
+  // Некоторые константы
+  this.playerSpeed = 250;
+  this.ballSpeed = 220;
+  this.blocksPerRow = 5;
+  this.blockRows = 4;
+  this.playerLives = 13;
+  
+  // Добавляем фон
+  this.add.sprite(0, 0, 'background');
+
+ // Добавляем ввод с клавиатуры
+  this.cursors = this.input.keyboard.createCursorKeys();
+}</code></pre>
+<p>С этой строкой в конце <span class="var">initWorld()</span> мы сможем проверить this.cursors в функции <span class="var">update()</span>. Без этого изменения в <span class="var">initWorld()</span> переменная <span class="var">this.cursors</span> будет <span class="value">undefined</span>. Чтобы узнать больше о вводе с клавиатуры посмотрите <a href="http://docs.phaser.io/Phaser.Keyboard.html">документацию по Phaser.Keyboard</a>.</p><h3>Функция update()</h3><p>Вот как функция <span class="var">update()</span> выглядит с новыми шаблонами ввода.</p><p class="exampleTitle">game.js: новая функция update()</p>
+<pre><code data-language="javascript">update: function() {
+  this.handleTouchInput();
+  this.handleKeyboardInput();
+  this.checkHitWithBlocks();
+  this.checkHitWithPlayer();
+  this.ballCollidesWithGround();
+}</code></pre>
+<p>Теперь в нашу игра можно играть!</p><h2>Резюме</h2><p>В этой главе вы узнали об обработчиках ввода, а также почему вы должны рассмотреть схемы управления игроком перед созданием своей игры. Мы добавили в Foxnoid управление через клавиатуру и сенсорные нажатия. В Foxnoid теперь можно играть, но у нас пока нет сценариев победы и поражения.</p><p>В следующей главе мы собираемся добавить в игру Foxnoid состояния победы и проигрыша.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 17.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosgame/gameloop'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosgame/winning-or-losing'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="gameloop.html" title="На предыдущую страницу">Цикл игры</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="winning-or-losing.html" title="На следующую страницу">Победа или поражение</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="gametheory.html">Об играх</a></li><li class="leaf"><a href="ourgame.html">Наша игра</a></li><li class="leaf"><a href="gamescaffold.html">Настройки нашей игры</a></li><li class="leaf"><a href="initialization.html">Инициализация Foxnoid</a></li><li class="leaf"><a href="assets.html">Управление ассетами</a></li><li class="leaf"><a href="gameloop.html">Цикл игры</a></li><li class="leaf active-trail"><a href="input.html" class="active-trail active">Обработка ввода</a></li><li class="leaf"><a href="winning-or-losing.html">Победа или поражение</a></li><li class="last leaf"><a href="levels.html">Привлечение игроков</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-2f76ffc067eba50d596bc32db3a03c0f"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="input.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

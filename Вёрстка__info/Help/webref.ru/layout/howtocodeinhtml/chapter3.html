@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Особенности идеального HTML-кода | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../howtocodeinhtml.html" />
+<link rel="next" href="chapter4.html" />
+<link rel="prev" href="chapter2.html" />
+<meta name="description" content="На данный момент мы создали наш первый веб-сайт. К сожалению, в соответствии с современными стандартами хороших веб-страниц, работа ещё не завершена. Так же, как у инженеров есть строгий план строительства или у ресторанов есть правила здоровья и безопасности, так и у веб-разработчиков существует набор правил, определяющих хорошо проделанную работу. Давайте начнём с имеющегося у нас кода, со всеми элементами, о которых мы узнали." />
+<link rel="canonical" href="chapter3.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Особенности идеального HTML-кода</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../howtocodeinhtml.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Как верстать на HTML5 и CSS3</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Особенности идеального HTML-кода</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>На данный момент мы создали наш первый веб-сайт. К сожалению, в соответствии с современными стандартами хороших веб-страниц, работа ещё не завершена. Так же, как у инженеров есть строгий план строительства или у ресторанов есть правила здоровья и безопасности, так и у веб-разработчиков существует набор правил, определяющих хорошо проделанную работу.</p><p>Давайте начнём с имеющегося у нас кода, со всеми элементами, о которых мы узнали.</p>
+<pre><code data-language="html">&lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+&lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+&lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен 
+   квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+   Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+&lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;</code></pre>
+<p>В самом верху любой уважающей себя веб-страницы должно быть указание типа документа. Это доктайп.</p>
+<pre><code data-language="html"><mark>&lt;!DOCTYPE html&gt;</mark>
+&lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+&lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+&lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен 
+   квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+   Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+&lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;</code></pre>
+<p>Выделенный выше раздел «говорит» браузеру, что эта страница является HTML-документом и код должен рассматриваться в соответствии с установленными стандартами языка. Это информирует браузер о некоторых правилах, которые будут определять, как наш сайт выглядит. Среди прочего, это помогает браузеру узнать, какие теги могут быть разрешены или запрещены. Также помогает браузеру лучше интерпретировать наш код.</p><p>Ниже доктайпа мы хотим поставить тег <span class="tag">&lt;html&gt;</span>.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+<mark>&lt;html&gt;</mark>
+  &lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+  &lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+  &lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен
+     квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+     Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+  &lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;
+<mark>&lt;/html&gt;</mark></code></pre>
+<p>Заметьте, что этот тег следует закрыть, так что в конце мы должны добавить <span class="tag">&lt;/ html&gt;</span>.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  код
+<mark>&lt;/html&gt;</mark></code></pre>
+<p>В результате, всё, что является частью нашего сайта располагается ниже тега <span class="tag">&lt;html&gt;</span>. При написании HTML это имеет значение, что код вложен в <span class="tag">&lt;html&gt;</span>.</p><p>Однако тег <span class="tag">&lt;html&gt;</span> не завершён. Мы хотим добавить больше информации о языке нашего сайта. Так как это пример на русском, давайте обозначим его таковым.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html <mark>lang=&quot;ru&quot;</mark>&gt;
+  &lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+  &lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+  &lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен 
+     квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+     Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+  &lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;
+&lt;/html&gt;</code></pre>
+<p>Обратите внимание на выделенный фрагмент в изменённом теге <span class="tag">&lt;html&gt;</span>. Это называется «атрибут». Атрибуты это модификаторы в HTML и всегда пишутся рядом с тегом, внутри скобок &lt;&gt;. Атрибуты имеют следующий шаблон при написании кода.</p>
+<pre><code>тег атрибут=&quot;значение&quot;</code></pre>
+<p>С ростом, разработчик HTML осваивает больше разных атрибутов. В дополнение к <span class="attribute">lang</span> есть большой выбор атрибутов. Вот только несколько примеров:</p><ul><li>&lt;div id=&quot;sidebar&quot;&gt;&lt;/div&gt; — имя атрибута <span class="attribute">id</span>, а его значение <span class="value">sidebar</span>;</li><li> &lt;p class=&quot;landscape&quot;&gt;&lt;/p&gt; — имя атрибута <span class="attribute">class</span>, а его значение <span class="value">landscape</span>;</li><li>&lt;input type=&quot;text&quot;&gt; — имя атрибута <span class="attribute">type</span>, а его значение <span class="value">text</span>.</li></ul><p>Мы используем атрибуты, потому что многие теги (например <span class="tag">&lt;html&gt;</span>) не содержат всю информацию, которую мы хотим добавить. С атрибутами мы можем модифицировать используемые теги и добавить для них больше полезной информации. В нашем случае мы сообщаем браузеру информацию, что документ написан на русском языке, поэтому модифицировали тег <span class="tag">&lt;html&gt;</span> с помощью атрибута <span class="attribute">lang</span> и дали ему значение <span class="value">ru</span> (русский). В одном теге могут встречаться несколько атрибутов. Вот несколько примеров.</p>
+<pre><code data-language="html">&lt;input type=&quot;text&quot; value=&quot;enter text here&quot;&gt;
+&lt;a href=&quot;http://functionite.com&quot; title=&quot;We Train Developers&quot;&gt;HTML Training&lt;/a&gt;</code></pre>
+<p>Важно отметить, что атрибуты также являются частью стандартов HTML, как и вложение тегов. Списки этих атрибутов наряду с тегами, которые они могут модифицировать, можно найти в Интернете.</p><p>На самом деле мы уже использовали атрибут, когда первый раз начали создавать веб-страницу! Помните код изображения? Вы поместили его в HTML-документ с помощью следующей строки.</p>
+<pre><code data-language="html">&lt;img src=&quot;images/white-cat.jpg&quot;&gt;</code></pre>
+<p>В этом случае тег <span class="tag">&lt;img&gt;</span> был модифицирован атрибутом <span class="attribute">src</span> со значением <span class="value">images/white-cat.jpg</span>.</p><p>Сам по себе тег это лишь <span class="tag">&lt;img&gt;</span>, так что если мы просто оставим его в одиночестве, браузер не будет иметь никакой возможности для получения источника информации для отображения. Когда мы определяем <span class="attribute">src</span>, то говорим браузеру: «Эй, загрузи информацию из этого источника». Браузер знает, что нужно искать папку images и в ней файл white-cat.jpg. Мы также можем передать ссылку на любой ресурс в Интернете (если он не ограничен), например <a href="http://4.bp.blogspot.com/-z4sMggeD4dg/UO2TB9INuFI/AAAAAAAAdwc/Kg5dqlKKHrQ/s1600/funny-cat-pictures-032-025.jpg">http://4.bp.blogspot.com/-z4sMggeD4dg/UO2TB9INuFI/AAAAAAAAdwc/Kg5dqlKKHrQ/s1600/funny-cat-pictures-032-025.jpg</a>.</p><p>В этом суть работы атрибутов. Благодаря атрибутам мы можем добавить богатую и ценную информацию, которая полезна для HTML-тегов.</p><p>Теперь вернёмся к нашему документу и добавим другие необходимые компоненты. Взглянем на тег <span class="tag">&lt;head&gt;</span>, который содержит элементы, не обязательно полезные для содержимого вашей страницы, но очень полезные для поисковых систем, вкладок браузера и т.&nbsp;д. Например, название веб-страницы помогает поисковым системам находить ваш контент.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+  <mark>&lt;head&gt;</mark>
+  <mark>&lt;/head&gt;</mark>
+  &lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+  &lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+  &lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен 
+     квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+     Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+  &lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;
+&lt;/html&gt;</code></pre>
+<p>На данный момент наш тег <span class="tag">&lt;head&gt;</span> пуст, но обычно это место, в которое вы хотите поместить всю мета-информацию вроде названия всего документа. Так как мы создаём страницу с предложением работы, давайте сообщим об этом в названии «Предложение работы: разработчик на HTML и CSS». Теперь добавим его!</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+  &lt;head&gt;
+    <mark>&lt;title&gt;Предложение работы: разработчик на HTML и CSS&lt;/title&gt;</mark>
+  &lt;/head&gt;
+  &lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+  &lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+  &lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен 
+     квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+     Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+  &lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;
+&lt;/html&gt;</code></pre>
+<p>Как вы могли заметить, мы добавили название внутрь тега <span class="tag">&lt;title&gt;</span>. В чём разница и зачем мы это делаем? На рисунке ниже объясняется, что происходит, если у нас нет тега <span class="tag">&lt;title&gt;</span> (слева), и наша страница содержит тег <span class="tag">&lt;title&gt;</span> (справа). Сайты с названием более удобны для пользователей браузера и с ними гораздо проще перемещаться среди множества вкладок.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/job-post-title-comparison.png" width="918" height="184" alt=""></p><p>Другим примером служит сайт моей компании. Я использовал «Functionite - JavaScript workshop team» в качестве текста внутри тега <span class="tag">&lt;title&gt;</span>. Вот как это показывается в результатах поиска Google:</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/functionite-title-google.png" width="1384" height="490" alt="" style="border:1px solid #f5f5f5"></p><p>Как можете видеть, очень важно учитывать это при написании кода вашего сайта. Без названия сайт окажется без имени и будет оставлять плохое впечатление на посетителей. Лично я не стал бы доверять странице, у которой даже нет названия.</p><p>Мы должны сделать ещё одну вещь после добавления <span class="tag">&lt;head&gt;</span> и вставить тег <span class="tag">&lt;body&gt;</span>. Он отделяет содержание всей страницы от <span class="tag">&lt;head&gt;</span>. Всё, что отображается на веб-странице, помещается в <span class="tag">&lt;body&gt;</span>.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+  &lt;html lang=&quot;ru&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;Предложение работы: разработчик на HTML и CSS&lt;/title&gt;
+  &lt;/head&gt;
+  <mark>&lt;body&gt;</mark>
+    &lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+    &lt;img src=&quot;images/white-cat.jpg&quot;&gt;
+    &lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен 
+       квалифицированный веб-разработчик на HTML и CSS&lt;/strong&gt;. 
+       Мы предлагаем высокую зарплату, мешок кошачьего корма и игрушки.&lt;/p&gt;
+    &lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;
+  <mark>&lt;/body&gt;</mark>
+&lt;/html&gt;</code></pre>
+<p>Ура! Это похоже на завершение наших усилий и кажется всё правильно. Для начинающего кодера, вероятно, будет хорошей идеей проверить, всё ли в порядке (например, вложение тегов, правильные атрибуты и др.). Но не у всех есть друзья среди опытных HTML-разработчиков, которые могут проконсультировать. К счастью, имеется специальный инструмент, который мы сможем использовать для проверки правильности кода. Организация W3C, та же группа, что определяет стандарты HTML-документов, сделала инструмент для проверки кода. Инструмент называется HTML-валидатор и доступен по адресу <a href="http://validator.w3.org">http://validator.w3.org</a>.</p><p>Страница должна выглядеть как на картинке ниже.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/w3c-validator.png" width="775" height="348" alt="Validator HTML"></p><p>Давайте воспользуемся инструментом и проверим наш код на корректность.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/w3c-validator-error.png" width="775" height="342" alt=""></p><p>Ой! У нас есть одна ошибка и несколько предупреждений. Взглянем на них.</p><p>Единственная ошибка, о которой сообщает валидатор, связана с нашим изображением. Посмотрим на содержание ошибки.</p><blockquote>Элемент img должен иметь атрибут alt, за исключением определённых условий. Для получения подробной информации обратитесь к руководству об альтернативном тексте для изображений.</blockquote><p>Получается, что тег <span class="tag">&lt;img&gt;</span> в документе всегда должен иметь атрибут <span class="attribute">alt</span>, который будет использоваться в случае, если браузер не сможет загрузить изображение. Тогда вместо него будет отображаться значение этого атрибута (это лучше, чем пустое пространство, верно?).</p><p>Перед выбором значения для атрибута <span class="attribute">alt</span> давайте обратимся к спецификации HTML, чтобы убедиться, что мы делаем всё правильно. Вот эта <a href="http://www.w3.org/wiki/HTML/Elements/img">страница</a>.</p><blockquote> Даёт резервное содержание для изображения. Требования к значению атрибута alt описаны в следующем разделе.</blockquote><p>И дальше идут несколько различных сценариев того, когда и как использовать атрибут <span class="attribute">alt</span>. В нашем случае мы имеем дело с изображением, которое было добавлено для оформления поста и не содержит какого-либо содержания, схемы, или другой информации для читателя. В этом случае мы, согласно спецификации, должны оставить альтернативный атрибут пустым.</p><blockquote><p>Однако декоративные изображения, которые не обсуждаются в окружающем тексте, но в некотором смысле уместны, могут быть включены на страницу с помощью элемента img. Такие изображения являются декоративными и они по-прежнему формально относятся к части контента. В таких случаях атрибут alt должен присутствовать, но его значение должно быть пустой строкой.</p></blockquote><p>В остальных случаях мы хотели бы выбрать текстовую строку, которая может заменить содержание картинки. Подробные указания по некоторым особым случая можно найти в спецификации для тега <span class="tag">&lt;img&gt;</span> здесь: <a href="http://www.w3.org/wiki/HTML/Elements/img">http://www.w3.org/wiki/HTML/Elements/img</a>.</p><p>Итак, теперь мы знаем, что хотим оставить атрибут <span class="attribute">alt</span> пустым.</p><p>Добавим его.</p>
+<pre><code data-language="html">&lt;img src=&quot;images/white-cat.jpg&quot; <mark>alt=&quot;&quot;</mark>&gt;</code></pre>
+<p>И затем проверим наш документ в валидаторе снова.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/w3c-validator-valid.png" width="775" height="342" alt=""></p><p>Всё прошло без ошибок!</p><p>Но у нас по-прежнему есть несколько предупреждений. Наиболее важное из них следующее.</p><blockquote><p>Информация о кодировке символов не обнаружена в документе, либо внутри метаэлемента HTML или декларации XML. Она часто рекомендуется, чтобы объявить кодировку в самом документе, особенно, если есть шанс, что документ будут читать или сохранять на диске, CD и т.&nbsp;д.</p></blockquote><p>Но не волнуйтесь, это просто предупреждение. Прежде чем мы попытаемся его понять, рассмотрим следующий пример, который позволит нам лучше понять проблему.</p><p>Важно понимать, что ваш сайт могут посещать люди из разных стран, таких как Испания, Китай или Швеции, не говоря уже об остальных. Если вы позволите, они могут оставить комментарий или сообщение, которое, возможно, будет отображаться рядом с вашими статьями. Важно отметить, однако, что в разных странах используются различные языки с их собственными диакритическими знаками. В шведском это может быть ä или ö, в то время как китайский предложит вам целый набор таких 汉语拼音 方案. В глобальной сети важно, чтобы разные языки правильно отображались на одной странице. Посмотрим, что случится, если бы мы использовали китайский язык.</p>
+<pre><code data-language="html">&lt;p&gt;PS 再见&lt;/p&gt;</code></pre>
+<p>Проверим эффект в браузере.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/utf-problem.jpg" alt="" width="777" height="713"></p><p>Обратите внимание на последнюю строку, где вместо правильного предложения на китайском, мы видим какие-то странные символы, которые не имеют смысла в любом из современных языков. Не паникуйте, это связано с предупреждением, что мы получили от валидатора. Оказывается мы не добавили особую строку, которая позволяет другим языкам отображаться правильно. В мире компьютеров она называется «кодировка символов». Если мы передали эту информацию HTML-странице, то «говорим» браузеру, чтобы он был готов отобразить широкий набор символов, включая все разные диакритические знаки.</p><p>Сделаем это!</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;Предложение работы: разработчик на HTML и CSS&lt;/title&gt;
+    <mark>&lt;meta charset=&quot;utf-8&quot;&gt;</mark>
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Мы ищем разработчика на HTML и CSS&lt;/h1&gt;
+    &lt;img src=&quot;images/white-cat.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;p&gt;Для нашего клиента, Фабрики кошек, &lt;strong&gt;нам нужен квалифицированный 
+       веб-разработчик на HTML и CSS&lt;/strong&gt;. Мы предлагаем высокую зарплату, 
+       мешок кошачьего корма и игрушки.&lt;/p&gt;
+    &lt;p&gt;Не жди, подай заявку! Наша сумасшедшая команда ждёт тебя прямо сейчас, мяу!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>На этот раз мы должны использовать особый тег <span class="tag">&lt;meta&gt;</span> с атрибутом <span class="attribute">charset</span> и дать ему значение <span class="value">utf-8</span>. utf-8 означает специальную кодировку, которая включает большинство языков мира, если не все.</p><p>И это всё! Вы только что создали свой самый первый сайт! Поздравляем!</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дамиан Вельгошик</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 24.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/howtocodeinhtml/chapter2'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/howtocodeinhtml/chapter4'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter2.html" title="На предыдущую страницу">Делаем наш первый сайт</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter4.html" title="На следующую страницу">Упражнение: верстаем пост блога</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter1.html">Сайты и Lego</a></li><li class="leaf"><a href="chapter2.html">Делаем наш первый сайт</a></li><li class="leaf active-trail"><a href="chapter3.html" class="active-trail active">Особенности идеального HTML-кода</a></li><li class="leaf"><a href="chapter4.html">Упражнение: верстаем пост блога</a></li><li class="leaf"><a href="chapter5.html">Визуальный сайт в CSS3</a></li><li class="leaf"><a href="chapter6.html">Меню, пожалуйста</a></li><li class="leaf"><a href="chapter7.html">Понимание селекторов CSS</a></li><li class="leaf"><a href="chapter8.html">Время для итогов</a></li><li class="leaf"><a href="chapter9.html">Формы в HTML5</a></li><li class="leaf"><a href="chapter10.html">Разница между &lt;div&gt; и &lt;span&gt;</a></li><li class="leaf"><a href="chapter11.html">Дополнения форм</a></li><li class="leaf"><a href="chapter12.html">Многоколоночный макет</a></li><li class="last leaf"><a href="chapter13.html">Что дальше?</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-bf34c69dbd9f2af7af7287bf6c8218e2"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter3.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

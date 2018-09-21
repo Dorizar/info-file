@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Матрица преобразований | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../transform.html" />
+<link rel="next" href="origin.html" />
+<link rel="prev" href="function.html" />
+<meta name="description" content="Матрица преобразований предназначена для вычисления новых координат элемента с целью его трансформации и позволяет установить множество преобразований одновременно. Различают двумерную и трёхмерную матрицу, они отличаются друг от друга размером и пространством, на которое ориентированы. Поскольку двумерная матрица по размеру меньше и поэтому проще, на её примере рассмотрим общий принцип работы матриц." />
+<link rel="canonical" href="matrix.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Матрица преобразований</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../html5-css3.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">HTML5 и CSS3 на примерах</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../transform.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Трансформация</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Матрица преобразований</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Матрица преобразований предназначена для вычисления новых координат элемента с целью его трансформации и позволяет установить множество преобразований одновременно. Различают двумерную и трёхмерную матрицу, они отличаются друг от друга размером и пространством, на которое ориентированы. Поскольку двумерная матрица по размеру меньше и поэтому проще, на её примере рассмотрим общий принцип работы матриц.</p><h2>Двумерная матрица</h2><p>Преобразование с помощью двумерной матрицы происходит в плоскости экрана, при этом соблюдается условие, что линии всегда остаются параллельными, поэтому в качестве трансформации допустимы поворот, масштабирование, наклон и изменение положения, но никак не перспектива или нечто подобное. Это уже область работы трёхмерной матрицы. На рис.&nbsp;1 показаны допустимые и невозможные преобразования, выполненные с помощью двумерных матриц.</p><table style="width:500px; margin:auto"><tr><td class="fig"><img src="../../../assets/images/html5-css3/matrix-01a.png" alt="Исходный элемент" width="70" height="70"></td><td class="fig"><img src="../../../assets/images/html5-css3/matrix-01b.png" alt="Поворот" width="99" height="99"></td><td class="fig"><img src="../../../assets/images/html5-css3/matrix-01c.png" alt="Наклон" width="88" height="70"></td><td class="fig"><img src="../../../assets/images/html5-css3/matrix-01d.png" alt="А вот так сделать нельзя" width="70" height="70"></td></tr><tr><td class="figsign">Исходный элемент</td><td class="figsign">Поворот</td><td class="figsign">Наклон</td><td class="figsign">А вот так сделать нельзя</td></tr></table><p class="figsign">Рис. 1. Трансформация элемента</p><p>Сама матрица имеет размер 3х3 и в общем виде записывается так:</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f1.png" alt="Матрица преобразований" width="96" height="92"></p><p>Иногда для простоты третью строку опускают, поскольку она не оказывает влияния на конечный результат. Новые координаты каждой точки элемента получаются путём умножения матрицы преобразований на матрицу координат.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f12.png" alt="Умножение матриц"></p><p>И вычисляются по следующей формуле:</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f2.png" alt="Формула преобразования" width="131" height="51"></p><p>Роль каждого коэффициента матрицы представлена в табл. 1.</p><table class="data"><caption> Табл. 1. Коэффициенты матрицы преобразований</caption><tbody><tr><th>Коэффициент</th><th>Преобразование</th><th>Описание</th></tr><tr><td>a</td><td><img src="../../../assets/images/html5-css3/matrix-a.png" alt="Изменение размера по горизонтали" height="72" width="104"></td><td>Изменение масштаба по горизонтали. Значение больше 1 расширяет элемент, меньше 1, наоборот, сжимает.</td></tr><tr><td>b</td><td><img src="../../../assets/images/html5-css3/matrix-c.png" alt="Наклон по горизонтали" height="97" width="73"></td><td>Наклон по вертикали. Положительное значение наклоняет вверх, отрицательное вниз.</td></tr><tr><td>c</td><td><img src="../../../assets/images/html5-css3/matrix-b.png" alt="Наклон по вертикали" height="72" width="101"></td><td>Наклон по горизонтали. Положительное значение наклоняет влево, отрицательное вправо.</td></tr><tr><td>d</td><td><img src="../../../assets/images/html5-css3/matrix-d.png" alt="Изменение размера по вертикали" height="104" width="73"></td><td>Изменение масштаба по вертикали. Значение больше 1 расширяет элемент, меньше 1&nbsp;&#8212; сжимает.</td></tr><tr><td>tx</td><td><img src="../../../assets/images/html5-css3/matrix-tx.png" alt="Смещение по горизонтали в пикселях" height="72" width="94"></td><td>Смещение по горизонтали в пикселях. Положительное значение сдвигает элемент вправо на заданное число пикселей, отрицательное значение сдвигает влево.</td></tr><tr><td>ty</td><td><img src="../../../assets/images/html5-css3/matrix-ty.png" alt="Смещение по вертикали в пикселях" height="93" width="73"></td><td>Смещение по вертикали в пикселях. При положительном значении элемент опускается на заданное число пикселей вниз или вверх при отрицательном значении.</td></tr></tbody></table><p>Для матрицы преобразований применяется функция <span class="value">matrix()</span>, внутри скобок перечисляются коэффициенты.</p>
+ <pre><code>transform: matrix(a, b, c, d, tx, ty)</code>
+</pre>
+<h2>Единичная матрица</h2><p>Если в матрице коэффициенты <em>a</em> и <em>d</em> равны 1, а остальные элементы матрицы нулевые, то такая матрица называется единичной. Эта матрица применяется по умолчанию, поскольку не приводит к какой-либо трансформации элемента. Так что если необходимо произвести только один вид преобразований, единичную матрицу надо брать в качестве основы.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f3.png" alt="Единичная матрица" width="92" height="85"></p><h2>Масштаб по горизонтали</h2><p>Чтобы увеличить размер элемента, допустим, в два раза по горизонтали, коэффициент <em>a</em> следует установить равным 2, а остальные коэффициенты оставить как в единичной матрице.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f4.png" width="92" height="85" alt="Масштабирование"></p><p>Считаем новые координаты:</p><p>x' = 2*x + 0*y + 0 <br> y' = 0*x + 1*y + 0</p><p>И окончательно:</p><p>x' = 2x <br> y' = y</p><p>Код для масштабирования показан в примере 1.</p><p class="exampleTitle">Пример 1. Масштабирование</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Трансформация&lt;/title&gt;
+  &lt;style&gt;
+   .t {
+    background: #e7685d; /* Цвет фона */
+	color: #fff; /* Цвет текста */
+    padding: 10px; /* Поля */
+    width: 300px; /* Ширина */
+	transform-origin: 0 0; /* Точка трансформации */
+    transform: matrix(1.2, 0, 0, 1, 0, 0); /* Трансформация */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div class=&quot;t&quot;&gt;
+   &lt;p&gt;То, что делает армию при встрече с противником непобедимой, 
+      это правильный бой и маневр.&lt;/p&gt;
+   &lt;p&gt;Сунь-Цзы. Искусство войны. Пер. Н. Конрад.&lt;/p&gt;
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис. 2. Блок с текстом растягивается на 20% по горизонтали.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-02.png" alt="Изменение масштаба текста"></p><p class="figsign">Рис. 2. Изменение масштаба текста</p><h2>Отражение</h2><p>Для отражение элемента по горизонтали следует установить <em>a=-1</em>, по вертикали <em>d=-1</em> или оба значения одновременно для отражения одним разом по горизонтали и вертикали.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f5.png" alt="Отражение" width="123" height="85"></p><p>В примере 2 показано отражение текста по вертикали.</p><p class="exampleTitle">Пример 2. Отражение</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Трансформация&lt;/title&gt;
+  &lt;style&gt;
+   .t {
+    transform: matrix(1, 0, 0, -1, 0, 0);
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p class=&quot;t&quot;&gt;</code>Через миг Алиса прошла сквозь зеркало 
+   и легко спрыгнула в Зазеркалье.<code>&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис. 3.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-03.png" alt="Отражение текста по вертикали"></p><p class="figsign">Рис. 3. Отражение текста по вертикали</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Наклон</h2><p>За наклон отвечают коэффициенты <em>b</em> и <em>c</em>, которые и влияют на вид элемента. Давайте установим <em>c=1</em> и посмотрим, какие преобразования получатся.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f6.png" width="92" height="85" alt="Наклон"></p><p>x' = 1*x + 1*y + 0 <br> y' = 0*x + 1*y + 0</p><p>x' = x + y <br> y' = y</p><p>Таким образом, меняется только координата <em>x</em>, которая увеличивается на значение <em>y</em>, что и приводит к наклону элемента. В примере&nbsp;3 используется отрицательное значение коэффициента <em>c</em> для наклона вправо.</p><p class="exampleTitle">Пример 3. Наклон</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Трансформация&lt;/title&gt;
+  &lt;style&gt;
+   .t {
+    background: #e7685d; /* Цвет фона */
+	color: #fff; /* Цвет текста */
+    padding: 10px; /* Поля */
+    width: 300px; /* Ширина */
+	transform-origin: 0 100%; /* Точка трансформации */
+    transform: matrix(1, 0, -0.5, 1, 0, 0); /* Трансформация */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;div class=&quot;t&quot;&gt;
+   &lt;p&gt;То, что делает армию при встрече с противником непобедимой, 
+   это правильный бой и маневр.&lt;/p&gt;
+   &lt;p&gt;Сунь-Цзы. Искусство войны. Пер. Н. Конрад.&lt;/p&gt;
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Результат данного примера показан на рис. 4.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-04.png" alt="Наклон блока"></p><p class="figsign">Рис. 4. Наклон блока</p><h2>Поворот</h2><p>Поворот является комбинацией масштабирования и наклона, но чтобы сохранить исходные пропорции элемента преобразования должны подчиняться строгим вычислениям с использование синусов и косинусов.</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f7.png" alt="Поворот" width="206" height="87"></p><p>Сам поворот происходит по часовой стрелке, α задаёт угол поворота в градусах.</p><h2>Перемещение</h2><p>За сдвиг элемента по горизонтали отвечает коэффициент <em>tx</em>, а по вертикали <em>ty</em>. Значением выступает число пикселей.</p><h2>Трёхмерная матрица</h2><p>Трёхмерная матрица имеет размер 4х4 и применяется для преобразования координат элемента в трёхмерном пространстве.	В общем виде она выглядит так:</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f8.png" alt="Трёхмерная матрица"></p><p>Название «трёхмерная» лишь отражает тот факт, что матрица предназначена для работы в 3d-пространстве. Двумерная матрица является её частным случаем и для размера 4х4 имеет следующий вид:</p><p class="fig"><img src="../../../assets/images/html5-css3/matrix-f9.png"></p><p>В чистом виде эта матрица применяется редко из-за своей сложности и наличия удобных функций для трансформации в пространстве. Если вам интересна тригонометрия и формулы преобразований одних координат в другие, то почитайте этот материал.</p><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function</a></p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/transformaciya">трансформация</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 14.03.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/html5-css3/transform/function'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/html5-css3/transform/origin'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="function.html" title="На предыдущую страницу">Функции трансформации</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="origin.html" title="На следующую страницу">Точка трансформации</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="../text.html">Текст</a></li><li class="collapsed"><a href="../background.html">Фон</a></li><li class="collapsed"><a href="../link.html">Ссылки</a></li><li class="collapsed"><a href="../list.html">Списки</a></li><li class="collapsed"><a href="../img.html">Изображения</a></li><li class="collapsed"><a href="../table.html">Таблицы</a></li><li class="collapsed"><a href="../form.html">Формы</a></li><li class="expanded active-trail"><a href="../transform.html" class="active-trail">Трансформация</a><ul class="menu"><li class="first leaf"><a href="function.html">Функции трансформации</a></li><li class="leaf active-trail"><a href="matrix.html" class="active-trail active">Матрица преобразований</a></li><li class="last leaf"><a href="origin.html">Точка трансформации</a></li></ul></li><li class="leaf"><a href="../transition.html">Переходы</a></li><li class="last leaf"><a href="../animation.html">Анимация</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-b74a561e767134bf0f14f48e176cc67f"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="matrix.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Настройки нашей игры | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosgame.html" />
+<link rel="next" href="initialization.html" />
+<link rel="prev" href="ourgame.html" />
+<meta name="description" content="Этот Foxnoid выглядит гораздо лучше, чем эскиз в предыдущей главе" />
+<link rel="canonical" href="gamescaffold.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Настройки нашей игры</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosgame.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Создание игр для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Настройки нашей игры</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p class="fig"><img src="../../assets/images/firefoxosgame/foxnoid-placeholders.png" alt="Этот Foxnoid выглядит гораздо лучше, чем эскиз в предыдущей главе" width="320" height="476"></p><p class="figsign">Этот Foxnoid выглядит гораздо лучше, чем эскиз в предыдущей главе</p><p>Приложения для Firefox OS являются коллекцией файлов HTML, CSS и JavaScript. В то время как большинство бизнес-приложений имеет дело со всеми тремя технологиями, разработка игр для мобильного веба, как правило, задействует больше JavaScript, чем HTML и CSS, потому что основана преимущественно на Canvas или WebGL по соображениям производительности. Для создания игры мы собираемся использовать <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Canvas">мощный Canvas API</a> для отображения двумерной графики и <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events">Touch Events API</a> для управления. Мы будем использовать некоторые шаблоны HTML и CSS для инициализации, а затем всё волшебство перенесётся в JavaScript-ляндию.</p><p class="note">В этой книге мы сосредоточены на задаче построения игры, но если вы хотите глубже погрузиться в разработку приложений для Firefox OS, то прочтите книгу <a href="../firefoxosdev/index.html">Разработка для Firefox OS</a>, особенно главу <a href="../firefoxosdev/concepts.html">об основных понятиях</a>.</p><h2>Типы приложений</h2><p>Firefox OS в настоящее время имеет два типа приложений: размещённые и упакованные.</p><ul><li><strong>Размещённые приложения</strong>. Размещаются на веб-сервере подобно обычным веб-сайтам. Это означает, что когда пользователь запускает такое приложение, его содержимое загружается с удалённого сервера (или из кэша, если таковой имеется).</li><li><strong>Упакованные приложения</strong>. Распространяются в виде zip-файла и копируются на устройство при установке. Когда пользователь запускает такое приложение, его содержимое загружается из архива вместо удалённого сервера.</li></ul><p>Плюсы и минусы есть у каждого типа. Игры, как правило, используют много статичных ресурсов, таких как изображения и звуковые файлы. Если вы используете размещённое приложение, то пользователь перед игрой должен скачать и кэшировать все эти файлы. Если взамен вы выберете упакованное приложение, то все статичные ресурсы идут в комплекте и копируются на устройство при установке приложения, так что после этого ничего не надо будет скачивать.</p><p>В этой книге мы будем строить упакованные приложения. Их проще делать, поскольку мы не имеем дело с кэшем и пользователю не надо ждать загрузки через Интернет после установки.</p><h2>Манифест приложения</h2><p><a href="https://developer.mozilla.org/docs/Apps/Manifest">Манифест</a> представляет собой файл в формате <a href="http://json.org">JSON</a>, который описывает аспекты веб-приложения. Обычно этот файл называется <strong>manifest.webapp</strong> и располагается рядом с главным HTML-файлом, называемым, как правило, <strong>index.html</strong>.</p><p class="exampleTitle">Пример манифеста</p>
+<pre><code data-language="javascript">{
+  &quot;name&quot;: &quot;Memos&quot;,
+  &quot;version&quot;: &quot;1.1&quot;,
+  &quot;description&quot;: &quot;A simple memo taking app&quot;,
+  &quot;launch_path&quot;: &quot;/index.html&quot;,
+  &quot;permissions&quot;: {
+  &quot;storage&quot;: {
+  &quot;description&quot;: &quot;Required for storing and retrieving notes.&quot;
+  }
+  },
+  &quot;developer&quot;: {
+    &quot;name&quot;: &quot;Andre Garzia&quot;,
+    &quot;url&quot;: &quot;http://andregarzia.com&quot;
+  },
+  &quot;icons&quot;: {
+    &quot;60&quot;: &quot;/style/icons/icon_60.png&quot;,
+    &quot;128&quot;: &quot;/style/icons/icon_128.png&quot;
+  }
+}</code></pre>
+<p>Выше мы видим манифест приложения под названием Memos. Среди прочего он описывает, кто создал приложение, какие иконки задействовать, как называется приложение, какой файл используется для запуска приложения (в данном случае это index.html), какой доступ к оборудованию требуется приложению и др. Этот файл использует Firefox OS для добавления приложения на главный экран устройства, а также Firefox Marketplace для отображения приложения в каталоге, как показано на рисунке ниже.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-marketplace.png" alt="Приложение Memos в Firefox Marketplace" width="1040" height="628"></p><p class="figsign">Приложение Memos в Firefox Marketplace</p><p>Обратите внимание, что информация из манифеста используется системой для добавления приложения на главный экран, как это видно на следующем скриншоте.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-simulator.png" alt="Memos в симуляторе" width="320" height="526"></p><p class="figsign">Memos в симуляторе</p><p>Собрав воедино свой HTML, CSS, JavaScript и файл манифеста вы получите приложение готовое работать на Firefox OS.</p><h2>Здесь нет такого места как дом</h2><p>Давайте дадим Foxnoid хороший дом на вашем компьютере. Как известно, мы собираемся построить коллекцию HTML, CSS, JavaScript и статичных файлов ресурсов. Все эти файлы будут храниться в папке на вашем компьютере. <strong>Ваша первая задача состоит в создании папки foxnoid на вашем компьютере, далее всё будет происходить внутри этой папки</strong>.</p><p>Ниже мы добавим некоторые шаблоны, просто чтобы загрузить наше приложение до точки, где мы можем сосредоточиться на JavaScript. Большинство фреймворков включают в себя скучный код, который необходимо использовать для всякой инициализации.</p><p>Ниже мы напишем этот код инициализации. Реализация самой игры написана в следующих главах.</p><h2>Добавление фреймворка Phaser</h2><p>Скачайте последнюю версию Phaser с <a href="https://github.com/photonstorm/phaser/releases/download/v2.0.5/phaser.min.js">phaser.min.js на GitHub</a> и поместите её <strong>в папку js внутри папки foxnoid</strong>.</p><p>Этот файл содержит весь фреймворк Phaser в сжатой форме. Включите этот файл в HTML, чтобы использовать все возможности фреймворка в нашей игре.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>CSS</h2><p>Так как мы будем использовать Canvas для рисования игры, то нам не придётся полагаться на CSS. Тем не менее, мы должны сбросить некоторые значения, потому что разные браузеры принимают свои значения для полей и отступов. Мы хотим обнулить эти значения, чтобы полностью заполнить экран через Canvas.</p><p>Создайте папку css внутри папки foxnoid и поместите внутрь файл с именем style.css следующего содержания.</p><p class="exampleTitle">CSS сброс</p>
+<pre><code data-language="css">html, body {
+  background: #000;
+  display: block;
+  margin: 0;
+  padding: 0;
+}</code></pre>
+<p>Это установит цвет фона по умолчанию и обнулит необходимые значения.</p><h2>HTML</h2><p>Как объяснялось выше, мы не собираемся писать много CSS и DOM. Эта игра представляет собой просто Canvas, так что наш HTML должен включать необходимые файлы JavaScript и один <span class="tag">&lt;div&gt;</span> для вывода данных.</p><p>Некоторые игры лучше написаны с DOM, но мы сделаем всё правильно на Canvas. Вы можете думать о Canvas как о телевизоре, в котором показывается картинка. Программирование с Canvas ближе к созданию игры для старой DOS и Game Boy, чем структурный гипертекст в HTML.</p><p>Мы собираемся менять этот HTML по мере продвижения по главам, но сейчас создайте файл с именем <strong>index.html</strong> следующего содержания.</p><p class="exampleTitle">Минимальный index.html</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Foxnoid Game&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; /&gt;
+    &lt;script defer src=&quot;js/phaser.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+    &lt;div id=&quot;game&quot;&gt;&lt;/div&gt;
+  
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Этот HTML ничего не делает, только предоставляет место для размещения холста и включает Phaser.</p><p class="note">Использование <span class="attribute">defer</span> в теге <span class="tag">&lt;script&gt;</span> улучшит производительность, поскольку JavaScript-файлы будут выполняться только после того, как DOM готов.</p><h2>Манифест нашего приложениям</h2><p>Создайте файл с именем <strong>manifest.webapp</strong> рядом с <strong>index.html</strong> в папке foxnoid следующего содержания.</p><p class="exampleTitle">Файл манифеста</p>
+<pre><code data-language="javascript">{
+  &quot;version&quot;: &quot;0.1&quot;,
+  &quot;name&quot;: &quot;Foxnoid&quot;,
+  &quot;description&quot;: &quot;A game for Firefox OS&quot;,
+  &quot;launch_path&quot;: &quot;/index.html&quot;,
+  &quot;developer&quot;: {
+    &quot;name&quot;: &quot;Andre Alves Garzia&quot;,
+    &quot;url&quot;: &quot;http://andregarzia.com&quot;
+  },
+  &quot;installs_allowed_from&quot;: [&quot;*&quot;]
+}</code></pre>
+<p>Это минимальные данные необходимые для начала процесса разработки игры. Помните, что перед отправкой приложения в <a href="http://marketplace.firefox.com">Firefox Marketplace</a> следует добавить в этот файл некоторые вещи вроде иконок. Мы ещё поговорим об иконах и статичных ресурсах в главе об ассетах.</p><h2>Резюме</h2><p>Ваша папка Foxnoid должна выглядеть следующим образом.</p><p class="fig"><img src="../../assets/images/firefoxosgame/foxnoid-folder-scaffold.png" alt="Папка Foxnoid" width="178" height="137"></p><p class="figsign">Папка Foxnoid</p><p>Если это не так, то вы всегда можете скачать исходники из <a href="https://github.com/firefoxos-gamedev/foxnoid-html5-game">хранилища Foxnoid на Github</a>. Учтите, что версия на GitHub гораздо полнее, чем представленная здесь.</p><p>Прямо сейчас у вас должна быть папка с некоторыми файлами, которые служат в качестве отправной точки для разработки нашей игры. Вы также должны знать немного о типах приложений и манифесте.</p><p>В следующей главе мы добавим немного JavaScript для инициализации нашей игры.</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 16.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosgame/ourgame'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosgame/initialization'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="ourgame.html" title="На предыдущую страницу">Наша игра</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="initialization.html" title="На следующую страницу">Инициализация Foxnoid</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="gametheory.html">Об играх</a></li><li class="leaf"><a href="ourgame.html">Наша игра</a></li><li class="leaf active-trail"><a href="gamescaffold.html" class="active-trail active">Настройки нашей игры</a></li><li class="leaf"><a href="initialization.html">Инициализация Foxnoid</a></li><li class="leaf"><a href="assets.html">Управление ассетами</a></li><li class="leaf"><a href="gameloop.html">Цикл игры</a></li><li class="leaf"><a href="input.html">Обработка ввода</a></li><li class="leaf"><a href="winning-or-losing.html">Победа или поражение</a></li><li class="last leaf"><a href="levels.html">Привлечение игроков</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-a3d2fb830f99df93064091e31969103d"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="gamescaffold.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

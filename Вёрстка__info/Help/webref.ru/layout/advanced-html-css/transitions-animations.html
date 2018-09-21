@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Переходы и анимация | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="feature-support-polyfills.html" />
+<link rel="prev" href="transform.html" />
+<meta name="description" content="Эволюцией CSS3 стала возможность задавать поведение для переходов и анимации. Фронтенд-разработчики много лет просили реализовать эти взаимодействия внутри HTML и CSS, без использования JavaScript или Flash. Теперь их мечта сбылась. С помощью переходов CSS3 у вас есть потенциал менять внешний вид и поведение элемента всякий раз, когда происходит изменение его состояния, к примеру, когда на элемент наводится курсор, он получает фокус, становится активным или к элементу происходит переход по ссылке." />
+<link rel="canonical" href="transitions-animations.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Переходы и анимация</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Переходы и анимация</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Эволюцией CSS3 стала возможность задавать поведение для переходов и анимации. Фронтенд-разработчики много лет просили реализовать эти взаимодействия внутри HTML и CSS, без использования JavaScript или Flash. Теперь их мечта сбылась.</p><p>С помощью переходов CSS3 у вас есть потенциал менять внешний вид и поведение элемента всякий раз, когда происходит изменение его состояния, к примеру, когда на элемент наводится курсор, он получает фокус, становится активным или к элементу происходит переход по ссылке.</p><p>Анимация в CSS3 позволяет менять внешний вид и поведение элемента с помощью нескольких ключевых кадров. Переходы обеспечивают смену от одного состояния к другому, в то время как анимация может установить несколько точек перехода через разные ключевые кадры.</p><h2>Переходы</h2><p>Как уже упоминалось, чтобы <a href="http://www.alistapart.com/articles/understanding-css3-transitions/">переход</a> имел место, элемент должен получить изменение состояния и для каждого состояния должны быть определены разные стили. Самый простой способ задать стили для различных состояний&nbsp;— это воспользоваться псевдоклассами <span class="attribute">:hover</span>, <span class="attribute">:focus</span>, <span class="attribute">:active</span> и <span class="attribute">:target</span>.</p><p>Есть четыре свойства, связанных с переходами в целом, это <span class="attribute">transition-property</span>, <span class="attribute">transition-duration</span>, <span class="attribute">transition-timing-function</span> и <span class="attribute">transition-delay</span>. Не все они обязательны для создания перехода, наиболее популярны первые три.</p><p>В приведённом ниже примере блок изменит цвет фона в течение одной секунды в линейном виде.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  transition-property: background;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+.box:hover {
+  background: #ff7b29;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация transition</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/aewr74do/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div class="notePad"><h3>Вендорные префиксы</h3><p>Приведённый выше код, как и остальные образцы кода в этом уроке, не используют вендорные префиксы. Это сделано намерено в интересах сохранения фрагмента кода маленьким и понятным. Для лучшей поддержки во всех браузерах используйте префиксы. Для справки, версия с префиксами для кода выше будет выглядеть следующим образом.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  -webkit-transition-property: background;
+     -moz-transition-property: background;
+       -o-transition-property: background;
+          transition-property: background;
+  -webkit-transition-duration: 1s;
+     -moz-transition-duration: 1s;
+       -o-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: linear;
+     -moz-transition-timing-function: linear;
+       -o-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+.box:hover {
+  background: #ff7b29;
+}</code></pre>
+  </div><h3>transition-property</h3><p>Свойство <span class="attribute">transition-property</span> определяет, какие именно свойства будут меняться в сочетании с другими свойствами перехода. По умолчанию, изменяться будут все свойства в различных состояниях. Тем не менее, только свойства заданные в значении <span class="attribute">transition-property</span> будут затронуты в любых переходах.</p><p>В приведённом выше примере, свойство <span class="attribute">background</span> определено в значении <span class="attribute">transition-property</span>. Здесь <span class="attribute">background</span>&nbsp;— единственное свойство, которое будет изменяться в течение 1&nbsp;секунды в линейном виде. Любые другие свойства, включённые когда изменяется состояние элемента, но не добавленные в значение <span class="attribute">transition-property</span>, не получат поведение перехода, как это установлено в свойствах <span class="attribute">transition-duration</span> или <span class="attribute">transition-timing-function</span>.</p><p>Если требуется добавить несколько свойств в переход, они могут быть разделены запятой внутри значения <span class="attribute">transition-property</span>. Кроме того, может быть использовано ключевое слово <span class="value">all</span> для перехода всех свойств элемента.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  border-radius: 6px
+  transition-property: background, border-radius;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+.box:hover {
+  background: #ff7b29;
+  border-radius: 50%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация transition-property</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/qzaejhmd/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h4>Свойства в переходах</h4><p>Важно отметить, что <strong>не для всех свойств может быть выполнен переход</strong>, а только для свойств, которые имеют различимую точку на полпути. Цвета, размеры шрифтов и тому подобное могут переходить от одного значения к другому, поскольку у них есть распознаваемые значения в промежутке друг с другом. У свойства <span class="attribute">display</span>, например, не может быть перехода, поскольку оно не имеет никакой средней точки. Набор наиболее популярных свойств, к которым применим переход следующий.</p><ul class="list-column-3"><li>background-color</li><li>background-position</li><li>border-color</li><li>border-width</li><li>border-spacing</li><li>bottom</li><li>clip</li><li>color</li><li>crop</li><li>font-size</li><li>font-weight</li><li>height</li><li>left</li><li>letter-spacing</li><li>line-height</li><li>margin</li><li>max-height</li><li>max-width</li><li>min-height</li><li>min-width</li><li>opacity</li><li>outline-color</li><li>outline-offset</li><li>outline-width</li><li>padding</li><li>right</li><li>text-indent</li><li>text-shadow</li><li>top</li><li>vertical-align</li><li>visibility</li><li>width</li><li>word-spacing</li><li>z-index</li></ul><h3>transition-duration</h3><p>Длительность перехода задаётся с помощью свойства <span class="attribute">transition-duration</span>. В качестве значения этого свойства можно использовать основные значения времени, в том числе секунды (s) и миллисекунды (ms). Эти значения времени можно также задавать и дробными&nbsp;— .2s, например.</p><p>При переходе нескольких свойств можно задать несколько длительностей, по одному на каждое свойство. Как и в случае значения свойства <span class="attribute">transition-property</span>, несколько длительностей могут быть объявлены с помощью значений, разделённых запятыми. Важен порядок этих значений при определении отдельных свойств и длительностей. К примеру, первое свойство, заданное в <span class="attribute">transition-property</span>, будет совпадать с первым значением в свойстве <span class="attribute">transition-duration</span> и так далее.</p><p>Если на несколько свойств в переходе приходится только одно значение длительности, то оно будет задавать длительность для всех свойств перехода.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  border-radius: 6px;
+  transition-property: background, border-radius;
+  transition-duration: .2s, 1s;
+  transition-timing-function: linear;
+}
+.box:hover {
+  background: #ff7b29;
+  border-radius: 50%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация transition-duration</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/jv4h4pmb/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Функция перехода</h3><p>Свойство <span class="attribute">transition-timing-function</span> используется для задания скорости, с которой будет двигаться переход. Зная длительность из свойства <span class="attribute">transition-duration</span> у перехода может быть несколько скоростей в пределах одной длительности. Некоторые наиболее популярные значения ключевых слов для свойства <span class="attribute">transition-timing-function</span> включают <span class="value">linear</span>, <span class="value">ease-in</span>, <span class="value">ease-out</span> и <span class="value">ease-in-out</span>.</p><p>Значение <span class="value">linear</span> определяет переход, движущийся в постоянной скоростью из одного состояния к другому. Значение <span class="value">ease-in</span> определяет переход, который начинается медленно и ускоряется на протяжении перехода, в то время как значение <span class="value">ease-out</span> определяет переход, который начинает быстро и замедляется в течение всего перехода. Значение <span class="value">ease-in-out</span> определяет переход, который начинается медленно, ускоряется в середине, а затем снова замедляется перед окончанием.</p><p>За каждой функцией времени стоит кубическая кривая Безье, которую можно указать конкретно с помощью значения <span class="value">cubic-bezier(x1, y1, x2, y2)</span>. Дополнительные значения включают <span class="value">step-start</span>, <span class="value">step-stop</span> и значение <span class="value">steps</span>(&lt;число шагов&gt;, &lt;направление&gt;).</p><p>При переходе нескольких свойств, вы можете определить и несколько функций времени. Эти значения, подобно другим значениям свойств перехода, могут быть объявлены через запятую.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  border-radius: 6px;
+  transition-property: background, border-radius;
+  transition-duration: .2s, 1s;
+  transition-timing-function: linear, ease-in;
+}
+.box:hover {
+  background: #ff7b29;
+  border-radius: 50%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация функции перехода</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/jwzzgdt0/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>transition-delay</h3><p>Кроме объявления свойства перехода, длительности и функции времени, вы можете также установить задержку через свойство <span class="attribute">transition-delay</span>. Задержка задаёт значение времени, в секундах или миллисекундах, которое определяет, сколько времени переход должен ожидать перед выполнением. Как и со всеми другими свойствами перехода, чтобы задержать многочисленные переходы, каждая задержка может быть перечислена через запятую.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  border-radius: 6px
+  transition-property: background, border-radius;
+  transition-duration: .2s, 1s;
+  transition-timing-function: linear, ease-in;
+  transition-delay: 0s, 1s;
+}
+.box:hover {
+  background: #ff7b29;
+  border-radius: 50%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация transition-delay</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/8568hzav/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Сокращённое свойство transition</h2><p>Написание каждого свойства перехода по отдельности может напрягать, особенно с префиксами. К счастью, есть сокращённое свойство <span class="attribute">transition</span>, способное поддерживать все эти разные свойства и значения. Используя одиночное значение <span class="attribute">transition</span>, вы можете установить каждое значение перехода в следующем порядке: <span class="attribute">transition-property</span>, <span class="attribute">transition-duration</span>, <span class="attribute">transition-timing-function</span> и, наконец, <span class="attribute">transition-delay</span>. Не используйте запятые с этими значениями, если не желаете определить несколько переходов.</p><p>Чтобы задать несколько переходов сразу, установите каждую отдельную группу значений перехода, а затем используйте запятую, чтобы отделить каждую дополнительную группу значений.</p>
+<pre><code data-language="css">.box {
+  background: #2db34a;
+  border-radius: 6px;
+  transition: background .2s linear, border-radius 1s ease-in 1s;
+}
+.box:hover {
+  color: #ff7b29;
+  border-radius: 50%;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация свойства transition</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/9gj8mkcr/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div class="notePad"><h3>Потрясающая кнопка</h3><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;button&gt;Потрясающая кнопка&lt;/button&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">button {
+  border: 0;
+  background: #0087cc;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 #006599;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 12px 20px;
+  transition: all .1s linear;
+}
+button:active {
+  box-shadow: 0 2px 0 #006599;
+  transform: translateY(3px);
+}</code></pre>
+<iframe width="100%" height="140" src="https://jsfiddle.net/webref/xxsbh8w1/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div class="notePad"><h3>Переворачивающаяся карточка</h3><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;card-container&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+  &lt;div class=&quot;side&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;side back&quot;&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">.card-container {
+  height: 150px;
+  perspective: 600;
+  position: relative;
+  width: 150px;
+}
+.card {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+.card:hover {
+  transform: rotateY(180deg);
+}
+.card .side {
+  backface-visibility: hidden;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.card .back {
+  transform: rotateY(180deg);
+}</code></pre>
+<iframe width="100%" height="220" src="https://jsfiddle.net/webref/br0qzdfe/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Анимация</h2><p>Переходы выполняют большую работу по созданию визуальных взаимодействий из одного состояния в другое и идеально подходят для этих видов одиночных изменений состояния. Тем не менее, когда требуется больший контроль, для переходов необходимо несколько состояний. С этого момента переходы уходят, а в дело вступает <a href="http://coding.smashingmagazine.com/2011/09/14/the-guide-to-css-animation-principles-and-examples/">анимация</a>.</p><h3>Ключевые кадры анимации</h3><p>Чтобы установить несколько точек, в которых элемент должен совершать переход, используется правило <span class="attribute">@keyframes</span>. Это правило включает имя анимации, любое число контрольных точек, а также свойства, предназначенные для анимации.</p>
+<pre><code data-language="css">@keyframes slide {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  50% {
+    left: 244px;
+    top: 100px;
+  }
+  100% {
+    left: 488px;
+    top: 0;
+  }
+}</code></pre>
+<div class="notePad"><h3>Вендорные префиксы в правиле @keyframes</h3><p>Правило <span class="attribute">@keyframes</span> должно быть с вендорными префиксами, так же, как и все другие свойства <span class="attribute">transition</span> и <span class="attribute">animation</span>. Префиксы для <span class="attribute">@keyframes</span> выглядят следующим образом:</p><ul class="list-column-2"><li>@-moz-keyframes</li><li>@-o-keyframes</li><li>@-webkit-keyframes</li></ul></div><p>Анимация выше называется <span class="value">slide</span>, состояния начинаются сразу же после открытия правила <span class="attribute">@keyframes</span>. Разные контрольные точки ключевых кадров задаются помощью процентов, начиная с 0% и работая до 100%, с промежуточной точкой на 50%. При желании вместо 0% и 100% могут быть использованы ключевые слова <span class="var">from</span> и <span class="var">to</span>. Кроме 50% также могут быть указаны дополнительные контрольные точки. Свойства элементов для анимации перечислены внутри каждой контрольной точки, <span class="attribute">left</span> и <span class="attribute">top</span> в приведённом выше примере.</p><p>Важно отметить, как и с переходами, могут быть анимированы только отдельные свойства. Подумайте, как вы могли бы переместить элемент сверху вниз, например. Попытка анимировать от <span class="var">top: 0</span> до <span class="var">bottom: 0</span> не будет работать, потому что анимация может применять только переход в пределах одного свойства, а не от одного свойства к другому. В этом случае элемент необходимо анимировать от <span class="var">top: 0</span> до <span class="var">top: 100%</span>.</p><div class="notePad"><h3>Демонстрация ключевых кадров анимации</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/nLyh2k5g/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>animation-name</h3><p>После того, как объявлены ключевые кадры для анимации, они должны быть назначены для элемента. Для этого используется свойство <span class="attribute">animation-name</span> с именем анимации из правила <span class="attribute">@keyframes</span>, как значение свойства. Декларация <span class="attribute">animation-name</span> применяется к элементу, для которого должна быть задана анимация.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+}</code></pre>
+<p>Использования одного свойства <span class="attribute">animation-name</span> при этом недостаточно. Кроме того, необходимо объявить свойство <span class="attribute">animation-duration</span> и значение, чтобы браузер знал, как долго должна длиться анимация до завершения.</p><h3>animation-duration, функция времени и animation-delay</h3><p>После того, как вы объявили свойство animation-name для элемента, анимация ведёт себя подобно переходам. Она включают в себя длительность, функцию времени и задержку при желании. Сперва анимации требуется длительность, объявленная с помощью свойства <span class="attribute">animation-duration</span>. Как и в случае с переходами, длительность может быть задана в секундах или миллисекундах.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+}</code></pre>
+<p>Функция времени и задержка могут быть объявлены с помощью свойств <span class="attribute">animation-timing-function</span> и <span class="attribute">animation-delay</span>, соответственно. Значения этих свойств подражают и ведут себя так же, как это делается с переходами.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .5s;
+}</code></pre>
+<p>Анимация ниже должна вызвать отскок ball один раз при перемещении вправо, но только при наведении курсора на stage.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;stage&quot;&gt;
+  &lt;figure class=&quot;ball&quot;&gt;&lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">@keyframes slide {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  50% {
+    left: 244px;
+    top: 100px;
+  }
+  100% {
+    left: 488px;
+    top: 0;
+  }
+}
+.stage {
+  height: 150px;
+  position: relative;
+}
+.ball {
+  height: 50px;
+  position: absolute;
+  width: 50px;
+}
+.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .5s;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация анимации</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/a7cu2o55/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Настройка анимации</h2><p>Анимация также предлагает возможность дальнейшей настройки поведения элемента, в том числе можно задать, сколько раз анимация выполняется, а также направление, в котором анимация завершится.</p><h3>animation-iteration-count</h3><p>По умолчанию, анимация запускает свой цикл один раз от начала до конца, а затем останавливается. Чтобы анимация повторялась много раз может быть использовано свойство <span class="attribute">animation-iteration-count</span>. Значения для него включают целое число или ключевое слово <span class="value">infinite</span>. С помощью целого числа анимация будет повторяться столько раз, сколько указано, в то время как ключевое слово <span class="value">infinite</span> будет повторять анимацию бесконечно и никогда не остановится.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .5s;
+  animation-iteration-count: infinite;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация animation-iteration-count</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/9xhskh55/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>animation-direction</h3><p>Кроме возможности установить, сколько раз анимация повторяется, вы можете также объявить направление, в котором анимация завершается, с помощью свойства <span class="attribute">animation-direction</span>. Значения этого свойства включают в себя <span class="value">normal</span>, <span class="value">reverse</span>, <span class="value">alternate</span> и <span class="value">alternate-reverse</span>.</p><p>Значение normal воспроизводит анимацию, как и намеревалось, от начала до конца. Значение reverse воспроизводит анимацию точно наоборот, чем это определено в правиле <span class="attribute">@keyframes</span>, таким образом, начиная со 100% и работая в обратном направлении до 0%.</p><p>Значение <span class="value">alternate</span> воспроизведёт анимацию вперёд, а затем назад. В ключевых кадрах это включает выполнение вперёд от 0% до 100%, а затем в обратном направлении от 100% до 0%. Используя свойство <span class="attribute">animation-iteration-count</span> можно ограничить количество раз, когда анимация работает вперёд и назад. Счёт начинается с 1, когда анимация проходит вперёд от 0% до 100%, а затем добавляется 1, когда анимация проходит в обратном порядке от 100% до 0%. Объединение в общей сложности двух итераций. Значение <span class="value">alternate</span> также инвертирует любые функции времени при воспроизведении в обратном направлении. Если анимация использует значение <span class="value">ease-in</span> идущее от 0% до 100%, то затем использует значение <span class="value">ease-out</span> идущее от 100% до 0%.</p><p>И, наконец, значение <span class="value">alternate-reverse</span> сочетает оба значения <span class="value">alternate</span> и <span class="value">reverse</span>, запуская анимацию назад, а затем вперёд. Значение <span class="value">alternate-reverse</span> начинается со 100% и выполняется до 0%, а затем снова обратно до 100%.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация animation-direction</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/xpoj4zk6/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>animation-play-state</h3><p>Свойство <span class="attribute">animation-play-state</span> позволяет анимации воспроизводиться или остановиться на паузу, с помощью ключевых слов <span class="value">running</span> и <span class="value">paused</span>, соответственно. Когда анимация снимается с паузы, она возобновляет работу из текущего состояния, а не начинается снова с самого начала.</p><p>В приведённом ниже примере свойство <span class="attribute">animation-play-state</span> устанавливается на паузу, когда stage активен при щелчке по нему. Обратите внимание на то, как анимация временно приостанавливается, пока вы не отпустите кнопку мыши.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.stage:active .ball {
+  animation-play-state: paused;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация animation-play-state</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии. Щелчок приостанавливает анимацию.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/yo2y7ugw/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>animation-fill-mode</h3><p>Свойство <span class="attribute">animation-fill-mode</span> определяет, как элемент должен быть стилизован — до, после или до и после запуска анимации. Свойство <span class="attribute">animation-fill-mode</span> принимает четыре значения ключевых слов, включая <span class="value">none</span>, <span class="value">forwards</span>, <span class="value">backwards</span> и <span class="value">both</span>.</p><p>Значение <span class="value">none</span> не будет применять любые стили к элементу до или после того, как анимация запущена.</p><p>Значение <span class="value">forwards</span> сохранит стили, объявленные в последнем указанном ключевом кадре. На эти стили, однако, могут повлиять значения свойств <span class="attribute">animation-direction</span> и <span class="attribute">animation-iteration-count</span>, меняя, где анимация заканчивается.</p><p>Значение <span class="value">backwards</span> будет применять стили первого заданного ключевого кадра, до того, как анимация будет работать. Включает применение этих стилей в течение всего времени, что может быть задано в <span class="attribute">animation-delay</span>. Значение <span class="value">backwards</span> также может зависеть от значения свойства <span class="attribute">animation-direction</span>.</p><p>Наконец, значение <span class="value">both</span> применит поведение сразу от обоих значений <span class="value">forwards</span> и <span class="value">backwards</span>.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+}
+.stage:active .ball {
+  animation-play-state: paused;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация animation-fill-mode</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии. Щелчок приостанавливает анимацию.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/yd761974/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Сокращённое свойство animation</h2><p>К счастью <a href="https://developer.mozilla.org/en-US/docs/CSS/Using_CSS_animations">анимация</a>, подобно переходам, может быть записана в сокращённом формате. Это получается с помощью одного свойства <span class="attribute">animation</span> вместо нескольких объявлений. Порядок значений в свойстве <span class="attribute">animation</span> должен быть следующий: <span class="attribute">animation-name</span>, <span class="attribute">animation-duration</span>, <span class="attribute">animation-timing-function</span>, <span class="attribute">animation-delay</span>, <span class="attribute">animation-iteration-count</span>, <span class="attribute">animation-direction</span>, <span class="attribute">animation-fill-mode</span> и, наконец, <span class="attribute">animation-play-state</span>.</p>
+<pre><code data-language="css">.stage:hover .ball {
+  animation: slide 2s ease-in-out .5s infinite alternate;
+}
+.stage:active .ball {
+  animation-play-state: paused;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация animation</h3><p>Наведите курсор на шарик внизу, чтобы увидеть анимацию в действии. Щелчок приостанавливает анимацию.</p><iframe width="100%" height="240" src="https://jsfiddle.net/webref/szchaLwm/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Ресурсы и ссылки</h2><ul><li><a href="http://www.alistapart.com/articles/understanding-css3-transitions/">Understanding CSS3 Transitions</a> на A List Apart</li><li><a href="http://www.roblaplaca.com/examples/bezierBuilder/">CSS Cubic-Bezier Builder</a> на Rob LaPlaca</li><li><a href="http://coding.smashingmagazine.com/2011/09/14/the-guide-to-css-animation-principles-and-examples/">The Guide To CSS Animation: Principles and Examples</a> на Smashing Magazine</li><li><a href="https://developer.mozilla.org/en-US/docs/CSS/Using_CSS_animations">Using CSS Animations</a> на Mozilla Developer Network</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/animaciya">анимация</a></div><div class="field-item odd"><a href="https://webref.ru/metki/perehody">переходы</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-4307e8799a1cb100d0e5913b14ee950c"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/marquee.html">&lt;marquee&gt;</a></li><li class=""> <a href="../../css/keyframes.html">@keyframes</a></li><li class=""> <a href="../../css/animation.html">animation</a></li><li class=""> <a href="../../css/animation-delay.html">animation-delay</a></li><li class=""> <a href="../../css/animation-direction.html">animation-direction</a></li><li class=""> <a href="../../css/animation-duration.html">animation-duration</a></li><li class=""> <a href="../../css/animation-fill-mode.html">animation-fill-mode</a></li><li class=""> <a href="../../css/animation-iteration-count.html">animation-iteration-count</a></li><li class=""> <a href="../../css/animation-name.html">animation-name</a></li><li class=""> <a href="../../css/animation-play-state.html">animation-play-state</a></li><li class=""> <a href="../../css/animation-timing-function.html">animation-timing-function</a></li><li class=""> <a href="../../css/transition.html">transition</a></li><li class=""> <a href="../../css/transition-delay.html">transition-delay</a></li><li class=""> <a href="../../css/transition-duration.html">transition-duration</a></li><li class=""> <a href="../../css/transition-property.html">transition-property</a></li><li class=""> <a href="../../css/transition-timing-function.html">transition-timing-function</a></li><li class=""> <a href="../html5-css3/animation.html">Анимация</a></li><li class=""> <a href="../../course/css-advanced/animation.html">Анимация в CSS</a></li><li class=""> <a href="../html5-css3/transition.html">Переходы</a></li><li class=""> <a href="../magic-of-css/transitions.html">Переходы</a></li><li class=""> <a href="../../course/css-advanced/transitions.html">Переходы в CSS</a></li><li class=""> <a href="../../course/css-advanced/transform.html">Трансформация в CSS</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 10.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css/transform'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/feature-support-polyfills'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="transform.html" title="На предыдущую страницу">Трансформация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="feature-support-polyfills.html" title="На следующую страницу">Поддержка функций и полифилы</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="performance-organization.html">Производительность и организация</a></li><li class="leaf"><a href="detailed-css-positioning.html">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf"><a href="preprocessors.html">Препроцессоры</a></li><li class="leaf"><a href="jquery.html">jQuery</a></li><li class="leaf"><a href="transform.html">Трансформация</a></li><li class="leaf active-trail"><a href="transitions-animations.html" class="active-trail active">Переходы и анимация</a></li><li class="leaf"><a href="feature-support-polyfills.html">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-f93ae5d39177275d4b4acc4702e8d239"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="transitions-animations.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

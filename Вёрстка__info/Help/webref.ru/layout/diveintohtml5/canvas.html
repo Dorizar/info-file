@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Давайте порисуем | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../diveintohtml5.html" />
+<link rel="next" href="video.html" />
+<link rel="prev" href="semantics.html" />
+<meta name="description" content="В HTML5 определён элемент как «растровый холст, который может быть использован для отображения диаграмм, игровой графики или изображений на лету». Холст — это прямоугольная область на вашей странице, где с помощью JavaScript можно рисовать что вы пожелаете." />
+<link rel="canonical" href="canvas.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Давайте порисуем</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../diveintohtml5.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Погружение в HTML5</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Давайте порисуем</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В HTML5 определён элемент <span class="tag">&lt;canvas&gt;</span> как «растровый холст, который может быть использован для отображения диаграмм, игровой графики или изображений на лету». Холст&nbsp;— это прямоугольная область на вашей странице, где с помощью JavaScript можно рисовать что вы пожелаете.</p><table class="data browser"><caption>Поддержка &lt;canvas&gt;</caption><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>7.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr></table><p style="margin-left: 5%">* Internet Explorer поддерживает только с библиотекой <a href="http://code.google.com/p/explorercanvas/" class="ext">explorercanvas</a>. Internet Explorer 9 поддерживает <span class="tag">&lt;canvas&gt;</span>.</p><p>Как же этот холст выглядит? В действительности, никак. У элемента <span class="tag">&lt;canvas&gt;</span> нет собственного контента и рамки.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas01.png" alt="" width="373" height="340"></p><p class="figsign">Невидимый холст</p><p>Код выглядит так.</p>
+<pre><code data-language="html">&lt;canvas width=&quot;300&quot; height=&quot;225&quot;&gt;&lt;/canvas&gt;</code></pre>
+<p>Давайте добавим пунктирную рамку, чтобы увидеть, с чем мы имеем дело.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas02.png" alt="Холст с рамкой" width="373" height="340"></p><p class="figsign">Холст с рамкой</p><p>У вас может быть несколько элементов <span class="tag">&lt;canvas&gt;</span> на одной странице. Каждый холст будет отображаться в DOM и хранить своё собственное состояние. Если вы добавите каждому холсту атрибут <span class="attribute">id</span>, то можете получить к ним доступ, как и к любому другому элементу.</p><p> Расширим наш код, включив атрибут <span class="attribute">id</span>.</p>
+<pre><code data-language="html">&lt;canvas id=&quot;a&quot; width=&quot;300&quot; height=&quot;225&quot;&gt;&lt;/canvas&gt;</code></pre>
+<p>Теперь легко можно обнаружить элемент <span class="tag">&lt;canvas&gt;</span> в DOM.</p>
+
+<pre><code data-language="javascript">var a_canvas = document.getElementById(&quot;a&quot;);</code></pre>
+
+<h2>Простые фигуры</h2><table class="data browser"><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>7.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr></table><p style="margin-left: 5%">* Internet Explorer поддерживает только с библиотекой <a href="http://code.google.com/p/explorercanvas/" class="ext">explorercanvas</a>. Internet Explorer 9 поддерживает фигуры в <span class="tag">&lt;canvas&gt;</span>.</p><p>Каждый холст изначально пустой. Это скучно! Давайте что-нибудь нарисуем.</p><p class="rightpic"><img src="../../assets/images/diveintohtml5/4145.png" alt="" width="312" height="300"></p><p>Событие <span class="attribute">onclick</span> вызывает эту функцию:</p>
+<pre><code data-language="javascript">function draw_b() {
+  var b_canvas = document.getElementById(&quot;b&quot;);
+  var b_context = b_canvas.getContext(&quot;2d&quot;);
+  b_context.fillRect(50, 25, 150, 100);
+}</code></pre>
+
+<p>Первая строка функции не делает ничего особенного, она просто находит элемент <span class="tag">&lt;canvas&gt;</span> в DOM.</p>
+
+<pre><code data-language="javascript">function draw_b() {
+  var b_canvas = document.getElementById(&quot;b&quot;);
+  <mark>var b_context = b_canvas.getContext(&quot;2d&quot;);</mark>
+  b_context.fillRect(50, 25, 150, 100);
+}</code></pre>
+
+<p>Каждый холст имеет контекст рисования, в котором и происходят все эти смешные штучки. Как только вы нашли элемент <span class="tag">&lt;canvas&gt;</span> в DOM (с помощью <span class="var">document.getElementById()</span> или любым другим способом), вызываете метод <span class="var">getContext()</span>. <strong>Необходимо</strong> указать строку &quot;2D&quot; в методе <span class="var">getContext()</span>.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Есть холст 3D?</p><p>О. Пока нет. Отдельные производители экспериментируют с собственным трёхмерным API, но ни один из них не стандартизирован. В спецификации HTML5 отмечено: «в будущих версиях данной спецификации, вероятно, будет определён 3D-контекст».</p></div></div><p>Итак, у вас есть элемент <span class="tag">&lt;canvas&gt;</span> и есть контекст рисования, где определены все методы и свойства рисования. Имеется целая группа свойств и методов посвящённых рисованию прямоугольников.</p><ul><li>Свойство <span class="var">fillStyle</span> может быть цветом, рисунком или градиентом (подробнее о градиентах чуть ниже). По умолчанию <span class="var">fillStyle</span> заливает сплошным чёрным цветом, но вы можете установить что угодно. Каждый контекст рисунка помнит свои собственные свойства при открытии страницы, пока вы её не обновите.</li><li><span class="var">fillRect(x, y, width, height)</span> рисует прямоугольник, заполненный текущим стилем заливки.</li><li>Свойство <span class="var">strokeStyle</span> как и <span class="var">fillStyle</span> может быть цветом, рисунком или градиентом.</li><li><span class="var">strokeRect(x, y, width, height)</span> рисует прямоугольник с текущим стилем линии. <span class="var">strokeRect</span> не заливается внутри, он просто рисует границы.</li><li><span class="var">clearRect(x, y, width, height)</span> очищает от пикселей в указанном прямоугольнике.</li></ul><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Можно ли «перезагрузить» холст?</p><p>О. Да. Установка ширины или высоты для элемента <span class="tag">&lt;canvas&gt;</span> сотрёт его содержимое и сбросит все свойства контекста рисования в значения по умолчанию. Вам даже не нужно менять ширину, вы можете просто установить её в текущее значение, например, так:</p>
+<pre style="margin-left: 60px;margin-right: 200px"><code data-language="javascript">var b_canvas = document.getElementById(&quot;b&quot;);
+<mark>b_canvas.width = b_canvas.width;</mark></code></pre>
+
+  </div></div><p>Вернёмся к предыдущему примеру.</p><p class="exampleTitle">Рисование прямоугольника</p>
+<pre><code data-language="javascript">var b_canvas = document.getElementById(&quot;b&quot;);
+var b_context = b_canvas.getContext(&quot;2d&quot;);
+<mark>b_context.fillRect(50, 25, 150, 100);</mark></code></pre>
+
+<p>Вызов метода <span class="var">fillRect()</span> рисует прямоугольник и заполняет его текущим стилем заливки, исходно это чёрный цвет, пока вы его не измените. Прямоугольник задаётся левым верхним углом (50, 25), шириной (150) и высотой (100). Чтобы лучше представить как это работает, давайте посмотрим на систему координат.</p><h2>Координаты холста</h2><p>Холст — это двумерная сетка. Координата 0,0 находится в левом верхнем углу холста. Вдоль оси X значения растут к правому краю холста. По оси Y значения растут к нижнему краю холста.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas04.png" alt="Координаты холста" width="500" height="375"></p><p class="figsign">Координаты холста</p><p>Координатная сетка была нарисована с помощью <span class="tag">&lt;canvas&gt;</span> и включает в себя:</p><ul><li>набор серых вертикальных линий;</li><li>набор серых горизонтальных линий;</li><li>две чёрные горизонтальные линии;</li><li>две чёрные вертикальные линии;</li><li>две маленькие чёрные диагональные линии, которые образуют стрелки;</li><li>две чёрные вертикальные линии;</li><li>две маленькие чёрные диагональные линии, которые образуют вторую стрелу;</li><li>букву «х»;</li><li>букву «у»;</li><li>текст «(0, 0)» вблизи левого верхнего угла;</li><li>текст «(500, 375)» в правом нижнем углу;</li><li>точку в левом верхнем углу и другую в правом нижнем углу.</li></ul><p>Для начала нам необходимо определить сам элемент <span class="tag">&lt;canvas&gt;</span>, задать ему ширину и высоту, а также <span class="attribute">id</span>, чтобы мы могли найти его позже.</p>
+<pre><code data-language="html">&lt;canvas id=&quot;c&quot; width=&quot;500&quot; height=&quot;375&quot;&gt;&lt;/canvas&gt;</code></pre>
+<p>Также нам нужен скрипт для поиска элемента <span class="tag">&lt;canvas&gt;</span> в DOM и получить его контекст рисования.</p>
+
+<pre><code data-language="javascript">var c_canvas = document.getElementById(&quot;c&quot;);
+var context = c_canvas.getContext(&quot;2d&quot;);</code></pre>
+
+<p>Теперь мы можем рисовать линии.</p><h2>Контуры</h2><table class="data browser"><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>7.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr></table><p style="margin-left: 5%">* Internet Explorer поддерживает только с библиотекой <a href="http://code.google.com/p/explorercanvas/" class="ext">explorercanvas</a>. Internet Explorer 9 поддерживает <span class="tag">&lt;canvas&gt;</span>.</p><p class="rightpic"><img src="../../assets/images/diveintohtml5/7563.png" alt="" width="167" height="347"></p><p>Представьте, что вы рисуете картину чернилами. Вы же не будете начинать сразу с чернил, потому что можете сделать ошибку. Вместо этого вы начнёте рисовать линии и контуры карандашом, а когда будете удовлетворены, обведёте эскиз чернилами.</p><p> Каждый холст имеет контуры подобные рисунку карандашом. Вы можете нарисовать что угодно, но это не будет частью готовой работы, пока вы не возьмёте перо и не обведёте ваши контуры чернилами.</p><p> Чтобы рисовать прямые линии карандашом, можно использовать следующие два метода:</p><ol><li><span class="var">moveTo(х, у)</span> перемещает карандаш к указанной начальной точке.</li><li><span class="var">lineTo(х, у)</span> рисует линии до указанной конечной точки.</li></ol><p>Чем чаще вы вызываете <span class="var">moveTo()</span> и <span class="var">lineTo()</span>, тем длиннее получается контур. Это «карандашные» методы&nbsp;— вы можете обращаться к ним так часто, насколько хотите, но вы ничего не увидите на холсте, пока не обратитесь к одному из «чернильных» методов.</p><p>Давайте нарисуем серую сетку.</p><p class="exampleTitle">Рисование вертикальных линий</p>
+
+<pre><code data-language="javascript">for (var x = 0.5; x &lt; 500; x += 10) {
+  context.moveTo(x, 0);
+  <mark>context.lineTo(x, 375);</mark>
+}</code></pre>
+<p class="exampleTitle">Рисование горизонтальных линий</p>
+
+<pre><code data-language="javascript">for (var y = 0.5; y &lt; 375; y += 10) {
+  context.moveTo(0, y);
+  <mark>context.lineTo(500, y);</mark>
+}</code></pre>
+
+<p>Все эти методы были «карандашные». На самом деле, на холсте ещё ничего не нарисовано, нам нужны «чернильные» методы, чтобы сделать рисунок видимым.</p>
+<pre><code data-language="javascript">context.strokeStyle = &quot;#eee&quot;;
+<mark>context.stroke();</mark></code></pre>
+
+<p><span class="var">stroke()</span> является одним из «чернильных» методов. Он принимает сложный контур, заданный всеми вызовами <span class="var">moveTo()</span> и <span class="var">lineTo()</span> и рисует его на холсте. <span class="var">strokeStyle</span> управляет цветом линии. Вот результат.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas05.png" width="500" height="375" alt="Сетка"></p><p>&nbsp;</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Почему мы начинаем x и y c 0.5, а не с 0?</p><p>О. Представьте каждый пиксель как большой квадрат. Все целочисленные координаты (0, 1, 2, ...) являются углами этих квадратов. Если вы рисуете однопиксельную линию между целыми координатами, она будет перекрывать противоположные стороны пиксельного квадрата, в результате будет нарисована ширина два пикселя. Чтобы нарисовать  линию шириной только в один пиксель, необходимо сместить координаты на 0.5 перпендикулярно к направлению линии.</p><p>К примеру, если вы попытаетесь нарисовать линию от (1,&nbsp;0) до (1,&nbsp;3), браузер будет рисовать линию с перекрытием в полпикселя по обе стороны от x=1. На экране невозможно отобразить половину пикселя, поэтому линия будет расширена для покрытия двух пикселей.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas06.png" alt="Линия от (1,0) до (1,3) толщиной два пиксела" width="403" height="316"></p><p>Если вы попробуете нарисовать линию от (1.5, 0) до (1.5, 3), браузер нарисует линию с перекрытием полпикселя на каждой стороне от x=1.5, что в результате даёт истинную однопиксельную линию.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas07.png" alt="Линия от (1.5,0) до (1.5,3) толщиной один пиксел" width="403" height="325"></p><p>Спасибо Джейсону Джонсону за эти графики.</p></div></div><p>Теперь нарисуем горизонтальную стрелку. Все линии и кривые на контуре нарисованы тем же цветом (или градиентом&nbsp;— да, мы скоро до него доберемся). Мы хотим нарисовать стрелку другим цветом&nbsp;— чёрным, а не серым, так что мы должны начать новый контур.</p><p class="exampleTitle">Новый контур</p>
+<pre><code data-language="javascript"><mark>context.beginPath();</mark>
+context.moveTo(0, 40);
+context.lineTo(240, 40);
+context.moveTo(260, 40);
+context.lineTo(500, 40);
+context.moveTo(495, 35);
+context.lineTo(500, 40);
+context.lineTo(495, 45);</code></pre>
+<p>Вертикальная стрелка выглядит почти так же. Поскольку она того же цвета, что и горизонтальная стрелка, нам не нужно начинать ещё один новый контур. Две стрелки будут частью одного и того же контура.</p><p class="exampleTitle">Не новый контур</p>
+<pre><code data-language="javascript">context.moveTo(60, 0);
+context.lineTo(60, 153);
+context.moveTo(60, 173);
+context.lineTo(60, 375);
+context.moveTo(65, 370);
+context.lineTo(60, 375);
+context.lineTo(55, 370);</code></pre>
+<p>Я сказал, что эти стрелки будут чёрными, но <span class="var">strokeStyle</span> установлен как серый (<span class="var">fillStyle</span> и <span class="var">strokeStyle</span> не сбрасываются, когда вы начинаете новый контур). Это нормально, потому что мы просто запустили серию «карандашных» методов. Но прежде чем нарисовать реально в «чернилах», мы должны установить <span class="var">strokeStyle</span> чёрным. В противном случае эти две стрелки будут серыми и мы вряд ли их заметим. Следующие строки изменяют цвет на чёрный и рисуют линии на холсте.</p>
+<pre><code data-language="javascript">context.strokeStyle = &quot;#000&quot;;
+context.stroke();</code></pre>
+<p>Вот результат.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas08.png" alt="Сетка со стрелками" width="500" height="375"></p><h2>Текст</h2><table class="data browser"><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>7.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr></table><p style="margin-left: 5%">* Internet Explorer поддерживает только с библиотекой <a href="http://code.google.com/p/explorercanvas/" class="ext">explorercanvas</a>. Internet Explorer 9 поддерживает текст в <span class="tag">&lt;canvas&gt;</span>.</p><p style="margin-left: 5%">* Mozilla Firefox 3.0 требует костыль для совместимости.</p><p>В дополнение к рисованию линий на холсте, вы также можете нарисовать текст. В отличие от текста окружающей веб-страницы, здесь нет блочной модели. Это означает, что нет знакомых из CSS техник вёрстки: нет плавающих элементов, нет отступов, нет полей, нет переноса слов (хотя вы можете считать всё это хорошей вещью). Вы можете установить несколько атрибутов шрифта, выбрать точку на холсте и нарисовать текст.
+Следующие атрибуты шрифта доступны в контексте рисования.</p><ul><li><span class="var">font</span> может содержать всё, что вы бы добавили в CSS-свойство <span class="attribute">font</span>. Включает стиль шрифта, насыщенность, размер, межстрочное расстояние и семейство гарнитур.</li><li><span class="var">textAlign</span> управляет выравниванием текста. Похоже на CSS-свойство <span class="attribute">text-align</span>, но не идентично ему. Возможные значения: <span class="value">start</span>, <span class="value">end</span>, <span class="value">left</span>, <span class="value">right</span> и <span class="value">center</span>.</li><li><span class="var">textBaseline</span> говорит, где рисуется текст относительно начальной точки. Возможные значения: <span class="value">top</span>, <span class="value">hanging</span>, <span class="value">middle</span>, <span class="value">alphabetic</span>, <span class="value">ideographic</span> и <span class="value">bottom</span>.</li></ul><p>Атрибут <span class="var">textBaseline</span> хитрый, потому что сам текст такой (к тексту на английском это не относится, но вы ведь можете нарисовать любой символ Юникода и сам Юникод хитрый). Спецификация HTML5 <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-textbaseline">объясняет различия между базовыми линиями</a>.</p><blockquote><p>Верх площадки em (top) это примерно верх глифов в шрифте; выносная базовая линия (hanging) там, где привязаны некоторые глифы вроде आ; середина (middle) это половина между верхом и низом площадки em; алфавитная базовая линия (alphabetic) проходит там, где привязаны символы вроде Á, ÿ, f и Ω; идеографическая базовая линия (ideographic) располагается там, где привязаны символы вроде 私 и 達; низ площадки em это примерно низ глифов в шрифте. Верх и низ ограничивающего прямоугольника может быть далеко от базовой линии из-за того, что глифы выходят далеко за пределы прямоугольника em.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas09.png" width="680" height="227" alt="Базовые линии"></p></blockquote><p>Для простых алфавитов вроде английского вы можете без опасений придерживаться значений <span class="value">top</span>, <span class="value">middle</span> или <span class="value">bottom</span> у свойства <span class="var">textBaseline</span>.</p><p>Давайте нарисуем какой-нибудь текст! Текст внутри холста наследует размер шрифта и стиль  самого элемента <span class="tag">&lt;canvas&gt;</span>, но вы можете переопределить эти значения, установив свойства шрифта в контексте рисования.</p><p class="exampleTitle">Изменение стиля шрифта</p>
+<pre><code data-language="javascript"><mark>context.font = &quot;bold 12px sans-serif&quot;;</mark>
+context.fillText(&quot;x&quot;, 248, 43);
+context.fillText(&quot;y&quot;, 58, 165);</code></pre>
+<p>Метод <span class="var">fillText()</span> рисует собственно текст.</p><p class="exampleTitle">Рисование текста</p>
+<pre><code data-language="javascript">context.font = &quot;bold 12px sans-serif&quot;;
+<mark>context.fillText(&quot;x&quot;, 248, 43);</mark>
+context.fillText(&quot;y&quot;, 58, 165);</code></pre>
+<div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class=q>☞</span>В. Могу я использовать относительные размеры шрифтов для рисования текста на холсте?</p><p>О. Да. Как и любой другой HTML-элемент на странице, <span class="tag">&lt;canvas&gt;</span> сам вычислит размер шрифта на основе правил CSS. Если вы установите свойство <span class="var">context.font</span> на относительный размер шрифта, такой как 1.5em или 150%, ваш браузер умножит его на вычисленный размер шрифта самого элемента <span class="tag">&lt;canvas&gt;</span>.</p></div></div><p>Для текста в левом верхнем углу, скажем, хочу, чтобы верх текста был при y=5. Но я ленивый, не хочу измерять высоту текста и вычислять базовую линию. Вместо этого я установлю <span class="var">textBaseline</span> как <span class="value">top</span> и укажу координаты левого верхнего угла окружающего текст прямоугольника.</p>
+<pre><code data-language="javascript">context.textBaseline =  &quot;top&quot;;
+context.fillText(&quot;( 0 , 0 )&quot;, <mark>8, 5</mark>);</code></pre>
+<p>Теперь текст в правом нижнем углу. Скажем, я хочу в правом нижнем углу текст, который будет в точке с координатами (492,&nbsp;370)&nbsp;— это всего несколько пикселей от правого нижнего угла холста&nbsp;— но я не хочу измерять ширину или высоту текста. Я могу установить <span class="var">textAlign</span> как <span class="value">right</span> и <span class="var">textBaseline</span> как <span class="value">bottom</span>, а затем вызвать <span class="var">fillText()</span> с координатами правого нижнего угла прямоугольника ограничивающего текст.</p>
+<pre><code data-language="javascript">context.textAlign = &quot;right&quot;;
+context.textBaseline = &quot;bottom&quot;;
+context.fillText(&quot;( 500 , 375 )&quot;, <mark>492, 370</mark>);</code></pre>
+<p>И вот результат:</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas10.png" alt="" width="500" height="375"></p><p>Ой! Мы забыли точки в углах. Мы увидим, как рисовать окружности чуть позже. Пока же я немного схитрю и нарисую их в виде прямоугольников.</p><p class="exampleTitle">Рисуем две «точки»</p>
+<pre><code data-language="javascript">context.fillRect(0, 0, 3, 3);
+context.fillRect(497, 372, 3, 3);</code></pre>
+<p>И это весь написанный текст! Вот финальный результат.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas11.png" alt="" width="500" height="375"></p><h2>Градиенты</h2><table class="data browser"><tr class="br"><td></td><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td class="sel" style="text-align:left">Линейный</td><td>7.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr><tr><td class="sel" style="text-align:left">Радиальный</td><td>9.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr></table><p style="margin-left: 5%">* Internet Explorer 7 и 8 поддерживает только с библиотекой <a href="http://code.google.com/p/explorercanvas/" class="ext">explorercanvas</a>. Internet Explorer 9 поддерживает градиенты <span class="tag">&lt;canvas&gt;</span>.</p><p>Ранее в этой главе вы узнали, как нарисовать прямоугольник заполненный цветом, затем как обводить линию заданным цветом. Но формы и линии не ограничены сплошным цветом, вы можете воспользоваться всеми видами магии с градиентами. Давайте посмотрим на примере.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas12.png" alt="Градиент" width="300" height="225"></p><p>Разметка выглядит так же, как любой другой холст.</p>
+<pre><code data-language="html">&lt;canvas id=&quot;d&quot; width=&quot;300&quot; height=&quot;225&quot;&gt;&lt;/canvas&gt;</code></pre>
+<p>Вначале мы должны найти элемент <span class="tag">&lt;canvas&gt;</span> и его контекст рисования.</p>
+<pre><code data-language="javascript">var d_canvas = document.getElementById(&quot;d&quot;);
+var context = d_canvas.getContext(&quot;2d&quot;);</code></pre>
+<p>После того как мы задали контекст, можем определить градиент. Градиент это плавный переход между двумя или более цветами. Контекст рисования холста поддерживает два типа градиента:</p><ol><li><span class="var">createLinearGradient(x0, y0, x1, y1)</span> рисует вдоль линии от (x0, y0) до (x1, y1);</li><li><span class="var">createRadialGradient(x0, y0, r0, x1, y1, r1)</span> рисует по конусу между двумя окружностями. Первые три параметра определяют начальную окружность с центром (x0, y0) и радиусом r0. Последние три параметра представляют последнюю окружность с центром (x1, y1) и радиусом r1.</li></ol><p>Давайте сделаем линейный градиент. Градиенты могут быть любого размера, но я сделаю этот градиент шириной 300 пикселей, как и холст.</p><p class="exampleTitle">Создание градиентного объекта</p>
+<pre><code data-language="javascript">var my_gradient = <mark>context.createLinearGradient(0, 0, 300, 0);</mark></code></pre>
+<p>Поскольку значения у второго и четвёртого параметра равны 0, этот градиент будет заполнен слева направо.</p><p>После того как мы получили градиентный объект, мы можем определить цвета градиента. Градиент имеет два или более цвета остановки, которые могут быть в любом месте вдоль градиента. Чтобы добавить цвет остановки, необходимо указать его позицию вдоль градиента, она может быть от 0 до 1.</p><p>Давайте определим градиент от чёрного цвета к белому.</p>
+<pre><code data-language="javascript">my_gradient.addColorStop(0, &quot;black&quot;);
+my_gradient.addColorStop(1, &quot;white&quot;);</code></pre>
+<p>Определение градиента не рисует что-либо на холсте, это просто объект, спрятанный где-то в памяти. Чтобы нарисовать градиент, установите <span class="var">fillStyle</span> в градиент и нарисуйте фигуру вроде прямоугольника или линии.</p><p class="exampleTitle">Стиль заполнения градиентом</p>
+<pre><code data-language="javascript"><mark>context.fillStyle = my_gradient;</mark>
+context.fillRect(0, 0, 300, 225);</code></pre>
+<p>И вот результат.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas12.png" alt="Градиент" width="300" height="225"></p><p>&nbsp;</p><p>Предположим, вы хотите получить градиент сверху вниз. Когда вы создаёте градиентный объект, оставьте значения x (первый и третий параметры) постоянными и сделайте значения y (второй и четвертый параметры) в диапазоне от 0 до высоты холста.</p><p class="exampleTitle"> Значения x равны 0, значения y меняются</p>
+<pre><code data-language="javascript">var my_gradient = context.createLinearGradient(<mark>0, 0, 0, 225</mark>);
+my_gradient.addColorStop(0, &quot;black&quot;);
+my_gradient.addColorStop(1, &quot;white&quot;);
+context.fillStyle = my_gradient;
+context.fillRect(0, 0, 300, 225);</code></pre>
+<p>И вот результат:</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas13.png" alt="Градиент" width="300" height="225"></p><p>&nbsp;</p><p>Вы также можете сделать градиент по диагонали.</p><p class="exampleTitle">Оба значения x и y меняются</p>
+<pre><code data-language="javascript">var my_gradient = context.createLinearGradient(<mark>0, 0, 300, 225</mark>);
+my_gradient.addColorStop(0, &quot;black&quot;);
+my_gradient.addColorStop(1, &quot;white&quot;);
+context.fillStyle = my_gradient;
+context.fillRect(0, 0, 300, 225);</code></pre>
+<p>Вот результат:</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas14.png" alt="Градиент" width="300" height="225"></p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Изображения</h2><table class="data browser"><caption> Поддержка &lt;canvas&gt;</caption><tr class="br"><td><span class="ie">IE</span></td><td><span class="fx">Firefox</span></td><td><span class="sa">Safari</span></td><td><span class="cr">Chrome</span></td><td><span class="op">Opera</span></td><td><span class="ip">iPhone</span></td><td><span class="an">Android</span></td></tr><tr><td>7.0+</td><td>3.0+</td><td>3.0+</td><td>3.0+</td><td>10.0+</td><td>1.0+</td><td>1.0+</td></tr></table><p style="margin-left: 5%">* Internet Explorer поддерживает только с библиотекой <a href="http://code.google.com/p/explorercanvas/" class="ext">explorercanvas</a>. Internet Explorer 9 поддерживает изображения в <span class="tag">&lt;canvas&gt;</span>.</p><p>Контекст рисования холста определяет метод <span class="var">drawImage()</span> для вывода изображений. Этот метод может иметь три, пять или девять аргументов.</p><ul><li><span class="var">drawImage(image, dx, dy)</span> принимает изображение и выводит его на холсте. Заданные координаты (dx, dy) соответствуют левому верхнему углу изображения, координаты (0, 0) выводят изображения в левом верхнем углу холста.</li><li><span class="var">drawImage(image, dx, dy, dw, dh)</span> принимает изображение, масштабирует его до ширины dw и высоты dh и выводит в точке с координатами (dx, dy).</li><li><span class="var">drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)</span> принимает изображение, обрезает его до прямоугольника (sx, sy, sw, sh), масштабирует до размеров (dw, dh) и выводит в точке с координатами (dx, dy).</li></ul><p>Спецификация HTML5 поясняет параметры <span class="var">drawImage()</span>:</p><blockquote><p>Исходный прямоугольник — это прямоугольник (в пределах исходного изображения), у которого углы это четыре точки (sx, sy), (sx+sw, sy), (sx+sw, sy+sh), (sx, sy+sh).</p><p>Прямоугольник назначения это прямоугольник (в холсте), у которого углы это четыре точки (dx, dy), (dx+dw, dy), (dx+dw, dy+dh), (dx, dy+dh).</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas15.png" alt="" width="327" height="330"></p></blockquote><p>Чтобы нарисовать изображение на холсте, у вас должно быть изображение. Это может быть существующий элемент <span class="tag">&lt;img&gt;</span> или вы можете создать объект <span class="var">Image()</span> через JavaScript. В любом случае вы должны убедиться, что изображение полностью загружено, прежде чем его можно нарисовать на холсте.</p><p> Если вы используете существующий элемент <span class="tag">&lt;img&gt;</span>, то можете смело нарисовать его на холсте через событие <span class="var">window.onload</span>.</p><p class="exampleTitle">Использование &lt;img&gt;</p>
+<pre><code data-language="html">&lt;img <mark>id=&quot;cat&quot;</mark> src=&quot;images/cat.png&quot; alt=&quot;Спящий кот&quot; width=&quot;177&quot; height=&quot;113&quot;&gt;
+&lt;canvas id=&quot;e&quot; width=&quot;177&quot; height=&quot;113&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  <mark>window.onload</mark> = function() {
+    var canvas = document.getElementById(&quot;e&quot;);
+    var context = canvas.getContext(&quot;2d&quot;);
+    var cat = document.getElementById(&quot;cat&quot;);
+    <mark>context.drawImage(cat, 0, 0);</mark>
+  };
+&lt;/script&gt;</code></pre>
+<p>Если вы создаёте объект полностью на JavaScript, то можете спокойно нарисовать изображение на холсте во время события <span class="var">Image.onload</span>.</p><p class="exampleTitle">Использование объекта Image()</p>
+<pre><code data-language="html">&lt;canvas id=&quot;e&quot; width=&quot;177&quot; height=&quot;113&quot;&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  var canvas = document.getElementById(&quot;e&quot;);
+  var context = canvas.getContext(&quot;2d&quot;);
+  var cat = <mark>new Image()</mark>;
+  cat.src = &quot;images/cat.png&quot;;
+  <mark>cat.onload</mark> = function() {
+    context.drawImage(cat, 0, 0);
+  };
+&lt;/script&gt;</code></pre>
+<p>Необязательные третий и четвертый параметры в методе <span class="var">drawImage()</span> управляют масштабом изображения. То же самое изображение масштабировано до половины его ширины и высоты и повторяется с разными координатами в пределах одного холста.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas16.png" alt="«многокошечный» эффек" width="500" height="375"></p><p>Вот скрипт который производит «многокошачий» эффект.</p>
+<pre><code data-language="javascript">cat.onload = function() {
+  for (var x = 0, y = 0;
+    x &lt; 500 &amp;&amp; y &lt; 375;
+    x += 50, y += 37) {
+    context.drawImage(cat, x, y, <mark>88, 56</mark>);
+  }
+};</code></pre>
+<p>Все эти усилия вызывает законный вопрос: почему вы хотите рисовать изображение в первую очередь на холсте? Что дают дополнительные сложности при выводе изображения на холсте по сравнению с элементом <span class="tag">&lt;img&gt;</span> или некоторыми правилами CSS? Даже «многокошачий» эффект может быть сделан с десятью перекрывающимися элементами <span class="tag">&lt;img&gt;</span>.</p><p>Простой ответ в том, что вы также можете нарисовать текст на холсте. График координат включает текст, линии и формы. Более сложные диаграммы легко могут использовать <span class="var">drawImage()</span> для включения иконок, спрайтов или других графических элементов.</p><h2>Что насчёт IE?</h2><p>Microsoft Internet Explorer до версии 9.0 не поддерживает Canvas API (IE9 <a href="http://msdn.microsoft.com/en-us/ie/ff468705.aspx#_HTML5_canvas">полностью поддерживает Canvas API</a>). Тем не менее, старые версии Internet Explorer поддерживает фирменную технологию Майкрософт, называемую VML, которая может делать многие из тех же вещей, что и элемент <span class="tag">&lt;canvas&gt;</span>. Так и родился excanvas.js.</p><p><a href="http://code.google.com/p/explorercanvas/" class="ext">Explorercanvas</a> (excanvas.js) является JavaScript-библиотекой с открытым исходным кодом, которая реализует API Canvas в Internet Explorer. Чтобы её использовать, включите следующий <span class="tag">&lt;script&gt;</span> в верхнюю часть страницы.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Dive Into HTML5&lt;/title&gt;
+    &lt;!--[if IE]&gt;
+      &lt;script src=&quot;excanvas.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Фрагмент <span class="var">&lt;!--[if lt IE 9]&gt;</span> и <span class="var">&lt;![endif]--&gt;</span> это <a href="http://msdn.microsoft.com/en-us/library/ms537512(VS.85).aspx">условные комментарии</a>. Internet Explorer интерпретирует их следующим образом: «если текущий браузер это Internet Explorer до версии 9 (но не включая её), тогда выполнить этот блок». Любой другой браузер будет рассматривать весь блок как комментарий HTML. Конечным результатом является то, что Internet Explorer скачает скрипт excanvas.js и выполнит его, а другие браузеры будут игнорировать скрипт вообще (не будут его скачивать, выполнять или ещё что-нибудь делать). Это делает ваши страницы загружаемыми быстрее в тех браузерах, которые поддерживают Canvas API изначально.</p><p>Как только вы включите excanvas.js в <span class="tag">&lt;head&gt;</span> вашей страницы, вам не нужно ничего делать для настройки Internet Explorer. Просто включите элементы <span class="tag">&lt;canvas&gt;</span> в разметку или создайте их динамически через JavaScript. Следуйте инструкциям в этой главе, чтобы отобразить контекст  элемента <span class="tag">&lt;canvas&gt;</span>, и вы можете рисовать фигуры, текст и картинки.</p><p> Ну..., не совсем. Есть несколько ограничений.</p><ol><li>Градиенты могут быть только линейными, <a href="https://developer.mozilla.org/En/Canvas_tutorial/Applying_styles_and_colors#A_createRadialGradient_example">радиальные градиенты</a> не поддерживаются.</li><li>Картинки должны повторяться в обоих направлениях.</li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#clipping-region">Области кадрирования</a> не поддерживаются.</li><li>Непропорциональное <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html#dom-context-2d-scale">масштабирование</a> работает некорректно с контурами.</li><li>Это медленно. Это не должно вызвать шок у кого-либо, так как анализатор JavaScript в Internet Explorer с самого начала медленнее, чем в других браузерах. Как только вы начинаете рисовать сложные составные фигуры с помощью JavaScript-библиотеки, которая переводит команды в полностью другие технологии, всё начинает увязать в трясине. Вы не заметите снижение производительности на простых примерах вроде рисунка с несколькими линиями и преобразованием изображения, но увидите его сразу, как только начнёте делать анимацию на холсте и другие сумасшедшие штуки.</li></ol><p>Существует ещё одно предостережение об использовании excanvas.js и это проблема с которой я столкнулся при создании примеров в этой главе. ExplorerCanvas инициализирует собственный интерфейс лжехолста автоматически, когда вы включаете скрипт excanvas.js в вашу HTML-страницу. Но это не означает, что Internet Explorer готов к использованию сразу же. В определённых ситуациях вы можете получить состояние, когда интерфейс лжехолста готов к использованию, но не совсем. Основным симптомом этого состояния является то, что Internet Explorer будет жаловаться всякий раз, что «объект не поддерживает это свойство или метод», когда вы попытаетесь сделать что-нибудь с элементом <span class="tag">&lt;canvas&gt;</span>, подобно получению контекста рисования.</p><p>Самое простое решение данной проблемы это отложить все манипуляции с холстом, пока не сработает событие <span class="attribute">onload</span>. Это может занять какое-то время&nbsp;— если ваша страница содержит много изображений или видео, они приведут к задержке события <span class="attribute">onload</span>, но это даст ExplorerCanvas время для работы над своей магией.</p><h2>Заключение, живой пример</h2><p>Уголки это многовековая настольная игра с множеством разных вариантов. В этом примере я создал версию для одного игрока с девятью фишками и полем 9х9. В начале игры фишки заполняют поле 3х3 в левом нижнем углу доски. Цель игры в том, чтобы переместить все фишки в поле 3х3 в правый верхний угол доски за наименьшее число ходов.</p><p>В Уголках существует два типа правильных перемещений.</p><ul><li>Взять фишку и переместить её на любую соседнюю пустую клетку&nbsp;— это одна из клеток, в которой нет фишек. Соседняя клетка это непосредственно север, юг, восток, запад, северо-запад, северо-восток, юго-запад или юго-восток от текущей позиции фишки. Доска не может поворачиваться. Если фишка находится в самом левом столбце, она не может двигаться на запад, северо-запад или юго-запад. Если фишка находится в самой нижней линии, она не может двигаться на юг, юго-восток или юго-запад.</li><li>Взять фишку и перепрыгнуть через соседнюю фишку, также возможно повторить. Т.&nbsp;е. вы перепрыгиваете через соседнюю фишку, затем перепрыгиваете через другую ближайшую фишку в новую позицию, что считается одним ходом. Так как целью является сведение к минимуму общего числа ходов, правильная стратегия в Уголках включает в себя продумывание, а затем использование длинных цепочек чередующихся фишек так, чтобы другие фишки могли долго перепрыгивать через них.</li></ul><p>Вот <a href="https://webref.ru/example/halma/">сама игра</a>.</p><p class="fig"><img src="../../assets/images/diveintohtml5/canvas17.png" width="451" height="451" alt="Игра Уголки"></p><p>Как это работает? Я рад, что вы спросили. Не буду показывать весь код, вы можете посмотреть его целиком по <a href="https://webref.ru/example/halma/js/halma.js">этому адресу</a>. Я пропущу большую часть кода самой игры, но хочу выделить несколько фрагментов кода, которые на деле занимаются рисованием на холсте и отвечают на щелчки мыши по нему.</p><p> Во время загрузки страницы мы инициализируем игру, установив размеры самого <span class="tag">&lt;canvas&gt;</span> и сохраняя указатель на его контекст рисования.</p>
+<pre><code data-language="javascript">gCanvasElement.width = kPixelWidth;
+gCanvasElement.height = kPixelHeight;
+gDrawingContext = gCanvasElement.getContext(&quot;2d&quot;);</code></pre>
+<p>Затем мы делаем то, что вы ещё не видели: добавим отслеживание события щелчка для элемента <span class="tag">&lt;canvas&gt;</span>.</p>
+<pre><code data-language="javascript">gCanvasElement.<mark>addEventListener</mark>(<mark>&quot;click&quot;</mark>, halmaOnClick, false);</code></pre>
+<p>Функция <span class="var">halmaOnClick()</span> вызывается, когда пользователь щёлкает где-нибудь внутри холста. Его аргумент это объект <span class="var">MouseEvent</span>, который содержит информацию о том, где пользователь щёлкал.</p>
+<pre><code data-language="javascript">function halmaOnClick(e) {
+  var cell = <mark>getCursorPosition(e)</mark>;
+  // Остальное это просто логика игры
+  for (var i = 0; i &lt; gNumPieces; i++) {
+    if ((gPieces[i].row == cell.row) &amp;&amp; 
+        (gPieces[i].column == cell.column)) {
+        clickOnPiece(i);
+        return;
+    }
+  }
+  clickOnEmptyCell(cell);
+}</code></pre>
+<p>Следующий шаг это получить объект <span class="var">MouseEvent</span> и рассчитать, по какой клетке на доске игры только что щёлкнули. Доска Уголков занимает весь холст, поэтому каждый щелчок происходит в пределах доски. Нам просто нужно выяснить, где. Это сложно, потому что события мыши осуществляется по-разному почти во всех браузерах.</p>
+<pre><code data-language="javascript">function getCursorPosition(e) {
+  var x;
+  var y;
+  if (e.pageX != undefined &amp;&amp; e.pageY != undefined) {
+    x = e.pageX;
+    y = e.pageY;
+  }
+  else {
+    x = e.clientX + document.body.scrollLeft +
+    document.documentElement.scrollLeft;
+    y = e.clientY + document.body.scrollTop +
+    document.documentElement.scrollTop;
+  }</code></pre>
+<p>На данный момент у нас есть координаты x и y по отношению к документу (т.&nbsp;е., всей HTML-страницы). Это не совсем полезно. Мы хотим координаты относительно холста.</p>
+<pre><code data-language="javascript">x -= gCanvasElement.offsetLeft;
+y -= gCanvasElement.offsetTop;</code></pre>
+<p>Теперь у нас есть координаты x и y, которые относятся к холсту. То есть, если в этой точке х это 0 и у это 0, мы знаем, что пользователь просто щёлкнул на левый верхний пиксель холста.</p><p>Отсюда мы можем рассчитать, по какой клетке пользователь щёлкнул, а затем действовать соответственно.</p>
+<pre><code data-language="javascript">  var cell = new Cell(Math.floor(y/kPieceHeight),
+                      Math.floor(x/kPieceWidth));
+  return cell;
+}</code></pre>
+<p>Вот так так! События мыши трудны. Но вы можете использовать ту же логику во всех ваших собственных приложениях с холстом. Помните: щелчок мыши&nbsp;→ координаты относительно документа&nbsp;→ координаты относительно холста&nbsp;→ код конкретного приложения.</p><p>Хорошо, давайте посмотрим на основные типовые задачи рисования. Потому что графика это так просто, что я решил очищать и перерисовывать доску в полном объеме каждый раз, когда что-нибудь изменяется в игре. Это не является строго обязательным. Контекст рисования холста будет сохранять всё, что вы ранее нарисовали на нём, даже если пользователь прокручивает холст за пределы видимости или выбирает другую вкладку, а затем возвращается позже назад. Если вы разрабатываете приложение с более сложной графикой (например, аркадные игры), вы можете оптимизировать производительность путем отслеживания тех регионов холста, которые «загрязнились» и перерисовывать только их. Но это выходит за рамки данной книги.</p>
+<pre><code data-language="javascript">gDrawingContext.<mark>beginPath()</mark>;
+  /* вертикальные линии */
+  for (var x = 0; x &lt;= kPixelWidth; x += kPieceWidth) {
+    gDrawingContext.<mark>moveTo</mark>(0.5 + x, 0);
+    gDrawingContext.<mark>lineTo</mark>(0.5 + x, kPixelHeight);
+  }
+
+  /* горизонтальные линии */
+  for (var y = 0; y &lt;= kPixelHeight; y += kPieceHeight) {
+    gDrawingContext.<mark>moveTo</mark>(0, 0.5 + y);
+    gDrawingContext.<mark>lineTo</mark>(kPixelWidth, 0.5 +  y);
+  }
+  /* рисуем их! */
+  gDrawingContext.<mark>strokeStyle</mark> = &quot;#ccc&quot;;
+  gDrawingContext.<mark>stroke()</mark>;</code></pre>
+<p>Самое интересное начинается тогда, когда мы идём рисовать каждую фишку отдельно. Фишка представляет собой окружность, которую мы прежде не рисовали. Кроме того, если пользователь выберет фишку в ожидании перемещения, мы хотим нарисовать фишку как заполненную окружность. Здесь аргумент <span class="value">p</span> соответствует фишке, которая имеет свойства строки и столбца, обозначающих текущее местоположение фишки на доске. Мы используем некоторые игровые константы (столбец, строка) и переводим их в относительные координаты холста (х, у), затем рисуем окружность, а затем (если фишка выбрана) заполняем окружность цветом.</p>
+<pre><code data-language="javascript">function drawPiece(p, selected) {
+  var column = p.column;
+  var row = p.row;
+  var <mark>x</mark> = (column * kPieceWidth) + (kPieceWidth/2);
+  var <mark>y</mark> = (row * kPieceHeight) + (kPieceHeight/2);
+  var radius = (kPieceWidth/2) - (kPieceWidth/10);</code></pre>
+<p>Вот и вся специфичная игровая логика. Теперь у нас есть координаты (х, у) относительно холста для получения центра окружности, которую мы хотим нарисовать. В API Canvas нет метода<span class="var"> circle()</span>, но есть метод <span class="var">arc()</span>. И действительно, что есть окружность, как не замкнутая дуга? Помните основы геометрии? Метод <span class="var">arc()</span> задаёт центральную точку (х, у), радиус, начальный и конечный угол (в радианах) и флаг направления (<span class="value">false</span> по часовой стрелке, <span class="value">true</span> против часовой стрелки). Вы можете использовать модуль <span class="var">Math</span> встроенный в JavaScript для расчёта радиан.</p>
+<pre><code data-language="javascript">gDrawingContext.beginPath();
+gDrawingContext.<mark>arc</mark>(x, y, radius, 0, <mark>Math.PI * 2</mark>, false);
+gDrawingContext.closePath();</code></pre>
+<p>Но подождите! Ничего ещё не нарисовано. Метод <span class="var">arc()</span> подобен <span class="var">moveTo()</span> и <span class="var">lineTo()</span> и относится к «карандашным» методам. Чтобы действительно нарисовать окружность, мы должны установить <span class="var">strokeStyle</span> и вызвать метод <span class="var">stroke()</span> для обводки «чернилами».</p>
+<pre><code data-language="javascript">gDrawingContext.<mark>strokeStyle</mark> = &quot;#000&quot;;
+gDrawingContext.<mark>stroke()</mark>;</code></pre>
+<p>Что если фишка выбрана? Мы можем повторно использовать тот же созданный контур, чтобы нарисовать границу фишки и заполнить окружность цветом.</p>
+<pre><code data-language="javascript">if (selected) {
+  gDrawingContext.<mark>strokeStyle</mark> = &quot;#000&quot;;
+  gDrawingContext.<mark>fill()</mark>;
+}</code></pre>
+<p>Вот теперь всё значительно лучше. Остальная часть программы это игровая логика&nbsp;— различия между правильными и неверными движениями, отслеживание количества ходов, определение, закончилась ли игра. С девятью окружностями, несколькими линиями и одним обработчиком <span class="attribute">onclick</span> мы создали всю игру на <span class="tag">&lt;canvas&gt;</span>. Ура!</p><h2>Дальнейшее чтение</h2><ul><li><a href="http://developer.mozilla.org/ru/docs/Web/Guide/HTML/Canvas_tutorial" hreflang="ru">Руководство по Canvas</a> в Mozilla Developer Center</li><li><a href="http://dev.opera.com/articles/view/html-5-canvas-the-basics/" hreflang="en">HTML5 canvas — the basics</a></li><li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html" hreflang="en">The canvas element</a> в черновике стандарта HTML5</li><li><a href="http://msdn.microsoft.com/en-us/ie/ff468705.aspx#_HTML5_canvas" hreflang="en">Internet Explorer 9 Guide for Developers: HTML5 canvas element</a></li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/canvas">Canvas</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Марк Пилгрим</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 18.08.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/diveintohtml5/semantics'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/diveintohtml5/video'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="semantics.html" title="На предыдущую страницу">Что всё это значит?</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="video.html" title="На следующую страницу">Видео на сайте</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Пять вещей, которые надо знать об HTML5</a></li><li class="leaf"><a href="past.html">Довольно предвзятая история HTML5</a></li><li class="leaf"><a href="detect.html">Проверка технологий HTML5</a></li><li class="leaf"><a href="semantics.html">Что всё это значит?</a></li><li class="leaf active-trail"><a href="canvas.html" class="active-trail active">Давайте порисуем</a></li><li class="leaf"><a href="video.html">Видео на сайте</a></li><li class="leaf"><a href="geolocation.html">Вы здесь</a></li><li class="leaf"><a href="storage.html">Локальное хранилище</a></li><li class="leaf"><a href="offline.html">Возьмём с собой</a></li><li class="leaf"><a href="forms.html">Сумасшедшие формы</a></li><li class="leaf"><a href="extensibility.html">Микроданные</a></li><li class="last leaf"><a href="history.html">Управление историей для пользы и развлечения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-df41aff56829e17a9d226148a51a1118"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="canvas.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

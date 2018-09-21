@@ -1,0 +1,356 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'> 
+		<meta name='viewport' content="width=device-width,inital-scale=1.0">
+
+		<link rel='stylesheet' href='../../list-ul.css' media='all'>
+		<link rel='icon' href='icon.jpg' media='all'>
+		<title>Список тегов на  html5</title>
+		
+		<script src='jq/jquery.js'></script>
+		<script src='jq/jquery-ui.min.js'></script>
+		<script src='jq/my_script.js'></script>
+	</head>
+	<body class='html'>
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='Deselect'>Отменить выделение элементов. [на css3]</h1>
+			
+			<div class='Syntax'>
+				<h3>Свойства</h3><br>
+				<p>-webkit-user-select</p>
+			</div>
+			
+			<div class='Syntax Values'>
+				<h3>Значения</h3><br>
+				<p><span>auto</span> : Пользователь может выделить элемент.</p>
+				<p><span>none</span> : Пользователю запрещено выделять элемент.</p>
+				<p><span>text</span> : Пользователь может выделить текст в элементе.</p> 
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+					body { -webkit-user-select: none; }
+					<br><br>.enable { -webkit-user-select: text; }
+				
+			</div>
+			 
+		</div> <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='menu-active'>Подсветка активного пункта меню [на jQuery]</h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+						Когда создаём любое меню. и делаем для нево все 
+						необходимое и стили. <br>
+						и начинаем мисать скрипт на jq<br>
+						<br><br>
+						Сначало указываем путь какому элементу будит применятца этат скрипт <br>
+						к примеру $(".button a")<br>
+						дальше приписоваем Обработчик событии <br>
+						к примеру .click();<br>
+						дальше вписуем вскопках функцию <br>
+						к примеру (function(){});<br>
+						и пишим ищёрас путь к нашему меню <br>
+						к примеру $(".button a")<br>
+						патом даписуем клас каторый будеть удалятца сменю<br>
+						к примеру .removeClass("active");<br>
+						дальше пишем снова путь к нашей меню Внимания пишем это так<br>
+						$(this)<br>
+						ативерь нам нужно добавить класс каторый будет я влятс активным при крике на меню<br>
+						.addClass("active");
+					</p>
+				
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+					$(".menu a").click(function(){<br><br>
+						$(".menu a").removeClass("active");<br><br>
+						$(this).addClass("active");<br><br>
+					}); }
+				
+			</div>
+			 
+		</div>
+		
+		
+		 <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='parallax-1'>Легкий параллакс  [на jQuery]</h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+
+					параллакс (parallax) эффект с помощью jQuery без использования плагинов.
+					
+					</p>
+				
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+					$(window).scroll(function(){ <br> <br>
+						var st = $(this).scrollTop();  <br> <br>
+						$(".header_text").css({ <br> <br>
+						"transform" : "translate(0%, +" + st /5 + "%"  <br> <br>
+						}); <br> <br>
+	
+					});  <br> <br>
+					
+					
+		&lt;section class='sect_1'&gt; <br> <br>
+			&lt;div class='header_text'&gt; <br> <br>
+				header_text <br> <br>
+			&lt;/div&gt; <br> <br>
+		&lt;/section&gt;	 <br> <br>
+		&lt;section class='sect_2'&gt; <br> <br>
+			&lt;h2&gt;Links&lt;/h2&gt; <br> <br>
+			&lt;ul id='links'&gt; <br> <br>
+			&lt;/ul&gt; <br> <br>
+		&lt;/section&gt;					
+					
+				
+			</div>
+			 
+		</div>
+		
+				 <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='drop-down_menu-1'>Выпадающее меню  [на jQuery]</h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+
+					выпадающее меню
+					
+					</p>
+				
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+	  $(window).scroll(function(){  <br>  <br>
+		var tuScroll = $(this).scrollTop();   <br>  <br>
+			console.log(tuScroll);  <br>  <br>
+			if(tuScroll <= 600){ 	  <br>  <br>
+				$(".g_linear2").removeClass("img");   <br>  <br>
+				$(".g_linear2").addClass("imgz"); 	  <br>  <br>
+			}else if(tuScroll => 600){					  <br>  <br>
+				$(".g_linear2").removeClass("imgz");	  <br>  <br>
+				$(".g_linear2").addClass("img");		  <br>  <br>
+			}				  <br>  <br>
+		});					  <br>  <br>
+					
+				
+			</div>
+			 
+		</div>
+		
+				 <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='silkily'>Якорные ссылки с анимации Скролла прокрутки  [на jQuery]</h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+
+					Якорные ссылки с анимации
+					
+					</p>
+				
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+$(document).ready(function(){ <br><br>
+	$('a[href^="#"]').on('click',function (e) { <br><br>
+	    e.preventDefault(); <br><br>
+<br><br>
+	    var target = this.hash, <br><br>
+	    $target = $(target); <br><br>
+ <br><br>
+	    $('html, body').stop().animate({ <br><br>
+	        'scrollTop': $target.offset().top  
+	    }, 900, 'swing', function () {  <br><br>
+	        window.location.hash = target; <br><br>
+	    }); <br><br>
+	}); <br><br>
+}); <br><br>
+					
+				
+			</div>
+			 
+		</div>
+		
+		
+		
+				 <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='Ie'>Для подключения IE браузеров  </h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+
+					Для подключения IE браузеров ставится внутри head
+					
+					</p>
+				
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+&#60;!--[if IE]&#62; <br><br>
+&#60;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&#62;&#60;/script&#62;<br><br>
+&#60;![endif]--&#62; 		 <br><br>		
+&#60;!--[if IE]&#62; <br><br>
+ <br><br>
+&#60;![endif]--&#62; 
+ 
+					
+				
+			</div>
+			 
+		</div>
+				 <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='regex'>Регулярное выражение [на jQuery]  </h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+
+					Регулярные выражения позволяют производить гибкий 
+					поиск слов и выражений в текстах с целью их удаления, извлечения или замены.
+					
+					</p>
+				
+			</div>
+			
+			
+			
+			<div class='Syntax Values'>
+				<h3>Значения Метод</h3><br>
+				<p><span>search()</span>  : Возвращает нам позицию найденова совпадения</p> 
+				<p><span>match()</span> : Возвращает нам само совпадения</p>
+				<p><span>find(".test")</span> : </p>
+				<p><span>replace()</span> : Который умеет находить и заменять</p>
+				<p><span>exec()</span> : С помощью метода exec() Вы можете производить поиск
+											желаемого значения. Метод возвращает найденное значение.</p>
+				<p><span>write()</span> : _ _ _?</p> 
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+
+ 
+					
+				
+			</div>
+			 
+		</div>
+				 <br></br> <br></br>
+		
+		<div class='info'>
+			 
+			<h1 class='info-h1' id='Event'>Событие всех функций   [на jQuery]  </h1>
+			
+			
+			<div class='Syntax Example'>
+				<h3>Описания примера</h3><br>
+				
+					<p style='line-height: 1.5;'>
+
+					Регулярные выражения позволяют производить гибкий 
+					поиск слов и выражений в текстах с целью их удаления, извлечения или замены.
+					
+					</p>
+				
+			</div>
+			
+			
+			
+			<div class='Syntax Values'>
+				<h3>Значения Событие</h3><br>
+				<p><span>resize()</span>  : Устанавливает обработчик изменения размеров окна браузера, либо, запускает это событие.</p> 
+				<p><span>each()</span> : </p>
+				<p><span>parent()</span> : </p>
+				<p><span>parents()</span> : </p>
+				<p><span>()</span> : _ _ _?</p> 
+			</div>
+			
+			<div class='Syntax Example'>
+				<h3>Пример</h3><br>
+				
+Пока пусто 
+					
+				
+			</div>
+			 
+		</div>
+
+	</body>
+</html>
+
+
+<style>
+	.Example{ 
+	}
+	.Values p span{  
+		font-size: 150%;
+		color: red;
+	}
+
+	.Values{ 
+	}
+	.Syntax{
+		background-color: #eef;
+		margin-top: 20px;
+		padding: 10px; 
+	}
+	.info-h1{
+		text-align: center;
+		font-weight: 500;
+	}
+	.info{
+		padding: 20px;
+		background-color: #fff;
+	}
+
+</style>

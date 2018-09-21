@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анимация | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../canvasdeepdive.html" />
+<link rel="next" href="chapter05.html" />
+<link rel="prev" href="chapter03.html" />
+<meta name="description" content="Теперь, когда мы знаем, как нарисовать много интересных штук, давайте оживим их. Первое, что нужно знать об анимации — это просто рисование одного и того же снова и снова. Когда вы вызываете функцию рисования, то она сразу же добавляет что-то на экран. Если вы хотите анимировать это, просто подождите несколько миллисекунд и нарисуйте это заново. Конечно, вы не хотите сидеть в ожидании пока цикл не прервётся браузером. Вместо этого вы должны нарисовать что-то, затем попросить браузер вызвать это снова через несколько миллисекунд. Самый простой способ сделать это — с помощью функции JavaScript setInterval(). Она будет вызывать вашу функцию рисования каждые N мс." />
+<link rel="canonical" href="chapter04.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Анимация</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../canvasdeepdive.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Глубокое погружение в Canvas</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Анимация</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block">
+<script src="../../sites/all/themes/ori/js/vendor/jquery.js"></script>
+<h2>Анимация через requestAnimationFrame</h2><p>Теперь, когда мы знаем, как нарисовать много интересных штук, давайте оживим их. Первое, что нужно знать об анимации&nbsp;— это просто рисование одного и того же снова и снова. Когда вы вызываете функцию рисования, то она сразу же добавляет что-то на экран. Если вы хотите анимировать это, просто подождите несколько миллисекунд и нарисуйте это заново. Конечно, вы не хотите сидеть в ожидании пока цикл не прервётся браузером. Вместо этого вы должны нарисовать что-то, затем попросить браузер вызвать это снова через несколько миллисекунд. Самый простой способ сделать это&nbsp;— с помощью функции JavaScript <span class="var">setInterval()</span>. Она будет вызывать вашу функцию рисования каждые N&nbsp;мс.</p><p>Однако в реальности мы никогда не должны использовать <span class="var">setInterval</span>. <span class="var">setInterval</span> всегда будет рисовать с одной скоростью, независимо от того, какой у пользователя компьютер, что делает пользователь и активна ли текущая страница. Короче говоря, это работает, но не эффективно. Вместо этого мы должны использовать новый API <span class="var">requestAnimationFrame</span>.</p><p><span class="var">requestAnimationFrame</span> был создан, чтобы сделать анимацию плавной и эффективной в плане затрат. Вы вызываете её с указателем на свою функцию рисования. В какой-то момент в будущем браузер вызовет вашу функцию рисования, когда браузер окажется готов. Это даёт браузеру полный контроль над рисованием, так что он может снизить частоту кадров при необходимости. Браузер также может сделать анимацию более плавной, зафиксировав частоту обновления экрана на 60 кадрах в сек. Чтобы зациклить анимацию просто вызовите <span class="var">requestAnimationFrame</span> рекурсивно в начале.</p><p><span class="var">requestAnimationFrame</span> становится стандартом, но большинство браузеров поддерживает только свои собственные версии с префиксом. Например, Chrome использует <span class="var">webkitRequestAnimationFrame</span>, а Mozilla поддерживает <span class="var">mozRequestAnimationFrame</span>. Чтобы исправить это, мы воспользуемся <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">скриптом Пола Ириша</a>. Он просто соединяет разные варианты в новой функции: <span class="var">requestAnimFrame</span>.</p>
+<pre><code data-language="javascript">// setTimeout в качестве запасного варианта
+window.requestAnimFrame = (function(){ 
+  return  window.requestAnimationFrame       || 
+          window.webkitRequestAnimationFrame || 
+          window.mozRequestAnimationFrame    || 
+          window.oRequestAnimationFrame      || 
+          window.msRequestAnimationFrame     || 
+          function( callback ){ 
+            window.setTimeout(callback, 1000 / 60); 
+          }; 
+})();</code></pre>
+<p>Попробуем простой пример, в котором мы анимируем прямоугольник на экране.</p><p class="fig"><a href="https://webref.ru/example/canvas/setinterval1.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/setinterval1.png" alt="Базовая анимация прямоугольник с помощью requestAnimFrame"></a></p><p class="figsign">Базовая анимация прямоугольник с помощью requestAnimFrame (щёлкните для запуска)</p><h2> Очистка фона</h2><p>Теперь вы заметили проблему. Наша прямоугольник движется по экрану, обновляясь на пять пикселей через каждые 100 миллисекунд (или 10&nbsp;кадров в сек.), но старый прямоугольник остаётся. И выглядит так, что прямоугольник становится только длиннее и длиннее. Помните, что холст это просто набор пикселей. Если вы установите несколько пикселей, то они будут оставаться там до тех пор, пока не изменятся. Итак, давайте очистим холст в каждом кадре, прежде чем мы нарисуем прямоугольник.</p>
+<pre><code data-language="javascript">var x = 0; 
+function drawIt() { 
+  window.requestAnimFrame(drawIt); 
+  var canvas = document.getElementById('canvas'); 
+  var c = canvas.getContext('2d'); 
+  c.clearRect(0,0,canvas.width,canvas.height); 
+  c.fillStyle = &quot;red&quot;; 
+  c.fillRect(x,100,200,100); 
+  x+=5; 
+} 
+  
+window.requestAnimFrame(drawIt);</code></pre>
+<p class="fig"><a href="https://webref.ru/example/canvas/setinterval2.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/setinterval2.png" alt="Рисование прямоугольника через очистку фона"></a></p><p class="figsign">Рисование прямоугольника через очистку фона (щёлкните для запуска)</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Симулятор частиц</h2><p>Это всё, что на самом деле нужно для анимации. Рисовать что-то снова и снова. Попробуем нечто немного более сложное: симулятор частиц. Мы хотим, чтобы некоторые частицы падали вниз по экрану подобно снегу. Для этого мы реализуем классический алгоритм симулятора частиц:</p><p class="fig"><img src="../../assets/images/canvasdeepdive/particles.png" alt="Симулятор частиц"></p><p>Симулятор частиц содержит список зацикленных частиц. В каждом кадре положение всех частиц обновляется основываясь на некотором уравнении, при необходимости частицы уничтожаются/создаются на основе некоторого условия. Затем частицы рисуются. Вот простой пример снега.</p>
+<pre><code data-language="javascript">var canvas = document.getElementById('canvas'); 
+var particles = []; 
+function loop() { 
+  window.requestAnimFrame(loop); 
+  createParticles(); 
+  updateParticles(); 
+  killParticles(); 
+  drawParticles(); 
+} 
+window.requestAnimFrame(loop);</code></pre>
+<p>Вначале мы создаём основу симулятора частиц. Это функция цикла, которая вызывается каждые 30&nbsp;мс. Для структуры данных нам требуется пустой массив частиц и счётчик тактов. На каждой итерации цикла выполняется четыре части.</p>
+<pre><code data-language="javascript">function createParticles() { 
+  // добавляем частицу, если их меньше 100
+  if(particles.length &lt; 100) { 
+    particles.push({ 
+      x: Math.random()*canvas.width, // между 0 и шириной холста
+      y: 0, 
+      speed: 2+Math.random()*3, // между 2 и 5 
+      radius: 5+Math.random()*5, // между 5 и 10
+      color: &quot;white&quot;, 
+    }); 
+  } 
+}</code></pre>
+<p>Функция <span class="var">createParticles</span> проверяет, сколько у нас частиц. Если их меньше 100, то создаёт новую частицу. Обратите внимание, что проверка выполняется только каждые 10&nbsp;тактов. Это позволяет начать с пустого экрана, а затем постепенно наращивать число частиц, а не создавать все 100&nbsp;с самого начала. Вы можете настроить параметры в зависимости от желаемого эффекта. Я использую <span class="var">Math.random()</span> и другую арифметику чтобы убедиться, что снежинки располагаются в разных местах и не выглядят одинаковыми. Так снег становится более натуральным.</p>
+<pre><code data-language="javascript">function updateParticles() { 
+  for(var i in particles) { 
+    var part = particles[i]; 
+    part.y += part.speed; 
+  } 
+}</code></pre>
+<p>Функция <span class="var">updateParticles</span> довольно простая. Она обновляет координату каждой частицы, добавляя ей скорость. Это заставляет снежинку двигаться вниз по экрану.</p>
+<pre><code data-language="javascript">function killParticles() { 
+  for(var i in particles) { 
+    var part = particles[i]; 
+    if(part.y &gt; canvas.height) { 
+      part.y = 0; 
+    } 
+  } 
+}</code></pre>
+<p>Вот <span class="var">killParticles</span>. Она проверяет что частица находится ниже нижнего края холста. В некоторых симуляторах вы уничтожаете частицу и удаляете её из списка. Поскольку это приложение показывает непрерывный снег, то мы повторно задействуем частицу, установив её обратно в 0.</p>
+<pre><code data-language="javascript">function drawParticles() { 
+  var c = canvas.getContext('2d'); 
+  c.fillStyle = &quot;black&quot;; 
+  c.fillRect(0,0,canvas.width,canvas.height); 
+  for(var i in particles) { 
+    var part = particles[i]; 
+    c.beginPath(); 
+    c.arc(part.x,part.y, part.radius, 0, Math.PI*2); 
+    c.closePath(); 
+    c.fillStyle = part.color; 
+    c.fill(); 
+  } 
+}</code></pre>
+<p>Наконец рисуем частицы. Опять же это очень просто: очистите фон, нарисуйте круг с текущими координатами, радиусом и цветом частицы.</p><p>Теперь это выглядит так.</p><p class="fig"><a href="https://webref.ru/example/canvas/snowsim.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/snowsim.png" alt="Симулятор частиц для снега"></a></p><p class="figsign">Симулятор частиц для снега (щёлкните для запуска)</p><p>Вот за что я люблю симуляторы частиц, так это за то, что вы можете создать очень сложную и органичную, естественно выглядящую анимацию с довольно простой математикой, в сочетании с небольшой управляемой случайностью.</p><h2>Анимация спрайтов</h2><h3>Что такое спрайт?</h3><p>Заключительным основным видом анимации является анимация спрайта. Так что такое спрайт?</p><p>Спрайт — это маленькое изображение, которое вы можете быстро рисовать на экране. Обычно спрайт на деле вырезают из большого изображения, которое называется спрайт-лист или мастер-изображение. Такой лист может содержать несколько различных спрайтов, вроде разных персонажей игры. Спрайт-лист также может содержать один символ в разных положениях. В итоге это даёт вам разные кадры анимации. Это классический стиль анимации: просто пролистывать разные рисунки снова и снова.</p><h3>Зачем и когда использовать спрайты?</h3><p>Спрайты хороши для нескольких вещей.</p><ul><li>Во-первых, спрайт это изображение, которое, вероятно, рисуется быстрее, чем векторы, особенно сложные.</li><li>Во-вторых, спрайты чрезвычайно удобны, когда вам нужно рисовать одну штуку снова и снова. Например, в игре Space Invaders у вас есть куча пуль на экране, которые все выглядят одинаково. Гораздо быстрее загрузить спрайт пули один раз и рисовать его снова и снова.</li><li> В-третьих: спрайты быстро загружаются и рисуются как часть листа. Это позволяет загрузить единый файл для всего набора спрайтов гораздо быстрее, нежели полученную кучу отдельных изображений. Спрайты, как правило, также сжимаются лучше. Наконец, используется меньше памяти для хранения одного большого изображения, чем куча более мелких.</li><li>В конце концов, спрайты удобны для работы с анимацией, потому что получаются из таких инструментов рисования, как Фотошоп. Код просто листает изображения и его не волнует, что на картинке. Это значит, что ваш художник может легко обновить графику и анимацию, не касаясь кода.</li></ul><h3>Рисование спрайтов</h3><p>Спрайты легко нарисовать, используя функцию drawImage. Эта функция может рисовать и растягивать часть изображения путём указания разных исходных и конечных координат. К примеру, предположим, что у нас есть следующий спрайт-лист и мы просто хотим нарисовать пятый спрайт слева.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/sprite.png" alt="Спрайты" width="559" height="60"></p><p>Мы можем нарисовать только этот спрайт, указав координаты исходника:</p>
+<pre><code data-language="javascript">context.drawImage( 
+  img,        // изображение спрайт-листа
+  65,0,13,13, // исходные координаты (x,y,w,h)
+  0,0,13,13,  // конечные координаты (x,y,w,h)
+);</code></pre>
+<h3>Анимация спрайта</h3><p>Как вы можете видеть на полном спрайт-листе, на деле это разные кадры анимации одного объекта, так что теперь пролистаем разные спрайты, чтобы создать анимацию. Мы сделаем это, отслеживая текущий кадр с помощью счётчика тактов.</p>
+<pre><code data-language="javascript">var frame = tick % 10; 
+var x = frame * 13; 
+context.drawImage( 
+  img,        // изображение спрайт-листа
+  x,0,13,13,  // исходные координаты (x,y,w,h)
+  0,0,13,13,  // конечные координаты (x,y,w,h)
+); 
+tick++;</code></pre>
+<p>Каждый раз при обновлении экран мы вычисляем текущий кадр анимации глядя на счётчик тактов. Операция деления по модулю (%) на 10 означает зациклить кадр от 0 до 9 снова и снова. Затем вычисляется координата х в зависимости от количества кадров. После чего рисуется изображение и обновляется счётчик тактов. Конечно, это может происходить слишком быстро, так что вы можете делить такты по модулю на 2 или 3, чтобы анимация бежала медленнее.</p><p class="fig"><a href="https://webref.ru/example/canvas/spriteanim.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/spriteanim.png" alt="Симулятор частиц для снега"></a></p><p class="figsign">Анимация каждые 10 кадров для детализации (щёлкните для запуска)</p><p>В следующей главе мы создадим простую игру, в которой демонстрируется, как использовать базовую анимацию, анимацию спрайтов, события клавиатуры и простой симулятор частиц для взрывов.</p><div id="examplewrap"><iframe id="exampleframe" src="chapter04.html" scrolling="no"></iframe></div>
+<script class='bookscript'>
+$(".examplelink").click(function(e) {
+console.log("opening the big view " + this);
+e.preventDefault();
+$("#exampleframe").attr("src",$(this).attr("href"));
+$("#examplewrap").show();
+});
+$("#examplewrap").hide();
+$("#examplewrap").click(function(e) {
+console.log("hiding");
+e.preventDefault();
+$("#exampleframe").attr("src","");
+$("#examplewrap").hide();
+console.log("done hiding");
+});
+</script><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/animaciya">анимация</a></div><div class="field-item odd"><a href="https://webref.ru/metki/canvas">Canvas</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джош Мариначи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 28.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/canvasdeepdive/chapter03'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/canvasdeepdive/chapter05'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter03.html" title="На предыдущую страницу">Продвинутое рисование и события</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter05.html" title="На следующую страницу">Создание игры</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter01.html">Основы рисования</a></li><li class="leaf"><a href="chapter02.html">Практика: создание диаграмм</a></li><li class="leaf"><a href="chapter03.html">Продвинутое рисование и события</a></li><li class="leaf active-trail"><a href="chapter04.html" class="active-trail active">Анимация</a></li><li class="leaf"><a href="chapter05.html">Создание игры</a></li><li class="leaf"><a href="chapter06.html">Буферы пикселей и другие эффекты</a></li><li class="leaf"><a href="chapter07.html">3D-графика через WebGL и ThreeJS</a></li><li class="leaf"><a href="chapter08.html">WebGL-практикум с ThreeJS: 3D автомобиль</a></li><li class="leaf"><a href="chapter09.html">Введение в WebAudio</a></li><li class="leaf"><a href="chapter10.html">Доступ к веб-камере через getUserMedia()</a></li><li class="leaf"><a href="chapter11.html">Реальные примеры и инструменты</a></li><li class="last leaf"><a href="chapter12.html">Мобильные устройства и оптимизация производительности</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-fc92e3594f1341f16475ae02f9555c6f"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter04.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

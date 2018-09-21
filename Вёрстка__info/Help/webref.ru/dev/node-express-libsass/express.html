@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express, Node-фреймворк | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../node-express-libsass.html" />
+<link rel="next" href="grunt.html" />
+<link rel="prev" href="node-npm.html" />
+<meta name="description" content="Express является фреймворком для приложений Node.js. Express — это минималистичный и гибкий Node-фреймворк для веб-приложений, который предоставляет широкий набор функций для создания одной или множества страниц и гибридных веб-приложений. Для Express имеется богатый API и он ЧЕРТОВСКИ БЫСТРЫЙ!!!" />
+<link rel="canonical" href="express.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Express, Node-фреймворк</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../node-express-libsass.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Node, Express и libsass: проект с нуля</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Express, Node-фреймворк</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p><a href="http://expressjs.com">Express</a> является фреймворком для приложений Node.js.</p><blockquote>Express — это минималистичный и гибкий Node-фреймворк для веб-приложений, который предоставляет широкий набор функций для создания одной или множества страниц и гибридных веб-приложений.</blockquote><p>Для Express имеется богатый <a href="http://expressjs.com/4x/api.html">API</a> и он ЧЕРТОВСКИ БЫСТРЫЙ!!!</p><p>Express, как хорошо известно, развивается своим путём, в отличие от других фреймворков, во многом опирающихся на Rails, но также много позаимствовал из другого Ruby-фреймворка под названием Sinatra. Концепция простая: фреймворк предоставляет достаточно возможностей для запуска и работы «на лету», не требуя много времени на подготовку.</p><p>В этом руководстве мы будем использовать Express в качестве основного инструмента для получения веб-приложения и запуска его с сервером, поддержки маршрутов, страницы ошибок, ведение логов и т. д.</p><h2>Установка Express</h2><p>Установка Express с npm действительно простая. Имейте в виду, что в Express есть две части — это библиотека для его запуска и замечательный генератор приложения.</p><p>Установка Express:</p>
+<pre><code>$ npm install express -g</code></pre>
+<p>Установка генератора:</p>
+<pre><code>$ npm install express-generator -g</code></pre>
+<h2>Версия генератора</h2><p>Express 4.0 был выпущен недавно и есть те, кто с ним не дружат. В npm содержится способ указать определённую версию генератора для установки.</p>
+<pre><code>$ npm install -g express-generator@3</code></pre>
+<h2>Создание нового Express-приложения</h2><p>На данный момент вы должны быть готовы двинуться вперёд и создать приложение. В этом примере мы создадим приложение Node.js с фреймворком Express.</p>
+<pre><code>$ express &lt;ваше приложение&gt;</code></pre>
+<p>Выполнив эту команду (используя demo-app в качестве примера) вы должны увидеть следующее:</p>
+<pre><code>create : demo-app
+create : demo-app/package.json
+create : demo-app/app.js
+create : demo-app/public
+create : demo-app/public/javascripts
+create : demo-app/public/images
+create : demo-app/public/stylesheets
+create : demo-app/public/stylesheets/style.css
+create : demo-app/routes
+create : demo-app/routes/index.js
+create : demo-app/routes/users.js
+create : demo-app/views
+create : demo-app/views/index.jade
+create : demo-app/views/layout.jade
+create : demo-app/views/error.jade
+create : demo-app/bin
+create : demo-app/bin/www
+
+install dependencies:
+  $ cd demo-app &amp;&amp; npm install
+
+run the app:
+  $ DEBUG=my-application ./bin/www</code></pre>
+<p>БУМ! Express берёт на себя часть работы. Теперь мы делаем то, что сказали компьютеру — изменить текущую папку на папку приложения и запустить npm install.</p><h2>Что в этом приложении?</h2><p>В этот момент вы можете увидеть новую структуру приложения, которая была создана для вас.</p>
+<pre><code>app.js
+node_modules/ 
+public/   
+views/
+bin/    
+package.json  
+routes/</code></pre>
+<p><strong>app.js</strong></p><p>Это логичная отправная точка для вашего приложения. В ней есть несколько вещей, о которых стоит поговорить:</p><p>Следующие строки для этого типа приложения нам не понадобятся:</p>
+<pre><code>var user = require('./routes/user');
+app.get('/users', user.list);</code></pre>
+<p>Устанавите путь к папке, где хранятся файлы представления:</p>
+<pre><code>app.set('views', path.join(__dirname, 'views'));</code></pre>
+<p>Установите путь к папке со статичными ресурсами:</p>
+<pre><code>app.use(express.static(path.join(__dirname, 'public')));</code></pre>
+<p>Установите корневой маршрут для приложения:</p>
+<pre><code>app.use('/', routes);</code></pre>
+<p><strong>node_modules/</strong></p><p>Это папка, где будут находиться все ваши пакеты npm.</p><p><strong>public/</strong></p><p>Папка для всех статичных ресурсов, например, изображений, JavaScript, CSS, шрифтов и др.</p><p><strong>views/</strong></p><p>Здесь будут жить все ваши макеты и файлы представления Jade.</p><p><strong>bin/</strong></p><p>Здесь хранится единственный файл www и он активирует Node.</p><p><strong>package.json</strong></p><p>Описание проекта, менеджер скриптов и манифест приложения. Обратите внимание на следующий объект:</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;node ./bin/www&quot;
+},</code></pre>
+
+<p>Это код, который позволяет вам запускать npm start для приложения.</p><p><strong>routes/ </strong></p><p>Это папка, в которой вы будете строить маршруты REST для вашего приложения. После базовой установки здесь должны находиться два файла: index.js и users.js.</p><h2>Веселье с маршрутами</h2><p>Методы <span class="var">app.VERB()</span> обеспечивают функциональность маршрутизации в Express, где VERB является одним из методов HTTP, вроде <span class="var">app.post()</span>. Можно установить несколько функций обратного вызова, все они рассматриваются одинаково и ведут себя как промежуточное программное обеспечение, с одним исключением, что все эти функции могут вызывать <span class="var">next('route')</span> в обход оставшегося маршрута. Этот механизм может быть использован для выполнения предварительных условий для маршрута, затем передать управление в последующие маршруты, когда нет никаких причин для обработки совпадений маршрута.</p><p>Следующий фрагмент иллюстрирует возможно самое простое определение маршрута. Express переводит строку пути в регулярные выражения, используемые внутри для сравнения с входящими запросами. Строки запроса не учитываются при выполнении этих совпадений, например GET/ будет соответствовать следующему маршруту GET/?name=tobi.</p>
+<pre><code>app.VERB(path, [callback...], callback)</code></pre>
+<p>Давайте получим в настройках несколько маршрутов. В файле app.js следующая строка показывает, как они работают вместе:</p>
+<pre><code>var routes = require('./routes/index');</code></pre>
+<p>Что здесь происходит? В принципе, Express устанавливает переменную routes чтобы она затребовала путь и файл ./routes.index.</p><p>Эта переменная затем используется для установки корневого пути приложения:</p>
+<pre><code>app.use('/', routes);</code></pre>
+<p>Ещё одну вещь, которую мы можем сделать — это <span class="var">res.send()</span> и что мы сюда положим, то и будет передаваться непосредственно в браузер. Например:</p>
+<pre><code>router.get('/foo', function(req, res){
+  res.send('hello world');
+});</code></pre>
+<p>Используя <span class="var">res.send()</span> мы можем сделать забавные вещи, вроде отправки в объекты JSON.</p>
+<pre><code>router.get('/foo', function(req, res){
+  res.send({'name':'Bob Goldcat', 'age': '41'})
+});</code></pre>
+<p>Этот метод позволяет сохранить все наши маршруты в файл index.js, если это необходимо. Есть более эффективные способы для решения более сложных задач маршрутизации, но в рамках этой работы и так хорошо.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Что в файле index.js?</h2><p>Взглянув на наш файл index.js вы должны увидеть следующее:</p>
+<pre><code>var express = require('express');
+var router = express.Router();
+
+/* Получить главную страницу. */
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Express' });
+});
+
+module.exports = router;</code></pre>
+
+<p><strong>router.get</strong></p><p>Это функция, которая получит адрес пути /. Затем нам нужно создать функцию, которая будет делать req (запрос) и res (ответ). Другая концепция next для цепочки событий также хорошо подошла бы сюда, но не показана в данном примере.</p><p><strong>Что такое module.exports?</strong></p><p>Это объект, который возвращается как результат запрашиваемого вызова. Эта особенность Node, больше о ней написано <a href="http://nodejs.org/api/modules.html#modules_module_exports">здесь</a>.</p><h2>Построение нового маршрута</h2><p>Глядя на шаблон синтаксиса, если мы хотим добавить новый маршрут в приложение, то можем просто сделать что-то вроде следующего:</p>
+<pre><code>router.get('/app', function(req, res) {
+  res.render('app', { title: 'Express' });
+});</code></pre>
+<h2>Это маршрут? Это контроллер?</h2><p>Самое интересное что маршрут это функция, содержащая логику. Внутри маршрута находится функция res.render:</p>
+<pre><code>res.render('foo', { title: 'Express' });</code></pre>
+<p>В шаблоне представления мы видим это:</p>
+<pre><code>h1= title
+p Добро пожаловать в #{title}</code></pre>
+
+<p>Это два примера того, как мы можем вытащить данные из controller/route и вывести их в представлении. В этом примере мы выводим HTML:</p>
+<pre><code>&lt;h1&gt;Express&lt;/h1&gt;
+&lt;p&gt;Добро пожаловать в Express&lt;/p&gt;</code></pre>
+
+<p> Всё это, кажется, вытекает из проблемы — может ли маршрут также содержать информацию контроллера? Это верно, поэтому есть движение в обществе за то, чтобы изменить имя папки с routes на controllers.</p><p>Отличный пример этого можно увидеть в <a href="https://github.com/visionmedia/express/tree/master/examples/mvc">примере Express MVC</a>.</p><p>Но ради логичности в этом руководстве мы будем держаться текущих соглашений.</p><h2>Ошибки 404</h2><p> Ошибки уже направляют вас в Express. В файле app.js есть следующее:</p>
+<pre><code>/// поймать 404 и перенаправить в обработчик ошибки
+app.use(function(req, res, next) {
+  var err = new Error('Не найдено');
+  err.status = 404;
+  next(err);
+});</code></pre>
+
+<p>В папке views/ есть errors.jade.</p>
+<pre><code>extends layout
+
+block content
+  h1= message
+  h2= error.status
+  pre #{error.stack}</code></pre>
+
+<p>Всё просто. Если вы хотите настроить свою страницу 404, то всего-лишь редактируйте это представление.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/express">Express</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дейл Санде</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 17.04.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/node-express-libsass/node-npm'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/node-express-libsass/grunt'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="node-npm.html" title="На предыдущую страницу">Node и npm</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="grunt.html" title="На следующую страницу">Установка и настройка Grunt</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="node-npm.html">Node и npm</a></li><li class="leaf active-trail"><a href="express.html" class="active-trail active">Express, Node-фреймворк</a></li><li class="leaf"><a href="grunt.html">Установка и настройка Grunt</a></li><li class="leaf"><a href="gulp.html">Узнайте больше о Gulp</a></li><li class="leaf"><a href="sass.html">Добавление libsass</a></li><li class="leaf"><a href="grunt-watch.html">grunt-watch</a></li><li class="collapsed"><a href="bower.html">Bower для всего</a></li><li class="leaf"><a href="add-data.html">Добавление данных</a></li><li class="leaf"><a href="heroku.html">Развёртывание кода на Heroku</a></li><li class="last leaf"><a href="demo.html">Создание демонстрационной формы</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-8111bd0b61dbd5d43cd45c9e44b21b93"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="express.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

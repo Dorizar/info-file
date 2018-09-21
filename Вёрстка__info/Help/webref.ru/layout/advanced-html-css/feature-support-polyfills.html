@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поддержка функций и полифилы | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="semantics-accessibility.html" />
+<link rel="prev" href="transitions-animations.html" />
+<meta name="description" content="Создание сайта может быть чрезвычайно полезным и одновременно разочаровывающим. Основные расстройства возникают от попыток получить сайт, который одинаково выглядит и работает в любом браузере. Все фронтенд-разработчики расстраиваются по этому поводу в тот или иной момент." />
+<link rel="canonical" href="feature-support-polyfills.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Поддержка функций и полифилы</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Поддержка функций и полифилы</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Создание сайта может быть чрезвычайно полезным и одновременно разочаровывающим. Основные расстройства возникают от попыток получить сайт, который одинаково выглядит и работает в любом браузере. Все фронтенд-разработчики расстраиваются по этому поводу в тот или иной момент.</p><p>По правде говоря, веб-сайты <strong>не должны</strong> выглядеть или работать одинаково в любом браузере. Насколько точно веб-сайт работает в каждом браузере — тем определяется и ваш уровень комфорта для данного сайта. Если сайт получает меньше полпроцента трафика от Internet Explorer 6, то может иметь смысл отказаться от его поддержки. Если полпроцента по-прежнему содействует тысячам долларов в продажах, поддержка должна быть обязательной. Определите, что является приемлемым для данного сайта и отталкивайтесь от этого.</p><p>Есть несколько общих методов, как получить сайты, работающие должным образом во всех браузерах, некоторые из которых уже были описаны в данном руководстве. При включении свойств CSS3 рекомендуется использовать запасной вариант для поддержки старых браузеров. Другие методы включают HTML5 Shiv и полифилы. Вообще говоря, это небольшие плагины JavaScript, которые добавляют поддержку для запрошенного набора функций, изначально не поддерживаемых конкретным браузером.</p><h2>HTML5 Shiv</h2><p>HTML5 Shiv был <a href="http://paulirish.com/2011/the-history-of-the-html5-shiv/">создан Реми Шарпом</a>, чтобы обеспечить возможность использовать элементы HTML5 в версиях Internet Explorer 8 и ниже. HTML5 Shiv не только создаёт поддержку элементов HTML5, но и позволяет оформлять их надлежащим образом с помощью CSS.</p><p><a href="http://code.google.com/p/html5shiv/">HTML5 Shiv</a> должен быть загружен с Google, где Реми поддерживает последнюю версию, а затем размещён на вашем сервере. Для лучшей производительности ссылайтесь на JavaScript-файл внутри &lt;head&gt; документа, после любых ссылок на таблицы стилей. Кроме того, вам надо ссылаться на файл внутри <a href="http://css-tricks.com/how-to-create-an-ie-only-stylesheet/">условного комментария</a>, убедившись в том, что файл загружается только в версиях Internet Explorer 8 и ниже.</p><p>В этом случае условный комментарий выглядит как <span class="var">&lt;!--[if lt IE 9]&gt;...&lt;![endif]--&gt;</span>.</p>
+<pre><code data-language="html">&lt;!--[if lt IE 9]&gt;
+  &lt;script src=&quot;html5shiv.js&quot;&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</code></pre>
+<p>Кроме того, когда новые элементы HTML5 создаются с помощью HTML5 Shiv, любые блочные элементы должны быть определены и обновлены с помощью декларации <span class="var">display: block</span>.</p>
+<pre><code data-language="css">article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}</code></pre>
+<p>И, наконец, Internet Explorer 8 и 9 неправильно определяют стили для некоторых строчно-блочных элементов HTML5. Как и прежде, эти стили должны быть указаны явно. После чего все версии Internet Explorer должны хорошо работать с любыми новыми элементами HTML5.</p>
+<pre><code data-language="css">audio,
+canvas,
+video {
+  display: inline-block;
+}</code></pre>
+<h2>Определение функций браузера</h2><p>Ссылка на HTML5 Shiv хорошо работает с условным комментарием, потому что намерение состоит в том, чтобы ориентироваться на конкретные браузеры, которые не поддерживают новые возможности и элементы HTML5. Кроме этого существует способ обеспечить поддержку определённых функций HTML5 и CSS3, независимо от того, какой браузер используется.</p><p>Определение функций, предлагаемое <a href="http://modernizr.com">Modernizr</a>, обеспечивает способ написания CSS и JavaScript на основе того, поддерживает браузер или нет конкретную функцию. К примеру, если браузер поддерживает скруглённые уголки, Modernizr добавит класс <span class="class">borderradius</span> к элементу <span class="tag">&lt;html&gt;</span>. Если браузер не поддерживает скруглённые уголки, Modernizr добавит к <span class="tag">&lt;html&gt;</span> класс <span class="class">no-borderradius</span>.</p><h3>Загрузка Modernizr</h3><p>Чтобы получить определение функций с Modernizr и запустить их в работу, просто посетите страницу <a href="http://modernizr.com/download/">загрузки</a> и настройте, какие функции вы хотите определять или используйте версию для разработчиков. Чаще всего версия для разработчиков подходит лучше всего, однако если вы рассматриваете поддержку единственной функции, пользовательская сборка будет более подходящей. После скачивания загрузите файл JavaScript на сервер и ссылайтесь на него внутри <span class="tag">&lt;head&gt;</span> вашего HTML-документа, ниже всех таблиц стилей.</p><p>Стоит отметить, что Modernizr может быть сконфигурирован так, чтобы включать HTML5 Shiv, в этом случае на него не нужно ссылаться после Modernizr.</p>
+<pre><code data-language="html">&lt;script src=&quot;modernizr.js&quot;&gt;&lt;/script&gt;</code></pre>
+<h3>Применение условных стилей</h3><p>После того, как Modernizr установлен и работает, могут применяться стили CSS на основе того, поддерживает ли браузер данную функцию. Modernizr определяет большинство свойств и значений CSS3, их все можно найти в <a href="http://modernizr.com/docs/#features-css">документации</a> Modernizr.</p><p>Если вам нужно определение функций для некоторых стилей, примите во внимание один момент. К примеру, для значения цвета RGBa можно легко включить запасной вариант с шестнадцатеричным значением без использования определения функций. Когда принимается решение об использовании определения функций, важно сохранить стили организованными и помнить о производительности. Избегайте при возможности дублирования любого кода или создания дополнительных HTTP-запросов.</p>
+<pre><code data-language="css">button {
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  outline: 0;
+}
+
+/* С градиентами */
+
+.cssgradients button {
+  border: 1px solid #0080c2;
+  background: linear-gradient(#00a2f5, #0087cc);
+  border-radius: 6px;
+  padding: 15px 30px;
+  }
+.cssgradients button:hover {
+  background: linear-gradient(#1ab1ff, #009beb);
+}
+.cssgradients button:active {
+  box-shadow: inset 0 1px 10px rgba(255, 255, 255, .5);
+}
+
+/* Без градиентов */
+
+.no-cssgradients button {
+  background: transparent url(&quot;button.png&quot;) 0 0 no-repeat;
+  padding: 16px 31px;
+}
+.no-cssgradients button:hover {
+  background-position: 0 -49px;
+}
+.no-cssgradients button:active {
+  background-position: 0 -98px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация определения функций</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/8rahcta5/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>В приведённой выше демонстрации кнопка наследует некоторые стили по умолчанию. Тем не менее, некоторые стили применяются только в зависимости от того, поддерживается или нет градиентный фон CSS3. В этом случае также включены скруглённые уголки и тень блока в условные стили. Браузеры, которые поддерживают градиенты, получат градиент, скруглённые уголки и тень под блоком. Браузеры, которые не поддерживают градиенты, получат изображение со всеми этими стилями. С помощью этого кода ни один из стилей не будет переписан и HTTP-запрос происходит только при необходимости.</p><p>При работе с определением функций CSS3, сложно сказать, как стили будут выглядеть в браузерах, которые не поддерживают возможности CSS3. К счастью, есть букмарклет с названием <a href="http://davatron5000.github.com/deCSS3/">deCSS3</a>, который отключает какие-либо возможности CSS3. Это позволяет увидеть, как веб-сайт будет выглядеть без CSS3 и как ваши условные стили работают. Чтобы быстро получить представление о том, что каждый браузер поддерживает, посетите <a href="http://haz.io">haz.io</a> через ваш браузер.</p><h2>Условная загрузка файлов</h2><p>Вдобавок к условной загрузке стилей, Modernizr также предоставляет возможность условной загрузки файлов, основываясь на поддержке функций. При этом могут быть загружены полифилы на JavaScript на основе определения функций. Modenizer с помощью <a href="http://yepnopejs.com">yepnope.js</a> может быть сконфигурирован для включения загрузчика ресурсов <span class="var">Modernizr.load</span>.</p><p>Загрузчик ресурсов <span class="var">Modernizr.load</span> протестирован для большинства возможностей HTML5 и CSS3, которые могут быть определены в условии <span class="var">test</span>. Если условие проходит, загружаются любые файлы, указанные в блоке <span class="var">yep</span>. Если условие не пройдено, загружаются любые файлы, указанные в блоке <span class="var">nope</span>. Оба блока <span class="var">yep</span> и <span class="var">nope</span> являются необязательными, но, по меньшей мере, один из них должен быть указан. Создание этих вариантов позволяет вам загружать файлы только на основе того, включено или выключено конкретное условие.</p><p>Одной удивительной особенностью загрузчика ресурсов <span class="var">Modernizr.load</span> является то, что он может загружать внешние файлы, причём не только JavaScript, но и CSS.</p>
+<pre><code data-language="javascript">Modernizr.load({
+  test: Modernizr.localstorage,
+  yep : 'storage.js',
+  nope: 'storage-polyfill.js'
+});</code></pre>
+<p>Несколько файлов могут быть эффективно загружены с помощью нескольких условий за счёт применения операторов &amp;&amp; и ||. Оператор &amp;&amp; соответствует логическому И, в то время как оператор || соответствует логическому ИЛИ. В следующем примере используются несколько условий для загрузки разных файлов, при этом загружая только необходимые файлы за один раз. Если поддержка атрибута <span class="attribute">autofocus</span> или CSS-анимации недоступна, тогда загружается библиотека jQuery. Если доступна поддержка для каждой отдельной функции, то загружаются отдельные полифилы.</p>
+<pre><code data-language="javascript">Modernizr.load([
+  {
+    test:  Modernizr.input.autofocus || Modernizr.cssanimations,
+    nope: 'jquery.js'
+  },
+  {
+    test: Modernizr.input.autofocus,
+    nope: 'autofocus.js'
+  },
+  {
+    test: Modernizr.cssanimations,
+    nope: 'animations.js'
+  }
+]);</code></pre>
+<p>Крис Койер <a href="http://css-tricks.com/progressively-enhancing-html5-forms/">написал</a> руководство по прогрессивному улучшению форм с помощью Modernizr и полифилов, в котором выгодно использует несколько различных операторов для получения профессионального кода.</p><h3>Условная загрузка на основе медиа-запросов</h3><p>Одним интересным условием, которое Modernizr можете проверить, являются медиа-запросы. Это даёт возможность загружать только файлы, основанные на разных условиях медиа-запросов. Отказ от загрузки ненужных файлов может быть чрезвычайно полезен для повышения производительности.</p>
+<pre><code data-language="javascript">Modernizr.load({
+  test: Modernizr.mq('screen and (min-width: 640px)'),
+  nope: [
+    'jquery.js',
+    'tabs.js'
+  ]
+});</code></pre>
+<p>Выше Modernizr определяет экраны, ширина которых больше 640 пикселей, в первую очередь десктопы, а затем загружает файлы и функции, основанные на этом условии. Важно отметить, что это условие проверяется только один раз, во время загрузки страницы, и всё. Если пользователь изменит размер страницы, это условие не будет проверяться повторно. Если необходимо проверить это условие повторно, то нужно будет включить дополнительный JavaScript.</p><h3>Условный запуск скриптов</h3><p>Вдобавок к условной загрузке файлов, Modernizr также помогает условно запустить JavaScript. Все возможности HTML5 и CSS3, доступные для проверки в загрузчике ресурсов <span class="var">Modernizr.load</span>, также могут быть проверены в скриптах. Например, это может быть отключаемая всплывающая подсказка на мобильных устройствах, потому что там нет возможности навести курсор мыши, вместо того чтобы показывать всплывающую подсказку на экране в виде текста. Скрипт для вызова этих всплывающих подсказок может располагаться в условии Modernizr, запрещая загрузку скрипта на маленьких экранах.</p>
+<pre><code data-language="javascript">$(document).ready(function() {
+  if (Modernizr.mq('screen and (max-width: 800px)')) {
+    $('.size').text('маленький');
+  }
+});</code></pre>
+<div class="notePad"><h3>Демонстрация условного запуска скриптов</h3><iframe width="100%" height="120" src="https://jsfiddle.net/webref/2cobwar7/embedded/result,html,css,js/" allowfullscreen="allowfullscreen"></iframe></div><p>Выше приведён базовый пример того, как JavaScript может быть запущен на основе условия, заданного в Modernizr. При загрузке страницы, если ширина экрана меньше 800 пикселей, то ничего не происходит. Но если ширина экрана больше 800 пикселей, при загрузке слово «маленький» будет заменено на «большой», основываясь на выполненном JavaScript.</p><h3>Полифилы для HTML5 и CSS3</h3><p>В настоящее время существуют полифилы почти для всех разных функций HTML5 и CSS3. Команда Modernizr собрала довольно исчерпывающий <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">список</a>. Эти полифилы могут быть выброшены в случае необходимости.</p><p>Те же люди, стоящие за Modernizr, также составили <a href="http://html5please.com">список</a> всех новых функций HTML5 и CSS3, включая инструкции о том, как использовать их соответствующим образом. Поймите, не для всех этих функций нужны полифилы. Некоторые из них могут быть использованы напрямую или с помощью запасного варианта.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Кроссбраузерное тестирование</h2><p>Пожалуй, самой страшной частью веб-дизайна и разработки является кроссбраузерное тестирование, которое позволяет убедиться, что сайт хорошо работает во всех браузерах. Вообще говоря, более современные браузеры, Chrome, Firefox и Safari, всё делают очень хорошо. Самые крупные подводные камни поджидают в Internet Explorer и тестирование различных версий Internet Explorer может быть сложным.</p><p>Есть <a href="http://www.smashingmagazine.com/2011/08/07/a-dozen-cross-browser-testing-tools/">несколько</a> сервисов, которые помогают с кроссбраузерным тестированием, некоторые интерактивные, другие нет. Те, которые позволяют взаимодействовать с браузером вместо отображения скриншота, гораздо более полезны для отладки кода. Одним из наилучших способов загрузки нескольких версий Internet Explorer является использование нескольких виртуальных машин, каждая из которых содержит свою версию Internet Explorer.</p><p class="fig"><img src="../../assets/images/advanced-html-css/virtualbox.png" alt="VirtualBox работает на Mac OS X с Internet Explorer с 6 по 9 версии"/></p><p class="figsign">Рис. 9.01. VirtualBox работает на Mac OS X с Internet Explorer с 6 по 9 версии</p><p>Microsoft предлагает несколько VirtualPC, которые могут быть использованы исключительно для тестирования. Установка их всех может оказаться сложнейшей задачей. К счастью, Грег Торнтон написал программу <a href="http://xdissent.github.com/ievms/">автоматической установки</a> для всех этих виртуальных машин. Установка занимает некоторое время, чтобы загрузить все эти разные виртуальные машины и требует приличное количество дискового пространства. Подготовьтесь соответственно, установив только необходимые виртуальные машины и заранее очистив необходимое дисковое пространство. В зависимости от того, насколько часто используются виртуальные машины, может быть стоит установить их на внешнем жёстком диске.</p><p>Internet Explorer 8 и выше содержит встроенные средства разработки, к сожалению у версий 7 и ниже такого нет. Веб-инспектор и все другие инструменты отладки, которые мы любим, недоступны в Internet Explorer 7 и ниже. Существует, однако, букмарклет <a href="https://getfirebug.com/firebuglite#Stable">Firebug Lite</a>, который предлагает чрезвычайно полезный инспектор в браузере.</p><p class="fig"><img src="../../assets/images/advanced-html-css/virtualbox.png" alt="Internet Explorer 7 работает внутри виртуальной машины с букмарклетом Firebug Lite, открытым для отладки
+"/></p><p class="figsign">Рис. 9.02. Internet Explorer 7 работает внутри виртуальной машины с букмарклетом Firebug Lite, открытым для отладки</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://code.google.com/p/html5shiv/">HTML5 Shiv</a> от Remy Sharp</li><li><a href="http://css-tricks.com/how-to-create-an-ie-only-stylesheet/">How To Create an IE-Only Stylesheet</a> на CSS-Tricks</li><li><a href="http://modernizr.com/">Modernizr</a></li><li><a href="http://davatron5000.github.com/deCSS3/">deCSS3</a> от Paravel and Crew</li><li><a href="http://haz.io/">haz.io</a> от Philipp Bosch</li><li><a href="http://yepnopejs.com/">yepnope.js</a> от Alex Sexton и Ralph Holzmann</li><li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">HTML5 Cross Browser Polyfills</a></li><li><a href="http://html5please.com/">HTML5 Please</a></li><li><a href="http://xdissent.github.com/ievms/">Microsoft IE Virtual Machines</a> от Greg Thornton</li></ul><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 03.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css/transitions-animations'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/semantics-accessibility'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="transitions-animations.html" title="На предыдущую страницу">Переходы и анимация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="semantics-accessibility.html" title="На следующую страницу">Продвинутая семантика и доступность</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="performance-organization.html">Производительность и организация</a></li><li class="leaf"><a href="detailed-css-positioning.html">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf"><a href="preprocessors.html">Препроцессоры</a></li><li class="leaf"><a href="jquery.html">jQuery</a></li><li class="leaf"><a href="transform.html">Трансформация</a></li><li class="leaf"><a href="transitions-animations.html">Переходы и анимация</a></li><li class="leaf active-trail"><a href="feature-support-polyfills.html" class="active-trail active">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-5458c2224423a7f791a06a8fca34ec01"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="feature-support-polyfills.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Создание демонстрационной формы | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../node-express-libsass.html" />
+<link rel="prev" href="heroku.html" />
+<meta name="description" content="В этой демонстрации мы создадим популярный образец интерфейса, в котором пользователь вводит данные в форму. Настройка Установите libsass с Grunt Sass и добавьте Bourbon. Node-Sass установлен как зависимость от Grunt-Sass." />
+<link rel="canonical" href="demo.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Создание демонстрационной формы</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../node-express-libsass.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Node, Express и libsass: проект с нуля</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Создание демонстрационной формы</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p> В этой демонстрации мы создадим популярный образец интерфейса, в котором пользователь вводит данные в форму.</p><p class="fig"><img src="../../assets/images/node-express-libsass/EQzJpuh.png" alt=""></p><h2>Настройка</h2><p>Установите libsass с Grunt Sass и добавьте Bourbon. Node-Sass установлен как зависимость от Grunt-Sass.</p>
+<pre><code>$ npm install grunt-sass --save
+$ npm install node-bourbon --save</code></pre>
+<p>Добавьте файл bower.json
+
+<pre><code data-language="javascript">{
+  &quot;name&quot;: &quot;class-demo&quot;,
+}</code></pre>
+<p>Добавьте некоторые пакеты Bower.</p>
+<pre><code>$ bower install color-scale --save
+$ bower install type-rhythm-scale --save
+$ bower install rwd-toolkit --save</code></pre>
+<p>Установите Grunt</p>
+<pre><code>npm install grunt --save</code></pre>
+<p>Установите grunt-watch</p>
+<pre><code>npm install grunt-contrib-watch --save-dev</code></pre>
+<p>Добавьте gruntfile.js.</p>
+<pre><code data-language="javascript">module.exports = function(grunt) {
+  grunt.initConfig({
+    sass: {
+      dist: {
+        files: {
+          'public/stylesheets/application.css': 'sass/application.scss'
+        },
+        options: {
+          sourceMap: true,
+          includePaths: [
+            require('node-bourbon').includePaths,
+            './bower_components/color-scale',
+            './bower_components/type-rhythm-scale',
+            './bower_components/rwd-toolkit'
+          ]
+        }
+      }
+    },
+    watch: {
+      source: {
+        files: ['sass/**/*.scss', 'views/**/*.jade'],
+        tasks: ['sass'],
+        options: {
+          livereload: true, // требуется для запуска LiveReload
+        }
+      }
+    }
+  });
+  
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-sass');
+  grunt.registerTask('default', ['sass']);
+};</code></pre>
+<p>Создайте новый Sass-файл</p><p>Создайте следующую папку и файл, а затем добавьте небольшой код Sass в файл.</p>
+<pre><code>$ mkdir sass
+$ touch sass/application.scss</code></pre>
+<p>Установите зависимые библиотеки. Добавьте это в application.scss, чтобы Sass был в курсе об этих зависимостях.</p>
+<pre><code data-language="css">@import &quot;bourbon&quot;;
+@import &quot;type-rhythm-scale&quot;;
+@import &quot;rwd-toolkit&quot;;</code></pre>
+<p>Запустите Grunt</p>
+<pre><code>$ grunt
+$ grunt watch</code></pre>
+<h2>Контроль версий</h2><p>Создайте файл .gitignore и добавьте в него следующее:</p>
+<pre><code># Файлы, созданные ОС
+####################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Выходной CSS
+#######################
+public/stylesheets/*.css
+public/stylesheets/*.css.map
+
+# Зависимые пакеты
+######################
+node_modules/
+bower_components</code></pre>
+
+<p>Добавьте в управление версиями:</p>
+<pre><code>$ git add --all
+$ git commit -m &quot;add all the things&quot;</code></pre>
+<h2>Макет</h2><p>Обновите layout.jade для использования application.css:</p>
+<pre><code>link(rel='stylesheet', href='/stylesheets/application.css')</code></pre>
+<p>Добавьте в LiveReload:</p>
+<pre><code>script(src=&quot;//localhost:35729/livereload.js&quot;)</code></pre>
+<p>Обновите браузер, а затем внесите небольшие правки в Sass и Jade-файлы и убедитесь, что LiveReload работает.</p><h2>Представление</h2><p>Начнём с макета и добавим в него больше материала, чтобы заставить его работать правильно.</p>
+<pre><code>meta(charset='utf-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
+meta(name='description', content='#{description}')
+meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0 minimal-ui')</code></pre>
+<p>Обновите файл index.js в ./routes.</p>
+<pre><code>res.render('index', { title: 'Contact me', description: 'This is a new demo' });</code></pre>
+<p>Откройте ./views/index.jade и добавьте следующее:</p>
+<pre><code>section.message-container
+  h1.title= title
+  form#form.form(action='#', method='get')
+    ul
+      li
+        label(for='name') Your Name:
+        input#name(type='text', placeholder='Your Name', name='name', tabindex='1')
+      li
+        label(for='email') Your Email:
+        input#email(type='email', placeholder='Your Email', name='email', tabindex='2')
+      li
+        label(for='message') Message:
+        textarea#message(placeholder='Message…', name='message', tabindex='3')
+        
+  button#submit Send Message</code></pre>
+<h2>Настройка интерфейса</h2><p>Создайте файл:</p>
+<pre><code>$ touch _config.scss</code></pre>
+<p>И добавьте в него следующий код:</p>
+<pre><code data-language="css">/////// Настройки типографики
+// *----------------------------------------
+$font-size: 16;
+
+$heading-1: 36;
+$heading-2: 32;
+$heading-3: 28;
+$heading-4: 18;
+$heading-5: 18;
+$heading-6: 18;
+
+$line: $font-size * 1.5;
+$small-point-size: 10;
+$large-point-size: 14;
+
+$primary-font-family: #{&quot;Helvetica Neue&quot;, Arial, sans-serif};
+$secondary-font-family: #{&quot;Helvetica Neue&quot;, Arial, sans-serif};
+$heading-font-family: #{&quot;Helvetica Neue&quot;, Arial, sans-serif};
+
+
+/////// Папка для шрифтов по умолчанию
+// *----------------------------------------
+$fontDir: &quot;fonts/&quot;;
+
+
+/////// Папка для изображений по умолчанию
+// *----------------------------------------
+$imgDir: &quot;images/&quot;;
+
+
+/////// Базовые цвета
+// *----------------------------------------
+$alpha-primary:   #5a2e2e;        // красный
+$bravo-primary:   #3e4147;        // зелёный
+$charlie-primary: #fffedf;        // жёлтый
+$delta-primary:   #2a2c31;        // синий
+$echo-primary:    #dfba69;        // акцент
+
+$alpha-gray:      #333;           // чёрный
+
+
+/////// Математика с цветом
+// *----------------------------------------
+@import &quot;color-scale&quot;;
+
+
+/////// Семантические переменные
+// *----------------------------------------
+// абстрактное значение «white» легко применяется к семантическому классу объектов
+$white:                                #fff;
+
+// основной цвет заголовка
+$primary-header-color:                 $alpha-gray;
+
+// начертание заголовка по умолчанию
+$heading-font-weight:                  normal;
+
+// основной цвет шрифта для приложения
+$primary-text:                         $alpha-gray;
+
+// цвет ссылок по умолчанию
+$href-color:                           $delta-color;
+
+// цвет тени по умолчанию
+$shadow-color:                         fade-out($alpha-color, 0.5);
+
+// цвет рамки по умолчанию
+$border-color:                         $alpha-color;
+
+
+/////// Цвета для HTML5
+// *----------------------------------------
+// используется для тега &lt;ins&gt;
+$ins-color:                            $charlie-color;
+
+// испольуется для тега &lt;mark&gt;
+$mark-color:                           $charlie-color;
+
+// цвет выделения в Webkit
+$webkit-tap-hightlight:                $delta-color;
+
+// переопределяет выбранные цвета в браузере
+$selection-color:                      $charlie-color;
+$selection-text-color:                 $primary-text;
+
+
+//////// Свойства анимации по умолчанию
+// *----------------------------------------
+$trans: .333s ease;</code></pre>
+
+
+<p>Добавьте в файл application.scss:</p>
+<pre><code data-language="css">/////// Настройка приложения — вот где происходит основная магия
+// *----------------------------------------
+@import &quot;config&quot;;</code></pre>
+
+<h2>Сброс CSS</h2><p>Создайте файл:</p>
+<pre><code>$ touch _reset.scss</code></pre>
+<p>Добавьте в application.scss:</p>
+<pre><code data-language="css">/////// Стандартный сброс CSS
+// *-------------------------------------------------
+@import &quot;reset&quot;;</code></pre>
+
+<p>Добавьте следующий код:</p>
+<pre><code data-language="css">// * Оставим по умолчанию
+// *-------------------------------------------------
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, 
+address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, 
+b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, 
+thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, menu, 
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+article, aside, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
+
+// * Адаптивные изображения и другие встроенные объекты
+// * Замечание: стиль для IMG вызовет проблемы, если вы используете изображения как спрайты, скажем, в виде пользовательских меток для Google Maps.
+// * Было сообщение о проблеме с картами Google, но мы не смогли повторить или выявить проблему.
+
+img, object, embed {
+  max-width: 100%;
+}
+
+img {
+  border-style: none;
+  border-color: transparent;
+  border-width: 0;
+}
+
+// * мы используем много UL, но без маркеров
+// * не забудьте восстановить маркеры внутри содержимого
+
+ol,ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+  &amp;:before, &amp;:after {
+    content: '';
+    content: none;
+  }
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  &amp;:focus {
+    text-decoration: underline ;
+    outline: none;
+  }
+}
+
+del {
+  text-decoration: line-through;
+}
+
+pre {
+  //white-space: pre
+  // * CSS2
+  white-space: pre-wrap;
+  // * CSS 2.1
+  //white-space: pre-line
+  // * CSS 3 (2.1 на самом деле)
+  word-wrap: break-word;
+  // * IE
+}
+
+input {
+  &amp;[type=&quot;radio&quot;] {
+    vertical-align: text-bottom;
+  }
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+  font-weight: inherit;
+  background-color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  font-size: inherit;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+// * стандартизация любых моноширинных элементов
+
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+input {
+  &amp;[type=button], &amp;[type=submit] {
+    @extend %stipe-cursor-pointer;
+  }
+}
+
+button {
+  cursor: pointer;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+}
+
+a.button {
+  display: inline-block;
+}
+
+// * более привлекательный масштаб изображений в IE7
+
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+// * Вот где всё веселье начинается
+// *-------------------------------------------------
+
+a:link {
+  -webkit-tap-highlight-color: $webkit-tap-hightlight;
+}
+
+ins {
+  background-color: $ins-color;
+  color: black;
+  text-decoration: none;
+}
+
+mark {
+  background-color: $mark-color;
+  color: $primary-text;
+  font-style: italic;
+  font-weight: bold;
+}
+
+::selection {
+  background: $selection-color;
+  color: $selection-text-color;
+}
+
+::-moz-selection {
+  background: $selection-color;
+  color: $selection-text-color;
+}</code></pre>
+
+	<div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Глобальный макет</h2>
+<pre><code>$ mkdir layouts
+$ touch layouts/_global.scss
+$ touch layouts/_manifest</code></pre>
+<p>Добавьте в _global.scss:
+
+<pre><code data-language="css">body {
+  background-color: $delta-scale-juliet;
+}</code></pre>
+<p>Добавьте в application.scss:</p>
+<pre><code data-language="css">/////// Макеты
+@import &quot;layouts/manifest&quot;;</code></pre>
+<h2>Создание модуля</h2><p> В папке sass создайте папку module с необходимыми файлами внутри:
+
+<pre><code>$ mkdir modules
+$ mkdir modules/message-container
+$ touch modules/message-container/_module-message-container.scss
+$ touch modules/message-container/_manifest.scss</code></pre>
+
+<p>Добавьте следующее в файл _module-message-container.scss:
+
+<pre><code data-language="css">.message-container {
+  margin: 1em auto;
+  width: 90%;
+  padding-bottom: 100px;
+  @media #{$tablet} {
+    width: 75%;
+  }
+  @media #{$desktop} {
+    width: 50%;
+  }
+}</code></pre>
+
+<p> Добавьте в _manifest.scss:</p>
+
+<pre><code data-language="css">@import &quot;module-message-container&quot;;</code></pre>
+
+<p>Добавьте в application.scss:</p>
+
+<pre><code data-language="css">/////// Модули
+@import &quot;modules/message-container/manifest&quot;;</code></pre>
+
+<h3>Центральный манифест модуля</h3><p>В application.scss мы могли бы ввести каждый модуль по одному, как описано выше, но можем также добавить манифест в корень modules, который будет импортировать все манифесты, содержащиеся в этой папке.</p><p>Таким образом, в application.scss мы делаем следующее:
+
+<pre><code data-language="css">/////// Модули
+@import &quot;modules/manifest&quot;;</code></pre>
+<p>Затем в modules/manifest.scss мы делаем так:
+
+<pre><code data-language="css">/////// Подмодули
+@import &quot;message-container/manifest&quot;;</code></pre>
+
+<p>Это поможет упростить управление, поскольку нам никогда не придётся обновлять файл application.scss и корневую папку модулей, где мы работаем. Нам просто нужно добавить новый список. Всё импортируется и всё работает.</p><p>Наша структура папок будет выглядеть следующим образом:
+
+<pre><code>|- application.scss
+|--- modules/
+|----- _manifest.scss
+|----- message-container/
+|------- _manifest.scss
+|------- _module-message-container.scss</code></pre>
+<h2>Типографика</h2><p>Создайте новый Sass-файл:
+
+<pre><code>$ touch _typography.scss</code></pre>
+
+  <p>Добавьте в него следующий код:</p></p>
+<pre><code data-language="css">html {
+  font: em($font-size, 16) $primary-font-family;
+  line-height: baseline($font-size);
+  color: $primary-text
+}
+
+h1, h2, h3, h4, h5, h6, [role=heading] {
+  @include heading();
+}
+
+.title {
+  margin-bottom: em(5);
+  padding: 0.25em 0;
+  text-align: center;
+  background-color: $delta-scale-bravo;
+  color: $white;
+  border-radius: em(5) em(5) 0 0;
+}</code></pre>
+
+<p>Добавьте ниже сброса CSS в application.scss:
+
+<pre><code data-language="css">/////// Основа
+@import &quot;typography&quot;;</code></pre>
+<h2>Формы</h2><p>Создайте новый Sass-файл:
+
+<pre><code>$ touch _forms.scss</code></pre>
+
+<p>Создайте новую папку forms:
+
+<pre><code>$ mkdir forms
+$ midir forms/extends</code></pre>
+
+<p>Добавьте следующие файлы:
+
+<pre><code>$ touch forms/_manifest.scss
+$ touch forms/extends/_default-inputs.scss
+$ touch forms/extends/_display-block.scss
+$ touch forms/extends/_manifest.scss</code></pre>
+
+<p>Вставьте следующее в forms/extends/_manifest.scss:
+
+<pre><code data-language="css">@import &quot;default-inputs&quot;;
+@import &quot;display-block&quot;;</code></pre>
+
+  <p>Добавьте следующий код в forms/extends/_default-inputs.scss:
+
+<pre><code data-language="css">%default-inputs {
+  width: 100%;
+  height: 100%;
+  padding: 2.25em 1em 1em;
+  outline: none;
+  font-size: 1em;
+}</code></pre>
+
+<p>Добавьте следующее в forms/extends/_display-block.scss:
+
+<pre><code data-language="css">%display-block {
+  width: 100%;
+  display: block;
+}</code></pre>
+
+<p> Добавьте в forms/_manifest.scss:
+
+<pre><code>@import &quot;extends/manifest&quot;;</code></pre>
+
+<p>И в _forms.scss:
+
+<pre><code data-language="css">@import &quot;forms/manifest&quot;;
+
+.form {
+  ul {
+    border-bottom: 1px solid $hotel-gray;
+    background-color: $white;
+    margin-bottom: 1em;
+  }
+  li {
+    border: 1px solid $hotel-gray;
+    border-bottom: 0;
+    position: relative;
+  }
+}
+
+label {
+  @extend %display-block;
+  position: absolute;
+  font-size: em(16);
+  top: .5em;
+  left: 1em;
+  color: orange;
+  opacity: 1;
+  transition: #{$trans} top, #{$trans} opacity;
+  .js-hide-label &amp; {
+    opacity: 0;
+    top: 1.5em;
+  }
+}
+
+input[type=&quot;text&quot;] {
+  @extend %display-block;
+  @extend %default-inputs;
+}
+
+input[type=&quot;email&quot;] {
+  @extend %display-block;
+  @extend %default-inputs;
+}
+
+textarea {
+  @extend %display-block;
+  @extend %default-inputs;
+  height: 8em;
+  resize: none;
+}</code></pre>
+
+<h2>Кнопки</h2><p>Добавьте следующий файл:
+
+<pre><code>$ touch _buttons.scss</code></pre>
+
+<p>Добавьте в application.scss ниже импорта формы:
+
+<pre><code>@import &quot;buttons&quot;;</code></pre>
+
+<p>Откройте и добавьте следующий код:
+
+<pre><code data-language="css">button {
+  @extend %default-inputs;
+  -webkit-appearance: none;
+  background: orange;
+  color: white;
+  border-radius: em(3);
+  padding: 1em;
+}</code></pre>
+
+<h2>jQuery</h2></p><p>Откройте layout.jade и добавьте в конце документа:
+
+<pre><code>script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+script(src=&quot;/javascripts/app.js&quot;)</code></pre>
+
+<p>Создайте следующий файл:
+
+<pre><code>$ touch public/javascripts/app.js</code></pre>
+
+<p>Откройте app.js и добавьте в него следующее:</p>
+<pre><code data-language="javascript">// Проверка поддержки placeholder
+$.support.placeholder = (function(){
+  var i = document.createElement('input');
+  return 'placeholder' in i;
+})();
+
+// Скрываем метки по умолчанию, если поддерживается placeholder
+if($.support.placeholder) {
+  $('.form li').each(function(){
+    $(this).addClass('js-hide-label');
+  });
+}
+
+$('.form li').find('input, textarea').on('keyup blur focus', function(){
+
+  // Кэшируем наши селекторы
+  var el = $(this),
+  parent = el.parent();
+
+  // Добавление или удаление классов
+  if( el.val() === '' ) {
+    parent.addClass('js-hide-label');
+  } else {
+    parent.removeClass('js-hide-label');
+  }
+
+});</code></pre><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дейл Санде</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 19.10.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/node-express-libsass/heroku'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="heroku.html" title="На предыдущую страницу">Развёртывание кода на Heroku</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="node-npm.html">Node и npm</a></li><li class="leaf"><a href="express.html">Express, Node-фреймворк</a></li><li class="leaf"><a href="grunt.html">Установка и настройка Grunt</a></li><li class="leaf"><a href="gulp.html">Узнайте больше о Gulp</a></li><li class="leaf"><a href="sass.html">Добавление libsass</a></li><li class="leaf"><a href="grunt-watch.html">grunt-watch</a></li><li class="collapsed"><a href="bower.html">Bower для всего</a></li><li class="leaf"><a href="add-data.html">Добавление данных</a></li><li class="leaf"><a href="heroku.html">Развёртывание кода на Heroku</a></li><li class="last leaf active-trail"><a href="demo.html" class="active-trail active">Создание демонстрационной формы</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-1daa9a291c91d868e27034c16fd09268"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="demo.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

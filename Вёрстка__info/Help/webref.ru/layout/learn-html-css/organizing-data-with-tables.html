@@ -1,0 +1,795 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Организация данных с помощью таблиц | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../learn-html-css.html" />
+<link rel="next" href="writing-your-best-code.html" />
+<link rel="prev" href="building-forms.html" />
+<meta name="description" content="Таблицы в HTML были созданы, чтобы обеспечить простой способ разметки структурированных табличных данных и для отображения этих данных в форме, которую пользователь легко читает и воспринимает. Когда HTML был ещё в процессе разработки, CSS, однако, не поддерживался широко в браузерах, так что таблицы были основным средством, с помощью которого создавались сайты. Они применялись для позиционирования содержимого, а также для построения общего макета страницы. Это работало в то время, но это не то, для чего таблицы предназначались, что и привело ко множеству связанных проблем." />
+<link rel="canonical" href="organizing-data-with-tables.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Организация данных с помощью таблиц</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../learn-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Организация данных с помощью таблиц</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Таблицы в HTML были созданы, чтобы обеспечить простой способ разметки структурированных табличных данных и для отображения этих данных в форме, которую пользователь легко читает и воспринимает.</p><p>Когда HTML был ещё в процессе разработки, CSS, однако, не поддерживался широко в браузерах, так что таблицы были основным средством, с помощью которого создавались сайты. Они применялись для позиционирования содержимого, а также для построения общего макета страницы. Это работало в то время, но это не то, для чего таблицы предназначались, что и привело ко множеству связанных проблем.</p><p>К счастью, мы прошли с тех пор долгий путь. Сегодня таблицы используются специально для организации данных (как и должно быть), а CSS свободно работает над позиционированием и компоновкой.</p><p>Построение табличных данных по-прежнему является испытанием. Как таблица должна быть построена в HTML во многом зависит от данных и как они будет отображаться. Затем, когда они размечены в HTML, таблицы должны быть оформлены через CSS, чтобы сделать информацию более чёткой и понятной для пользователей.</p><h2>Создание таблицы</h2><p>Таблицы состоят из данных, содержащихся в столбцах и строках и HTML предлагает несколько разных элементов для их определения и структурирования. Как минимум таблица должна состоять из элементов <span class="tag">&lt;table&gt;</span>, <span class="tag">&lt;tr&gt;</span> (table row, строка таблицы) и <span class="tag">&lt;td&gt;</span> (table data, данные таблицы). Для улучшения структуры и дополнительного семантического значения таблицы могут включать в себя элемент <span class="tag">&lt;th&gt;</span> (table header, заголовок таблицы), а также несколько других элементов. Когда все эти элементы работают вместе, они образуют цельную таблицу.</p><h3>&lt;table&gt;</h3><p>Мы применяем элемент <span class="tag">&lt;table&gt;</span> для инициализации таблицы на странице. Использование данного элемента означает, что информация внутри этого элемента будет отображаться как табличная в виде необходимых столбцов и строк.</p>
+<pre><code data-language="html">&lt;table&gt;
+  ...
+&lt;/table&gt;</code></pre>
+<h3>Строки таблицы</h3><p>После того, как таблица была определена в HTML, строки таблицы могут быть добавлены с помощью элемента <span class="tag">&lt;tr&gt;</span>. Таблица может содержать множество строк или элементов <span class="tag">&lt;tr&gt;</span>. В зависимости от количества информации для отображения, количество строк таблицы может быть значительным.</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;tr&gt;
+    ...
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    ...
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<h3>Данные таблицы</h3><p>После того, как таблица определена и были созданы строки, в таблицу могут быть добавлены ячейки данных с помощью элемента <span class="tag">&lt;td&gt;</span>. Перечисление нескольких элементов <span class="tag">&lt;td&gt;</span> друг за другом создаст столбцы в строке таблицы.</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Не заставляйте меня думать Стив Круг&lt;/td&gt;
+    &lt;td&gt;На складе&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;$30.02&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;UX-дизайн. Практическое руководство по проектированию опыта взаимодействия Расс Унгер, Кэролайн Чендлер&lt;/td&gt;
+    &lt;td&gt;На складе&lt;/td&gt;
+    &lt;td&gt;2&lt;/td&gt;
+    &lt;td&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Изучаем HTML5 Брюс Лоусон, Реми Шарп&lt;/td&gt;
+    &lt;td&gt;Нет на складе&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;$22.23&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Пуленепробиваемый веб-дизайн Дэн Сидерхолм&lt;/td&gt;
+    &lt;td&gt;На складе&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;$30.17&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация таблицы</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/4hqk3kL4/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Заголовок таблицы</h3><p>Чтобы назначить заголовок для столбца или строки ячеек, применяется элемент <span class="tag">&lt;th&gt;</span>. Он работает как элемент <span class="tag">&lt;td&gt;</span> в том смысле, что создаёт ячейку данных. Отличие элемента <span class="tag">&lt;th&gt;</span> от <span class="tag">&lt;td&gt;</span> заключается в том, что элемент заголовка таблицы содержит смысловое значение, означающее что данные в ячейке являются заголовком, в то время как элемент <span class="tag">&lt;td&gt;</span> представляет собой лишь общий фрагмент данных.</p><p>Разница между этими двумя элементами похожа на разницу между заголовками (элементы от <span class="tag">&lt;h1&gt;</span> до <span class="tag">&lt;h6&gt;</span>) и абзацами (элемент <span class="tag">&lt;р&gt;</span>). Хотя содержимое заголовка можно поместить внутрь абзаца, не имеет смысла делать это. Потому что применение заголовка добавляет больше семантического смысла содержимому. То же самое верно и для заголовков таблицы.</p><p>Заголовки таблицы могут быть задействованы в столбцах и строках; данные в таблице определяют, где заголовки уместны. Атрибут <span class="attribute">scope</span> помогает точно определить, какое содержимое связано с заголовком. Атрибут <span class="attribute">scope</span> со значениями <span class="value">col</span>, <span class="value">row</span>, <span class="value">colgroup</span> и <span class="value">rowgroup</span> у элемента <span class="tag">&lt;th&gt;</span> применяется к строке или столбцу. Наиболее используемые значения <span class="value">col</span> и <span class="value">row</span>. Значение <span class="value">col</span> указывает, что каждая ячейка внутри столбца имеет непосредственное отношение к этому заголовку таблицы, а значение <span class="value">row</span> указывает, что каждая ячейка в строке относится непосредственно к этому заголовку таблицы.</p><p>Использование элемента <span class="tag">&lt;th&gt;</span>, наряду с атрибутом <span class="attribute">scope</span>, чрезвычайно помогает экранным ридерам и вспомогательным технологиям понимать смысл таблицы. Таким образом, они также полезны для тех, кто просматривает веб-страницы с помощью этих технологий.</p><p>Кроме того, в зависимости от браузера, заголовки таблицы могут получить некоторый стиль по умолчанию, как правило, жирный и по центру.</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th scope=&quot;col&quot;&gt;Название&lt;/th&gt;
+    &lt;th scope=&quot;col&quot;&gt;Наличие&lt;/th&gt;
+    &lt;th scope=&quot;col&quot;&gt;Кол-во&lt;/th&gt;
+    &lt;th scope=&quot;col&quot;&gt;Цена&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Не заставляйте меня думать Стив Круг&lt;/td&gt;
+    &lt;td&gt;На складе&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;$30.02&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;UX-дизайн. Практическое руководство по проектированию опыта взаимодействия Расс Унгер, Кэролайн Чендлер&lt;/td&gt;
+    &lt;td&gt;На складе&lt;/td&gt;
+    &lt;td&gt;2&lt;/td&gt;
+    &lt;td&gt;$52.94 ($26.47 &amp;#215; 2)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Изучаем HTML5 Брюс Лоусон, Реми Шарп&lt;/td&gt;
+    &lt;td&gt;Нет на складе&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;$22.23&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Пуленепробиваемый веб-дизайн Дэн Сидерхолм&lt;/td&gt;
+    &lt;td&gt;На складе&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;$30.17&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация заголовка таблицы</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/aguhn65q/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><p>Превращение данных в таблицу — это лишь начало. Пока мы только немного прикоснулись к тому, как семантически добавить данные в таблицу, мы можем ещё много что сделать для определения структуры наших таблиц.</p><div class="notePad"><h3>Атрибут headers</h3><p>Атрибут <span class="attribute">headers</span> очень похож на атрибут <span class="attribute">scope</span>. По умолчанию, атрибут <span class="attribute">scope</span> может быть использован только для элемента <span class="tag">&lt;th&gt;</span>. В случае ячеек, вроде элементов <span class="tag">&lt;td&gt;</span> или <span class="tag">&lt;th&gt;</span>, которые надо связать с другим заголовком, в игру вступает атрибут <span class="attribute">headers</span>. Значение атрибута <span class="attribute">headers</span> для элемента <span class="tag">&lt;td&gt;</span> или <span class="tag">&lt;th&gt;</span> должно соответствовать значению атрибута <span class="attribute">id</span> в <span class="tag">&lt;th&gt;</span>, который связан с ячейкой.</p></div><h1>Структура таблицы</h1><p>Знания о построении таблицы и систематизации данных крайне мощные, однако есть несколько дополнительных элементов, которые помогут нам организовать данные и структуру таблицы. Эти элементы включают <span class="tag">&lt;caption&gt;</span>, <span class="tag">&lt;thead&gt;</span>, <span class="tag">&lt;tbody&gt;</span> и <span class="tag">&lt;tfoot&gt;</span>.</p><h3>&lt;caption&gt;</h3><p>Элемент <span class="tag">&lt;caption&gt;</span> обеспечивает подпись или название таблицы. Подпись поможет пользователям определить, что относится к таблице и какие ожидаемые данные они могут в ней найти. <span class="tag">&lt;caption&gt;</span> должен следовать сразу же после открывающего тега <span class="tag">&lt;table&gt;</span> и располагается в верхней части таблицы по умолчанию.</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;caption&gt;Книги по дизайну и фронтенд-разработке&lt;/caption&gt;
+  ...
+&lt;/table&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация названия таблицы</h3><iframe width="100%" height="200" src="https://jsfiddle.net/webref/auoz72sz/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>&lt;thead&gt;, &lt;tbody&gt; и &lt;tfoot&gt;</h3><p>Содержимое таблиц может быть разбито на несколько групп, включая шапку, тело и подвал. Элементы <span class="tag">&lt;thead&gt;</span> (шапка таблицы), <span class="tag">&lt;tbody&gt;</span> (тело таблицы) и <span class="tag">&lt;tfoot&gt;</span> (подвал таблицы) помогают структурно организовать таблицы.</p><p>Шапка таблицы, <span class="tag">&lt;thead&gt;</span>, обёртывает строку заголовка или строки таблицы, чтобы обозначить их шапкой. <span class="tag">&lt;thead&gt;</span> должен быть помещён в верхней части таблицы, после любого элемента <span class="tag">&lt;caption&gt;</span> и перед любым элементом <span class="tag">&lt;tbody&gt;</span>.</p><p>После <span class="tag">&lt;thead&gt;</span> могут идти элементы <span class="tag">&lt;tbody&gt;</span> или <span class="tag">&lt;tfoot&gt;</span>. Изначально, элемент <span class="tag">&lt;tfoot&gt;</span> должен идти сразу после элемента <span class="tag">&lt;thead&gt;</span>, но HTML5 предоставил в этом свободу действий. Эти элементы могут теперь встречаться в любом порядке, но они никогда не должны быть родительскими элементами друг другу. Элемент <span class="tag">&lt;tbody&gt;</span> должен содержать основные данные таблицы, в то время как <span class="tag">&lt;tfoot&gt;</span> содержит описание данных таблицы.</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;caption&gt;Книги по дизайну и фронтенд-разработке&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;Название&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Наличие&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Кол-во&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Цена&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Не заставляйте меня думать Стив Круг&lt;/td&gt;
+      &lt;td&gt;На складе&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;$30.02&lt;/td&gt;
+    &lt;/tr&gt;
+    ...
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Сумма&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;$135.36&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;НДС&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;$13.54&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Итого&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;$148.90&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация группирования элементов таблицы</h3><iframe width="100%" height="250" src="https://jsfiddle.net/webref/b784qwh6/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h3>Объединение нескольких ячеек</h3><p>Часто две или более ячейки должны быть объединены в одну, не нарушая при этом общей компоновки строк и столбцов. Возможно две ячейки рядом друг с другом содержат одинаковые данные, есть пустая ячейка или ячейки должны быть объединены в целях стилизации. В таких случаях мы можем использовать атрибуты <span class="attribute">colspan</span> и <span class="attribute">rowspan</span>. Эти два атрибута работают с элементами <span class="tag">&lt;td&gt;</span> или <span class="tag">&lt;th&gt;</span>.</p><p>Атрибут <span class="attribute">colspan</span> применяется для получения одной ячейки из нескольких столбцов в таблице, в то время как атрибут <span class="attribute">rowspan</span> используется, чтобы получить одну ячейку из нескольких строк. Каждый атрибут принимает целое значение, которое указывает количество ячеек для охвата, где 1&nbsp;— значение по умолчанию.</p><p>Используя прежнюю таблицу с книгами, теперь мы можем удалить пустые ячейки в подвале.</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;caption&gt;Книги по дизайну и фронтенд-разработке&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot; colspan=&quot;2&quot;&gt;Название&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Кол-во&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Цена&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Не заставляйте меня думать Стив Круг&lt;/td&gt;
+      &lt;td&gt;На складе&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;$30.02&lt;/td&gt;
+    &lt;/tr&gt;
+    ...
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;Сумма&lt;/td&gt;
+      &lt;td&gt;$135.36&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;НДС&lt;/td&gt;
+      &lt;td&gt;$13.54&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;Итого&lt;/td&gt;
+      &lt;td&gt;$148.90&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+ &lt;/table&gt;</code></pre>
+<div class="notePad"><h3>Демонстрация объединения ячеек</h3><iframe width="100%" height="250" src="https://jsfiddle.net/webref/7rqehtfj/embedded/result,html/" allowfullscreen="allowfullscreen"></iframe></div><h2>Границы в таблице</h2><p>Эффективное использование границ может помочь сделать таблицу более наглядной. Границы вокруг таблицы или отдельных ячеек могут оказать большое влияние, когда пользователь пытается интерпретировать данные и быстро сканировать информацию. При стилизации границ через CSS есть два свойства, которые могут быстро пригодиться: <span class="attribute">border-collapse</span> и <span class="attribute">border-spacing</span>.</p><h3>Свойство border-collapse</h3><p>Таблицы состоят из родительского элемента <span class="tag">&lt;table&gt;</span>, а также вложенных элементов <span class="tag">&lt;th&gt;</span> или <span class="tag">&lt;td&gt;</span>. Когда мы устанавливаем границы к этим элементам, то границы вокруг одного элемента начинают соединяться с границами другого элемента. Например, если положить двухпиксельную границу вокруг всей таблицы, а затем дополнительно двухпиксельную границу вокруг каждой ячейки таблицы, то получится четырёхпиксельная граница вокруг каждой ячейки в таблице.</p><p>Свойство <span class="attribute">border-collapse</span> определяет модель границы в таблице. Есть три значения для свойства <span class="attribute">border-collapse</span>: <span class="value">collapse</span>, <span class="value">separate</span> и <span class="value">inherit</span>. Значение по умолчанию separate у свойства <span class="attribute">border-collapse</span> означает, что все разные границы складываются друг с другом, как описано выше. Значение <span class="value">collapse</span>, с другой стороны, сжимает границы в одну, выбирая ячейку таблицы в качестве основной.</p>
+<pre><code data-language="css">table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid #cecfd5;
+  padding: 10px 15px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация border-collapse</h3><iframe width="100%" height="380" src="https://jsfiddle.net/webref/xo33er98/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h3>Свойство border-spacing</h3><p>Когда свойство <span class="attribute">border-collapse</span> со значением <span class="value">separate</span> позволяет соединять одну границу с другой, так свойство <span class="attribute">border-spacing</span> задаёт, какое расстояние, если оно есть, отображается между этими границами.</p><p>Например, таблица с однопиксельной границей вокруг всей таблицы и однопиксельной границей вокруг каждой ячейки будет иметь двухпиксельную границу вокруг каждой ячейки, потому что границы складываются друг с другом. Добавление <span class="attribute">border-spacing</span> со значением 4px отделяет границы на 4&nbsp;пикселя.</p>
+<pre><code data-language="css">table {
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+table,
+th,
+td {
+  border: 1px solid #cecfd5;
+}
+th,
+td {
+  padding: 10px 15px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация border-spacing</h3><iframe width="100%" height="380" src="https://jsfiddle.net/webref/2qLd980x/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>Свойство <span class="attribute">border-spacing</span> работает только тогда, когда значение свойства <span class="attribute">border-collapse</span> задано как <span class="value">separate</span>, это значение по умолчанию. Если свойство <span class="attribute">border-collapse</span> ранее не указывалось, мы можем использовать свойство <span class="attribute">border-spacing</span> не волнуясь.</p><p>Кроме того, свойство <span class="attribute">border-spacing</span> может принимать два значения размера: первое значение для горизонтального расстояния, а второе&nbsp;— для вертикального. К примеру, запись <span class="var">border-spacing: 5px 10px</span> установит 5&nbsp;пикселей горизонтального расстояния между границами и 10&nbsp;пикселей&nbsp;— вертикального.</p><h3>Добавление границ к строкам</h3><p>Добавление границ к таблице временами может быть сложным, особенно при вставке границ между строк. В таблице границы не могут применяться к элементам <span class="tag">&lt;tr&gt;</span> или структурным элементам таблицы, так что когда мы желаем поставить границу между строк, потребуется некоторое размышление.</p><p>Начнём с того, что установим свойство <span class="attribute">border-collapse</span> для таблицы как <span class="value">collapse</span>, а затем добавим нижний <span class="attribute">border</span> к каждой ячейке таблицы, независимо от того, какой это элемент, <span class="tag">&lt;th&gt;</span> или <span class="tag">&lt;td&gt;</span>. По желанию мы можем убрать нижнюю границу у ячеек в последней строке таблицы с помощью псевдокласса <span class="attribute">:last-child</span>, чтобы выбрать последний элемент <span class="tag">&lt;tr&gt;</span> в таблице и нацелиться на элементы <span class="tag">&lt;td&gt;</span> внутри строки. Кроме того, если таблица использует структурные элементы, мы должны убедиться, что последняя строка таблицы находится в элементе <span class="tag">&lt;tfoot&gt;</span>.</p>
+<pre><code data-language="css">table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border-bottom: 1px solid #cecfd5;
+  padding: 10px 15px;
+}
+tfoot tr:last-child td {
+  border-bottom: 0;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация добавления границ к строкам таблицы</h3><iframe width="100%" height="380" src="https://jsfiddle.net/webref/azm5774v/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>Чередование в таблице</h2><p>Среди усилий сделать таблицы более наглядными, одной типовой практикой дизайна является «чередование» строк таблицы с переменным цветом фона. Это делает строки чётче и обеспечивает наглядность при сканировании информации. Один из способов сделать это&nbsp;— поместить класс к каждому элементу <span class="tag">&lt;tr&gt;</span> через один и установить цвет фона для этого класса. Другой, более простой способ заключается в использовании псевдокласса <span class="attribute">:nth-child</span> с параметром <span class="value">even</span> или <span class="value">odd</span>, чтобы выбрать каждый элемент <span class="tag">&lt;tr&gt;</span> через один.</p><p>Здесь наша таблица с книгами использует псевдокласс <span class="attribute">:nth-child</span> с параметром <span class="value">even</span> для выбора всех чётных строк таблицы и применения к ним серого фона. Следовательно, каждая строка через одну в теле таблицы будет серой.</p>
+<pre><code data-language="css">table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+th,
+td {
+  padding: 10px 15px;
+}
+thead {
+  background: #395870;
+  color: #fff;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация чередования строк в таблице</h3><iframe width="100%" height="380" src="https://jsfiddle.net/webref/5dzhp4bu/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><p>В этом коде есть несколько нюансов, о которых стоит упомянуть. Для начала, элемент <span class="tag">&lt;table&gt;</span> явно содержит свойство <span class="attribute">border-collapse</span> со значением <span class="value">separate</span>, а <span class="attribute">border-spacing</span> задано как 0. Причина в том, что элементы <span class="tag">&lt;td&gt;</span> включают в себя границы, в то время как элементы <span class="tag">&lt;th&gt;</span> нет. Без свойства <span class="attribute">border-collapse</span> как <span class="value">separate</span> границы у элементов <span class="tag">&lt;td&gt;</span> сделают тело и подвал таблицы шире, чем шапка.</p><p>Поскольку свойство <span class="attribute">border-collapse</span> задано как <span class="value">separate</span>, мы должны быть осторожны в том, как границы применяются к элементам <span class="tag">&lt;td&gt;</span>. Здесь границы устанавливаются справа и снизу у всех элементов <span class="tag">&lt;td&gt;</span>. Затем первый элемент <span class="tag">&lt;td&gt;</span> в <span class="tag">&lt;tr&gt;</span> получает левую границу. Так как все элементы <span class="tag">&lt;td&gt;</span> соединяются вместе с их границами, это обеспечивает появление сплошной границы вокруг каждого элемента.</p><p>Наконец, все элементы <span class="tag">&lt;th&gt;</span> получают синий фон, а каждый чётный элемент <span class="tag">&lt;tr&gt;</span> получает серый <span class="attribute">background</span> через псевдокласс <span class="attribute">:nth-child</span>.</p><h2>Выравнивание текста</h2><p>В дополнение к границам и чередованию, важную роль в формировании таблицы играет выравнивание текста внутри ячеек. Имена, описания и тому подобное, как правило, выравниваются по левому краю, в то время как номера и другие числа выравниваются по правому. Другая информация, в зависимости от контекста, может быть по центру. Мы можем переместить текст по горизонтали с помощью свойства <span class="attribute">text-align</span> в CSS, как мы рассмотрели это в уроке 6, «<a href="working-with-typography.html">Работа с типографикой</a>».</p><p>Для выравнивания текста по вертикали, однако, применяется свойство <span class="attribute">vertical-align</span>. Это свойство работает только со строчными элементами и ячейками таблицы и не будет работать для блочных, строчно-блочных или ещё каких-либо других элементов.</p><p>Свойство <span class="attribute">vertical-align</span> принимает несколько разных значений, самые популярные — <span class="value">top</span>, <span class="value">middle</span> и <span class="value">bottom</span>. Эти значения вертикально позиционируют текст относительно ячейки таблицы или ближайшего родительского элемента для строчных элементов.</p><p>Исправив HTML и CSS и включив свойства <span class="attribute">text-align</span> и <span class="attribute">vertical-align</span>, мы можем очистить макет нашей таблицы с книгами. Обратите внимание, что данные в таблице становится намного яснее и удобнее.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;  colspan=&quot;2&quot;&gt;Название&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Кол-во&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Цена&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;Не заставляйте меня думать&lt;/strong&gt; Стив Круг
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;На складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;1&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$30.02&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;UX-дизайн. Практическое руководство по проектированию опыта взаимодействия&lt;/strong&gt; Расс Унгер, Кэролайн Чендлер
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;На складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;2&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$52.94 &lt;span class=&quot;item-multiple&quot;&gt;$26.47 &amp;#215; 2&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;Изучаем HTML5&lt;/strong&gt; Брюс Лоусон, Реми Шарп
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;Нет на складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;1&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$22.23&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;Пуленепробиваемый веб-дизайн&lt;/strong&gt; Дэн Сидерхолм
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;На складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;1&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$30.17&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;Сумма&lt;/td&gt;
+      &lt;td&gt;$135.36&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;НДС&lt;/td&gt;
+      &lt;td&gt;$13.54&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;Итого&lt;/td&gt;
+      &lt;td&gt;$148.90&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  font: 14px/1.4 &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+th,
+td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+thead {
+  background: #395870;
+  color: #fff;
+}
+th:first-child {
+  text-align: left;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+.book-title {
+  color: #395870;
+  display: block;
+}
+.item-stock,
+.item-qty {
+  text-align: center;
+}
+.item-price {
+  text-align: right;
+}
+.item-multiple {
+  display: block;
+}
+tfoot {
+  text-align: right;
+}
+tfoot tr:last-child {
+  background: #f0f0f2;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация выравнивания текста в таблице</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/57axjbrx/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Полностью стилизованная таблица</h2><p>Пока наша таблица с книгами выглядит довольно хорошо. Давайте сделаем ещё один шаг вперёд, скруглим некоторые уголки и чуть больше стилизуем часть текста.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot; colspan=&quot;2&quot;&gt;Название&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Кол-во&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Цена&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;Не заставляйте меня думать&lt;/strong&gt;
+        &lt;span class=&quot;text-offset&quot;&gt;Стив Круг&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;На складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;1&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$30.02&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;UX-дизайн. Практическое руководство по проектированию опыта взаимодействия&lt;/strong&gt;
+        &lt;span class=&quot;text-offset&quot;&gt;Расс Унгер, Кэролайн Чендлер&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;На складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;2&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$52.94 &lt;span class=&quot;text-offset item-multiple&quot;&gt;$26.47 &amp;#215; 2&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt; Изучаем HTML5&lt;/strong&gt;
+        &lt;span class=&quot;text-offset&quot;&gt;Брюс Лоусон, Реми Шарп&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;Нет на складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;1&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$22.23&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;strong class=&quot;book-title&quot;&gt;Пуленепробиваемый веб-дизайн&lt;/strong&gt;
+        &lt;span class=&quot;text-offset&quot;&gt;Дэн Сидерхолм&lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td class=&quot;item-stock&quot;&gt;На складе&lt;/td&gt;
+      &lt;td class=&quot;item-qty&quot;&gt;1&lt;/td&gt;
+      &lt;td class=&quot;item-price&quot;&gt;$30.17&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr class=&quot;text-offset&quot;&gt;
+      &lt;td colspan=&quot;3&quot;&gt;Сумма&lt;/td&gt;
+      &lt;td&gt;$135.36&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&quot;text-offset&quot;&gt;
+      &lt;td colspan=&quot;3&quot;&gt;НДС&lt;/td&gt;
+      &lt;td&gt;$13.54&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&quot;3&quot;&gt;Итого&lt;/td&gt;
+      &lt;td&gt;$148.90&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+<p class="exampleTitle">CSS</p>
+<pre><code data-language="css">table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  font: 14px/1.4 &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+th,
+td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+thead {
+  background: #395870;
+  background: linear-gradient(#49708f, #293f50);
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+th:first-child {
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+th:last-child {
+  border-top-right-radius: 5px;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+.book-title {
+  color: #395870;
+  display: block;
+}
+.text-offset {
+  color: #7c7c80;
+  font-size: 12px;
+}
+.item-stock,
+.item-qty {
+  text-align: center;
+}
+.item-price {
+  text-align: right;
+}
+.item-multiple {
+  display: block;
+}
+tfoot {
+  text-align: right;
+}
+tfoot tr:last-child {
+  background: #f0f0f2;
+  color: #395870;
+  font-weight: bold;
+}
+tfoot tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+tfoot tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}</code></pre>
+<div class="notePad"><h3>Демонстрация стилизации таблицы</h3><iframe width="100%" height="400" src="https://jsfiddle.net/webref/wsboyyzt/embedded/result,html,css/" allowfullscreen="allowfullscreen"></iframe></div><h2>На практике</h2><p>Теперь, когда мы знаем, как создать и стилизовать таблицы, давайте завершим последнюю оставшуюся страницу нашего сайта Styles Conference&nbsp;— расписание.</p><ol class="practice"><li><p>Мы начнём нашу страницу Расписание с открытия файла schedule.html и добавления элемента <span class="tag">&lt;section&gt;</span> с классом <span class="class">row</span>, так же, как мы это проделали со всеми другими страницами. Внутри этого нового <span class="tag">&lt;section&gt;</span> также добавим элемент <span class="tag">&lt;div&gt;</span> с классом <span class="class">container</span>.</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+  ...
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+<p>С помощью этих элементов и классов мы создали новый раздел страницы с белым <span class="attribute">background</span> и вертикальным <span class="attribute">padding</span> и выровняли содержимое страницы по центру. Что изменилось здесь по сравнению с другими страницами&nbsp;— класс <span class="class">container</span> на месте класса <span class="class">grid</span> для элемента <span class="tag">&lt;div&gt;</span>. Поскольку мы не будем использовать любой класс col-, то отказываемся от класса <span class="class">grid</span> в пользу класса <span class="class">container</span>.</p></li><li><p>В новом разделе мы добавим три таблицы, по одной для каждого дня конференции. Таблицы будут отображать события каждого дня с помощью трёх столбцов и нескольких строк, содержать шапку таблицы и её тело.</p><p>Для начала давайте наметим структуру первой таблицы, включая элементы <span class="tag">&lt;table&gt;</span>, <span class="tag">&lt;thead&gt;</span> и <span class="tag">&lt;tbody&gt;</span>.</p>
+<pre><code data-language="html">&lt;section class=&quot;row&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        ...
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></li><li><p>В данный момент, хотя наша первая таблица не содержит каких-либо данных, к ней применяются некоторые стили. В частности, сброс, который мы добавили в уроке&nbsp;1, установил для таблиц свойство <span class="attribute">border-collapse</span> со значением <span class="value">collapse</span>, а свойство <span class="attribute">border-spacing</span> со значением 0. Нам нужны эти стили, поэтому оставим их в покое. Тем не менее, создадим новый раздел в нашем файле main.css, чтобы добавить некоторые дополнительные стили.</p><p>В нашем новом разделе стилей специально для страницы Расписание (который появится чуть ниже стилей для страницы Спикеры), установим для элементов <span class="tag">&lt;table&gt;</span> свойство <span class="attribute">width</span> как 100% и нижний <span class="attribute">margin</span> 44 пикселя.</p><p>Затем с помощью псевдокласса <span class="attribute">:last-child</span> определим последний элемент <span class="tag">&lt;table&gt;</span> в разделе и установим для него нижний <span class="attribute">margin</span> 0 пикселей. Это предотвратит конфликт этой таблицы с нижним <span class="attribute">padding</span>, принадлежащему элементу <span class="tag">&lt;section&gt;</span> с классом <span class="class">row</span>.</p><p>Пока новый раздел в нашем файле main.css выглядит следующим образом:</p>
+<pre><code data-language="css">/*
+  ========================================
+  Расписание
+  ========================================
+*/
+  
+table {
+  margin-bottom: 44px;
+  width: 100%;
+}
+table:last-child {
+  margin-bottom: 0;
+}</code></pre></li><li><p>Теперь добавим данные в нашу таблицу. Начнём с первого дня конференции, с семинара 24 августа.</p><p>В элементе <span class="tag">&lt;thead&gt;</span> у таблицы добавим элемент <span class="tag">&lt;tr&gt;</span>. Первой ячейкой в строке будет элемент <span class="tag">&lt;th&gt;</span> отмечая центр дня: «Семинары» для этого конкретного дня. Поскольку элемент <span class="tag">&lt;th&gt;</span> является заголовком строки, мы также добавим к нему атрибут <span class="attribute">scope</span> со значением <span class="value">row</span>.</p><p>После элемента <span class="tag">&lt;th&gt;</span> идёт элемент <span class="tag">&lt;td&gt;</span> с датой «24 августа», в данном случае. Теперь у нас чаще будет три столбца, первый из которых служит заголовком таблицы, он определяет время, а вторые два столбца&nbsp;— это обычные ячейки таблицы, которые указывают спикеров на это время. Так как в этой строке нам не нужно два отдельных спикера, мы хотим добавить атрибут <span class="attribute">colspan</span> со значением 2 к элементу <span class="tag">&lt;td&gt;</span>, заставляя его объединить два столбца.</p><p>Наш код для таблицы теперь выглядит следующим образом:</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        Семинары
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        24 августа
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    ...
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></li><li><p>Внутри элемента <span class="tag">&lt;tbody&gt;</span> заполним дневные мероприятия. Начнём с добавления элемента <span class="tag">&lt;tr&gt;</span> с элементами <span class="tag">&lt;th&gt;</span> и <span class="tag">&lt;td&gt;</span> непосредственно в строке.</p><p>Ко всем последующим элементам <span class="tag">&lt;th&gt;</span> мы добавим атрибут <span class="attribute">scope</span> со значением <span class="value">row</span>, чтобы семантически определить этот элемент в качестве заголовка строки. Затем в элементе <span class="tag">&lt;th&gt;</span> добавим элемент <span class="tag">&lt;time&gt;</span>, который показывает время первого мероприятия&nbsp;— 8:30, в данном случае. Мы также включим атрибут <span class="attribute">datetime</span> для элемента <span class="tag">&lt;time&gt;</span> со значением времени в часах, минутах и секундах&nbsp;— 08:30:00.</p><p>В элемент <span class="tag">&lt;td&gt;</span>, который следует за элементом <span class="tag">&lt;th&gt;</span>, включим название мероприятия (поскольку в это время нет никаких спикеров)&nbsp;— «Регистрация», в данном случае. Так как существует только одно мероприятие в это время, мы также включим атрибут <span class="attribute">colspan</span> со значением 2 в элементе <span class="tag">&lt;td&gt;</span>.</p><p>В целом, код нашей первой таблицы выглядит следующим образом:</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        Семинары
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        24 августа
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;08:30:00&quot;&gt;8:30&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        Регистрация
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></li><li><p>Для второй строки внутри элемента <span class="tag">&lt;tbody&gt;</span> добавим элемент <span class="tag">&lt;tr&gt;</span> чуть ниже нашего предыдущего ряда. Затем добавим элемент <span class="tag">&lt;th&gt;</span> с атрибутом <span class="attribute">scope</span> и значением <span class="value">row</span> и снова добавим элемент <span class="tag">&lt;time&gt;</span> с соответствующим временем и атрибутом <span class="attribute">datetime</span> в этом элементе <span class="tag">&lt;th&gt;</span>.</p><p>После <span class="tag">&lt;th&gt;</span> добавим два элемента <span class="tag">&lt;td&gt;</span> для двух спикеров, выступающих в одно время. Непосредственно внутри каждого элемента <span class="tag">&lt;td&gt;</span> мы добавим элемент <span class="tag">&lt;a&gt;</span>, который ссылается туда, где спикер расположен на странице Спикеры. Помните, мы добавили атрибуты <span class="attribute">id</span> с именем каждого спикера к родительскому элементу? Используя это значение атрибута <span class="attribute">id</span>, которому предшествует имя файла speakers.html и знак решётки #, мы можем напрямую связать описание доклада спикера с его биографией на странице Спикеры.</p><p>Внутрь элемента <span class="attribute">&lt;a&gt;</span> мы включим элемент <span class="tag">&lt;h4&gt;</span> с именем спикера с последующим названием доклада.</p><p>Код для первых двух семинаров выглядит следующим образом:</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        Семинары
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        24 августа
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;08:30:00&quot;&gt;8:30&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        Регистрация
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;09:00:00&quot;&gt;9:00&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;speakers.html#adam-connor&quot;&gt;
+          &lt;h4&gt;Адам Коннор&lt;/h4&gt;
+          Свет! Камера! Мотор! Вдохновение дизайна от кинематографа
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;speakers.html#jennifer-jones&quot;&gt;
+          &lt;h4&gt;Дженифер Джонс&lt;/h4&gt;
+          Чему дизайнеры могут научиться у родителей
+        &lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></li><li><p>Отсюда мы можем повторить этот шаблон для каждого вида мероприятия и спикера, чтобы закончить нашу первую таблицу, а затем добавить две таблицы для следующих двух дней конференции.</p><p>При этом имейте в виду, что шапка таблицы всегда будет включать в себя заголовок таблицы с событием дня и ячейки таблицы, объединяющие две колонки с датой.</p><p>Затем в теле каждой таблицы, каждая строка будет содержать заголовок таблицы с временем. После заголовка таблицы идёт мероприятие, спикер или несколько спикеров. Мероприятия без спикеров будут находиться в одном элементе <span class="tag">&lt;td&gt;</span>, который объединяет два столбца. Если представлен только один спикер в определённое время, то спикер будет находиться в одном элементе <span class="tag">&lt;td&gt;</span>, который объединяет два столбца и содержать элементы <span class="tag">&lt;a&gt;</span> и <span class="tag">&lt;h4&gt;</span>.</p><p>Если есть два спикера одновременно, то каждый спикер будет находиться внутри своего собственного элемента <span class="tag">&lt;td&gt;</span>, как и раньше.</p><p>Полный код для всех трёх таблиц можно найти в конце этого упражнения. Для справки, таблица для первого дня, который включает в себя обед и более двух спикеров, выглядит следующим образом:</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        Семинары
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        24 августа
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;08:30:00&quot;&gt;8:30&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        Регистрация
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;09:00:00&quot;&gt;9:00&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;speakers.html#adam-connor&quot;&gt;
+          &lt;h4&gt;Адам Коннор&lt;/h4&gt;
+          Свет! Камера! Мотор! Вдохновение дизайна от кинематографа
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;speakers.html#jennifer-jones&quot;&gt;
+          &lt;h4&gt;Дженифер Джонс&lt;/h4&gt;
+          Чему дизайнеры могут научиться у родителей
+        &lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;12:30:00&quot;&gt;12:30&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td colspan=&quot;2&quot;&gt;
+        Обед
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;14:00:00&quot;&gt;14:00&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;speakers.html#tessa-harmon&quot;&gt;
+          &lt;h4&gt;Тесса Хармон&lt;/h4&gt;
+          Искусство кодирования: Генерация вязанных шаблонов
+        &lt;/a&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;a href=&quot;speakers.html#russ-unger&quot;&gt;
+          &lt;h4&gt;Расс Унгер&lt;/h4&gt;
+          От Маппетов к мастерству: Основные принципы UX от Джима Хенсона
+        &lt;/a&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></li><li><p>Теперь наши таблицы обрели форму, настало время добавить к ним немного стиля. Начнём с добавления некоторых общих стилей для элементов <span class="tag">&lt;th&gt;</span> и <span class="tag">&lt;td&gt;</span>. Для них добавим нижний <span class="attribute">padding</span> 22 пикселя и вертикальное выравнивание <span class="value">top</span>. Для элемента <span class="tag">&lt;th&gt;</span> специально добавим правый <span class="attribute">padding</span> 45 пикселей, выравнивание текста как <span class="value">right</span> и <span class="attribute">width</span> как 20%. Затем для элементов <span class="tag">&lt;td&gt;</span> добавим <span class="attribute">width</span> как 40%.</p><p>Ниже наших существующих стилей таблиц и расписания код должен выглядеть следующим образом:</p>
+<pre><code data-language="css">th,
+td {
+  padding-bottom: 22px;
+  vertical-align: top;
+}
+th {
+  padding-right: 45px;
+  text-align: right;
+  width: 20%;
+}
+td {
+  width: 40%;
+}</code></pre></li><li><p>Далее добавим стиль к шапке таблицы и к элементам в ней. Мы установим <span class="attribute">line-height</span> как 44&nbsp;пикселя только для элемента <span class="tag">&lt;thead&gt;</span>, <span class="attribute">color</span> как #648880 и <span class="attribute">font-size</span> как 24&nbsp;пикселя для всех элементов <span class="tag">&lt;th&gt;</span> вложенных в <span class="tag">&lt;thead&gt;</span>. Наши новые стили включают следующее:</p>
+<pre><code data-language="css">thead {
+  line-height: 44px;
+}
+thead th {
+  color: #648880;
+  font-size: 24px;
+}</code></pre></li><li><p>Шапка таблицы выглядит хорошо, так что добавим некоторые стили для тела таблицы. Начнём с элементов <span class="tag">&lt;th&gt;</span> вложенных в <span class="tag">&lt;tbody&gt;</span>: поменяем их цвет, добавим некоторые шрифтовые и текстовые свойства и небольшой верхний <span class="attribute">padding</span>.</p>
+<pre><code data-language="css">tbody th {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 22px;
+  text-transform: uppercase;
+}</code></pre></li><li><p>Мы также добавим некоторые стили к элементам <span class="tag">&lt;td&gt;</span> вложенных в <span class="tag">&lt;tbody&gt;</span>, начиная с верхней границы и <span class="attribute">padding</span>. Мы стилизуем элементы <span class="tag">&lt;td&gt;</span>, которые объединяются в один столбец, добавив к ним <span class="attribute">padding</span> 15 пикселей справа, чтобы сформировать левый столбец и 15 пикселей <span class="attribute">padding</span> слева, чтобы сформировать правый столбец. Это установит в общей сложности 30 пикселей <span class="attribute">padding</span> между двумя столбцами, сохраняя каждую ячейку одинакового размера. Нам не нужно применять левый или правый <span class="attribute">padding</span> к элементам <span class="tag">&lt;td&gt;</span>, которые объединяют два столбца.</p><p>Мы добавим все эти горизонтальные <span class="attribute">padding</span> с помощью псевдоклассов <span class="attribute">:first-of-type</span>, <span class="attribute">:last-of-type</span> и <span class="attribute">:only-of-type</span>. Эти псевдоклассы работают очень похоже на псевдокласс <span class="attribute">:last-child</span>, который мы использовали ранее.</p><p>Псевдокласс <span class="attribute">:first-of-type</span> выберет первый элемент этого типа в родительском элементе. В нашем случае, селектор <span class="var">td:first-of-type</span> выберет первый элемент <span class="tag">&lt;td&gt;</span> внутри элемента <span class="tag">&lt;tr&gt;</span>. Затем псевдокласс <span class="attribute">:last-of-type</span> выберет последний элемент этого типа в родительском элементе.</p><p>Опять же, в нашем случае, селектор <span class="var">td:last-of-type</span> выберет последний элемент <span class="tag">&lt;td&gt;</span> внутри элемента <span class="tag">&lt;tr&gt;</span>. Наконец, псевдокласс <span class="tag">:only-of-type</span> выберет элемент, только если это элемент данного типа в родительском элементе. Здесь селектор <span class="var">td:only-of-type</span> выберет только элемент <span class="tag">&lt;td&gt;</span>, если это только <span class="tag">&lt;td&gt;</span> внутри элемента <span class="tag">&lt;tr&gt;</span>, например, когда <span class="tag">&lt;td&gt;</span> объединяет два столбца.</p><p>Наши стили немного сложные, но они гибкие в удовлетворении потребностей нашей таблицы. Эти новые стили включают следующее:</p>
+<pre><code data-language="css">tbody td {
+  border-top: 1px solid #dfe2e5;
+  padding-top: 21px;
+}
+tbody td:first-of-type {
+  padding-right: 15px;
+}
+tbody td:last-of-type {
+  padding-left: 15px;
+}
+tbody td:only-of-type {
+  padding-left: 0;
+  padding-right: 0;
+}</code></pre></li><li><p>Наше расписание и таблица для его отображения соединяются вместе. Давайте настроим несколько стилей для существующих элементов чтобы очистить макет. Начнём с того, что сделаем все ссылки в таблице немного серыми. Если мы нацелимся только на элементы <span class="tag">&lt;a&gt;</span> в таблице, наши заголовки с именем спикера внутри ссылки останутся зелёными, в то время как название доклада будет серым, создавая приятный контраст между ними.</p><p>В то время как мы настраиваем стили для докладов, также уберём нижний <span class="attribute">margin</span> для элементов <span class="tag">&lt;h4&gt;</span> в таблице, позволяя имени спикера располагаться ближе к заголовку. Мы можем реализовать эти стили с помощью следующего кода:</p>
+<pre><code data-language="css">table a {
+  color: #888;
+}
+table h4 {
+  margin-bottom: 0;
+}</code></pre></li><li><p>Наконец, создадим некоторые визуальный контраст между разными видами деятельности происходящих в течение дня. Все доклады хорошо выглядят после наших последних изменений. Для всех других видов деятельности, таких как регистрация, обед и перерывы (которые в теле таблицы), а также для даты (которая в заголовке таблицы) будем использовать светлый серый.</p><p>Мы сделаем это, создав новый класс <span class="class">schedule-offset</span> и назначив ему <span class="attribute">color</span> со значением #a9b2b9.</p>
+<pre><code data-language="css">.schedule-offset {
+  color: #a9b2b9;
+}</code></pre>
+<p>После того, как класс находится на месте, добавим его ко всем элементам <span class="tag">&lt;td&gt;</span>, которые объединяют два столбца и включают дату, либо мероприятие&nbsp;— регистрацию, обед или перерыв. Вспоминая нашу таблицу для первого дня с семинарами, HTML будет выглядеть следующим образом:</p>
+<pre><code data-language="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        Семинары
+      &lt;/th&gt;
+      &lt;td class=&quot;schedule-offset&quot; colspan=&quot;2&quot;&gt;
+        24 августа
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;08:30:00&quot;&gt;8:30&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td class=&quot;schedule-offset&quot; colspan=&quot;2&quot;&gt;
+        Регистрация
+      &lt;/td&gt;
+    &lt;/tr&gt;
+      ...
+    &lt;tr&gt;
+      &lt;th scope=&quot;row&quot;&gt;
+        &lt;time datetime=&quot;12:30:00&quot;&gt;12:30&lt;/time&gt;
+      &lt;/th&gt;
+      &lt;td class=&quot;schedule-offset&quot; colspan=&quot;2&quot;&gt;
+        Обед
+      &lt;/td&gt;
+    &lt;/tr&gt;
+      ...
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></li></ol><p>Таблицы, которые на первый взгляд выглядят просто, могут оказаться довольно сложными, как в случае с нашим расписанием для Styles Conference. Хорошей новостью является то, что наше расписание теперь завершено и выглядит превосходно.</p><p class="fig"><img src="../../assets/images/learn-html-css/practice-11-01.png" alt="Страница Расписание включает несколько таблиц для Styles Conference"></p><p class="figsign">Рис. 11.01. Страница Расписание включает несколько таблиц для Styles Conference</p><h3>Демонстрация и исходный код</h3><p>Ниже вы можете просмотреть сайт Styles Conference в его нынешнем состоянии, а также скачать исходный код сайта на данный момент.</p><p><a href="https://webref.ru/example/learn-html-css/organizing-data-with-tables/schedule.html" class="button radius">Просмотр сайта Styles Conference</a> или <a href="../../assets/files/organizing-data-with-tables.zip">Скачать исходный код</a></p><h2>Резюме</h2><p>Ладно, теперь мы знаем, как семантически скомпоновать табличные данные в HTML, также делая это интуитивно с помощью CSS. Обсуждение таблиц было нашим последним основным препятствием при изучении HTML и CSS и мы на этом официально завершили наш сайт Styles Conference.</p><p>Для проверки, в этом уроке мы рассмотрели следующее:</p><ul><li>лучшие способы для семантического создания таблиц;</li><li>как сделать, чтобы отдельные ячейки таблицы объединяли несколько столбцов или строк;</li><li>структурные элементы, из которых состоят таблицы;</li><li>разные способы стилизации границ таблицы и как различные свойства влияет на внешний вид таблицы;</li><li>как вертикально выравнивать текст в таблице.</li></ul><p>Мы проделали большую работу по применению всех наших новых навыков на практике и ушли далеко вперёд, чем были несколько уроков назад. Давайте закончим на высокой ноте, свяжем некоторые концы и рассмотрим методы написания наилучшего кода.</p><h2>Ресурсы и ссылки</h2><ul><li><a href="http://www.456bereastreet.com/archive/200410/bring_on_the_tables/">Bring on the tables</a> на 456 Berra St.</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/tablicy">таблицы</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-11a30762c69f5af529cf5d33a84e1c71"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/table.html">&lt;table&gt;</a></li><li class=""> <a href="../../html/td.html">&lt;td&gt;</a></li><li class=""> <a href="../../html/tr.html">&lt;tr&gt;</a></li><li class=""> <a href="../html5-css3/table/struct.html">Структура таблицы</a></li><li class=""> <a href="../html5-css3/table.html">Таблицы</a></li><li class=""> <a href="../../course/html-content/tables.html">Таблицы в HTML</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 11.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/learn-html-css/building-forms'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/learn-html-css/writing-your-best-code'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="building-forms.html" title="На предыдущую страницу">Построение форм</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="writing-your-best-code.html" title="На следующую страницу">Написание хорошего кода</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="first-web-page.html">Создание первой веб-страницы</a></li><li class="leaf"><a href="getting-to-know-html.html">Знакомство с HTML</a></li><li class="leaf"><a href="getting-to-know-css.html">Знакомство с CSS</a></li><li class="leaf"><a href="box-model.html">Открываем блочную модель</a></li><li class="leaf"><a href="positioning-content.html">Позиционирование содержимого</a></li><li class="leaf"><a href="working-with-typography.html">Работа с типографикой</a></li><li class="leaf"><a href="setting-backgrounds-and-gradients.html">Установка фона и градиента</a></li><li class="leaf"><a href="creating-lists.html">Создание списков</a></li><li class="leaf"><a href="adding-media.html">Добавление медиа-контента</a></li><li class="leaf"><a href="building-forms.html">Построение форм</a></li><li class="leaf active-trail"><a href="organizing-data-with-tables.html" class="active-trail active">Организация данных с помощью таблиц</a></li><li class="last leaf"><a href="writing-your-best-code.html">Написание хорошего кода</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-90c50131d2e8bc64d63e43e46d3e3bc1"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="organizing-data-with-tables.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

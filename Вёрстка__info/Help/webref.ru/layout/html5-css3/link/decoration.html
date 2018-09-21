@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оформление ссылок | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../link.html" />
+<link rel="next" href="anchor.html" />
+<link rel="prev" href="type.html" />
+<meta name="description" content="Хотя для оформления текстовых ссылок традиционно применяется подчёркивание, допустимо использование и других способов изменения вида ссылок. Вот некоторые из них: ссылки без подчёркивания; декоративное подчёркивание; выделение фоновым цветом; рамки; рисунок возле ссылки. Далее указанные методы оформления ссылок рассматриваются более подробно." />
+<link rel="canonical" href="decoration.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Оформление ссылок</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../html5-css3.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">HTML5 и CSS3 на примерах</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../link.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Ссылки</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Оформление ссылок</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Хотя для оформления текстовых ссылок традиционно применяется подчёркивание, допустимо использование и других способов изменения вида ссылок. Вот некоторые из них:</p><ul><li>ссылки без подчёркивания;</li><li>декоративное подчёркивание;</li><li>выделение фоновым цветом;</li><li>рамки;</li><li>рисунок возле ссылки.</li></ul><p>Далее указанные методы оформления ссылок рассматриваются более подробно.</p><h2>Ссылки без подчёркивания</h2><p>Подчёркивание текстовых ссылок уже стало определённым стандартом и сигналом о том, что это не просто текст, а именно ссылка. Это, кстати, является одной из причин, по которой не следует применять подчёркивание к обычному тексту,&nbsp;— пользователи будут считать, что имеют дело со ссылкой. Наряду с использованием подчёркивания благодаря CSS у разработчиков сайтов появился и альтернативный вариант&nbsp;— создание ссылок без подчёркивания. При правильном применении такое оформление ссылок даже может придать сайту определённый эффект. Только надо обязательно дать понять пользователю, что является ссылкой, а что обычным текстом, разграничивая их, например, цветом. Ещё можно сделать так что при наведении курсора ссылка становится подчёркнутой, меняет свой цвет или используется и тот, и другой эффект одновременно.</p><p>Чтобы убрать подчёркивание у ссылки, следует в стилях для селектора <span class="tag">a</span> добавить <span class="attribute">text-decoration</span> со значение <span class="value">none</span> (пример&nbsp;1).</p><p class="exampleTitle">Пример 1. Отсутствие подчёркивания у ссылок</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a {
+    text-decoration: none; /* Убираем подчёркивание */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;link.html&quot;&gt;Ссылка без подчёркивания&lt;/a&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Для псевдоклассов <span class="attribute">:hover</span> и <span class="attribute">:visited</span> нет необходимости добавлять <span class="attribute">text-decoration</span>, они наследуют свойства селектора <span class="tag">a</span>.</p><h2>Подчёркивание ссылок при наведении на них курсора мыши</h2><p>Чтобы добавить подчёркивание для ссылок, у которых установлено <span class="attribute">text-decoration</span>:&nbsp;<span class="value">none</span>, следует воспользоваться псевдоклассом <span class="attribute">:hover</span>. Он определяет стиль ссылки, когда на неё наводится курсор мыши. Остаётся только добавить для псевдокласса свойство <span class="attribute">text-decoration</span> со значением <span class="value">underline</span> (пример&nbsp;2).</p><p class="exampleTitle">Пример 2. Подчёркивание ссылок</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a {
+    text-decoration: none;
+   }
+   a:hover {
+    text-decoration: underline;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;link.html&quot;&gt;Ссылка без подчёркивания&lt;/a&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>Декоративное подчёркивание ссылок</h2><p>Подчёркивание у ссылок можно задать не просто сплошной линией, а, например, пунктирной. Для этого надо воспользоваться свойством <span class="attribute">border-bottom</span>, которое создаёт линию внизу элемента. Указав один из аргументов этого свойства <span class="value">dashed</span>, получим пунктирное подчёркивание. В примере&nbsp;3 показано задание синего пунктира у ссылок красного цвета при наведении на них курсора мыши.</p><p class="exampleTitle">Пример 3. Пунктирное подчёркивание для ссылок</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a {
+    color: blue; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчёркивание */
+   }
+   a:hover {
+    border-bottom: 1px dashed blue; /* Добавляем синее пунктирное подчёркивание */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;link.html&quot;&gt;Ссылка без подчёркивания&lt;/a&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>При использовании приведённого способа пунктирная линия появляется чуть ниже обычного подчёркивания текста. Поэтому к стилю ссылки следует добавить <span class="attribute">text-decoration</span> со значением <span class="value">none</span>, чтобы одновременно не получилось две линии (рис.&nbsp;1).</p><p class="fig"><img src="../../../assets/images/html5-css3/link-01.png" alt="Использование пунктира для выделения ссылки" width="567" height="216"></p><p class="figsign">Рис. 1. Использование пунктира для выделения ссылки</p><p>Не обязательно использовать пунктир, например, для создания двойной линии следует указать значение, как показано в примере&nbsp;4.</p><p class="exampleTitle">Пример 4. Двойное подчёркивание ссылок</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a {
+    color: blue; text-decoration: none;
+   }
+   a:hover {
+    border-bottom: 4px double red;
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;link.html&quot;&gt;Ссылка без подчёркивания&lt;/a&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Изменяя толщину линии, её тип и цвет, можно получить множество разнообразных эффектов.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Использование фонового цвета</h2><p>Чтобы добавить к ссылке цветной фон, достаточно воспользоваться свойством <span class="attribute">background</span>, присвоив ему цвет в любом доступном формате. Аналогично можно использовать псевдокласс <span class="attribute">:hover</span>, тогда цвет фона под ссылкой будет изменяться при наведении на неё курсора мыши (пример&nbsp;5).</p><p class="exampleTitle">Пример 5. Фон под ссылкой</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a {
+    padding: 2px; /* Поля вокруг текста ссылки */
+    text-decoration: none; /* Убираем подчёркивание */
+   }
+   a:hover {
+    background: #f73; /* Цвет фона при наведении на ссылку курсора */
+    color: yellow; /* Новый цвет текста */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;link.html&quot;&gt;Ссылка без подчёркивания&lt;/a&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Фон под ссылкой точно соответствует области текста, поэтому в примере для селектора <span class="tag">a</span> добавлено свойство <span class="attribute">padding</span>, создающее поля вокруг текста (рис.&nbsp;2).</p><p class="fig"><img src="../../../assets/images/html5-css3/link-02.png" alt="Изменение цвета фона при наведении на ссылку курсора" width="567" height="216"></p><p class="figsign">Рис. 2. Изменение цвета фона при наведении на ссылку курсора</p><h2>Рамка вокруг ссылки</h2><p>При использовании рамок со ссылками возможны два варианта. Первый&nbsp;— рамка вокруг ссылок устанавливается заранее и при наведении на неё курсора меняет свой цвет. И второй&nbsp;— рамка отображается, только когда на ссылку наводится курсор.</p><p>В примере 6 показано, как изменять цвет рамки, используя свойство <span class="attribute">border</span>. Подчёркивание текста через <span class="attribute">text-decoration</span> можно убрать или оставить без изменения.</p><p class="exampleTitle">Пример 6. Изменение цвета рамки у ссылок</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a {
+    border: 1px solid blue; /* Синяя рамка вокруг ссылок */
+    padding: 2px; /* Поля вокруг текста */
+    text-decoration: none; /* Скрываем подчёркивание */
+   }
+   a:hover {
+    border: 1px solid red; /* Красная рамка при наведении курсора на ссылку */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;link.html&quot;&gt;Ссылка без подчёркивания&lt;/a&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Чтобы рамка не «прилипала» к тексту, в примере вокруг него установлены поля с помощью <span class="attribute">padding</span>. Можно также вместе с применением рамки добавить и фон, воспользовавшись свойством <span class="attribute">background</span>.</p><p>Если требуется добавить рамку к ссылкам при наведении на них курсора, то следует позаботиться о том, чтобы текст в этом случае не сдвигался. Достичь этого проще всего добавлением невидимой рамки вокруг ссылки и последующего изменения цвета рамки с помощью псевдокласса <span class="attribute">:hover</span>. Прозрачный цвет указывается с помощью ключевого слова <span class="value">transparent</span>, в остальном стиль не поменяется.</p>
+<pre><code data-language="html">a {
+  border: 1px solid transparent; /* Прозрачная рамка вокруг ссылок */
+}
+a:hover {
+  border: 1px solid red; /* Красная рамка при наведении курсора на ссылку */
+}</code></pre>
+<h2>Рисунки возле внешних ссылок</h2><p>Внешней называется такая ссылка, которая указывает на другой сайт. Подобная ссылка никак не отличается от локальных ссылок внутри сайта, определить, куда она ведёт, можно только посмотрев строку состояния браузера. Но в эту строку заглядывают не все и не всегда. Чтобы пользователи отличали внешние ссылки от обычных, их следует выделять каким-либо способом. Например, поставить возле ссылки маленький рисунок, который показывает, что статус ссылки иной (рис.&nbsp;3).</p><p class="fig"><img src="../../../assets/images/html5-css3/link-03.png" alt="Выделение ссылки с помощью рисунка" width="567" height="216"></p><p class="figsign">Рис. 3. Выделение ссылки с помощью рисунка</p><p>Использование рисунков возле внешних ссылок хорошо тем, что оформленная таким образом ссылка однозначно отличается от обычных ссылок внутри сайта, а правильно подобранный рисунок говорит посетителю, что ссылка ведёт на другой сайт. Чтобы разделить стиль для локальных и внешних ссылок воспользуемся селектором атрибута. Поскольку все ссылки на другие сайты пишутся с указанием протокола, например http, то достаточно задать стиль для тех ссылок, у которых значение атрибута <span class="attribute">href</span> начинается на http://. Это делается с помощью конструкции <span class="var">a[href^=&quot;http://&quot;] {...}</span>, как показано в примере&nbsp;7.</p><p class="exampleTitle">Пример 7. Рисунок возле ссылки</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Ссылки&lt;/title&gt;
+  &lt;style&gt;
+   a[href^=&quot;http://&quot;]  {
+    background: url(images/blank.png) 100% 5px no-repeat; /* Рисунок */
+    padding-right: 18px; /* Отступ справа */
+   }
+  &lt;/style&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;&lt;a href=&quot;1.html&quot;&gt;Обычная ссылка&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;http://htmlbook.ru&quot;&gt;Ссылка на сайт htmlbook.ru&lt;/a&gt;&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Фоновая картинка располагается справа от ссылки, а чтобы текст не накладывался поверх рисунка добавлено поле справа через свойство <span class="attribute">padding-right</span>. Если потребуется добавить рисунок слева, то 100% заменяем на 0, а <span class="attribute">padding-right</span> на <span class="attribute">padding-left</span>.</p><p>Протокол может быть не только http, но и ftp и https, для них данный рецепт перестаёт работать. Так что для универсальности лучше изменить селектор на <span class="tag">a[href*=&quot;//&quot;]</span>, он сообщает что стиль надо применять ко всем ссылкам, в адресе которых встречается //.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/ssylki">ссылки</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Влад Мержевич</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 13.03.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/html5-css3/link/type'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/html5-css3/link/anchor'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="type.html" title="На предыдущую страницу">Виды ссылок</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="anchor.html" title="На следующую страницу">Ссылки внутри страницы</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first collapsed"><a href="../text.html">Текст</a></li><li class="collapsed"><a href="../background.html">Фон</a></li><li class="expanded active-trail"><a href="../link.html" class="active-trail">Ссылки</a><ul class="menu"><li class="first leaf"><a href="type.html">Виды ссылок</a></li><li class="leaf active-trail"><a href="decoration.html" class="active-trail active">Оформление ссылок</a></li><li class="last leaf"><a href="anchor.html">Ссылки внутри страницы</a></li></ul></li><li class="collapsed"><a href="../list.html">Списки</a></li><li class="collapsed"><a href="../img.html">Изображения</a></li><li class="collapsed"><a href="../table.html">Таблицы</a></li><li class="collapsed"><a href="../form.html">Формы</a></li><li class="collapsed"><a href="../transform.html">Трансформация</a></li><li class="leaf"><a href="../transition.html">Переходы</a></li><li class="last leaf"><a href="../animation.html">Анимация</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-a5270590cf554ebb824341694500a976"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="decoration.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

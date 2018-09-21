@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Введение в WebAudio | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../canvasdeepdive.html" />
+<link rel="next" href="chapter10.html" />
+<link rel="prev" href="chapter08.html" />
+<meta name="description" content="До сих пор я показал вам двумерную графику, анимацию и 3D с аппаратным ускорением. После того, как вы что-то создадите с этими технологиями, то заметите как чего-то не хватает — звука! Традиционно хороший звук в Интернете без плагинов варьируется от ужасного до невозможного, но в последнее время это изменилось, благодаря новому API под названием WebAudio." />
+<link rel="canonical" href="chapter09.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Введение в WebAudio</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../canvasdeepdive.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Глубокое погружение в Canvas</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Введение в WebAudio</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><h2>Обзор</h2><p>До сих пор я показал вам двумерную графику, анимацию и 3D с аппаратным ускорением. После того, как вы что-то создадите с этими технологиями, то заметите как чего-то не хватает&nbsp;— звука! Традиционно хороший звук в Интернете без плагинов варьируется от ужасного до невозможного, но в последнее время это изменилось, благодаря новому API под названием <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">WebAudio</a>.</p><p>Обратите внимание, что этот API всё ещё меняется, хотя он гораздо стабильнее чем раньше. Используйте WebAudio для экспериментов, но не в рабочем коде, по крайней мере с альтернативой на Flash. Попробуйте <a href="http://www.schillmania.com/projects/soundmanager2/">SoundManager2</a> как запасной вариант.</p><h2>Элемент &lt;audio&gt; против WebAudio</h2><p>Вы, возможно, слышали об элементе <span class="tag">&lt;audo&gt;</span>. Этот новый элемент добавлен в HTML5 и выглядит как &lt;audio src=&quot;music.mp3&quot;&gt;. Элемент <span class="tag">&lt;audo&gt;</span> отлично подходит для воспроизведения песен. Вы просто включаете его на свою страницу так же, как изображение. Браузер отображает его с панелью управления. Также имеется минимальный API. К сожалению, элемент <span class="tag">&lt;audo&gt;</span> хорош только для воспроизведения музыки. Вы не можете легко воспроизводить короткие звуки и большинство реализаций позволяют воспроизводить только один звук за раз. Что ещё более важно, вы не можете генерировать звук на лету или получить доступ к библиотеке сэмплов для дальнейшей обработки. Элемент <span class="tag">&lt;audo&gt;</span> хорош для чего и предназначен: воспроизведение музыки, но весьма ограничено.</p><p>Для устранения этих недостатков производители браузеров представили новую спецификацию под названием WebAudio API. Она определяет весь API обработки звука в комплекте генерацией звуков, фильтрами, потоками и доступом к сэмплам. Если вам нужно воспроизвести фоновую музыку, то используйте элемент <span class="tag">&lt;audo&gt;</span>. Если вы хотите больше контроля&nbsp;— используйте WebAudio API.</p><p>Полный WebAudio API слишком большой, чтобы охватить его в этом уроке, так что я просто опишу те части, которые, вероятно, представляют интерес для разработчиков Canvas: звуковые эффекты и визуальная обработка.</p><h2>Простое воспроизведение</h2><p>Для графики мы используем графический контекст. С аудио то же самое — нам нужен аудио контекст. Поскольку спецификация ещё не стандартизирована, мы должны использовать <span class="var">webkitAudioContext()</span>. Обязательно создайте его после загрузки страницы, так как инициализация звуковой системы может занять некоторое время.</p>
+<pre><code data-language="javascript">var ctx; // контекст аудио
+var buf; // аудиобуфер
+  
+// инициализация звуковой системы
+function init() { 
+  console.log(&quot;in init&quot;); 
+  try { 
+    ctx = new webkitAudioContext(); //is there a better API for this? 
+    loadFile(); 
+  } catch(e) { 
+    alert('you need webaudio support'); 
+  } 
+} 
+window.addEventListener('load',init,false);</code></pre>
+<p>После создания контекста мы можем загрузить звук. Мы загружаем звуки так же, как любой другой удаленный ресурс, используя <span class="var">XMLHttpRequest</span>. Однако мы должны указать тип как arraybuffer, а не текст, XML или JSON. Поскольку jQuery не поддерживает <span class="var">arraybuffer</span>, мы вызываем XMLHttpRequest API напрямую.</p>
+<pre><code data-language="javascript">// загружаем и декодируем mp3-файл
+function loadFile() { 
+  var req = new XMLHttpRequest(); 
+  req.open(&quot;GET&quot;,&quot;music.mp3&quot;,true); 
+  req.responseType = &quot;arraybuffer&quot;; 
+  req.onload = function() { 
+    // декодируем загруженные данные
+    ctx.decodeAudioData(req.response, function(buffer) { 
+      buf = buffer; 
+      play(); 
+    }); 
+  }; 
+  req.send(); 
+}</code></pre>
+<p>После загрузки файла он должен быть декодирован в аудиобуфер. Код выше делает это с другой функцией обратного вызова. После декодирования мы уже можем воспроизвести звук.</p>
+<pre><code data-language="javascript">// воспроизведение загруженного файла
+function play() { 
+  // создаём исходный узел из буфера
+  var src = ctx.createBufferSource(); 
+  src.buffer = buf; 
+  // подключаемся к выходному узлу (колонкам)
+  src.connect(ctx.destination); 
+  // сразу воспроизводим
+  src.noteOn(0); 
+}</code></pre>
+<p>Я собираюсь пройтись по этому фрагменту кода очень тщательно, потому что для понимания важно что здесь происходит.</p><p>В WebAudio всё вращается вокруг концепции узлов. Для манипуляции звуком мы связываем узлы вместе в цепочку или схему и после этого запускаем обработку. Для простого воспроизведения аудио нам нужен узел исходника и узел назначения. <span class="var">ctx.createBufferSource()</span> создаёт исходный узел, который мы прикрепляем к аудиобуферу с нашим звуком. Свойство <span class="var">ctx.destination</span> содержит стандартный вывод назначения, который, как правило, подразумевает колонки компьютера. Два узла соединяются функцией <span class="var">connect</span>. После подключения мы можем воспроизвести звук вызвав <span class="var">noteOn(0)</span> для исходника.</p><h2>Узлы WebAudio</h2><p>До сих пор мы видели только исходный узел и узел назначения, но WebAudio содержит много других видов узлов. Для создания приложения с барабанами мы должны создать несколько исходных узлов, по одному для каждого барабана, подключенных к одному выходу, используя <span class="var">AudioChannelMerger</span>. Мы могли бы также изменить уровень каждого барабана с помощью <span class="var">AudioGainNodes</span>.</p><p>Еще узлы WebAudio:</p><ul><li>JavaScriptAudioNode: прямая обработка через JavaScript;</li><li> BiquadFilterNode: фильтр низких и высоких частот;</li><li> DelayNode: задержка времени;</li><li> ConvolverNode: линейные эффекты в реальном времени вроде реверберации;</li><li> RealtimeAnalyserNode: для визуализации звука:</li><li> AudioPannerNode: для манипуляции стерео, каналами и 3D-звуком;</li><li> AudioChannelSplitter и AudioChannelMerger;</li><li> Осциллятор: для прямой генерации сигналов.</li></ul><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Звуковые эффекты</h2><p>Обычный элемент <span class="tag">&lt;audio&gt;</span> может быть использован для звуковых эффектов, но не очень хорош для этого. У вас нет широкого контроля над тем, как и когда воспроизводится звук. Некоторые реализации даже не позволяют воспроизводить более одного звука за раз. Это хорошо для песен, но почти бесполезно для звуковых эффектов в игре. WebAudio API, позволяет запланировать воспроизведение клипов, чтобы они играли в заданное время и даже перекрывать их.</p><p>Чтобы воспроизвести один звук несколько раз мы не должны делать ничего особенного; нам надо просто создать несколько буферов исходника. Код ниже, определяет функцию <span class="var">play</span>, которая создаёт буфер исходника каждый раз при вызове и сразу же воспроизводит звук.</p>
+<pre><code data-language="javascript">// воспроизводим загруженный файл
+function play() { 
+  // создаём исходный узел из буфера
+  var src = ctx.createBufferSource(); 
+  src.buffer = buf; 
+  // подключаемся к выходному узлу (колонкам)
+  src.connect(ctx.destination); 
+  // сразу воспроизводим
+  src.noteOn(0); 
+}</code></pre>
+<p>Вы можете опробовать демо <a href="http://joshondesign.com/p/books/canvasdeepdive-examples/WebAudio/FFT/effects.html">здесь</a>. Каждый раз, когда вы нажимаете на кнопку воспроизводится короткий звук лазера (спасибо <a href="http://www.freesound.org/people/inferno/sounds/18379/">freesound.org</a>). Если нажать кнопку быстро вы услышите, что звуки складываются и перекрываются правильно. Мы не должны делать ничего особенного, чтобы это произошло, WebAudio обрабатывает всё автоматически. В игре мы можем вызывать функцию <span class="var">play</span> каждый раз когда персонаж стреляет из пистолета. Если четыре игрока стреляют одновременно, то всё будет правильно.</p><p>Мы также можем намеренно создавать новые перекрывающиеся звуки. Функция <span class="var">noteOn()</span> принимает метку времени в секундах для воспроизведения звука. Чтобы создать новый звук, мы можем воспроизвести клип с лазером четыре раза, каждый раз смещая на 1/4 секунды. Таким образом, они будут аккуратно перекрываться, создавая новый эффект.</p>
+<pre><code data-language="javascript">var time = ctx.currentTime; 
+for(var i=0; i&lt;4; i++) { 
+  var src = ctx.createBufferSource(); 
+  src.buffer = buf; 
+  // подключаемся к выходному узлу (колонкам)
+  src.connect(ctx.destination); 
+  // сразу воспроизводим
+  src.noteOn(time+i/4); 
+} </code></pre>
+  
+<p> Заметьте, что мы должны добавить текущее время из контекста аудио в смещение, чтобы получить финальное время для каждого клипа.</p><p>Попробуйте окончательный вариант <a href="http://joshondesign.com/p/books/canvasdeepdive-examples/WebAudio/FFT/effects.html">здесь</a>.</p><h2>Визуализация аудио</h2><p>Что веселого в графике, если вы не можете связать её напрямую со своим аудио?! Мне всегда нравилась визуализации аудио. Если вы когда-либо использовали визуализатор WinAmp или iTunes, то уже знакомы с этим.</p><p>Все визуализаторы работают, используя по сути один процесс: для каждого кадра анимации они делают частотный анализ музыки, которая в данный момент играет, а затем рисуют эту частоту некоторым интересным образом. WebAudio API делает это очень легко через <span class="var">RealtimeAnalyserNode</span>.</p><p>Перед этим мы как и прежде загружаем аудио. Я добавил несколько дополнительных переменных с именами <span class="var">fft</span>, <span class="var">samples</span> и <span class="var">setup</span>.</p>
+<pre><code data-language="javascript">var ctx; // контекст аудио
+var buf; // аудиобуфер
+var fft; // узлы аудио 
+var samples = 128; 
+var setup = false; // сообщает, если аудио требует настройки
+  
+// инициализация звуковой системы
+function init() { 
+  console.log(&quot;in init&quot;); 
+  try { 
+    ctx = new webkitAudioContext(); //is there a better API for this? 
+    setupCanvas(); 
+    loadFile(); 
+  } catch(e) { 
+    alert('you need webaudio support' + e); 
+  } 
+} 
+window.addEventListener('load',init,false); 
+  
+// загружаем mp3-файл
+function loadFile() { 
+  var req = new XMLHttpRequest(); 
+  req.open(&quot;GET&quot;,&quot;music.mp3&quot;,true); 
+  // мы не можем использовать jQuery, потому нам нужен arraybuffer 
+  req.responseType = &quot;arraybuffer&quot;; 
+  req.onload = function() { 
+    // декодируем загруженные данные
+    ctx.decodeAudioData(req.response, function(buffer) { 
+      buf = buffer; 
+      play(); 
+    }); 
+  }; 
+  req.send(); 
+}</code></pre>
+<p>Мы воспроизводим музыку как и раньше используя исходный узел и узел назначения, но в этот раз мы вставим между ними узел анализатора.</p>
+<pre><code data-language="javascript">function play() { 
+  // создаём исходный узел из буфера
+  var src = ctx.createBufferSource(); 
+  src.buffer = buf; 
+  
+  // создаём fft 
+  fft = ctx.createAnalyser(); 
+  fft.fftSize = samples; 
+  
+  // соединяем в цепочку
+  src.connect(fft); 
+  fft.connect(ctx.destination); 
+  
+  // сразу воспроизводим
+  src.noteOn(0); 
+  setup = true; 
+}</code></pre>
+<p>Обратите внимание, что функция создания узла анализатора <span class="var">createAnalyser</span> пишется с буквой S, а не Z. Я попался в первый раз (разница между американским и британским английским).</p><p>Я назвал узел анализатора <span class="var">fft</span> это сокращение от Fast Fourier Transform (быстрое преобразования Фурье).</p><p>По быстрому пробежимся по безумной математике звука.</p><p>Если вы посмотрите на буфер, который содержит звук, то увидели бы только кучу сэмплов, скорее всего сорок четыре тысячи сэмплов в секунду. Они представляют собой дискретные значения амплитуды. Чтобы визуализировать музыку, мы хотим не прямые сэмплы, а, скорее форму сигналов. Когда вы слышите особый тон, то на самом деле слышите кучу перекрывающихся сигналов нарезанных по времени в амплитудные сэмплы.</p><p>Мы хотим список частот, а не амплитуд, поэтому нам требуется преобразование. Звук действует на области времени. Дискретное преобразование Фурье преобразует из области времени в область частот. Быстрое преобразование Фурье является частным алгоритмом, который может делать это преобразование очень быстро. Математика для этого может быть запутана, но умные ребята из Chrome Team уже сделали это для нас в узле анализатора. Мы просто должны получить финальные значения, когда мы это хотим.</p><p>Подробное объяснение дискретных преобразований Фурье см. <a href="https://ru.wikipedia.org/wiki/Быстрое_преобразование_Фурье">Wikipedia</a>.</p><h2>Рисование частот</h2><p>Теперь давайте что-нибудь нарисуем. Для этого мы вернёмся к тому, что мы узнали в главе об анимации. Создаём холст, получаем контекст, затем вызываем функцию рисования для каждого кадра.</p>
+<pre><code data-language="javascript">var gfx; 
+  function setupCanvas() { 
+  var canvas = document.getElementById('canvas'); 
+  gfx = canvas.getContext('2d'); 
+  webkitRequestAnimationFrame(update); 
+  }</code></pre>
+<p>Чтобы получить данные аудио нам нужно место, куда поместить их. Воспользуемся Uint8Array — новый тип JavaScript созданный для поддержки аудио и 3D. Вместо типичного массива JavaScript, который может хранить что угодно, Uint8Array специально разработан, чтобы хранить восемь целых бит, то есть это байт-массив. JavaScript представила этот новый тип массива для поддержки быстрого доступа к двоичным данных, таким как 3D-буфер, сэмплы аудио и кадры видео. Чтобы загрузить данные мы вызываем <span class="var">fft.getByteFrequencyData(data)</span>.</p>
+<pre><code data-language="javascript">function update() { 
+  webkitRequestAnimationFrame(update); 
+  if(!setup) return; 
+  gfx.clearRect(0,0,800,600); 
+  gfx.fillStyle = 'gray'; 
+  gfx.fillRect(0,0,800,600); 
+  
+  var data = new Uint8Array(samples); 
+  fft.getByteFrequencyData(data); 
+  gfx.fillStyle = 'red'; 
+  for(var i=0; i&lt;data.length; i++) { 
+    gfx.fillRect(100+i*4,100+256-data[i]*2,3,100); 
+  } 
+  
+}</code></pre>
+<p>Как только мы получим данные, мы можем нарисовать их. Для простоты я нарисую серию полосок, положение которых основано на текущем значении сэмпла данных. Так как мы используем Uint8Array, то каждое значение лежит в диапазоне от 0 до 255, поэтому я умножаю на два, чтобы сделать движение заметнее. Вот как это выглядит:</p><p class="fig"><img src="../../assets/images/canvasdeepdive/webaudio_bars.png" alt="Музыкальные полоски"></p><p class="figsign">Музыкальные полоски</p><p> Неплохо для нескольких строк JavaScript. Я не уверен, почему вторая половина плоская. Возможно баг со стерео/моно?</p><p> Вот более чудная версия. Код тот же, я просто поменял как рисовать сэмплы.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/webaudio_blur.jpg" alt="Визуализация в стиле WinAmp"></p><p class="figsign">Визуализация в стиле WinAmp</p><h2>Следующие шаги</h2><p>На самом деле с WebAudio вы можете делать гораздо больше, чем я здесь описал. Сначала я предлагаю вам пройти через учебники на HTML5 Rocks:</p><ul><li><a href="http://www.html5rocks.com/en/tutorials/webaudio/intro/">Intro to WebAudio</a></li><li> <a href="http://www.html5rocks.com/en/tutorials/webaudio/games/">WebAudio for Games </a></li></ul><p>Дальше взгляните на 0xFE —  <a href="http://0xfe.blogspot.com/2011/08/generating-tones-with-web-audio-api.html">Generating Tones with the Web Audio API</a>, чтобы узнать, как напрямую генерировать звук из математических сигналов. Ещё <a href="http://0xfe.blogspot.com/2011/08/web-audio-spectrum-analyzer.html">A Web Audio Spectrum Analyzer</a>.</p><p>Полная <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">спецификация WebAudio</a> (черновик)</p><p>В следующей главе мы рассмотрим доступ к веб-камере пользователя.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/audio">аудио</a></div><div class="field-item odd"><a href="https://webref.ru/metki/canvas">Canvas</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джош Мариначи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 16.08.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/canvasdeepdive/chapter08'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/canvasdeepdive/chapter10'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter08.html" title="На предыдущую страницу">WebGL-практикум с ThreeJS: 3D автомобиль</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter10.html" title="На следующую страницу">Доступ к веб-камере через getUserMedia()</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter01.html">Основы рисования</a></li><li class="leaf"><a href="chapter02.html">Практика: создание диаграмм</a></li><li class="leaf"><a href="chapter03.html">Продвинутое рисование и события</a></li><li class="leaf"><a href="chapter04.html">Анимация</a></li><li class="leaf"><a href="chapter05.html">Создание игры</a></li><li class="leaf"><a href="chapter06.html">Буферы пикселей и другие эффекты</a></li><li class="leaf"><a href="chapter07.html">3D-графика через WebGL и ThreeJS</a></li><li class="leaf"><a href="chapter08.html">WebGL-практикум с ThreeJS: 3D автомобиль</a></li><li class="leaf active-trail"><a href="chapter09.html" class="active-trail active">Введение в WebAudio</a></li><li class="leaf"><a href="chapter10.html">Доступ к веб-камере через getUserMedia()</a></li><li class="leaf"><a href="chapter11.html">Реальные примеры и инструменты</a></li><li class="last leaf"><a href="chapter12.html">Мобильные устройства и оптимизация производительности</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-801942ed7d8e6b5cf056315da34ee5a0"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter09.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

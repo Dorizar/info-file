@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../advanced-html-css.html" />
+<link rel="next" href="transform.html" />
+<link rel="prev" href="preprocessors.html" />
+<meta name="description" content="jQuery является библиотекой JavaScript с открытым исходным кодом, написанной Джоном Ресигом, которая упрощает взаимодействие между HTML, CSS и JavaScript. С 2006 года, когда был выпущен jQuery, он приобрёл внушительное число пользователей, будучи используемый сайтами и компаниями, большими и малыми. Что сделало jQuery настолько популярным, так это его простота в использовании, с выборкой напоминающей CSS и понятным разделением поведения. Преимущества jQuery огромны, однако для наших целей мы рассмотрим только возможности находить элементы и выполнять с ними разные действия." />
+<link rel="canonical" href="jquery.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>jQuery</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../advanced-html-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Продвинутые уроки по HTML и CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">jQuery</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Чтобы стать веб-дизайнером или фронтенд-разработчиком вам придётся нередко работать с JavaScript, часто упоминаемый как JS, и jQuery. Среди топовых 10000 сайтов JavaScript применяется более, <a href="http://trends.builtwith.com/docinfo/Javascript">чем на 92%</a> из них, а jQuery используется свыше, чем на 63% из них. Надо ли говорить, что они довольно популярны. Вы также должны стремиться <a href="http://jsforcats.com">писать</a> JavaScript или jQuery, чтобы создать собственные модели поведения в том или ином деле.</p><p>Если вы спрашиваете, что именно такое JavaScript и jQuery, этот урок даёт краткий обзор JavaScript, а затем рассматривает jQuery.</p><h2>Введение в JavaScript</h2><p><a href="https://developer.mozilla.org/en-US/docs/JavaScript/A_re-introduction_to_JavaScript">JavaScript</a> предоставляет возможность добавления интерактивности на сайт, а также помогает обогатить пользовательский опыт. HTML предлагает страницу со <strong>структурой</strong>, CSS задаёт <strong>вид</strong> страницы, а JavaScript обеспечивает <strong>поведение</strong>.</p><p>Как и CSS, JavaScript должен сохраняться во внешнем файле с расширением .js, а затем ссылаться внутри HTML-документа с помощью элемента <span class="tag">&lt;script&gt;</span>. Где располагается ссылка на JavaScript внутри HTML зависит от того, когда она должна выполняться. Вообще говоря, лучшее место для ссылки на файлы JavaScript&nbsp;— прямо перед закрывающим тегом <span class="tag">&lt;/body&gt;</span>, так что файл JavaScript загрузится после того, как весь HTML был разобран. Тем не менее, время от времени, JavaScript необходим для помощи в отображении HTML и определения его поведения, при этом можно ссылаться внутри <span class="tag">&lt;head&gt;</span>.</p>
+<pre><code data-language="html">&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></pre>
+<h3>Значения и переменные</h3><p>Часть основ JavaScript включает значения и переменные. Значения, вообще говоря, — это разные типы значений, которые JavaScript распознаёт, в то время как переменные используются для хранения и обмена этими значениями.</p><p>Значения могут включать в себя строки текста, логическую истину или ложь, числа, <span class="var">undefined</span>, <span class="var">null</span> или другие значения, такие как функции или объекты.</p><p>Одним из популярных способов определения переменных — это начать с ключевого слова var, за которым идёт имя переменной, затем знак равенства (=) и значение, и всё заканчивается точкой с запятой (;). Имя переменной должно начинаться с буквы, подчёркивания (_) или знака доллара ($). Переменные не могут начинаться с цифры, хотя они могут быть использованы в дальнейшем, и не могут включать дефис где бы то ни было. Кроме того, JavaScript чувствителен к регистру букв, так что буквы включают от a до z, как в нижнем, так и в верхнем регистре.</p><p>Общепринятым соглашением об именовании переменных является применение <a href="https://ru.wikipedia.org/wiki/CamelCase">CamelCase</a>, без использования каких-либо тире или подчёркиваний. CamelCase состоит из комбинации слов без пробелов, каждое новое слово начинается с большой буквы, за исключением первого слова. Например, <span class="var">shay_is_awesome</span> типично будет именоваться как <span class="var">shayIsAwesome</span>.</p>
+<pre><code data-language="javascript">var theStarterLeague = 125;
+var food_truck = 'Кофе';
+var mixtape01 = true;
+var vinyl = ['Майлз Дэвис', 'Фрэнк Синатра', 'Рэй Чарльз'];</code></pre>
+<h3>Выражения</h3><p>В целом, JavaScript представляет собой набор выражений, они выполняются браузером в той последовательности, которой написаны. Эти выражения предлагают команды, которые определяют разное поведение. Выражения бывают самых разных форм и размеров, несколько выражений разделяются точкой с запятой. Новые выражения должны начинаться с новой строки, а отступы должны применяться к вложенным выражениям для лучшей читаемости, но это не является обязательным.</p>
+<pre><code data-language="javascript">log(polaroid);
+return('bicycle lane');
+alert('Поздравляем, вы ' + outcome);</code></pre>
+<h3>Функции</h3><p>В добавок к основам JavaScript важно взглянуть на функции. Функции обеспечивают способ выполнения набора скриптов прямо сейчас или их сохранение для последующего использования. Функции также могут принимать разные аргументы.</p><p>Функция определяется с помощью ключевого слова <span class="var">function</span>, за которым следует имя функции и списка аргументов, при необходимости, разделённых запятыми внутри скобок. Затем идёт выражение JavaScript или выражения, которые определяют функцию внутри фигурных скобок.</p>
+<pre><code data-language="javascript">function sayHello(name) {
+  return('Привет, ' + name);
+}</code></pre>
+<h3>Массивы</h3><p>Как вы поняли, некоторые значения могут быть возвращены в виде массива. Массивы — это способ хранения списка элементов или значений. Массивы полезны по многим причинам, одной из которых является возможность пробежаться по ним разными методами и операторами. Кроме того, в зависимости от ситуации, массивы могут быть использованы для хранения и возврата множества различных значений.</p><p>Вообще говоря, массивы определяются внутри квадратных скобок ([]), с элементами разделёнными запятыми. Элементы начинаются с нуля и повышаются от него. При определении третьего элемента в списке он фактически идентифицируется как [2].</p><h3>Объекты</h3><p>JavaScript также построен на фундаменте объектов, которые представляют собой набор пар ключей и значений. К примеру, у нас может быть объект с именем <span class="var">school</span>, который включает в себя ключи, также известные как свойств&nbsp;— <span class="var">name</span>, <span class="var">location</span>, <span class="var">students</span> и <span class="var">teachers</span>, а также их значения.</p><p>В приведённом ниже примере переменная <span class="var">school</span> задаётся как объект для хранения множества свойств. У каждого свойства есть ключ и значение. Весь объект располагается внутри фигурных скобок {}, свойства разделяются запятыми, каждое из которых содержит ключ, после которого идёт двоеточие и значение.</p>
+<pre><code data-language="javascript">// Объект
+var school = {
+  name: 'The Starter League',
+  location: 'Merchandise Mart',
+  students: 120,
+  teachers: ['Jeff', 'Raghu', 'Carolyn', 'Shay']
+};
+
+// Массив
+var school = ['Austin', 'Chicago', 'Portland'];</code></pre>
+
+<p class="fig"><img src="../../assets/images/advanced-html-css/console.png" alt="С помощью инструментов разработчика, встроенных в браузер Chrome, JavaScript может быть запущен из консоли"/></p><p class="figsign">Рис. 6.01. С помощью инструментов разработчика, встроенных в браузер Chrome, JavaScript может быть запущен из консоли</p><h2>Введение в jQuery</h2><p>С базовым пониманием JavaScript и некоторых его основ, настало время взглянуть на jQuery. jQuery является библиотекой JavaScript с открытым исходным кодом, написанной Джоном Ресигом, которая упрощает взаимодействие между HTML, CSS и JavaScript. С 2006 года, когда был выпущен jQuery, он приобрёл внушительное число пользователей, будучи используемый сайтами и компаниями, большими и малыми.</p><p>Что сделало jQuery настолько популярным, так это его <a href="https://tutsplus.com/course/30-days-to-learn-jquery/">простота в использовании</a>, с выборкой напоминающей CSS и понятным разделением поведения. Преимущества jQuery огромны, однако для наших целей мы рассмотрим только возможности находить элементы и выполнять с ними разные действия.</p><h3>Начало работы с jQuery</h3><p>Первый шаг к использованию jQuery — это установить на него ссылку в HTML-документе. Как упоминалось ранее про JavaScript, это делается с помощью элемента <span class="tag">&lt;script&gt;</span>, расположенным непосредственно перед закрывающим тегом <span class="tag">&lt;/body&gt;</span>. Поскольку jQuery является самостоятельной библиотекой, лучше держать её отдельно от остального JavaScript который будет написан.</p><p>Для ссылки на jQuery есть несколько вариантов, в частности, следует ли использовать минимизированную или несжатую версию, а также воспользоваться ли сетью доставки контента (content delivery network, CDN), такую как <a href="https://developers.google.com/speed/libraries/devguide">Google hosted libraries</a>. Если код пишется для живого, производственного окружения, то рекомендуется использовать минимизированную версию для сокращения времени загрузки. Кроме того, применение CDN, вроде Google, также помогает со временем загрузки и потенциально приносит пользу с кэшированием.</p>
+<pre><code data-language="html">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>В примере кода выше, обратите внимание на второй элемент <span class="tag">&lt;script&gt;</span>, который ссылается на второй файл JavaScript. Весь обычный рукописный JavaScript и jQuery должны быть записаны в этом файле. Кроме того, этот файл специально размещён после файла jQuery, так что он может ссылаться на уже определённые функции jQuery.</p><div class="notePad"><h3>Где протокол http?</h3><p>Вы, возможно, заметили, что в примере выше нет протокола http в ссылке на Google CDN. http опущен преднамеренно, чтобы позволить оба соединения&nbsp;— http и https. При работе локально, без использования веб-сервера, протокол http необходимо включить, чтобы предотвратить попытки найти файл на локальном системном диске.</p></div><h3>Объект jQuery</h3><p>jQuery поставляется с собственным объектом, знаком доллара (<span class="var">$</span>), также известным как <span class="var">jQuery</span>. Объект <span class="var">$</span> сделан специально для выбора элемента, а затем возвращает этот элемент для выполнения над ним действий. Эти выборки и действия должны быть написаны в новом файле, на который ведёт ссылка за пределами актуальной библиотеки jQuery.</p>
+<pre><code data-language="javascript">$();
+jQuery();</code></pre>
+<h3>Готовность документа</h3><p>Перед запуском любого jQuery для обхода и манипуляцией страницы, лучше подождать пока DOM не закончит её загрузку. К счастью, в jQuery есть готовое событие <span class="var">.ready()</span>, которое может быть вызвано, когда HTML-документ готов к изменению. Размещая весь наш код внутри этой функции jQuery мы можем гарантировать, что код не будет выполняться, пока страница загружается и DOM не готов.</p>
+<pre><code data-language="javascript">$(document).ready(function(event){ 
+  // код jQuery
+});</code></pre>
+<h2>Селекторы</h2><p>Как упоминалось ранее, одной из основных концепций jQuery является <a href="http://api.jquery.com/category/selectors/">выбор элементов</a> и выполнение действий. jQuery проделал большую работу по выполнению задачи выбора элемента или элементов, чрезвычайно легко подражая CSS. Кроме основных селекторов CSS, jQuery также поддерживает все уникальные селекторы CSS3, которые работают независимо от того, какой браузер используется.</p><p>Вызов объекта jQuery <span class="var">$()</span> с селектором вернёт этот узел DOM для манипуляций с ним. Селектор располагается в круглых скобках ('...') и может выбирать элементы так же, как и CSS.</p>
+<pre><code data-language="javascript">$('.feature');           // Селектор класса
+$('li strong');          // Селектор потомка
+$('em, i');              // Несколько селекторов
+$('a[target=&quot;_blank&quot;]'); // Селектор атрибута
+$('p:nth-child(2)');     // Псевдокласс</code></pre>
+<h3>Ключевое слово this</h3><p>При работе внутри функции jQuery вы, возможно, захотите выбрать элемент, в котором есть указатель внутри исходного селектора. В таком случае может быть использовано ключевое слово <span class="var">this</span> как указатель на элемент, выбранный в текущем обработчике.</p>
+<pre><code data-language="javascript">$('div').click(function(event){ 
+  $(this);
+});</code></pre>
+<div class="notePad"><h3>Фильтры выборки jQuery</h3><p>Если селекторов CSS не достаточно, то помогут пользовательские <a href="http://api.jquery.com/category/selectors/jquery-selector-extensions/">фильтры</a> встроенные в jQuery. Эти фильтры являются расширением к CSS3 и обеспечивают больший контроль над выбором элемента или его родственников.</p>
+<pre><code data-language="javascript">$('div:has(strong)');</code></pre>
+<p>Как здесь указано, эти фильтры могут быть использованы внутри селектора, однако они не является родными для DOM и несколько медленные. Наилучшие результаты с использованием этих фильтров осуществляется с помощью метода <span class="var">:filter()</span>, который является частью функции обхода в jQuery.</p></div><h2>Обход</h2><p>Порой основные селекторы CSS по одиночке не нарезаны и желателен чуть более детальный контроль. К счастью, jQuery предлагает несколько методов обхода вверх и вниз по дереву DOM, фильтрации и выбора элементов при необходимости.</p><p>Чтобы начать работу с отфильтрованными элементами внутри DOM требуется сделать основную выборку, по отношению к которой будет обход. В примере ниже исходная выборка нашла все элементы <span class="tag">&lt;div&gt;</span> в DOM, которые затем фильтруется с помощью метода <span class="var">.not()</span>. С помощью этого конкретного метода будут выбраны все элементы <span class="tag">&lt;div&gt;</span> без классов <span class="class">type</span> или <span class="class">collection</span>.</p><p>$('div').not('.type, .collection');</p><h3>Методы цепочек</h3><p>Для ещё большего контроля, какие элементы выбрать, разные методы обхода могут быть соединены в цепочку друг с другом, просто используя точку между ними.</p><p>В примере ниже используется оба метода .not() и .parent(). Соединённые вместе они будут выбирать только родительские элементы у <span class="tag">&lt;div&gt;</span> без классов <span class="class">type</span> или <span class="class">collection</span>.</p>
+<pre><code data-language="javascript">$('div').not('.type, .collection').parent();</code></pre>
+<h3>Методы обхода</h3><p>jQuery содержит довольно много методов обхода доступных для использования. В общем, все они делятся на три категории: фильтрация, прочие методы и обход дерева DOM. Конкретные методы в каждой категории можно увидеть ниже.</p><h4>Фильтрация</h4><ul class="list-column-3"><li>.eq()</li><li>.filter()</li><li>.first()</li><li>.has()</li><li>.is()</li><li>.last()</li><li>.map()</li><li>.not()</li><li>.slice()</li></ul><h4>Прочие методы</h4><ul class="list-column-3"><li>.add()</li><li>.andSelf()</li><li>.contents()</li><li>.end()</li></ul><h4>Обход дерева DOM</h4><ul class="list-column-3"><li>.children()</li><li>.closest()</li><li>.find()</li><li>.next()</li><li>.nextAll()</li><li>.nextUntil()</li><li>.offsetParent()</li><li>.parent()</li><li>.parents()</li><li>.parentsUntil()</li><li>.prev()</li><li>.prevAll()</li><li>.prevUntil()</li><li>.siblings()</li></ul><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Манипуляция</h2><p>Выборка и обход элементов в DOM является лишь частью того, что предлагает jQuery, другой большой частью является то, что можно со всеми этими найденными элементами делать. Одной из возможностей является <a href="http://api.jquery.com/category/manipulation/">манипуляция</a> этими элементами вроде чтения, добавления или изменения атрибутов или стилей. Кроме того, элементы могут изменяться в DOM, меняться их расположение, удаляться, добавляться новые элементы и так далее. В целом варианты для манипуляции элементами являются довольно обширными.</p><h3>Получение и установка</h3><p>Методы манипуляции наиболее часто используются в одном из двух направлений — для получения или установки информации. Получение информации вращается вокруг использования селектора в сочетании с методом, который определяет, какая часть информации должна быть извлечена. Кроме того, тот же селектор и метод также могут быть использованы для установки фрагмента информации.</p>
+<pre><code data-language="javascript">// Получаем значение атрибута alt
+$('img').attr('alt');
+
+// Устанавливаем значение атрибута alt
+$('img').attr('alt', 'Дикий кенгуру');</code></pre>
+<p>В дальнейших примерах и фрагментах будут, в основном, применяться методы установки, однако они также могут использоваться и для получения.</p><h3>Манипуляции с атрибутом</h3><p>Частью элементов, которые возможно инспектировать и манипулировать ими, выступают атрибуты. Несколько вариантов включают в себя возможность добавлять, удалять или изменять атрибут или его значение. В приведённых ниже примерах метод <span class="var">.addClass()</span> используется для добавления класса ко всем чётным пунктам списка, метод <span class="var">.removeClass()</span> используется для удаления всех классов у любых абзацев и, наконец, метод <span class="var">.attr()</span> используется для поиска значения атрибута <span class="attribute">title</span> у любого элемента <span class="tag">&lt;abbr&gt;</span> и установки его на «Привет, мир».</p>
+<pre><code data-language="javascript">$('li:even').addClass('even-item');
+$('p').removeClass();
+$('abbr').attr('title', 'Привет, мир');</code></pre>
+<h4>Методы манипуляции атрибутами</h4><ul class="list-column-3"><li>.addClass()</li><li>.attr()</li><li>.hasClass()</li><li>.prop()</li><li>.removeAttr()</li><li>.removeClass()</li><li>.removeProp()</li><li>.toggleClass()</li><li>.val()</li></ul><h3>Манипуляции со стилем</h3><p>Кроме манипуляции с атрибутами, также можно манипулировать стилем элемента с помощью различных методов. Для чтения или установки высоты, ширины или положения элемента есть несколько доступных специальных методов. Также для всех других манипуляций стилем метод <span class="var">.css()</span> может обрабатывать любые изменения CSS.</p><p>Метод <span class="var">.css()</span>, в частности, может быть использован для установки одного или нескольких свойств и синтаксис при этом меняется. Чтобы установить одно свойство, имя свойства и значение должны быть в кавычках и разделены запятой. Чтобы задать несколько свойств, свойства должны быть вложены в фигурные скобки с именем свойства в camelCase, любые дефисы удалены при необходимости, далее идёт двоеточие, а затем значение в кавычках. Каждая пара свойств и значений должна быть разделена запятой.</p><p>Высота, ширина или методы позиционирования по умолчанию используют пиксели в качестве значений, однако могут быть задействованы и другие единицы измерения. Как показано ниже, для изменения единицы измерения определите значение, затем используйте знак плюс, за которым следует единица измерения в кавычках.</p>
+<pre><code data-language="javascript">$('h1 span').css('font-size', 'normal');
+$('div').css({
+  fontSize: '13px', 
+  background: '#f60'
+});
+$('header').height(200);
+$('.extend').height(30 + 'em');</code></pre>
+<h4>Методы манипуляции стилями</h4><ul class="list-column-3"><li>.css()</li><li>.height()</li><li>.innerHeight()</li><li>.innerWidth()</li><li>.offset()</li><li>.outerHeight()</li><li>.outerWidth()</li><li>.position()</li><li>.scrollLeft()</li><li>.scrollTop()</li><li>.width()</li></ul><h3>Манипуляция DOM</h3><p>И, наконец, мы можем инспектировать и манипулировать DOM, менять расположение элементов, добавлять и удалять элементы, а также без труда изменять их. Варианты для этого глубокие и разнообразные, учитывающие любые возможные изменения, которые будут сделаны внутри DOM.</p><p>Каждый отдельный метод манипуляции DOM имеет собственный синтаксис, некоторые из них описаны ниже. Метод <span class="var">.prepend()</span> добавляет новый элемент <span class="tag">&lt;h3&gt;</span> только внутрь любого раздела, метод <span class="var">.after()</span> добавляет новый элемент <span class="tag">&lt;em&gt;</span> только после ссылки, метод <span class="var">.text()</span> заменяет текст любого элемента <span class="tag">&lt;h1&gt;</span> на текст «Привет, мир».</p>
+<pre><code data-language="javascript">$('section').prepend('&lt;h3&gt;Избранное&lt;/h3&gt;');
+$('a[target=&quot;_blank&quot;]').after('&lt;em&gt;Новое окно.&lt;/em&gt;');
+$('h1').text('Привет, мир');</code></pre>
+<h4>Методы манипуляции DOM</h4><ul class="list-column-3"><li>.after()</li><li>.append()</li><li>.appendTo()</li><li>.before()</li><li>.clone()</li><li>.detach()</li><li>.empty()</li><li>.html()</li><li>.insertAfter()</li><li>.insertBefore()</li><li>.prepend()</li><li>.prependTo()</li><li>.remove()</li><li>.replaceAll()</li><li>.replaceWith()</li><li>.text()</li><li>.unwrap()</li><li>.wrap()</li><li>.wrapAll()</li><li>.wrapInner()</li></ul><h2>События</h2><p>Одним из достоинств jQuery является возможность легко добавлять обработчики событий — это методы, которые вызываются только при конкретном событии или происходящем действии. Например, метод добавления класса к элементу может быть установлен только при щелчке по элементу.</p><p>Ниже приведён стандартный селектор, он выбирает все пункты списка. Метод события <span class="var">.click()</span> связан с селектором пункта списка и настроен на действия, которые происходят при щелчке по какому-либо пункту списка. Изнутри метод события <span class="var">.click()</span>&nbsp;— это функция, обеспечивающая любые действия внутри метода, которые должны быть выполнены. Скобки непосредственно после функции доступны для передачи параметров в эту функцию, в данном примере используется объект <span class="var">event</span>.</p><p>Внутри функции есть другой селектор с привязанным к нему методом <span class="var">.addClass()</span>. Теперь при щелчке по пункту списка он, с помощью ключевого слова <span class="var">this</span>, получает класс <span class="class">saved-item</span>.</p>
+<pre><code data-language="javascript">$('li').click(function(event){
+  $(this).addClass('saved-item');
+});</code></pre>
+<h3>Гибкость событий</h3><p>Метод события <span class="var">.click()</span>, а также несколько других методов, на самом деле является <a href="../../dev/jqfundamentals/events.html">сокращённым методом</a>, который использует метод <span class="var">.on()</span>, представленный в jQuery&nbsp;1.7. Метод <span class="var">.on()</span> предлагает чуть больше гибкости с помощью автоматического делегирования для элементов, которые добавляются на страницу динамически.</p><p>При использовании метода <span class="var">.on()</span> первый аргумент должен быть родным именем события, тогда как второй аргумент должен быть обработчиком события. Рассматривая пример выше, метод <span class="var">.on()</span> вызывается вместо метода <span class="var">.click()</span>. Теперь имя события <span class="var">click</span> передаётся в качестве первого аргумента внутри метода <span class="var">.on()</span> с функцией обработчика, которая остаётся такой же, что и раньше.</p>
+<pre><code data-language="javascript">$('li').on('click', function(event){
+  $(this).addClass('saved-item');
+});</code></pre>
+<h3>Вложенные события</h3><p>Можно иметь несколько обработчиков событий и триггеров, вкладывая один внутрь другого. В качестве примера, ниже методу .on() передаётся аргумент hover, таким образом он вызывается при наведении курсора на любой элемент с классом pagination. После вызова события .on() вызывается событие .click() для ссылки с идентификатором up.</p>
+<pre><code data-language="javascript">$('.pagination').on('hover', function(event){
+  $('a#up').click();
+});</code></pre>
+<div class="notePad"><h3>Демонстрация события</h3><p>В качестве демонстрации используем аварийное сообщение. Следующие фрагменты кода показывают, как создать такое сообщение, а затем удалить его при щелчке по иконке закрытия.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;notice-warning&quot;&gt;
+  &lt;div class=&quot;notice-close&quot;&gt;&amp;#215;&lt;/div&gt;
+  &lt;strong&gt;Внимание!&lt;/strong&gt; Я сейчас потеряю терпение.
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">JavaScript</p>
+<pre><code data-language="javascript">$('.notice-close').on('click', function(event){
+  $('.notice-warning').remove();
+});</code></pre>
+<iframe width="100%" height="140" src="https://jsfiddle.net/webref/8pgeydmm/embedded/result,html,css,js" allowfullscreen="allowfullscreen"></iframe></div><h3>Методы событий</h3><p>jQuery предлагает несколько методов, все они основаны на регистрации поведения пользователей при взаимодействии с браузером. Эти методы включают довольно много событий, наиболее популярные это события браузера, формы, клавиатуры и мыши, не ограничиваясь ими. Самые популярные из этих методов включают следующее.</p><h4>События браузера</h4><ul class="list-column-3"><li>.resize()</li><li>.scroll()</li></ul><h4>Загрузка документа</h4><ul class="list-column-3"><li>.ready()</li></ul><h4>Обработчики событий</h4><ul class="list-column-3"><li>event.currentTarget</li><li>event.preventDefault()</li><li>event.stopPropagation()</li><li>event.target</li><li>event.type</li></ul><h4>Объект event</h4><ul class="list-column-3"><li>.blur()</li><li>.change()</li><li>.focus()</li><li>.select()</li><li>.submit()</li></ul><h4>События формы</h4><ul class="list-column-3"><li>.blur()</li><li>.change()</li><li>.focus()</li><li>.select()</li><li>.submit()</li></ul><h4>События клавиатуры</h4><ul class="list-column-3"><li>.focusin()</li><li>.focusout()</li><li>.keydown()</li><li>.keypress()</li><li>.keyup()</li></ul><h4>События мыши</h4><ul class="list-column-3"><li>.click()</li><li>.dblclick()</li><li>.focusin()</li><li>.focusout()</li><li>.hover()</li><li>.mousedown()</li><li>.mouseenter()</li><li>.mouseleave()</li><li>.mousemove()</li><li>.mouseout()</li><li>.mouseover()</li><li>.mouseup()</li></ul><h2>Эффекты</h2><p>Наряду с событиями, jQuery также предлагает несколько настраиваемых эффектов. Эти эффекты приходят через разные методы, включая методы событий для отображения и скрытия содержимого, постепенного исчезновения и появления содержимого или скольжения содержимого вверх и вниз. Все они готовы к использованию через методы и могут быть настроены лучше по своему усмотрению.</p><p>Каждый метод эффекта содержит собственный синтаксис, так что лучше сослаться на <a href="http://api.jquery.com/category/effects/">документацию jQuery по эффектам</a> для получения конкретного синтаксиса каждого метода. Чаще всего при этом эффекты, как правило, принимают длительность, плавность, а также возможность задать функцию обратного вызова.</p><div class="notePad"><h3>Анимация в CSS и jQuery</h3><p>Пользовательские анимации различных свойств CSS могут быть выполнены в jQuery, хотя это несколько менее актуально, так как CSS теперь может обрабатывать анимацию самостоятельно. Анимация в CSS предлагает более высокую производительность с точки зрения обработки браузером и являются предпочтительной, насколько это возможно. Эффекты анимации jQuery с помощью Modernizr&nbsp;— это идеальное запасное решение для любого браузера, который не поддерживает анимацию через CSS.</p></div><h3>Длительность эффекта</h3><p>Используя метод <span class="var">.show()</span> в качестве примера, первый параметр опционально доступный для передачи — это длительность, которая может быть задана с помощью ключевого слова или значений миллисекунд. Ключевое слово <span class="var">slow</span> по умолчанию равно 600 миллисекундам, в то время как ключевое слово <span class="var">fast</span> по умолчанию равно 200&nbsp;миллисекундам. Использовать ключевое слово в качестве значения хорошо, но миллисекунды также могут быть переданы непосредственно. Ключевое слово должно указываться в кавычках, тогда как для миллисекунд этого не требуется.</p>
+<pre><code data-language="javascript">$('.error').show();
+$('.error').show('slow');
+$('.error').show(500);</code></pre>
+<h3>Плавность эффекта</h3><p>Кроме длительности, также может быть задана плавность или скорость, с которой анимация прогрессирует в разное время в течение эффекта. По умолчанию jQuery содержит два ключевых слова для плавности&nbsp;— значение по умолчанию <span class="var">swing</span> с дополнительным значением <span class="var">linear</span>. Значение по умолчанию swing запускает анимацию в медленном темпе, набирая скорость во время анимации, а затем снова замедляясь до завершения. Значение linear запускает анимацию в одном постоянном темпе в течение всей продолжительности анимации.</p>
+<pre><code data-language="javascript">$('.error').show('slow', 'linear');
+$('.error').show(500, 'linear');</code></pre>
+<div class="notePad"><h3>jQuery UI</h3><p>Два значения плавности, которые поставляются с jQuery можно расширить за счёт разных плагинов, которые могут предложить дополнительные значения. Одним из наиболее популярных плагинов является набор <a href="http://jqueryui.com">jQuery UI</a>.</p><p>Кроме новых значений плавности jQuery UI также предлагает горсть дополнительных взаимодействий, эффектов, виджетов и другие полезные ресурсы, на которые стоит взглянуть.</p></div><h3>Функция обратного вызова</h3><p>Когда анимация завершена, можно запустить другую функцию, которая называется функция обратного вызова. Она должна быть помещена после длительности или плавности, если они существует. Внутри этой функции могут быть размещены новые события или эффекты, у которых есть собственный обязательный синтаксис.</p>
+<pre><code data-language="javascript">$('.error').show('slow', 'linear', function(event){
+  $('.error .status').text('Продолжить');
+});</code></pre>
+<h3>Синтаксис эффекта</h3><p>Как упоминалось ранее, у каждого метода эффекта есть собственный синтаксис, который можно найти в <a href="http://api.jquery.com/category/effects/">документации jQuery</a>. Описанные здесь параметры длительности, плавности и функция обратного вызова являются общими, но они доступны не для каждого метода. Для обзора синтаксиса метода лучше всего задать связанные с ним вопросы.</p><div class="notePad"><h3>Демонстрация эффектов</h3><p>Взяв те же события из демонстрации сверху, метод <span class="var">.remove()</span> теперь используется как часть функции обратного вызова в методе <span class="var">.fadeOut()</span>. Использование метода <span class="var">.fadeOut()</span> позволяет сделать так, чтобы аварийное сообщение затухало постепенно, а не исчезало быстро, а затем удалить его из DOM после завершения анимации.</p><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;notice-warning&quot;&gt;
+  &lt;div class=&quot;notice-close&quot;&gt;&amp;#215;&lt;/div&gt;
+  &lt;strong&gt;Внимание!&lt;/strong&gt; Я сейчас потеряю терпение.
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">JavaScript</p>
+<pre><code data-language="javascript">$('.notice-close').on('click', function(event){
+  $('.notice-warning').fadeOut('slow', function(event){
+  $(this).remove();
+  });
+});</code></pre>
+<iframe width="100%" height="140" src="https://jsfiddle.net/webref/w5m4u21e/embedded/result,html,css,js" allowfullscreen="allowfullscreen"></iframe></div><h4>Основные эффекты</h4><ul class="list-column-3"><li>.hide()</li><li>.show()</li><li>.toggle()</li></ul><h4>Пользовательские эффекты</h4><ul class="list-column-3"><li>.animate()</li><li>.clearQueue()</li><li>.delay()</li><li>.dequeue()</li><li>jQuery.fx.interval</li><li>jQuery.fx.off</li><li>.queue()</li><li>.stop()</li></ul><h4>Эффекты затухания</h4><ul class="list-column-3"><li>.fadeIn()</li><li>.fadeOut()</li><li>.fadeTo()</li><li>.fadeToggle()</li></ul><h4>Эффекты скольжения</h4><ul class="list-column-3"><li>.slideDown()</li><li>.slideToggle()</li><li>.slideUp()</li></ul><div class="notePad"><h3>Демонстрация скольжения</h3><p class="exampleTitle">HTML</p>
+<pre><code data-language="html">&lt;div class=&quot;panel&quot;&gt;
+  &lt;div class=&quot;panel-stage&quot;&gt;&lt;/div&gt;
+  &lt;a href=&quot;#&quot; class=&quot;panel-tab&quot;&gt;Открыть &lt;span&gt;&amp;#9660;&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">JavaScript</p>
+<pre><code data-language="javascript">$('.panel-tab').on('click', function(event){
+  event.preventDefault();
+  $('.panel-stage').slideToggle('slow', function(event){
+    if($(this).is(':visible')){
+      $('.panel-tab').html('Закрыть &lt;span&gt;&amp;#9650;&lt;/span&gt;');
+    } else {
+      $('.panel-tab').html('Открыть &lt;span&gt;&amp;#9660;&lt;/span&gt;');
+    }
+  });
+});</code></pre>
+<iframe width="100%" height="200" src="https://jsfiddle.net/webref/kgfx0z2a/embedded/result,html,css,js" allowfullscreen="allowfullscreen"></iframe></div><div class="notePad"><h3>Демонстрация вкладок</h3><p class="exampleTitle">HTML</p>
+<pre><code data-language="javascript">&lt;ul class=&quot;tabs-nav&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#tab-1&quot;&gt;Особенности&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tab-2&quot;&gt;Подробности&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;tabs-stage&quot;&gt;
+  &lt;div id=&quot;tab-1&quot;&gt;...&lt;/div&gt;
+  &lt;div id=&quot;tab-2&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p class="exampleTitle">JavaScript</p>
+<pre><code data-language="javascript">// Показать первую вкладку по умолчанию
+$('.tabs-stage div').hide();
+$('.tabs-stage div:first').show();
+$('.tabs-nav li:first').addClass('tab-active');
+  
+// Изменить класс вкладки и отобразить содержимое
+$('.tabs-nav a').on('click', function(event){
+  event.preventDefault();
+  $('.tabs-nav li').removeClass('tab-active');
+  $(this).parent().addClass('tab-active');
+  $('.tabs-stage div').hide();
+  $($(this).attr('href')).show();
+});</code></pre>
+<iframe width="100%" height="200" src="https://jsfiddle.net/webref/zLx7eep1/embedded/result,html,css,js" allowfullscreen="allowfullscreen"></iframe></div><h2>Ресурсы и ссылки</h2><ul><li><a href="http://jsforcats.com/">JavaScript For Cats</a></li><li><a href="https://developer.mozilla.org/en-US/docs/JavaScript/A_re-introduction_to_JavaScript">A Re-introduction to JavaScript</a> на Mozilla Developer Network</li><li><a href="https://tutsplus.com/course/30-days-to-learn-jquery/">30 Days to Learn jQuery</a> на Tuts+ Premium</li><li><a href="https://developers.google.com/speed/libraries/devguide">Google Hosted Libraries</a></li><li><a href="http://docs.jquery.com/">jQuery Documentation</a></li><li><a href="http://jqfundamentals.com/">jQuery Fundamentals</a> на Bocoup</li><li><a href="http://jqueryui.com/">jQuery UI</a></li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/jquery">jQuery</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-3386e7c23c68d0b2c01899bfc0eb65ab"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../html/script.html">&lt;script&gt;</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Шэй Хоу</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 13.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/advanced-html-css/preprocessors'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/advanced-html-css/transform'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="preprocessors.html" title="На предыдущую страницу">Препроцессоры</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="transform.html" title="На следующую страницу">Трансформация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="performance-organization.html">Производительность и организация</a></li><li class="leaf"><a href="detailed-css-positioning.html">Подробнее о позиционировании</a></li><li class="leaf"><a href="complex-selectors.html">Комплексные селекторы</a></li><li class="leaf"><a href="responsive-web-design.html">Отзывчивый веб-дизайн</a></li><li class="leaf"><a href="preprocessors.html">Препроцессоры</a></li><li class="leaf active-trail"><a href="jquery.html" class="active-trail active">jQuery</a></li><li class="leaf"><a href="transform.html">Трансформация</a></li><li class="leaf"><a href="transitions-animations.html">Переходы и анимация</a></li><li class="leaf"><a href="feature-support-polyfills.html">Поддержка функций и полифилы</a></li><li class="last leaf"><a href="semantics-accessibility.html">Продвинутая семантика и доступность</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-6f7bafae8d8646cec4c89f4551536a10"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="jquery.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

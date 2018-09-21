@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Создание игры | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../canvasdeepdive.html" />
+<link rel="next" href="chapter06.html" />
+<link rel="prev" href="chapter04.html" />
+<link rel="canonical" href="chapter05.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Создание игры</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../canvasdeepdive.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Глубокое погружение в Canvas</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Создание игры</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block">
+<script src="../../sites/all/themes/ori/js/vendor/jquery.js"></script>
+<p>В этом уроке вы будете использовать анимацию и продвинутые навыки рисования которым вы уже научились для создания простой игры в стиле Space Invaders. Чтобы вы могли сосредоточиться на графике я уже предоставил скелет игры. У пользователя есть космический корабль, который он может двигать влево и вправо с помощью стрелок на клавиатуре и огонь через пробел. Пришельцы вверху экрана двигаются, пока случайно стреляют ракетами. Код содержит простой алгоритм столкновений и убивает пришельцев, когда в них попадает бластер пользователя и убивает игрока, когда в корабль попадает ракета пришельца. Вся графика отображается в виде простых прямоугольников. Посмотрите быстро вначале, а затем мы начнём это украшать.</p><p class="fig"><a href="https://webref.ru/example/canvas/game1.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/v1.png" alt="Простая графика на прямоугольниках"></a></p><p class="figsign">Версия 1. Простая графика на прямоугольниках (щёлкните для запуска)</p><h2>Рисование корабля с помощью спрайта</h2><p>В папке с этим документом и файлами game*.html, создайте новый HTML-файл с именем mygame.html и скопируйте в него game1.html. Этот документ содержит начальную версию игры, которую вы видели выше.</p><p>Первое, что мы сделаем, это проведём апгрейд космического корабля игрока. Для этого мы воспользуемся изображением, которое я взял с великолепного сайта <a href="http://lostgarden.com">LostGarden.com</a>.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/hunter1.png" alt="" width="294" height="294"></p><p>Вначале нам надо изменить размеры игрока, чтобы вписать изображение. Нам нужен только верхний спрайт по центру изображения, размер которого 46x46 пикселей, так что добавьте данный код в верхнюю часть game.html чтобы установить размер объекта игрока.</p>
+<pre><code data-language="javascript">var can = document.getElementById(&quot;canvas&quot;);
+var c = can.getContext('2d');
+ 
+// новый код
+player.width = 46;
+player.height = 46;</code></pre>
+ 
+  <p>Теперь нам нужно загрузить изображение в объект чтобы мы могли использовать его. Создать переменную <span class="var">ship_image</span>, затем вызовите функцию <span class="var">loadResources()</span> чтобы загрузить изображение на старте.</p>
+<pre><code data-language="javascript">player.width = 46;
+player.height = 46;
+ 
+// новый код
+var ship_image;
+ 
+loadResources();
+ 
+function loadResources() {
+  ship_image = new Image();
+  ship_image.src = &quot;images/Hunter1.png&quot;;
+}</code></pre>
+<p>Теперь переходим к функции <span class="var">drawPlayer</span>. Мы изменим последние две строки, чтобы вместо однотонного прямоугольник нарисовать картинку.</p>
+<pre><code data-language="javascript">c.fillStyle = &quot;red&quot;;
+c.fillRect(player.x,player.y, player.width, player.height);
+ 
+c.drawImage(ship_image,
+  25,1, 23,23, // исходные координаты
+  player.x, player.y, player.width, player.height // конечные координаты
+);</code></pre>
+ 
+  <p>Давайте посмотрим на то, что здесь происходит. Наше изображение на самом деле содержит восемь версий космического корабля, но мы хотим нарисовать только один из них. drawImage нарисует подраздел изображения, передавая исходные и конечные координаты. Координаты исходника определяют, какая часть изображения будет взята. Конечные координаты определяют, где на холсте будет рисунок и насколько большой. Меняя эти числа вы можете легко создать интересный эффект растяжения, кадрирования и масштабирования.</p><p>Для этого примера мы нарисуем только часть изображения, которая находится на 25 пикселей от левого края и 23 пикселей по высоте. Затем мы рисуем картинку на холсте с координатами, шириной и высотой игрока. Обратите внимание, что ранее мы задали ширину и высоту как 46x46. Это удвоенный размер исходника 23x23. Я сделал это нарочно. Это должна быть игра в стиле ретро, поэтому я захотел увеличить графику, чтобы она выглядела пиксельной и забавной.</p><p>Теперь сохраните файл и обновите ваш браузер. Это должно выглядеть так:</p><p class="fig"><a href="https://webref.ru/example/canvas/game2.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/v2.png" alt="Корабль нарисован через спрайты"></a></p><p class="figsign">Версия 2. Корабль нарисован через спрайты (щёлкните для запуска)</p><h2>Анимация спрайтов для пуль и бомб</h2><p>Теперь нам нужно несколько спрайтов для пуль космического корабля и бомб пришельцев. Опять мы загрузим изображения в переменные. Обновите верхнюю часть кода, чтобы он выглядел так.</p>
+<pre><code data-language="javascript">var ship_image;
+var bomb_image;
+var bullet_image;
+ 
+loadResources();
+ 
+function loadResources() {
+  ship_image = new Image();
+  ship_image.src = &quot;images/Hunter1.png&quot;;
+ 
+  bomb_image = new Image();
+  bomb_image.src = &quot;images/bomb.png&quot;;
+ 
+  bullet_image = new Image();
+  bullet_image.src = &quot;images/bullets.png&quot;;
+}</code></pre>
+<p>Это загрузит следующие изображения.</p><p class="fig"><img src="../../assets/images/canvasdeepdive/bullets.png" alt="" width="390" height="100"></p><p class="figsign">images/bullets.png (увеличено в четыре раза)</p><p class="fig"><img src="../../assets/images/canvasdeepdive/bomb.png" alt="" width="486" height="52"></p><p class="figsign">images/bomb.png (увеличено в четыре раза)</p><p>Заметьте, что данные изображения также содержат несколько спрайтов. Однако в данном случае мы хотим использовать все спрайты. Каждый кадр анимации. Зацикливая спрайты мы создадим иллюзию анимации на экране. Сделаем это так же, как и раньше, рисуя фрагмент основного изображения, но в этот раз мы будем менять координаты каждого кадра.</p>
+<pre><code data-language="javascript">function drawPlayerBullets(c) {
+  c.fillStyle = &quot;blue&quot;;
+  for(i in playerBullets) {
+    var bullet = playerBullets[i];
+    var count = Math.floor(bullet.counter/4);
+    var xoff = (count%4)*24;
+    //c.fillRect(bullet.x, bullet.y, bullet.width,bullet.height);
+    c.drawImage(
+      bullet_image,
+      xoff+10,0+9,8,8,
+      bullet.x,bullet.y,bullet.width,bullet.height
+    );
+  }
+}</code></pre>
+<p>Код выше похож на то, что мы делали раньше за исключением переменных <span class="var">xoff</span>, <span class="var">count</span> и <span class="var">bullet.counter</span>. Каждая пуля имеет свой счётчик <span class="var">counter</span>. Это число, которое начинается с 0, когда пуля создается, и увеличивается на 1 в каждом кадре. <span class="var">count</span>&nbsp;— это просто счётчик делённый на четыре. Анимация всего нескольких кадров, работающих при 60 кадрах в сек., была бы слишком быстрой чтобы её увидеть, так что замедляем её в четыре раза.</p><p><span class="var">xoff</span> это <span class="var">count</span> делённый по модулю на 4 и означает, что у нас теперь в цикле есть число от 0 до 3. Затем мы умножаем его на 24, это ширина каждого спрайта. <span class="var">xoff</span> проходит в цикле по значениям 0, 24, 48, 72 снова и снова, давая нам постоянно меняющееся смещение по x в мастер-изображении (лишние +10 учитывают дополнительное пространство по левому краю мастер-изображения).</p><p>Код выше добавляет анимацию спрайта пуль. Теперь мы проделаем то же самое для бомб изменив в коде <span class="var">createEnemyBullet</span> и <span class="var">drawEnemyBullets</span>.</p>
+<pre><code data-language="javascript">function createEnemyBullet(enemy) {
+  return {
+    x:enemy.x,
+    y:enemy.y+enemy.height,
+    width:4,
+    height:12,
+    width:30,
+    height:30,
+    counter:0,
+  }
+}
+ 
+function drawEnemyBullets(c) {
+  for(var i in enemyBullets) {
+    var bullet = enemyBullets[i];
+    c.fillStyle = &quot;yellow&quot;;
+    c.fillRect(bullet.x, bullet.y , bullet.width, bullet.height);
+    var xoff = (bullet.counter%9)*12 + 1;
+    var yoff = 1;
+    c.drawImage(bomb_image,
+      xoff,yoff,11,11,
+      bullet.x,bullet.y,bullet.width,bullet.height
+    );
+  }
+}</code></pre>
+<p>Обратите внимание, что в коде выше мы изменили размер вражеских бомб по умолчанию на 30. Таким образом функции обнаружения столкновений будут использовать тот же размер, что и рисунки. Мы должны проделать то же самое для пуль космического корабля в функции <span class="var">firePlayerBullet</span>.</p>
+<pre><code data-language="javascript">function firePlayerBullet() {
+  // создаём новую пулю
+  playerBullets.push({
+    x: player.x,
+    x: player.x+14,
+    y: player.y - 5,
+    width:10,
+    height:10,
+    width:20,
+    height:20,
+    counter:0,
+  });
+}</code></pre>
+<p>Теперь наша игра выглядит так. Если у вас возникли какие-либо проблемы, сравните свой код с файлом game3.html . Они должны быть одинаковыми.</p><p class="fig"><a href="https://webref.ru/example/canvas/game3.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/v3.png" alt="Противники бросаются спрайтами"></a></p><p class="figsign">Версия 3. Противники бросаются спрайтами (щёлкните для запуска)</p><h2>Процедурная графика для пришельцев</h2><p>Давайте изменим способ рисования пришельцев. Вместо использования спрайтов, мы сделаем это процедурно, это означает что всё рисование находится в коде, а не заранее нарисовано. Нашей целью является зелёный круг заполненный потоком маленьких белых шаров, которые плавают вокруг в цикле. Они выглядят так:</p><p class="fig"><img src="../../assets/images/canvasdeepdive/new_alien.png" alt=""></p><p>Поскольку это будет радикальное изменение в коде рисования противника, то создадим новую функцию с именем <span class="var">drawEnemy()</span>. Для начала изменим <span class="var">drawEnemies()</span> чтобы из неё вызывалась функциz <span class="var">drawEnemy</span>:</p>
+<pre><code data-language="javascript">function drawEnemies(c) {
+  for(var i in enemies) {
+    var enemy = enemies[i];
+    if(enemy.state == &quot;alive&quot;) {
+      c.fillStyle = &quot;green&quot;;
+      drawEnemy(c,enemy,15);
+    }
+    if(enemy.state == &quot;hit&quot;) {
+      c.fillStyle = &quot;purple&quot;;
+      enemy.shrink--;
+      drawEnemy(c,enemy,enemy.shrink);
+    }
+    // вероятно, никогда не будет вызвана
+    if(enemy.state == &quot;dead&quot;) {
+      c.fillStyle = &quot;black&quot;;
+      c.drawEnemy(c,enemy,15);
+    }
+  }
+}</code></pre>
+<p>Теперь создайте функцию <span class="var">drawEnemy()</span> вроде этой:</p>
+<pre><code data-language="javascript">function drawEnemy(c,enemy,radius) {
+  if(radius &lt;=0) radius = 1;
+  var theta = enemy.counter;
+  c.save();
+  c.translate(0,30);
+  // рисуем фоновый круг
+  circlePath(c, enemy.x, enemy.y, radius*2);
+  c.fill();
+  // рисуем волнистые точки
+  for(var i=0; i&lt;10; i++) {
+    var xoff = Math.sin(toRadians(theta+i*36*2))*radius;
+    var yoff = Math.sin(toRadians(theta+i*36*1.5))*radius;
+    circlePath(c, enemy.x + xoff, enemy.y + yoff, 3);
+    c.fillStyle = &quot;white&quot;;
+    c.fill();
+  }
+  c.restore();
+}
+function toRadians(d) {
+  return d * Math.PI * 2.0 / 360.0;
+}
+function circlePath(c, x, y, r) {
+  c.beginPath();
+  c.moveTo(x,y);
+  c.arc(x,y, r, 0, Math.PI*2);
+}</code></pre>
+<p>Код выше несколько сложен, так давайте внимательно разберём его по шагам. Функция <span class="var">drawEnemy</span> содержит три аргумента: контекст рисования (c), противник для рисования и радиус закрученных шаров. Для начала вычисляем угол <span class="var">theta</span> на основе внутреннего счётчика противника. Это сделает позицию шаров слегка смещённой в каждом кадре. Следующий код рисует круг и заливает его текущим цветом. <span class="var">circlePath</span> это маленькая функция-утилита для рисования круга.</p><p>Наконец, в цикле десять раз рисуем маленькие белые круги. Положение каждого круга получается из значений <span class="var">xoff</span> и <span class="var">yoff</span>. Выглядит сложно, но это на самом деле довольно просто. Значение х&nbsp;— это синус текущего угла умноженный на радиус. Значение у&nbsp;— также синус текущего угла умноженный на радиус. Чтобы сместить значения в каждом кадре мы добавляем значение в theta: i*36*2. Настройка значения у похожа: i*36*1.5. Если настройки оказались бы одинаковыми, то точки станут двигаться по прямой линии. Делая их немного разными мы создали шаблон кружения. Я выбрал именно эти числа просто играя со значениями. Базовая тригонометрия может создать множество интересных движений, вы должны просто поиграть с ними, пока не найдёте понравившееся. Попробуйте изменить 1.5 до 3.0 и увидите как это повлияет на результат.</p><p>В качестве небольшой финальной шлифовки давайте сделаем плавно исчезающий текст «game over / swarm defeated» вместо его простого появления. У нас уже есть объект <span class="var">overlay</span> со счётчиком, который мы можем использовать для настройки альфы в течение времени. Нам просто нужно переопределить <span class="var">drawOverlay</span> установив значение <span class="var">globalAlpha</span> и нарисовать текст:</p>
+<pre><code data-language="javascript">function drawOverlay(c) {
+  if(overlay.counter == -1) return;
+ 
+  // появление
+  var alpha = overlay.counter/50.0;
+  if(alpha &gt; 1) alpha = 1;
+  c.globalAlpha = alpha;
+ 
+  c.save();
+  c.fillStyle = &quot;white&quot;;
+  c.font = &quot;Bold 40pt Arial&quot;;
+  c.fillText(overlay.title,140,200);
+  c.font = &quot;14pt Arial&quot;;
+  c.fillText(overlay.subtitle, 190,250);
+  c.restore();
+}</code></pre>
+<p>Вот как игра сейчас выглядит.</p><p class="fig"><a href="https://webref.ru/example/canvas/game4.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/v4.png" alt="Пришельцы с процедурной анимацией"></a></p><p class="figsign">Версия 4. Пришельцы с процедурной анимацией (щёлкните для запуска)</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Симулятор частиц для взрывов</h2><p>Теперь давайте, наконец, добавим настоящий взрыв с использованием частиц, когда игрок умирает. Для начала, перенесём взрыв игрока в отдельную функцию, как эта:</p>
+<pre><code data-language="javascript">function drawPlayer(c) {
+  if(player.state == &quot;dead&quot;) return;
+ 
+  if(player.state == &quot;hit&quot;) {
+    c.fillStyle = &quot;yellow&quot;;
+    c.fillRect(player.x,player.y, player.width, player.height);
+    drawPlayerExplosion(c);
+    return;
+  }
+  c.drawImage(ship_image,
+    25,1, 23,23, // исходные координаты
+    player.x, player.y, player.width, player.height // конечные координаты
+  );
+}</code></pre>
+<p>Теперь мы создадим простую систему частиц. Вспомним из лекции, что система частиц это просто список объектов простых частиц, которые мы обновляем и рисуем в каждом кадре. Для взрыва мы хотим, чтобы частицы стартовали там же, где игрок и расширялись в произвольном направлении со случайной скоростью. Код для создания частиц выглядит так.</p>
+<pre><code data-language="javascript">var particles = [];
+function drawPlayerExplosion(c) {
+  // старт
+  if(player.counter == 0) {
+    particles = []; // стираем все старые значения
+    for(var i = 0; i&lt;50; i++) {
+      particles.push({
+        x: player.x + player.width/2,
+        y: player.y + player.height/2,
+        xv: (Math.random()-0.5)*2.0*5.0,  // скорость по x
+        yv: (Math.random()-0.5)*2.0*5.0,  // скорость по y
+        age: 0,
+     });
+  }
+}</code></pre>
+<p>Заметьте, что значения скорости начинаются со случайного числа. <span class="var">Math.random</span> всегда возвращает значение от 0 до 1. Вычитая 0.5 и умножая на 2 мы получаем случайное число от -1 до 1. Тогда мы можем несколько масштабировать его, если это выглядит слишком быстро для игры. Не стесняйтесь подправить значение 5.0.</p><p>Теперь нам нужно обновить и нарисовать каждую частицу:</p>
+<pre><code data-language="javascript">  // обновляем и рисуем
+  if(player.counter &gt; 0) {
+    for(var i=0; i&lt;particles.length; i++) {
+      var p = particles[i];
+      p.x += p.xv;
+      p.y += p.yv;
+      var v = 255-p.age*3;
+      c.fillStyle = &quot;rgb(&quot;+v+&quot;,&quot;+v+&quot;,&quot;+v+&quot;)&quot;;
+      c.fillRect(p.x,p.y,3,3);
+      p.age++;
+    }
+  }
+};</code></pre>
+<p>Новое положение каждой частицы это старое положение плюс скорость. Затем мы вычисляем значение цвета v на основе возраста частицы. Поскольку мы имеем дело со значениями rgb, то нам нужно число начинающееся с 255 и уменьшающее со временем. Тогда цвет будет начинаться с белого и плавно переходить к чёрному.</p><p>Вот как выглядит финальная игра.</p><p class="fig"><a href="https://webref.ru/example/canvas/game5.html" class="examplelink"><img src="../../assets/images/canvasdeepdive/v5.png" alt="Завершённая игра"></a></p><p class="figsign">Версия 5. Завершённая игра (щёлкните для запуска)</p><h2>Заключение</h2><p>Эта практическая глава едва касается всех возможностей Canvas. Я призываю вас поработать с этим образцом игры, добавляя фон, меняя цвета, регулируя скорость анимации и выбирая новые спрайты.</p><p>Полный набор изображений из Lost Garden доступен <a href="http://www.lostgarden.com/2005/03/download-complete-set-of-sweet-8-bit.html">здесь</a>. LostGarden.com содержит большую коллекцию бесплатного игрового арта, а также массу замечательных заметок по геймдизайну. Я настоятельно рекомендую вам прочитать их.</p><div id="examplewrap"><iframe id="exampleframe" src="chapter05.html" scrolling="no"></iframe></div>
+<script class='bookscript'>
+$(".examplelink").click(function(e) {
+console.log("opening the big view " + this);
+e.preventDefault();
+$("#exampleframe").attr("src",$(this).attr("href"));
+$("#examplewrap").show();
+});
+$("#examplewrap").hide();
+$("#examplewrap").click(function(e) {
+console.log("hiding");
+e.preventDefault();
+$("#exampleframe").attr("src","");
+$("#examplewrap").hide();
+console.log("done hiding");
+});
+</script><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/canvas">Canvas</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Джош Мариначи</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 28.05.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/canvasdeepdive/chapter04'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/canvasdeepdive/chapter06'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter04.html" title="На предыдущую страницу">Анимация</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter06.html" title="На следующую страницу">Буферы пикселей и другие эффекты</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter01.html">Основы рисования</a></li><li class="leaf"><a href="chapter02.html">Практика: создание диаграмм</a></li><li class="leaf"><a href="chapter03.html">Продвинутое рисование и события</a></li><li class="leaf"><a href="chapter04.html">Анимация</a></li><li class="leaf active-trail"><a href="chapter05.html" class="active-trail active">Создание игры</a></li><li class="leaf"><a href="chapter06.html">Буферы пикселей и другие эффекты</a></li><li class="leaf"><a href="chapter07.html">3D-графика через WebGL и ThreeJS</a></li><li class="leaf"><a href="chapter08.html">WebGL-практикум с ThreeJS: 3D автомобиль</a></li><li class="leaf"><a href="chapter09.html">Введение в WebAudio</a></li><li class="leaf"><a href="chapter10.html">Доступ к веб-камере через getUserMedia()</a></li><li class="leaf"><a href="chapter11.html">Реальные примеры и инструменты</a></li><li class="last leaf"><a href="chapter12.html">Мобильные устройства и оптимизация производительности</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-f5617671aac6aab9fbf9df45b003e6f6"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter05.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

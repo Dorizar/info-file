@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Установка и использование Gulp | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../building-with-gulp.html" />
+<link rel="next" href="reloading.html" />
+<link rel="prev" href="../building-with-gulp.html" />
+<meta name="description" content="Установка Gulp Установка Gulp довольно простая. Для начала установите пакет Gulp глобально: npm install -g gulp Затем установите его в свой проект: npm install --save-dev gulp Использование Gulp Давайте создадим задачу Gulp для минимизации одного из наших файлов JavaScript. Создайте файл с именем gulpfile.js. В нём будут определяться ваши задачи, которые запускаются с помощью команды gulp." />
+<link rel="canonical" href="using-gulp.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Установка и использование Gulp</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../building-with-gulp.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Сборка с Gulp</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Установка и использование Gulp</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><h2>Установка Gulp</h2><p>Установка Gulp довольно простая. Для начала установите пакет Gulp глобально:</p>
+<pre><code>npm install -g gulp</code></pre>
+<p>Затем установите его в свой проект:</p>
+<pre><code>npm install --save-dev gulp</code></pre>
+<h2>Использование Gulp</h2><p>Давайте создадим задачу Gulp для минимизации одного из наших файлов JavaScript. Создайте файл с именем gulpfile.js. В нём будут определяться ваши задачи, которые запускаются с помощью команды gulp.</p><p>Добавьте следующие команды в ваш файл gulpfile.js:</p>
+<pre><code data-language="javascript">var gulp = require('gulp'),
+    uglify = require('gulp-uglify');
+  
+gulp.task('minify', function () {
+  gulp.src('js/app.js')
+      .pipe(uglify())
+      .pipe(gulp.dest('build'))
+});</code></pre>
+<p>Установите gulp-uglify через npm выполнив <span class="var">npm install --save-dev gulp-uglify</span>, а затем запустите задачу через <span class="var">gulp minify</span>. Предположим, у вас есть файл с именем app.js в папке js, новый app.js будет создан в папке build и содержать сжатую версию js/app.js.</p><p>Что на самом деле здесь происходит?</p><p>Мы делаем несколько вещей в нашем файле gulpfile.js. Вначале мы загружаем модули gulp и gulp-uglify:</p>
+<pre><code data-language="javascript">var gulp = require('gulp'),
+    uglify = require('gulp-uglify');</code></pre>
+<p>Затем определяем задачу с именем minify, которая при запуске вызывает функцию, заданную в качестве второго аргумента:</p>
+<pre><code data-language="javascript">gulp.task('minify', function () {
+
+});</code></pre>
+<p>В конце, и это самое сложное, мы определяем, что наша задача должна делать:</p>
+<pre><code data-language="javascript">gulp.src('js/app.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('build'))</code></pre>
+
+<p>Если вы не знакомы с потоками, а большинство фронтенд-разработчиков с ними не знакомы, то код выше ничего вам не скажет.</p><h2>Потоки</h2><p>Потоки позволяют пройти некоторым данным через ряд, как правило, небольших функций, которые модифицируют данные, а затем передают их следующей функции.</p><p>В приведённом выше примере функция <span class="var">gulp.src()</span> получает строку, которая соответствует файлу или набору файлов, и создаёт поток объектов представляющих эти файлы. Затем они переходят (или перетекают) в функцию <span class="var">uglify()</span>, которая принимает объекты файлов и возвращает новые объекты файлов с минимизированным исходником. Этот результат затем перетекает в функцию <span class="var">gulp.dest()</span>, которая сохраняет изменённые файлы.</p><p>Вот что происходит в виде схемы:</p><p class="fig"><img src="../../assets/images/building-with-gulp/01-streams-opt.png" alt="" width="387" height="281"></p><p>Когда есть только одна задача, функция ничего не делает. Тем не менее, рассмотрим следующий код:</p>
+<pre><code data-language="javascript">gulp.task('js', function () {
+  return gulp.src('js/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(uglify())
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('build'));
+});</code></pre>
+<p>Чтобы запустить это самостоятельно, установите gulp, gulp-jshint, gulp-uglify и gulp-concat.</p><p>Эта задача берёт все файлы соответствующие js/*.js (иными словами все файлы JavaScript из папки js), запускает для них JSHint, выводит отчёт, минимизирует каждый файл, а затем объединяет их, сохраняя их в build/app.js. В виде схемы:</p><p class="fig"><img src="../../assets/images/building-with-gulp/02-steams-2-opt.png" alt="" width="500" height="249"></p><p>Если вы знакомы с Grunt, то заметите, что это довольно сильно отличается от того, как работает Grunt. Grunt не использует потоки. Вместо этого он берёт файлы, запускает одну задачу для каждого файла и сохраняет в новые файлы, повторяя весь процесс для каждой задачи. В результате множества обращений к файловой системе, Grunt работает медленнее, чем Gulp.</p><p>Для лучшего понимания потоков прочтите <a href="https://github.com/substack/stream-handbook">Stream Handbook</a>.</p><h2>gulp.src()</h2><p>Функция <span class="var">gulp.src()</span> берёт один или несколько файлов или массив и возвращает поток, который может быть передан в плагины.</p><p>Gulp использует <a href="https://github.com/isaacs/node-glob">node-glob</a> для получения указанных файлов. Проще всего объяснить на примерах:</p><ul><li>js/app.js <br> Соответствует определённому файлу.</li><li>js/*.js <br> Соответствует всем файлам, заканчивающихся на .js в папке js.</li><li>js/**/*.js <br> Соответствует всем файлам с расширением .js в папке js и всех вложенных папках.</li><li>!js/app.js <br> Исключает js/app.js из соответствия, что полезно если вы желаете выбрать все файлы в папке за исключением определённого файла.</li><li>*.+(js|css)<br> Соответствует всем файлам, заканчивающихся на .js или .css.</li></ul><p>Другие функции также доступны, но в Gulp они обычно не применяются. Посмотрите документацию <a href="https://github.com/isaacs/minimatch">Minimatch</a> ради подробностей.</p><p>Предположим, у нас есть папка с именем js, содержащая файлы JavaScript, некоторые минимизированы, а некоторые нет. Мы хотим создать задачу по минимизации ещё не уменьшенных файлов. Чтобы сделать это, мы выбираем все файлы JavaScript в папке, за исключением всех файлов, оканчивающиеся на .min.js:</p>
+<pre><code data-language="javascript">gulp.src(['js/**/*.js', '!js/**/*.min.js'])</code></pre>
+<h2>Определение задач</h2><p>Чтобы определить задачу используйте функцию <span class="var">gulp.task()</span>. Для простой задачи эта функция принимает два параметра: имя задачи и функция для запуска.</p>
+<pre><code data-language="javascript">gulp.task('greet', function () {
+  console.log('Здравствуй, мир!');
+});</code></pre>
+<p>Запуск <span class="var">gulp greet</span> выведет «Здравствуй, мир» в консоли.</p><p>Задача также может быть списком других задач. Предположим, мы хотим определить задачу build, которая выполняет три других задачи: css, js и imgs. Мы можем сделать это, указав вместо функции массив с задачами:</p>
+<pre><code data-language="javascript">gulp.task('build', ['css', 'js', 'imgs']);</code></pre>
+<p>Они будут запускаться асинхронно, так что вы не можете предполагать, что когда задача css завершится, то запустится задача js — на деле, это, скорее всего, не произойдёт. Чтобы убедиться, что задача завершила работу перед запуском другой задачи, вы можете указать зависимостей путём объединени массива задач с функцией. Например, чтобы определить задачу css, которая перед запуском проверит, что задача greet завершена, вы можете сделать так:</p>
+<pre><code data-language="javascript">gulp.task('css', ['greet'], function () {
+  // Делаем что-то с CSS
+});</code></pre>
+<p>Теперь, когда вы запустите задачу css, Gulp выполнит задачу greet, подождёт, пока она окончится, а затем вызовет указанную функцию.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Задача по умолчанию</h2><p>Вы можете определить задачу default, которая выполняется, когда вы просто запускаете gulp. Вы можете сделать это, определив задачу с именем default.</p>
+<pre><code data-language="javascript">gulp.task('default', function () {
+  // Задача по умолчанию
+});</code></pre>
+<h2>Плагины</h2><p>Вместе с Gulp вы можете использовать ряд плагинов — более 600 на деле. Вы найдёте их список на <a href="http://gulpjs.com/plugins/">странице плагинов</a>, либо путём поиска gulpplugin в npm. Некоторые плагины помечены «gulpfriendly»; это не плагины, но они предназначены для работы с Gulp. Учтите, что при поиске непосредственно в npm, вы не увидите плагины из чёрного списка (прокрутите страницу с плагинами вниз и увидите больше).</p><p>Большинство плагинов довольно просты в использовании, имеют хорошую документацию и запускаются аналогичным образом (через поток файловых объектов). Они, как правило, модифицируют файлы (хотя некоторые, вроде валидаторов, нет) и возвращают новые файлы, которые передаются в следующий плагин.</p><p>Давайте расширим уже упомянутую задачу js:</p>
+<pre><code data-language="javascript">var gulp = require('gulp'),
+    jshint = require('gulp-jshint'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat');
+  
+gulp.task('js', function () {
+  return gulp.src('js/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(uglify())
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('build'));
+});</code></pre>
+  
+<p>Мы используем три плагина: <a href="https://github.com/wearefractal/gulp-jshint">gulp-jshint</a>, <a href="https://github.com/terinjokes/gulp-uglify">gulp-uglify</a> и <a href="https://github.com/wearefractal/gulp-concat">gulp-concat</a>. Вы можете увидеть в файлах README для плагинов, что их довольно легко использовать. Доступны некоторые настройки, но по умолчанию, как правило, всё хорошо.</p><p>Вы, возможно, заметили, что плагин JSHint вызывается дважды. Потому что первая строка вызывает JSHint для файлов, которые только присоединяют свойство jshint к файловым объектам без какого-либо вывода. Вы можете прочитать свойство <span class="var">jshint</span> самостоятельно или передать его в <span class="var">jshint.reporter</span> по умолчанию или в другой <span class="var">reporter</span>, такой как <a href="https://github.com/sindresorhus/jshint-stylish">jshint-stylish</a>.</p><p>Два других плагина понятнее: функция <span class="var">uglify()</span> минимизирует код, а функция <span class="var">concat('app.js')</span> объединяет все файлы в один с именем app.js.</p><h2>gulp-load-plugin</h2><p>Модуль, который я нахожу весьма полезным называется gulp-load-plugins, он автоматически загружает любые плагины Gulp из файла package.json и присоединяет их к объекту. Основное применение следующее:</p>
+<pre><code data-language="javascript">var gulpLoadPlugins = require('gulp-load-plugins'),
+    plugins = gulpLoadPlugins();</code></pre>
+<p>Вы можете записать всё в одну строку (<span class="var">var plugins = require('gulp-load-plugins')();</span>), но я не большой поклонник однострочного вызова require.</p><p>После запуска этого кода объект <span class="var">plugins</span> будет содержать ваши плагины с именами в CamelCase-стиле (к примеру, gulp-ruby-sass будет загружен как <span class="var">plugins.rubySass</span>). Вы можете использовать их обычным путём. Например, наша задача js сократится так:</p>
+<pre><code data-language="javascript">var gulp = require('gulp'),
+    gulpLoadPlugins = require('gulp-load-plugins'),
+    plugins = gulpLoadPlugins();
+  
+gulp.task('js', function () {
+  return gulp.src('js/*.js')
+    .pipe(plugins.jshint())
+    .pipe(plugins.jshint.reporter('default'))
+    .pipe(plugins.uglify())
+    .pipe(plugins.concat('app.js'))
+    .pipe(gulp.dest('build'));
+});</code></pre>
+<p>К этому прилагается файл package.json, который содержит нечто похожее:</p>
+<pre><code data-language="javascript">{
+  &quot;devDependencies&quot;: {
+    &quot;gulp-concat&quot;: &quot;~2.2.0&quot;,
+    &quot;gulp-uglify&quot;: &quot;~0.2.1&quot;,
+    &quot;gulp-jshint&quot;: &quot;~1.5.1&quot;,
+    &quot;gulp&quot;: &quot;~3.5.6&quot;
+  }
+}</code></pre>
+<p>Данный пример на самом деле не намного короче. Однако для объёмных и сложных Gulp-файлов, это сократит блок с загрузкой файлов до одной или двух строк.</p><p>Версия 0.4.0 gulp-load-plugins выпущенная в начале марта добавила отложенную загрузку плагина, которая улучшает производительность. Плагины не загружаются, пока их не вызовем, это значит, что вам не придётся беспокоиться о неиспользованных плагинах в package.json влияющих на производительность (хотя их, вероятно, следует убрать в любом случае). Другими словами, если вы запустите задачу, которая требует только два плагина, она не станет загружать все плагины, которые необходимы для других задач.</p><h2>Отслеживание файлов</h2><p>Gulp имеет возможность следить за изменением файлов и выполнять задачу или задачи при обнаружении изменений. Эта функция удивительно полезна (для меня, наверное, одна из самых полезных в Gulp). Вы можете сохранить Less-файл, а Gulp превратит его в CSS и обновит браузер без каких-либо действий с вашей стороны.</p><p>Для слежения за файлом или файлами используйте функцию <span class="var">gulp.watch()</span>, которая принимает шаблон файлов или их массив (такой как <span class="var">gulp.src()</span>), либо массив задач для их запуска или выполнения функции обратного вызова.</p><p>Предположим, что у нас есть задача build, она превращает наши файлы шаблонов в HTML и мы хотим определить задачу watch, которая отслеживает изменение шаблонов и запускает задачу для преобразования их в HTML. Мы можем использовать функцию <span class="var">watch</span> следующим образом:</p>
+<pre><code data-language="javascript">gulp.task('watch', function () {
+  gulp.watch('templates/*.tmpl.html', ['build']);
+});</code></pre>
+<p>Теперь при изменении файла шаблона будет запущена задача build, которая создаст HTML.</p><p>Вы также можете указать для <span class="var">watch</span> функцию обратного вызова вместо массива задач. В этом случае функция получает объект <span class="var">event</span> содержащий информацию о событии, которое вызвало функцию:</p>
+<pre><code data-language="javascript">gulp.watch('templates/*.tmpl.html', function (event) {
+  console.log('Event type: ' + event.type); // добавлено, изменено или удалено
+  console.log('Event path: ' + event.path); // путь к файлу
+});</code></pre>
+<p>Другой отличительной особенностью <span class="var">gulp.watch()</span> является то, что она возвращает <span class="var">watcher</span>. Используйте его для прослушивания дополнительных событий или для добавления файлов в watch. Например, чтобы одновременно запустить список задач и вызвать функцию, вы можете добавить слушателя в событие <span class="var">change</span> при возвращении <span class="var">watcher</span>:</p>
+<pre><code data-language="javascript">var watcher = gulp.watch('templates/*.tmpl.html', ['build']);
+  watcher.on('change', function (event) {
+  console.log('Event type: ' + event.type); // добавлено, изменено или удалено
+  console.log('Event path: ' + event.path); // путь к файлу
+});</code></pre>
+<p>В дополнение к событию <span class="var">change</span> вы можете прослушивать ряд других событий:</p><ul><li>end <br> Срабатывает, когда <span class="var">watcher</span> завершается (это означает, что задачи и функции обратного вызова не будут больше вызываться при изменении файлов).</li><li>error <br> Срабатывает, когда происходит ошибка.</li><li>ready <br> Срабатывает, когда файлы были найдены и готовы к отслеживанию.</li><li>nomatch <br> Срабатывает, когда запросу не соответствует ни один файл.</li></ul><p>Объект <span class="var">watcher</span> также содержит некоторые методы, которые можно вызывать:</p><ul><li>watcher.end() <br> Останавливает watcher (при этом задачи или функции обратных вызовов не будут больше вызываться).</li><li>watcher.files() <br> Возвращает список файлов за которыми следит <span class="var">watcher</span>.</li><li>watcher.add(glob) <br> Добавляет файлы в <span class="var">watcher</span>, которые соответствуют указанному шаблону glob (также принимает необязательную функцию обратного вызова в качестве второго аргумента).</li><li>watcher.remove(filepath) <br> Удаляет определённый файл из <span class="var">watcher</span>.</li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/gulp">Gulp</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Каллум Макрей</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 25.08.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/building-with-gulp'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/building-with-gulp/reloading'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../building-with-gulp.html" title="На предыдущую страницу">Сборка с Gulp</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="reloading.html" title="На следующую страницу">Перезагрузка браузера при изменениях</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf active-trail"><a href="using-gulp.html" class="active-trail active">Установка и использование Gulp</a></li><li class="leaf"><a href="reloading.html">Перезагрузка браузера при изменениях</a></li><li class="last leaf"><a href="why-gulp.html">Почему Gulp?</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-41fafa4169f732473c3d53e531034c5f"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="using-gulp.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

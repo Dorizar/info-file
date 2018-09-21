@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Приступая к работе с Grunt | WebReference</title>
+<meta charset="utf-8" />
+<link rel="next" href="grunt-getting-started/setup.html" />
+<meta name="description" content="Во время процесса веб-разработки возникает много задач, которые нам требуется периодически выполнять вроде минимизации JavaScript и CSS-файлов, модульного тестирования, проверки файлов на наличие ошибок, компиляции препроцессорных файлов (Less, Sass) в CSS и многое другое. Grunt предназначен для запуска задач, а значит повторяющиеся задачи, с которыми мы имеем дело каждый день, становятся автоматизированы." />
+<link rel="image_src" href="../assets/images/book/grunt.png" />
+<link rel="canonical" href="grunt-getting-started.html" />
+<link type="text/css" rel="stylesheet" href="../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Приступая к работе с Grunt</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Приступая к работе с Grunt</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p class="fig"><img src="../assets/images/getting-started-with-grunt/grunt.png" alt="Grunt"></p><p>Во время процесса веб-разработки возникает много задач, которые нам требуется периодически выполнять. Это задачи вроде минимизации JavaScript и CSS-файлов, модульного тестирования, проверки файлов на наличие ошибок, компиляции препроцессорных файлов (Less, Sass) в CSS и многое другое. <a href="http://gruntjs.com">Grunt</a> предназначен для запуска задач, а значит повторяющиеся задачи, с которыми мы имеем дело каждый день, становятся <strong>автоматизированы</strong>. Это лишь простой взгляд на то, как запускается и работает Grunt. Мы рассмотрим как выполнять следующие основные задачи:</p><ul><li>анализ JS-файлов;</li><li> минимизация JS-файлов;</li><li> компиляция Less-файлов;</li><li> минимизация CSS-файлов;</li><li> отслеживание изменения файлов и выполнение вышеперечисленных задач.</li></ul><p>Исходные файлы вы можете <a href="https://github.com/scotch-io/grunt-getting-started">взять из хранилища GitHub</a>.</p><h2>Быстрый взгляд на Grunt в действии</h2><p>Предположим, что вы хотите проверить свой JavaScript-файл на наличие ошибок. После установки Grunt просто запустите:</p>
+<pre><code>$ grunt jshint</code></pre>
+<p>И вы увидите ошибки в файлах JavaScript!</p><p class="fig"><img src="../assets/images/getting-started-with-grunt/grunt-jshint.png" alt=""></p><p>Использовать Grunt довольно просто. Только установите его, а затем запустите желаемую задачу. Grunt <strong>выполнит</strong> задачу за вас. Это то, что официальный сайт Grunt называет запуском задач.</p><h2>Делаем всё супер просто</h2><p>Существует много учебников, в них говорится о замечательных вещах которые вы можете делать с Grunt. Это хорошие учебники, но порой они могут запутать масштабными настройками людей, только начинающих знакомиться с Grunt. <strong>Это же руководство по основам Grunt</strong> и созданию невероятно простых и легко настраиваемых для управления задач, упомянутых выше. Оно научит вас основам, но позволит задуматься, как мы можем расширить Grunt для будущего продвинутого применения.</p><h2>Приступаем к работе</h2><p>Чтобы использовать Grunt нам требуется уже установленный <a href="http://nodejs.org">Node.js</a>. Не волнуйтесь, вы можете использовать Grunt в любом желаемом приложении, будь то Node-приложение, PHP-приложение, WordPress или просто старый добрый сайт на HTML/CSS/JS. Node и его менеджер пакетов (npm) применяется для получения необходимых пакетов. Каждый пакет выполняет свою функцию, вроде минимизации или анализа. Если Node ещё не установлен на вашем компьютере, <a href="http://nodejs.org">возьмите</a> его и мы начнём работать с Grunt. Чтобы убедиться, что Node и npm у вас установлены, перейдите к командной строке и наберите <span class="var">node&nbsp;-v</span> и <span class="var">npm&nbsp;-v</span>. Если видите номера версий, это значит что вы готовы к работе!</p><h2>Обзор</h2><p>Файлы нашего проекта хранятся довольно просто. Вот структура файлов для примеров, показанная ниже. Начните с создания папок и файлов, но пока оставьте сами файлы пустыми, мы наполним их позже.</p>
+<pre><code data-language="javascript">- dist              // содержит все наши финальные файлы (минимизированные)
+----- css
+----- js
+- src               // хранит исходные файлы
+----- css
+---------- style.css
+---------- pretty.less
+----- js
+---------- magic.js
+Gruntfile.js        // конфигурация Grunt
+package.json        // конфигурация npm (какие пакеты мы тянем)</code></pre>
+  
+<p>Обратите внимание на папки <strong>src</strong> и <strong>dist</strong>. Все наши рабочие файлы хранятся внутри папки <strong>src</strong>, затем Grunt минимизирует эти файлы и сохраняет их в папку <strong>dist</strong>. Файлы внутри этой папки предназначены для применения на финальном сайте.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Получение необходимых пакетов для Grunt</h2><p>При использовании npm мы определяем все необходимые нам пакеты в файле package.json. Давайте перейдём к этому файлу и добавим в него требуемые пакеты. Что делает каждый пакет объясним позже.</p>
+<pre><code data-language="javascript">// package.json
+
+{
+  &quot;name&quot;: &quot;grunt-getting-started&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;devDependencies&quot;: {
+  &quot;grunt&quot;: &quot;~0.4.4&quot;,
+  &quot;grunt-contrib-jshint&quot;: &quot;latest&quot;,
+  &quot;jshint-stylish&quot;: &quot;latest&quot;,
+  &quot;grunt-contrib-uglify&quot;: &quot;latest&quot;,
+  &quot;grunt-contrib-less&quot;: &quot;latest&quot;,
+  &quot;grunt-contrib-cssmin&quot;: &quot;latest&quot;,
+  &quot;grunt-contrib-watch&quot;: &quot;latest&quot;
+  }
+}</code></pre>
+<p>Здесь мы определили имя нашего проекта через name, его версию (version) и необходимые пакеты (devDependencies). На первый взгляд это выглядит загадочно, особенно для того, кто ранее ещё не работал с Node и npm, но скоро вы поймёте, что npm&nbsp;— очень классный менеджер пакетов для проекта.</p><h2>Пакеты Grunt</h2><p>Вы удивитесь узнав, что все эти пакеты grunt-contrib-**** делают. Вот сведённые в таблицу популярные пакеты.</p><table class="data"><thead><tr><th>Плагин</th><th>Описание</th></tr></thead><tbody><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-jshint" target="_blank">contrib-jshint</a></td><td>Валидация файлов через jshint.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-uglify" target="_blank">contrib-uglify</a></td><td> Минимизация JS-файлов с помощью UglifyJS.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-watch" target="_blank">contrib-watch</a></td><td>Запуск задач, которые следят за изменением файлов.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-clean" target="_blank">contrib-clean</a></td><td>Очистка файлов и папок.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-copy" target="_blank">contrib-copy</a></td><td>Копирование файлов и папок.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-concat" target="_blank">contrib-concat</a></td><td>Объединение файлов в один.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-cssmin" target="_blank">contrib-cssmin</a></td><td>Сжатие CSS-файлов.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-less" target="_blank">contrib-less</a></td><td>Компиляция Less-файлов в CSS.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-imagemin" target="_blank">contrib-imagemin</a></td><td>Уменьшение PNG, JPG и GIF.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-compass" target="_blank">contrib-compass</a></td><td>Компиляция Sass в CSS через Compass.</td></tr><tr><td> <a href="https://www.npmjs.org/package/grunt-contrib-htmlmin" target="_blank">contrib-htmlmin</a></td><td>Минимизация HTML-файлов.</td></tr></tbody></table><p>Для получения полного списка пакетов посетите <a href="http://gruntjs.com/plugins">хранилище плагинов Grunt</a>. Теперь, когда мы определили нужные нам пакеты, давайте их установим.</p><h2>Установка пакетов</h2><p> После подготовки файла package.json перейдите в командную строку и наберите:</p>
+<pre><code>$ npm install</code></pre>
+<p>Вы увидите, что npm делает своё дело и тянет эти пакеты в недавно созданную папку<strong> node_modules</strong>. Теперь у нас есть эти пакеты и они готовы к использованию в проекте. Установка завершена, так что давайте перейдём к настройке задач для Grunt!</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/grunt">Grunt</a></div></div></div><section class="row book-toc"><div class="columns small-2"></div><div class="columns small-10"><h2>Содержание</h2><ul class="menu"><li class="first leaf"><a href="grunt-getting-started/setup.html">Установка и настройка Grunt</a></li><li class="leaf"><a href="grunt-getting-started/minify-js.html">Минимизация JavaScript-файлов</a></li><li class="leaf"><a href="grunt-getting-started/less.html">Компиляция Less в CSS</a></li><li class="leaf"><a href="grunt-getting-started/minify-css.html">Минимизация CSS-файлов</a></li><li class="leaf"><a href="grunt-getting-started/multiple-tasks.html">Запуск нескольких задач одновременно</a></li><li class="leaf"><a href="grunt-getting-started/different-tasks.html">Различные задачи для разных условий</a></li><li class="last leaf"><a href="grunt-getting-started/watching.html">Следим за изменениями и запускаем задачи</a></li></ul></div></section><section class="row about-author"><div class="columns small-2 about-author-photo"><img class="about-author-avatar" src="../assets/styles/thumbnail/public/author/picture-191-1439658245.jpg@itok=_B4XAjg4" alt="Крис Севилеха" /></div><div class="columns small-10 about-author-photo"><h2>Крис Севилеха</h2><div class="about-author-descr"><p>Один из основателей сайта scotch.io, пишет статьи на тему дизайна и веб-разработки.</p></div><div class="about-author-social"><a href="https://scotch.io" rel="nofollow" title="Сайт автора"><i class="icon-home"></i></a><a href="https://twitter.com/sevilayha" rel="nofollow" title="Twitter"><i class="icon-twitter"></i></a></div></div></section><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Крис Севилеха</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 17.04.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+right', function() { document.location = '/dev/grunt-getting-started/setup'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"></div><div class="small-6 columns page-next"><a href="grunt-getting-started/setup.html" title="На следующую страницу">Установка и настройка Grunt</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="grunt-getting-started/setup.html">Установка и настройка Grunt</a></li><li class="leaf"><a href="grunt-getting-started/minify-js.html">Минимизация JavaScript-файлов</a></li><li class="leaf"><a href="grunt-getting-started/less.html">Компиляция Less в CSS</a></li><li class="leaf"><a href="grunt-getting-started/minify-css.html">Минимизация CSS-файлов</a></li><li class="leaf"><a href="grunt-getting-started/multiple-tasks.html">Запуск нескольких задач одновременно</a></li><li class="leaf"><a href="grunt-getting-started/different-tasks.html">Различные задачи для разных условий</a></li><li class="last leaf"><a href="grunt-getting-started/watching.html">Следим за изменениями и запускаем задачи</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-85a8624890299f8e0804a79b315ed3e4"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="grunt-getting-started.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цикл игры | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosgame.html" />
+<link rel="next" href="input.html" />
+<link rel="prev" href="assets.html" />
+<meta name="description" content="Вот оно! Мы, наконец, дошли до той главы, в конце которой на деле получим штуку на экране! Прежде, чем мы начнём волноваться, давайте успокоимся и подумаем минуту о разных вещах. Что является неотъемлемой частью игры? С нашим новым пониманием концепции игровых циклов и игр в целом проведём эксперимент и вырежем из игры материал, пока не останется только её суть." />
+<link rel="canonical" href="gameloop.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Цикл игры</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosgame.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Создание игр для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Цикл игры</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Вот оно! Мы, наконец, дошли до той главы, в конце которой на деле получим штуку на экране! Прежде, чем мы начнём волноваться, давайте успокоимся и подумаем минуту о разных вещах.</p><h2>Что является неотъемлемой частью игры?</h2><p>С нашим новым пониманием концепции игровых циклов и игр в целом проведём эксперимент и вырежем из игры материал, пока не останется только её суть.</p><p>Игры в наши дни содержат экраны с названием, вступительные ролики, обучающие уровни, бесконечные экраны настроек, таблицу лидеров и многие другие вещи, которые, если их вырезать, ничего не оставили бы от игры. Если вернуться во времена 90-х годов, вы брали портативную игровую консоль, включали её и попадали прямо в игру. Нет причудливых настроек, нет обучающих уровней, нет никаких вступлений, просто текущая игра.</p><p>Эту часть игрового процесса мы называем циклом игры. Это кусочек вашей игры, когда мы получаем действия от пользователя, вычисляем, что происходит в игровом мире и отображаем это игроку. Этот непрерывный цикл получения данных, моделирования мира и его отображения является сердцем игры. Это то, что делает её живой. Мы сосредоточимся на этом сердце и других особенностях позже.</p><p>В этой главе мы собираемся построить часть механизма сердцебиения. Мы сосредоточимся на моделировании мира и его отображении, пока без управления игроком. В конце этой главы наша игра будет живой и двигаться.</p><h2>Размышления о цикле нашей игры</h2><p>Игровой цикл будет построен как отдельное игровое состояние. В предыдущей главе мы построили состояние для загрузки наших ассетов таким образом, что оно готово к состоянию, которое мы собираемся сделать в данный момент.</p><p>Наша главная цель — это моделирование и отображение мира. Позвольте прерваться и отметить что нам нужно.</p><ul><li><strong>Движение мяча</strong>. Мяч должен двигаться.</li><li> <strong>Мяч сталкивается со стенами</strong>. Если мы считаем, что дисплей смартфона имеет четыре стены, то мяч должен столкнуться с ними и отскочить обратно чтобы не покидать границы экрана.</li><li> <strong>Блоки</strong>. Наши блоки должны располагаться в виде сетки при запуске игры.</li><li> <strong>Мяч сталкивается с блоками</strong>. Мяч должен столкнуться с блоками и как только это произойдёт, блок должен быть уничтожен.</li><li><strong> Мяч сталкивается с игроком</strong>. Мяч должен отскакивать, когда ударяется о ракетку игрока.</li></ul><p>Всё позиционирование происходит в функции <span class="var">create()</span>, она запускается один раз, когда создаётся состояние игры. Все движения и столкновения происходят в функции <span class="var">update()</span>, которая вызывается повторно пока активно состояние Game.</p><p>Создайте файл с именем <strong>game.js</strong> внутри папки <strong>js</strong> и начнём кодить.</p><h3>Изменение index.html</h3><p>Мы должны изменить наш файл <strong>index.html</strong> и включить в него <strong>game.js</strong>.</p><p class="exampleTitle">index.html: теперь включает наше состояние Game</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Foxnoid Game&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; /&gt;
+    &lt;script defer src=&quot;js/phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/init.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/preload.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;js/game.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+    &lt;div id=&quot;game&quot;&gt;&lt;/div&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>После включения этого файла в HTML нужно зарегистрировать состояние в <strong>init.js</strong> как показано ниже.</p><p class="exampleTitle">init.js: с новым игровым состоянием Game</p>
+<pre><code data-language="javascript">var GameStates = {}; // &lt;-- Объект для хранения всех наших игровых состояний
+  
+document.addEventListener(&quot;DOMContentLoaded&quot;, function()  {
+  
+  // Портретная ориентация игры
+  
+  var width = 320;
+  var height = 480;
+  
+  var game = new Phaser.Game(width, height, Phaser.CANVAS, &quot;game&quot;);
+  
+  // Добавляем игровое состояние Game
+  game.state.add('Preloader', GameStates.Preloader);
+  game.state.add('Game', GameStates.Game);
+  
+  // Запускаем состояние Preloader.
+  game.state.start('Preloader');
+});</code></pre>
+
+<h2>Инициализация нашего мира</h2><p><a href="http://docs.phaser.io/Phaser.State.html">Игровые состояния Phaser</a>, как объяснялось в главе об инициализации, имеют различные функции, которые мы можем внедрить в рабочий процесс нашего игрового цикла. Для инициализации мира мы добавим функцию <span class="var">create()</span>, она выполняется один раз при запуске состояния. Мы не собираемся реализовывать эту инициализацию как единый непрерывный блок кода, потому что это утомительно и труднее для понимания. Вместо этого создадим крошечные функции, которые будут вызываться из <span class="var">create()</span>.</p><p class="exampleTitle">game.js: где происходит веселье</p>
+<pre><code data-language="javascript">GameStates.Game = {
+  initWorld: function() {
+    // Некоторые константы
+    this.playerSpeed = 250;
+    this.ballSpeed = 220;
+    this.blocksPerRow = 5;
+    this.blockRows = 3;
+    this.playerLives = 13;
+  
+    // Добавляем фон
+    this.add.sprite(0, 0, 'background');
+  },
+  
+  create: function() {
+    this.initWorld();
+  }
+};</code></pre>
+<p>Выше мы можем видеть пример того, как работает наш код. Мы создали функцию с именем <span class="var">initWorld()</span>, а затем вызываем её из <span class="var">create()</span>. <span class="var">initWorld()</span> отвечает за установку некоторых констант и добавление фонового изображения. Эти константы используются функциями, которые мы вызываем из <span class="var">update()</span>, чтобы моделировать мир.</p><p>Отныне, вместо вывода всего файла <strong>game.js</strong>, я собираюсь размещать только новую функцию, которую вы должны добавить в конец <span class="var">create()</span>.</p><h3>Добавление игрока</h3><p>Помните, что вы должны вставить запятые между методами. Добавьте следующий метод в объект <span class="var">GameStates.Game</span>.</p><p class="exampleTitle">game.js: функция addPlayer()</p>
+<pre><code data-language="javascript">addPlayer: function () {
+  // Добавляем игрока
+  this.player = this.add.sprite(160, 440, 'player');
+  this.physics.arcade.enable(this.player);
+  this.player.anchor.setTo(0.5, 0);
+  this.player.enableBody = true;
+  this.player.body.immovable = true;
+  this.player.body.collideWorldBounds = true;
+  
+  // Добавляем вывод жизней игрока
+  this.livesDisplay = this.add.text(10, 8, &quot;Lives: &quot; + this.playerLives, {
+    fill: &quot;white&quot;,
+    fontSize: 12
+  });
+}</code></pre>
+<p>Эта функция используется для добавления спрайта игрока в мир. Спрайты — это небольшие штуки, которые движутся и взаимодействуют с миром, всё остальное это фон и отображение информации. Вы можете узнать больше о спрайтах из <a href="http://docs.phaser.io/Phaser.Sprite.html">документации класса Phaser.Sprite</a>.</p><p>Мы создаём спрайт используя изображение с именем <strong>player</strong>, которое было загружено в состоянии <strong>Preload</strong>. Этот спрайт находится в заданной позиции (160x440) и мы его храним в объекте свойств под именем <strong>player</strong>. Если вы не уверены в использовании <span class="var">this</span> внутри объекта, то прочтите <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">документацию MDN о this</a>. В основном, поскольку игровое состояние это объект и мы храним player как свойство этого объекта, то player доступен для использования и в других функциях.</p><p>После добавления спрайта мы включаем физическую систему для воздействия на спрайт игрока. При работе с мобильными устройствами вы не желаете имитировать физику на ненужных вещах и тем самым расходовать ресурсы батареи и процессора. Поэтому мы должны сказать физической системе обо всех спрайтах за которыми следует наблюдать.</p><p>Phaser поставляется с тремя разными физическими системами, они ранжируются от простой Arcade Physics до полноценного моделирования подобному Box2D. Наша игра не требует сложного моделирования и должна прекрасно работать с Arcade Physics. Вот почему мы используем <span class="var">this.physics.arcade</span>, а не другие системы. Вы можете узнать больше об <a href="http://docs.phaser.io/Phaser.Physics.Arcade.html">Arcade Physics из документации Phaser</a>.</p><p>Следующая команда изменяет исходную точку спрайта player. Обычно координаты спрайта отсчитываются от левого верхнего угла, но намного проще позиционировать элемент, если мы установим точку в середину спрайта. Таким образом, если мы хотим выровнять спрайт по центру экрана, то можем позиционировать его прямо в центральные координаты, минуя выбор центра и вычитания половины длины спрайта. Эти шаги необходимы, если бы мы не изменили исходную точку.</p><p>Следующие три выражения связаны с физической системой. Элементы взаимодействующие друг с другом с точки зрения физики должны иметь тело. Элементы без тела (и, таким образом, без массы) не могут взаимодействовать. Мы также установим тело неподвижным, потому что если мы этого не сделаем, то при каждом ударе мяча о ракетку она будет двигаться вниз, а мы этого не хотим. Последнее выражение нужно, чтобы убедиться что ракетка не уходит за экран.</p><p>После этого мы выводим текст с числом имеющихся жизней игрока. Идея заключается в том, что когда-то мяч попадает в нижнюю часть экрана, игрок теряет жизнь. После потери всех жизней игра окончена.</p><h3>Добавление мяча</h3><p class="exampleTitle">game.js: функция addBall()</p>
+<pre><code data-language="javascript">addBall: function () {
+  // Добавляем мяч
+  this.ball = this.add.sprite(160, 240, 'ball');
+  this.physics.arcade.enable(this.ball);
+  this.ball.anchor.setTo(0.5, null);
+  this.ball.enableBody = true;
+  this.ball.body.bounce.setTo(1, 1);
+  this.ball.body.velocity.x = this.ballSpeed;
+  this.ball.body.velocity.y = this.ballSpeed;
+  this.ball.body.collideWorldBounds = true;
+}</code></pre>
+<p>Код инициализации мяча очень похож на код игрока выше, основное отличие в том, что мяч должен прыгать во всех направлениях. Мы также даём ему начальную скорость по обоим осям, так что, как только начинается игра мяч начнёт перемещаться.</p><p>Вы можете видеть, что мы используем константу <span class="var">this.ballSpeed</span>, которая была установлена в <span class="var">initWorld()</span>. Настраивая эту и другие константы вы можете экспериментировать с игрой. Есть некоторые жёстко закодированные значения, которые можно перенести в константы и это сделало бы нашу жизнь намного проще. Может быть в следующей редакции или окончательной версии этого текста я это изменю.</p><h3>Добавление блоков</h3><p class="exampleTitle">game.js: функция addBlocks()</p>
+<pre><code data-language="javascript">addBlocks: function () {
+  // Блоки
+  this.blocks = this.game.add.group();
+  for (var line = 0; line &lt;= this.blockRows; line++) {
+    for (var row = 0; row &lt;= this.blocksPerRow; row++) {
+      var posY = (line * 30) + 40;
+      var posX = (row * 50) + 40;
+      console.log(&quot;Adding block at: &quot; + posX + &quot;,&quot; + posY)
+      var temp = this.add.sprite(posX, posY, 'block');
+      this.physics.arcade.enable(temp);
+      temp.enableBody = true;
+      temp.body.immovable = true;
+      this.blocks.add(temp);
+    }
+  }
+}</code></pre>
+<p>Блоки немного отличается, потому что для создания каждого блока в виде независимого спрайта мы используем группу. Группы полезны, когда у вас в игре много одинаковых сущностей, таких как пули. Будет намного проще проверять столкновение с группой, потому что мы можем сделать единую проверку в отношении группы, вместо проверки каждого спрайта индивидуально.</p><p>Для начала мы создаём новую группу и храним её свойства под именем blocks. Вы можете узнать больше о группах из <a href="http://docs.phaser.io/Phaser.Group.html">документации Phaser Group</a>. Далее используем вложенный цикл чтобы построить ряды и столбцы (так называемая сетка блоков). В этом цикле мы вычисляем положение каждого блока и создаём временный спрайт для его хранения. Затем устанавливаем необходимую физику для этого спрайта и добавляем его в группу.</p><h3>Функция create()</h3><p>После создания вспомогательных функций, наша функция <span class="var">create()</span> приобретает следующий вид.</p><p class="exampleTitle">game.js: функция create()</p>
+<pre><code data-language="javascript">create: function() {
+  this.initWorld();
+  this.addPlayer();
+  this.addBall();
+  this.addBlocks();
+}</code></pre>
+<p>Легко для понимания, не так ли? Сначала мы инициализируем мир путём настройки констант и добавления фона. Затем добавляем игрока, мяч и, наконец, блоки.</p><p>После того как это сделано, инициализация готова. Если мы сейчас запустим нашу игру, то увидим неподвижный экран, где всё на своих местах, но при этом ничего не происходит. Наш следующий шаг заключается в реализации функции <span class="var">update()</span> для добавления движения. Мы собираемся сделать это тем же путём, как с функцией <span class="var">create()</span>, которая делает маленькие функции и вызывает их из <span class="var">update()</span>.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Моделирование мира</h2><p>В этой части мы пишем код для моделирования мира и должны позаботиться о движении мяча и его столкновениях. Благодаря системе физики нам не нужно вычислять положение мяча. В функции <span class="var">addBall()</span> мы добавляем начальную скорость и отскок и при каждом вызове <span class="var">update()</span> система физики вычисляет новое положение и столкновение мяча с границами мира, так что нам больше ничего делать не надо. Столкновение мяча с блоками и игроком должны реализовать мы.</p><h3>Столкновение с блоками</h3><p>Мы собираемся использовать две функции для проверки столкновений с блоками. Одной из них является сама проверка, которая вызывается из <span class="var">update()</span>. Другой является функция обратного вызова, которая вызывается системой физики, если произошло столкновение. Вначале сделаем проверку.</p><p class="exampleTitle">game.js: функция checkHitWithBlocks()</p>
+<pre><code data-language="javascript">checkHitWithBlocks: function () {
+  this.game.physics.arcade.collide(this.ball, this.blocks, this.ballCollidesWithBlock);
+}</code></pre>
+<p>Столкновения в Phaser очень легко отслеживать с помощью движка Arcade Physics. Вы просто вызываете <span class="var">this.game.physics.arcade.collide()</span> со спрайтом, который хотите проверить, в качестве первого параметра. Вторым параметром идём спрайт, с которым происходит столкновение, это может быть группа или спрайт. В нашем случае мы проверяем всех членов группы blocks. Третий параметр&nbsp;— функция, которая вызывается при столкновении.</p><p>Ниже мы реализуем функцию обратного вызова.</p><p class="exampleTitle">game.js: функция ballCollidesWithBlock()</p>
+<pre><code data-language="javascript">ballCollidesWithBlock: function(sprite, block) {
+  console.log(&quot;Collided with block!&quot;);
+  block.kill();
+}</code></pre>
+<p>Функция обратного вызова получает два параметра, которыми служат столкнувшиеся спрайты. Первым из них будет наш спрайт игрока, а вторым — блок, по которому игрок ударил. После этого мы делаем <span class="var">kill()</span> для спрайта. Есть две функции, используемые для удаления спрайта из игры, это <span class="var">kill()</span> и <span class="var">destroy()</span>, они имеют разную механику. <span class="var">kill()</span> действительно разрушает и удаляет спрайт из игры. <span class="var">destroy()</span> удаляет из игры, но оставляет в памяти для повторного использования. Это полезно когда вы используете совокупность спрайтов, которые создаются и уничтожаются без потери производительности. Например, это важно для шутеров. В нашем случае нам эта штука не нужна.</p><h3>Столкновение с игроком</h3><p>Столкновение с игроком немного отличается, потому что нам не нужна функция обратного вызова, поскольку мяч просто отскакивает после такого столкновения без всяких последствий.</p><p class="exampleTitle">game.js: функция ballCollidesWithBlock()</p>
+<pre><code data-language="javascript">checkHitWithPlayer: function () {
+  this.game.physics.arcade.collide(this.ball, this.player);
+}</code></pre>
+<h3>Столкновение с землей</h3><p>Удар о землю теряет жизнь игрока, а мяч возвращается в исходное положение. Мы не собираемся использовать систему физики для этого, потому что мы установили <span class="var">collideWorldBounds&nbsp;= true</span> и мяч отскакивает автоматически от всех четырёх стен. Мы проверяем, что положение мяча находится ниже ракетки и если это так, то игрок проигрывает.</p><p>Вначале создаём <span class="var">resetBall()</span>.</p><p class="exampleTitle">game.js: функция resetBall()</p>
+<pre><code data-language="javascript">resetBall: function() {
+  this.ball.reset(160, 240);
+  this.ball.body.velocity.x = this.ballSpeed;
+  this.ball.body.velocity.y = this.ballSpeed;
+}</code></pre>
+<p>Теперь реализуем проверку, что игрок проиграл.</p><p class="exampleTitle">game.js: функция ballCollidesWithBlock()</p>
+<pre><code data-language="javascript">ballCollidesWithGround: function() {
+  if (this.ball.y &gt;= 470) {
+    this.playerLives -= 1;
+    this.resetBall();
+  }
+
+  /*
+   Обновляем отображение жизней игрока
+   */
+  this.livesDisplay.setText(&quot;Lives: &quot; + this.playerLives);
+  
+  if (this.playerLives === 0) {
+    // Здесь будет состояние завершения игры
+  }
+  
+}</code></pre>
+<p>Итак, если мяч находится ниже ракетки игрока, расположенной в 440px, то мы вычитаем жизнь игрока и сбрасываем мяч в исходное положение.</p><h3>Функция update()</h3><p>Функция <span class="var">update()</span> очень проста для понимания. В каждом цикле проверяются необходимые столкновения и движения через библиотеку Phaser Arcade.</p><p class="exampleTitle">game.js: функция ballCollidesWithBlock()</p>
+<pre><code data-language="javascript">update: function() {
+  this.checkHitWithBlocks();
+  this.checkHitWithPlayer();
+  this.ballCollidesWithGround();
+}</code></pre>
+<h2>Резюме</h2><p>Если мы откроем наш index.html в браузере, то увидим работающую игру и как игрок теряет жизни, поскольку ещё нет управления. Давайте перейдём к следующей главе, чтобы сделать эту игру рабочей!</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 30.09.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosgame/assets'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosgame/input'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="assets.html" title="На предыдущую страницу">Управление ассетами</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="input.html" title="На следующую страницу">Обработка ввода</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="gametheory.html">Об играх</a></li><li class="leaf"><a href="ourgame.html">Наша игра</a></li><li class="leaf"><a href="gamescaffold.html">Настройки нашей игры</a></li><li class="leaf"><a href="initialization.html">Инициализация Foxnoid</a></li><li class="leaf"><a href="assets.html">Управление ассетами</a></li><li class="leaf active-trail"><a href="gameloop.html" class="active-trail active">Цикл игры</a></li><li class="leaf"><a href="input.html">Обработка ввода</a></li><li class="leaf"><a href="winning-or-losing.html">Победа или поражение</a></li><li class="last leaf"><a href="levels.html">Привлечение игроков</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-0c5947bda39d8fe6a707aec2ef578ec0"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="gameloop.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

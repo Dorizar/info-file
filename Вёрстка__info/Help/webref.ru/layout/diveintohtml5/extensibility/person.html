@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Разметка людей | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../extensibility.html" />
+<link rel="next" href="organization.html" />
+<link rel="prev" href="../extensibility.html" />
+<meta name="description" content="Кстати, начальные примеры в предыдущем разделе не закончены полностью. Мы включили словарь микроданных для разметки информации о людях и это было просто. Давайте завершим начатое." />
+<link rel="canonical" href="person.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Разметка людей</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../diveintohtml5.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Погружение в HTML5</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../extensibility.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Микроданные</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Разметка людей</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Кстати, начальные примеры в <a href="../extensibility.html">предыдущем разделе</a> не закончены полностью. Мы включили словарь микроданных для разметки информации о людях и это было просто. Давайте завершим начатое.</p><p>Самый простой способ интеграции микроданных с личным веб-сайтом&nbsp;— включить микроданные в страницу «Обо мне». У вас есть страница «Обо мне», не так ли? Если нет, то вы можете воспользоваться этим <a href="http://diveintohtml5.info/examples/person.html" class="ext">расширенным примером страницы</a> с дополнительной семантикой. Финальный результат <a href="http://diveintohtml5.info/examples/person-plus-microdata.html">здесь</a>.</p><p>Давайте посмотрим на исходную разметку перед добавлением каких-либо свойств микроданных.</p>
+<pre><code data-language="html">&lt;section&gt;
+  &lt;img width=&quot;204&quot; height=&quot;250&quot;
+       src=&quot;http://diveintohtml5.info/examples/2000_05_mark.jpg&quot;
+       alt=&quot;[Марк Пилгрим, около 2000]&quot;&gt;
+
+  &lt;h1&gt;Контактная информация&lt;/h1&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;Имя&lt;/dt&gt;
+    &lt;dd&gt;Марк Пилгрим&lt;/dd&gt;
+
+    &lt;dt&gt;Должность&lt;/dt&gt;
+    &lt;dd&gt;Разработчик в Google, Inc.&lt;/dd&gt;
+
+    &lt;dt&gt;Почтовый адрес&lt;/dt&gt;
+   &lt;dd&gt;
+     100 Main Street&lt;br&gt;
+     Anytown, PA 19999&lt;br&gt;
+     USA
+   &lt;/dd&gt;
+  &lt;/dl&gt;
+  &lt;h1&gt;Мои цифровые отпечатки&lt;/h1&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://diveintomark.org/&quot;&gt;блог&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.google.com/profiles/pilgrim&quot;&gt;профиль Google&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.reddit.com/user/MarkPilgrim&quot;&gt;профиль Reddit.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.twitter.com/diveintomark&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+<p>Первое, что вам всегда нужно сделать, это объявить используемый словарь и область свойств, которые вы хотите добавить. Это можно сделать путём включения атрибутов <span class="attribute">Itemtype</span> и <span class="attribute">itemscope</span> для внешнего элемента содержащего другие элементы, в которых хранятся фактические данные. В нашем случае это элемент <span class="tag">&lt;section&gt;</span>.</p>
+<pre><code data-language="html">&lt;section <mark>itemscope</mark> <mark>itemtype=&quot;http://data-vocabulary.org/Person&quot;</mark>&gt;</code></pre>
+<p>Теперь вы можете начать определение свойств микроданных словаря <span class="var">http://data-vocabulary.org/Person</span>. Но что это за свойства? Как обычно, список свойств вы можете просмотреть путём перехода по адресу <a href="http://www.data-vocabulary.org/Person/">data-vocabulary.org/Person</a> в вашем браузере. Спецификация микроданных не требует этого, но я бы сказал что это, безусловно, «хорошее решение». В конце концов, если вы хотите разработать актуальный словарь микроданных, необходимо его документировать. А где лучше разместить документацию, как не по адресу самого словаря?</p><table class="data"><caption> Словарь Person</caption><tr><th>Свойство</th><th>Описание</th></tr><tr><td>name</td><td>Имя.</td></tr><tr><td>nickname</td><td>Псевдоним.</td></tr><tr><td>photo</td><td>Ссылка на изображение.</td></tr><tr><td>title</td><td>Звание (например: финансовый менеджер).</td></tr><tr><td>role</td><td>Роль (например: бухгалтер).</td></tr><tr><td>url</td><td>Ссылка на веб-страницу вроде персонального сайта.</td></tr><tr><td>affilation</td><td>Название организации с которой связан человек (например, как сотрудник).</td></tr><tr><td>friend</td><td>Определяет социальные связи между этим и другим человеком.</td></tr><tr><td>contact</td><td>Определяет социальные связи между этим и другим человеком.</td></tr><tr><td>acquaintance</td><td>Определяет социальные связи между этим и другим человеком.</td></tr><tr><td>address</td><td>Местоположение. Может содержать подсвойства: <span class="var">street-address</span>, <span class="var">locality</span>, <span class="var">region</span>, <span class="var">postal-code</span> и <span class="var">country-name</span>.</td></tr></table><p>Первая вещь <a href="http://diveintohtml5.info/examples/person-plus-microdata.html" class="ext">в данном примере страницы «обо мне»</a> это моё изображение. Естественно, оно верстается с помощью элемента <span class="tag">&lt;img&gt;</span>. Всё, что нужно сделать для объявления того, что этот элемент <span class="tag">&lt;img&gt;</span> выступает моей фотографией в профиле, так это добавить <span class="var">itemprop=&quot;photo&quot;</span> в <span class="tag">&lt;img&gt;</span>.</p><p>Где находятся значения свойств микроданных? Они уже здесь, в атрибуте <span class="attribute">src</span>. Если вы помните из модели микроданных HTML5, «значением» элемента <span class="tag">&lt;img&gt;</span> является атрибут <span class="attribute">src</span>. Каждый элемент <span class="tag">&lt;img&gt;</span> содержит атрибут <span class="attribute">src</span>&nbsp;— в противном случае мы бы просто получили битое изображение&nbsp;— и <span class="attribute">src</span> это всегда URL. Видите? Если вы используете HTML правильно, с микроданными всё просто.</p><p>Кроме того, этот элемент <span class="tag">&lt;img&gt;</span> не один на странице. Он является дочерним элементом <span class="tag">&lt;section&gt;</span>, который мы только что связали с атрибутом <span class="attribute">itemscope</span>. Микроданные повторно используют отношения элементов родитель-потомок на странице, чтобы определить область видимости свойств микроданных. Говоря простым языком: «Этот элемент <span class="tag">&lt;section&gt;</span> представляет собой человека. Любые свойства микроданных вы можете найти в дочерних элементах <span class="tag">&lt;section&gt;</span>, которые являются характеристиками этого человека». Если это поможет, вы можете подумать об элементе <span class="tag">&lt;section&gt;</span> как о фразе. Атрибут <span class="attribute">itemprop</span> представляет собой глагол, что-то вроде «изобразить как» Значение свойства микроданных представляет собой сказуемое.</p><p>Этот человек [явно, из <span class="var">&lt;section itemscope itemtype=&quot;...&quot;&gt;</span>]</p><p>изображён на [явно, из <span class="var">&lt;img itemprop=&quot;photo&quot;&gt;</span>]</p><p>http://diveintohtml5.info/examples/2000_05_mark.jpg [неявно, из атрибута <span class="var">&lt;img src&gt;</span>]</p><p>Подлежащее должно быть определено сразу, путём добавления атрибутов <span class="attribute">itemscope</span> и <span class="attribute">itemtype</span> в обрамляющий элемент <span class="tag">&lt;section&gt;</span>.Глагол определяется добавлением атрибута <span class="var">itemprop=&quot;photo&quot;</span> в <span class="tag">&lt;img&gt;</span>. Сказуемое в предложении не требует специальной разметки, потому что модель микроданных HTML5 говорит о том, что значением свойства элемента <span class="tag">&lt;img&gt;</span> является атрибут <span class="attribute">src</span>.</p><p>Переходя к следующему блоку разметки, мы видим заголовок <span class="tag">&lt;h1&gt;</span> и начало списка <span class="tag">&lt;dl&gt;</span>. Ни <span class="tag">&lt;h1&gt;</span>, ни <span class="tag">&lt;dl&gt;</span> не нуждаются в микроданных. Не каждый фрагмент HTML должен выступать свойством микроданных. Микроданные сами должны говорить о себе, а не разметка или заголовки окружающих свойств делают это. <span class="tag">&lt;h1&gt;</span> не является таким свойством, это просто заголовок. Кроме того, <span class="tag">&lt;dt&gt;</span>, который говорит «Имя», не является свойством, это просто название.</p><p class="exampleTitle">Скучно</p>
+<pre><code data-language="html">&lt;h1&gt;<mark>Контактная информация</mark>&lt;/h1&gt;
+&lt;dl&gt;
+  &lt;dt&gt;<mark>Имя</mark>&lt;/dt&gt;
+  &lt;dd&gt;Марк Пилгрим&lt;/dd&gt;</code></pre>
+<p>Так где же настоящая информация? Она находится в элементе <span class="tag">&lt;dd&gt;</span>, так что мы должны поставить здесь атрибут <span class="attribute">itemprop</span>. Какое из свойств? Свойство <span class="var">name</span>. Где находится значение свойства? В тексте элемента <span class="tag">&lt;dd&gt;</span>. Значит ли это, что надо сделать разметку? Модель микроданных HTML5 говорит нет, элементы <span class="tag">&lt;dd&gt;</span> не имеют специальной обработки, поэтому значение свойства это только текст внутри элемента.</p><p class="exampleTitle">Это моё имя</p>
+<pre><code data-language="html">&lt;dd <mark>itemprop=&quot;name&quot;</mark>&gt;Марк Пилгрим&lt;/dd&gt;</code></pre>
+<p>Как это сказать человеческим языком? Имя этой персоны — Марк Пилгрим. Хорошо, поехали дальше.</p><p>Следующие два свойства немного сложнее. Вот разметка ещё до микроданных.</p>
+<pre><code data-language="html">&lt;dt&gt;Должность&lt;/dt&gt;
+&lt;dd&gt;Разработчик в Google, Inc.&lt;/dd&gt;</code></pre>
+<p>Если вы посмотрите на определение словаря Person, то текст «Разработчик в Google, Inc» на самом деле включает в себя два свойства: название («Разработчик») и принадлежность («Google, Inc»). Как вы можете выразить это в микроданных? Если коротко, то никак. В микроданных нет способа разбить текст на отдельные свойства. Нельзя сказать «первые 18 символов этого текста являются одним свойством микроданных, а последние 12 символов ещё одним свойством».</p><p>Но не всё потеряно. Представьте, что вы хотите выделить текст «Разработчик» другим шрифтом, в отличие от текста «Google, Inc». CSS не может такого. Так что бы вы сделали? В первую очередь необходимо включить фрагмент текста в элемент вроде <span class="tag">&lt;span&gt;</span>, а затем применить разные правила CSS для каждого элемента <span class="tag">&lt;span&gt;</span>.</p><p>Эта техника также полезна для микроданных. Есть два разных фрагмента информации: <span class="var">title</span> и <span class="var">affiliation</span>. Если обернуть каждую часть в фиктивный элемент <span class="tag">&lt;span&gt;</span>, то можно заявить, что каждый <span class="tag">&lt;span&gt;</span> это отдельное свойство микроданных.</p>
+<pre><code data-language="html">&lt;dt&gt;Должность&lt;/dt&gt;
+&lt;dd&gt;&lt;span <mark>itemprop=&quot;title&quot;</mark>&gt;Разработчик&lt;/span&gt; в
+    &lt;span <mark>itemprop=&quot;affiliation&quot;</mark>&gt;Google, Inc.&lt;span&gt;&lt;/dd&gt;</code></pre>
+<p>Та-да! «Этот человек называется Разработчик. Он работает в Google, Inc». Два предложения, два свойства микроданных. Немного лишней разметки, но оно того стоило.</p><p>Аналогичный приём используется для разметки адреса. Словарь Person определяет свойство <span class="var">address</span>, которое само по себе является пунктом микроданных. Это означает, что адрес имеет свой собственный словарь (<span class="var">http://data-vocabulary.org/Address</span>) и определяет собственные свойства. Словарь Address содержит пять свойств: <span class="var">street-address</span>, <span class="var">locality</span>, <span class="var">region</span>, <span class="var">postal-code</span> и <span class="var">country-name</span>.</p><p>Если вы программист, то, вероятно, знакомы с нотацией для определения объектов и их свойств. Подумайте о взаимосвязи следующим образом:</p><ul><li>Person</li><li>Person.address</li><li>Person.address.street-address</li><li>Person.address.locality</li><li>Person.address.region</li><li>Person.address.postal-code</li><li>Person.address.country-name</li></ul><p>В этом примере адрес содержится в одном элементе <span class="tag">&lt;dd&gt;</span>. Опять же, элемент <span class="tag">&lt;dt&gt;</span> просто название, так что он не играет никакой роли в добавлении семантики от микроданных. Описать свойство <span class="var">address</span> легко. Просто добавьте атрибут <span class="attribute">itemprop</span> к элементу <span class="tag">&lt;dd&gt;</span>.</p>
+<pre><code data-language="html">&lt;dt&gt;Почтовый адрес&lt;/dt&gt;
+&lt;dd <mark>itemprop=&quot;address&quot;</mark>&gt;</code></pre>
+<p>Но помните, что свойство <span class="var">address</span> само по себе является пунктом микроданных. Это значит, что мы также должны добавить атрибуты <span class="attribute">itemscope</span> и <span class="attribute">itemtype</span>.</p>
+<pre><code data-language="html">&lt;dt&gt;Почтовый адрес&lt;/dt&gt;
+&lt;dd itemprop=&quot;address&quot; <mark>itemscope</mark>
+    <mark>itemtype=&quot;http://data-vocabulary.org/Address&quot;</mark>&gt;</code></pre>
+<p>Мы видели всё это раньше, но только для элементов верхнего уровня. Элемент <span class="tag">&lt;section&gt;</span> содержит <span class="attribute">itemtype</span> и <span class="attribute">itemscope</span>, а все элементы внутри <span class="tag">&lt;section&gt;</span> определены свойствами микроданных с «областью действия» конкретного словаря. Но это первый раз когда мы видим вложенные области действия областей&nbsp;— добавление новых <span class="attribute">itemtype</span> и <span class="attribute">itemscope</span> (к элементу <span class="tag">&lt;dd&gt;</span>) к существующим (у элемента <span class="tag">&lt;section&gt;</span>). Эта вложенная область действия работает точно так же как HTML DOM. Элемент <span class="tag">&lt;dd&gt;</span> содержит определённое количество дочерних элементов, которые ограничены словарём, заданным для элемента <span class="tag">&lt;dd&gt;</span>. Как только элемент <span class="tag">&lt;dd&gt;</span> закрывается соответствующим тегом <span class="tag">&lt;/dd&gt;</span>, область действия возвращается к словарю определённым родительским элементом (<span class="tag">&lt;section&gt;</span> в данном случае).</p><p>Свойства адреса страдают той же проблемой, с которой мы столкнулись со свойствами <span class="var">title</span> и <span class="var">affiliation</span>. У нас только один длинный текст, но мы хотим его разбить на пять отдельных свойств микроданных. Решение следующее: обернуть каждый отдельный фрагмент информации фиктивным элементом <span class="tag">&lt;span&gt;</span>, а затем объявить свойства микроданных для каждого <span class="tag">&lt;span&gt;</span>.</p>
+<pre><code data-language="html">&lt;dd itemprop=&quot;address&quot; itemscope
+    itemtype=&quot;http://data-vocabulary.org/Address&quot;&gt;
+  &lt;span <mark>itemprop=&quot;street-address&quot;</mark>&gt;100 Main Street&lt;/span&gt;&lt;br&gt;
+  &lt;span <mark>itemprop=&quot;locality&quot;</mark>&gt;Anytown&lt;/span&gt;,
+  &lt;span <mark>itemprop=&quot;region&quot;</mark>&gt;PA&lt;/span&gt;
+  &lt;span <mark>itemprop=&quot;postal-code&quot;</mark>&gt;19999&lt;/span&gt;
+  &lt;span <mark>itemprop=&quot;country-name&quot;</mark>&gt;USA&lt;/span&gt;
+&lt;/dd&gt;</code></pre>
+<p>Простым языком: «Для этой персоны указан почтовый адрес. Улица — 100 Main Street, местность&nbsp;— Anytown, регион&nbsp;— PA, почтовый индекс&nbsp;— 19999, страна&nbsp;— USA». Реально просто.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class="q">☞</span>В. Формат почтового адреса специфичен для США?</p><p>О. Нет. Свойства словаря Address достаточно общие, поэтому они могут описать большинство почтовых адресов в мире. Не все адреса содержат значения для каждого свойства, но это нормально. Некоторые адреса могут потребовать более одной «строки» в одном из свойств, но это также нормально. К примеру, если ваш почтовый адрес содержит улицу и номер квартиры, они оба пойдут в street-address:</p>
+    <pre style="margin-left: 50px;margin-right: 200px"><code data-language="html">&lt;p itemprop=&quot;address&quot; itemscope
+   itemtype=&quot;http://data-vocabulary.org/Address&quot;&gt;
+   &lt;span itemprop=&quot;street-address&quot;&gt;
+         <mark>100 Main Street</mark>
+         <mark>Suite 415</mark>
+   &lt;/span&gt;
+   ...
+&lt;/p&gt;</code></pre>
+  </div></div><p>Осталась ещё одна вещь на странице примера «Обо мне»: список URL. В словаре Person для этого есть свойство с именем <span class="var">url</span>. Это свойство может быть любым, воистину (вообще-то, оно должно содержать URL, но вы об этом наверное уже догадались). Я имею в виду, что свойство <span class="var">url</span> достаточно свободно. Это может быть URL любого типа, который вы хотите связать со словарём Person: блог, фотогалерея, профиль на сайте вроде Facebook или Twitter.</p><p>Другая важная вещь, о которой надо отметить, это то, что у каждой персоны может быть несколько свойств <span class="var">url</span>. Технически, каждое свойство может быть добавлено несколько раз, но мы до сих пор не пользовались этим. Например, у вас может быть два свойства <span class="var">photo</span>, каждое из которых указывает на свой URL изображения. Здесь я хочу перечислить четыре разных URL: мой блог, мой профиль на Google, мой профиль на Reddit и мой аккаунт Twitter. В HTML это список ссылок: четыре элемента <span class="tag">&lt;a&gt;</span>, каждый в своём элементе <span class="tag">&lt;li&gt;</span>. В микроданных каждый элемент <span class="tag">&lt;a&gt;</span> получает атрибут <span class="var">itemprop=&quot;url&quot;</span>.</p>
+<pre><code data-language="html">&lt;h1&gt;Мои цифровые отпечатки&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://diveintomark.org/&quot;
+         <mark>itemprop=&quot;url&quot;</mark>&gt;блог&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.google.com/profiles/pilgrim&quot;
+         <mark>itemprop=&quot;url&quot;</mark>&gt;профиль Google&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.reddit.com/user/MarkPilgrim&quot;
+         <mark>itemprop=&quot;url&quot;</mark>&gt;Профиль Reddit.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.twitter.com/diveintomark&quot;
+         <mark>itemprop=&quot;url&quot;</mark>&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>В соответствии с моделью микроданных HTML5, элементы <span class="tag">&lt;a&gt;</span> имеют специальную обработку. Значением свойства является атрибут <span class="attribute">href</span>, а не дочерний текст. Текст каждой ссылки микроданными фактически игнорируется. Таким образом, говоря простым языком: «У этой персоны есть URL <span class="var">http://diveintomark.org/</span>. У этой персоны есть другой URL <span class="var">http://www.google.com/profiles/pilgrim</span>. У этой персоны есть другой URL <span class="var">http://www.reddit.com/user/MarkPilgrim</span>. У этой персоны есть другой URL <span class="var">http://www.twitter.com/diveintomark»</span>.</p><h2>Представляем Google Rich Snippets</h2><p>Я хочу сделать на мгновение шаг назад и спросить: «Зачем мы это делаем»? Неужели мы добавляем семантику только ради добавления семантики? Не поймите меня неправильно, мне очень нравится возиться с угловыми скобками, как заядлому вебоману. Но зачем эти микроданные? К чему нам эти беспокойства?</p><p>Есть два основных класса приложений где используется HTML и, соответственно, микроданные HTML5:</p><ol><li>браузеры;</li><li> поисковые системы.</li></ol><p>Для браузеров HTML5 <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#microdata-dom-api">определяет API DOM</a> для извлечения элементов микроданных, свойств и их значений с веб-страницы. На момент написания статьи (февраль 2011) ни один браузер не поддерживает этот API. Ни один. Это своего рода тупик, по крайней мере, пока браузеры не наверстают упущенное и не реализуют API на стороне клиента.</p><p>Другим основным потребителем HTML являются поисковики. Что может сделать поисковик с микроданными о человеке? Только представьте: вместо простого отображения заголовка страницы и куска текста, поисковик может интегрировать некоторую структурную информацию и отобразить её. ФИО, должность, работодатель, адрес, может быть даже небольшая фотография из профиля. Привлекло бы это ваше внимание? Моё бы точно.</p><p>Google поддерживает микроданные как часть их программы <a href="http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=99170">Rich Snippets</a>. Когда поисковый паук Google анализирует вашу страницу и находит свойства микроданных соответствующих словарю <span class="var">http://data-vocabulary.org/Person</span>, он анализирует эти свойства и сохраняет их вместе с остальными данными страницы. Google даже предоставляет <a href="http://www.google.com/webmasters/tools/richsnippets">удобный инструмент для просмотра того, как поисковик «видит» ваши свойства микроданных</a>. Тестирование <a href="http://diveintohtml5.info/examples/person-plus-microdata.html"> пробной страницы</a> с микроданными даёт следующий результат:</p>
+<pre>Person
+photo:		http://diveintohtml5.info/examples/2000_05_mark.jpg
+name:		Mark Pilgrim
+title:		Developer advocate
+affiliation:	Google, Inc.
+url:		http://diveintomark.org/
+url:		http://www.google.com/profiles/pilgrim
+url:		http://www.reddit.com/user/MarkPilgrim
+url:		http://www.twitter.com/diveintomark
+address [Address]:
+  street-address:	100 Main Street
+  locality:		Anytown
+  region:		PA
+  postal-code:		19999
+  country-name:		USA</pre>
+<p>Здесь есть всё: свойство <span class="var">photo</span> из атрибута <span class="tag">&lt;img src&gt;</span>, все четыре адреса из списка атрибутов <span class="tag">&lt;a href&gt;</span>, есть даже объект <span class="var">address</span> и все пять его свойств.</p><p>И как же Google использует всю эту информацию? Это зависит от многого. Нет жёстких правил о том, как показать свойства микроданных, отобразить все или какие-то определённые. Если кто-то ищет «Mark Pilgrim» и Google считает, что страница «About me» соответствует результату, а также решает, что свойства микроданных, обнаруженные на этой странице, стоит показать, то список результатов поиска может выглядеть как-то так:</p><p class="fig"><img src="../../../assets/images/diveintohtml5/richsnippet.png" alt=""></p><p>Первая строка «About Mark Pilgrim» на самом деле является заголовком страницы, указанным в элементе <span class="tag">&lt;title&gt;</span>. Это не является чем-то страшно интересным, Google делает так для каждой страницы. Но вторая строка полна информации, взятой непосредственно из аннотации микроданных, которые добавлены на страницу. «Anytown PA» это часть почтового адреса, размеченного с помощью словаря <span class="var">http://data-vocabulary.org/Address</span>. «Developer advocate» и «Google, Inc.» два свойства из словаря <span class="var">http://data-vocabulary.org/Person</span> (должность и место работы, соответственно).</p><p>Это действительно весьма удивительно. Вам не нужно быть крупной корпорацией делающей специальные предложения разработчикам поисковиков для настройки своих результатов поиска. Потратьте десять минут и добавьте пару HTML-атрибутов для описания данных, которые и так уже были опубликованы.</p><div class="profmarkup"><h4>Спроси профессора Разметкина</h4><div class="inner"><p><span class="q">☞</span>В. Я сделал всё, как вы сказали, но результат моей поисковой выдачи в Google не выглядит иначе. Что происходит?</p><p>О. «Google не гарантирует, что разметка на любой странице или сайте будет использоваться в результатах поиска». Но даже если Google решит не использовать ваши микроданные, это смогут другие поисковики. Как и всё остальное в HTML5, микроданные это открытый стандарт, доступный каждому. Это ваша работа&nbsp;— предоставить по возможности больше данных. Пусть остальной мир решает, что с ними делать. Вас может ждать сюрприз!</p></div></div><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Марк Пилгрим</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 07.07.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/diveintohtml5/extensibility'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/diveintohtml5/extensibility/organization'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../extensibility.html" title="На предыдущую страницу">Микроданные</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="organization.html" title="На следующую страницу">Разметка организаций</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../introduction.html">Пять вещей, которые надо знать об HTML5</a></li><li class="leaf"><a href="../past.html">Довольно предвзятая история HTML5</a></li><li class="leaf"><a href="../detect.html">Проверка технологий HTML5</a></li><li class="leaf"><a href="../semantics.html">Что всё это значит?</a></li><li class="leaf"><a href="../canvas.html">Давайте порисуем</a></li><li class="leaf"><a href="../video.html">Видео на сайте</a></li><li class="leaf"><a href="../geolocation.html">Вы здесь</a></li><li class="leaf"><a href="../storage.html">Локальное хранилище</a></li><li class="leaf"><a href="../offline.html">Возьмём с собой</a></li><li class="leaf"><a href="../forms.html">Сумасшедшие формы</a></li><li class="leaf active-trail"><a href="../extensibility.html" class="active-trail">Микроданные</a><ul class="menu"><li class="first leaf active-trail"><a href="person.html" class="active-trail active">Разметка людей</a></li><li class="leaf"><a href="organization.html">Разметка организаций</a></li><li class="leaf"><a href="event.html">Разметка мероприятий</a></li><li class="last leaf"><a href="review.html">Разметка отзывов</a></li></ul></li><li class="last leaf"><a href="../history.html">Управление историей для пользы и развлечения</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-5d58252611ad67c8ce45b6665189e503"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="person.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

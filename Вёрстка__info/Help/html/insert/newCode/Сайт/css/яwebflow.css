@@ -1,0 +1,230 @@
+﻿*{margin: 0; padding: 0;}
+
+body{ 
+	font-family: arial;	
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.clear:after{
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+ *{
+	box-sizing: border-box;
+ }
+ 
+  /*-----------Основные блоки--------------*/
+ .w-section{
+	width: 100%; 
+ }
+ 
+ .w-container{
+	max-width: 940px;
+	margin: auto; 
+ }
+ 
+ .w-row{}
+ 
+ .w-col{
+	float: left;
+	padding-left: 10px;
+    padding-right: 10px;
+ } 
+ 
+ .w-col-3{ 
+	width: 25%;
+ }
+ 
+ .w-col-4{
+	width: 33.33333333%;
+ }
+ 
+ .w-col-6{
+	width: 50%;
+ }
+ 
+ 
+/*-----------Загаловки--------------*/
+ 
+ 
+ h1 {
+    font-size: 38px;
+    line-height: 44px;
+    margin-top: 20px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+ /*-------------------------*/
+ 
+ .w-inline-block {
+    max-width: 100%;
+    display: inline-block;
+}
+ 
+ 
+ .w-nav-brand {
+    position: relative;
+    float: left;
+    text-decoration: none;
+    color: #333333;
+}
+
+.w-nav-link.w--current {
+    color: #0082f3;
+}
+ 
+ .w-nav-link {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    color: #222222;
+    padding: 20px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/*-----------Форма--------------*/
+
+/*----------кнопка-------------*/
+
+
+input.w-button {
+    -webkit-appearance: button;
+}
+
+.w-button {
+    display: inline-block;
+    padding: 9px 15px;
+    background-color: #3898EC;
+    color: white;
+    border: 0;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 0;
+}
+input {
+    line-height: normal;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+
+
+/*-------------поля для формы-----------------*/
+
+
+input, select {
+    display: inline-block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px; 
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+input {
+    line-height: normal;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+
+/*----label-------*/
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+/* @media запросы */
+
+@media screen and (max-width: 991px){
+  .w-container{
+     max-width: 728px;  
+  }
+}
+
+@media screen and (max-width: 767px){
+  .w-container{
+     max-width: 767px;  
+  }
+  .w-col{width: 100%;}
+  
+  /*-------------поля для формы-----------------*/
+
+
+input, select {
+    display: inline-block;
+    width: 100%; 
+    padding: 8px 12px; 
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+}
+
+@media screen and (max-width: 479px){
+  .w-container{
+     max-width: 479px;  
+  }
+  .w-col{width: 100%;}
+}
+
+
+/**********/
+
+
+
+
+
+ 
+ /*
+
+ .w-section{}
+ 
+ .w-container{}
+ 
+ .w-row{}
+ 
+ .w-col{} 
+ 
+ .w-col-4{}
+ 
+ .w-col-6{}
+ 
+
+
+
+
+*/

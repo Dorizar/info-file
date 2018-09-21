@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Настройка приложения | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../app.html" />
+<link rel="next" href="instagram-api.html" />
+<link rel="prev" href="../app.html" />
+<meta name="description" content="Создадим новую папку для этого приложения. Это будет хорошей практикой начать с нуля, чтобы мы могли привыкнуть к созданию Node-приложений." />
+<link rel="canonical" href="setup.html" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Настройка приложения</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../../dev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Веб-технологии</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../first-node-app.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Создание первого приложения на Node</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../app.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-3">Наше первое Node-приложение</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Настройка приложения</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Создадим новую папку для этого приложения. Это будет хорошей практикой начать с нуля, чтобы мы могли привыкнуть к созданию Node-приложений.</p><h2>package.json</h2><p>После создания новой папки перепрыгивайте в командную строку и начните Node-приложение с помощью команды:</p>
+<pre><code>$ npm init</code></pre>
+<p>Заполните своей информацией по вкусу, после чего мы установим необходимые пакеты.</p>
+<pre><code>$ npm install express ejs instagram-node --save</code></pre>
+<p>Будут установлены три пакета в папку node_modules/ и добавлены в раздел зависимостей package.json.</p><h2>server.js</h2><p>Теперь мы начинаем работу с нашим файлом server.js. Основные вещи, которые мы должны в нём сделать:</p><ul><li>включить необходимые нам пакеты (Express, EJS, instagram-node);</li><li>настроить эти пакеты;<ul><li>установить ключ Instagram API;</li><li>установить EJS как шаблонизатор;</li><li>установить папку ресурсов Express (для CSS);</li></ul></li><li>создать маршрут для главной страницы;<ul><li>взять популярные изображения Instagram;</li><li>передать их в наше представление;</li></ul></li><li>запустить сервер.</li></ul>
+<pre><code data-language="javascript">// НЕОБХОДИМЫЕ ПАКЕТЫ И ПЕРЕМЕННЫЕ
+// ==================================================
+var express = require('express');
+var app     = express();
+var ig      = require('instagram-node').instagram();
+
+// КОНФИГУРАЦИЯ ПРИЛОЖЕНИЯ
+// ==================================================
+// сообщаем Node где лежат ресурсы сайта
+app.use(express.static(__dirname + '/public'));
+
+// устанавливаем движок EJS для представления
+app.set('view engine', 'ejs');
+
+// настройка приложения instagram с помощью идентификатора клиента
+// мы скоро это добавим
+
+// УСТАНОВКА МАРШРУТОВ
+// ===================================================
+// главная страница — популярные изображения
+app.get('/', function(req, res) {
+
+  // используем пакет instagram для получения популярных картинок
+  // отображаем главную страницу и выводим популярные изображения
+  res.render('pages/index');
+  
+});
+
+// ЗАПУСК СЕРВЕРА
+// ==================================================
+app.listen(8080);
+console.log('Приложение запущено! Смотрите на http://localhost:8080');</code></pre>
+
+<p>Мы вставили наши пакеты, установили нужные настройки, создали маршрут для главной страницы и запустили сервер. В Node это можно сделать быстро, поскольку в нашем распоряжении возможности <span class="var">app.use()</span> и <span class="var">app.set()</span> для Express-приложения.</p><p>Эти настройки можно найти на страницах пакетов Express и EJS и, как правило, пакеты предоставляют очень чёткую инструкцию на страницах хранилища GitHub или npm.</p><p>Ранее мы применяли <span class="var">res.sendfile()</span>, EJS же предлагает функцию <span class="var">res.render()</span>. По умолчанию, Express и EJS заглядывают в папку views/, так что нам не нужно писать views/pages/index, достаточно указать pages/index.</p><p>Мы также создаём объект ig используя require('instagram-node').instagram(). Вы можете найти информацию об <a href="https://www.npmjs.com/package/instagram-node">instagram-node</a> на странице npm.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Файлы представления</h2><p>Перед тем как мы сможем проверить сервер и убедиться что всё работает, нам для показа понадобится файл представления! Мы собираемся быстро пройтись по этим файлам, поскольку они не являются основным вниманием нашего Node-приложения.</p><p class="exampleTitle">views/partials/head.ejs</p>
+<pre><code data-language="html">&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Моё первое Node-приложение!&lt;/title&gt;
+
+&lt;!-- CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/cosmo/bootstrap.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code></pre>
+<p>Мы вставляем <a href="http://getbootstrap.com">Bootstrap</a> из <a href="http://bootstrapcdn.com">CDN</a> для быстрой стилизации.</p><p>Мы выбрали один из файлов Bootstrap из раздела <a href="http://bootstrapcdn.com/#bootswatch_tab">Bootswatch</a>, чтобы отойти от темы Bootstrap по умолчанию.</p><p>Мы также загружаем таблицу стилей css/style.css. Она находится в нашей папке public/css/, и поскольку мы уже установили <span class="var">express.static()</span> в server.js, наше приложение будет получать ресурсы из папки public/.</p><p class="exampleTitle">views/partials/header.ejs</p>
+<pre><code data-language="html">&lt;nav class=&quot;navbar navbar-inverse&quot;&gt;
+&lt;div class=&quot;container-fluid&quot;&gt;
+  &lt;div class=&quot;navbar-header&quot;&gt;
+    &lt;a href=&quot;/&quot; class=&quot;navbar-brand&quot;&gt;
+      &lt;span class=&quot;glyphicon glyphicon-picture&quot;&gt;&lt;/span&gt;
+      Популярные фотографии Instagram
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+<p>Ничего сумасшедшего здесь нет. Просто <span class="class">navbar</span> из Bootstrap с обратной ссылкой на главную страницу. <span class="tag">&lt;span&gt;</span> является одной из <a href="http://getbootstrap.com/components/#glyphicons">иконок Bootstrap</a>.</p><p class="exampleTitle">views/partials/footer.ejs</p>
+<pre><code data-language="html">&lt;p class=&quot;text-center text-muted&quot;&gt;
+  Copyright &amp;copy; 1800-2050 &amp;middot; Крутейшее приложение в мире
+&lt;/p&gt;</code></pre>
+<p>Старый добрый копирайт всего пути c 1800 года в будущее!</p><p class="exampleTitle">views/pages/index.ejs</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+&lt;head&gt;
+  &lt;% include ../partials/head %&gt;
+&lt;/head&gt;
+&lt;body class=&quot;container&quot;&gt;
+
+  &lt;header&gt;
+    &lt;% include ../partials/header %&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    здесь будут фотографии
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;% include ../partials/footer %&gt;
+  &lt;/footer&gt;
+  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Мы используем <span class="var">include</span> чтобы вставить разные части. Это помогает нашему приложению взять EJS-файлы. В EJS теги <span class="tag">&lt;%</span> и <span class="tag">%&gt;</span> будут отображать информацию.</p><p class="exampleTitle">public/css/style.css</p>
+<pre><code data-language="css">body { 
+  padding-top:50px; 
+}
+footer {
+  padding:50px; 
+}</code></pre>
+<p>Это всё, что мы добавим для стилизации прямо сейчас. Стилизацию изображений мы сделаем после их получения в нашем приложении.</p><p>Со всем этим давайте запустим наш сервер и посмотрим на то, что мы создали в браузере:</p>
+<pre><code>$ nodemon server.js</code></pre>
+<p>Мы можем увидеть сайт в браузере по адресу http://localhost:8080.</p><p class="fig"><img src="../../../assets/images/first-node-app/app3-1.png" alt=""></p><p>Дальше мы будем использовать пакет instagram-node для получения популярных фотографий и демонстрации их в нашем приложении.</p><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/express">Express</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Крис Севилеха</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 19.10.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/dev/first-node-app/app'; });Mousetrap.bind('mod+right', function() { document.location = '/dev/first-node-app/app/instagram-api'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="../app.html" title="На предыдущую страницу">Наше первое Node-приложение</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="instagram-api.html" title="На следующую страницу">Instagram API</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../install.html">Установка Node</a></li><li class="leaf"><a href="../simple.html">Очень простое Node-приложение</a></li><li class="leaf"><a href="../http-server.html">Запуск HTTP-сервера и выдача HTML-файла</a></li><li class="last expanded active-trail"><a href="../app.html" class="active-trail">Наше первое Node-приложение</a><ul class="menu"><li class="first leaf active-trail"><a href="setup.html" class="active-trail active">Настройка приложения</a></li><li class="leaf"><a href="instagram-api.html">Instagram API</a></li><li class="last leaf"><a href="view.html">Получение данных в HTML</a></li></ul></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-3c0617cd60ea04695196a00b5d2b67f2"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="setup.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

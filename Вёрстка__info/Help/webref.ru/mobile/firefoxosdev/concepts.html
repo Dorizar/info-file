@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Основные понятия | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../firefoxosdev.html" />
+<link rel="next" href="firstapp.html" />
+<link rel="prev" href="setup.html" />
+<meta name="description" content="Прежде, чем мы запачкаем руки и построим наше первое приложение, давайте узнаем некоторые основные понятия о разработке для Firefox OS. Во вступлении мы узнали, что приложения в Firefox OS, подобно веб-страницам, основаны на HTML5. Тем не менее, мы не объяснили, чем отличаются такие приложения от обычных веб-страниц. Если мы воспользуемся нашими познаниями о других мобильных платформах, то заметим что нативное приложение в целом имеет следующее:" />
+<link rel="canonical" href="concepts.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Основные понятия</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../mobile.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Мобильные приложения</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../firefoxosdev.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Разработка для Firefox OS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Основные понятия</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Прежде, чем мы запачкаем руки и построим наше первое приложение, давайте узнаем некоторые основные понятия о разработке для Firefox OS. Во вступлении мы узнали, что приложения в Firefox OS, подобно веб-страницам, основаны на HTML5. Тем не менее, мы не объяснили, чем отличаются такие приложения от обычных веб-страниц.</p><p>Если мы воспользуемся нашими познаниями о других мобильных платформах, то заметим что нативное приложение в целом имеет следующее:</p><p>Имя и иконку, которую пользователь может нажать для запуска приложения. Доступ к системным службам и аппаратным возможностям.</p><p>Глядя на общую картину, приложение Firefox OS является простой веб-страницей, которая имеет иконку, имя и, как правило, способна работать в автономном режиме (зависит от того, как реализовано приложение). Все данные о приложении, такие как имя, иконка и другие определяются в файле манифеста приложения, который находится в центре внимания следующего раздела.</p><h2>Манифест приложения</h2><p><a href="https://developer.mozilla.org/docs/Apps/Manifest">Манифест</a> представляет собой файл в формате <a href="http://json.org/">JSON</a>, который описывает аспекты веб-приложения. Обычно этот файл называется manifest.webapp и располагается рядом с главным HTML-файлом, называемым, как правило, index.html.</p><p class="exampleTitle">Пример манифеста</p>
+<pre><code data-language="javascript">{
+  &quot;name&quot;: &quot;Memos&quot;,
+  &quot;version&quot;: &quot;1.1&quot;,
+  &quot;description&quot;: &quot;A simple memo taking app&quot;,
+  &quot;launch_path&quot;: &quot;/index.html&quot;,
+  &quot;permissions&quot;: {
+    &quot;storage&quot;: {
+      &quot;description&quot;: &quot;Required for storing and retrieving notes.&quot;
+    }
+  },
+  &quot;developer&quot;: {
+    &quot;name&quot;: &quot;Andre Garzia&quot;,
+    &quot;url&quot;: &quot;http://andregarzia.com&quot;
+  },
+  &quot;icons&quot;: {
+    &quot;60&quot;: &quot;/style/icons/icon_60.png&quot;,
+    &quot;128&quot;: &quot;/style/icons/icon_128.png&quot;
+  }
+}</code></pre>
+<p>Выше мы видим манифест приложения под названием Memos. Среди прочего он описывает, кто создал приложение, какие иконки задействовать, как называется приложение, какой файл используется для запуска приложения (в данном случае это index.html), какой доступ к оборудованию требуется приложению и др. Этот файл использует Firefox OS для добавления приложения на главный экран устройства, а также Firefox Marketplace для отображения приложения в каталоге, как видно на рисунке ниже.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-marketplace.png" alt="Приложение Memos в Firefox Marketplace" width="1040" height="628"></p><p class="figsign">Приложение Memos в Firefox Marketplace</p><p>Обратите внимание, как информация из манифеста применяется системой для добавления приложения на главный экран, как это видно на следующем скриншоте.</p><p class="fig"><img src="../../assets/images/firefoxosdev/memos-simulator.png" alt="Memos в симуляторе" width="320" height="526"></p><p class="figsign">Memos в симуляторе</p><p>Собрав воедино свой HTML, CSS, JavaScript и файл манифеста вы получите приложение готовое работать на Firefox OS. Временно перенесёмся из нашего раздела об основных понятиях и узнаем больше о типах приложений.</p><h2>Типы приложений</h2><p>Firefox OS в настоящее время имеет два типа приложений: размещённые и упакованные — хотя в будущем доступных типов может стать и больше (например, пользовательские клавиатуры и приложения, позволяющие создавать другие системные сервисы).</p><p><strong>Размещённые приложения</strong>. Размещаются на веб-сервере подобно обычным веб-сайтам. Это означает, что когда пользователь запускает такое приложение, его содержимое загружается с удалённого сервера (или из кэша, если таковой имеется).</p><p><strong>Упакованные приложения</strong>. Распространяются в виде zip-файла и копируются на устройство при установке. Когда пользователь запускает такое приложение, его содержимое загружается из архива вместо удалённого сервера.</p><p>Плюсы и минусы есть у обоих типов. С одной стороны, размещённые приложения легче поддерживать, так как всё что вам нужно сделать, это сохранить файлы на вашем веб-сервере. При этом сложнее заставить их работать без сети, потому что это потребует использовать презираемый многими <a href="https://developer.mozilla.org/pt-BR/docs/HTML/Using_the_application_cache">appcache</a>. Размещённые приложения также ограничены в WebAPI, это означает, что они не могут делать всё, что может делать упакованное приложение.</p><p>С другой стороны, упакованные приложения всё своё содержимое хранят на устройстве, а значит, оно всегда доступно, даже когда пользователь находится не в сети (и таким образом обойтись без appcache). Они также могут получить доступ к чувствительным к безопасности WebAPI, которые не доступны для размещённых приложений. Обновление может быть немного болезненно, поскольку любые новые версии вы должны загрузить в Firefox Marketplace и после этого опять проходить процесс проверки, который может занять некоторое время.</p><p>Перед тем как выбрать, какой тип приложения создать, учтите следующее: если вам требуется продвинутый WebAPI, то вы должны использовать упакованное приложение. Но если ваше приложение прекрасно работает без доступа к любой продвинутой системной службе или к возможностям устройства, за исключением тех, которые уже имеются в браузере, то всегда выбирайте размещённое приложение. Нормально использовать упакованные приложения, если у вас нет места для его хостинга.</p><p>Выше я упомянул, что appcache, который иногда требуется для размещённых приложений, может быть проблематичным. Не волнуйтесь сильно, поскольку есть инструменты, позволяющие сделать генерацию и развёртывание appcache проще.</p><p>В этой книге мы будем строить упакованные приложения, так как это позволит нам исследовать возможности WebAPI. Тем не менее, большинство того, что мы узнаем относится и к размещённым приложениям. Если вы хотите узнать больше о дистрибуции размещённых приложений, посмотрите <a href="https://marketplace.firefox.com/developers/docs/hosted">здесь</a>.</p><p>Теперь, когда мы рассмотрели два типа приложений, поддерживаемые Firefox OS, давайте взглянем на разные уровни системного доступа, которые у них могут быть.</p><h2>Уровни доступа безопасности</h2><p>В Firefox OS есть три уровня безопасности, с каждым уровнем доступ к API повышается, относительно предыдущего уровня.</p><p><strong>Обычный (он же Интернет)</strong>. Это уровень по умолчанию для всех приложений. Данный уровень применяется к размещённым приложениям и упакованным приложениям, которые не объявили свойство типа в их файле манифеста. Такие приложения имеют доступ к общему API аналогично браузерам, но не имеют доступ к любому WebAPI от Mozilla.</p><p><strong>Привилегированный</strong>. Этот тип приложения имеет доступ ко всем основным API, подобно браузеру Firefox, плюс некоторые дополнительные, такие как контакты и системные предупреждения. <strong>Только упакованные приложения могут быть привилегированными</strong> и должны быть подписаны цифровой подписью Firefox OS Marketplace.</p><p><strong>Сертифицированный</strong>. По соображениям безопасности этот уровень доступен только Mozilla и её партнерам (например, производителям телефонов). Сертифицированные приложения могут получить доступ ко всем API, включая телефонную связь и многое другое. Примером сертифицированного приложения в Firefox OS служит приложение для совершения звонков.</p><p>Во время разработки у нас есть возможность получить доступ к привилегированному API без какого-либо специального разрешения от Mozilla. Но когда мы хотим распространять привилегированное приложение, то сначала нужно идти в Firefox Marketplace. Там код проверяется в рамках строгого процесса утверждения, и если всё хорошо, то получаете цифровую подпись. Она говорит пользователям Firefox OS что этому приложению разрешён доступ к уязвимому API.</p><p>На <a href="https://developer.mozilla.org/en-US/docs/WebAPI">странице посвящённой WebAPI на Mozilla Developer Network</a> мы можем видеть, какие API внедрены на каких платформах и какой уровень доступа необходим для использования каждого API.</p><p class="fig"><img src="../../assets/images/firefoxosdev/webapi-access.png" alt="Уровень доступа для API" width="556" height="419"></p><p class="figsign">Уровень доступа для API</p><p>Как мы можем видеть на рисунке выше, любое приложение может получить доступ к IndexedDB API и FileHandle API, но только привилегированные приложения могут получить доступ к Contacts API и Device Storage API.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>Mozilla WebAPI</h2><p>Firefox OS предоставляет нам API, который позволяет создавать приложения, по возможностям схожие с нативными приложениями на других платформах. Доступ к оборудованию и сервисам происходит через WebAPI. Чтобы узнать больше о списке доступных API для текущей версии Firefox OS посмотрите страницу <a href="https://wiki.mozilla.org/WebAPI">WebAPI на Mozilla Wiki</a>.</p><p>Давайте рассмотрим некоторые примеры кода, чтобы увидеть насколько легко использовать API. Не воспринимайте примеры в качестве полной документации о WebAPI, они являются просто маленьким образцом для понимания, как мы можем получить доступ к функциям устройства с помощью JavaScript.</p><h3>Пример № 1. Звонки</h3><p>Представьте, что у вас есть приложение, в котором необходимо сделать звонок с уже набранным телефонным номеров. Вы можете просто использовать следующий код.</p><p class="exampleTitle">Отправка номера телефона в приложение для звонков</p>
+<pre><code data-language="javascript">var call = new MozActivity({
+  name: &quot;dial&quot;,
+  data: {
+    number: &quot;5555-9999&quot;
+  }
+});</code></pre>
+<p>Этот код делает запрос к приложению для звонков для набора определённого номера. Обратите внимание, что в реальности не происходит звонка — пользователю нужно будет нажать кнопку вызова чтобы позвонить. Требование явного действия со стороны пользователя перед выполнением некоторых шагов происходит довольно часто. Это хороший шаблон безопасности, потому что он требует взаимодействия с пользователем через его согласие, прежде чем позволить чему-то случиться. Другие API, которые могут совершать звонки без вмешательства пользователя, доступны на более высоких уровнях доступа. Например, сертифицированные приложения могут совершать звонки без согласия. API, используемый в коде выше, называется «Web Activities» и доступен для всех приложений.</p><p>Посмотрите блог Mozilla для получения <a href="https://hacks.mozilla.org/2013/01/introducing-web-activities/">дополнительной информации о Web Activities</a>.</p><h3>Пример № 2. Сохранение контакта</h3><p>Представьте, что у вашей компании есть внутренняя сеть и вы хотите обеспечить способ передачи контакта из сетевой адресной книги в адресную книгу телефона. Вы можете сделать это через Contacts API.</p><p class="exampleTitle">Сохранение контакта</p>
+<pre><code data-language="javascript">var contact = new mozContact();
+contact.init({name: &quot;Odin&quot;});
+
+var request = navigator.mozContacts.save(contact);
+  request.onsuccess = function() {
+  // контакт успешно сохранён
+};
+request.onerror = function() {
+  // возникла ошибка при попытке сохранить контакт
+};</code></pre>
+<p>Этот API создаёт объект с данными контакта и сохраняет его в адресную книгу телефона без вмешательства пользователя. Поскольку доступ к контактам имеет потенциальное значение для приватности, то API доступен только для привилегированных приложений. Написанный выше код создаёт объект в случае успеха и функцию обратного вызова для ошибки. Данный шаблон применяются во многих WebAPI.</p><p>Чтобы узнать больше об этом API прочитайте страницу о <a href="https://wiki.mozilla.org/WebAPI/ContactsAPI">Contacts API на Mozilla Wiki</a>.</p><h3>Пример № 3. Изображение с камеры</h3><p>Представьте, что вы создаёте приложение, которое применяет к фотографиям причудливые фильтры. Вы желаете добавить в ваше приложение кнопку, которая позволяет пользователю выбрать фотографию из альбома или с камеры.</p><p class="exampleTitle">Выбор изображения</p>
+<pre><code data-language="javascript">var getphoto = new MozActivity({
+  name: &quot;pick&quot;,
+  data: {
+    type: [&quot;image/png&quot;, &quot;image/jpg&quot;, &quot;image/jpeg&quot;]
+  }
+});
+  
+getphoto.onsuccess = function () {
+  var img = document.createElement(&quot;img&quot;);
+  if (this.result.blob.type.indexOf(&quot;image&quot;) != -1) {
+    img.src = window.URL.createObjectURL(this.result.blob);
+  }
+};
+
+getphoto.onerror = function () { 
+  // ошибка!
+};</code></pre>
+<p>Здесь мы видим еще один пример <a href="https://wiki.mozilla.org/WebAPI">WebActivity</a>. Эти процессы доступны для всех приложений. В данном конкретном фрагменте мы используем процесс pick и указываем MIME-типы файлов, которые хотим получить. Когда этот код выполняется, система показывает пользователю экран с запросом, откуда он хочет получить изображение (с камеры, из галереи, с рабочего стола). Если пользователь выбирает изображение, то срабатывает функция с успехом. Если пользователь отменяет операцию, то выполняется функция с ошибкой. На рисунке ниже мы видим диалог, который позволяет пользователю выбрать фотографию на устройстве.</p><p class="fig"><img src="../../assets/images/firefoxosdev/pick_image.png" alt="Пример выбора изображения" width="662" height="526"></p><p class="figsign">Пример выбора изображения</p><h2>Резюме</h2><p>В этой главе мы увидели, что в отличие от обычных веб-страниц, размещённые и упакованные приложения полагаются на файл манифеста. Мы также увидели, что с точки зрения безопасности упакованные приложения делятся на «привилегированные» и «сертифицированные». Только привилегированные и сертифицированные приложения могут получить доступ к мощному набору Mozilla WebAPI. Более уязвимые WebAPI недоступны для размещённых приложений или обычных веб-страниц.</p><p>Теперь настало время запачкать наши руки и создать приложение!</p><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Андре Гарсия</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 04.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/mobile/firefoxosdev/setup'; });Mousetrap.bind('mod+right', function() { document.location = '/mobile/firefoxosdev/firstapp'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="setup.html" title="На предыдущую страницу">Настройки для разработки приложения на Firefox OS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="firstapp.html" title="На следующую страницу">Наше первое приложение</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="introduction.html">Вступление</a></li><li class="leaf"><a href="setup.html">Настройки для разработки приложения на Firefox OS</a></li><li class="leaf active-trail"><a href="concepts.html" class="active-trail active">Основные понятия</a></li><li class="leaf"><a href="firstapp.html">Наше первое приложение</a></li><li class="leaf"><a href="developertools.html">Инструменты разработчика</a></li><li class="leaf"><a href="app-manager.html">Менеджер приложений</a></li><li class="leaf"><a href="distribution.html">Дистрибуция ваших приложений</a></li><li class="last leaf"><a href="marketplace.html">Firefox Marketplace</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-11b15baa74bfaa0eeefb1c6d71a30ce7"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../../layout/html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../../layout/magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="concepts.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

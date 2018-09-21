@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вёрстка | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../magic-of-css.html" />
+<link rel="next" href="tables.html" />
+<link rel="prev" href="box.html" />
+<meta name="description" content="В предыдущей главе мы узнали, что каждый элемент на странице является прямоугольником. В этой главе мы увидим, как выложить несколько блоков на странице. block, inline и inline-block Что касается расположения, свойство display имеет три значения, вы должны выбрать наиболее подходящее. Вот основные различия между тем, как эти три типа отображаются:" />
+<link rel="canonical" href="layout.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Вёрстка</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../magic-of-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Магия CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Вёрстка</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>В предыдущей главе мы узнали, что каждый элемент на странице является прямоугольником. В этой главе мы увидим, как выложить несколько блоков на странице.</p><h2>block, inline и inline-block</h2><p>Что касается расположения, свойство <span class="attribute">display</span> имеет три значения, вы должны выбрать наиболее подходящее. Вот основные различия между тем, как эти три типа отображаются:</p><ul><li><strong>block (блочные)</strong>. Ширина соответствует размеру родителя и для блока можно задать ширину и высоту. Высота определяется содержимым.</li><li><strong>inline (строчные)</strong>. Ширина и высота определяется содержимым и нельзя задать ширину и высоту. Думайте об этом как о плавающем в абзаце слове.</li><li><strong>inline-block (строчно-блочные)</strong>. Такой же, как и <span class="value">block</span>, за исключением того, что ширина определяется содержимым.</li></ul><p>Ниже представлены элементы каждого из трёх типов <span class="attribute">display</span> со следующим дополнительным CSS, который применяется ко всем элементам:</p>
+<pre><code data-language="css">* {
+  background: #eee;
+  border: .125em solid;
+  margin-bottom: .5em;
+  padding: .5em
+}</code></pre>
+<style>
+.example-display .example-content * {
+background: #eee;
+border: .125em solid;
+margin-bottom: .5em;
+padding: .5em
+}
+.example-display .example-content .block {
+display: block
+}
+.example-display .example-content .inline {
+display: inline
+}
+.example-display .example-content .inline-block {
+display: inline-block
+}
+</style><div class="example example-display" style="margin-top:1rem"><div class="example-content"><div style="width: auto; display: block">Block</div><div style="width: auto; display: block">Block</div> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span> <span style="width: auto; display: inline">Inline</span><div style="width: auto; display: block">Block</div><div style="width: auto; display: block">Block</div><div style="width: auto; display: inline-block">Inline block</div>&nbsp;<div style="width: auto; display: inline-block">Inline block</div>&nbsp;<div style="width: auto; display: inline-block">Inline block</div>&nbsp;</div><p> <label> <input type="checkbox" class="example-display-fixed-width-checkbox"> Установить ширину в 20% </label></p></div>
+<script>
+document.querySelector('.example-display-fixed-width-checkbox').addEventListener('change', function(e){
+var checked = e.target.checked;
+Array.prototype.slice.call(document.querySelectorAll('.example-display .example-content *')).forEach(function(box){
+box.style.width = checked ? '20%' : 'auto';
+});
+});
+</script>
+<p>Следует отметить одну вещь — это разница между <span class="value">inline</span> и <span class="value">inline-block</span>. У строчных элементов <span class="attribute">padding</span> отображается как .5em, а <span class="attribute">border</span> как .125em, но только левые и правые из них (а не верхние и нижние) на самом деле влияют на расположение. В то время элементы <span class="value">inline-block</span> меняют положение самих себя в макете из-за <span class="attribute">padding</span> и <span class="attribute">border</span>, подобно блочным элементам.</p><p>Также заметьте, что при установке ширины в 20% для всех элементов, блочные элементы по прежнему не группируются. При условии, что к ним не примешивается свойство <span class="attribute">float</span>, блочные элементы не допускают горизонтальных соседей.</p><h3>Горизонтальная прокрутка с inline-block</h3><p>Разделы с горизонтальной прокруткой могут оказаться сложными. К счастью, это то место, где может помочь <span class="value">inline-block</span>.</p><p>Скажем, я хочу отобразить код с цветом фона, который применяется к каждой строке текста при наведении на неё курсора.</p><style>
+.example-row-highlight-fail {
+overflow-x: auto;
+white-space: pre;
+word-wrap: normal;
+}
+.example-row-highlight-fail .example-row {
+display: block
+}
+.example-row-highlight-fail .example-row:hover {
+background: #ccc
+}
+</style>
+                <pre class="example-row-highlight-fail" style="width: 60%"><code><span class="example-row">body {</span><!--
+--><span class="example-row">    background: red /* Я знаю, это странно когда вся страница красная, но иногда это то, что вам просто надо сделать... */</span><!--
+--><span class="example-row">}</span></code></pre>
+                
+<p>Если вы прокрутите вправо, то увидите, что цвет строки при наведении не распространяется до конца вправо. Это потому, что каждая строка обёрнута блочным элементом, размер которого совпадает с шириной родителя, а не с шириной прокрутки своего родителя.</p><p>После добавления элемента <span class="value">inline-block</span>, которым оборачиваются все строки, мы получим желаемую прокрутку и элементы строки (всё ещё <span class="value">block</span>) теперь заполняют ширину этого элемента совпадающей с шириной прокрутки всего блока с кодом. Это потому, что размер содержимого в данном случае&nbsp;— это самая длинная строка.</p><style>
+.example-row-highlight-fix {
+overflow-x: auto;
+white-space: pre;
+word-wrap: normal;
+}
+.example-row-highlight-fix .inline-block {
+display: inline-block
+}
+.example-row-highlight-fix .example-row {
+display: block
+}
+.example-row-highlight-fix .example-row:hover {
+background: #ccc
+}
+</style>
+<pre class="example-row-highlight-fix" style="width: 60%"><code><span class="inline-block"><span class="example-row">body {</span><!--
+--><span class="example-row">    background: red /* Я знаю, это странно когда вся страница красная, но иногда это то, что вам просто надо сделать... */</span><!--
+--><span class="example-row">}</span></span></code></pre>
+<h2>html и body</h2><p>Элементы <span class="tag">html</span> и <span class="tag">body</span> прямоугольны, как и любые другие элементы на странице. Мы рассмотрим их подробнее дальше, но сейчас просто знайте, что оба они блочные.</p><h2>Таблицы</h2><p>Таблицы безумны и в соответствующей главе мы их рассмотрим подробнее. Но относительно вёрстки думайте о таблицах как об элементах <span class="value">inline-block</span>, но с одним особым свойством: дочерний <span class="value">table-cell</span> может центрировать свой контент по вертикали.</p><p>Помимо относительно нового и экспериментального значения <span class="value">flex</span> у свойства <span class="attribute">display</span> (на котором мы остановимся в следующей главе), ни один другой элемент не может сделать подобного.</p><p>Так что относительно вёрстки думайте о таблицах в качестве инструмента, который может использоваться для центрирования произвольного содержимого вертикально.</p><h3>Центрирование по вертикали при неизвестной высоте</h3><p>Центрирование по вертикали с помощью таблицы проще не бывает.</p><p>Но если вы для этой цели используете таблицу (и не отображаете табличные данные), вместо таблицы вы должны использовать другой элемент (<span class="tag">&lt;div&gt;</span>, например) и установить для него свойство <span class="attribute">display</span> как <span class="value">table</span>, чтобы имитировать поведение таблицы.</p>
+<pre><code data-language="html">&lt;style&gt;
+.vertical-outer {
+  display: table;
+  height: 10em
+}
+.vertical-inner {
+  display: table-cell;
+  vertical-align: middle
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;vertical-outer&quot;&gt;
+  &lt;div class=&quot;vertical-inner&quot;&gt;
+  &lt;p&gt;Я по центру и это даже не смешно!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Вот и всё!</p><p>В качестве отступления, центрировать что-то по вертикали тривиально, когда вам известна высота. Вначале позиционируем элемент, затем задаём <span class="attribute">top</span> и <span class="attribute">bottom</span> с одинаковым значением (0 работает), ставим желаемый <span class="attribute">height</span>, а затем устанавливаем <span class="attribute">margin-top</span> и <span class="attribute">margin-bottom</span> как <span class="value">auto</span>.</p><h2>Выравнивание текста</h2><p>В основном, <span class="attribute">text-align</span> позволяет выровнять текст, дочерние строчные элементы и дочерние строчно-блочные элементы по левому краю, правому краю, по центру или по ширине. Вам это должно быть знакомо, если вы хоть раз использовали текстовый редактор.</p><p>Теперь немного магии.</p><h3>Сетка с text-align: justify</h3><p>Поскольку элементы <span class="value">inline-block</span> рассматриваются более или менее как текст, вы можете использовать <span class="var">text-align: justify</span> в списке элементов <span class="value">inline-block</span>, чтобы создать структуру сетки.</p>
+<pre><code data-language="html">&lt;style&gt;
+.grid {
+  border: .125rem solid;
+  text-align: justify;
+  font-size: 0;
+  padding: 4% 4% 0 4%
+}
+
+.box {
+  font-size: 1rem;
+  display: inline-block;
+  background: #eee;
+  border: .125em solid;
+  width: 30%;
+  padding: 2%
+}
+
+/* Всё, кроме последних трёх блоков */
+.box:nth-last-child(n+5) {
+  margin-bottom: 4%
+}
+
+.break {
+  display: inline-block;
+  width: 30%;
+  height: 0
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;grid&quot;&gt;
+  &lt;div class=&quot;box&quot;&gt;Колонка&lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;Колонка&lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;Колонка&lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;Колонка&lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;Колонка&lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;Колонка&lt;/div&gt;
+  &lt;div class=&quot;break&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<style>
+.example-text-align-justify {
+max-width: 100%;
+}
+.example-text-align-justify .grid {
+border: .125rem solid;
+text-align: justify;
+font-size: 0;
+padding: 4%
+}
+.example-text-align-justify .box {
+font-size: 1rem;
+display: inline-block;
+background: #eee;
+border: .125em solid;
+width: 30%;
+padding: 2%
+}
+.example-text-align-justify .box:nth-last-child(n+5) {
+margin-bottom: 4%
+}
+.example-text-align-justify .break {
+display: inline-block;
+width: 30%;
+height: 0
+}
+</style><div class="example example-text-align-justify"><div class="example-content"><div class="grid"><div class="box">Колонка</div>&nbsp;<div class="box">Колонка</div>&nbsp;<div class="box">Колонка</div>&nbsp;<div class="box">Колонка</div>&nbsp;<div class="box">Колонка</div>&nbsp;<div class="box">Колонка</div>&nbsp;<div class="break"></div>&nbsp;</div></div><p> <input type="range" class="example-text-align-justify-slider" min="26" max="30" value="30"> <span>ширина: <span class="example-text-align-justify-slider-value">30%</span></span></p></div>
+<script>
+(function(){
+var handler, slider;
+handler = function(e) {
+var width = e.target.valueAsNumber + '%';
+document.querySelector('.example-text-align-justify-slider-value').innerHTML = width;
+Array.prototype.slice.call(document.querySelectorAll('.example-text-align-justify .box')).forEach(function(box){
+box.style.width = width;
+});
+};
+slider = document.querySelector('.example-text-align-justify-slider');
+slider.addEventListener('change', handler);
+slider.addEventListener('input', handler);
+})();
+</script>
+<p>Изменяйте ширину блоков и заметьте, что <span class="var">text-align: justify</span> сохраняет сетку нетронутой.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>float</h2><p>Свойство <span class="attribute">float</span> настолько безумно, что о нём следует сказать отдельно.</p><p>Когда дело доходит до позиционирования, основное что вам нужно знать&nbsp;— плавающие элементы ведут себя как элементы <span class="value">inline-block</span>, независимо от того, какое значение свойства <span class="attribute">display</span> на самом деле задано.</p><p>Правда, в настоящее время из-за того что <span class="value">inline-block</span> поддерживается довольно широко, на долю <span class="attribute">float</span> осталось немного. Мы по-прежнему держимся за него, поскольку это туз в рукаве и вы должны знать, как использовать его на скорую руку. Но пока что не волнуйтесь об этом слишком много.</p><p>В то же время, вы можете прочитать об <a href="http://www.w3.org/TR/CSS2/visuren.html#dis-pos-flo">отношении между display, position и float</a> в спецификации CSS2.</p><h2>Позиционирование</h2><p>Вот где начинается настоящее веселье.</p><p>Элемент называется «позиционированным», если у него свойство <span class="attribute">position</span> равно любому значению, кроме <span class="value">static</span>.</p><p>Когда элемент позиционирован, он выкладывается в соответствии со значениями, заданных свойствами <span class="attribute">top</span>, <span class="attribute">bottom</span>, <span class="attribute">left</span> и <span class="attribute">right</span>.</p><p>Это означает что данные свойства не только устанавливают положение (или движение) элемента, они также могут изменить размеры элементов. Например, при <span class="attribute">position</span> равным <span class="value">absolute</span> или <span class="value">fixed</span> вы можете установить <span class="attribute">top</span> и <span class="attribute">bottom</span> и по существу навязать фиксированную высоту элементу. Приоритет здесь может оказаться довольно сложным, но, как правило, если вы укажите <span class="attribute">top</span>, <span class="attribute">bottom</span> и <span class="attribute">height</span> для позиционированного элемента, то значение <span class="attribute">height</span> игнорируется.</p><p>Свойство position может принимать следующие значения:</p><ul><li><strong>static</strong>. По умолчанию. Любые свойства top, right, bottom или left игнорируются.</li><li><strong>absolute</strong>. Элемент будет удалён из своей исходной позиции в макете и позиционирован относительно ближайшего позиционированного родителя.</li><li><strong>fixed</strong>. Элемент будет удалён из своей исходной позиции в макете и позиционирован относительно окна. На мобильных устройствах с зумом может быть неопределённое поведение.</li><li><strong>relative</strong>. В отличие от абсолютного или фиксированного положения, элемент остаётся в исходном месте макета и свойства top, right, bottom или left только выталкивают его из этого положения.</li></ul><p>Этот материал может запутать, так что мы выделим некоторые важные вещи из этих описаний.</p><ul><li>Элементы <span class="value">absolute</span> и <span class="value">fixed</span> не являются частью обычной схемы документа. Когда меняются их размеры, это затрагивает только их дочерние элементы (небольшим исключением является то, что абсолютно позиционируемые элементы могут вызвать прокрутку и это повлияет на расположение других элементов на странице).</li><li>Элементы <span class="value">static</span> и <span class="value">relative</span> являются частью макета. Когда они меняются, это влияет на их соседей.</li><li>Относительные элементы, которые сдвигаются через <span class="attribute">top</span>, <span class="attribute">right</span>, <span class="attribute">bottom</span> или <span class="attribute">left</span>, не влияют на соседей. Вместо этого, эти соседи действуют так, словно их никто не сдвигал с исходного положения (исключение с прокруткой также действует и здесь).</li><li>Так называемый относительный элемент не должен сбивать с толку, потому что дочерние элементы позиционируются «относительно» него. Скорее всего, такое название описывает, что вы можете сдвинуть элемент «относительно» его исходного положения.</li></ul><p>А теперь снова немного магии.</p><h3>100% top, bottom, left или right</h3><p>Позиционирование дочернего элемента за пределами его родителя немного сложнее.</p><p>Наивный подход заключается в использовании отрицательного свойства позиционирования, которое соответствует его размеру.</p><p>Например:</p>
+<pre><code data-language="css">.parent {
+  position: relative;
+  text-align: center;
+  padding: 1.25em;
+  background: #eee
+}
+
+.child {
+  position: absolute;
+  height: 2.5em;
+  top: -2.5em;
+  right: 0;
+  line-height: 2.5em;
+  background: #444;
+  color: #fff;
+  padding: 0 .625em
+}</code></pre>
+<p class="fig" style="margin-top:1rem"><img src="../../assets/images/magicofcss/position.png" alt=""></p><p>Обратите внимание на следующие две строки CSS:</p>
+<pre><code data-language="css">height: 2.5em;
+top: -2.5em;</code></pre>
+<p>Эта часть не идеальна, потому что не <a href="https://ru.wikipedia.org/wiki/Don’t_repeat_yourself">DRY</a> и потому что мы должны указать высоту. При возможности <em>лучше не задавать фиксированные значения в CSS</em>. Чем большим вещам вы зададите размеры по их содержимому, тем лучше, потому что это означает, что ваш дизайн является более гибким, поддерживает больше сценариев использования и меньше вероятность появления будущих ошибок.</p><p>Так что мы можем сделать? Использовать в качестве значения 100%.</p>
+<pre><code data-language="css">.parent {
+  position: relative;
+  text-align: center;
+  padding: 1.25em;
+  background: #eee
+}
+.child {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: #444;
+  color: #fff;
+  padding: .625em
+}</code></pre>
+<p>Заметьте, что в этой версии мы упростили <span class="attribute">padding</span> и <span class="attribute">line-height</span>, потому что дочерний блок определяет размер по своему содержимому, а не наоборот.</p><h2>Трансформация</h2><p>Она, безусловно, заслуживает свой собственный раздел. Трансформация живёт там, где много реальной магии. Но сейчас, обратите внимание на то, что трансформируемые элементы, к сожалению, рассматриваются как позиционированные, даже если применяется значение <span class="value">static</span>. Фиксация этой информации в памяти или где-то ещё, вероятно, сожжёт вам мозг.</p><h2>Дальнейшее чтение</h2><ul><li><a href="http://quirksmode.org/css/css2/display.html">Quirksmode: display</a> — большая игрушка для экспериментирования со значениями разных свойств.</li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Layout">MDN: Layout</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">MDN: position</a></li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/vyorstka">вёрстка</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Адам Шварц</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 24.03.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/magic-of-css/box'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/magic-of-css/tables'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="box.html" title="На предыдущую страницу">Блоки</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="tables.html" title="На следующую страницу">Таблицы</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="box.html">Блоки</a></li><li class="leaf active-trail"><a href="layout.html" class="active-trail active">Вёрстка</a></li><li class="leaf"><a href="tables.html">Таблицы</a></li><li class="leaf"><a href="color.html">Цвет</a></li><li class="leaf"><a href="typography.html">Типографика</a></li><li class="last leaf"><a href="transitions.html">Переходы</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-780dc07cabfceb91dca57be9c7dbcfc1"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="layout.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

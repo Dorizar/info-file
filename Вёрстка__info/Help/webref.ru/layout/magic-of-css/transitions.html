@@ -1,0 +1,514 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Переходы | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../magic-of-css.html" />
+<link rel="prev" href="typography.html" />
+<meta name="description" content="Переходы — это идеальное решение для перехода стилевого свойства (или набора свойств) от одного значения к другому согласно некоторого пути." />
+<link rel="canonical" href="transitions.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Переходы</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../magic-of-css.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Магия CSS</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Переходы</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Перед чтением этой главы, пожалуйста, прочитайте <a href="http://blog.alexmaccaw.com/css-transitions">Всё, что вам нужно знать о CSS-переходах</a>, автор Алекс МакКоу. Это фантастический ресурс и он охватывает большую часть того, что мы бы хотели охватить.</p><h2>Переходы</h2><p>Переходы — это идеальное решение для перехода стилевого свойства (или набора свойств) от одного значения к другому согласно некоторого пути.</p><p>Теперь вместе объединим это знание с тем, что мы узнали в предыдущих главах, посвящённым цвету и типографике.</p><h2>Примеры</h2><h3>Пример 1: Отдельные буквы случайно растворяются</h3><p>В нашем распоряжении есть один чрезвычайно мощный инструмент под названием <span class="attribute">transition-delay</span>. Задержки переходов позволяют отложить начало срабатывания перехода. В этом первом примере мы устанавливаем псевдослучайные задержки у <span class="attribute">opacity</span> для каждой буквы, создавая изящный и привлекательный эффект.</p>
+<pre><code data-language="css">.ex span {
+  opacity: 0;
+  transition: opacity 1300ms
+}
+
+.ex span:nth-child(1)  { transition-delay:  200ms }
+.ex span:nth-child(2)  { transition-delay: 1200ms }
+.ex span:nth-child(3)  { transition-delay:  800ms }
+.ex span:nth-child(4)  { transition-delay:  300ms }
+.ex span:nth-child(5)  { transition-delay:  700ms }
+.ex span:nth-child(6)  { transition-delay:  600ms }
+.ex span:nth-child(7)  { transition-delay:  400ms }
+.ex span:nth-child(8)  { transition-delay:  900ms }
+.ex span:nth-child(9)  { transition-delay:  700ms }
+.ex span:nth-child(10) { transition-delay:   50ms }
+
+.ex:hover span {
+  opacity: 1
+}</code></pre>
+
+<style>
+.typography-example {
+line-height: normal;
+margin-bottom: 8rem
+}
+.typography-example {
+margin: 2rem 0;
+position: relative
+}
+.typography-example,
+.typography-example * {
+cursor: default
+}
+.typography-example:before {
+content: "Наведите для просмотра перехода";
+text-transform: uppercase;
+position: absolute;
+top: .625rem;
+left: .625rem;
+font-size: .625rem;
+letter-spacing: .1em;
+transition: opacity 200ms;
+transition-delay: 2000ms
+}
+.typography-example:hover:before {
+transition-delay: 0ms;
+opacity: 0
+}
+.typography-example-1 {
+background-image: linear-gradient(135deg, #723362, #9d223c);
+background-color: #9d223c;
+color: #fff;
+padding: 1em 0;
+text-align: center;
+font-weight: 300;
+text-transform: uppercase;
+letter-spacing: .4em;
+padding-left: .4em;
+font-size: 1.8em;
+}
+.typography-example-1 span {
+opacity: 0;
+transition: opacity 1300ms
+}
+.typography-example-1 span:nth-child(1)  { transition-delay:  200ms }
+.typography-example-1 span:nth-child(2)  { transition-delay: 1200ms }
+.typography-example-1 span:nth-child(3)  { transition-delay:  800ms }
+.typography-example-1 span:nth-child(4)  { transition-delay:  300ms }
+.typography-example-1 span:nth-child(5)  { transition-delay:  700ms }
+.typography-example-1 span:nth-child(6)  { transition-delay:  600ms }
+.typography-example-1 span:nth-child(7)  { transition-delay:  400ms }
+.typography-example-1 span:nth-child(8)  { transition-delay:  900ms }
+.typography-example-1 span:nth-child(9)  { transition-delay:  700ms }
+.typography-example-1 span:nth-child(10) { transition-delay:   50ms }
+.typography-example-1:hover span {
+opacity: 1
+}
+</style><div class="example typography-example typography-example-1"> <span>П</span><span>р</span><span>и</span><span>м</span><span>е</span><span>р</span> <span>О</span><span>д</span><span>и</span><span>н</span></div><h3>Пример 2: Несколько переходов с задержкой</h3><p>Переходы CSS начинают по настоящему блистать, когда они комбинируются вместе. В этом примере мы указываем два перехода, один для <span class="attribute">-webkit-transform</span>, а второй для <span class="attribute">opacity</span>. Они написаны в рамках одной декларации <span class="attribute">transition</span>, разделяясь запятой.</p>
+<pre><code data-language="css">.ex .title span,
+.ex .author span {
+  /* ... */
+  transition: -webkit-transform 800ms, opacity 800ms
+}</code></pre>
+<p>Поскольку мы определили два перехода, то должны также указать и две задержки для них. Они пишутся похоже.</p>
+<pre><code data-language="css">.ex .title span:nth-child(1) { transition-delay: 360ms, 300ms }
+.ex .title span:nth-child(2) { transition-delay: 420ms, 300ms }
+.ex .title span:nth-child(3) { transition-delay: 480ms, 300ms }
+/* ... */</code></pre>
+<p>Вместе эти переходы со своими задержками позволяют нам создать красивый эффект волны с буквами.</p>
+<pre><code data-language="css">.ex .title span,
+.ex .author span {
+  display: inline-block;
+  opacity: 0;
+  transition: -webkit-transform 800ms, opacity 800ms
+}
+
+.ex .title span {
+  -webkit-transform: translateZ(0) translateY(-6rem)
+}
+
+.ex .author span {
+  -webkit-transform: translateZ(0) translateY(6rem)
+}
+
+.ex:hover .title span,
+.ex:hover .author span {
+  opacity: 1;
+  transition: -webkit-transform 800ms, opacity 1200ms;
+  -webkit-transform: translateZ(0) translateY(0)
+}
+
+.ex .title span:nth-child(1) { transition-delay: 360ms, 300ms }
+.ex .title span:nth-child(2) { transition-delay: 420ms, 300ms }
+.ex .title span:nth-child(3) { transition-delay: 480ms, 300ms }
+.ex .title span:nth-child(4) { transition-delay: 540ms, 300ms }
+.ex .title span:nth-child(5) { transition-delay: 600ms, 300ms }
+.ex .title span:nth-child(6) { transition-delay: 660ms, 300ms }
+
+.ex .author span:nth-child(1)  { transition-delay: 420ms, 0ms }
+.ex .author span:nth-child(2)  { transition-delay: 390ms, 0ms }
+.ex .author span:nth-child(3)  { transition-delay: 360ms, 0ms }
+.ex .author span:nth-child(4)  { transition-delay: 330ms, 0ms }
+.ex .author span:nth-child(5)  { transition-delay: 300ms, 0ms }
+.ex .author span:nth-child(6)  { transition-delay: 270ms, 0ms }
+.ex .author span:nth-child(7)  { transition-delay: 240ms, 0ms }
+.ex .author span:nth-child(8)  { transition-delay: 210ms, 0ms }
+.ex .author span:nth-child(9)  { transition-delay: 180ms, 0ms }
+.ex .author span:nth-child(10) { transition-delay: 150ms, 0ms }
+.ex .author span:nth-child(11) { transition-delay: 120ms, 0ms }
+.ex .author span:nth-child(12) { transition-delay:  90ms, 0ms }
+.ex .author span:nth-child(13) { transition-delay:  60ms, 0ms }
+
+.ex:hover .title span,
+.ex:hover .author span {
+  transition-delay: 0
+}</code></pre>
+<style>
+.typography-example-2 {
+background: #fff;
+border: .5em solid #000;
+color: #000;
+padding: 1em 0;
+text-align: center;
+font-weight: 700;
+text-transform: uppercase;
+font-size: 1.5em
+}
+.typography-example-2 .title2 {
+display: block;
+letter-spacing: .4em;
+padding-left: .4em
+}
+.typography-example-2 .author2 {
+font-style: italic;
+font-weight: 300;
+color: #888;
+font-size: .7em;
+text-transform: none;
+letter-spacing: .12em;
+padding-left: .12em
+}
+.typography-example-2 {
+overflow: hidden
+}
+.typography-example-2 .title2 span,
+.typography-example-2 .author2 span {
+display: inline-block;
+opacity: 0;
+transition: -webkit-transform 800ms, opacity 800ms
+}
+.typography-example-2 .title2 span {
+-webkit-transform: translateZ(0) translateY(-6rem)
+}
+.typography-example-2 .author2 span {
+-webkit-transform: translateZ(0) translateY(6rem)
+}
+.typography-example-2:hover .title2 span,
+.typography-example-2:hover .author2 span {
+opacity: 1;
+transition: -webkit-transform 800ms, opacity 1200ms;
+-webkit-transform: translateZ(0) translateY(0)
+}
+.typography-example-2 .title2 span:nth-child(1) { transition-delay: 360ms, 300ms }
+.typography-example-2 .title2 span:nth-child(2) { transition-delay: 420ms, 300ms }
+.typography-example-2 .title2 span:nth-child(3) { transition-delay: 480ms, 300ms }
+.typography-example-2 .title2 span:nth-child(4) { transition-delay: 540ms, 300ms }
+.typography-example-2 .title2 span:nth-child(5) { transition-delay: 600ms, 300ms }
+.typography-example-2 .title2 span:nth-child(6) { transition-delay: 660ms, 300ms }
+.typography-example-2 .author2 span:nth-child(1)  { transition-delay: 420ms, 0ms }
+.typography-example-2 .author2 span:nth-child(2)  { transition-delay: 390ms, 0ms }
+.typography-example-2 .author2 span:nth-child(3)  { transition-delay: 360ms, 0ms }
+.typography-example-2 .author2 span:nth-child(4)  { transition-delay: 330ms, 0ms }
+.typography-example-2 .author2 span:nth-child(5)  { transition-delay: 300ms, 0ms }
+.typography-example-2 .author2 span:nth-child(6)  { transition-delay: 270ms, 0ms }
+.typography-example-2 .author2 span:nth-child(7)  { transition-delay: 240ms, 0ms }
+.typography-example-2 .author2 span:nth-child(8)  { transition-delay: 210ms, 0ms }
+.typography-example-2 .author2 span:nth-child(9)  { transition-delay: 180ms, 0ms }
+.typography-example-2 .author2 span:nth-child(10) { transition-delay: 150ms, 0ms }
+.typography-example-2 .author2 span:nth-child(11) { transition-delay: 120ms, 0ms }
+.typography-example-2 .author2 span:nth-child(12) { transition-delay:  90ms, 0ms }
+.typography-example-2 .author2 span:nth-child(13) { transition-delay:  60ms, 0ms }
+.typography-example-2:hover .title2 span,
+.typography-example-2:hover .author2 span {
+transition-delay: 0;
+}
+@-moz-document url-prefix() {
+.typography-example-2 .title2 span,
+.typography-example-2 .author2 span {
+transition: -moz-transform 800ms, opacity 800ms
+}
+.typography-example-2 .title2 span {
+-moz-transform: translateZ(0) translateY(-6rem)
+}
+.typography-example-2 .author2 span {
+-moz-transform: translateZ(0) translateY(6rem)
+}
+.typography-example-2:hover .title2 span,
+.typography-example-2:hover .author2 span {
+transition: -moz-transform 800ms, opacity 1200ms;
+-moz-transform: translateZ(0) translateY(0)
+}
+}
+</style><div class="example typography-example typography-example-2"> <span class="title2"> <span>П</span><span>р</span><span>и</span><span>м</span><span>е</span><span>р</span> </span> <span class="author2"> <span>о</span><span>т</span> <span>А</span><span>д</span><span>а</span><span>м</span><span>а</span> <span>Ш</span><span>в</span><span>а</span><span>р</span><span>ц</span><span>а</span> </span></div><h3>Пример 3D</h3><p>И тот случай, когда вы удивитесь: переходы также работают с трёхмерной трансформацией.</p>
+<pre><code data-language="css">.ex .letter {
+  -webkit-perspective: 20rem
+}
+
+.ex .front,
+  .ex .back {
+  -webkit-backface-visibility: hidden;
+  transition: -webkit-transform 800ms
+}
+
+.ex .back {
+  -webkit-transform: translateZ(0) rotateY(-180deg)
+}
+
+.ex:hover .back {
+  -webkit-transform: translateZ(0) rotateY(0deg)
+}
+
+.ex:hover .front {
+  -webkit-transform: translateZ(0) rotateY(180deg)
+}
+
+.ex .letter:nth-child(1) span { transition-delay:  200ms }
+.ex .letter:nth-child(2) span { transition-delay:  400ms }
+.ex .letter:nth-child(3) span { transition-delay:  600ms }
+.ex .letter:nth-child(4) span { transition-delay:  800ms }
+.ex .letter:nth-child(5) span { transition-delay: 1000ms }</code></pre>
+
+<style>
+.typography-example-3 {
+border: .2em solid #ff4136;
+font-size: 3em;
+text-align: center;
+padding: .2em;
+color: #fff
+}
+.typography-example-3 .letter {
+display: inline-block;
+width: 20%;
+padding: .8125rem;
+position: relative;
+-webkit-perspective: 20rem
+}
+.typography-example-3 .letter:before {
+content: "\00a0"
+}
+.typography-example-3 .front,
+.typography-example-3 .back {
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+line-height: 1.75em;
+-webkit-backface-visibility: hidden;
+transition: -webkit-transform 800ms
+}
+.typography-example-3 .letter:nth-child(1) .front { background: #ff4136 }
+.typography-example-3 .letter:nth-child(2) .front { background: #ff851b }
+.typography-example-3 .letter:nth-child(3) .front { background: #2ecc40 }
+.typography-example-3 .letter:nth-child(4) .front { background: #0074d9 }
+.typography-example-3 .letter:nth-child(5) .front { background: #b10dc9 }
+.typography-example-3 .back {
+border: .5rem solid;
+background: #fff;
+color: #000;
+-webkit-transform: translateZ(0) rotateY(-180deg);
+line-height: 1.5em
+}
+.typography-example-3 .letter:nth-child(1) .back { border-color: #ff4136 }
+.typography-example-3 .letter:nth-child(2) .back { border-color: #ff851b }
+.typography-example-3 .letter:nth-child(3) .back { border-color: #2ecc40; background: #2ecc40; color: #fff }
+.typography-example-3 .letter:nth-child(4) .back { border-color: #0074d9; background: #0074d9; color: #fff }
+.typography-example-3 .letter:nth-child(5) .back { border-color: #b10dc9; background: #b10dc9; color: #fff }
+.typography-example-3:hover .back {
+-webkit-transform: translateZ(0) rotateY(0deg)
+}
+.typography-example-3:hover .front {
+-webkit-transform: translateZ(0) rotateY(180deg)
+}
+.typography-example-3 .letter:nth-child(1) span { transition-delay:  200ms }
+.typography-example-3 .letter:nth-child(2) span { transition-delay:  400ms }
+.typography-example-3 .letter:nth-child(3) span { transition-delay:  600ms }
+.typography-example-3 .letter:nth-child(4) span { transition-delay:  800ms }
+.typography-example-3 .letter:nth-child(5) span { transition-delay: 1000ms }
+.typography-example-3:before {
+background: #ff4136;
+z-index: 1
+}
+@-moz-document url-prefix() {
+.typography-example-3 .letter {
+-moz-perspective: 20rem
+}
+.typography-example-3 .front,
+.typography-example-3 .back {
+-moz-backface-visibility: hidden;
+transition: -moz-transform 800ms
+}
+.typography-example-3 .back {
+-moz-transform: translateZ(0) rotateY(-180deg)
+}
+.typography-example-3:hover .back {
+-moz-transform: translateZ(0) rotateY(0deg)
+}
+.typography-example-3:hover .front {
+-moz-transform: translateZ(0) rotateY(180deg)
+}
+}
+</style><div class="example typography-example typography-example-3"> <span class="letter"> <span class="back">н</span> <span class="front">М</span> </span><span class="letter"> <span class="back">а</span> <span class="front">А</span> </span><span class="letter"> <span class="back">C</span> <span class="front">Г</span> </span><span class="letter"> <span class="back">S</span> <span class="front">И</span> </span><span class="letter"> <span class="back">S</span> <span class="front">Я</span> </span></div><p>Конечно, это только верхушка айсберга. Цвета, градиенты, размеры, местоположение, ориентация и др., всё это может меняться одновременно. Кроме того, у вас есть задержка и пользовательские функции для работы со временем, прямо на кончиках ваших пальцев. CSS-переходы просты в работе. Поверьте, браузер будет делать правильные вещи, когда вы включите переходы для стилевых свойств, потому что он обычно так и делает.</p><h3>Аккордеон на переключателях</h3><p>Сочетание состояний HTML с переходами в CSS можно применять для увлекательных взаимодействий. Здесь мы используем псевдоселектор <span class="attribute">:checked</span> на переключателях для оформления элементов, которые следуют за ними. Этот метод часто называют «хак с чекбоксом», но он может работать почти с любым элементом, который фиксирует состояния через некоторые псевдоселекторы (<span class="attribute">:checked</span>, <span class="attribute">:focus</span> и др.).</p><p>В этом примере содержится множество тонкостей, но основная идея заключается в следующем: каждый раздел аккордеона содержит элемент <span class="tag">&lt;label&gt;</span>, у которого атрибут <span class="attribute">for</span> совпадает с идентификатором радиокнопки. Итак, три раздела, три радиокнопки. Эти радиокнопки располагаются в документе перед содержимым раздела, так что мы можем использовать соседний селектор <code>+</code> для стилизации разделов, которые появляются после радиокнопок с <span class="attribute">:checked</span>.</p>
+<pre><code data-language="html">.accordion .baffle {
+  height: 0
+}
+
+.accordion input[type=&quot;radio&quot;]:checked + .baffle {
+  height: 10em
+}</code></pre>
+<p>Щелчок по <span class="tag">&lt;label&gt;</span> внутри раздела включает переключатель (и выключает все остальные переключатели), запуская тем самым открытие/закрытие соответствующего раздела.</p><p>И вуаля! Аккордеон только на HTML и CSS.</p><style>
+.accordion-example .accordion input[type="radio"] {
+position: absolute;
+left: -9999rem;
+}
+.accordion-example .accordion label {
+display: block;
+background: #4f6f8b;
+color: #fff;
+text-align: center;
+padding: 1rem;
+font-size: .8em;
+letter-spacing: .13em;
+padding-left: .13em;
+padding-right: 0;
+text-transform: uppercase;
+cursor: pointer;
+height: 3.3rem;
+font-weight: 300;
+transition: background 400ms, color 400ms, border-radius 400ms;
+}
+.accordion-example .accordion label:hover {
+background: #385670
+}
+.accordion-example .accordion .baffle {
+position: relative;
+height: 3.3rem;
+overflow: hidden;
+transition: height 400ms;
+-webkit-transform: translateZ(0);
+}
+.accordion-example .accordion .baffle-inner {
+padding: 1.25rem;
+background: #eee;
+position: absolute;
+top: 3.3rem;
+left: 0;
+height: 13.5rem;
+-webkit-overflow-scrolling: touch;
+overflow: scroll;
+overflow-y: scroll;
+overflow-x: hidden
+}
+.accordion-example .accordion .baffle:first-of-type label {
+border-radius: .25rem .25rem 0 0
+}
+.accordion-example .accordion .baffle:last-of-type label,
+.accordion-example .accordion .baffle:last-of-type .baffle-inner {
+border-radius: 0 0 .25rem .25rem
+}
+.accordion-example .accordion .baffle-inner :first-child {
+margin-top: 0
+}
+.accordion-example .accordion .baffle-inner :last-child {
+margin-bottom: 0
+}
+.accordion-example .accordion input[type="radio"]:checked + .baffle {
+height: 16.8rem
+}
+.accordion-example .accordion input[type="radio"]:checked + .baffle label {
+background: #eee;
+color: inherit;
+box-shadow: inset 0 -1px rgba(0, 0, 0, .15);
+font-weight: 300
+}
+.accordion-example .accordion input[type="radio"]:checked + .baffle:not(:first-of-type) label {
+border-radius: 0
+}
+.accordion-example .accordion input[type="radio"]:not(:checked) + .baffle + input[type="radio"]:not(:checked) + .baffle label {
+box-shadow: inset 0 1px rgba(0, 0, 0, .15);
+}
+.accordion-example ::-webkit-scrollbar {
+width: .9375rem
+}
+.accordion-example ::-webkit-scrollbar-thumb {
+background: #849cb1;
+border: solid #eee;
+border-width: .375rem .375rem .375rem 0;
+border-radius: 0 .375rem .375rem 0
+}
+.accordion-example ::-webkit-scrollbar-thumb:window-inactive {
+background: #aaa
+}
+</style><div class="accordion-example"><div class="accordion"> <input type="radio" id="radio-option-1" name="accordion-radios" checked=""><div class="baffle"> <label for="radio-option-1">Аккордеон</label><div class="baffle-inner"> Аккордеон (от фр. accordéon) — язычковый клавишно-пневматический музыкальный инструмент с полным хроматическим звукорядом на правой клавиатуре, басами и готовым (аккордовым) или готово-выборным аккомпанементом на левой. Современная разновидность ручной гармоники. В 1829 году это название дал венский органный мастер К. Демиан усовершенствованной им гармони.</div></div> <input type="radio" id="radio-option-2" name="accordion-radios"><div class="baffle"> <label for="radio-option-2">Устройство</label><div class="baffle-inner"><p>Аккордеон содержит три основные составные части:</p><ul><li>правая клавиатура (на которой пятью пальцами правой руки играется сольная партия);</li><li>мех для привода в действие звуковых язычков обеих клавиатур;</li><li>левая клавиатура, на которой преимущественно указательным и средним пальцами левой руки осуществляется басово-ритмовый аккомпанемент основной мелодии.</li></ul></div></div> <input type="radio" id="radio-option-3" name="accordion-radios"><div class="baffle"> <label for="radio-option-3">История</label><div class="baffle-inner"><p>В русской традиции аккордеоном принято называть только инструменты с правой клавиатурой фортепианного типа. В США, Европе и других странах принято называть аккордеонами все разновидности ручных гармоник, которые в свою очередь могут иметь собственные названия. Например — некоторые гармони, они называются диатоническими кнопочными аккордеонами. Баян является разновидностью кнопочного аккордеона и отличается от него особой конструкцией.</p><p>В конце XIX века аккордеоны в большом количестве изготавливались в Клингентале (Саксония). До сих пор, одними из самых распространённых в России являются аккордеоны немецкой фирмы Weltmeister различных марок, например, Diana, Stella, Amigo. Встречаются также другие фирмы-производители, как зарубежные, так и советские и российские.</p></div></div></div></div><h2>Переходы для вдохновения</h2><p>Если вы ищете дополнительное вдохновение насчёт того, что ещё можно получить с помощью CSS-переходов, посмотрите эти удивительные демонстрации из Codrops:</p><ul><li><a href="http://tympanus.net/Development/SidebarTransitions">Переходы для сайдбара</a></li><li> <a href="http://tympanus.net/Development/PageTransitions">Переходы для страниц</a></li><li> <a href="http://tympanus.net/Development/HeaderEffects">Эффекты с заголовками</a></li><li><a href="http://tympanus.net/Development/CreativeLinkEffects"> Креативные эффекты со ссылками</a></li><li><a href="http://tympanus.net/Development/StackEffects"> Простые эффекты с набором картинок</a></li><li><a href="http://tympanus.net/Development/ThumbnailGridAnimations"> Анимация для эскизов</a></li><li> <a href="http://tympanus.net/Development/GridLoadingEffects">Эффект загрузки для элементов</a></li></ul><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><h2>jQuery.Transit</h2><p>Тем, кому нравится приправить свой CSS небольшим JS, посмотрите <a href="https://github.com/rstacruz/jquery.transit">jquery.transit</a>. Для простых, статических переходов (оксюморон?) это будет перебор. Но вы найдёте это чрезвычайно полезным, если делаете переходы, которые содержат динамические или сформированные пользователем значения свойств CSS.</p><h2>Дальнейшее чтение</h2><ul><li><a href="http://caniuse.com/css-transitions">Can I Use: CSS Transitions</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_transitions">MDN: Using CSS transitions</a></li></ul><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/perehody">переходы</a></div></div></div><div id="views-similar-block" class="block"><h2 class="block_title">См. также</h2><div class="block_content"><div class="view view-similar view-id-similar view-display-id-block view-dom-id-46bfb55814a00b20925863c10a46cbe9"><div class="view-content"><div class="similar"><ul><li class=""> <a href="../../css/transition.html">transition</a></li><li class=""> <a href="../advanced-html-css/transitions-animations.html">Переходы и анимация</a></li></ul></div></div></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Адам Шварц</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 30.04.2016</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Влад Мержевич, Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/magic-of-css/typography'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="typography.html" title="На предыдущую страницу">Типографика</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="box.html">Блоки</a></li><li class="leaf"><a href="layout.html">Вёрстка</a></li><li class="leaf"><a href="tables.html">Таблицы</a></li><li class="leaf"><a href="color.html">Цвет</a></li><li class="leaf"><a href="typography.html">Типографика</a></li><li class="last leaf active-trail"><a href="transitions.html" class="active-trail active">Переходы</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-3e9105ce748acc02feee0ecc975981c7"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="transitions.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

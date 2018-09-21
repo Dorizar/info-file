@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Меню, пожалуйста | WebReference</title>
+<meta charset="utf-8" />
+<link rel="up" href="../howtocodeinhtml.html" />
+<link rel="next" href="chapter7.html" />
+<link rel="prev" href="chapter5.html" />
+<meta name="description" content="Другой популярной частью сайтов является меню. В основном, это список элементов, которые представляют собой простые ссылки, ведущие на другие места сайта. Давайте реализуем меню! Мы начнём со следующего кода." />
+<link rel="canonical" href="chapter6.html" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_GmPV_e3YNAzxsGyZNJb8l3jyzuLiXRRwUYoy5enMRkM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/css_2H3Dgnhk-GMIhlAAevncWEQeqNkZ7SjzqGb8OfLzzuU.css" media="screen" />
+</head>
+<body>
+<main>
+<div class="off-canvas-wrap" data-offcanvas><div class="inner-wrap"><header><div class="row"><div class="small-12 large-4 columns logo"><a href="../../index.html">WebReference<span>.</span>ru</a></div><nav class="small-10 large-7 columns topmenu"><div class="region region-menu"><div id="system-main-menu" class="block"><div class="block_content"><ul class="menu"><li class="first leaf"><a href="../../ref.html" title="">Справочники</a></li><li class="leaf"><a href="../../layout.html" title="">Вёрстка</a></li><li class="leaf"><a href="../../dev.html" title="">Веб-технологии</a></li><li class="leaf"><a href="../../mobile.html" title="">Мобильные приложения</a></li><li class="last leaf"><a href="../../course.html">Курсы</a></li></ul></div></div></div></nav><div class="small-2 large-1 columns search"><div id="search-button"></div><form action="https://webref.ru/search/" id="cse-search-box"><input type="search" placeholder="Поиск по сайту" name="s" autocomplete="off" id="cse-search-input"><input type="hidden" name="cx" value="partner-pub-0708135098984815:9970767379"><input type="hidden" name="cof" value="FORID:10"><input type="hidden" name="ie" value="UTF-8"></form></div></div></header><div class="title"><div class="row"><div class="small-12 columns"><h1>Меню, пожалуйста</h1></div></div></div><div class="breadcrumb"><div class="row"><div class="small-12 columns"><div class="region region-crumbs"><div id="easy_breadcrumb-easy_breadcrumb" class="block"><div class="block_content"><div class="easy-breadcrumb"><a href="../../index.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Главная</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../../layout.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-1">Вёрстка</a><span class="easy-breadcrumb_segment-separator"> / </span><a href="../howtocodeinhtml.html" class="easy-breadcrumb_segment easy-breadcrumb_segment-2">Как верстать на HTML5 и CSS3</a><span class="easy-breadcrumb_segment-separator"> / </span><span class="easy-breadcrumb_segment easy-breadcrumb_segment-title">Меню, пожалуйста</span></div></div></div></div></div></div></div><div class="row"><div class="medium-12 large-9 columns main-section"><div class="region region-content"><div id="system-main" class="block"><p>Другой популярной частью сайтов является меню. В основном, это список элементов, которые представляют собой простые ссылки, ведущие на другие места сайта. Давайте реализуем меню! Мы начнём со следующего кода.</p>
+<pre><code data-language="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Меню&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;main.css&quot; media=&quot;screen&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;a href=&quot;index.html&quot;&gt;Главная&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href=&quot;training.html&quot;&gt;Обучение&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href=&quot;conferences.html&quot;&gt;Конференции&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href=&quot;about.html&quot;&gt;О нас&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Наше меню будет состоять из четырёх элементов:</p><ul><li>Главная</li><li>Обучение</li><li>Конференции</li><li>О нас</li></ul><p>Мы хотим, чтобы оно выглядело так.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-preview.png" alt="" width="404" height="237"></p><p>Вы могли заметить, что мы добавили новые теги <span class="tag">&lt;nav&gt;</span>, <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;li&gt;</span>.</p><p><span class="tag">&lt;nav&gt;</span> используется для определения всех видов навигационных функций на сайтах, которые содержат ссылки на внутреннюю или внешнюю информацию. Размещение <span class="tag">&lt;nav&gt;</span> в коде говорит «всё внутри <span class="tag">&lt;nav&gt;</span> будет использоваться для навигации по сайту».</p><p>В <span class="tag">&lt;nav&gt;</span> мы вставили тег <span class="tag">&lt;ul&gt;</span> с несколькими тегами <span class="tag">&lt;li&gt;</span>. Тег <span class="tag">&lt;ul&gt;</span> представляет собой «неупорядоченный список» (как маркированный список), а теги <span class="tag">&lt;li&gt;</span> представляют каждый отдельный компонент этого списка (маркер). При создании сайтов неупорядоченный список часто будет наиболее разумным выбором, когда дело доходит до составления страницы с меню. На самом деле, меню это вариант списка ссылок, который был создан без заданного правила относительно порядка его элементов.</p><p>С помощью кода выше, который пока не завершён, наш список должен выглядеть следующим образом.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/pure-list.png" alt="" width="404" height="169"></p><p>Вы, возможно, видели нечто подобное даже при создании текстового документа в редакторе, когда хотели сделать маркированный список. Без стилизации <span class="tag">&lt;ul&gt;</span>, однако, наш список просто начинается с точки. В отличие от этого наше меню может быть намного сложнее. Мы можем задать ему границы, цвет, фон и др. Каждая ссылка по умолчанию отображается синим цветом, как видно на рисунке выше.</p><p>Теперь попробуем изготовить более стильное меню через наш код CSS.</p><p>Как правило, мы начинаем с самого общего тега в HTML-коде, верно? В нашем случае код начинается с <span class="tag">&lt;nav&gt;</span>, поскольку он отвечает за наше меню. С этим тегом мало что можно сделать, поскольку данный тег напрямую не меняет внешний вид маркированного списка.</p><p>Следующий тег <span class="tag">&lt;ul&gt;</span> начинает список. Мы хотим, чтобы наш список выглядел немного иначе, чем по умолчанию. Самое главное&nbsp;— добавить новый фон.</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+}</code></pre>
+<p>Для цвета фона мы выбрали название PaleVioletRed. Перезагрузка страницы показывает наши изменения в результате добавления этого кода.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/list-background.png" width="404" height="147" alt=""></p><p>На самом деле мы применили цвет фона ко всем элементам <span class="tag">&lt;ul&gt;</span>. Это потому, что мы применяем его к тегам <span class="tag">&lt;nav&gt;</span> и <span class="tag">&lt;ul&gt;</span> с помощью следующего селектора.</p>
+<pre><code data-language="css">nav ul {}</code></pre>
+<p>Теперь мы хотим избавиться от круглых чёрных точек в этом списке и сделать его более похожим на меню. Мы можем скрыть их благодаря свойству <span class="attribute">list-style</span>, как показано ниже.</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+  <mark>list-style: none;</mark>
+}</code></pre>
+<p>Установка <span class="attribute">list-style</span> в значение <span class="value">none</span> делает список без характерных маркеров.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-no-bullets.png" width="404" height="147" alt=""></p><p>Это выглядит гораздо лучше.</p><p>Широкая область цвета удивительно большая. Мы хотим немного урезать её, используя тот же пример, что с рамкой вокруг изображения (<span class="attribute">padding</span>).</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+  list-style: none;
+  <mark>padding: 0;</mark>
+}</code></pre>
+<p>Как вы можете видеть ниже, выглядит это намного лучше, медленно приближаясь к прекрасной форме.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-no-padding.png" width="404" height="147" alt=""></p><p>Теперь пришло время для работы с размерами. Наша навигация должна быть 200 пикселей в ширину.</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+  list-style: none;
+  padding: 0;
+  width: 200px;
+}</code></pre>
+<p>В конце концов, мы добавим <span class="attribute">border</span> к списку точно как на картинке. Это будет выражаться в сплошной линии толщиной 1&nbsp;пиксель розового цвета.</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+  list-style: none;
+  padding: 0;
+  width: 200px;
+  <mark>border: 1px solid MediumVioletRed;</mark>
+}</code></pre>
+<p>Вот результат и это выглядит здорово!</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-border.png" width="404" height="151" alt=""></p><p>С нашей прекрасной внешней рамкой. Пришло время построить каждый отдельный элемент списка, к которому можно обратиться с помощью такого селектора CSS.</p>
+<pre><code data-language="css">nav ul li {}</code></pre>
+<p>Этот код ищет <span class="tag">&lt;nav&gt;</span>, затем внутри <span class="tag">&lt;ul&gt;</span> и <span class="tag">&lt;li&gt;</span>. Кажется, что каждому элементу в списке нужна своя граница.</p>
+<pre><code data-language="css">nav ul li {
+  border-bottom: 1px solid MediumVioletRed;
+}</code></pre>
+<p>С помощью этого кода мы добавили <span class="attribute">border-bottom</span>, так что каждый элемент <span class="tag">&lt;li&gt;</span> теперь имеет такой же тип границы как у внешней рамки, но только в нижней части текста.</p><p>В настоящее время наше меню должно выглядеть так.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-item-border.png" width="404" height="159" alt=""></p><p>Теперь у нас две проблемы. Первая — пространство слева между границей и элементами списка. Изменим его, используя нашего знакомого <span class="attribute">padding</span>.</p>
+<pre><code data-language="css">nav ul li {
+  border-bottom: 1px solid MediumVioletRed;
+  padding: 5px;
+}</code></pre>
+<p>Это гораздо лучше, правда? Мы добавили <span class="attribute">padding</span> шириной 5&nbsp;пикселей между текстом и границами.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-item-padding.png" width="404" height="239" alt=""></p><p>Наша вторая проблема менее заметна, но всё ещё существует в виде двойной линии в нижней части нашего меню. Это потому, что наша граница для меню добавилась к нашей границе для последнего элемента, когда мы вставили <span class="attribute">bottom-border</span>. Помните, что мы использовали код в <span class="tag">&lt;ul&gt;</span> из <span class="tag">&lt;nav&gt;</span> для указания границы.</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+  list-style: none;
+  padding: 0;
+  width: 200px;
+  border: 1px solid MediumVioletRed;
+}</code></pre>
+<p>Также вспомним, что мы устанавливаем <span class="attribute">list-style</span> в <span class="value">none</span> так, что маркеры или любые другие знаки не появляются.</p>
+<pre><code data-language="css">list-style: none;</code></pre>
+<p>Задав <span class="value">none</span> в качестве значения мы отключаем свойство, так что оно не будет иметь никаких графических эффектов.</p><p>Проделаем то же самое, только с помощью свойства <span class="attribute">bottom-border</span> и установив для него значение <span class="value">none</span>. Однако мы хотим нацелиться только на последний пункт меню, чтобы его нижняя граница не конфликтовала с большой нижней границей.</p>
+<pre><code data-language="css">nav ul li:last-child {
+  border-bottom: none;
+}</code></pre>
+<p>Результат применения этого кода сверхэффективен.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-no-double-border.png" width="404" height="237" alt=""></p><p>Двойная граница исчезла, всё потому, что мы нашли <span class="tag">&lt;ul&gt;</span> в <span class="tag">&lt;nav&gt;</span>, а затем выбрали в нём последний <span class="tag">&lt;li&gt;</span> и отключили нижнюю границу. Псевдо-селектор <span class="attribute">last-child</span> указывает на последний элемент списка.</p>
+<pre><code data-language="css">nav ul li:last-child {}</code></pre>
+<p>Этот селектор можно перевести следующим образом:</p><p>«найдите <span class="tag">&lt;nav&gt;</span>, затем <span class="tag">&lt;ul&gt;</span> и примените все изменения к последнему элементу <span class="tag">&lt;li&gt;</span>».</p><p>Последнее, что нам нужно сделать, это настроить текст в ссылках. Вы можете создать ссылки в HTML следующим образом.</p>
+<pre><code data-language="html">&lt;a href=&quot;url&quot;&gt;Набранный здесь текст ведёт на указанный веб-адрес&lt;/a&gt;</code></pre>
+<p>Мы используем тег <span class="tag">&lt;a&gt;</span> вместе с атрибутом <span class="attribute">href</span>. Значением этого атрибута должен быть адрес, на который вы хотите переместить пользователя, если он щёлкает по ссылке. В нашем примере у нас есть четыре ссылки. Одна из них выглядит так.</p>
+<pre><code data-language="html">&lt;a href=&quot;training.html&quot;&gt;Обучение&lt;/a&gt;</code></pre>
+<p>Это значит, что браузер будет показывать слово «Обучение», на которое можно щёлкнуть и затем браузер отправится на страницу, которая была сохранена в файле training.html.</p><p>Зная, что этот тег является частью кода HTML, мы можем создать специальный селектор, который ищет именно этот тег.</p>
+<pre><code data-language="css">nav ul li a {}</code></pre>
+<p>Вуаля!</p><p>Давайте добавим новые свойства к нашему новому селектору. Прежде всего, изменим цвет шрифта на белый.</p>
+<pre><code data-language="css">nav ul li a {
+  color: white;
+}</code></pre>
+<p>Обновление браузера показывает наши новые изменения.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-white.png" width="404" height="237" alt=""></p><p>Отлично! Теперь у нас есть ссылки белого цвета. Изменим некоторые акценты. Браузер устанавливает выделение в CSS для всех ссылок в виде <span class="var">text-decoration:&nbsp;underline</span>. Мы хотим изменить это значение, как мы уже делали это раньше со значением <span class="value">none</span>.</p>
+<pre><code data-language="css">nav ul li a {
+  color: white;
+  <mark>text-decoration: none;</mark>
+}</code></pre>
+<p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-white-links.png" width="404" height="237" alt=""></p><p>Красота! Мы завершили желаемое меню.</p><p>В качестве дополнительного замечания, если вы работаете с большим количеством ссылок, то, возможно, помните, что на многих страницах при наведении на ссылку текст подчёркивается.</p><p>Проверьте эту ссылку, которую я написал в своём Twitter (без подчёркивания).</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/twitter.png" width="1120" height="320" alt=""></p><p>При наведении указателя мыши на эту ссылку происходит нечто интересное, о чём многие интернет-пользователи хорошо знают&nbsp;— текст становится подчёркнутым.</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/twitter-hover.png" width="1102" height="320" alt=""></p><p>Попробуем сделать нечто подобное в нашем меню, что позволит ссылке выделиться при наведении на неё. Мы будем использовать псевдо-селектор под названием <span class="attribute">hover</span>.</p>
+<pre><code data-language="css">nav ul li a:hover {
+  text-decoration: underline;
+}</code></pre>
+<p>В этот раз мы добавили его к ссылкам <span class="tag">&lt;a&gt;</span>. Это означает, что при наведении указателя мыши на ссылку будет применяться эффект. Это также относится и к наведению на другие элементы.</p>
+<pre><code data-language="css">div:hover
+li:hover
+img:hover</code></pre>
+<p>Эффект виден ниже, когда мы наводим курсор мыши на ссылку «Конференции».</p><p class="fig"><img src="../../assets/images/howtocodeinhtml/menu-hover.png" width="404" height="237" alt=""></p><p>В итоге, окончательный код CSS должен выглядеть так.</p>
+<pre><code data-language="css">nav ul {
+  background-color: PaleVioletRed;
+  list-style: none;
+  padding: 0;
+  width: 200px;
+  border: 1px solid MediumVioletRed;
+}
+  
+nav ul li {
+  border-bottom: 1px solid MediumVioletRed;
+  padding: 5px;
+}
+
+nav ul li:last-child {
+  border-bottom: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}</code></pre>
+<p>Недавно появившиеся псевдо-селекторы (<span class="attribute">last-child</span> и <span class="attribute">hover</span>) будут полезны в будущем.</p><p>В этой главе вы узнали, как использовать ссылки и вставлять их в HTML-документы. На данный момент мы использовали только адреса, ведущие на локальные файлы (например, training.html), сохранённые на вашем компьютере, но вы также можете использовать ссылки, указывающие на внешние сайты в Интернете, вроде этого.</p>
+<pre><code data-language="html">&lt;a href=&quot;http://twitter.com/varjs&quot;&gt;Мой Twitter&lt;/a&gt;</code></pre>
+<p>Этот код в браузере будет отображаться как <a href="http://twitter.com/varjs">Мой Twitter</a>. Обратите внимание, что адрес содержит http:// в самом начале. Это правило говорит, что каждая ссылка используемая в HTML-документе и ведущая на другой сайт, должна быть с префиксом http://. В противном случае, ваши ссылки не будут перенаправлять пользователей в нужное место.</p><div id="block-17" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0708135098984815" data-ad-slot="1599783371" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div class="field field-name-field-book-tag field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="https://webref.ru/metki/ssylki">ссылки</a></div><div class="field-item odd"><a href="https://webref.ru/metki/spiski">списки</a></div></div></div><section class="row credit"><div class="columns small-6 credit-author"><i class="icon-user"></i> Автор: Дамиан Вельгошик</div><div class="columns small-6 credit-changed"><i class="icon-calendar"></i> Последнее изменение: 26.06.2015</div><div class="columns small-12 credit-editor"><i class="icon-users"></i> Редакторы: Клим Щербаков</div></section><script src="../../sites/all/themes/ori/js/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind('mod+left', function()   { document.location ='/layout/howtocodeinhtml/chapter5'; });Mousetrap.bind('mod+right', function() { document.location = '/layout/howtocodeinhtml/chapter7'; });</script>
+<div class="book-navigation row" id="book-navigation-bottom"><div class="small-6 columns page-previous"><a href="chapter5.html" title="На предыдущую страницу">Визуальный сайт в CSS3</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></div><div class="small-6 columns page-next"><a href="chapter7.html" title="На следующую страницу">Понимание селекторов CSS</a><br><span class="navigation-tooltip"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></div></div><div id="block-9" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-9');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div><div id="block-10" class="block"><div class="block_content"><div id="disqus_thread"></div>
+<script>
+var disqus_shortname = "webref";
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+</div></div></div></div></div><aside class="large-3 columns right-off-canvas-menu"><div class="region region-sidebar-toc"><div id="book-navigation" class="block"><h2 class="block_title">Содержание</h2><div class="block_content"><ul class="menu"><li class="first leaf"><a href="chapter1.html">Сайты и Lego</a></li><li class="leaf"><a href="chapter2.html">Делаем наш первый сайт</a></li><li class="leaf"><a href="chapter3.html">Особенности идеального HTML-кода</a></li><li class="leaf"><a href="chapter4.html">Упражнение: верстаем пост блога</a></li><li class="leaf"><a href="chapter5.html">Визуальный сайт в CSS3</a></li><li class="leaf active-trail"><a href="chapter6.html" class="active-trail active">Меню, пожалуйста</a></li><li class="leaf"><a href="chapter7.html">Понимание селекторов CSS</a></li><li class="leaf"><a href="chapter8.html">Время для итогов</a></li><li class="leaf"><a href="chapter9.html">Формы в HTML5</a></li><li class="leaf"><a href="chapter10.html">Разница между &lt;div&gt; и &lt;span&gt;</a></li><li class="leaf"><a href="chapter11.html">Дополнения форм</a></li><li class="leaf"><a href="chapter12.html">Многоколоночный макет</a></li><li class="last leaf"><a href="chapter13.html">Что дальше?</a></li></ul></div></div><div id="block-12" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:200px;height:200px" data-ad-client="ca-pub-0708135098984815" data-ad-slot="4025987772"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></aside></div><div class="adv_footer"><div class="row"><div class="medium-12 hide-for-medium-down"><div class="region region-adv-footer"><div id="block-15" class="block"><div class="block_content">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+ad = document.getElementById('block-15');
+if (ad.getBoundingClientRect().width) {
+adWidth = ad.getBoundingClientRect().width;
+} else {
+adWidth = ad.offsetWidth;
+}
+google_ad_client = "ca-pub-0708135098984815";
+if (adWidth >= 728) { google_ad_size = ["728", "90"]; google_ad_slot = "1258944978"; }
+else { google_ad_size = ["300", "250"]; google_ad_slot = "8016056172"; }
+document.write (
+'<ins class="adsbygoogle" style="display:inline-block;width:'
++ google_ad_size[0] + 'px;height:'
++ google_ad_size[1] + 'px" data-ad-client="'
++ google_ad_client + '" data-ad-slot="'
++ google_ad_slot + '"></ins>'
+);
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></div></div></div><a class="exit-off-canvas"></a></div></div><div class="copyright"><div class="row"><div class="small-2 columns"><p><a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow"><img alt="Лицензия Creative Commons" src="../../sites/all/themes/ori/img/cc.png" width="88" height="31"></a></p></div><div class="small-10 columns"><p>Все материалы сайта доступны по <a href="http://creativecommons.org/licenses/by-nc/4.0/deed.ru" rel="nofollow">лицензии Creative Commons «Attribution-NonCommercial» («Атрибуция — Некоммерческое использование») 4.0 Всемирная</a>, если не указано иное.</p></div></div></div><footer><div class="row"><div class="medium-12 large-4 columns"><h4>О сайте</h4><p>На сайте находятся справочники по различным веб-технологиям, а также руководства по вёрстке веб-страниц и разработке мобильных приложений.</p><p class="about-last">Главный редактор: Влад Мержевич</p></div><div class="small-6 large-2 columns"><h4>Связи</h4><ul id="community"><li><i class="icon-rss"></i> <a href="https://feeds.feedburner.com/webref" rel="nofollow">RSS</a></li><li><i class="icon-jsfiddle"></i> <a href="https://jsfiddle.net/user/webref/fiddles/" rel="nofollow">JSFiddle</a></li><li><i class="icon-github"></i> <a href="https://github.com/webref" rel="nofollow">GitHub</a></li><li><i class="icon-vk"></i> <a href="https://vk.com/webref" rel="nofollow">ВКонтакте</a></li><li><i class="icon-doc-text"></i> <a href="https://drive.google.com/folderview?id=0B4u62HGG7TOnTVJ4aFlFa1Jpb2M" rel="nofollow">Google Диск</a></li></ul></div><div class="small-6 large-3 columns"><h4>Разделы сайта</h4><ul id="footer-menu" class="links"><li><i class="icon-book"></i> <a href="../../ref.html">Справочники</a></li><li><i class="icon-layout"></i> <a href="../../layout.html">Вёрстка</a></li><li><i class="icon-gear"></i> <a href="../../dev.html">Веб-технологии</a></li><li><i class="icon-mobile"></i> <a href="../../mobile.html">Мобильные приложения</a></li><li><i class="icon-bookmark"></i> <a href="../../course.html">Учебные курсы</a></li></ul></div><div class="small-12 medium-12 large-3 columns"><h4>Популярные материалы</h4><div class="region region-popular"><div id="views-popular-popular" class="block"><div class="block_content"><div class="view view-popular view-id-popular view-display-id-popular view-dom-id-7d0bf50c2bdab99f908ba5956b3acd5e"><div class="view-content"><ul><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../learn-html-css.html">Уроки по HTML и CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../howtocodeinhtml.html">Как верстать на HTML5 и CSS3</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/html5.svg.png" src="../../assets/images/thumb/html5.svg" width="16" height="16" alt="" /> <a href="../html5-css3.html">HTML5 и CSS3 на примерах</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/css3.svg.png" src="../../assets/images/thumb/css3.svg" width="16" height="16" alt="" /> <a href="../magic-of-css.html">Магия CSS</a></li><li class="leaf"> <img class="svg-img size-icon" data-src="/assets/svgimg/icon/img-styles/images/thumb/jquery.svg.png" src="../../assets/images/thumb/jquery.svg" width="16" height="16" alt="" /> <a href="../../dev/jqfundamentals.html">Основы jQuery</a></li></ul></div></div></div></div></div></div></div><div class="row"><div class="small-12 columns counter">
+<script src="../../sites/all/themes/ori/js/li.js"></script>
+</div></div><a href="chapter6.html#top"><div class="row"><div class="small-12 columns ontop">Наверх</div></div></a></footer></main>	
+<script type="text/javascript" src="../../assets/js/js_cDfSr2FXPXcK1gvn1bGJotjGggYy9AyIYPQ5Hw_Sx7s.js"></script>
+<script type="text/javascript" src="../../assets/js/js_H7q2xORKmR9AN8Qx5spKEIBp7R_wG2apAswJoCUZY7I.js"></script>
+<script type="text/javascript" src="../../assets/js/js_Xmre84srNMv9IsL3EsmaMioO7AzocdnCMpWwTIu-jp8.js"></script>
+<script type="text/javascript" src="../../assets/js/js_WCzLp6JdBrd-C4nO79XBCCg40n8pNJ8KLyzqGIFUryg.js"></script>
+</body>
+</html>

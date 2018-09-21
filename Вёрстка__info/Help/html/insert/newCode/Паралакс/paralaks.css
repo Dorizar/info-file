@@ -1,0 +1,25 @@
+﻿body{margin: 0;}
+
+section{
+	height: 100vh;
+	background-color: #666;
+	position: relative;
+}
+
+.sect_1{
+	background: url(9.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: 0 -100px;
+}
+
+.header_text{
+	color: #fff;
+	text-align: center;
+	font-family: calibri;
+	font-size: 50px;
+	font-weight: bold;
+	padding-top: 200px;
+	text-transform: uppercase;
+	text-shadow: 0 0 1px #000;
+}
